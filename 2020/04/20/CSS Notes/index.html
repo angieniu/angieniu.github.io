@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Yanjie&#39;s Blog</title>
+  <title>CSS Notes | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="Some notes about CSS: Normalizing Browswer Defaults It’s good practice to include normalize.css as the first stylesheet you link to from your page. The link to your stylesheet comes after, so that you">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS Notes">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/CSS%20Notes/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="Some notes about CSS: Normalizing Browswer Defaults It’s good practice to include normalize.css as the first stylesheet you link to from your page. The link to your stylesheet comes after, so that you">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-20T21:29:18.248Z">
+<meta property="article:modified_time" content="2020-04-20T21:29:18.249Z">
 <meta property="article:author" content="Yanjie Niu">
 <meta name="twitter:card" content="summary">
   
@@ -142,233 +146,286 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-CSS Notes" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      CSS Notes
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/CSS%20Notes/" class="archive-article-date">
+
+        
+        <a href="/2020/04/20/CSS%20Notes/" class="archive-article-date">
   	<time datetime="2020-04-20T21:29:18.248Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/CSS%20Notes/">CSS Notes</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Some notes about CSS:</p>
+<h1 id="Normalizing-Browswer-Defaults"><a href="#Normalizing-Browswer-Defaults" class="headerlink" title="Normalizing Browswer Defaults"></a>Normalizing Browswer Defaults</h1><ol>
+<li><p>It’s good practice to include normalize.css as the first stylesheet you link to from your page. The link to your stylesheet comes after, so that your rules will build upon those defined in normalize.css.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- normalize.css --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- our own stylesheet --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/styles.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>Files that end with <code>.min.css</code> have been “minified,” which just means that all the spaces have been taken out to make the file smaller and faster to download. When loading a library file from an online location like this, always use the <code>.min.css</code> version if it’s available.</p>
+<p>This works well in every case except when you are offline, which can happen when you are doing development. If you need access to normalize.css while offline, <a href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" target="_blank" rel="noopener">download it</a> to your project folder and link to it using a relative path, just like the link to your own stylesheet. By convention, we typically put files like this into a <code>lib/</code> folder, to keep them separate from our own files that we actively change.</p>
+</li>
+</ol>
+<ol start="2">
+<li>For large CSS files, professionals will typically minify them before deploying them to a production server, which involves removing all the whitespace to make the file smaller.</li>
+</ol>
+<h1 id="Selectors"><a href="#Selectors" class="headerlink" title="Selectors"></a>Selectors</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors</a></p>
+<ol>
+<li><p>Element selectors</p>
+</li>
+<li><p>Class selectors:</p>
+</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all elements with class="alert alert-warning"</span></span><br><span class="line"><span class="comment">(i.e., elements that have both classes) */</span></span><br><span class="line"><span class="selector-class">.alert</span><span class="selector-class">.alert-warning</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+
+<ol start="3">
+<li>ID Selectors: The <code>id</code> attribute is commonly used to create bookmark hyperlinks (i.e., links that scroll the page to a particular section of the page), id selectors are a handy way to style those elements.</li>
+</ol>
+<ol start="4">
+<li>Descendant Selectors:</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects only the p elements contained within header elements */</span></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects elements with class="logo"</span></span><br><span class="line"><span class="comment">contained within p elements</span></span><br><span class="line"><span class="comment">contained within header elements */</span></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-tag">p</span> <span class="selector-class">.logo</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>It’s best practice to use no more than two or three.</p>
+<p> If you really want to select only direct children, you can use this variant of the syntax, known as a <strong>child selector</strong>:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects only the p elements that are direct children the header element  */</span></span><br><span class="line"><span class="selector-tag">header</span> &gt; <span class="selector-tag">p</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="5">
+<li>Group Selectors:</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all h1, h2, and h3 elements  */</span></span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span> &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">300</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Group selectors are an excellent way to adhere to the <strong>DRY principle</strong>: <strong>D</strong>on’t <strong>R</strong>epeat <strong>Y</strong>ourself! </p>
+<ol start="6">
+<li>Hover and Focus Pseudo Selectors:</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all elements with class="nav-link" */</span></span><br><span class="line"><span class="selector-class">.nav-link</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* selects all elements with class="nav-link" that are being hovered over with the mouse */</span></span><br><span class="line"><span class="selector-class">.nav-link</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="comment">/* change color to red */</span></span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* selects all &lt;input&gt; elements that have keyboard focus */</span></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">    <span class="comment">/* change background color to yellow */</span></span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Specificity-Calculated"><a href="#Specificity-Calculated" class="headerlink" title="Specificity Calculated"></a>Specificity Calculated</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a></p>
+<h1 id="Font"><a href="#Font" class="headerlink" title="Font"></a>Font</h1><p> Most web sites these days use <a href="https://www.fonts.com/content/learning/fontology/level-1/type-anatomy/serif-vs-sans-for-text-in-responsive-design" target="_blank" rel="noopener">sans-serifed</a> fonts for body text, as it tends to be easier to read at smaller point sizes.</p>
+<h1 id="Colors"><a href="#Colors" class="headerlink" title="Colors"></a>Colors</h1><p> We use a hexadecimal representation of a numeric color value, like <code>#FF0000</code>, which is pure red.</p>
+<p>The hex representation starts with a <code>#</code> symbol and is followed by six hexadecimal characters. The first two are the amount of red, the second two the amount of green, and the final two are the amount of blue. Hexadecimal <code>FF</code> is the same as decimal <code>255</code>.</p>
+<p>Amazing <a href="https://color.adobe.com/" target="_blank" rel="noopener">Adobe Color CC</a> tool. You can <a href="https://color.adobe.com/explore/newest/" target="_blank" rel="noopener">explore ready-made color palettes</a>, or design your own. You can also upload a photo and let the tool design a color palette for you based on the colors in the photo (click the camera icon on the top-right).</p>
+<h1 id="Measurement-Units"><a href="#Measurement-Units" class="headerlink" title="Measurement Units"></a>Measurement Units</h1><p>The absolute units are as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>cm</td>
+<td>centimeters</td>
+</tr>
+<tr>
+<td>mm</td>
+<td>millimeters</td>
+</tr>
+<tr>
+<td>in</td>
+<td>inches</td>
+</tr>
+<tr>
+<td>px</td>
+<td>pixels, which are defined as 1/96 of an inch, regardless of how dense the pixels are on the current display</td>
+</tr>
+<tr>
+<td>pt</td>
+<td>points, which are defined as 1/72 of an inch</td>
+</tr>
+</tbody></table>
+<p>In addition to these absolute units, you can also use these relative units:</p>
+<table>
+<thead>
+<tr>
+<th>Unit</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>em</td>
+<td>the height of the current element’s font</td>
+</tr>
+<tr>
+<td>rem</td>
+<td>the height of the root element’s font (i.e., the font used on the root <code>html</code> element). To calculate from the base size to <code>rem</code> it would be based on percentage, but in decimal format. So 100% is <code>1.0rem</code> 150% is <code>1.5rem</code> and 200% is <code>2.0rem</code>.</td>
+</tr>
+<tr>
+<td>%</td>
+<td>a percentage of the parent element dimensions or parent element’s font</td>
+</tr>
+<tr>
+<td>vw</td>
+<td>one percent of the viewport width (i.e., the width of the browser window)</td>
+</tr>
+<tr>
+<td>vh</td>
+<td>one percent of the viewport height (i.e., the height of the browser window)</td>
+</tr>
+</tbody></table>
+<p>Absolute units are best for things you want to be consistent across devices (e.g., font size, or maximum width of some content). Relative units are best for things you want to adjust based on context (the width of a column in a multi-column layout, or the relative font size of an `` compared to the base font).</p>
+<h1 id="The-Box-Model"><a href="#The-Box-Model" class="headerlink" title="The Box Model"></a>The Box Model</h1><h3 id="Block-vs-inline-display"><a href="#Block-vs-inline-display" class="headerlink" title="Block vs inline display"></a>Block vs inline display</h3><p>Elements that are displayed as blocks by default include <code>p</code>, <code>div</code>, <code>ul</code>, <code>ol</code>, <code>li</code>, <code>header</code>, <code>main</code>, <code>article</code>, <code>footer</code>, <code>aside</code>, and many more. </p>
+<p>Elements that are displayed inline by default include <code>em</code>, <code>strong</code>, <code>span</code>, <code>a</code>, <code>small</code>, <code>abbr</code>, and several more.</p>
+<h3 id="Adjusting-width-and-height"><a href="#Adjusting-width-and-height" class="headerlink" title="Adjusting width and height"></a>Adjusting width and height</h3><p>You can adjust the default <code>width</code> and <code>height</code> of block elements using the <code>width</code> and <code>height</code> CSS properties, but you need to careful when doing so. If your element contains content, you should adjust only the <code>width</code> and never the <code>height</code>. If you constraint the <code>width</code> and the <code>height</code>, the element might not have enough room to display all of its content. But if you constrain only the <code>width</code>, the element will automatically grow taller to accommodate its content.</p>
+<p>Alternatively you can specify a <code>min-width</code> or <code>max-width</code> CSS property to ensure that the width is at least or at most a particular size. For example, setting <code>max-width</code> to <code>1170px</code> will allow the element to grow in width up to, but not beyond, <code>1170px</code>.</p>
+<h3 id="Margins-borders-and-padding"><a href="#Margins-borders-and-padding" class="headerlink" title="Margins, borders, and padding"></a>Margins, borders, and padding</h3><p>Elements displayed as blocks can also have a margin, border, and padding. </p>
+<h3 id="Horizontally-centering-constrained-width-elements"><a href="#Horizontally-centering-constrained-width-elements" class="headerlink" title="Horizontally centering constrained-width elements"></a>Horizontally centering constrained-width elements</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">1170px</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: auto;</span><br><span class="line">    <span class="attribute">margin-right</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources:"></a>Resources:</h1><p>CSS Cheat Sheet:</p>
+<p><a href="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/07/css3-mega-cheat-sheet-A4.pdf" target="_blank" rel="noopener">https://cdn.makeawebsitehub.com/wp-content/uploads/2016/07/css3-mega-cheat-sheet-A4.pdf</a></p>
+<p>Interactive CSS Cheat Sheet:</p>
+<p><a href="http://htmlcheatsheet.com/css/" target="_blank" rel="noopener">http://htmlcheatsheet.com/css/</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/20/CSS%20Notes/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/19/Thoughts/" class="archive-article-date">
-  	<time datetime="2020-04-20T06:34:04.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/19/Thoughts/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Thoughts</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/19/Thoughts/">Thoughts</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/" class="archive-article-date">
-  	<time datetime="2020-04-19T06:26:06.617Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/">Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/" class="archive-article-date">
-  	<time datetime="2020-04-18T06:48:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/">11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/16/How-to-build-a-real-time-parking-availability-system/" class="archive-article-date">
-  	<time datetime="2020-04-17T03:07:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/16/How-to-build-a-real-time-parking-availability-system/">How to build a real-time parking availability system?</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Real-time Parking Availability, IoT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/15/New-Journey-New-Blog/" class="archive-article-date">
-  	<time datetime="2020-04-16T01:44:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/New-Journey-New-Blog/">New Journey, New Blog</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-04-16T01:03:21.719Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -391,8 +448,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
