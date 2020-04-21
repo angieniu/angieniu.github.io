@@ -183,7 +183,7 @@
 <h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h2><p>slow: combine use case to discuss. the core is what query it is like. </p>
 <p>1) ad hoc query: transactional base query, specific condition and data related not that much. I hope to find what questions I do accept or not. query fast, coz index.</p>
 <p>2) aggregation query: scan this table, terrifying, no need to scan all the submission history. but the time window might need to be large enough. // basic design.database query, scan all data.<br>all voting board: all data, time window, – the past window, the most popular music, to scan all the history? no. </p>
-<h2 id="Optimize"><a href="#Optimize" class="headerlink" title="Optimize:"></a>Optimize:</h2><p>leaderboard:</p>
+<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization:"></a>Optimization:</h2><p>leaderboard:</p>
 <p>scan daily? no. history data. or specific data within one day. and immediate update. – for unchanged history offline batch processing, aggregation process, real-time data, real-time checking.</p>
 <p>two parts of data:</p>
 <p>1) history data, offline data, daily and weekly preprocessing aggregation. past week data，daily data put into history, 固化, would not be changed. </p>
