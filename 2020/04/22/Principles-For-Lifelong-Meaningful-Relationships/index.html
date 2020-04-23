@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>System Design Notes | Yanjie&#39;s Blog</title>
+  <title>Principles-For-Lifelong-Meaningful-Relationships | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="System Design Notes  Feed Product:1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algor">
+  <meta name="description" content="Started to read Principles by Ray Dalio again and found some other inspiring principles from his recent post. Share here together with my takeaway. Glad to see his way to systemize these principles an">
 <meta property="og:type" content="article">
-<meta property="og:title" content="System Design Notes">
-<meta property="og:url" content="http://yoursite.com/2020/04/21/System%20Design%20Notes/index.html">
+<meta property="og:title" content="Principles-For-Lifelong-Meaningful-Relationships">
+<meta property="og:url" content="http://yoursite.com/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="System Design Notes  Feed Product:1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algor">
+<meta property="og:description" content="Started to read Principles by Ray Dalio again and found some other inspiring principles from his recent post. Share here together with my takeaway. Glad to see his way to systemize these principles an">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-21T21:10:26.237Z">
-<meta property="article:modified_time" content="2020-04-21T21:21:52.730Z">
+<meta property="article:published_time" content="2020-04-23T04:24:57.909Z">
+<meta property="article:modified_time" content="2020-04-23T04:24:57.910Z">
 <meta property="article:author" content="Yanjie Niu">
 <meta name="twitter:card" content="summary">
   
@@ -146,65 +146,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-System Design Notes" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Principles-For-Lifelong-Meaningful-Relationships" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      System Design Notes
+      Principles-For-Lifelong-Meaningful-Relationships
     </h1>
   
 
         
-        <a href="/2020/04/21/System%20Design%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T21:10:26.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
+        <a href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/" class="archive-article-date">
+  	<time datetime="2020-04-23T04:24:57.909Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>System Design Notes </p>
-<h1 id="Feed-Product"><a href="#Feed-Product" class="headerlink" title="Feed Product:"></a>Feed Product:</h1><p>1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algorithm (relationship and interest) in the ranking consideration.<br>what is it? As a user, what I hope to use, the core functionalities, use cases. many core functionalities, what they are, what I will focus on to dissect, for products.<br>product directed</p>
-<p>2) functionalities: input – output – output as input — . deconstruct process in system design. signature. restful api.<br>Use cases: quantitative. data size, peak time query per second qps, read write query what they are, read more write less other patterns.<br>Story feed product:<br>Functionalities, use casesvoting dashboard, voting, real-time voting visualization</p>
-<h1 id="Case-Study-Leaderboard-Voting-Map"><a href="#Case-Study-Leaderboard-Voting-Map" class="headerlink" title="Case Study: Leaderboard, Voting Map"></a>Case Study: Leaderboard, Voting Map</h1><p>excellent pay attention to it.<br>How to make leaderboard:how to design and implement it.voting board/map.<br>Core features:top 100, time window: last 1 month, real-time fetch data // use case common sense, leaderboard.From the perspective of users: certain time windows, calculate scores, and sort. use case:</p>
-<ol>
-<li><p>data size: 10,000 active users, 10-20/day/ person, acceptance rate 50%. submission number: daily: 100,000, month: 3,000,000, annual: 36,500,000</p>
-</li>
-<li><p>query per second: peak time, average concurrent visiting, visting frequency: query per day: hope to get result immediately. result real-time expectation. offline calculation or real-time online calculation. response time short. </p>
-</li>
-<li><p>calculate score: ranking, score: fields (number, acceptance rate, time) don’t over dig into it.web application, packaging core functionalities. we believe it’s done, and integrate the whole design, flow architecture and product design. input and output as key words in the process. the best ranking / recommendation algorithm for data scientists to do.</p>
-<p>**** challenges and core features defined well , input and output and fit in the whole design.<br>input and output (score):how about input: time window number of questions, and acceptance rate, submission history. </p>
-</li>
-</ol>
-<p>Design:what data, data model, input and output, and data calculation and implement step by step.</p>
-<p>Leaderboard:core data:all users’ submission history, basic info.</p>
-<p>– relational database model. which question, accept or not, when submitted. schema to use, several tables and relationships. data model to use. query to check relationships, given time window, for person, submit how many,acceptance rate, and time, personal info. query submission history, calculate score, put to sort algorithm and sort.<br> think about it from a data model, do not think about speed to query right now. no need to use non-relational.</p>
-<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h2><p>slow: combine use case to discuss. the core is what query it is like. </p>
-<p>1) ad hoc query: transactional base query, specific condition and data related not that much. I hope to find what questions I do accept or not. query fast, coz index.</p>
-<p>2) aggregation query: scan this table, terrifying, no need to scan all the submission history. but the time window might need to be large enough. // basic design.database query, scan all data.<br>all voting board: all data, time window, – the past window, the most popular music, to scan all the history? no. </p>
-<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization:"></a>Optimization:</h2><p>leaderboard:</p>
-<p>scan daily? no. history data. or specific data within one day. and immediate update. – for unchanged history offline batch processing, aggregation process, real-time data, real-time checking.</p>
-<p>two parts of data:</p>
-<p>1) history data, offline data, daily and weekly preprocessing aggregation. past week data，daily data put into history, 固化, would not be changed. </p>
-<p>2) real-time data would be updated. the old would be merged into history data. size small and real-time updated.</p>
-<p>3) combine them, accurate cover history and real-time update. so ranking score, to scan today’s submission history, at most 100,000 * 365 per year. previous accepted rate data in history, the total data size is limited.<br>so put unchanged data 固化, batch processing, offline aggregation, in the evening to do;small dataset, online-real-time;combined with a compressed history dataset.</p>
-<p>Tool: flink, spark use one api to deal with both. </p>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h1><p>What to consider:</p>
-<ol>
-<li><p>1) query slow and fast, query size2) query features, large, slow: real-time, optimization, try to find immutable dataset. </p>
-</li>
-<li><p>immutable data/thing is the best and the easiest to deal with, offline deal with, query, request deal with. </p>
-</li>
-<li><p>input and output</p>
-</li>
-<li><p>data size, qps, pee and average</p>
-</li>
-<li><p>read vs write</p>
-</li>
-</ol>
+        <p>Started to read Principles by Ray Dalio again and found some other inspiring principles from his recent post. Share here together with my takeaway. Glad to see his way to systemize these principles and test them in his own life. </p>
+<h2 id="Principle-1-What-creates-and-sustains-truly-great-relationships-like-great-marriages-and-great-partnerships-is-the-unwavering-belief-that-nothing-is-more-important-than-the-relationship"><a href="#Principle-1-What-creates-and-sustains-truly-great-relationships-like-great-marriages-and-great-partnerships-is-the-unwavering-belief-that-nothing-is-more-important-than-the-relationship" class="headerlink" title="Principle 1: What creates and sustains truly great relationships (like great marriages and great partnerships) is the unwavering belief that nothing is more important than the relationship."></a>Principle 1: What creates and sustains truly great relationships (like great marriages and great partnerships) is the unwavering belief that nothing is more important than the relationship.</h2><p>Bad times and disagreements are understandble. Mutual demonstrated commitment to the belief creates the willingness to work things out. </p>
+<p>Of course, in the early stage of a relationship, no reason to belive nothing is more importatn than the relationship and that the mutual commitments are there. It takes time to get it tested. Because of that, you just have to have faith that it’s true and act as if it’s true and then see if the other person does the same. </p>
+<p>Also, when facing those challenging bad times and disagreements in a relationship, and when making those important calls of what’s most important, you need to think hard about how important the relationship you have really is relative to how important getting your way is because the decisions you will make at those times either strengthen your relationship or weaken it.</p>
+<h2 id="Principle-2-If-you-need-to-assess-the-value-of-your-relationship-think-hard-about-whether-your-most-important-values-and-principles-are-aligned-putting-the-really-important-ones-ahead-of-the-not-so-important-ones"><a href="#Principle-2-If-you-need-to-assess-the-value-of-your-relationship-think-hard-about-whether-your-most-important-values-and-principles-are-aligned-putting-the-really-important-ones-ahead-of-the-not-so-important-ones" class="headerlink" title="Principle 2: If you need to assess the value of your relationship, think hard about whether your most important values and principles are aligned, putting the really important ones ahead of the not so important ones."></a>Principle 2: If you need to assess the value of your relationship, think hard about whether your most important values and principles are aligned, putting the really important ones ahead of the not so important ones.</h2><p>a) the greatest things to have in life are great relationships, especially your most important relationships, </p>
+<p>b) you won’t be able to have great long-term relationships if you can’t get past the the disagreements and the imperfections because all relationships have disagreements and imperfections, </p>
+<p>c) no relationship will work in the long run if your most important values and principles are not aligned, and </p>
+<p>d) it takes a whole lot of trying and figuring things out in order come up with the best path. </p>
+<h2 id="Principle-3-The-key-to-all-good-relationships-is-to-a-be-in-sync-about-how-you-should-be-with-each-other-especially-how-you-should-disagree-and-get-past-your-disagreements-and-b-give-far-more-than-you-demand-with-those-who-will-do-the-same-with-you"><a href="#Principle-3-The-key-to-all-good-relationships-is-to-a-be-in-sync-about-how-you-should-be-with-each-other-especially-how-you-should-disagree-and-get-past-your-disagreements-and-b-give-far-more-than-you-demand-with-those-who-will-do-the-same-with-you" class="headerlink" title="Principle 3: The key to all good relationships is to a) be in sync about how you should be with each other, especially how you should disagree and get past your disagreements, and b) give far more than you demand with those who will do the same with you."></a>Principle 3: The key to all good relationships is to a) be in sync about how you should be with each other, especially how you should disagree and get past your disagreements, and b) give far more than you demand with those who will do the same with you.</h2><p>The biggest source of problems in most relationships is that one or both parties have some notion about how the other should behave and they get angry if the other doesn’t behave that way. In their arguments they exchange accusations in the form of “You should have”.</p>
+<p>“Should”?!</p>
+<p>What should you do instead? </p>
+<p>First, when you are in one of those disagreements, step out of the disagreement for the moment to see if you can establish an agreed-upon principle about how you should be with each other. </p>
+<p>Then go back into the disagreement and be that way, keeping in mind your new principle. </p>
+<p>In the future </p>
+<p>a) operate by that principle, </p>
+<p>or b) modify the principle in the same way. </p>
+<p>Second, when in doubt, give each other slack rather than be prickly. At the end of the day, you will have a good relationship if you make the other person happy and they make you happy, so please drop the scolding “should haves.” </p>
+<p>Empathetically consider the other’s perspective.</p>
 
       
 
@@ -284,7 +263,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/21/System%20Design%20Notes/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -298,18 +277,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Principles-For-Lifelong-Meaningful-Relationships
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/20/CSS%20Notes/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSS Notes</div>
+    <a href="/2020/04/21/System%20Design%20Notes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">System Design Notes</div>
       <i class="icon-circle-right"></i>
     </a>
   
