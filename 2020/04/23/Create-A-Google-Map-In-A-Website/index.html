@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Create-A-Google-Map-In-A-Website | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Google’s API Map html5 code to get that work  Google’s API guideline   https:&#x2F;&#x2F;developers.google.com&#x2F;maps&#x2F;documentation&#x2F;javascript&#x2F;get-api-key 3. 1&lt;div id&#x3D;&quot;map&quot;&gt;&lt;&#x2F;div&gt;">
+  <meta name="description" content="Google’s API Map1. html5 code to get that work2. Google’s API guidelinehttps:&#x2F;&#x2F;developers.google.com&#x2F;maps&#x2F;documentation&#x2F;javascript&#x2F;get-api-key 3.1&lt;div id&#x3D;&quot;map&quot;&gt;&lt;&#x2F;div&gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Create-A-Google-Map-In-A-Website">
 <meta property="og:url" content="http://yoursite.com/2020/04/23/Create-A-Google-Map-In-A-Website/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="Google’s API Map html5 code to get that work  Google’s API guideline   https:&#x2F;&#x2F;developers.google.com&#x2F;maps&#x2F;documentation&#x2F;javascript&#x2F;get-api-key 3. 1&lt;div id&#x3D;&quot;map&quot;&gt;&lt;&#x2F;div&gt;">
+<meta property="og:description" content="Google’s API Map1. html5 code to get that work2. Google’s API guidelinehttps:&#x2F;&#x2F;developers.google.com&#x2F;maps&#x2F;documentation&#x2F;javascript&#x2F;get-api-key 3.1&lt;div id&#x3D;&quot;map&quot;&gt;&lt;&#x2F;div&gt;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-04-24T06:22:05.000Z">
-<meta property="article:modified_time" content="2020-04-24T06:27:27.418Z">
+<meta property="article:modified_time" content="2020-04-24T06:29:51.628Z">
 <meta property="article:author" content="Yanjie Niu">
 <meta property="article:tag" content="Google Map API">
 <meta name="twitter:card" content="summary">
@@ -167,21 +167,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Google’s-API-Map"><a href="#Google’s-API-Map" class="headerlink" title="Google’s API Map"></a>Google’s API Map</h1><ol>
-<li><p>html5 code to get that work</p>
-</li>
-<li><p>Google’s API guideline</p>
-</li>
-</ol>
-<p><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" rel="noopener">https://developers.google.com/maps/documentation/javascript/get-api-key</a></p>
-<p>3.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;map&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+        <h1 id="Google’s-API-Map"><a href="#Google’s-API-Map" class="headerlink" title="Google’s API Map"></a>Google’s API Map</h1><h2 id="1-html5-code-to-get-that-work"><a href="#1-html5-code-to-get-that-work" class="headerlink" title="1. html5 code to get that work"></a>1. html5 code to get that work</h2><h2 id="2-Google’s-API-guideline"><a href="#2-Google’s-API-guideline" class="headerlink" title="2. Google’s API guideline"></a>2. Google’s API guideline</h2><p><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" rel="noopener">https://developers.google.com/maps/documentation/javascript/get-api-key</a></p>
+<h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;map&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
 
-<ol start="4">
-<li>API map JavaScript code<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function initMap()&#123;</span><br><span class="line">var location &#x3D; &#123;lat: -25.363, lng: 131.044&#125;</span><br><span class="line">var map &#x3D; new     </span><br><span class="line">    google.maps.Map(document.getElementById(&quot;map&quot;), &#123;</span><br><span class="line">    zoom: 4,</span><br><span class="line">    center: location</span><br><span class="line">&#125;);</span><br><span class="line">  var marker &#x3D; new google.maps.Marker(&#123;</span><br><span class="line">    position: location,</span><br><span class="line">    map: map</span><br><span class="line">  &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script async defer src&#x3D;&quot;https:&#x2F;&#x2F;maps.ggogleapis.com&#x2F;maps&#x2F;api&#x2F;js?key&#x3D;&amp;callback&#x3D;initMap&quot;&gt;&lt;&#x2F;script&gt;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-API-map-JavaScript-code"><a href="#4-API-map-JavaScript-code" class="headerlink" title="4. API map JavaScript code"></a>4. API map JavaScript code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function initMap()&#123;</span><br><span class="line">var location &#x3D; &#123;lat: -25.363, lng: 131.044&#125;</span><br><span class="line">var map &#x3D; new     </span><br><span class="line">    google.maps.Map(document.getElementById(&quot;map&quot;), &#123;</span><br><span class="line">    zoom: 4,</span><br><span class="line">    center: location</span><br><span class="line">&#125;);</span><br><span class="line">  var marker &#x3D; new google.maps.Marker(&#123;</span><br><span class="line">    position: location,</span><br><span class="line">    map: map</span><br><span class="line">  &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script async defer src&#x3D;&quot;https:&#x2F;&#x2F;maps.ggogleapis.com&#x2F;maps&#x2F;api&#x2F;js?key&#x3D;&amp;callback&#x3D;initMap&quot;&gt;&lt;&#x2F;script&gt;script&gt;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
 <h1 id="Embed-a-Google-Map-in-a-Website"><a href="#Embed-a-Google-Map-in-a-Website" class="headerlink" title="Embed a Google Map in a Website"></a>Embed a Google Map in a Website</h1><p><a href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&amp;hl=en" target="_blank" rel="noopener">https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&amp;hl=en</a></p>
 
       
@@ -415,7 +405,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -423,7 +413,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
             
             <div class="clearfix"></div>
