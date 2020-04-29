@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Yanjie&#39;s Blog</title>
+  <title>System Design Case Study: URL Shortened Service &amp; Like | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="Notes about System Design Case Studies URL Shortened ServiceFunctionality:  String map from long to short, post Short to long, store mapping, DB, read operation later is ok. Click post, from short to">
+<meta property="og:type" content="article">
+<meta property="og:title" content="System Design Case Study: URL Shortened Service &amp; Like">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="Notes about System Design Case Studies URL Shortened ServiceFunctionality:  String map from long to short, post Short to long, store mapping, DB, read operation later is ok. Click post, from short to">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-29T05:55:52.000Z">
+<meta property="article:modified_time" content="2020-04-29T06:16:23.219Z">
 <meta property="article:author" content="Yanjie Niu">
+<meta property="article:tag" content="System Design, URL Shortened Service, Like">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
@@ -142,182 +147,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-System-Design-Case-Study-URL-Shortened-Service-Like" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/" class="archive-article-date">
-  	<time datetime="2020-04-19T06:26:06.617Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/">Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device</a>
+    <h1 class="article-title" itemprop="name">
+      System Design Case Study: URL Shortened Service &amp; Like
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/" class="archive-article-date">
-  	<time datetime="2020-04-18T06:48:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        
+        <a href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/" class="archive-article-date">
+  	<time datetime="2020-04-29T05:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/">11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Notes about System Design Case Studies<br><br /></p>
+<h2 id="URL-Shortened-Service"><a href="#URL-Shortened-Service" class="headerlink" title="URL Shortened Service"></a>URL Shortened Service</h2><p>Functionality:</p>
+<ol>
+<li>String map from long to short, post</li>
+<li>Short to long, store mapping, DB, read operation later is ok.</li>
+<li>Click post, from short to long.</li>
+</ol>
+<p>Design:<br>Step 1: use case, constrains, bottleneck:<br>How do users use it? user size, read/write request pattern, data size, QPS (concurrency)…<br>User size: million level (twitter)<br>Data size: long to short, evaluate data size, active users, how many write …, stored for one year.   </p>
+<p>Difficulty: how to change long to short?<br>method: hash</p>
+<p>Always analyze: input and output, divide and conquer，get each smaller problem chained together to the whole issue again<br>Input: long url string<br>Output: short url string<br>Hash function: — hash code (don’t fall into specific hash code to use): output: **** bytes</p>
+<h3 id="Q1"><a href="#Q1" class="headerlink" title="Q1."></a>Q1.</h3><p>long string =&gt; integer / byte[] (hash value) =&gt; short string</p>
+<p>Not what we want yet</p>
+<p>Continue:<br>Input/output, encoding:</p>
+<h3 id="Q2"><a href="#Q2" class="headerlink" title="Q2."></a>Q2.</h3><p>byte[] –&gt; short string: encoding two methods: 1) hex: 0-9 a-f, each 4 bit 2) Base62: [a-z, A-Z, 0-9]</p>
+<p>string (changed from 128bits, 256bits, might be still ong when changed to string. ): metod: truncate, how many to truncate, too long not follow functionality; too short collision, so how many? total num would be larger than all needed, the num , the value and the url should not be similar, coz easy to collision. 1 billion birds and 100 billion cages.<br>cages refer to values – short links</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h3><p>URL total data size: each mapping 1kb → in total TB, but QPS is bottleneck. check query read write rate, read more or write more? Read more and write less. So for writing operations, how to handle?<br>System-pressure: request – data, mapping– short string– long URL: 1 million pqs, 1million * 1megabytes, read-through puts, if stored in disk, could not; then</p>
+<h3 id="Two-solutions"><a href="#Two-solutions" class="headerlink" title="Two solutions:"></a>Two solutions:</h3><ol>
+<li>Put data cache memory</li>
+<li>More machines to make data cache memory, so each machine concurrency and the handled query number is decreasing. </li>
+</ol>
+<p>Worst case, but waste resources. In reality, dynamically elastic expansion, dynamic scaling.</p>
+<h3 id="Our-strategy"><a href="#Our-strategy" class="headerlink" title="Our strategy:"></a>Our strategy:</h3><ol>
+<li>Sharding, data cut, only hold one or several</li>
+<li>Replication: stored in different machines, several choices, reliability; and copy, security; and dispatch.</li>
+</ol>
+<br />
+<br />
 
-        <div class="article-info info-on-right">
-          
+<h2 id="Like"><a href="#Like" class="headerlink" title="Like"></a>Like</h2><p>How to design a “Like” feature in social apps (Facebook, Wechat …)?</p>
+<h3 id="Functionalities"><a href="#Functionalities" class="headerlink" title="Functionalities?"></a>Functionalities?</h3><p>Scalability: 10,000 ; 100,000 users<br>Core functionalities: like (write), cancel like, count (optional), have I liked it or not (read operation), how many friends of mine like it.</p>
+<h3 id="Basic-design"><a href="#Basic-design" class="headerlink" title="Basic design:"></a>Basic design:</h3><p>Mapping: user - question; </p>
+<h3 id="Bottlenecks"><a href="#Bottlenecks" class="headerlink" title="Bottlenecks:"></a>Bottlenecks:</h3><p>Count, aggregation: cache track each question’s number of likes. redis, distributed cache, to store that. when there is a like request, update DB, when this person likes it, update. so count could be updated fast. no need to be through DB. throughput fast. But since it’s cache, data might lose, cache might not be enough (remove cache, based on time popularity).<br>For scalable systems, redis, persist cache data functionality. for ourselves, how to set a checkpoint/log for all data, persist, in case the cache crashed.<br>corner case cache crash.<br>Important to realize problems and solve problems. </p>
+<h3 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a>Improvement</h3>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">System Design, URL Shortened Service, Like</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/16/How-to-build-a-real-time-parking-availability-system/" class="archive-article-date">
-  	<time datetime="2020-04-17T03:07:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/27/Thoughts%20on%20Seattle%20Park%20and%20Ride%20Project/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Thoughts on Seattle Park and Ride Project</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/16/How-to-build-a-real-time-parking-availability-system/">How to build a real-time parking availability system?</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Real-time Parking Availability, IoT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/15/New-Journey-New-Blog/" class="archive-article-date">
-  	<time datetime="2020-04-16T01:44:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/New-Journey-New-Blog/">New Journey, New Blog</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-04-16T01:03:21.719Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -341,8 +361,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
