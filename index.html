@@ -144,6 +144,315 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Spring Boot &amp; Autoconfigurations In-Depth" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/01/Spring%20Boot%20&%20Autoconfigurations%20In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/01/Spring%20Boot%20&%20Autoconfigurations%20In-Depth/" class="archive-article-date">
+  	<time datetime="2020-05-02T06:17:55.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This guide would provide an in-depth understanding of what Spring Boot is, how its AutoConfigurations work and what the difference with the Spring Framework is.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It looks like everyone and their grandma are using <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">Spring Boot</a> to build projects. But very few can answer the question: “What is Spring Boot?”</p>
+<p><strong>The short answer</strong>:</p>
+<p>Spring Boot’s website offers the following answer: “Spring Boot takes an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss.”</p>
+<p>Wow, that doesn’t help at all, does it?</p>
+<p><strong>Luckily, there’s also a long answer</strong>:</p>
+<p>The remainder of this article.</p>
+<h3 id="A-quick-caveat"><a href="#A-quick-caveat" class="headerlink" title="A quick caveat"></a>A quick caveat</h3><p>I can give you a 99,99% guarantee, that you’d rather want to read the <a href="https://www.marcobehler.com/guides/spring-framework" target="_blank" rel="noopener">What is Spring Framework?</a> article first, if…:</p>
+<ul>
+<li>…you are completely new to Spring Boot (or Java).</li>
+<li>…you think “Spring Framework, Spring Web MVC and Spring Boot are all the same”.</li>
+<li>…you think “Cut all this other crap, I just want to learn about Spring Boot!”.</li>
+<li>(Especially if you think “cut all this other crap”).</li>
+</ul>
+<p>Take the time to finish the previous article first, then come back here.</p>
+<p>Furthermore, if you are looking for some simple copy &amp; paste Spring Boot REST/microservice tutorials, I would advise you to go to <a href="https://spring.io/guides" target="_blank" rel="noopener">https://spring.io/guides</a>, instead.</p>
+<h3 id="This-article’s-goals"><a href="#This-article’s-goals" class="headerlink" title="This article’s goals"></a>This article’s goals</h3><ul>
+<li>To give you an in-depth understanding of Spring Boot and its AutoConfigurations.</li>
+<li>To show you how Spring Boot <em>automagically</em> boots up a Tomcat server whenever you run a main() method.</li>
+<li>To show you how Spring Boot’s properties magic works. You specify a couple of properties and suddenly have working database access.</li>
+</ul>
+<p>Let’s start.</p>
+<h2 id="Spring-Boot-Basics-Conditionals"><a href="#Spring-Boot-Basics-Conditionals" class="headerlink" title="Spring Boot Basics: Conditionals"></a>Spring Boot Basics: Conditionals</h2><p>Before you become a Spring Boot guru, you need to understand just <em>one</em> very important concept: Spring Framework’s @Conditional annotation.</p>
+<p><strong>Parental Advice</strong>: Don’t skip this section, as it is the basis for <em>everything</em> that Spring Boot does. Also, I’ll make it as interesting as possible.</p>
+<h3 id="How-to-share-ApplicationContextConfigurations"><a href="#How-to-share-ApplicationContextConfigurations" class="headerlink" title="How to share ApplicationContextConfigurations?"></a>How to share ApplicationContextConfigurations?</h3><p>Imagine you are working for ReallyBigCompany™ with a couple of teams working on different Spring projects or products. But you are <em>not</em> using Spring Boot, just plain Spring Framework.</p>
+<p>Also imagine that at one point, one of your developers had a great idea to extract one common ApplicationContextConfiguration out of all projects, because she noticed that every company project uses a few of the same beans.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class ReallyBigCompanySharedContextConfiguration &#123; &#x2F;&#x2F; (1)</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public ReallyBigCompanyProprietaryFlywayClone flywayClone() &#123;</span><br><span class="line">        return new ReallyBigCompanyProprietaryFlywayClone(); &#x2F;&#x2F; (2)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>This SharedContextConfiguration would live in its own project, eventually published as its own .jar file that all your company’s Spring projects can import as a Maven/Gradle dependency.</li>
+<li>Imagine that ReallyBigCompany built a proprietary Flyway clone, i.e. something that initializes and manages databases. And as every project in your company uses a relational database, it makes sense to extract it to this shared configuration.</li>
+</ol>
+<p>Your actual project ApplicationContextConfigurations would then do this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@Import(ReallyBigCompanySharedConfiguration.class) &#x2F;&#x2F; (1)</span><br><span class="line">public class EarlyExitUnicornProjectContextConfiguration &#123;</span><br><span class="line"></span><br><span class="line">   &#x2F;&#x2F; (2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Every company project from now on imports the SharedConfiguration, as it contains so many goodies (well, only the Flyway clone at the moment, but you get the point).</li>
+<li>You would specify your project-specific beans here, as normal.</li>
+</ol>
+<h3 id="What-is-the-problem-with-shared-ApplicationContextConfigurations"><a href="#What-is-the-problem-with-shared-ApplicationContextConfigurations" class="headerlink" title="What is the problem with shared ApplicationContextConfigurations?"></a>What is the problem with shared ApplicationContextConfigurations?</h3><p>Having such a shared Spring configuration in your company works, but there’s a problem on the horizon.</p>
+<p>What if you want to create another project which wants to import that shared configuration, but <em>not</em> have a ReallyBigCompanyProprietaryFlywayClone, because it does not use a relational database?</p>
+<p>Then you need a way to tell Spring: That @Configuration is fine, but please don’t create that one specific @Bean - just ignore it. Go ahead and create all other @Beans though.</p>
+<p>That’s <em>exactly</em> what Spring’s @Conditional annotation is for.</p>
+<h3 id="What-is-Spring’s-Conditional-annotation"><a href="#What-is-Spring’s-Conditional-annotation" class="headerlink" title="What is Spring’s @Conditional annotation?"></a>What is Spring’s @Conditional annotation?</h3><p>The <a href="https://spring.io/projects/spring-framework" target="_blank" rel="noopener">Spring Framework</a> offers the @Conditional annotation since version 4.0 (released on 2013). You can put it on @Bean methods, @Components or even @Configurations and it looks like so:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Conditional(SomeCondition.class) &#x2F;&#x2F; (1)</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>It has a “Condition” class parameter, which is a class that has a method called “matches”, returning a simple Boolean.<ul>
+<li>True: (Further Evaluate/Register) Create that @Bean, @Component or @Configuration</li>
+<li>False: (Stop Evaluating/Registering) Don’t create that @Bean, @Component or @Configuration</li>
+</ul>
+</li>
+</ol>
+<p>In short: Even though an ApplicationContextConfiguration comes with certain @Bean definitions, <em>you</em> as the end-user can still somewhat influence if a bean gets created or not.</p>
+<h3 id="Making-the-shared-ApplicationContextConfiguration-Conditional"><a href="#Making-the-shared-ApplicationContextConfiguration-Conditional" class="headerlink" title="Making the shared ApplicationContextConfiguration @Conditional"></a>Making the shared ApplicationContextConfiguration @Conditional</h3><p>What does that mean for our SharedConfiguration? We could refactor it to look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class ReallyBigCompanySharedContextConfiguration &#123;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @Conditional(IsRelationalDatabaseCondition.class) &#x2F;&#x2F; (1)</span><br><span class="line">    public ReallyBigCompanyProprietaryFlywayClone flywayClone() &#123;</span><br><span class="line">        return new ReallyBigCompanyProprietaryFlywayClone();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>It is exactly the same ContextConfiguration as before, only now your @Bean method is also annotated with a condition that we have yet to write.</li>
+</ol>
+<p>What could this condition look like?</p>
+<h3 id="Implementing-a-Spring-Condition"><a href="#Implementing-a-Spring-Condition" class="headerlink" title="Implementing a Spring Condition"></a>Implementing a Spring Condition</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.marcobehler;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.annotation.Condition;</span><br><span class="line">import org.springframework.context.annotation.ConditionContext;</span><br><span class="line">import org.springframework.core.type.AnnotatedTypeMetadata;</span><br><span class="line"></span><br><span class="line">public class IsRelationalDatabaseCondition implements Condition &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) &#123;  &#x2F;&#x2F; (1)</span><br><span class="line">        return oracleJdbcDriverOnClassPath() &amp;&amp; databaseUrlSet(context); &#x2F;&#x2F; (2)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private boolean databaseUrlSet(ConditionContext context) &#123; &#x2F;&#x2F; (3)</span><br><span class="line">        return context.getEnvironment().containsProperty(&quot;spring.datasource.url&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private boolean oracleJdbcDriverOnClassPath() &#123; &#x2F;&#x2F; (4)</span><br><span class="line">        try &#123;</span><br><span class="line">            Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);</span><br><span class="line">            return true;</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Condition is an interface which exposes one method called “matches” that returns true/false: Has the condition been met or not.</li>
+<li>I am mixing up two conditions here: I want to check if the Oracle driver class is on the classpath. And I want to check if the user has set a database URL in a .properties file.</li>
+<li>Checking for a property is rather simple, as you can go through Spring’s environment class, which will, in turn, check all @PropertySources (think: application.properties) for a property.</li>
+<li>Checking for dependencies is also rather simple: You can check for the availability of a certain class on your classpath and if it is there, then you can assume the whole library is there.</li>
+</ol>
+<p>Though you would very likely split this class up into two different conditions in the real world, it highlights two very important conditions:</p>
+<ol>
+<li>You can create @Beans depending on specific <strong>available properties</strong>.</li>
+<li>You can create @Beans depending on specific <strong>libraries on your classpath</strong>.</li>
+</ol>
+<h3 id="Half-Time-Break-What-is-Spring-Boot"><a href="#Half-Time-Break-What-is-Spring-Boot" class="headerlink" title="Half-Time Break: What is Spring Boot?"></a>Half-Time Break: What is Spring Boot?</h3><p>Even though we haven’t covered any Spring Boot source code just yet, there is now a new insight looming.</p>
+<p>What if Spring Boot is <em>just</em> a shared context configuration with tons of @Conditionals?</p>
+<p>Conditionals that create a DataSource for you, because you have set specific properties (think: spring.datasource.url)? Or @Conditionals that boot up an embedded Tomcat server for you because you have the Tomcat libraries on your classpath?</p>
+<p>Yes, that (and not much more) is <em>exactly</em> what Spring Boot is. Don’t believe me? Let’s see some code.</p>
+<p>You might also be interested in my new <img src="https://www.marcobehler.com/images/favicon.ico" alt="img"> <a href="https://www.marcobehler.com/academy/learning-spring?utm_campaign=spring_framework_guide&utm_medium=spring_framework_guide&utm_source=spring_framework_guide" target="_blank" rel="noopener">Learning Spring</a> exercise course, which people love because of its unique approach.</p>
+<h2 id="Spring-Boot-AutoConfigurations"><a href="#Spring-Boot-AutoConfigurations" class="headerlink" title="Spring Boot: AutoConfigurations"></a>Spring Boot: AutoConfigurations</h2><h3 id="What-happens-when-you-start-a-Spring-Boot-application"><a href="#What-happens-when-you-start-a-Spring-Boot-application" class="headerlink" title="What happens when you start a Spring Boot application?"></a>What happens when you start a Spring Boot application?</h3><p>Everyone who has created a new Spring Boot application knows you’ll end up with a runnable main() method that launches Spring Boot’s magic.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.example;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.SpringApplication;</span><br><span class="line">import org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class MySpringBootApp &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123; &#x2F;&#x2F; (1)</span><br><span class="line">        SpringApplication.run(MySpringBootApp.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>You run this main method and suddenly your Tomcat server boots up, your application.properties file gets read in and you can immediately start writing @RestControllers.</li>
+</ol>
+<p>How does this work?</p>
+<h3 id="Spring-Boot-Three-Internal-Core-Features"><a href="#Spring-Boot-Three-Internal-Core-Features" class="headerlink" title="Spring Boot: Three Internal Core Features"></a>Spring Boot: Three Internal Core Features</h3><p>There are many things happening when running your SpringApplication, but let’s have a look at three specific ones which, at first, don’t have much in common, but together form most of the basis of Spring Boot.</p>
+<h4 id="1-Auto-registered-PropertySources"><a href="#1-Auto-registered-PropertySources" class="headerlink" title="1. Auto-registered @PropertySources"></a>1. Auto-registered @PropertySources</h4><p>You can tell any plain Spring Framework application to read in .properties files from basically any location you want, with the help of the @PropertySource annotation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@PropertySource(value &#x3D; &quot;classpath:application.properties&quot;, ignoreResourceNotFound &#x3D; true)</span><br></pre></td></tr></table></figure>
+
+<p>When you run the main method of your MySpringBootApp, Spring Boot will <em>automatically</em> register 17 of these PropertySources for you (even though not correct, you can think of it as 17 of these annotations automatically added to your project).</p>
+<p>You can find the complete list of default PropertySources <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config" target="_blank" rel="noopener">in the official documentation</a>, but here’s an excerpt:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4. Command line arguments.</span><br><span class="line">...</span><br><span class="line">10. OS environment variables.</span><br><span class="line">...</span><br><span class="line">15. Application properties packaged inside your jar (application.properties and YAML variants).</span><br></pre></td></tr></table></figure>
+
+<p>So, Spring Boot merely has a default set of property locations that it <em>always</em> tries to read in, like command line arguments, or application.properties inside your .jar file etc. Or, it ignores the location. That’s it.</p>
+<p>Now, what does it do with these .properties? Before we have a look at that in Spring Boot’s original source code, let’s have a look at the second big thing that happens when running a Spring Boot’s main method.</p>
+<h4 id="2-Read-in-META-INF-spring-factories"><a href="#2-Read-in-META-INF-spring-factories" class="headerlink" title="2. Read-in META-INF/spring.factories"></a>2. Read-in META-INF/spring.factories</h4><p>Every Spring Boot project has a dependency on the following library: <em>org.springframework.boot:spring-boot-autoconfigure</em>. It is a simple .jar file containing pretty much <em>all</em> of Spring Boot’s magic.</p>
+<p>In addition, it comes with a file called spring.factories, under the META-INF folder.</p>
+<p><img src="https://www.marcobehler.com/images/guides/spring-boot/spring_factories.PNG" alt="Spring Factories"></p>
+<p>When you open up that file, there’s one section called “#Auto Configure”, which spans over a hundred lines.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># Auto Configure</span><br><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration&#x3D;\</span><br><span class="line">org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.cloud.CloudServiceConnectorsAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration,\</span><br><span class="line">&#x2F;&#x2F; 100+ more lines</span><br></pre></td></tr></table></figure>
+
+<p>These AutoConfigurations (more on that in a second) are normal Spring @Configurations with a ton of @Conditionals that Spring Boot reads in and tries to evaluate on every application startup.</p>
+<p>But before we look at these AutoConfigurations, let’s have one last look at one additional Spring Boot feature.</p>
+<h4 id="3-Enhanced-Conditional-Support"><a href="#3-Enhanced-Conditional-Support" class="headerlink" title="3. Enhanced Conditional Support"></a>3. Enhanced Conditional Support</h4><p>A couple of paragraphs earlier, we saw that Spring Framework comes with the @Conditional annotation. But that annotation is a bit low-level.</p>
+<p>Spring Boot comes with its own set of additional @Conditional annotations, which make developers’ lives easier. (Note, that the following parameter values of the @Conditional annotations are just an example)</p>
+<ul>
+<li><strong>@ConditionalOnBean(DataSource.class)</strong>. The condition is true only if the user specified a DataSource @Bean in a @Configuration.</li>
+<li><strong>@ConditionalOnClass(DataSource.class)</strong>. The condition is true if the DataSource class is on the classpath.</li>
+<li><strong>@ConditionalOnCloudPlatform(CloudPlatform.Heroku)</strong>. The condition is true if the CloudPlatform is set to Heroku.</li>
+<li><strong>@ConditionalOnExpression(“someSpELExpression)</strong>. The condition is true if the SpEL expression is true.</li>
+<li><strong>@ConditionalOnJava(JavaVersion.EIGHT)</strong>. The condition is true if the current Java version is 8.</li>
+<li><strong>@ConditionalOnJndi(“java:comp/env/ejb/myEJB”)</strong>. The condition is true if the specified JNDI context exists.</li>
+<li><strong>@ConditionalOnMissingBean(DataSource.class)</strong>. The condition is true if the user did <em>not</em> specify a DataSource @Bean in any @Configuration.</li>
+<li><strong>@ConditionalOnMissingClass(DataSource.class)</strong>. The condition is true if the DataSource class is <em>not</em> on the classpath.</li>
+<li><strong>@ConditionalOnNotWebApplication</strong>. The condition is true if the application is <em>not</em> a web application.</li>
+<li><strong>@ConditionalOnProperty(“my.property”)</strong>. The condition is true if my.property is set.</li>
+<li><strong>@ConditionalOnResource(“classpath:my.properties”)</strong>. The condition is true if my.properties exists.</li>
+<li><strong>@ConditionalOnSingleCandidate(DataSource.class)</strong>. Matches if there is exactly one <em>primary</em> DataSource bean specified in your application.</li>
+<li><strong>@ConditionalOnWebApplication</strong>. The condition is true if the application is a web application.</li>
+</ul>
+<p>So, in short, with Spring Boot you do not have to write the most common conditions yourself (like checking for a property). Instead, you can use its enhanced @Conditional annotations.</p>
+<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>When Spring Boot boots up:</p>
+<ol>
+<li>It tries to read in .properties from 17 hard-coded locations.</li>
+<li>It also reads in the spring.factories file of your autoconfigure-module and finds out which AutoConfigurations it should evaluate.</li>
+<li>It has an enhanced concept of @Conditionals, compared to plain Spring. This will come in handy in a second.</li>
+</ol>
+<p>This is enough knowledge to start analyzing said AutoConfigurations.</p>
+<h3 id="Where-to-get-Spring-Boot’s-source-code"><a href="#Where-to-get-Spring-Boot’s-source-code" class="headerlink" title="Where to get Spring Boot’s source code"></a>Where to get Spring Boot’s source code</h3><p>To follow along, you might want to checkout the Spring Boot project yourself. Don’t worry, it is just a quick ‘git clone’ and project import away.</p>
+<p>Also note, that Spring Boot effectively switched to Gradle as build system in the master branch, whereas older release branches are still Maven based.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;spring-projects&#x2F;spring-boot.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="How-to-analyze-an-AutoConfiguration-DataSourceAutoConfiguration"><a href="#How-to-analyze-an-AutoConfiguration-DataSourceAutoConfiguration" class="headerlink" title="How to analyze an AutoConfiguration: DataSourceAutoConfiguration"></a>How to analyze an AutoConfiguration: DataSourceAutoConfiguration</h3><p>Inside the spring-boot-autoconfigure module, you’ll find a subpackage and AutoConfiguration for <em>every</em> Spring or 3rd party library that Spring Boot integrates with.</p>
+<p>Let’s have a look at the DataSourceAutoConfiguration class first. It is the one that builds a DataSource for you, after you put a couple of properties like “spring.datasource.url” into one of your .properties files.</p>
+<p>Woohaa, look at this annotation festival! Let’s step through it line-by-line.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@Configuration(proxyBeanMethods &#x3D; false)  &#x2F;&#x2F; (1)</span><br><span class="line">@ConditionalOnClass(&#123; DataSource.class, EmbeddedDatabaseType.class &#125;) &#x2F;&#x2F; (2)</span><br><span class="line">@EnableConfigurationProperties(DataSourceProperties.class) &#x2F;&#x2F; (3)</span><br><span class="line">@Import(&#123; DataSourcePoolMetadataProvidersConfiguration.class, DataSourceInitializationConfiguration.class &#125;) &#x2F;&#x2F; (3)</span><br><span class="line">public class DataSourceAutoConfiguration &#123;</span><br><span class="line"></span><br><span class="line">        @Configuration(proxyBeanMethods &#x3D; false)</span><br><span class="line">        @Conditional(EmbeddedDatabaseCondition.class)</span><br><span class="line">        @ConditionalOnMissingBean(&#123; DataSource.class, XADataSource.class &#125;)</span><br><span class="line">        @Import(EmbeddedDataSourceConfiguration.class)</span><br><span class="line">        protected static class EmbeddedDatabaseConfiguration &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Configuration(proxyBeanMethods &#x3D; false) &#x2F;&#x2F; (4)</span><br><span class="line">        @Conditional(PooledDataSourceCondition.class) &#x2F;&#x2F; (5)</span><br><span class="line">        @ConditionalOnMissingBean(&#123; DataSource.class, XADataSource.class &#125;) &#x2F;&#x2F; (6)</span><br><span class="line">        @Import(&#123; DataSourceConfiguration.Hikari.class, DataSourceConfiguration.Tomcat.class, &#x2F;&#x2F; (7)</span><br><span class="line">                        DataSourceConfiguration.Dbcp2.class, DataSourceConfiguration.Generic.class,</span><br><span class="line">                        DataSourceJmxConfiguration.class &#125;)</span><br><span class="line">        protected static class PooledDataSourceConfiguration &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; some more</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>A DataSourceAutoConfiguration is a normal Spring @Configuration.</li>
+<li>For the @Configuration to get evaluated further, you need to have two classes on the classpath: DataSource and EmbeddedDatabaseType. If that Conditional is false, the whole @Configuration is not evaluated.</li>
+<li>We can ignore these two lines for now, but as a quick side-note: @EnableConfigurationProperties enables that the properties you put into your .properties files can get automatically set/converted to an object, like the DataSourceProperties here.</li>
+<li>The DataSourceAutoConfiguration has two other, inner, @Configurations. One of them is the PooledDataSourceConfiguration, which will (conditionally) create a connection pool DataSource for you.</li>
+<li>It has a @Condition on a PooledDataSourceCondition, which really is a nested @ConditionalOnProperty. Ouch!</li>
+<li>The PooledDataSourceConfiguration only gets evaluated further if the user (i.e. YOU) has not specified a DataSource or an XADataSource himself, yet.</li>
+<li>The PooledDataSourceConfiguration imports quite a few <em>other</em> configurations, to be more specific: one configuration for each supported connection pool library (Hikari, Tomcat, Dbcp2, etc.).</li>
+</ol>
+<p>That is a lot to digest, but essentially it is normal Spring @Configurations, safe-guarded with @Conditionals. To top it off, let’s have a look at the imported DataSourceConfiguration.Hikari.class.</p>
+<p>Even more annotations!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">         * Hikari DataSource configuration.</span><br><span class="line">         *&#x2F;</span><br><span class="line">        @Configuration(proxyBeanMethods &#x3D; false) &#x2F;&#x2F; (1)</span><br><span class="line">        @ConditionalOnClass(HikariDataSource.class) &#x2F;&#x2F; (2)</span><br><span class="line">        @ConditionalOnMissingBean(DataSource.class) &#x2F;&#x2F; (3)</span><br><span class="line">        @ConditionalOnProperty(name &#x3D; &quot;spring.datasource.type&quot;, havingValue &#x3D; &quot;com.zaxxer.hikari.HikariDataSource&quot;, &#x2F;&#x2F; (4)</span><br><span class="line">                        matchIfMissing &#x3D; true)</span><br><span class="line">        static class Hikari &#123;</span><br><span class="line"></span><br><span class="line">                @Bean &#x2F;&#x2F; (5)</span><br><span class="line">                @ConfigurationProperties(prefix &#x3D; &quot;spring.datasource.hikari&quot;)</span><br><span class="line">                HikariDataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">                        HikariDataSource dataSource &#x3D; createDataSource(properties, HikariDataSource.class);</span><br><span class="line">                        if (StringUtils.hasText(properties.getName())) &#123;</span><br><span class="line">                                dataSource.setPoolName(properties.getName());</span><br><span class="line">                        &#125;</span><br><span class="line">                        return dataSource;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Another normal Spring @Configuration.</li>
+<li>The HikariDataSource.class must be on the classpath, i.e. hikari-cp must be added to your pom.xml/build.gradle file.</li>
+<li>The user must <em>not</em> have specified a DataSource bean himself.</li>
+<li>Either the property “spring.datasource.type” is missing, or it must have a specific value of “com.zaxxer.hikari.HikariDataSource”.</li>
+<li>If all these conditions match, then a good old Spring @Bean gets created. A HikariDataSource. This is what you would otherwise have to create yourself, by looking at HikariCP’s documentation.</li>
+</ol>
+<p>So, essentially all the DataSourceAutoConfiguration does is check for 3rd party dependencies on the classpath and a couple of properties to be set. Then it boots up a DataSource for you that you would otherwise have to configure yourself, manually.</p>
+<p>Or in simpler terms: If you have HikariCP on your classpath, then you <em>automatically</em> get a HikariDataSource @Bean created. If you had the DBCP2 library on your classpath (and Hikari excluded), then you’d get a different connection pool. Simply by switching dependencies.</p>
+<p>This is the power of @Conditionals!</p>
+<h3 id="Exercise-Analyze-the-Tomcat-AutoConfiguration"><a href="#Exercise-Analyze-the-Tomcat-AutoConfiguration" class="headerlink" title="Exercise: Analyze the Tomcat AutoConfiguration"></a>Exercise: Analyze the Tomcat AutoConfiguration</h3><p>Back to the question from the beginning: How can Spring Boot boot up an embedded Tomcat server by default? Simple:</p>
+<ol>
+<li>It needs to check if Tomcat is on the classpath. (@ConditionalOnClass(Tomcat.class))</li>
+<li>It might take into account specific properties that the user sets, like server.port.</li>
+<li>It needs to take Spring WebMVC’s DispatcherServlet and register it with Tomcat, to make your @RestControllers with their @GetMappings and @PostMappings work.</li>
+<li>It needs to start your embedded Tomcat server (and therefore your DispatcherServlet).</li>
+</ol>
+<p>The exercise for you is to find and understand those servlet specific auto-configurations, with their appropriate conditionals.</p>
+<p>A hint: Have a look at DispatcherServletAutoConfiguration, as well as EmbeddedWebServerFactoryCustomizerAutoConfiguration.</p>
+<p>And if you are done with that, you can have a look at the AutoConfiguration for one of your favorite libraries, like Flyway, or Jackson, or MongoDB.</p>
+<h3 id="Final-Answer-What-is-Spring-Boot"><a href="#Final-Answer-What-is-Spring-Boot" class="headerlink" title="Final Answer: What is Spring Boot?"></a>Final Answer: What is Spring Boot?</h3><p>Spring Boot is <em>just</em> a couple of AutoConfigurations classes (== normal Spring @Configurations), that create @Beans for you if certain @Conditions are met.</p>
+<p>Three of the most important conditions are</p>
+<ol>
+<li><strong>@ConditionalOnClass</strong>. Checking for dependencies or rather specific classes of dependencies (think: Tomcat, HikariCP, etc).</li>
+<li><strong>@ConditionalOnProperty</strong>. Self-explanatory.</li>
+<li><strong>@ConditionalOnMissingBean</strong>. If the user specified his own, e.g. DataSource, already, then Spring Boot won’t try to create its auto-configured one.</li>
+</ol>
+<p>That is what is meant by “opinionated defaults” on the Spring Boot homepage.</p>
+<p>You might also be interested in my new <img src="https://www.marcobehler.com/images/favicon.ico" alt="img"> <a href="https://www.marcobehler.com/academy/learning-spring?utm_campaign=spring_framework_guide&utm_medium=spring_framework_guide&utm_source=spring_framework_guide" target="_blank" rel="noopener">Learning Spring</a> exercise course, which people love because of its unique approach.</p>
+<h2 id="Spring-Boot-Dependencies"><a href="#Spring-Boot-Dependencies" class="headerlink" title="Spring Boot: Dependencies"></a>Spring Boot: Dependencies</h2><p>One last piece of the puzzle is missing. How do all these dependencies get on the classpath in Spring Boot projects? And how come you do not have to specify any version numbers for your 3rd party libraries?</p>
+<h3 id="Analyzing-spring-boot-starter-web"><a href="#Analyzing-spring-boot-starter-web" class="headerlink" title="Analyzing spring-boot-starter-web"></a>Analyzing spring-boot-starter-web</h3><p>The one dependency every web-based Spring Boot project includes, is the spring-boot-starter-web dependency. Its pom.xml file looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">                &lt;!-- other dependencies left out for conciseness --&gt;</span><br><span class="line">                &lt;dependency&gt;</span><br><span class="line">                        &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">                        &lt;artifactId&gt;spring-boot-starter-tomcat&lt;&#x2F;artifactId&gt; &lt;!-- 1 --&gt;</span><br><span class="line">                &lt;&#x2F;dependency&gt;</span><br><span class="line">                &lt;!-- other dependencies left out for conciseness --&gt;</span><br><span class="line">                &lt;dependency&gt;</span><br><span class="line">                        &lt;groupId&gt;org.springframework&lt;&#x2F;groupId&gt;</span><br><span class="line">                        &lt;artifactId&gt;spring-webmvc&lt;&#x2F;artifactId&gt; &lt;!-- 2 --&gt;</span><br><span class="line">                &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Among other dependencies, the spring-boot-starter-tomcat dependency gets pulled in transitively by the starter-web dependency.</li>
+<li>Also, Spring WebMVC, Spring’s web framework gets pulled in transitively.</li>
+</ol>
+<p>Now, the pom.xml file for spring-boot-starter-tomcat looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">                &lt;dependency&gt;</span><br><span class="line">                        &lt;groupId&gt;org.apache.tomcat.embed&lt;&#x2F;groupId&gt;</span><br><span class="line">                        &lt;artifactId&gt;tomcat-embed-core&lt;&#x2F;artifactId&gt; &lt;!-- 1 --&gt;</span><br><span class="line">                        &lt;exclusions&gt;</span><br><span class="line">                                &lt;exclusion&gt;</span><br><span class="line">                                        &lt;groupId&gt;org.apache.tomcat&lt;&#x2F;groupId&gt;</span><br><span class="line">                                        &lt;artifactId&gt;tomcat-annotations-api&lt;&#x2F;artifactId&gt;</span><br><span class="line">                                &lt;&#x2F;exclusion&gt;</span><br><span class="line">                        &lt;&#x2F;exclusions&gt;</span><br><span class="line">                &lt;&#x2F;dependency&gt;</span><br><span class="line">                &lt;!-- other dependencies left out for conciseness --&gt;</span><br><span class="line">        &lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>This dependency is everything you need to start/run an embedded Tomcat server. Spring Boot pulls it in, and guess what that means. That by default, @ConditionalOnClass(Tomcat.class) conditions will be true! And that is exactly the condition Spring Boot evaluates to start up an embedded Tomcat server. Not so much rocket science, anymore, is it?</li>
+</ol>
+<p>In general, by browsing through the starters, you’ll find that the spring-boot-starter-web pulls in 60+ other dependencies and third-party libraries into your project - by default. From JSON and YAML libraries, to logging, to Spring’s WebMVC framework. It’s all basic Maven/Gradle dependency management.</p>
+<h3 id="Why-can-you-drop-dependency-versions-in-Spring-Boot"><a href="#Why-can-you-drop-dependency-versions-in-Spring-Boot" class="headerlink" title="Why can you drop dependency versions in Spring Boot?"></a>Why can you drop dependency versions in Spring Boot?</h3><p>This leaves us with the last question. Why don’t you (rather: almost never) have to specify third-party dependency versions, when including them in your pom.xml file? So, instead of this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hibernate-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.4.12.Final&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>You would do this in Spring Boot projects.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hibernate-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>That is because the Spring Boot project that is generated by Spring’s Initializr extends from a parent project called spring-boot-dependencies. It is not so much of a project, but a simple pom.xml file.</p>
+<p>And in that pom.xml file, you have a <em>huge</em> dependencyManagement section (covering <em>every</em> 3rd party library Spring Boot integrates with), which defines dependencies that you can include in <em>your</em> pom.xml file, without specifying the version number. Because it is already specified in that parent pom.xml.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">  &lt;properties&gt;</span><br><span class="line">    &lt;hibernate.version&gt;5.4.12.Final&lt;&#x2F;hibernate.version&gt; &lt;!-- 1 --&gt;</span><br><span class="line">    &lt;!-- other versions left out for brevity --&gt;</span><br><span class="line">  &lt;&#x2F;properties&gt;</span><br><span class="line"></span><br><span class="line"> &lt;dependencyManagement&gt; &lt;!-- 2 --&gt;</span><br><span class="line"> &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-c3p0&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-ehcache&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-entitymanager&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-envers&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-hikaricp&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencyManagement&gt;</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>Spring Boot puts the version numbers into the <properties> section so that you can easily override these version numbers in your sub-project.</li>
+<li>The <dependencyManagement> block is Maven’s standard feature for defining dependency versions “globally”, across all the modules of your project.</li>
+</ol>
+<p>That pom.xml file is the reason you do not have to specify 3rd party library versions anymore. Unless of course, your specific 3rd party library is not in that pom.xml file. Then you still need to define the version yourself.</p>
+<p>(Note: Inheriting from spring-boot-dependencies is one way to get Spring Boot’s dependency management working, another way would be to import the bom, but I won’t show that here.)</p>
+<h3 id="Dependency-Management-Summary"><a href="#Dependency-Management-Summary" class="headerlink" title="Dependency Management: Summary"></a>Dependency Management: Summary</h3><ul>
+<li>Starters like spring-boot-starter-web include a <em>ton</em> of third-party libraries into your project - by default. Its AutoConfigurations use these dependencies (remember: @ConditionalOnClass) to setup and preconfigure these libraries automatically.</li>
+<li>The spring-boot-dependencies pom.xml contains <em>every</em> 3rd party library (and version) that Spring Boot knows. These libraries are predefined in a dependenciesManagement section, so you do not need to specify the version numbers in your own project, anymore.</li>
+</ul>
+<p>You might also be interested in my new <img src="https://www.marcobehler.com/images/favicon.ico" alt="img"> <a href="https://www.marcobehler.com/academy/learning-spring?utm_campaign=spring_framework_guide&utm_medium=spring_framework_guide&utm_source=spring_framework_guide" target="_blank" rel="noopener">Learning Spring</a> exercise course, which people love because of its unique approach.</p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="What-is-the-latest-Spring-Boot-version"><a href="#What-is-the-latest-Spring-Boot-version" class="headerlink" title="What is the latest Spring Boot version?"></a>What is the latest Spring Boot version?</h3><p>The current stable version of Spring Boot is 2.2.6. You can always have a look at new release announcements here <a href="https://github.com/spring-projects/spring-boot/releases" target="_blank" rel="noopener">https://github.com/spring-projects/spring-boot/releases</a>.</p>
+<h3 id="How-can-I-exclude-specific-AutoConfigurations"><a href="#How-can-I-exclude-specific-AutoConfigurations" class="headerlink" title="How can I exclude specific AutoConfigurations?"></a>How can I exclude specific AutoConfigurations?</h3><p>Say you didn’t want Spring Boot to execute its DataSourceAutoConfiguration, you could disable it in multiple ways:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication(exclude &#x3D; &#123;DataSourceAutoConfiguration.class)</span><br><span class="line">public class Application &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(PayPalApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>or</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.autoconfigure.exclude&#x3D;org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration</span><br></pre></td></tr></table></figure>
+
+<p>Though this means you need to roughly know which AutoConfiguration is responsible for creating which @Beans, which you’ll ultimately find out in Spring Boot’s source code.</p>
+<h3 id="What-is-the-best-way-to-create-a-new-Spring-Boot-project"><a href="#What-is-the-best-way-to-create-a-new-Spring-Boot-project" class="headerlink" title="What is the best way to create a new Spring Boot project?"></a>What is the best way to create a new Spring Boot project?</h3><p>There really only is one way: Spring Initializr, available at <a href="https://start.spring.io/" target="_blank" rel="noopener">https://start.spring.io/</a>. IDEs like IntelliJ IDEA <em>also</em> use Initializr to create new Spring Boot projects for you, abstracted away under a nice GUI.</p>
+<h3 id="What-are-the-best-docs-for-Spring-Boot"><a href="#What-are-the-best-docs-for-Spring-Boot" class="headerlink" title="What are the best docs for Spring Boot?"></a>What are the best docs for Spring Boot?</h3><p>Ha, this question was a trap. There is, of course, the <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/" target="_blank" rel="noopener">official Spring Boot</a> documentation. But by now you should understand that Spring Boot really only pre-configures other libraries for you.</p>
+<p>So, for writing @RestControllers you still need to look at the official <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html" target="_blank" rel="noopener">Spring Web MVC documentation</a>. For Flyway, <a href="https://flywaydb.org/documentation/" target="_blank" rel="noopener">the Flyway documentation</a>. For Couchbase, <a href="https://www.couchbase.com/" target="_blank" rel="noopener">the Couchbase documentation</a>.</p>
+<p>And THEN you also need to know the properties that Spring Boot uses to configure these libraries. You can find a complete list here: <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html" target="_blank" rel="noopener">Common Application properties</a>. Yes, it is a loooong list.</p>
+<h3 id="How-do-I-do-logging-with-Spring-Boot"><a href="#How-do-I-do-logging-with-Spring-Boot" class="headerlink" title="How do I do logging with Spring Boot?"></a>How do I do logging with Spring Boot?</h3><p>You do not really log with Spring Boot. You do it with <a href="http://logback.qos.ch/" target="_blank" rel="noopener">Logback</a>, or <a href="https://logging.apache.org/log4j/2.x/" target="_blank" rel="noopener">Log4j 2</a>. Or some other supported 3rd party logging library.</p>
+<p>Hence, you need to understand these libraries <em>first</em>.</p>
+<p>Then, you need to understand what Spring Boot adds <em>on top</em> of these libraries, to make them easier to use. (like the logback-spring.xml file and additional supported features). See the <a href="https://docs.spring.io/spring-boot/docs/2.2.x/reference/htmlsingle/#boot-features-logging" target="_blank" rel="noopener">official documentation</a>.</p>
+<h3 id="How-do-I-do-security-or-OAuth2-with-Spring-Boot"><a href="#How-do-I-do-security-or-OAuth2-with-Spring-Boot" class="headerlink" title="How do I do security or OAuth2 with Spring Boot?"></a>How do I do security or OAuth2 with Spring Boot?</h3><p>Again, you do not do it with Spring Boot. You do it with <a href="https://spring.io/projects/spring-security" target="_blank" rel="noopener">Spring Security</a> which gets nicely preconfigured by Spring Boot.</p>
+<p>Caveat: You will need a good couple weeks to fully understand Spring Security (or be lucky enough that your copied code snippets from Stackoverflow miraculously work).</p>
+<h3 id="What-is-the-difference-between-Spring-and-Spring-Boot"><a href="#What-is-the-difference-between-Spring-and-Spring-Boot" class="headerlink" title="What is the difference between Spring and Spring Boot?"></a>What is the difference between Spring and Spring Boot?</h3><p>Spring, as in <a href="https://www.marcobehler.com/guides/spring-framework" target="_blank" rel="noopener">Spring Framework</a> is a set of tools that help you build Java applications faster (hopefully).</p>
+<p>After having read this article, you should understand that Spring Boot merely preconfigures these tools for you with sane settings (i.e. let’s always read in an classpath:application.properties file and use the property server.port to preconfigure a Tomcat server on a specific port). Hence, Spring Boot builds <em>on top</em> of Spring Framework.</p>
+<p>Things get confusing, though, as the current marketing push is to call everything Spring Boot or Spring Framework simply “Spring”.</p>
+<h3 id="What-is-the-difference-between-Spring-WebMVC-and-Spring-Boot"><a href="#What-is-the-difference-between-Spring-WebMVC-and-Spring-Boot" class="headerlink" title="What is the difference between Spring WebMVC and Spring Boot?"></a>What is the difference between Spring WebMVC and Spring Boot?</h3><p>Again, Spring Boot uses <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html" target="_blank" rel="noopener">Spring WebMVC</a> under the hood. Your Spring Boot Rest Services, i.e. @RestControllers or @Controllers are plain, old Spring WebMVC controllers.</p>
+<p>There is no difference, Spring Boot builds <em>on top</em> of Spring WebMVC.</p>
+<h2 id="Fin"><a href="#Fin" class="headerlink" title="Fin"></a>Fin</h2><p>Some final thoughts:</p>
+<p>When it comes to building Spring Boot applications, you can roughly go two ways:</p>
+<ol>
+<li>Recursively copy &amp; paste your way through your Spring Boot projects with the help of <a href="https://stackoverflow.com/" target="_blank" rel="noopener">Stackoverflow</a> or <a href="https://baeldung.com/" target="_blank" rel="noopener">Baeldung</a>.</li>
+<li>Try to <em>understand</em> what you are doing. That starts with understanding <a href="https://www.marcobehler.com/guides/spring-framework" target="_blank" rel="noopener">Spring Framework</a>. Then understanding the 3rd party libraries (like Log4j 2 or Flyway). Then understanding what Spring Boot does with all these little bits and pieces.</li>
+</ol>
+<p>In case it was not clear, the second option is the only serious way to do it :)</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.marcobehler.com/guides/spring-boot" target="_blank" rel="noopener">https://www.marcobehler.com/guides/spring-boot</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/01/Spring%20Boot%20&%20Autoconfigurations%20In-Depth/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Real-time streaming in Power BI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -989,107 +1298,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-System Design Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/21/System%20Design%20Notes/">System Design Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/21/System%20Design%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T21:10:26.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>System Design Notes </p>
-<h1 id="Feed-Product"><a href="#Feed-Product" class="headerlink" title="Feed Product:"></a>Feed Product:</h1><p>1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algorithm (relationship and interest) in the ranking consideration.<br>what is it? As a user, what I hope to use, the core functionalities, use cases. many core functionalities, what they are, what I will focus on to dissect, for products.<br>product directed</p>
-<p>2) functionalities: input – output – output as input — . deconstruct process in system design. signature. restful api.<br>Use cases: quantitative. data size, peak time query per second qps, read write query what they are, read more write less other patterns.<br>Story feed product:<br>Functionalities, use casesvoting dashboard, voting, real-time voting visualization</p>
-<h1 id="Case-Study-Leaderboard-Voting-Map"><a href="#Case-Study-Leaderboard-Voting-Map" class="headerlink" title="Case Study: Leaderboard, Voting Map"></a>Case Study: Leaderboard, Voting Map</h1><p>excellent pay attention to it.<br>How to make leaderboard:how to design and implement it.voting board/map.<br>Core features:top 100, time window: last 1 month, real-time fetch data // use case common sense, leaderboard.From the perspective of users: certain time windows, calculate scores, and sort. use case:</p>
-<ol>
-<li><p>data size: 10,000 active users, 10-20/day/ person, acceptance rate 50%. submission number: daily: 100,000, month: 3,000,000, annual: 36,500,000</p>
-</li>
-<li><p>query per second: peak time, average concurrent visiting, visting frequency: query per day: hope to get result immediately. result real-time expectation. offline calculation or real-time online calculation. response time short. </p>
-</li>
-<li><p>calculate score: ranking, score: fields (number, acceptance rate, time) don’t over dig into it.web application, packaging core functionalities. we believe it’s done, and integrate the whole design, flow architecture and product design. input and output as key words in the process. the best ranking / recommendation algorithm for data scientists to do.</p>
-<p>**** challenges and core features defined well , input and output and fit in the whole design.<br>input and output (score):how about input: time window number of questions, and acceptance rate, submission history. </p>
-</li>
-</ol>
-<p>Design:what data, data model, input and output, and data calculation and implement step by step.</p>
-<p>Leaderboard:core data:all users’ submission history, basic info.</p>
-<p>– relational database model. which question, accept or not, when submitted. schema to use, several tables and relationships. data model to use. query to check relationships, given time window, for person, submit how many,acceptance rate, and time, personal info. query submission history, calculate score, put to sort algorithm and sort.<br> think about it from a data model, do not think about speed to query right now. no need to use non-relational.</p>
-<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h2><p>slow: combine use case to discuss. the core is what query it is like. </p>
-<p>1) ad hoc query: transactional base query, specific condition and data related not that much. I hope to find what questions I do accept or not. query fast, coz index.</p>
-<p>2) aggregation query: scan this table, terrifying, no need to scan all the submission history. but the time window might need to be large enough. // basic design.database query, scan all data.<br>all voting board: all data, time window, – the past window, the most popular music, to scan all the history? no. </p>
-<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization:"></a>Optimization:</h2><p>leaderboard:</p>
-<p>scan daily? no. history data. or specific data within one day. and immediate update. – for unchanged history offline batch processing, aggregation process, real-time data, real-time checking.</p>
-<p>two parts of data:</p>
-<p>1) history data, offline data, daily and weekly preprocessing aggregation. past week data，daily data put into history, 固化, would not be changed. </p>
-<p>2) real-time data would be updated. the old would be merged into history data. size small and real-time updated.</p>
-<p>3) combine them, accurate cover history and real-time update. so ranking score, to scan today’s submission history, at most 100,000 * 365 per year. previous accepted rate data in history, the total data size is limited.<br>so put unchanged data 固化, batch processing, offline aggregation, in the evening to do;small dataset, online-real-time;combined with a compressed history dataset.</p>
-<p>Tool: flink, spark use one api to deal with both. </p>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h1><p>What to consider:</p>
-<ol>
-<li><p>1) query slow and fast, query size2) query features, large, slow: real-time, optimization, try to find immutable dataset. </p>
-</li>
-<li><p>immutable data/thing is the best and the easiest to deal with, offline deal with, query, request deal with. </p>
-</li>
-<li><p>input and output</p>
-</li>
-<li><p>data size, qps, pee and average</p>
-</li>
-<li><p>read vs write</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/21/System%20Design%20Notes/">Show All >></a>
         </p>
       
 
