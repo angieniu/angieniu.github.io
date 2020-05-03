@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Yanjie&#39;s Blog</title>
+  <title>Browser Object Model - BOM in Javascript | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="Javascript was created for adding functionality to web pages, hence it was developed to run in web browsers. But as time passed, javascript evolved and developed into a full-fledged programming langua">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Browser Object Model - BOM in Javascript">
+<meta property="og:url" content="http://yoursite.com/2020/05/02/Browser%20Object%20Model%20-%20BOM%20in%20Javascript/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="Javascript was created for adding functionality to web pages, hence it was developed to run in web browsers. But as time passed, javascript evolved and developed into a full-fledged programming langua">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-03T06:23:32.254Z">
+<meta property="article:modified_time" content="2020-05-03T06:24:09.270Z">
 <meta property="article:author" content="Yanjie Niu">
 <meta name="twitter:card" content="summary">
   
@@ -142,306 +146,193 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Browser Object Model - BOM in Javascript" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Browser Object Model - BOM in Javascript
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/Browser%20Object%20Model%20-%20BOM%20in%20Javascript/" class="archive-article-date">
+
+        
+        <a href="/2020/05/02/Browser%20Object%20Model%20-%20BOM%20in%20Javascript/" class="archive-article-date">
   	<time datetime="2020-05-03T06:23:32.254Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/Browser%20Object%20Model%20-%20BOM%20in%20Javascript/">Browser Object Model - BOM in Javascript</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Javascript was created for adding functionality to web pages, hence it was developed to run in web browsers. But as time passed, javascript evolved and developed into a full-fledged programming language.</p>
+<p>The platform on which javascript runs, here, web browsers also provides platform-specific functionality. To access these functionalities using javascript, host environment(web browser) provides objects and functions.</p>
+<p><strong>Browser Object Model(BOM)</strong> refers to the objects provided by the web browser for manipulating properties and objects associated with it. The objects and properties provided by the Browser Object Model allow javascript to interact with the browser.</p>
+<p>Some of the important <strong>BOM(Browser Object Model) objects</strong> which are available while executing javascript are:</p>
+<ul>
+<li>window</li>
+<li>window.document</li>
+<li>window.navigator</li>
+<li>window.screen</li>
+<li>window.history</li>
+<li>window.location</li>
+</ul>
+<blockquote>
+<p>You can drop window prefix for all the above properties and access it directly as document, navigator, screen, history, and location.</p>
+</blockquote>
+<p>Let’s learn briefly about all the above objects. We will learn about them in greater detail in their dedicated articles.</p>
+<p>You can open the browser console(CTRL + SHIFT + J) in this window to run the code examples in this article.</p>
+<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><p>The window object represents the browser’s window containing the web document. It is the root object of the BOM hierarchy. To view properties and objects it contains execute the below code in your browser console.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F;window object</span><br><span class="line">console.log(window)</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h2 id="window-document"><a href="#window-document" class="headerlink" title="window.document"></a>window.document</h2><p>The document object represents and returns the reference of the document loaded in the browser’s window.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F;title of the loaded document in the window</span><br><span class="line">console.log(window.document.title)</span><br></pre></td></tr></table></figure>
 
+<h2 id="window-navigator"><a href="#window-navigator" class="headerlink" title="window.navigator"></a>window.navigator</h2><p>The window.navigator object returns the reference to the Navigator Object. Navigator Object contains information about the user agent(browser) and the operating system.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F;To get the User-Agent</span><br><span class="line">console.log(window.navigator.userAgent)</span><br></pre></td></tr></table></figure>
+
+<h2 id="window-screen"><a href="#window-screen" class="headerlink" title="window.screen"></a>window.screen</h2><p>The window.screen object returns information about the user’s screen.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">&#x2F;&#x2F;get screen width</span><br><span class="line">console.log(window.screen.width)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;get screen height</span><br><span class="line">console.log(window.screen.height)</span><br></pre></td></tr></table></figure>
+
+<h2 id="window-history"><a href="#window-history" class="headerlink" title="window.history"></a>window.history</h2><p>The window.history returns a reference to the History Object. You can use it for manipulating browser session history(pages visited in the same tab).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F; go to previous web page, equivalent to clicking back button</span><br><span class="line">window.history.back();</span><br></pre></td></tr></table></figure>
+
+<h2 id="window-location"><a href="#window-location" class="headerlink" title="window.location"></a>window.location</h2><p>You can get the current page address(URL) or redirect the browser to a new web address using the window. location object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F;current page web address</span><br><span class="line">console.log(window.location.href)</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://hackinbits.com/articles/browser-object-model---bom-in-javascript" target="_blank" rel="noopener">https://hackinbits.com/articles/browser-object-model---bom-in-javascript</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/02/Browser%20Object%20Model%20-%20BOM%20in%20Javascript/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/Trombone%20Excerpts/" class="archive-article-date">
-  	<time datetime="2020-05-03T06:05:28.143Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/02/Trombone%20Excerpts/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Trombone Excerpts</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/Trombone%20Excerpts/">Trombone Excerpts</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/01/Spring%20Boot%20&%20Autoconfigurations%20In-Depth/" class="archive-article-date">
-  	<time datetime="2020-05-02T06:17:55.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/01/Spring%20Boot%20&%20Autoconfigurations%20In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/" class="archive-article-date">
-  	<time datetime="2020-05-01T06:45:24.414Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/">Real-time streaming in Power BI</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/29/Data%20Sampling%20and%20Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T21:30:50.164Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/29/Data%20Sampling%20and%20Randomization/">Data Sampling and Randomization</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/" class="archive-article-date">
-  	<time datetime="2020-04-29T05:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/">System Design Case Study: URL Shortened Service &amp; Like</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">System Design, URL Shortened Service, Like</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/27/Thoughts%20on%20Seattle%20Park%20and%20Ride%20Project/" class="archive-article-date">
-  	<time datetime="2020-04-28T06:46:03.013Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/27/Thoughts%20on%20Seattle%20Park%20and%20Ride%20Project/">Thoughts on Seattle Park and Ride Project</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/Responsive%20Development/" class="archive-article-date">
-  	<time datetime="2020-04-27T04:50:08.856Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/Responsive%20Development/">Responsive Development</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/" class="archive-article-date">
-  	<time datetime="2020-04-25T07:10:00.474Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/">May The Distance Bring Us Even Closer!</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-04-24T08:29:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/">生活小记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +356,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
