@@ -144,6 +144,120 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-An Introduction to GeoJSON" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/05/An%20Introduction%20to%20GeoJSON/">An Introduction to GeoJSON</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/05/An%20Introduction%20to%20GeoJSON/" class="archive-article-date">
+  	<time datetime="2020-05-06T06:59:06.516Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I am working on GeoJSON data and trying to develop a standard around parking avaialbility project. Notes as below.</p>
+<p>HERE Technologies is a company that provide mapping and location data and related services to individuals and companies. Here captures location content such as road networks, buildings, parks and traffic patterns. It then sells or licenses that mapping content, along with map related navigation and location services to other businesses such as <a href="https://en.wikipedia.org/wiki/Alpine_Electronics" target="_blank" rel="noopener">Alpine</a>, <a href="https://en.wikipedia.org/wiki/Garmin" target="_blank" rel="noopener">Garmin</a>, <a href="https://en.wikipedia.org/wiki/BMW" target="_blank" rel="noopener">BMW</a>, <a href="https://en.wikipedia.org/wiki/Oracle_Corporation" target="_blank" rel="noopener">Oracle</a> and <a href="https://en.wikipedia.org/wiki/Amazon.com" target="_blank" rel="noopener">Amazon.com</a>. This third-party licensing constitutes the core of the firm’s business.<a href="https://en.wikipedia.org/wiki/Here_Technologies#cite_note-:0-1" target="_blank" rel="noopener">[1]</a> In addition, Here provides platform services to smartphones.<a href="https://en.wikipedia.org/wiki/Here_Technologies#cite_note-Nokia_runs_on_1-2" target="_blank" rel="noopener">[2]</a><a href="https://en.wikipedia.org/wiki/Here_Technologies#cite_note-3" target="_blank" rel="noopener">[3]</a> It provides location services through its own Here applications, and also for <a href="https://en.wikipedia.org/wiki/GIS" target="_blank" rel="noopener">GIS</a> and government clients and other providers, such as <a href="https://en.wikipedia.org/wiki/Bing_(search_engine)" target="_blank" rel="noopener">Bing</a>, <a href="https://en.wikipedia.org/wiki/Facebook" target="_blank" rel="noopener">Facebook</a> and <a href="https://en.wikipedia.org/wiki/Yahoo!_Maps" target="_blank" rel="noopener">Yahoo! Maps</a>.<a href="https://en.wikipedia.org/wiki/Here_Technologies#cite_note-mashable_info_1-4" target="_blank" rel="noopener">[4]</a><a href="https://en.wikipedia.org/wiki/Here_Technologies#cite_note-idealab_here_info_1-5" target="_blank" rel="noopener">[5]</a> Here has maps of nearly 200 countries, offers voice guided navigation in 94 countries, provides live traffic information in 33 countries and has indoor maps available for about 49,000 unique buildings in 45 countries.<a href="https://en.wikipedia.org/wiki/Here_Technologies#cite_note-Nokia_info_1-6" target="_blank" rel="noopener">[6]</a> The company is also working on <a href="https://en.wikipedia.org/wiki/Self-driving_car" target="_blank" rel="noopener">self-driving</a> technology.</p>
+<p><img src="https://cdn2.hubspot.net/hubfs/2174253/map.png" alt="img"></p>
+<p>As a new developer evangelist at HERE, I’m trying to quickly come to speed with geographic and map related terms and technologies. One of them I discovered rather quickly is a fascinating (and simple!) specification called GeoJSON.</p>
+<p>As you guess, GeoJSON is JSON related, which is great because if I never see XML again I’ll die a happy developer. Before I dig into what GeoJSON does and what problems it solves, be sure to check out the website (<a href="https://geojson.org/" target="_blank" rel="noopener">https://geojson.org</a>) and full specification (<a href="https://tools.ietf.org/html/rfc7946" target="_blank" rel="noopener">https://tools.ietf.org/html/rfc7946</a>). And by the way, definitely take a look at that specification. I spent most of my life thinking those specs were boring, mind numbing technical documents but they can actually be quite helpful. In this particular case there were a few questions I had that were answered in the spec so it was absolutely worth my time reading it!</p>
+<h2 id="GeoJSON-is-Geographic-Data"><a href="#GeoJSON-is-Geographic-Data" class="headerlink" title="GeoJSON is Geographic Data"></a>GeoJSON is Geographic Data</h2><p>At a high level, GeoJSON is a way of representing geographic data. Let’s say you have a collection of cats (a… catalog let’s say) and the location of each cat is something you want to work with. That could be displaying them on a map, or telling a user which cat is closer to them, it doesn’t really matter.</p>
+<p>The previous example was focused on “points”, i.e. exact locations of cats, but that’s not the only type of data that can be represented in GeoJSON. Imagine you kept track of a cat’s movement through the data. That movement could be represented as a path over different points and stored in GeoJSON.</p>
+<p>As yet another example, as we know cats are very territorial. You could represent a set of cats and their territories as a set of polygons. Anything inside that polygon represents the area that belongs to the cat. (And yes, it belongs to the cat, not you.)</p>
+<p>If you can imagine every different way you can use a map or a globe, GeoJSON supports representing that information. Even better, the specification supports any ad hoq data as well. If we go back to the imaginary list of cats and their locations, we can associate the cats name, breed, gender, and so forth along with the geographic data.</p>
+<h2 id="GeoJSON-Parts"><a href="#GeoJSON-Parts" class="headerlink" title="GeoJSON Parts"></a>GeoJSON Parts</h2><p>GeoJSON consists of the following different parts:</p>
+<ul>
+<li>Geometry object: This is either the point, line, or polygon described earlier. Basically the location information.</li>
+<li>Feature object: This is the geometry object and the associated random ad hoq data. Remember, GeoJSON doesn’t care what data you associate with the location information.</li>
+<li>FeatureCollection: Basically just a list of feature objects.</li>
+</ul>
+<p>So typically one GeoJSON file (or dataset) will consist of a FeatureCollection containing a list of your data.</p>
+<p>Let’s take a look at a simple example.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"type"</span>: <span class="string">"FeatureCollection"</span>,</span><br><span class="line">  <span class="string">"features"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"Feature"</span>,</span><br><span class="line">      <span class="string">"geometry"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"Point"</span>,</span><br><span class="line">        <span class="string">"coordinates"</span>: [ <span class="number">-90.0715</span>, <span class="number">29.9510</span> ]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"properties"</span>: &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Fred"</span>,</span><br><span class="line">   		<span class="string">"gender"</span>: <span class="string">"Male"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"Feature"</span>,</span><br><span class="line">      <span class="string">"geometry"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"Point"</span>,</span><br><span class="line">        <span class="string">"coordinates"</span>: [ <span class="number">-92.7298</span>, <span class="number">30.7373</span> ]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"properties"</span>: &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Martha"</span>,</span><br><span class="line">   		<span class="string">"gender"</span>: <span class="string">"Female"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"Feature"</span>,</span><br><span class="line">      <span class="string">"geometry"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"Point"</span>,</span><br><span class="line">        <span class="string">"coordinates"</span>: [ <span class="number">-91.1473</span>, <span class="number">30.4711</span> ]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"properties"</span>: &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Zelda"</span>,</span><br><span class="line">	    <span class="string">"gender"</span>: <span class="string">"Female"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>At the top level you can see that I’m defining a <code>FeatureCollection</code>, or list of data. I then define my <code>features</code>, which is an array of <code>Feature</code> objects. Each Feature has a <code>geometry</code> object and a <code>properties</code> object. The <code>geometry</code> object will either be a <code>Point</code>, <code>LineString</code>, <code>Polygon</code>, <code>MultiPoint</code>, <code>MultiLineString</code>, or <code>MultiPolygon</code>. Each type should be pretty self-explanatory but certainly leave a comment if any aren’t clear. Inside <code>properties</code> you can see I’ve specified both a <code>name</code> and <code>gender</code> value for my cats. I can specify <em>any</em> data here at all, but as you can imagine, putting some thought into it and being consistent will go a long way to making your data more useful.</p>
+<h2 id="Working-with-GeoJSON"><a href="#Working-with-GeoJSON" class="headerlink" title="Working with GeoJSON"></a>Working with GeoJSON</h2><p>So given that you want to work with this type of file, how can you work with and display your data? The good news is that it’s just JSON. If you’re using JavaScript, the “effort” involved is a grand total of one line of code:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myData = <span class="built_in">JSON</span>.parse(dataILoadedViaAjaxOrSomeSuch);</span><br></pre></td></tr></table></figure>
+
+<p>At that point you’ve got your structured data and can then iterate over the features and do… well whatever you want with them. Consider this example where I use Vue to load in the JSON above and render it as an unordered list. First the HTML:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">v-cloak</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"cat in cats"</span>&gt;</span></span><br><span class="line">      Cat &#123;&#123; cat.name &#125;&#125; is &#123;&#123; cat.gender &#125;&#125;</span><br><span class="line">      and is located at &#123;&#123; cat.pos.lat &#125;&#125;, &#123;&#123; cat.pos.lon &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Then the JavaScript:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line">Vue.config.devtools = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DATA = <span class="string">'https://api.jsonbin.io/b/5d6ed60b2d1fb96463c30e63'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el:<span class="string">'#app'</span>,</span><br><span class="line">  data:&#123;</span><br><span class="line">    cats:[]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">async</span> created() &#123;</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(DATA);</span><br><span class="line">    <span class="keyword">let</span> geodata = <span class="keyword">await</span> response.json();</span><br><span class="line">    <span class="keyword">this</span>.cats = geodata.features.map(<span class="function"><span class="params">c</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        name:c.properties.name,</span><br><span class="line">        gender:c.properties.gender,</span><br><span class="line">        pos: &#123;</span><br><span class="line">          lat:c.geometry.coordinates[<span class="number">0</span>],</span><br><span class="line">          lon:c.geometry.coordinates[<span class="number">1</span>],</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>Note I do a bit of mapping on the GeoJSON to make it simpler to use in the HTML. There’s no reason the layout need know of the GeoJSON format. You can see the result below (and feel free to play with the code):</p>
+<iframe name="cp_embed_1" src="https://codepen.io/cfjedimaster/embed/LYPOYaL?height=265&amp;theme-id=0&amp;default-tab=js%2Cresult&amp;user=cfjedimaster&amp;slug-hash=LYPOYaL&amp;pen-title=geojson1&amp;name=cp_embed_1" scrolling="no" frameborder="0" height="265" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="geojson1" class="cp_embed_iframe " loading="lazy" id="cp_embed_LYPOYaL" style="box-sizing: inherit; border: 0px; margin: 0px; padding: 0px; width: 700px; overflow: hidden; display: block;"></iframe>
+
+<p>How about rendering on a map? HERE’s <a href="https://developer.here.com/documentation/map-image/topics/quick-start-show-default-location.html" target="_blank" rel="noopener">Map Image API</a> makes it easy to display points of interest on a map. I changed my HTML to render an image:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">v-cloak</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>My Cats<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"src"</span> <span class="attr">v-if</span>=<span class="string">"poiList"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>And my JavaScript now generates an image URL based on the Map Image API:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line">Vue.config.devtools = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DATA = <span class="string">'https://api.jsonbin.io/b/5d6ed60b2d1fb96463c30e63'</span>;</span><br><span class="line"><span class="keyword">const</span> APP_ID = <span class="string">'your app id here'</span>;</span><br><span class="line"><span class="keyword">const</span> APP_CODE = <span class="string">'your app code here'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el:<span class="string">'#app'</span>,</span><br><span class="line">  data:&#123;</span><br><span class="line">    poiList:<span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">async</span> created() &#123;</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(DATA);</span><br><span class="line">    <span class="keyword">let</span> geodata = <span class="keyword">await</span> response.json();</span><br><span class="line">    <span class="keyword">this</span>.poiList = geodata.features.reduce(<span class="function">(<span class="params">acc, curr</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(acc !== <span class="string">''</span>) acc += <span class="string">','</span>;</span><br><span class="line">      <span class="keyword">return</span> acc += curr.geometry.coordinates[<span class="number">1</span>] + <span class="string">','</span> + curr.geometry.coordinates[<span class="number">0</span>]</span><br><span class="line">    &#125;,<span class="string">''</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  computed:&#123;</span><br><span class="line">    src() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`https://image.maps.api.here.com/mia/1.6/mapview?app_id=<span class="subst">$&#123;APP_ID&#125;</span>&amp;app_code=<span class="subst">$&#123;APP_CODE&#125;</span>&amp;poi=<span class="subst">$&#123;<span class="keyword">this</span>.poiList&#125;</span>&amp;w=400&amp;h=300&amp;z=8`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>Feel free to play around with this version here:</p>
+<iframe name="cp_embed_2" src="https://codepen.io/cfjedimaster/embed/ExYbaym?height=265&amp;theme-id=0&amp;default-tab=js%2Cresult&amp;user=cfjedimaster&amp;slug-hash=ExYbaym&amp;pen-title=geojson2&amp;name=cp_embed_2" scrolling="no" frameborder="0" height="265" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="geojson2" class="cp_embed_iframe " loading="lazy" id="cp_embed_ExYbaym" style="box-sizing: inherit; border: 0px; margin: 0px; padding: 0px; width: 700px; overflow: hidden; display: block;"></iframe>
+
+<h2 id="Testing-GeoJSON"><a href="#Testing-GeoJSON" class="headerlink" title="Testing GeoJSON"></a>Testing GeoJSON</h2><p>So hey, you absolutely love GeoJSON and want to give it a spin in your own applications? Of course you do! Here’s two tools to help make working with GeoJSON easier.</p>
+<p>First, if you’re a <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> user (and let’s be honest, most of you are), you can find an excellent extension called <a href="https://marketplace.visualstudio.com/items?itemName=jumpinjackie.vscode-map-preview" target="_blank" rel="noopener">VSCode Map Preview</a>. As you can guess, this extension provides a map view of your GeoJSON data. Given the cat data I shared earlier, I can hit F1, run <code>Map Preview</code>, and get the following output:</p>
+<p><img src="https://cdn2.hubspot.net/hubfs/2174253/map.png" alt="map">)<img src="https://developer.here.com/blog/img/map.png" alt="img"></p>
+<p>This is a handy little tool, but note that it doesn’t currently support updating when you edit your text. You’ll have to close and re-open the preview to see changes. (This is a <a href="https://github.com/jumpinjackie/vscode-map-preview/issues/35" target="_blank" rel="noopener">known issue</a>.)</p>
+<p>Another option is the <a href="http://geojson.tools/" target="_blank" rel="noopener">GeoJSON Viewer</a> created by the <a href="https://here.xyz/" target="_blank" rel="noopener">HERE XYZ</a> team. It has a built in editor and viewer. What’s cool is that the editor provides validation on your data. As you can see here, I’m clearly not providing the right information and I’ve got real time feedback about my issues.</p>
+<p><img src="https://cdn2.hubspot.net/hubfs/2174253/editor1.png" alt="editor1">)<img src="https://developer.here.com/blog/img/editor1.png" alt="img">)<img src="https://cdn2.hubspot.net/hubfs/2174253/editor2.png" alt="editor2"></p>
+<p>The Viewer also lets you import GeoJSON data via URL or files. I took data from the <a href="https://www.nps.gov/lib/npmap.js/4.0.0/examples/data/national-parks.geojson" target="_blank" rel="noopener">National Park’s System GeoJSON file</a> and imported it into the viewer:</p>
+<p><img src="https://developer.here.com/blog/img/map2.png" alt="img">)<img src="https://cdn2.hubspot.net/hubfs/2174253/map2.png" alt="map2">As you can see, it does a pretty impressive job of rendering a lot of data!</p>
+<h2 id="What-Else"><a href="#What-Else" class="headerlink" title="What Else?"></a>What Else?</h2><p>Obviously as a simple, easily to parse spec, there’s quite a bit you can do with GeoJSON. Industry adoption will impact how successful this spec is, but if you are already offering your data via an API, there’s no reason <em>not</em> to support this format. Give it a try and if you’ve got an example of your own use of GeoJSON, leave me a comment below!</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p><a href="https://developer.here.com/blog/an-introduction-to-geojson" target="_blank" rel="noopener">https://developer.here.com/blog/an-introduction-to-geojson</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/05/An%20Introduction%20to%20GeoJSON/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-SQL or NoSQL?" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1311,75 +1425,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/26/Responsive%20Development/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-May The Distance Bring Us Even Closer!" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/">May The Distance Bring Us Even Closer!</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/" class="archive-article-date">
-  	<time datetime="2020-04-25T07:10:00.474Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>The second day of Ramdan! </p>
-<p>Mohammed showed me two touching videos, produced by Zain, a pioneer in mobile telecommunications across the Middle East and North Africa. </p>
-<p>First time to watch Arabic videos. Together with his explaination, it’s all become vivid and moving!</p>
-<p>I feel watching Ramadan television commercial by Zain has been an annual ritual for people in this community to share the same belief wherever they are.</p>
-<p>Spread the Love! ❤️</p>
-<h2 id="Coronavirus"><a href="#Coronavirus" class="headerlink" title="Coronavirus"></a>Coronavirus</h2><p><a href="http://www.youtube.com/watch?v=0bF16Ph3uEI" target="_blank" rel="noopener" title="Zain2020"><img src="http://img.youtube.com/vi/0bF16Ph3uEI/0.jpg" alt=""></a></p>
-<h2 id="Jerusalem"><a href="#Jerusalem" class="headerlink" title="Jerusalem"></a>Jerusalem</h2><p><a href="http://www.youtube.com/watch?v=JIJB7cv97Dg" target="_blank" rel="noopener" title="Zain2018"><img src="http://img.youtube.com/vi/JIJB7cv97Dg/0.jpg" alt=""></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/">Show All >></a>
         </p>
       
 
