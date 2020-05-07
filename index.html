@@ -144,6 +144,128 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-How to use the JavaScript Fetch API to Get Data" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/">How to use the JavaScript Fetch API to Get Data</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/" class="archive-article-date">
+  	<time datetime="2020-05-07T06:43:21.002Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Notes for JavaScript Fetch API to Get Data:</p>
+<p>We all remember the dreaded XMLHttpRequest we used back in the day to make requests, it involved some really messy code, it didn’t give us promises and let’s just be honest, it wasn’t pretty JavaScript, right? Maybe if you were using jQuery, you used the cleaner syntax with <code>jQuery.ajax()</code>.</p>
+<p>Well JavaScript has it’s own built-in clean way now. Along comes the Fetch API a new standard to make server request jam-packed with promises and all those things we learned to love over the years.</p>
+<h2 id="How-do-we-use-the-Fetch-API"><a href="#How-do-we-use-the-Fetch-API" class="headerlink" title="How do we use the Fetch API?"></a><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data#toc-how-do-we-use-the-fetch-api-" target="_blank" rel="noopener">How do we use the Fetch API?</a></h2><h3 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h3><ul>
+<li><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data#toc-how-do-we-use-the-fetch-api-" target="_blank" rel="noopener">How do we use the Fetch API?</a></li>
+<li><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data#toc-handling-more-requests-like-post" target="_blank" rel="noopener">Handling more requests like POST</a></li>
+</ul>
+<p>In a very simple manner all you really do is call fetch with the URL you want, by default the Fetch API uses the GET method, so a very simple call would be like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(url) <span class="comment">// Call the fetch function passing the url of the API as a parameter</span></span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Your code for handling the data you get from the API</span></span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// This is where you run code if the server returns any errors</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Looks pretty simple right? So let’s starting using it…</p>
+<h1 id="Using-fetch-to-get-data-from-an-API"><a href="#Using-fetch-to-get-data-from-an-API" class="headerlink" title="Using fetch to get data from an API"></a>Using fetch to get data from an API</h1><p>We are now going to build a simple GET request, in this case, I will use the <a href="https://randomuser.me/" target="_blank" rel="noopener">Random User API</a> and we will get 10 users and show them on the page using vanilla JavaScript.</p>
+<p><img src="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/S1Vs9gRTOGrud5Bt6tqI_Screen%20Shot%202017-01-10%20at%2022.21.32.png" alt="img"></p>
+<p>Let’s get started with the HTML, all we really need is a heading and an unordered list:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Authors<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"authors"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>The idea is to get all the data from the Random User API and display it in list items inside the author’s list.</p>
+<p>The first step is to actually set the URL we need and also the list we are gonna put the data in, so in the Javascript we write:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'authors'</span>); <span class="comment">// Get the list where we will place our authors</span></span><br><span class="line"><span class="keyword">const</span> url = <span class="string">'https://randomuser.me/api/?results=10'</span>; <span class="comment">// Get 10 random users</span></span><br></pre></td></tr></table></figure>
+
+<p>I have set these to consts so you don’t risk changing these in the future and these two are meant to be constants through all the project. Now we get into actual Fetch API:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fetch(url)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Here you get the data to modify as you please</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// If there is any error you will catch them here</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Let’s review this code, shall we? So first we are calling the Fetch API and passing it the URL we defined as a constant above and since no more parameters are set this is a simple GET request. Then we get a response but the response we get is not JSON but an object with a series of methods we can use depending on what we want to do with the information, these methods include:</p>
+<ul>
+<li><strong>clone()</strong> - As the method implies this method creates a clone of the response.</li>
+<li><strong>redirect()</strong> - This method creates a new response but with a different URL.</li>
+<li><strong>arrayBuffer()</strong> - In here we return a promise that resolves with an ArrayBuffer.</li>
+<li><strong>formData()</strong> - Also returns a promise but one that resolves with FormData object.</li>
+<li><strong>blob()</strong> - This is one resolves with a Blob.</li>
+<li><strong>text()</strong> - In this case it resolves with a string.</li>
+<li><strong>json()</strong> - Lastly we have the method to that resolves the promise with JSON.</li>
+</ul>
+<p>Looking at all these methods the one we want is the JSON one because we want to handle our data as a JSON object so we add:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fetch(url)</span><br><span class="line">.then(<span class="function">(<span class="params">resp</span>) =&gt;</span> resp.json()) <span class="comment">// Transform the data into json</span></span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Create and append the li's to the ul</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>Now let’s get to the part we create the list items, for that, I created two helper functions at the top of my file just to make the code simpler down the line:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createNode</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">document</span>.createElement(element); <span class="comment">// Create the type of element you pass in the parameters</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">append</span>(<span class="params">parent, el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> parent.appendChild(el); <span class="comment">// Append the second parameter(element) to the first one</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>All these functions do is append and create elements as you can see. Once this is done we can move on to the resolution of our promise and add the code we need to append these list items to our unordered list:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> authors = data.results; <span class="comment">// Get the results</span></span><br><span class="line">    <span class="keyword">return</span> authors.map(<span class="function"><span class="keyword">function</span>(<span class="params">author</span>) </span>&#123; <span class="comment">// Map through the results and for each run the code below</span></span><br><span class="line">      <span class="keyword">let</span> li = createNode(<span class="string">'li'</span>), <span class="comment">//  Create the elements we need</span></span><br><span class="line">          img = createNode(<span class="string">'img'</span>),</span><br><span class="line">          span = createNode(<span class="string">'span'</span>);</span><br><span class="line">      img.src = author.picture.medium;  <span class="comment">// Add the source of the image to be the src of the img element</span></span><br><span class="line">      span.innerHTML = <span class="string">`<span class="subst">$&#123;author.name.first&#125;</span> <span class="subst">$&#123;author.name.last&#125;</span>`</span>; <span class="comment">// Make the HTML of our span to be the first and last name of our author</span></span><br><span class="line">      append(li, img); <span class="comment">// Append all our elements</span></span><br><span class="line">      append(li, span);</span><br><span class="line">      append(ul, li);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+
+<p>So first we define authors as the response we get from the request then we map over all the authors and for each we create a list item, a span, and an image. In the image source, we place the picture of the user, the HTML of the span will be the first and last name interpolated and then all we need to do is append this to their rightful parents and voilá, our HTTP request in vanilla JavaScript is done and returning something to the HTML.</p>
+<p><img src="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/WwqF89TWRJ6R042QzJD8_Screen%20Shot%202017-01-10%20at%2022.56.43.png" alt="img"></p>
+<p>To handle our catch all I will do is console log the error as we get it but you can do whatever you want with the error such as append it to the HTML with the functions we created. This is the full code of our little request:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createNode</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.createElement(element);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">append</span>(<span class="params">parent, el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> parent.appendChild(el);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'authors'</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">'https://randomuser.me/api/?results=10'</span>;</span><br><span class="line">fetch(url)</span><br><span class="line">.then(<span class="function">(<span class="params">resp</span>) =&gt;</span> resp.json())</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> authors = data.results;</span><br><span class="line">  <span class="keyword">return</span> authors.map(<span class="function"><span class="keyword">function</span>(<span class="params">author</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> li = createNode(<span class="string">'li'</span>),</span><br><span class="line">        img = createNode(<span class="string">'img'</span>),</span><br><span class="line">        span = createNode(<span class="string">'span'</span>);</span><br><span class="line">    img.src = author.picture.medium;</span><br><span class="line">    span.innerHTML = <span class="string">`<span class="subst">$&#123;author.name.first&#125;</span> <span class="subst">$&#123;author.name.last&#125;</span>`</span>;</span><br><span class="line">    append(li, img);</span><br><span class="line">    append(li, span);</span><br><span class="line">    append(ul, li);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Handling-more-requests-like-POST"><a href="#Handling-more-requests-like-POST" class="headerlink" title="Handling more requests like POST"></a><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data#toc-handling-more-requests-like-post" target="_blank" rel="noopener">Handling more requests like POST</a></h2><p>So this is a GET request, the default one for the fetch function but of course we can do all other types of requests and also change the headers and off course send data, all we need for this is to set our object and pass it as the second argument of the fetch function:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">'https://randomuser.me/api'</span>;</span><br><span class="line"><span class="comment">// The data we are going to send in our request</span></span><br><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">    name: <span class="string">'Sara'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// The parameters we are gonna pass to the fetch function</span></span><br><span class="line"><span class="keyword">let</span> fetchData = &#123; </span><br><span class="line">    method: <span class="string">'POST'</span>, </span><br><span class="line">    body: data,</span><br><span class="line">    headers: <span class="keyword">new</span> Headers()</span><br><span class="line">&#125;</span><br><span class="line">fetch(url, fetchData)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Handle response you get from the server</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>You can also define cache, mode and all those things you are used to defining in your POST requests.</p>
+<p>To create our object and use the fetch function we also have another option and that is to use the request constructor to create our request object, so instead of defining the object in the function itself we do this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">'https://randomuser.me/api'</span>;</span><br><span class="line"><span class="comment">// The data we are going to send in our request</span></span><br><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">    name: <span class="string">'Sara'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Create our request constructor with all the parameters we need</span></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> Request(url, &#123;</span><br><span class="line">    method: <span class="string">'POST'</span>, </span><br><span class="line">    body: data, </span><br><span class="line">    headers: <span class="keyword">new</span> Headers()</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fetch(request)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Handle response we get from the API</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>You can use the way you are most comfortable with to build your request object.</p>
+<h1 id="Final-Thoughts"><a href="#Final-Thoughts" class="headerlink" title="Final Thoughts"></a>Final Thoughts</h1><p><img src="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/9z5gG0bRpqVaD94DD8Nm_Screen%20Shot%202017-01-10%20at%2023.02.26.png" alt="img"></p>
+<p>While the Fetch API is not yet supported by all the browsers (currently Safari does not support it) it is the beautiful replacement for XMLHttpRequest we desperately needed in our life. There are also polyfills if you really want to use it in more professional projects.</p>
+<hr>
+<p>Reference:</p>
+<p><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data" target="_blank" rel="noopener">https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-An Introduction to GeoJSON" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1321,110 +1443,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/27/Thoughts%20on%20Seattle%20Park%20and%20Ride%20Project/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Responsive Development" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/Responsive%20Development/">Responsive Development</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/26/Responsive%20Development/" class="archive-article-date">
-  	<time datetime="2020-04-27T04:50:08.856Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Notes about Responsive Development 😺 YAY!</p>
-<h2 id="Mobile-First-Design"><a href="#Mobile-First-Design" class="headerlink" title="Mobile-First Design"></a>Mobile-First Design</h2><p>Because the majority of web traffic is now coming from mobile devices, the current best practice is to design your site for a mobile device first, and only later consider how you can take advantage of the larger screen of a desktop. This is known as “mobile-first design.” In general this boils down to the following principles:</p>
-<ul>
-<li><strong>Layout</strong>: Blocks of content should typically stack on top of each other on narrow screens, but sit side-by-side on wider screens. You can also use the width or max-width properties to constrain the overall width of your content so that it doesn’t stretch to ridiculous line lengths on super-wide monitors. Content fixed to the viewport ( layout: fixed) should be kept to a minimum on small screens, as it reduces the amount of scrollable screen real-estate.</li>
-<li><strong>Media</strong>: Large images and video look great on large monitors, but typically don’t work as well on small screens. They also take much longer to download over slow mobile networks. Consider using background colors or linear gradient fills instead of background images on mobile; or use lower-resolution images so that they download faster.</li>
-<li><strong>Fonts</strong>: Font sizes may need to be adjusted so that text remains readable as the screen size changes. You can also increase the size of headings or callout text on wider monitors to take advantage of the extra room.</li>
-<li><strong>Navigation</strong>: Site navigation links take up a lot of room on small screens and may end up wrapping to multiple lines. Keep the site navigation hidden on small screens and show it only when the user taps a menu icon (colloquially known as the “hamburger icon”). Most CSS frameworks provide some kind of collapsible navigation on mobile.</li>
-<li><strong>Input and Interaction</strong>: Tap/click targets need to be large-enough on mobile to select using a finger, especially for people with poor eyesight or thick fingers. Tiny icons placed right next to one another, or one-word hyperlinks are difficult to select accurately. Specifying a data type on form fields (e.g., email address, phone number, date, integer) also generates optimized on-screen keyboards, making data entry much easier.</li>
-<li><strong>Content</strong>: For some sites, you may even want to adjust what content is shown to mobile users as opposed to desktop users. For example, a phone number might become a large “call” icon with a tel: hyperlink on phone-sized screens, but simply appear as a normal telephone number on larger screens.</li>
-</ul>
-<h1 id="Media-Rules"><a href="#Media-Rules" class="headerlink" title="Media Rules"></a>Media Rules</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* rules that apply to all devices */</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">255</span>, <span class="number">64</span>, <span class="number">129</span>); <span class="comment">/* background color on small screens */</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="comment">/* default font size is 16 pixels */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules that apply only to screens 768 pixels and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(...); <span class="comment">/* use background image on larger screens */</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>; <span class="comment">/* increase font size to 18 pixels on larger screens */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.mobile-call-icon</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none; <span class="comment">/* hide mobile call icon */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>The rules inside the <code>@media</code> rule can alter the formatting of any element, including completely hiding or showing it using the <code>display</code> property. Setting <code>display: none</code> will remove the element from the page, and <code>display: block</code> or <code>display: inline</code> will show it.</p>
-<h1 id="SVE-Elements"><a href="#SVE-Elements" class="headerlink" title="SVE Elements"></a>SVE Elements</h1><p>SVG elements define a <a href="https://en.wikipedia.org/wiki/Vector_graphics" target="_blank" rel="noopener">vector graphic (Links to an external site.)</a>, so they can scale up or down to any size while remaining crisp. By including them directly in the page, we avoid an additional network round-trip, and we can style them. SVG elements are commonly used for flat monochrome icons.</p>
-<h1 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h1><p>Flexbox requires one element to act as the row element, and one element per column in your layout. To make a two-column layout, your HTML and CSS would be like this:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-row"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Column 1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Column 2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">* &#123;</span><br><span class="line">  box-sizing: border-box; /* include padding and border is size calcs */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.flex-row &#123;</span><br><span class="line">  display: flex; /* start a flexbox */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.flex-column &#123;</span><br><span class="line">  flex-grow: 1; /* all columns equal size */</span><br><span class="line">  padding-left: 0.25em; /* a little padding inside each col */</span><br><span class="line">  padding-right: 0.25em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Multiple-Layouts"><a href="#Multiple-Layouts" class="headerlink" title="Multiple Layouts"></a>Multiple Layouts</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules for screens 768px and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.flex-row</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    flex-wrap: wrap; // wrap</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">    flex-basis: 50%; // 2* 2</span><br><span class="line">    <span class="selector-tag">padding-left</span>: 0<span class="selector-class">.25em</span>;</span><br><span class="line">    <span class="selector-tag">padding-right</span>: 0<span class="selector-class">.25em</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules for screens 1200px and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">1200px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">25%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>Also, if you want a three column layout, but with the middle column consuming <code>80%</code> of the screen width and the outer columns taking up only <code>10%</code> each, just use different style class names on the different columns, and set the <code>flex-basis</code> property appropriately.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.flex-row</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for all columns */</span></span><br><span class="line"><span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">0.25em</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">0.25em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for the left/right side columns */</span></span><br><span class="line"><span class="selector-class">.flex-column-sides</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">10%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for center column */</span></span><br><span class="line"><span class="selector-class">.flex-column-center</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">80%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>Remember that you can add multiple style classes to an HTML element (separated by spaces), so you can define one class for style properties that are common to all columns, and other style classes for properties that should apply to only one column (or set of similar columns). The HTML for the center column would then look like this:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column flex-column-center"</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="Flexbox-Nesting"><a href="#Flexbox-Nesting" class="headerlink" title="Flexbox Nesting"></a>Flexbox Nesting</h1><p>Although flexbox nesting can be powerful, you should use it sparingly, as it tends to create layouts that are difficult for both users and developers to understand.</p>
-<p>Responsive Container Elements By default the `` element will stretch to be as wide as the browser window (also called the “viewport”), and all block elements within the body will also stretch to be as wide as the body. This works well on narrower screens but it creates ridiculously wide layouts and long line-lengths on very wide desktop monitors, making your site difficult to read. It’s common to have background images and colors stretch “wall-to-wall” but the main text content is often constrained in width so that it remains easy to read on all sizes of screens.</p>
-<p>Setting <code>margin-left</code> and <code>margin-right</code> to <code>auto</code> will ensure that the container element remains horizontally centered when its width begins to be constrained, which happens on screens wider than <code>768px</code>. </p>
-<h1 id="Resources-Link"><a href="#Resources-Link" class="headerlink" title="Resources Link"></a>Resources Link</h1><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a></p>
-<p><a href="http://flexboxfroggy.com/" target="_blank" rel="noopener">http://flexboxfroggy.com/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/Responsive%20Development/">Show All >></a>
         </p>
       
 
