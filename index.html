@@ -144,6 +144,214 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-How to Connect to Database in Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/">How to Connect to Database in Javascript</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/" class="archive-article-date">
+  	<time datetime="2020-05-10T06:48:46.639Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Yesterday was super happy day to meet many friends! Such a great reunion online during the pandemic period.</p>
+<p>Also, I have fetched data from external api to javascript file and render map successfully. I will work on building database. Good guidance to start with.</p>
+<h2 id="INTRODUCTION-DATABASE-TROUBLE"><a href="#INTRODUCTION-DATABASE-TROUBLE" class="headerlink" title="INTRODUCTION DATABASE TROUBLE"></a>INTRODUCTION DATABASE TROUBLE</h2><p>Welcome to a tutorial on how to connect to a database in Javascript. Yes, it is totally possible to connect to a database with modern Javascript these days. But it is a different process depending on where you are applying it to:</p>
+<ul>
+<li>When used on a web page (client-side Javascript), we usually make an AJAX call to a server-side script first. That in turn, will make a connection to the database.</li>
+<li>Javascript can also directly access a server-side database, but provided that it has an open HTTP API. This is a security risk though, and it should never be considered.</li>
+<li>Alternatively, there is the web storage API that allows Javascript to save some data on the client computer.</li>
+<li>Finally, with NodeJS (server-side Javascript), we can easily connect to a database with the correct module installed.</li>
+</ul>
+<p>So just how exactly do we connect to the database in the above cases? Let us walk through some examples, and read on to find out!</p>
+<p>ⓘ I have included a zip file with all the example source code at the start of this tutorial, so you don’t have to copy-paste everything… Or if you just want to dive straight in.</p>
+<h2 id="NAVIGATION-TABLE-OF-CONTENTS"><a href="#NAVIGATION-TABLE-OF-CONTENTS" class="headerlink" title="NAVIGATION TABLE OF CONTENTS"></a>NAVIGATION TABLE OF CONTENTS</h2><table>
+<thead>
+<tr>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-download" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-download.svg" alt="img"></a><strong>Extra</strong> Source Code Download</th>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-basics" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-gear.svg" alt="img"></a><strong>Section A</strong> The Basics</th>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-ajax" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-refresh-ccw.svg" alt="img"></a><strong>Section B</strong> AJAX Database</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-local" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-nodes.svg" alt="img"></a><strong>Section C</strong> Local Storage</td>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-node" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-code.svg" alt="img"></a><strong>Section D</strong> NodeJS Database</td>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-extra" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-plus-square.svg" alt="img"></a><strong>Extra</strong> Useful Bits &amp; Links</td>
+</tr>
+<tr>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-end" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-thumbs-up.svg" alt="img"></a><strong>Closing</strong> What’s Next?</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="EXTRA-SOURCE-CODE-DOWNLOAD"><a href="#EXTRA-SOURCE-CODE-DOWNLOAD" class="headerlink" title="EXTRA SOURCE CODE DOWNLOAD"></a>EXTRA SOURCE CODE DOWNLOAD</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-download.svg" alt="img"></p>
+<p>First, here is the download link to the example source code as promised.</p>
+<h3 id="SOURCE-CODE-DOWNLOAD"><a href="#SOURCE-CODE-DOWNLOAD" class="headerlink" title="SOURCE CODE DOWNLOAD"></a>SOURCE CODE DOWNLOAD</h3><p><a href="https://code-boxx.com/wp-content/uploads/2019/07/js-connect-db.zip" target="_blank" rel="noopener">Click here to download</a> the source code, I have released it under the MIT license, so feel free to build on top of it or use it in your own project.</p>
+<h3 id="QUICK-START"><a href="#QUICK-START" class="headerlink" title="QUICK START"></a>QUICK START</h3><ul>
+<li>Download and unzip into a folder.</li>
+<li>There are 3 sets of code in this tutorial, each prepended with a number.<ul>
+<li>Follow files starting with <code>1-</code> if you want to connect to a database on the server (AJAX call to a server-side script).</li>
+<li>Files with <code>2-</code> for local storage.</li>
+<li>Finally, files with <code>3-</code> for NodeJS database connection.</li>
+</ul>
+</li>
+</ul>
+<h2 id="SECTION-A-THE-BASICS"><a href="#SECTION-A-THE-BASICS" class="headerlink" title="SECTION A THE BASICS"></a>SECTION A THE BASICS</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-gear.svg" alt="img"></p>
+<p>Before we go into any code, here is a small section dedicated to the confused beginners – What server-side and client-side is, and how Javascript can be used beyond webpages. Feel free to skip this section if you are already a code ninja.</p>
+<h3 id="SERVER-AND-CLIENT"><a href="#SERVER-AND-CLIENT" class="headerlink" title="SERVER AND CLIENT"></a>SERVER AND CLIENT</h3><p><a href="https://code-boxx.com/wp-content/uploads/2018/05/server-client-model.jpg" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2018/05/server-client-model-small.jpg" alt="img"></a></p>
+<p>To clear things up a little bit, most beginners probably know Javascript from web development. I.E. Creating web pages. In this traditional client-server model:</p>
+<ul>
+<li>A user accesses a web page, the browser sends a request to the server.</li>
+<li>The server then responds by sending back the requested web page.</li>
+</ul>
+<p>As simple as this might be, please take extra note that Javascript is downloaded and runs on the client computer.</p>
+<h3 id="CLIENT-JAVASCRIPT-TO-DATABASE"><a href="#CLIENT-JAVASCRIPT-TO-DATABASE" class="headerlink" title="CLIENT JAVASCRIPT TO DATABASE"></a>CLIENT JAVASCRIPT TO DATABASE</h3><p><img src="https://code-boxx.com/wp-content/uploads/2019/07/js-php-db.jpg" alt="img"></p>
+<p>So for Javascript to connect to the database in this model:</p>
+<ul>
+<li>We will usually create a server-side script first (in PHP, ASP, Python, etc…) that will connect to the database.</li>
+<li>Javascript will communicate with this server-side script instead.</li>
+</ul>
+<h3 id="WHY-DIRECT-DATABASE-CONNECTION-IS-BAD"><a href="#WHY-DIRECT-DATABASE-CONNECTION-IS-BAD" class="headerlink" title="WHY DIRECT DATABASE CONNECTION IS BAD"></a>WHY DIRECT DATABASE CONNECTION IS BAD</h3><p><img src="https://code-boxx.com/wp-content/uploads/2019/07/js-db.jpg" alt="img"></p>
+<p>If you are looking to directly connect a client Javascript to the server database, without any server-side scripts – I will strongly discourage it for security reasons.</p>
+<ul>
+<li>Remember that Javascript is downloaded onto the client computer? This means that anyone can mess around with the scripts, do funny things to the database.</li>
+<li>We will have to open a direct connection to the database on the Internet, which also means the database will be vulnerable to any attack on the Internet.</li>
+<li>There is a reason why server-side scripts exist – They are transparent and cannot be easily messed with. Users will not know how server scripts run, and we can put protection checks in place.</li>
+<li>There is also a reason why most databases don’t offer a direct HTTP interface – It adds another layer of security when the database cannot be directly accessed.</li>
+</ul>
+<p>With that, I will omit this type of connection from this guide. But if you still want to swim in the shark-infested cyber ocean – Check out the <a href="https://github.com/adamcooke/mysql-http-api" target="_blank" rel="noopener">HTTP API for MySQL database servers</a>.</p>
+<h3 id="LOCAL-STORAGE"><a href="#LOCAL-STORAGE" class="headerlink" title="LOCAL STORAGE"></a>LOCAL STORAGE</h3><p><img src="https://code-boxx.com/wp-content/uploads/2019/07/js-local.jpg" alt="img"></p>
+<p>So alternatively, if you are just looking to save some simple temporary data – There is a Web Storage API that allows Javascript to save limited stuff onto the client computer.</p>
+<h3 id="SERVER-SIDE-JAVASCRIPT"><a href="#SERVER-SIDE-JAVASCRIPT" class="headerlink" title="SERVER-SIDE JAVASCRIPT"></a>SERVER-SIDE JAVASCRIPT</h3><p>Now, if you have not heard of it – Yes, Javascript has evolved beyond “the thing behind web pages”, and we can run it independently on a server. There is a project called <a href="https://nodejs.org/en/" target="_blank" rel="noopener">NodeJS</a>, and we can do all sorts of awesome stuff with it – Chat servers, GPS tracking, HTTP servers, and of course, connecting to database servers. So check it out if you have not already done so.</p>
+<h2 id="SECTION-B-DATABASE-VIA-AJAX"><a href="#SECTION-B-DATABASE-VIA-AJAX" class="headerlink" title="SECTION B DATABASE VIA AJAX"></a>SECTION B DATABASE VIA AJAX</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-refresh-ccw.svg" alt="img"></p>
+<p>So far so good? Let us now go into one of the most common situations, connecting to the server database via an AJAX call to a server-side script. Take note that this example is based on PHP and MySQL, but the concept of creating a server-side script first is the same for any programming language – I will leave links to database connections for various languages in the extras section below.</p>
+<h3 id="DUMMY-DATABASE"><a href="#DUMMY-DATABASE" class="headerlink" title="DUMMY DATABASE"></a>DUMMY DATABASE</h3><p>For the purpose of demonstration, we will use this simple dummy table.</p>
+<p>1a-dummy.sql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;users&#96; (</span><br><span class="line">  &#96;user_id&#96; int(11) NOT NULL,</span><br><span class="line">  &#96;user_name&#96; varchar(255) NOT NULL</span><br><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;latin1;</span><br><span class="line"></span><br><span class="line">INSERT INTO &#96;users&#96; (&#96;user_id&#96;, &#96;user_name&#96;) VALUES</span><br><span class="line">(1, &#39;John Doe&#39;),</span><br><span class="line">(2, &#39;Jane Doe&#39;),</span><br><span class="line">(3, &#39;Johan Doe&#39;),</span><br><span class="line">(4, &#39;June Doe&#39;);</span><br><span class="line"></span><br><span class="line">ALTER TABLE &#96;users&#96;</span><br><span class="line">  ADD PRIMARY KEY (&#96;user_id&#96;),</span><br><span class="line">  ADD KEY &#96;user_name&#96; (&#96;user_name&#96;);</span><br><span class="line"></span><br><span class="line">ALTER TABLE &#96;users&#96;</span><br><span class="line">  MODIFY &#96;user_id&#96; int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT&#x3D;5;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="SERVER-SIDE-SCRIPT"><a href="#SERVER-SIDE-SCRIPT" class="headerlink" title="SERVER-SIDE SCRIPT"></a>SERVER-SIDE SCRIPT</h3><p>Next, we will create the server-side script that connects to the database.</p>
+<p>1b-database.php</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;* (A) SETTINGS *&#x2F;</span><br><span class="line">&#x2F;&#x2F; ! CHANGE THESE TO YOUR OWN !</span><br><span class="line">error_reporting(E_ALL &amp; ~E_NOTICE);</span><br><span class="line">define(&#39;DB_HOST&#39;, &#39;localhost&#39;);</span><br><span class="line">define(&#39;DB_NAME&#39;, &#39;test&#39;);</span><br><span class="line">define(&#39;DB_CHARSET&#39;, &#39;utf8&#39;);</span><br><span class="line">define(&#39;DB_USER&#39;, &#39;root&#39;);</span><br><span class="line">define(&#39;DB_PASSWORD&#39;, &#39;&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* (B) CONNECT DATABASE *&#x2F;</span><br><span class="line">try &#123;</span><br><span class="line">  $_PDO &#x3D; new PDO(</span><br><span class="line">    &quot;mysql:host&#x3D;&quot; . DB_HOST . &quot;;charset&#x3D;&quot; . DB_CHARSET . &quot;;dbname&#x3D;&quot; . DB_NAME, </span><br><span class="line">    DB_USER, DB_PASSWORD, [</span><br><span class="line">      PDO::ATTR_ERRMODE &#x3D;&gt; PDO::ERRMODE_EXCEPTION,</span><br><span class="line">      PDO::ATTR_DEFAULT_FETCH_MODE &#x3D;&gt; PDO::FETCH_ASSOC,</span><br><span class="line">      PDO::ATTR_EMULATE_PREPARES &#x3D;&gt; false,</span><br><span class="line">      PDO::ATTR_PERSISTENT &#x3D;&gt; true</span><br><span class="line">    ]</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">catch (Exception $ex) &#123;</span><br><span class="line">  if (LOG_KEEP) &#123; addlog($ex-&gt;getMessage()); &#125;</span><br><span class="line">  die(&quot;Error connecting to the database&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* (C) HANDLE REQUESTS *&#x2F;</span><br><span class="line">if ($_POST[&#39;req&#39;]) &#123; switch ($_POST[&#39;req&#39;]) &#123;</span><br><span class="line">  case &quot;get&quot;:</span><br><span class="line">    $_STMT &#x3D; $_PDO-&gt;prepare(&quot;SELECT * FROM &#96;users&#96;&quot;);</span><br><span class="line">    $_STMT-&gt;execute();</span><br><span class="line">    $users &#x3D; $_STMT-&gt;fetchAll();</span><br><span class="line">    echo json_encode($users);</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case &quot;add&quot;:</span><br><span class="line">    $pass &#x3D; true;</span><br><span class="line">    $error &#x3D; &quot;&quot;;</span><br><span class="line">    try &#123;</span><br><span class="line">      $_STMT &#x3D; $_PDO-&gt;prepare(&quot;INSERT INTO &#96;users&#96; (&#96;user_name&#96;) VALUES (?)&quot;);</span><br><span class="line">      $_STMT-&gt;execute([$_POST[&#39;name&#39;]]);</span><br><span class="line">      &#x2F;&#x2F; $lastID &#x3D; $_PDO-&gt;lastInsertID();</span><br><span class="line">    &#125; catch (Exception $ex) &#123;</span><br><span class="line">      $pass &#x3D; false;</span><br><span class="line">      $error &#x3D; $ex-&gt;getMessage();</span><br><span class="line">    &#125;</span><br><span class="line">    echo json_encode([</span><br><span class="line">      &quot;status&quot; &#x3D;&gt; $pass,</span><br><span class="line">      &quot;message&quot; &#x3D;&gt; $error</span><br><span class="line">    ]);</span><br><span class="line">    break;</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* (D) CLOSE DATABASE CONNECTION *&#x2F;</span><br><span class="line">$_PDO &#x3D; null;</span><br><span class="line">$_STMT &#x3D; null;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Just change the database settings to your own, and how we work with this script works is easy – Simply post a request and the required parameters. For example, send <code>$_POST[&#39;req&#39;] = &quot;add&quot;</code> and <code>$_POST[&#39;name&#39;] = &quot;USER NAME&quot;</code> to add a new user.</p>
+<p>Remember from earlier that we mentioned using the server-side script as a layer of protection? This is exactly it – Users can only make certain requests through this script, and we can implement more checks as required. For example, only administrators who are logged in can get all users.</p>
+<h3 id="CLIENT-SIDE-JAVASCRIPT"><a href="#CLIENT-SIDE-JAVASCRIPT" class="headerlink" title="CLIENT-SIDE JAVASCRIPT"></a>CLIENT-SIDE JAVASCRIPT</h3><p>1c-javascript.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function getUsers() &#123;</span><br><span class="line">        &#x2F;&#x2F; APPEND FORM DATA</span><br><span class="line">        var data &#x3D; new FormData();</span><br><span class="line">        data.append(&#39;req&#39;, &#39;get&#39;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; AJAX CALL</span><br><span class="line">        var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">        xhr.open(&#39;POST&#39;, &quot;1b-database.php&quot;, true);</span><br><span class="line">        xhr.onload &#x3D; function()&#123;</span><br><span class="line">          console.log(this.response);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.send(data);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      function addUser() &#123;</span><br><span class="line">        &#x2F;&#x2F; APPEND FORM DATA</span><br><span class="line">        var data &#x3D; new FormData();</span><br><span class="line">        data.append(&#39;req&#39;, &#39;add&#39;);</span><br><span class="line">        data.append(&#39;name&#39;, document.getElementById(&quot;user-name&quot;).value);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; AJAX CALL</span><br><span class="line">        var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">        xhr.open(&#39;POST&#39;, &quot;1b-database.php&quot;, true);</span><br><span class="line">        xhr.onload &#x3D; function()&#123;</span><br><span class="line">          console.log(this.response);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.send(data);</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;!-- GET ALL USERS --&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;Get Users&quot; onclick&#x3D;&quot;return getUsers()&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- ADD USERS --&gt;</span><br><span class="line">    &lt;form onsubmit&#x3D;&quot;return addUser();&quot;&gt;</span><br><span class="line">      &lt;input type&#x3D;&quot;text&quot; value&#x3D;&quot;NAME HERE&quot; id&#x3D;&quot;user-name&quot; required&#x2F;&gt;</span><br><span class="line">      &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;Add User&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Finally, all that is left in the Javascript is to make AJAX calls to the server-side script.</p>
+<h3 id="WHAT-ABOUT-OTHER-PROGRAMMING-LANGUAGE-amp-DATABASES"><a href="#WHAT-ABOUT-OTHER-PROGRAMMING-LANGUAGE-amp-DATABASES" class="headerlink" title="WHAT ABOUT OTHER PROGRAMMING LANGUAGE &amp; DATABASES?"></a>WHAT ABOUT OTHER PROGRAMMING LANGUAGE &amp; DATABASES?</h3><p>As in the introduction above, the concept is the same and there are 3 parts to deal with:</p>
+<ul>
+<li>First, create the relevant tables in the database.</li>
+<li>Secondly, create the server-side script that will act as the middle man – Accept requests from Javascript, do checks, and connect to the database.</li>
+<li>Finally, deal with the Javascript that will call the server-side script.</li>
+</ul>
+<h2 id="SECTION-C-LOCAL-STORAGE"><a href="#SECTION-C-LOCAL-STORAGE" class="headerlink" title="SECTION C LOCAL STORAGE"></a>SECTION C LOCAL STORAGE</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-nodes.svg" alt="img"></p>
+<p>Only need some temporary storage? Here is how we do it with the simple Web Storage API.</p>
+<h3 id="THE-BASICS"><a href="#THE-BASICS" class="headerlink" title="THE BASICS"></a>THE BASICS</h3><p>2a-localstorage-basics.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      &#x2F;&#x2F; (1) SET - Save data into local storage</span><br><span class="line">      &#x2F;&#x2F; In format of key &#x3D;&gt; value</span><br><span class="line">      localStorage.setItem(&quot;Foo&quot;, &quot;Bar&quot;);</span><br><span class="line">      localStorage.setItem(&quot;Hello&quot;, &quot;World&quot;);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (2) GET - Retrive data with given key</span><br><span class="line">      var data &#x3D; localStorage.getItem(&quot;Foo&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line">      data &#x3D; localStorage.getItem(&quot;Hello&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (3) REMOVE - Remove data with given key</span><br><span class="line">      localStorage.removeItem(&quot;Foo&quot;);</span><br><span class="line">      data &#x3D; localStorage.getItem(&quot;Foo&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (4) CLEAR - Remove everything</span><br><span class="line">      localStorage.clear();</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Local storage is very simple, and there are only 4 operations:</p>
+<ul>
+<li><code>localStorage.setItem(KEY, VALUE)</code> – Saves data into the local storage.</li>
+<li><code>localStorage.getItem(KEY)</code> – Retrieves data from the local storage.</li>
+<li><code>localStorage.removeItem(KEY)</code> – Removes data from the local storage.</li>
+<li><code>localStorage.clear()</code> – Remove everything.</li>
+</ul>
+<h3 id="OBJECT-STORAGE"><a href="#OBJECT-STORAGE" class="headerlink" title="OBJECT STORAGE"></a>OBJECT STORAGE</h3><p>But the problem with local storage is that it only stores strings. To store and retrieve arrays/objects, we will have to use <code>JSON.stringify()</code> and <code>JSON.parse()</code>.</p>
+<p>2b-localstorage-json.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      &#x2F;&#x2F; (1) DATA OBJECT</span><br><span class="line">      var user &#x3D; &#123;</span><br><span class="line">        name : &quot;John Doe&quot;,</span><br><span class="line">        email : &quot;john@doe.com&quot;,</span><br><span class="line">        gender : &quot;Doe&quot;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (2) CONVERT JSON STRING</span><br><span class="line">      user &#x3D; JSON.stringify(user);</span><br><span class="line">      console.log(user);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (3) STORE IN LOCAL STORAGE</span><br><span class="line">      localStorage.setItem(&quot;User&quot;, user);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (4) RETRIEVE - SIMPLY GET AND DECODE</span><br><span class="line">      user &#x3D; localStorage.getItem(&quot;User&quot;);</span><br><span class="line">      user &#x3D; JSON.parse(user);</span><br><span class="line">      console.log(user);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="SECTION-D-NODEJS-DATABASE"><a href="#SECTION-D-NODEJS-DATABASE" class="headerlink" title="SECTION D NODEJS DATABASE"></a>SECTION D NODEJS DATABASE</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-code.svg" alt="img"></p>
+<p>In this final section, we will walk through how to connect to a database in NodeJS.</p>
+<h3 id="INSTALL-DATABASE-MODULE"><a href="#INSTALL-DATABASE-MODULE" class="headerlink" title="INSTALL DATABASE MODULE"></a>INSTALL DATABASE MODULE</h3><p>First, navigate to your project folder in the command line, and install the database module:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\YOUR\PROJECT&gt; npm install mysql</span><br></pre></td></tr></table></figure>
+
+<p>For the sake of simplicity, we are just going to reuse the above dummy database table and MySQL. If you are not planning to use MySQL, there are also several other Node Database Modules:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/mssql" target="_blank" rel="noopener">MSSQL</a></li>
+<li><a href="https://mongodb.github.io/node-mongodb-native/" target="_blank" rel="noopener">MongoDB</a></li>
+<li><a href="https://node-postgres.com/" target="_blank" rel="noopener">Postgres</a></li>
+</ul>
+<h3 id="THE-SCRIPT"><a href="#THE-SCRIPT" class="headerlink" title="THE SCRIPT"></a>THE SCRIPT</h3><p>3-node-db.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; (1) LOAD DB MODULE</span><br><span class="line">const mysql &#x3D; require(&quot;mysql&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; (2) CREATE CONNECTION</span><br><span class="line">&#x2F;&#x2F; ! CHANGE THESE TO YOUR OWN !</span><br><span class="line">const db &#x3D; mysql.createConnection(&#123;</span><br><span class="line">  host: &#39;localhost&#39;,</span><br><span class="line">  user: &#39;root&#39;,</span><br><span class="line">  password: &#39;&#39;,</span><br><span class="line">  database: &#39;test&#39;</span><br><span class="line">&#125;);</span><br><span class="line">db.connect((err) &#x3D;&gt; &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  console.log(&quot;DB connection OK&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; (3) QUERY</span><br><span class="line">db.query(&quot;SELECT * FROM &#96;users&#96;&quot;, function (err, results) &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  console.log(results);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Yep, it’s that simple – Just load the database module and make a connection. But take note that this is based on MySQL again, install and load your own if you are using something else.</p>
+<h2 id="EXTRA-USEFUL-BITS"><a href="#EXTRA-USEFUL-BITS" class="headerlink" title="EXTRA USEFUL BITS"></a>EXTRA USEFUL BITS</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-plus-square.svg" alt="img"></p>
+<p>That’s all for this tutorial, and here is a small section on some extras and links that may be useful to you.</p>
+<h3 id="LINKS-amp-REFERENCES"><a href="#LINKS-amp-REFERENCES" class="headerlink" title="LINKS &amp; REFERENCES"></a>LINKS &amp; REFERENCES</h3><ul>
+<li><a href="https://www.php.net/manual/en/book.pdo.php" target="_blank" rel="noopener">PHP PDO Database Connection</a></li>
+<li><a href="https://docs.microsoft.com/en-us/aspnet/web-pages/overview/data/5-working-with-data" target="_blank" rel="noopener">ASP Database</a></li>
+<li><a href="https://www.tutorialspoint.com/python/python_database_access" target="_blank" rel="noopener">Python Database</a></li>
+<li><a href="https://www.tutorialspoint.com/ruby/ruby_database_access" target="_blank" rel="noopener">Ruby DBI</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank" rel="noopener">Javascript Local Storage</a></li>
+</ul>
+<h3 id="OTHER-NOTEWORTHY-TUTORIALS"><a href="#OTHER-NOTEWORTHY-TUTORIALS" class="headerlink" title="OTHER NOTEWORTHY TUTORIALS"></a>OTHER NOTEWORTHY TUTORIALS</h3><ul>
+<li><a href="https://code-boxx.com/vanilla-javascript-ajax/" target="_blank" rel="noopener">Vanilla Javascript AJAX</a></li>
+<li><a href="https://code-boxx.com/json-php-javascript-beginners/" target="_blank" rel="noopener">JSON</a></li>
+<li><a href="https://code-boxx.com/import-sql-file-in-mysql/" target="_blank" rel="noopener">Import SQL files in MySQL</a></li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://code-boxx.com/connect-database-javascript/" target="_blank" rel="noopener">https://code-boxx.com/connect-database-javascript/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Ingestion and processing of real-time automotive IoT data  " class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1427,103 +1635,6 @@
 
 
   
-    <article id="post-Data Sampling and Randomization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/Data%20Sampling%20and%20Randomization/">Data Sampling and Randomization</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/29/Data%20Sampling%20and%20Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T21:30:50.164Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Data Sampling Notes:</p>
-<p>Take-away: EG + Formula =&gt; Show thinking style</p>
-<h2 id="Reservoir-Sampling"><a href="#Reservoir-Sampling" class="headerlink" title="Reservoir Sampling"></a>Reservoir Sampling</h2><p>Q: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the probability of returning any element read so far is 1/n.</p>
-<h3 id="Solution-for-limited-data"><a href="#Solution-for-limited-data" class="headerlink" title="Solution for limited data:"></a>Solution for limited data:</h3><p>Random select one. But not good.Streaming data flow: flow, store in the disk, memory, cloud. materialize data, cost is high, like video data flow, to do sampling.space: o(n) </p>
-<h3 id="Alternative"><a href="#Alternative" class="headerlink" title="Alternative:"></a>Alternative:</h3><p>Use o(1) space to solve.index = 0 1 2 3 4 5 6 7A[]    a b c d e f g hRandom time randomly select one number, random sampling</p>
-<p>Maintain counter, maintain sample so far.<br>Step1: counter = 1; Call random.randint(0, 0), to decide whether the sample needs to be replaced, if the random number == 0, then result_so_far = al (for the first iteration, the result_so_far must be a, since there is only one data entry so far). 100% to select a. eg + formula</p>
-<p>Step2: counter = 2; random.randint(0,1), If the random number == 0, then result_so_far=blIf the random number == 1, then keep previous result_so_far = a.P(result_so_far = b) = ½.P(result_so_far = a) = 1 - ½.<br>abc so = 0, replace new. not -, continue previous. </p>
-<p>Step 3: counter = 3; random.randint(0, 2), if the random number == 0 (guarantee the new element has 1/n as the sample), then result_so_far = c; else, don’t change the existing result.P(result_so_far = c) = ⅓P(result_so_far = b) = P(result_so_far = b at step3, rsult_so_far = b at step2) = P(result_so_far = b at step3 | result_so_far = b at step2) * P(result_so_far = b at step2) = (1-⅓) * ½ = ⅓P(result_so_far = a) = ⅓</p>
-<p>p: step 2 produces b and step 3 keeps b not changed = ½ * (1-⅓) = ⅓ // ⅓ would change in the third step, otherwise 1- ⅓ not change.</p>
-<p>Step 3: counter = 4; random.randint(0,3), if the random number == 0 (guarantee the new element has 1/n as the sample), then result_so_far = d; else, don’t change the existing result.P(result_so_far = d) = ¼.P(result_so_far = c) = ¼ = (3/4) * (1/3) = ¼.</p>
-<p>Step n : counter = n; Call random(n), if the random number == 0, then result__so_far = A[n];</p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h3><p>Replace or not current? 0, replace; non-0, not replace.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generator</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">_init_</span><span class="params">(self)</span>:</span></span><br><span class="line">    self.sample = <span class="number">0</span></span><br><span class="line">    self.count = <span class="number">0</span> <span class="comment"># the counter of elements read so far.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(self, val)</span>:</span></span><br><span class="line">  self.count += <span class="number">1</span> <span class="comment"># current element is the count-th element</span></span><br><span class="line">  r = random.randint(<span class="number">0</span>, self.count - <span class="number">1</span>) <span class="comment"># randomly generate a number from - to count (exclusive) [0, count-1];</span></span><br><span class="line">  <span class="keyword">if</span> r == <span class="number">0</span>:</span><br><span class="line">    self.sample = val <span class="comment"># the probability of choosing (count-1)-th element as the final solution is 1/count;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Exploration"><a href="#Exploration" class="headerlink" title="Exploration:"></a>Exploration:</h3><p>Streaming and batch, the same. Sample = k: Assuming the number of items to select, k, is smaller than the size of the source array, S):k element out of n (k &lt;&lt; n) → P(k/n)P(result_so_far =</p>
-<p>Step 1: like above</p>
-<p>Step 2: counter =2; random.randint(,),p = 100%<br>If the random number == 2, no replace previous sampleIf the random number == 1, replace the second letter bIf the random number == 0, replace the first letter a</p>
-<p>Step 3: counter = 3; random.randint(0,2), List all cases: how to keep them all as ⅓. =&gt; have to randint(0,2). =&gt; make rules accordingly. 倒推法 reverse.p(a,b) like step2  = ⅓ p(a,c) a replaced = ⅓ p(b,c) c replaced  = ⅓.<br>step 4: 0,3<br>step 5: 0,4<br>&lt; k would be replaced.</p>
-<h2 id="Randomization-Question"><a href="#Randomization-Question" class="headerlink" title="Randomization Question"></a>Randomization Question</h2><p>Q: How to design a random number generator Random(7), with Random5().Random(5) - ⅕ return 0,1,2,3,4Random(7) – 1/7 return 0,1,2,3,4,5,6 </p>
-<p>Reversed direction is easy:       0 1 2 3 4 5 6Random(7) → Random(5)       1/7 1/7 … 1/7</p>
-<p>Probability NormalizationP(0 can be returned) = 1/7    / 5/7 = ⅕ // should first be from 0-4 and then 0. 5/7 means drop 5 6.P(1 can be returned) = 1/7   / 5/7 = 1/5P(2 can be returned) = 1/7   / 5/7 = 1/5P(3 can be returned) = 1/7    / 5/7 = 1/5P(4 can be returned) = 1/7   / 5/7 = ⅕</p>
-<p>Step1:// random 25 &gt; 7 can produce 7, random 5 * 5 =25 min, use random5 to produce random7, min is 25.Random(25) - how to implement Random(25) using Random(5)101010 -&gt; 0<em>2^0 + 1</em>2^1 + 0<em>2^2<br>matrix<br>rand 0 1 2 3 4 (rand1) 0    0 1 2 3 41    5 6 7 …..234<br>random(5) -&gt; x, random(5) -&gt; y =&gt; x + 5</em>y </p>
-<p>进制转换是相等概率产生的十进制的数, 随机取每个产生的数字概率相等，且不重复。00 – 001 – 110 – 211 – 3.</p>
-<p>// <em>5, matrix// random(5) -&gt; x, random(5) -&gt; y =&gt; x + 5</em>y =// random(5) is a function, two random5( might produce different things and produce a matrix. so should not be 6random(5).)<br>random5() * 1 + 5<em>random5()rand1        rand2<br>If more than 25, 3D, random5() * 1 + 5</em>random5() + 5^2*random5()<br>keep 0 -20 → in total 21 numbers.0: 0, 7, 14  3/25/(21/25) = 1/71: 1, 8, 15<br>6: 6, 13, 20<br>index matrix</p>
-<p>code:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random25</span><span class="params">()</span>:</span> <span class="comment"># 25 means all the numbers would be produced equally.	</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">5</span> * random5() + random5()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random7</span><span class="params">()</span>:</span> <span class="comment"># if change to 6, waste resource, coz we need to remove certain numbers.	</span></span><br><span class="line">  num = random25()	</span><br><span class="line">  <span class="keyword">while</span> num &gt; <span class="number">20</span>:		</span><br><span class="line">    num = random25()	</span><br><span class="line">    <span class="keyword">return</span> num % <span class="number">7</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<p>​                               </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/29/Data%20Sampling%20and%20Randomization/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1621,10 +1732,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
@@ -1634,6 +1741,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
             
             <div class="clearfix"></div>
