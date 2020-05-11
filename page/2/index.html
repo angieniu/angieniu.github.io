@@ -144,6 +144,200 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Real-time streaming in Power BI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/">Real-time streaming in Power BI</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/" class="archive-article-date">
+  	<time datetime="2020-05-01T06:45:24.414Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>With Power BI real-time streaming, you can stream data and update dashboards in real-time. Any visual or dashboard that can be created in Power BI can also be created to display and update real-time data and visuals. The devices and sources of streaming data can be factory sensors, social media sources, service usage metrics, and anything else from which time-sensitive data can be collected or transmitted.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming-10.png" alt="Screenshot showing the results of real-time environmental sensors."></p>
+<p>This article shows you how to set up real-time streaming dataset in Power BI. But before we get to that, it’s important to understand the types of real-time datasets that are designed to display in tiles (and dashboards), and how those datasets differ.</p>
+<h2 id="Types-of-real-time-datasets"><a href="#Types-of-real-time-datasets" class="headerlink" title="Types of real-time datasets"></a>Types of real-time datasets</h2><p>There are three types of real-time datasets which are designed for display on real-time dashboards:</p>
+<ul>
+<li>Push dataset</li>
+<li>Streaming dataset</li>
+<li>PubNub streaming dataset</li>
+</ul>
+<p>First let’s understand how these datasets differ from one another (this section), then we discuss how to push data into those each of these datasets.</p>
+<h3 id="Push-dataset"><a href="#Push-dataset" class="headerlink" title="Push dataset"></a>Push dataset</h3><p>With a <strong>push dataset</strong>, data is pushed into the Power BI service. When the dataset is created, the Power BI service automatically creates a new database in the service to store the data. Since there is an underlying database that continues to store the data as it comes in, reports can be created with the data. These reports and their visuals are just like any other report visuals, which means you can use all of Power BI’s report building features to create visuals, including Power BI visuals, data alerts, pinned dashboard tiles, and more.</p>
+<p>Once a report is created using the push dataset, any of its visuals can be pinned to a dashboard. On that dashboard, visuals update in real-time whenever the data is updated. Within the service, the dashboard is triggering a tile refresh every time new data is received.</p>
+<p>There are two considerations to note about pinned tiles from a push dataset:</p>
+<ul>
+<li>Pinning an entire report using the <em>pin live page</em> option will <strong>not</strong> result in the data automatically being updated.</li>
+<li>Once a visual is pinned to a dashboard, you can use <strong>Q&amp;A</strong> to ask questions of the push dataset in natural language. Once you make a <strong>Q&amp;A</strong> query, you can pin the resulting visual back to the dashboard, and that dashboard will <em>also</em> update in real-time.</li>
+</ul>
+<h3 id="Streaming-dataset"><a href="#Streaming-dataset" class="headerlink" title="Streaming dataset"></a>Streaming dataset</h3><p>With a <strong>streaming dataset</strong>, data is also pushed into the Power BI service, with an important difference: Power BI only stores the data into a temporary cache, which quickly expires. The temporary cache is only used to display visuals which have some transient sense of history, such as a line chart that has a time window of one hour.</p>
+<p>With a <strong>streaming dataset</strong>, there is <em>no</em> underlying database, so you <em>cannot</em> build report visuals using the data that flows in from the stream. As such, you cannot make use of report functionality such as filtering, Power BI visuals, and other report functions.</p>
+<p>The only way to visualize a streaming dataset is to add a tile and use the streaming dataset as a <strong>custom streaming data</strong> data source. The custom streaming tiles that are based on a <strong>streaming dataset</strong> are optimized for quickly displaying real-time data. There is very little latency between when the data is pushed into the Power BI service and when the visual is updated, since there’s no need for the data to be entered into or read from a database.</p>
+<p>In practice, streaming datasets and their accompanying streaming visuals are best used in situations when it is critical to minimize the latency between when data is pushed and when it is visualized. In addition, it’s best practice to have the data pushed in a format that can be visualized as-is, without any additional aggregations. Examples of data that’s ready as-is include temperatures, and pre-calculated averages.</p>
+<h3 id="PubNub-streaming-dataset"><a href="#PubNub-streaming-dataset" class="headerlink" title="PubNub streaming dataset"></a>PubNub streaming dataset</h3><p>With a <strong>PubNub</strong> streaming dataset, the Power BI web client uses the PubNub SDK to read an existing PubNub data stream, and no data is stored by the Power BI service.</p>
+<p>As with the <strong>streaming dataset</strong>, with the <strong>PubNub streaming dataset</strong> there is no underlying database in Power BI, so you cannot build report visuals against the data that flows in, and cannot take advantage of report functionality such as filtering, Power BI visuals, and so on. As such, the <strong>PubNub streaming dataset</strong> can also only be visualized by adding a tile to the dashboard, and configuring a PubNub data stream as the source.</p>
+<p>Tiles based on a <strong>PubNub streaming dataset</strong> are optimized for quickly displaying real-time data. Since Power BI is directly connected to the PubNub data stream, there is very little latency between when the data is pushed into the Power BI service and when the visual is updated.</p>
+<h3 id="Streaming-dataset-matrix"><a href="#Streaming-dataset-matrix" class="headerlink" title="Streaming dataset matrix"></a>Streaming dataset matrix</h3><p>The following table (or matrix, if you like) describes the three types of datasets for real-time streaming, and lists capabilities and limitations of each.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_11.png" alt="img"></p>
+<p> Note</p>
+<p>See <a href="https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations" target="_blank" rel="noopener">this article</a> for information on <strong>Push</strong> limits on how much data can be pushed in.</p>
+<h2 id="Pushing-data-to-datasets"><a href="#Pushing-data-to-datasets" class="headerlink" title="Pushing data to datasets"></a>Pushing data to datasets</h2><p>The previous section described the three primary types of real-time datasets you can use in real-time streaming, and how they differ. This section describes how to create and push data into those datasets.</p>
+<p>There are three primary ways you can push data into a dataset:</p>
+<ul>
+<li>Using the Power BI REST APIs</li>
+<li>Using the Streaming Dataset UI</li>
+<li>Using Azure Stream Analytics</li>
+</ul>
+<p>Let’s take a look at each of those approaches in turn.</p>
+<h3 id="Using-Power-BI-REST-APIs-to-push-data"><a href="#Using-Power-BI-REST-APIs-to-push-data" class="headerlink" title="Using Power BI REST APIs to push data"></a>Using Power BI REST APIs to push data</h3><p><strong>Power BI REST APIs</strong> can be used to create and send data to <strong>push</strong> datasets and to <strong>streaming</strong> datasets. When you create a dataset using Power BI REST APIs, the <em>defaultMode</em> flag specifies whether the dataset is push or streaming. If no <em>defaultMode</em> flag is set, the dataset defaults to a <strong>push</strong> dataset.</p>
+<p>If the <em>defaultMode</em> value is set to <em>pushStreaming</em>, the dataset is both a <strong>push</strong> <em>and</em> <strong>streaming</strong> dataset, providing the benefits of both dataset types.</p>
+<p> Note</p>
+<p>When using datasets with the <em>defaultMode</em> flag set to <em>pushStreaming</em>, if a request exceeds the 15Kb size restriction for a <strong>streaming</strong> dataset, but is less than the 16MB size restriction of a <strong>push</strong> dataset, the request will succeed and the data will be updated in the push dataset. However, any streaming tiles will temporarily fail.</p>
+<p>Once a dataset is created, use the REST APIs to push data using the <a href="https://docs.microsoft.com/rest/api/power-bi/pushdatasets/datasets_postrows" target="_blank" rel="noopener"><strong>PostRows</strong> API</a>.</p>
+<p>All requests to REST APIs are secured using <strong>Azure AD OAuth</strong>.</p>
+<h3 id="Using-the-Streaming-Dataset-UI-to-push-data"><a href="#Using-the-Streaming-Dataset-UI-to-push-data" class="headerlink" title="Using the Streaming Dataset UI to push data"></a>Using the Streaming Dataset UI to push data</h3><p>In the Power BI service, you can create a dataset by selecting the <strong>API</strong> approach as shown in the following image.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_0b.png" alt="img"></p>
+<p>When creating the new streaming dataset, you can select to enable <strong>Historic data analysis</strong> as shown below, which has a significant impact.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_0c.png" alt="img"></p>
+<p>When <strong>Historic data analysis</strong> is disabled (it is disabled by default), you create a <strong>streaming dataset</strong> as described earlier in this article. When <strong>Historic data analysis</strong> is <em>enabled</em>, the dataset created becomes both a <strong>streaming dataset</strong> and a <strong>push dataset</strong>. This is equivalent to using the Power BI REST APIs to create a dataset with its <em>defaultMode</em> set to <em>pushStreaming</em>, as described earlier in this article.</p>
+<p> Note</p>
+<p>For streaming datasets created using the Power BI service UI, as described in the previous paragraph, Azure AD authentication is not required. In such datasets, the dataset owner receives a URL with a rowkey, which authorizes the requestor to push data into the dataset with out using an Azure AD OAuth bearer token. Take now, however, that the Azure AD (AAD) approach still works to push data into the dataset.</p>
+<h3 id="Using-Azure-Stream-Analytics-to-push-data"><a href="#Using-Azure-Stream-Analytics-to-push-data" class="headerlink" title="Using Azure Stream Analytics to push data"></a>Using Azure Stream Analytics to push data</h3><p>You can add Power BI as an output within <strong>Azure Stream Analytics</strong> (ASA), and then visualize those data streams in the Power BI service in real time. This section describes technical details about how that process occurs.</p>
+<p>Azure Stream Analytics uses the Power BI REST APIs to create its output data stream to Power BI, with <em>defaultMode</em> set to <em>pushStreaming</em> (see earlier sections in this article for information on <em>defaultMode</em>), which results in a dataset that can take advantage of both <strong>push</strong> and <strong>streaming</strong>. During creation of the dataset, Azure Stream Analytics also sets the <strong>retentionPolicy</strong> flag to <em>basicFIFO</em>; with that setting, the database supporting its push dataset stores 200,000 rows, and after that limit is reached, rows are dropped in a first-in first-out (FIFO) fashion.</p>
+<p> Caution</p>
+<p>If your Azure Stream Analytics query results in very rapid output to Power BI (for example, once or twice per second), Azure Stream Analytics will begin batching those outputs into a single request. This may cause the request size to exceed the streaming tile limit. In that case, as mentioned in previous sections, streaming tiles will fail to render. In such cases, the best practice is to slow the rate of data output to Power BI; for example, instead of a maximum value every second, set it to a maximum over 10 seconds.</p>
+<h2 id="Set-up-your-real-time-streaming-dataset-in-Power-BI"><a href="#Set-up-your-real-time-streaming-dataset-in-Power-BI" class="headerlink" title="Set up your real-time streaming dataset in Power BI"></a>Set up your real-time streaming dataset in Power BI</h2><p>Now that we’ve covered the three primary types of datasets for real-time streaming, and the three primary ways you can push data into a dataset, let’s get your real-time streaming dataset working in Power BI.</p>
+<p>To get started with real-time streaming, you need to choose one of the two ways that streaming data can be consumed in Power BI:</p>
+<ul>
+<li><strong>tiles</strong> with visuals from streaming data</li>
+<li><strong>datasets</strong> created from streaming data that persist in Power BI</li>
+</ul>
+<p>With either option, you’ll need to set up <strong>Streaming data</strong> in Power BI. To do this, in your dashboard (either an existing dashboard, or a new one) select <strong>Add a tile</strong> and then select <strong>Custom streaming data</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_1.png" alt="img"></p>
+<p>If you don’t have streaming data set up yet, don’t worry - you can select <strong>manage data</strong> to get started.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_2.png" alt="img"></p>
+<p>On this page, you can input the endpoint of your streaming dataset if you already have one created (into the text box). If you don’t have a streaming dataset yet, select the plus icon ( <strong>+</strong> ) in the upper right corner to see the available options to create a streaming dataset.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_3.png" alt="img"></p>
+<p>When you click on the <strong>+</strong> icon, you see two options:</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_4a.png" alt="img"></p>
+<p>The next section describes these options, and goes into more detail about how to create a streaming <strong>tile</strong> or how to create a <strong>dataset</strong> from the streaming data source, which you can then use later to build reports.</p>
+<h2 id="Create-your-streaming-dataset-with-the-option-you-like-best"><a href="#Create-your-streaming-dataset-with-the-option-you-like-best" class="headerlink" title="Create your streaming dataset with the option you like best"></a>Create your streaming dataset with the option you like best</h2><p>There are two ways to create a real-time streaming data feed that can be consumed and visualized by Power BI:</p>
+<ul>
+<li><strong>Power BI REST API</strong> using a real-time streaming endpoint</li>
+<li><strong>PubNub</strong></li>
+</ul>
+<p>The next sections look at each option in turn.</p>
+<h3 id="Using-the-POWER-BI-REST-API"><a href="#Using-the-POWER-BI-REST-API" class="headerlink" title="Using the POWER BI REST API"></a>Using the POWER BI REST API</h3><p><strong>Power BI REST API</strong> - Recent improvements to the Power BI REST API are designed to make real-time streaming easier for developers. When you select <strong>API</strong> from the <strong>New streaming dataset</strong> window, you’re presented with entries to provide that enable Power BI to connect to and use your endpoint:</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_5.png" alt="img"></p>
+<p>If you want Power BI to store the data that’s sent through this data stream, enable <em>Historic data analysis</em> and you’ll be able to do reporting and analysis on the collected data stream. You can also <a href="https://docs.microsoft.com/rest/api/power-bi/" target="_blank" rel="noopener">learn more about the API</a>.</p>
+<p>Once you successfully create your data stream, you’re provided with a REST API URL endpoint, which your application can call using <em>POST</em> requests to push your data to Power BI <strong>streaming data</strong> dataset you created.</p>
+<p>When making <em>POST</em> requests, you should ensure the request body matches the sample JSON provided by the Power BI user interface. For example, wrap your JSON objects in an array.</p>
+<h3 id="Using-PubNub"><a href="#Using-PubNub" class="headerlink" title="Using PubNub"></a>Using PubNub</h3><p>With the integration of <strong>PubNub</strong> streaming with Power BI, you can use your low-latency <strong>PubNub</strong> data streams (or create new ones) and use them in Power BI. When you select <strong>PubNub</strong> and then select <strong>Next</strong>, you see the following window:</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_7.png" alt="img"></p>
+<p> Warning</p>
+<p>PubNub channels can be secured by using a PubNub Access Manager (PAM) authentication key. This key will be shared with all users who have access to the dashboard. You can <a href="https://www.pubnub.com/docs/web-javascript/pam-security" target="_blank" rel="noopener">learn more about PubNub access control</a>.</p>
+<p><strong>PubNub</strong> data streams are often high volume, and are not always suitable in their original form for storage and historical analysis. To use Power BI for historical analysis of PubNub data, you’ll have to aggregate the raw PubNub stream and send it to Power BI. One way to do that is with <a href="https://azure.microsoft.com/services/stream-analytics/" target="_blank" rel="noopener">Azure Stream Analytics</a>.</p>
+<h2 id="Example-of-using-real-time-streaming-in-Power-BI"><a href="#Example-of-using-real-time-streaming-in-Power-BI" class="headerlink" title="Example of using real time streaming in Power BI"></a>Example of using real time streaming in Power BI</h2><p>Here’s a quick example of how real time streaming in Power BI works. You can follow along with this sample to see for yourself the value of real time streaming.</p>
+<p>In this sample, we use a publicly available stream from <strong>PubNub</strong>. Here are the steps:</p>
+<ol>
+<li><p>In the <strong>Power BI service</strong>, select a dashboard (or create a new one) and select <strong>Add tile</strong> &gt; <strong>Custom Streaming Data</strong> and then select the <strong>Next</strong> button.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_1.png" alt="img"></p>
+</li>
+<li><p>If you don’t have and streaming data sources yet, select the <strong>manage data</strong> link (just above the <strong>Next</strong> button), then select <strong>+ Add streaming data</strong> from the link in the upper-right of the window. Select <strong>PubNub</strong> and then select <strong>Next</strong>.</p>
+</li>
+<li><p>Create a name for your dataset, then paste in the following values into the window that appears, then select <strong>Next</strong>:</p>
+<p><em>Subscribe key:</em></p>
+<p>Copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sub-c-5f1b7c8e-fbee-11e3-aa40-02ee2ddab7fe</span><br></pre></td></tr></table></figure>
+
+<p><em>Channel:</em></p>
+<p>Copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pubnub-sensor-network</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_8.png" alt="img"></p>
+</li>
+<li><p>In the following window, just select the defaults (which are automatically populated), then select <strong>Create</strong>.</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_9.png" alt="img"></p>
+</li>
+<li><p>Back in your Power BI workspace, create a new dashboard and then add a tile (see above for steps, if you need them). This time when you create a tile and select <strong>Custom Streaming Data</strong>, you have a streaming data set to work with. Go ahead and play around with it. Adding the <em>number</em> fields to line charts, and then adding other tiles, you can get a real time dashboard that looks like the following:</p>
+<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming-10.png" alt="Screenshot showing the results of real-time environmental sensors."></p>
+</li>
+</ol>
+<p>Give it a try, and play around with the sample dataset. Then go create your own datasets, and stream live data to Power BI.</p>
+<h2 id="Questions-and-answers"><a href="#Questions-and-answers" class="headerlink" title="Questions and answers"></a>Questions and answers</h2><p>Here are some common questions about real-time streaming in Power BI, and answers.</p>
+<h4 id="Can-I-use-filters-on-push-dataset-How-about-streaming-dataset"><a href="#Can-I-use-filters-on-push-dataset-How-about-streaming-dataset" class="headerlink" title="Can I use filters on push dataset? How about streaming dataset?"></a>Can I use filters on push dataset? How about streaming dataset?</h4><p>Unfortunately, streaming datasets do not support filtering. For push datasets, you can create a report, filter the report, and then pin the filtered visuals to a dashboard. However, there is no way to change the filter on the visual once it’s on the dashboard.</p>
+<p>Separately, you can pin the live report tile to the dashboard, in which case you can change the filters. However, live report tiles will not update in real-time as data is pushed in – you’ll have to manually update the visual by using the <em>refresh dashboard tiles</em> option in the <strong>More</strong> menu.</p>
+<p>When applying filters to push datasets with <em>DateTime</em> fields with millisecond precision, <em>equivalence</em> operators are not supported. However, operators such as greater than (&gt;) or less than (&lt;) do operate properly.</p>
+<h4 id="How-do-I-see-the-latest-value-on-a-push-dataset-How-about-streaming-dataset"><a href="#How-do-I-see-the-latest-value-on-a-push-dataset-How-about-streaming-dataset" class="headerlink" title="How do I see the latest value on a push dataset? How about streaming dataset?"></a>How do I see the latest value on a push dataset? How about streaming dataset?</h4><p>Streaming datasets are designed for displaying the latest data. You can use the <strong>Card</strong> streaming visual to easily see latest numeric values. Unfortunately, the card does not support data of type <em>DateTime</em> or <em>Text</em>. For push datasets, assuming you have a timestamp in the schema, you can try creating a report visual with the last N filter.</p>
+<h4 id="Can-I-connect-to-push-or-streaming-datasets-in-Power-BI-Desktop"><a href="#Can-I-connect-to-push-or-streaming-datasets-in-Power-BI-Desktop" class="headerlink" title="Can I connect to push or streaming datasets in Power BI Desktop?"></a>Can I connect to push or streaming datasets in Power BI Desktop?</h4><p>Unfortunately, this is not available at this time.</p>
+<h4 id="Given-the-previous-question-how-can-I-do-any-modeling-on-real-time-datasets"><a href="#Given-the-previous-question-how-can-I-do-any-modeling-on-real-time-datasets" class="headerlink" title="Given the previous question, how can I do any modeling on real-time datasets?"></a>Given the previous question, how can I do any modeling on real-time datasets?</h4><p>Modeling is not possible on a streaming dataset, since the data is not stored permanently. For a push dataset, you can use the update dataset/table REST APIs to add measures and relationships.</p>
+<h4 id="How-can-I-clear-all-the-values-on-a-push-dataset-How-about-streaming-dataset"><a href="#How-can-I-clear-all-the-values-on-a-push-dataset-How-about-streaming-dataset" class="headerlink" title="How can I clear all the values on a push dataset? How about streaming dataset?"></a>How can I clear all the values on a push dataset? How about streaming dataset?</h4><p>On a push dataset, you can use the delete rows REST API call. There is currently no way to clear data from a streaming dataset, though the data will clear itself after an hour.</p>
+<h4 id="I-set-up-an-Azure-Stream-Analytics-output-to-Power-BI-but-I-don’t-see-it-appearing-in-Power-BI-–-what’s-wrong"><a href="#I-set-up-an-Azure-Stream-Analytics-output-to-Power-BI-but-I-don’t-see-it-appearing-in-Power-BI-–-what’s-wrong" class="headerlink" title="I set up an Azure Stream Analytics output to Power BI, but I don’t see it appearing in Power BI – what’s wrong?"></a>I set up an Azure Stream Analytics output to Power BI, but I don’t see it appearing in Power BI – what’s wrong?</h4><p>Here’s a checklist you can use to troubleshoot the issue:</p>
+<ol>
+<li>Restart the Azure Stream Analytics job (jobs created before the streaming GA release will require a restart)</li>
+<li>Try reauthorizing your Power BI connection in Azure Stream Analytics</li>
+<li>Which workspace did you specify in the Azure Stream Analytics output? In the Power BI service, are you checking in that (same) workspace?</li>
+<li>Does the Azure Stream Analytics query explicitly output to the Power BI output? (using the INTO keyword)</li>
+<li>Does the Azure Stream Analytics job have data flowing through it? The dataset will only get created when there is data being transmitted.</li>
+<li>Can you look into the Azure Stream Analytics logs to see if there are any warnings or errors?</li>
+</ol>
+<h2 id="Automatic-page-refresh"><a href="#Automatic-page-refresh" class="headerlink" title="Automatic page refresh"></a>Automatic page refresh</h2><p>Automatic page refresh works at a report page level, and allows report authors to set a refresh interval for visuals in a page that is only active when the page is being consumed. Automatic page refresh is only available for DirectQuery data sources. The minimum refresh interval depends on which type of workspace the report is published in, and the capacity admin settings for Premium workspaces.</p>
+<p>Learn more about automatic page refresh in the <a href="https://docs.microsoft.com/en-us/power-bi/desktop-automatic-page-refresh" target="_blank" rel="noopener">automatic page refresh</a> article.</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://docs.microsoft.com/en-us/power-bi/service-real-time-streaming" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/power-bi/service-real-time-streaming</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Data Sampling and Randomization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -925,199 +1119,6 @@
 
 
   
-    <article id="post-CSS Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/CSS%20Notes/">CSS Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/CSS%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-20T21:29:18.248Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Some notes about CSS:</p>
-<h1 id="Normalizing-Browswer-Defaults"><a href="#Normalizing-Browswer-Defaults" class="headerlink" title="Normalizing Browswer Defaults"></a>Normalizing Browswer Defaults</h1><ol>
-<li><p>It’s good practice to include normalize.css as the first stylesheet you link to from your page. The link to your stylesheet comes after, so that your rules will build upon those defined in normalize.css.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- normalize.css --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- our own stylesheet --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/styles.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Files that end with <code>.min.css</code> have been “minified,” which just means that all the spaces have been taken out to make the file smaller and faster to download. When loading a library file from an online location like this, always use the <code>.min.css</code> version if it’s available.</p>
-<p>This works well in every case except when you are offline, which can happen when you are doing development. If you need access to normalize.css while offline, <a href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" target="_blank" rel="noopener">download it</a> to your project folder and link to it using a relative path, just like the link to your own stylesheet. By convention, we typically put files like this into a <code>lib/</code> folder, to keep them separate from our own files that we actively change.</p>
-</li>
-</ol>
-<ol start="2">
-<li>For large CSS files, professionals will typically minify them before deploying them to a production server, which involves removing all the whitespace to make the file smaller.</li>
-</ol>
-<h1 id="Selectors"><a href="#Selectors" class="headerlink" title="Selectors"></a>Selectors</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors</a></p>
-<ol>
-<li><p>Element selectors</p>
-</li>
-<li><p>Class selectors:</p>
-</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all elements with class="alert alert-warning"</span></span><br><span class="line"><span class="comment">(i.e., elements that have both classes) */</span></span><br><span class="line"><span class="selector-class">.alert</span><span class="selector-class">.alert-warning</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="3">
-<li>ID Selectors: The <code>id</code> attribute is commonly used to create bookmark hyperlinks (i.e., links that scroll the page to a particular section of the page), id selectors are a handy way to style those elements.</li>
-</ol>
-<ol start="4">
-<li>Descendant Selectors:</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects only the p elements contained within header elements */</span></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects elements with class="logo"</span></span><br><span class="line"><span class="comment">contained within p elements</span></span><br><span class="line"><span class="comment">contained within header elements */</span></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-tag">p</span> <span class="selector-class">.logo</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>It’s best practice to use no more than two or three.</p>
-<p> If you really want to select only direct children, you can use this variant of the syntax, known as a <strong>child selector</strong>:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects only the p elements that are direct children the header element  */</span></span><br><span class="line"><span class="selector-tag">header</span> &gt; <span class="selector-tag">p</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="5">
-<li>Group Selectors:</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all h1, h2, and h3 elements  */</span></span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span> &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">300</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Group selectors are an excellent way to adhere to the <strong>DRY principle</strong>: <strong>D</strong>on’t <strong>R</strong>epeat <strong>Y</strong>ourself! </p>
-<ol start="6">
-<li>Hover and Focus Pseudo Selectors:</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all elements with class="nav-link" */</span></span><br><span class="line"><span class="selector-class">.nav-link</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* selects all elements with class="nav-link" that are being hovered over with the mouse */</span></span><br><span class="line"><span class="selector-class">.nav-link</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="comment">/* change color to red */</span></span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* selects all &lt;input&gt; elements that have keyboard focus */</span></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">    <span class="comment">/* change background color to yellow */</span></span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Specificity-Calculated"><a href="#Specificity-Calculated" class="headerlink" title="Specificity Calculated"></a>Specificity Calculated</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a></p>
-<h1 id="Font"><a href="#Font" class="headerlink" title="Font"></a>Font</h1><p> Most web sites these days use <a href="https://www.fonts.com/content/learning/fontology/level-1/type-anatomy/serif-vs-sans-for-text-in-responsive-design" target="_blank" rel="noopener">sans-serifed</a> fonts for body text, as it tends to be easier to read at smaller point sizes.</p>
-<h1 id="Colors"><a href="#Colors" class="headerlink" title="Colors"></a>Colors</h1><p> We use a hexadecimal representation of a numeric color value, like <code>#FF0000</code>, which is pure red.</p>
-<p>The hex representation starts with a <code>#</code> symbol and is followed by six hexadecimal characters. The first two are the amount of red, the second two the amount of green, and the final two are the amount of blue. Hexadecimal <code>FF</code> is the same as decimal <code>255</code>.</p>
-<p>Amazing <a href="https://color.adobe.com/" target="_blank" rel="noopener">Adobe Color CC</a> tool. You can <a href="https://color.adobe.com/explore/newest/" target="_blank" rel="noopener">explore ready-made color palettes</a>, or design your own. You can also upload a photo and let the tool design a color palette for you based on the colors in the photo (click the camera icon on the top-right).</p>
-<h1 id="Measurement-Units"><a href="#Measurement-Units" class="headerlink" title="Measurement Units"></a>Measurement Units</h1><p>The absolute units are as follows:</p>
-<table>
-<thead>
-<tr>
-<th>Unit</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cm</td>
-<td>centimeters</td>
-</tr>
-<tr>
-<td>mm</td>
-<td>millimeters</td>
-</tr>
-<tr>
-<td>in</td>
-<td>inches</td>
-</tr>
-<tr>
-<td>px</td>
-<td>pixels, which are defined as 1/96 of an inch, regardless of how dense the pixels are on the current display</td>
-</tr>
-<tr>
-<td>pt</td>
-<td>points, which are defined as 1/72 of an inch</td>
-</tr>
-</tbody></table>
-<p>In addition to these absolute units, you can also use these relative units:</p>
-<table>
-<thead>
-<tr>
-<th>Unit</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>em</td>
-<td>the height of the current element’s font</td>
-</tr>
-<tr>
-<td>rem</td>
-<td>the height of the root element’s font (i.e., the font used on the root <code>html</code> element). To calculate from the base size to <code>rem</code> it would be based on percentage, but in decimal format. So 100% is <code>1.0rem</code> 150% is <code>1.5rem</code> and 200% is <code>2.0rem</code>.</td>
-</tr>
-<tr>
-<td>%</td>
-<td>a percentage of the parent element dimensions or parent element’s font</td>
-</tr>
-<tr>
-<td>vw</td>
-<td>one percent of the viewport width (i.e., the width of the browser window)</td>
-</tr>
-<tr>
-<td>vh</td>
-<td>one percent of the viewport height (i.e., the height of the browser window)</td>
-</tr>
-</tbody></table>
-<p>Absolute units are best for things you want to be consistent across devices (e.g., font size, or maximum width of some content). Relative units are best for things you want to adjust based on context (the width of a column in a multi-column layout, or the relative font size of an `` compared to the base font).</p>
-<h1 id="The-Box-Model"><a href="#The-Box-Model" class="headerlink" title="The Box Model"></a>The Box Model</h1><h3 id="Block-vs-inline-display"><a href="#Block-vs-inline-display" class="headerlink" title="Block vs inline display"></a>Block vs inline display</h3><p>Elements that are displayed as blocks by default include <code>p</code>, <code>div</code>, <code>ul</code>, <code>ol</code>, <code>li</code>, <code>header</code>, <code>main</code>, <code>article</code>, <code>footer</code>, <code>aside</code>, and many more. </p>
-<p>Elements that are displayed inline by default include <code>em</code>, <code>strong</code>, <code>span</code>, <code>a</code>, <code>small</code>, <code>abbr</code>, and several more.</p>
-<h3 id="Adjusting-width-and-height"><a href="#Adjusting-width-and-height" class="headerlink" title="Adjusting width and height"></a>Adjusting width and height</h3><p>You can adjust the default <code>width</code> and <code>height</code> of block elements using the <code>width</code> and <code>height</code> CSS properties, but you need to careful when doing so. If your element contains content, you should adjust only the <code>width</code> and never the <code>height</code>. If you constraint the <code>width</code> and the <code>height</code>, the element might not have enough room to display all of its content. But if you constrain only the <code>width</code>, the element will automatically grow taller to accommodate its content.</p>
-<p>Alternatively you can specify a <code>min-width</code> or <code>max-width</code> CSS property to ensure that the width is at least or at most a particular size. For example, setting <code>max-width</code> to <code>1170px</code> will allow the element to grow in width up to, but not beyond, <code>1170px</code>.</p>
-<h3 id="Margins-borders-and-padding"><a href="#Margins-borders-and-padding" class="headerlink" title="Margins, borders, and padding"></a>Margins, borders, and padding</h3><p>Elements displayed as blocks can also have a margin, border, and padding. </p>
-<h3 id="Horizontally-centering-constrained-width-elements"><a href="#Horizontally-centering-constrained-width-elements" class="headerlink" title="Horizontally centering constrained-width elements"></a>Horizontally centering constrained-width elements</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">1170px</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: auto;</span><br><span class="line">    <span class="attribute">margin-right</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources:"></a>Resources:</h1><p>CSS Cheat Sheet:</p>
-<p><a href="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/07/css3-mega-cheat-sheet-A4.pdf" target="_blank" rel="noopener">https://cdn.makeawebsitehub.com/wp-content/uploads/2016/07/css3-mega-cheat-sheet-A4.pdf</a></p>
-<p>Interactive CSS Cheat Sheet:</p>
-<p><a href="http://htmlcheatsheet.com/css/" target="_blank" rel="noopener">http://htmlcheatsheet.com/css/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/CSS%20Notes/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1215,6 +1216,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
@@ -1224,10 +1229,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
             
             <div class="clearfix"></div>

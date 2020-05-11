@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Problem-solving While Learning | Yanjie&#39;s Blog</title>
+  <title>Go Language | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Happy day to have great conversations with John, Sara, Nick, and Sean! 😁 Thoughts about ways to address technical questions: Choose the sources you trust. From there, learn other sources. Documentati">
+  <meta name="description" content="Notes about Go Language: Language Comparision:   Language Abstract Model Type conversion.  Efficiency: C++, C, Rust: Complile lanugage, cpu directly recognize before running. machine code, binary 0 1.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Problem-solving While Learning">
-<meta property="og:url" content="http://yoursite.com/2020/05/07/Problem-solving%20While%20Learning/index.html">
+<meta property="og:title" content="Go Language">
+<meta property="og:url" content="http://yoursite.com/2020/05/10/Go%20Language/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="Happy day to have great conversations with John, Sara, Nick, and Sean! 😁 Thoughts about ways to address technical questions: Choose the sources you trust. From there, learn other sources. Documentati">
+<meta property="og:description" content="Notes about Go Language: Language Comparision:   Language Abstract Model Type conversion.  Efficiency: C++, C, Rust: Complile lanugage, cpu directly recognize before running. machine code, binary 0 1.">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-08T06:45:40.083Z">
-<meta property="article:modified_time" content="2020-05-08T06:45:40.083Z">
+<meta property="article:published_time" content="2020-05-11T06:18:07.329Z">
+<meta property="article:modified_time" content="2020-05-11T06:18:21.036Z">
 <meta property="article:author" content="Yanjie Niu">
 <meta name="twitter:card" content="summary">
   
@@ -146,45 +146,77 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Problem-solving While Learning" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Go Language" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Problem-solving While Learning
+      Go Language
     </h1>
   
 
         
-        <a href="/2020/05/07/Problem-solving%20While%20Learning/" class="archive-article-date">
-  	<time datetime="2020-05-08T06:45:40.083Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
+        <a href="/2020/05/10/Go%20Language/" class="archive-article-date">
+  	<time datetime="2020-05-11T06:18:07.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Happy day to have great conversations with John, Sara, Nick, and Sean! 😁</p>
-<p>Thoughts about ways to address technical questions:</p>
-<h1 id="Choose-the-sources-you-trust-From-there-learn-other-sources"><a href="#Choose-the-sources-you-trust-From-there-learn-other-sources" class="headerlink" title="Choose the sources you trust. From there, learn other sources."></a>Choose the sources you trust. From there, learn other sources.</h1><ol>
-<li>Documentation: eg: JavaScript language specification</li>
-<li>developers.google.com</li>
+        <p>Notes about Go Language:</p>
+<p>Language Comparision: </p>
+<ol>
+<li>Language Abstract Model</li>
+<li>Type conversion.</li>
 </ol>
-<p><a href="https://developers.google.com/web/tools/chrome-devtools/javascript" target="_blank" rel="noopener">https://developers.google.com/web/tools/chrome-devtools/javascript</a></p>
-<ol start="3">
-<li>Safari books online: O’Reilly Media, 1990s, high reputation trustworthy, programming languages. </li>
-<li>stackoverflow</li>
-<li>twitter</li>
-<li>pinboard</li>
-<li>user group</li>
-<li>Community (Professors, classmates, and colleagues)</li>
+<p>Efficiency: C++, C, Rust: Complile lanugage, cpu directly recognize before running. machine code, binary 0 1. windows .exe, linux.</p>
+<p>(efficiency)</p>
+<p>Java: compiler JVM (compiling from programming language to machine language) (compiling byte code, the middle layer), JIT (just in time, parse byte code in advance, precompile machine code before running for certain repetitive parts). </p>
+<p>GC+VM (write once run everywhere)+ java web service commercizlization (tomcat, j2ee enterprise architect)</p>
+<p>script language: Fast to development: Ruby, Python, Perl: high-level, fast, fun for humans, lower, inefficient for computers. no jvm, jit engine, optimization worse. language dynamic.</p>
+<p>Type System:</p>
+<p>Static type: variable type, static. Java, C++ define integer i, in the scope the type could not be changed; but Python and Ruby could.  </p>
+<p>Dynamic type: Python, Ruby.</p>
+<p>Weak type: variable, whether it would be implied transferred. Java C++ Perl. easy for text processing.  but when the project is big, hard without type check. </p>
+<p>Strong type: String + integer, in python, run, different type, bind to a variable.</p>
+<p>Go: efficient and fast to implement, balance. </p>
+<ol>
+<li>complie language. garbage collector, allocate and assign resources, (java). collect, slow. </li>
+<li>concurrency, cloud computing.</li>
 </ol>
-<h1 id="Think-about-how-much-you-are-trying-to-solve-problems"><a href="#Think-about-how-much-you-are-trying-to-solve-problems" class="headerlink" title="Think about how much you are trying to solve problems."></a>Think about how much you are trying to solve problems.</h1><p>The need to build that page VS to know the fundamental things. </p>
-<h1 id="Check-out-some-articles-to-introduce-levels-of-expertise-for-certain-technology"><a href="#Check-out-some-articles-to-introduce-levels-of-expertise-for-certain-technology" class="headerlink" title="Check out some articles to introduce levels of expertise for certain technology."></a>Check out some articles to introduce levels of expertise for certain technology.</h1><p>EG: Seven levels of perl mastery; Are you a javascript expert?</p>
-<p>Through these, try to start from learning the terms.</p>
-<h1 id="Do-some-quizs-might-also-be-interesting"><a href="#Do-some-quizs-might-also-be-interesting" class="headerlink" title="Do some quizs might also be interesting."></a>Do some quizs might also be interesting.</h1><p>IntelliJ IDEA Edu</p>
+<p>javascript: every process runs single tread, how to further use os resources, asynchronism, non-blocking. node.js, promise, callback – object, when event triggered, implement – event pool on top of program, if event happends, it would make the promise and callback registered to the event, starts to run. walk around.</p>
+<p>python: gil, global interpreter lock. each python process only has one thread at one time, asynchronism IO to deal with concurrentcy.</p>
+<p>For Go: go routine, as call routine, different from thread (depends on os, scheduler, force to switch, any time). VS call routine: defined in code, when to switch.   协程 co-routine.</p>
+<p>scheduler, event/routine implementation.</p>
+<p>90s, one core cpu, context switch, stimulate concurrency. </p>
+<p>– </p>
+<p>since 2005, 4 core cpu speed keeps stable, Moore’s law down. processor limited, use concurrency, dual core cpu, to deal with. increase processor concurrency mechanism. </p>
+<p>OS:</p>
+<p>multi-process: </p>
+<p>scheduling, seems like smooth. but when using process to do concurrency, each process memory does not relate. New process could not be shared. share the same memory address. </p>
+<p>multi-tread: </p>
+<p>same process, several task, share memory, share variable.</p>
+<p>Drawback: </p>
+<p>trend: data race. even when we to use critical section, how to define critical section.  thread, mue text, signal.</p>
+<p>So go use Go routine: based on co-routine.</p>
+<p>Go routine: communicating-sequential-processes + co-routine.</p>
+<hr>
+<p>Go: no throw exception. </p>
+<p>return err, efficient.  each function call. faster than exception. </p>
+<p>coz exception, resources, not local scope, except check it to be put in another position.</p>
+<p>each function call, check err, proactively check fault. </p>
+<p>channel: message passing, write in channel, checking point, </p>
+<p>go func() – go routine.</p>
+<p>&lt;-     -&gt;: as queue.</p>
+<p>go routine:  several co-routine could run on one thread. shared resources, channel pass data. </p>
+<hr>
+<p>:= assign</p>
+<p>nil: null</p>
+<p>defer: stack, last in first out.</p>
+<p>Resource acquisition is initialization. Destruction  is reverse. </p>
 
       
 
@@ -264,7 +296,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/07/Problem-solving%20While%20Learning/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/10/Go%20Language/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -278,18 +310,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/08/Ingestion%20and%20processing%20of%20real-time%20automotive%20IoT%20data%20%20/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Ingestion and processing of real-time automotive IoT data  
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">How to use the JavaScript Fetch API to Get Data</div>
+    <a href="/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">How to Connect to Database in Javascript</div>
       <i class="icon-circle-right"></i>
     </a>
   
