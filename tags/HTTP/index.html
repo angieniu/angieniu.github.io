@@ -6,17 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>System Design Notes | Yanjie&#39;s Blog</title>
+  <title>Tag: HTTP | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="System Design Notes  Feed Product:1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algor">
-<meta property="og:type" content="article">
-<meta property="og:title" content="System Design Notes">
-<meta property="og:url" content="http://yoursite.com/2020/04/21/System%20Design%20Notes/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Yanjie&#39;s Blog">
+<meta property="og:url" content="http://yoursite.com/tags/HTTP/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="System Design Notes  Feed Product:1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algor">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-21T21:10:26.237Z">
-<meta property="article:modified_time" content="2020-04-21T21:21:52.730Z">
 <meta property="article:author" content="Yanjie Niu">
 <meta name="twitter:card" content="summary">
   
@@ -144,216 +140,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-System Design Notes" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      System Design Notes
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/05/13/HTTP%20Requests/" class="archive-article-date">
+  	<time datetime="2020-05-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/05/13/HTTP%20Requests/">HTTP Requests</a>
     </h1>
   
 
-        
-        <a href="/2020/04/21/System%20Design%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T21:10:26.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>System Design Notes </p>
-<h1 id="Feed-Product"><a href="#Feed-Product" class="headerlink" title="Feed Product:"></a>Feed Product:</h1><p>1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algorithm (relationship and interest) in the ranking consideration.<br>what is it? As a user, what I hope to use, the core functionalities, use cases. many core functionalities, what they are, what I will focus on to dissect, for products.<br>product directed</p>
-<p>2) functionalities: input – output – output as input — . deconstruct process in system design. signature. restful api.<br>Use cases: quantitative. data size, peak time query per second qps, read write query what they are, read more write less other patterns.<br>Story feed product:<br>Functionalities, use casesvoting dashboard, voting, real-time voting visualization</p>
-<h1 id="Case-Study-Leaderboard-Voting-Map"><a href="#Case-Study-Leaderboard-Voting-Map" class="headerlink" title="Case Study: Leaderboard, Voting Map"></a>Case Study: Leaderboard, Voting Map</h1><p>excellent pay attention to it.<br>How to make leaderboard:how to design and implement it.voting board/map.<br>Core features:top 100, time window: last 1 month, real-time fetch data // use case common sense, leaderboard.From the perspective of users: certain time windows, calculate scores, and sort. use case:</p>
-<ol>
-<li><p>data size: 10,000 active users, 10-20/day/ person, acceptance rate 50%. submission number: daily: 100,000, month: 3,000,000, annual: 36,500,000</p>
-</li>
-<li><p>query per second: peak time, average concurrent visiting, visting frequency: query per day: hope to get result immediately. result real-time expectation. offline calculation or real-time online calculation. response time short. </p>
-</li>
-<li><p>calculate score: ranking, score: fields (number, acceptance rate, time) don’t over dig into it.web application, packaging core functionalities. we believe it’s done, and integrate the whole design, flow architecture and product design. input and output as key words in the process. the best ranking / recommendation algorithm for data scientists to do.</p>
-<p>**** challenges and core features defined well , input and output and fit in the whole design.<br>input and output (score):how about input: time window number of questions, and acceptance rate, submission history. </p>
-</li>
-</ol>
-<p>Design:what data, data model, input and output, and data calculation and implement step by step.</p>
-<p>Leaderboard:core data:all users’ submission history, basic info.</p>
-<p>– relational database model. which question, accept or not, when submitted. schema to use, several tables and relationships. data model to use. query to check relationships, given time window, for person, submit how many,acceptance rate, and time, personal info. query submission history, calculate score, put to sort algorithm and sort.<br> think about it from a data model, do not think about speed to query right now. no need to use non-relational.</p>
-<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h2><p>slow: combine use case to discuss. the core is what query it is like. </p>
-<p>1) ad hoc query: transactional base query, specific condition and data related not that much. I hope to find what questions I do accept or not. query fast, coz index.</p>
-<p>2) aggregation query: scan this table, terrifying, no need to scan all the submission history. but the time window might need to be large enough. // basic design.database query, scan all data.<br>all voting board: all data, time window, – the past window, the most popular music, to scan all the history? no. </p>
-<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization:"></a>Optimization:</h2><p>leaderboard:</p>
-<p>scan daily? no. history data. or specific data within one day. and immediate update. – for unchanged history offline batch processing, aggregation process, real-time data, real-time checking.</p>
-<p>two parts of data:</p>
-<p>1) history data, offline data, daily and weekly preprocessing aggregation. past week data，daily data put into history, 固化, would not be changed. </p>
-<p>2) real-time data would be updated. the old would be merged into history data. size small and real-time updated.</p>
-<p>3) combine them, accurate cover history and real-time update. so ranking score, to scan today’s submission history, at most 100,000 * 365 per year. previous accepted rate data in history, the total data size is limited.<br>so put unchanged data 固化, batch processing, offline aggregation, in the evening to do;small dataset, online-real-time;combined with a compressed history dataset.</p>
-<p>Tool: flink, spark use one api to deal with both. </p>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h1><p>What to consider:</p>
-<ol>
-<li><p>1) query slow and fast, query size2) query features, large, slow: real-time, optimization, try to find immutable dataset. </p>
-</li>
-<li><p>immutable data/thing is the best and the easiest to deal with, offline deal with, query, request deal with. </p>
-</li>
-<li><p>input and output</p>
-</li>
-<li><p>data size, qps, pee and average</p>
-</li>
-<li><p>read vs write</p>
-</li>
-</ol>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
+          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/21/System%20Design%20Notes/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Principles-For-Lifelong-Meaningful-Relationships
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/04/20/CSS%20Notes/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSS Notes</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Feed-Product"><span class="toc-number">1.</span> <span class="toc-text">Feed Product:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Case-Study-Leaderboard-Voting-Map"><span class="toc-number">2.</span> <span class="toc-text">Case Study: Leaderboard, Voting Map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problems"><span class="toc-number">2.1.</span> <span class="toc-text">Problems:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimization"><span class="toc-number">2.2.</span> <span class="toc-text">Optimization:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Summary"><span class="toc-number">3.</span> <span class="toc-text">Summary:</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -380,9 +220,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

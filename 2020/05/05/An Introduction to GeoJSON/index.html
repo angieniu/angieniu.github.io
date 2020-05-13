@@ -48,7 +48,7 @@
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
-    <div class="left-col" q-class="show:isShow">
+<div class="left-col" q-class="show:isShow">
       
 <div class="overlay" style="background: #4d4d4d"></div>
 <div class="intrude-less">
@@ -66,8 +66,13 @@
 			
 				<li><a href="/">Homepage</a></li>
 	        
+				<li><a href="/archives/index.html">Archives</a></li>
+	        
 			</ul>
 		</nav>
+<nav>
+<a>Total Number of Articles: 29</a>
+</nav>
 		<nav class="header-smart-menu">
     		
     			
@@ -88,14 +93,9 @@
 				
 					<a class="github" target="_blank" href="https://github.com/angieniu" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
-		</nav>
+    		</nav>
+
 	</header>		
 </div>
 
@@ -120,18 +120,14 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
 						<a class="github" target="_blank" href="https://github.com/angieniu" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
 			        
 				</div>
 			</nav>
@@ -140,7 +136,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">Homepage</a></li>
+					<li style="width: 50%"><a href="/">Homepage</a></li>
+		        
+					<li style="width: 50%"><a href="/archives/index.html">Archives</a></li>
 		        
 				</ul>
 			</nav>
@@ -351,6 +349,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GeoJSON-is-Geographic-Data"><span class="toc-number">1.</span> <span class="toc-text">GeoJSON is Geographic Data</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GeoJSON-Parts"><span class="toc-number">2.</span> <span class="toc-text">GeoJSON Parts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Working-with-GeoJSON"><span class="toc-number">3.</span> <span class="toc-text">Working with GeoJSON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Testing-GeoJSON"><span class="toc-number">4.</span> <span class="toc-text">Testing GeoJSON</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-Else"><span class="toc-number">5.</span> <span class="toc-text">What Else?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">6.</span> <span class="toc-text">Reference:</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -377,11 +388,15 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+        </div>
     </div>
   </div>
 </footer>
+<!--页面点击小红心-->
+<script type="text/javascript" src="/love.js"></script>
+
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -462,6 +477,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">

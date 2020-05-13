@@ -6,19 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>System Design Notes | Yanjie&#39;s Blog</title>
+  <title>HTTP Requests | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="System Design Notes  Feed Product:1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algor">
+  <meta name="description" content="HTTP messages are how data is exchanged between a server and a client. There are two types of messages: requests sent by the client to trigger an action on the server, and responses, the answer from t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="System Design Notes">
-<meta property="og:url" content="http://yoursite.com/2020/04/21/System%20Design%20Notes/index.html">
+<meta property="og:title" content="HTTP Requests">
+<meta property="og:url" content="http://yoursite.com/2020/05/13/HTTP%20Requests/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="System Design Notes  Feed Product:1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algor">
+<meta property="og:description" content="HTTP messages are how data is exchanged between a server and a client. There are two types of messages: requests sent by the client to trigger an action on the server, and responses, the answer from t">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-21T21:10:26.237Z">
-<meta property="article:modified_time" content="2020-04-21T21:21:52.730Z">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/13827/HTTPMsgStructure2.png">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/13821/HTTP_Request_Headers2.png">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/13823/HTTP_Response_Headers2.png">
+<meta property="og:image" content="https://mdn.mozillademos.org/files/13819/Binary_framing2.png">
+<meta property="article:published_time" content="2020-05-13T07:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-13T11:57:49.498Z">
 <meta property="article:author" content="Yanjie Niu">
+<meta property="article:tag" content="HTTP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -144,65 +151,108 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-System Design Notes" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-HTTP Requests" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      System Design Notes
+      HTTP Requests
     </h1>
   
 
         
-        <a href="/2020/04/21/System%20Design%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T21:10:26.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
+        <a href="/2020/05/13/HTTP%20Requests/" class="archive-article-date">
+  	<time datetime="2020-05-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>System Design Notes </p>
-<h1 id="Feed-Product"><a href="#Feed-Product" class="headerlink" title="Feed Product:"></a>Feed Product:</h1><p>1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algorithm (relationship and interest) in the ranking consideration.<br>what is it? As a user, what I hope to use, the core functionalities, use cases. many core functionalities, what they are, what I will focus on to dissect, for products.<br>product directed</p>
-<p>2) functionalities: input – output – output as input — . deconstruct process in system design. signature. restful api.<br>Use cases: quantitative. data size, peak time query per second qps, read write query what they are, read more write less other patterns.<br>Story feed product:<br>Functionalities, use casesvoting dashboard, voting, real-time voting visualization</p>
-<h1 id="Case-Study-Leaderboard-Voting-Map"><a href="#Case-Study-Leaderboard-Voting-Map" class="headerlink" title="Case Study: Leaderboard, Voting Map"></a>Case Study: Leaderboard, Voting Map</h1><p>excellent pay attention to it.<br>How to make leaderboard:how to design and implement it.voting board/map.<br>Core features:top 100, time window: last 1 month, real-time fetch data // use case common sense, leaderboard.From the perspective of users: certain time windows, calculate scores, and sort. use case:</p>
+        <p>HTTP messages are how data is exchanged between a server and a client. There are two types of messages: <em>requests</em> sent by the client to trigger an action on the server, and <em>responses</em>, the answer from the server.</p>
+<p>HTTP messages are composed of textual information encoded in ASCII, and span over multiple lines. In HTTP/1.1, and earlier versions of the protocol, these messages were openly sent across the connection. In HTTP/2, the once human-readable message is now divided up into HTTP frames, providing optimization and performance improvements.</p>
+<p>Web developers, or webmasters, rarely craft these textual HTTP messages themselves: software, a Web browser, proxy, or Web server, perform this action. They provide HTTP messages through config files (for proxies or servers), APIs (for browsers), or other interfaces.</p>
+<p><img src="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png" alt="From a user-, script-, or server- generated event, an HTTP/1.x msg is generated, and if HTTP/2 is in use, it is binary framed into an HTTP/2 stream, then sent."></p>
+<p>The HTTP/2 binary framing mechanism has been designed to not require any alteration of the APIs or config files applied: it is broadly transparent to the user.</p>
+<p>HTTP requests, and responses, share similar structure and are composed of:</p>
 <ol>
-<li><p>data size: 10,000 active users, 10-20/day/ person, acceptance rate 50%. submission number: daily: 100,000, month: 3,000,000, annual: 36,500,000</p>
+<li>A <em>start-line</em> describing the requests to be implemented, or its status of whether successful or a failure. This start-line is always a single line.</li>
+<li>An optional set of <em>HTTP headers</em> specifying the request, or describing the body included in the message.</li>
+<li>A blank line indicating all meta-information for the request has been sent.</li>
+<li>An optional <em>body</em> containing data associated with the request (like content of an HTML form), or the document associated with a response. The presence of the body and its size is specified by the start-line and HTTP headers.</li>
+</ol>
+<p>The start-line and HTTP headers of the HTTP message are collectively known as the <em>head</em> of the requests, whereas its payload is known as the <em>body</em>.</p>
+<p><img src="https://mdn.mozillademos.org/files/13827/HTTPMsgStructure2.png" alt="Requests and responses share a common structure in HTTP"></p>
+<h2 id="HTTP-Requests"><a href="#HTTP-Requests" class="headerlink" title="HTTP Requests"></a>HTTP Requests</h2><h3 id="Start-line"><a href="#Start-line" class="headerlink" title="Start line"></a>Start line</h3><p>HTTP requests are messages sent by the client to initiate an action on the server. Their <em>start-line</em> contain three elements:</p>
+<ol>
+<li><p>An <em><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods" target="_blank" rel="noopener">HTTP method</a></em>, a verb (like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET" target="_blank" rel="noopener"><code>GET</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT" target="_blank" rel="noopener"><code>PUT</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST" target="_blank" rel="noopener"><code>POST</code></a>) or a noun (like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD" target="_blank" rel="noopener"><code>HEAD</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS" target="_blank" rel="noopener"><code>OPTIONS</code></a>), that describes the action to be performed. For example, <code>GET</code> indicates that a resource should be fetched or <code>POST</code> means that data is pushed to the server (creating or modifying a resource, or generating a temporary document to send back).</p>
 </li>
-<li><p>query per second: peak time, average concurrent visiting, visting frequency: query per day: hope to get result immediately. result real-time expectation. offline calculation or real-time online calculation. response time short. </p>
-</li>
-<li><p>calculate score: ranking, score: fields (number, acceptance rate, time) don’t over dig into it.web application, packaging core functionalities. we believe it’s done, and integrate the whole design, flow architecture and product design. input and output as key words in the process. the best ranking / recommendation algorithm for data scientists to do.</p>
-<p>**** challenges and core features defined well , input and output and fit in the whole design.<br>input and output (score):how about input: time window number of questions, and acceptance rate, submission history. </p>
+<li><p>The</p>
 </li>
 </ol>
-<p>Design:what data, data model, input and output, and data calculation and implement step by step.</p>
-<p>Leaderboard:core data:all users’ submission history, basic info.</p>
-<p>– relational database model. which question, accept or not, when submitted. schema to use, several tables and relationships. data model to use. query to check relationships, given time window, for person, submit how many,acceptance rate, and time, personal info. query submission history, calculate score, put to sort algorithm and sort.<br> think about it from a data model, do not think about speed to query right now. no need to use non-relational.</p>
-<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h2><p>slow: combine use case to discuss. the core is what query it is like. </p>
-<p>1) ad hoc query: transactional base query, specific condition and data related not that much. I hope to find what questions I do accept or not. query fast, coz index.</p>
-<p>2) aggregation query: scan this table, terrifying, no need to scan all the submission history. but the time window might need to be large enough. // basic design.database query, scan all data.<br>all voting board: all data, time window, – the past window, the most popular music, to scan all the history? no. </p>
-<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization:"></a>Optimization:</h2><p>leaderboard:</p>
-<p>scan daily? no. history data. or specific data within one day. and immediate update. – for unchanged history offline batch processing, aggregation process, real-time data, real-time checking.</p>
-<p>two parts of data:</p>
-<p>1) history data, offline data, daily and weekly preprocessing aggregation. past week data，daily data put into history, 固化, would not be changed. </p>
-<p>2) real-time data would be updated. the old would be merged into history data. size small and real-time updated.</p>
-<p>3) combine them, accurate cover history and real-time update. so ranking score, to scan today’s submission history, at most 100,000 * 365 per year. previous accepted rate data in history, the total data size is limited.<br>so put unchanged data 固化, batch processing, offline aggregation, in the evening to do;small dataset, online-real-time;combined with a compressed history dataset.</p>
-<p>Tool: flink, spark use one api to deal with both. </p>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h1><p>What to consider:</p>
-<ol>
-<li><p>1) query slow and fast, query size2) query features, large, slow: real-time, optimization, try to find immutable dataset. </p>
-</li>
-<li><p>immutable data/thing is the best and the easiest to deal with, offline deal with, query, request deal with. </p>
-</li>
-<li><p>input and output</p>
-</li>
-<li><p>data size, qps, pee and average</p>
-</li>
-<li><p>read vs write</p>
-</li>
+<p>   request target</p>
+<p>   , usually a</p>
+<p>   URL</p>
+<p>   , or the absolute path of the protocol, port, and domain are usually characterized by the request context. The format of this request target varies between different HTTP methods. It can be</p>
+<ul>
+<li>An absolute path, ultimately followed by a <code>&#39;?&#39;</code> and query string. This is the most common form, known as the <em>origin form</em>, and is used with <code>GET</code>, <code>POST</code>, <code>HEAD</code>, and <code>OPTIONS</code> methods.<br><code>POST / HTTP/1.1GET /background.png HTTP/1.0HEAD /test.html?query=alibaba HTTP/1.1OPTIONS /anypage.html HTTP/1.0</code></li>
+<li>A complete URL, known as the <em>absolute form</em>, is mostly used with <code>GET</code> when connected to a proxy.<br><code>GET http://developer.mozilla.org/en-US/docs/Web/HTTP/Messages HTTP/1.1</code></li>
+<li>The authority component of a URL, consisting of the domain name and optionally the port (prefixed by a <code>&#39;:&#39;</code>), is called the <em>authority form</em>. It is only used with <code>CONNECT</code> when setting up an HTTP tunnel.<br><code>CONNECT developer.mozilla.org:80 HTTP/1.1</code></li>
+<li>The <em>asterisk form</em>, a simple asterisk (<code>&#39;*&#39;</code>) is used with <code>OPTIONS</code>, representing the server as a whole.<br><code>OPTIONS * HTTP/1.1</code></li>
+</ul>
+<ol start="3">
+<li>The <em>HTTP version</em>, which defines the structure of the remaining message, acting as an indicator of the expected version to use for the response.</li>
 </ol>
+<h3 id="Headers"><a href="#Headers" class="headerlink" title="Headers"></a>Headers</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers" target="_blank" rel="noopener">HTTP headers</a> from a request follow the same basic structure of an HTTP header: a case-insensitive string followed by a colon (<code>&#39;:&#39;</code>) and a value whose structure depends upon the header. The whole header, including the value, consist of one single line, which can be quite long.</p>
+<p>There are numerous request headers available. They can be divided in several groups:</p>
+<ul>
+<li><em>General headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Via" target="_blank" rel="noopener"><code>Via</code></a>, apply to the message as a whole.</li>
+<li><em>Request headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent" target="_blank" rel="noopener"><code>User-Agent</code></a>, <code>Accept-Type</code>, modify the request by specifying it further (like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language" target="_blank" rel="noopener"><code>Accept-Language</code></a>), by giving context (like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer" target="_blank" rel="noopener"><code>Referer</code></a>), or by conditionally restricting it (like <code>If-None</code>).</li>
+<li><em>Entity headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length" target="_blank" rel="noopener"><code>Content-Length</code></a> which apply to the body of the request. Obviously, there is no such header transmitted if there is no body in the request.</li>
+</ul>
+<p><img src="https://mdn.mozillademos.org/files/13821/HTTP_Request_Headers2.png" alt="Example of headers in an HTTP request"></p>
+<h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><p>The final part of the request is its body. Not all requests have one: requests fetching resources, like <code>GET</code>, <code>HEAD</code>, <code>DELETE</code>, or <code>OPTIONS</code>, usually don’t need one. Some requests send data to the server in order to update it: as often the case with <code>POST</code> requests (containing HTML form data).</p>
+<p>Bodies can be broadly divided into two categories:</p>
+<ul>
+<li>Single-resource bodies, consisting of one single file, defined by the two headers: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="noopener"><code>Content-Type</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length" target="_blank" rel="noopener"><code>Content-Length</code></a>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#multipartform-data" target="_blank" rel="noopener">Multiple-resource bodies</a>, consisting of a multipart body, each containing a different bit of information. This is typically associated with <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms" target="_blank" rel="noopener">HTML Forms</a>.</li>
+</ul>
+<h2 id="HTTP-Responses"><a href="#HTTP-Responses" class="headerlink" title="HTTP Responses"></a>HTTP Responses</h2><h3 id="Status-line"><a href="#Status-line" class="headerlink" title="Status line"></a>Status line</h3><p>The start line of an HTTP response, called the <em>status line</em>, contains the following information:</p>
+<ol>
+<li>The <em>protocol version</em>, usually <code>HTTP/1.1</code>.</li>
+<li>A <em>status code</em>, indicating success or failure of the request. Common status codes are <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200" target="_blank" rel="noopener"><code>200</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404" target="_blank" rel="noopener"><code>404</code></a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302" target="_blank" rel="noopener"><code>302</code></a></li>
+<li>A <em>status text</em>. A brief, purely informational, textual description of the status code to help a human understand the HTTP message.</li>
+</ol>
+<p>A typical status line looks like: <code>HTTP/1.1 404 Not Found</code>.</p>
+<h3 id="Headers-1"><a href="#Headers-1" class="headerlink" title="Headers"></a>Headers</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers" target="_blank" rel="noopener">HTTP headers</a> for responses follow the same structure as any other header: a case-insensitive string followed by a colon (<code>&#39;:&#39;</code>) and a value whose structure depends upon the type of the header. The whole header, including its value, presents as a single line.</p>
+<p>There are numerous response headers available. These can be divided into several groups:</p>
+<ul>
+<li><em>General headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Via" target="_blank" rel="noopener"><code>Via</code></a>, apply to the whole message.</li>
+<li><em>Response headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary" target="_blank" rel="noopener"><code>Vary</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Ranges" target="_blank" rel="noopener"><code>Accept-Ranges</code></a>, give additional information about the server which doesn’t fit in the status line.</li>
+<li><em>Entity headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length" target="_blank" rel="noopener"><code>Content-Length</code></a>, apply to the body of the response. Typically, no such headers are transmitted when there is no body in the response.</li>
+</ul>
+<p><img src="https://mdn.mozillademos.org/files/13823/HTTP_Response_Headers2.png" alt="Example of headers in an HTTP response"></p>
+<h3 id="Body-1"><a href="#Body-1" class="headerlink" title="Body"></a>Body</h3><p>The last part of a response is the body. Not all responses have one: responses with a status code, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201" target="_blank" rel="noopener"><code>201</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204" target="_blank" rel="noopener"><code>204</code></a>, usually don’t.</p>
+<p>Bodies can be broadly divided into three categories:</p>
+<ul>
+<li>Single-resource bodies, consisting of a single file of known length, defined by the two headers: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="noopener"><code>Content-Type</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length" target="_blank" rel="noopener"><code>Content-Length</code></a>.</li>
+<li>Single-resource bodies, consisting of a single file of unknown length, encoded by chunks with <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding" target="_blank" rel="noopener"><code>Transfer-Encoding</code></a> set to <code>chunked</code>.</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#multipartform-data" target="_blank" rel="noopener">Multiple-resource bodies</a>, consisting of a multipart body, each containing a different section of information. These are relatively rare.</li>
+</ul>
+<h2 id="HTTP-2-Frames"><a href="#HTTP-2-Frames" class="headerlink" title="HTTP/2 Frames"></a>HTTP/2 Frames</h2><p>HTTP/1.x messages have a few drawbacks for performance:</p>
+<ul>
+<li>Headers, unlike bodies, are uncompressed.</li>
+<li>Headers are often very similar from one message to the next one, yet still repeated across connections.</li>
+<li>No multiplexing can be done. Several connections need opening on the same server: and warm TCP connections are more efficient than cold ones.</li>
+</ul>
+<p>HTTP/2 introduces an extra step: it divides HTTP/1.x messages into frames which are embedded in a stream. Data and header frames are separated, this allows header compression. Several streams can be combined together, a process called <em>multiplexing</em>, allowing more efficient underlying TCP connections.</p>
+<p><img src="https://mdn.mozillademos.org/files/13819/Binary_framing2.png" alt="HTTP/2 modify the HTTP message to divide them in frames (part of a single stream), allowing for more optimization."></p>
+<p>HTTP frames are now transparent to Web developers. This is an additional step in HTTP/2, between HTTP/1.1 messages and the underlying transport protocol. No changes are needed in the APIs used by Web developers to utilize HTTP frames; when available in both the browser and the server, HTTP/2 is switched on and used.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>HTTP messages are the key in using HTTP; their structure is simple, and they are highly extensible. The HTTP/2 framing mechanism adds a new intermediate layer between the HTTP/1.x syntax and the underlying transport protocol, without fundamentally modifying it: building upon proven mechanisms.</p>
+<hr>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages</a></p>
 
       
 
@@ -232,6 +282,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -282,7 +343,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/21/System%20Design%20Notes/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/13/HTTP%20Requests/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -296,18 +357,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Principles-For-Lifelong-Meaningful-Relationships
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/20/CSS%20Notes/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CSS Notes</div>
+    <a href="/2020/05/12/RESTful,%20Sessions,%20Cookies/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">RESTful, Sessions, Cookies</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -334,7 +386,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Feed-Product"><span class="toc-number">1.</span> <span class="toc-text">Feed Product:</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Case-Study-Leaderboard-Voting-Map"><span class="toc-number">2.</span> <span class="toc-text">Case Study: Leaderboard, Voting Map</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Problems"><span class="toc-number">2.1.</span> <span class="toc-text">Problems:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimization"><span class="toc-number">2.2.</span> <span class="toc-text">Optimization:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Summary"><span class="toc-number">3.</span> <span class="toc-text">Summary:</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-Requests"><span class="toc-number">1.</span> <span class="toc-text">HTTP Requests</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Start-line"><span class="toc-number">1.1.</span> <span class="toc-text">Start line</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Headers"><span class="toc-number">1.2.</span> <span class="toc-text">Headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Body"><span class="toc-number">1.3.</span> <span class="toc-text">Body</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-Responses"><span class="toc-number">2.</span> <span class="toc-text">HTTP Responses</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Status-line"><span class="toc-number">2.1.</span> <span class="toc-text">Status line</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Headers-1"><span class="toc-number">2.2.</span> <span class="toc-text">Headers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Body-1"><span class="toc-number">2.3.</span> <span class="toc-text">Body</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-2-Frames"><span class="toc-number">3.</span> <span class="toc-text">HTTP&#x2F;2 Frames</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">4.</span> <span class="toc-text">Conclusion</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">5.</span> <span class="toc-text">Reference</span></a></li></ol>
                     </div>
                 </span>
             </div>
