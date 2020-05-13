@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Yanjie&#39;s Blog</title>
+  <title>RESTful, Sessions, Cookies | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+  <meta name="description" content="Notes on RESTful API (stateless) VS Session:   (^▽^) Stateless applications Web application servers are generally “stateless”: Each HTTP request is independent; server can’t tell if 2 requests came fr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RESTful, Sessions, Cookies">
+<meta property="og:url" content="http://yoursite.com/2020/05/12/RESTful,%20Sessions,%20Cookies/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="Notes on RESTful API (stateless) VS Session:   (^▽^) Stateless applications Web application servers are generally “stateless”: Each HTTP request is independent; server can’t tell if 2 requests came fr">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-13T06:47:34.434Z">
+<meta property="article:modified_time" content="2020-05-13T06:47:34.434Z">
 <meta property="article:author" content="Yanjie Niu">
 <meta name="twitter:card" content="summary">
   
@@ -142,263 +146,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-RESTful, Sessions, Cookies" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      RESTful, Sessions, Cookies
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/RESTful,%20Sessions,%20Cookies/" class="archive-article-date">
+  	<time datetime="2020-05-13T06:47:34.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Notes on RESTful API (stateless) VS Session:   (<strong>^▽^</strong>)</p>
+<h2 id="Stateless-applications"><a href="#Stateless-applications" class="headerlink" title="Stateless applications"></a>Stateless applications</h2><ul>
+<li>Web application servers are generally “stateless”:<ul>
+<li>Each HTTP request is independent; server can’t tell if 2 requests came from the same browser or user.</li>
+<li>Web server applications maintain no information in memory from request to request (only information on disk survives from one request to another).</li>
+</ul>
+</li>
+<li>Statelessness not always convenient for application developers: need to tie together a series of requests from the same user.</li>
+</ul>
+<h2 id="Browser-cookies"><a href="#Browser-cookies" class="headerlink" title="Browser cookies"></a>Browser cookies</h2><ul>
+<li>Cookie basics:<ul>
+<li>The first time a browser connects with a particular server, there are no cookies.</li>
+<li>When the server responds it includes a Set-Cookie: header that defines a cookie.</li>
+<li>Each cookie is just a name-value pair.</li>
+<li>In the future whenever the browser connects with the same server, it includes a Cookie: header containing the name and value, which the server can use to connect related requests.</li>
+</ul>
+</li>
+<li>What’s in a cookie?<ul>
+<li>Name and data.<ul>
+<li>Data size limited by browsers (typically &lt; 4 KB).</li>
+<li>A server can define multiple cookies with different names, but browsers limit the number of cookies per server (around 50).</li>
+</ul>
+</li>
+<li>Domain for this cookie: server, port (optional), URL prefix (optional). The cookie is only included in requests matching its domain.</li>
+<li>Expiration date: browser can delete old cookies.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Sessions"><a href="#Sessions" class="headerlink" title="Sessions"></a>Sessions</h2><ul>
+<li>Cookies are used by the server to implement</li>
+</ul>
+<p>  sessions</p>
+<p>  :</p>
+<ul>
+<li>A pool of data related to an active connection (one browser instance).</li>
+</ul>
+<ul>
+<li>Typically the cookie for an application contains an identifier for a session.</li>
+</ul>
+<ul>
+<li><p>Web frameworks like Rails do most of the work of managing sessions and cookies:</p>
+<ul>
+<li>Rails provides</li>
+</ul>
+</li>
+</ul>
+<pre><code>session
+
+, a hash-like object in which you can store anything you like
+
+- Data will be available in all future requests from the same browser.</code></pre><ul>
+<li><p>Rails automatically checks for a session cookie at the start of each request:</p>
+<ul>
+<li>Cookie exists? use it to find session data</li>
+<li>No cookie? Create new session, new cookie</li>
+</ul>
+</li>
+<li><p>End of each request: save session data where it can be found by future requests.</p>
+</li>
+</ul>
+<ul>
+<li><p>Managing session state:</p>
+<ul>
+<li>Approach #1: just keep state in main memory</li>
+<li>Approach #2: store session state in files on disk</li>
+<li>Approach #3: store session state in a database</li>
+<li>Most frameworks allow you to control session storage:<ul>
+<li>Provide an object that saves and restores session data.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Server must eventually delete stale session data.</p>
+</li>
+</ul>
+<ul>
+<li>Sessions have numerous security issues, which we will discuss later.</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/System%20Design%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T21:10:26.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/System%20Design%20Notes/">System Design Notes</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/12/RESTful,%20Sessions,%20Cookies/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/CSS%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-20T21:29:18.248Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/10/Go%20Language/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Go Language</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/CSS%20Notes/">CSS Notes</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/19/Thoughts/" class="archive-article-date">
-  	<time datetime="2020-04-20T06:34:04.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/19/Thoughts/">Thoughts</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/" class="archive-article-date">
-  	<time datetime="2020-04-19T06:26:06.617Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/">Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/" class="archive-article-date">
-  	<time datetime="2020-04-18T06:48:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/">11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/16/How-to-build-a-real-time-parking-availability-system/" class="archive-article-date">
-  	<time datetime="2020-04-17T03:07:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/16/How-to-build-a-real-time-parking-availability-system/">How to build a real-time parking availability system?</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Real-time Parking Availability, IoT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/15/New-Journey-New-Blog/" class="archive-article-date">
-  	<time datetime="2020-04-16T01:44:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/New-Journey-New-Blog/">New Journey, New Blog</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/15/hello-world/" class="archive-article-date">
-  	<time datetime="2020-04-16T01:03:21.719Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/hello-world/">Hello World</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -422,8 +395,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
