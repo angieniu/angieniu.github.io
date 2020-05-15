@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Thoughts | Yanjie&#39;s Blog</title>
+  <title>Mongo DB Node.JS Driver documentation | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="人的一生都在不断地原谅伤害自己的人，又每天和相爱的人渐行渐远 ……">
+  <meta name="description" content="Such a wonderful day to move on to the next step of web development! I am going to build Mongo DB database. Notes are below: Mongo DB has rapidly grown to become a popular database for web application">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thoughts">
-<meta property="og:url" content="http://yoursite.com/2020/04/19/Thoughts/index.html">
+<meta property="og:title" content="Mongo DB Node.JS Driver documentation">
+<meta property="og:url" content="http://yoursite.com/2020/05/14/2020-05-13-Mongo-DB-Node.JS-Driver-documentation/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="人的一生都在不断地原谅伤害自己的人，又每天和相爱的人渐行渐远 ……">
+<meta property="og:description" content="Such a wonderful day to move on to the next step of web development! I am going to build Mongo DB database. Notes are below: Mongo DB has rapidly grown to become a popular database for web application">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-20T06:34:04.940Z">
-<meta property="article:modified_time" content="2020-04-20T06:35:51.605Z">
+<meta property="article:published_time" content="2020-05-14T07:00:00.000Z">
+<meta property="article:modified_time" content="2020-05-15T07:02:09.494Z">
 <meta property="article:author" content="Yanjie Niu">
+<meta property="article:tag" content="Mongo DB, Node.JS, Database">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
@@ -145,27 +146,154 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Thoughts" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2020-05-13-Mongo-DB-Node.JS-Driver-documentation" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Thoughts
+      Mongo DB Node.JS Driver documentation
     </h1>
   
 
         
-        <a href="/2020/04/19/Thoughts/" class="archive-article-date">
-  	<time datetime="2020-04-20T06:34:04.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
+        <a href="/2020/05/14/2020-05-13-Mongo-DB-Node.JS-Driver-documentation/" class="archive-article-date">
+  	<time datetime="2020-05-14T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>人的一生都在不断地原谅伤害自己的人，又每天和相爱的人渐行渐远 …… </p>
+        <p>Such a wonderful day to move on to the next step of web development! I am going to build Mongo DB database. Notes are below:</p>
+<p>Mongo DB has rapidly grown to become a popular database for web applications and is a perfect fit for Node.JS applications, letting you write Javascript for the client, backend and database layer. Its schemaless nature is a better match to our constantly evolving data structures in web applications, and the integrated support for location queries is a bonus that’s hard to ignore. Throw in Replica Sets for scaling, and we’re looking at really nice platform to grow your storage needs now and in the future.</p>
+<p>Now to shamelessly plug my driver. It can be downloaded via npm, or fetched from the github repository. To install via npm, do the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mongodb</span><br></pre></td></tr></table></figure>
+
+<p>or go fetch it from github at <a href="https://github.com/mongodb/node-mongodb-native" target="_blank" rel="noopener">https://github.com/mongodb/node-mongodb-native</a></p>
+<p>Once this business is taken care of, let’s move through the types available for the driver and then how to connect to your Mongo DB instance before facing the usage of some CRUD operations.</p>
+<a id="more"></a>
+
+<h2 id="Mongo-DB-data-types"><a href="#Mongo-DB-data-types" class="headerlink" title="Mongo DB data types"></a>Mongo DB data types</h2><p>So there is an important thing to keep in mind when working with Mongo DB, and that is the slight mapping difference between types Mongo DB supports and native Javascript data types. Let’s have a look at the types supported out of the box and then how types are promoted by the driver to fit as close to native Javascript types as possible.</p>
+<ul>
+<li><strong>Float</strong> is a 8 byte and is directly convertible to the Javascript type Number</li>
+<li><strong>Double class</strong> a special class representing a float value, this is especially useful when using capped collections where you need to ensure your values are always floats.</li>
+<li><strong>Integers</strong> is a bit trickier due to the fact that Javascript represents all Numbers as 64 bit floats meaning that the maximum integer value is at a 53 bit. Mongo has two types for integers, a 32 bit and a 64 bit. The driver will try to fit the value into 32 bits if it can and promote it to 64 bits if it has to. Similarly it will deserialize attempting to fit it into 53 bits if it can. If it cannot it will return an instance of <strong>Long</strong> to avoid losing precision.</li>
+<li><strong>Long class</strong> a special class that lets you store 64 bit integers and also lets you operate on the 64 bit integers.</li>
+<li><strong>Date</strong> maps directly to a Javascript Date</li>
+<li><strong>RegExp</strong> maps directly to a Javascript RegExp</li>
+<li><strong>String</strong> maps directly to a Javascript String (encoded in utf8)</li>
+<li><strong>Binary class</strong> a special class that lets you store data in Mongo DB</li>
+<li><strong>Code class</strong> a special class that lets you store javascript functions in Mongo DB, can also provide a scope to run the method in</li>
+<li><strong>ObjectID class</strong> a special class that holds a MongoDB document identifier (the equivalent to a Primary key)</li>
+<li><strong>DbRef class</strong> a special class that lets you include a reference in a document pointing to another object</li>
+<li><strong>Symbol class</strong> a special class that lets you specify a symbol, not really relevant for javascript but for languages that supports the concept of symbols.</li>
+</ul>
+<p>As we see the number type can be a little tricky due to the way integers are implemented in Javascript. The latest driver will do correct conversion up to 53 bits of complexity. If you need to handle big integers the recommendation is to use the Long class to operate on the numbers.</p>
+<h2 id="Getting-that-connection-to-the-database"><a href="#Getting-that-connection-to-the-database" class="headerlink" title="Getting that connection to the database"></a>Getting that connection to the database</h2><p>Let’s get around to setting up a connection with the Mongo DB database. Jumping straight into the code let’s do direct connection and then look at the code.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Retrieve</span><br><span class="line">var MongoClient &#x3D; require(&#39;mongodb&#39;).MongoClient;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Connect to the db</span><br><span class="line">MongoClient.connect(&quot;mongodb:&#x2F;&#x2F;localhost:27017&#x2F;exampleDb&quot;, function(err, db) &#123;</span><br><span class="line">  if(!err) &#123;</span><br><span class="line">    console.log(&quot;We are connected&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Let’s have a quick look at how the connection code works. The <strong>Db.connect</strong> method let’s use use a uri to connect to the Mongo database, where <strong>localhost:27017</strong> is the server host and port and <strong>exampleDb</strong> the db we wish to connect to. After the url notice the hash containing the <strong>auto_reconnect</strong> key. Auto reconnect tells the driver to retry sending a command to the server if there is a failure during its execution.</p>
+<p>Another useful option you can pass in is</p>
+<p><strong>poolSize</strong>, this allows you to control how many tcp connections are opened in parallel. The default value for this is 5 but you can set it as high as you want. The driver will use a round-robin strategy to dispatch and read from the tcp connection.</p>
+<p>We are up and running with a connection to the database. Let’s move on and look at what collections are and how they work.</p>
+<h2 id="Mongo-DB-and-Collections"><a href="#Mongo-DB-and-Collections" class="headerlink" title="Mongo DB and Collections"></a>Mongo DB and Collections</h2><p>Collections are the equivalent of tables in traditional databases and contain all your documents. A database can have many collections. So how do we go about defining and using collections. Well there are a couple of methods that we can use. Let’s jump straight into code and then look at the code.</p>
+<p><strong>the requires and and other initializing stuff omitted for brevity</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Retrieve</span><br><span class="line">var MongoClient &#x3D; require(&#39;mongodb&#39;).MongoClient;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Connect to the db</span><br><span class="line">MongoClient.connect(&quot;mongodb:&#x2F;&#x2F;localhost:27017&#x2F;exampleDb&quot;, function(err, db) &#123;</span><br><span class="line">  if(err) &#123; return console.dir(err); &#125;</span><br><span class="line"></span><br><span class="line">  db.collection(&#39;test&#39;, function(err, collection) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">  db.collection(&#39;test&#39;, &#123;w:1&#125;, function(err, collection) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">  db.createCollection(&#39;test&#39;, function(err, collection) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">  db.createCollection(&#39;test&#39;, &#123;w:1&#125;, function(err, collection) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Three different ways of creating a collection object but slightly different in behavior. Let’s go through them and see what they do</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection(&#39;test&#39;, function(err, collection) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This function will not actually create a collection on the database until you actually insert the first document.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.collection(&#39;test&#39;, &#123;strict:true&#125;, function(err, collection) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Notice the <strong>{strict:true}</strong> option. This option will make the driver check if the collection exists and issue an error if it does not.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(&#39;test&#39;, function(err, collection) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This command will create the collection on the Mongo DB database before returning the collection object. If the collection already exists it will ignore the creation of the collection.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db.createCollection(&#39;test&#39;, &#123;strict:true&#125;, function(err, collection) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>The <strong>{strict:true}</strong> option will make the method return an error if the collection already exists.</p>
+<p>With an open db connection and a collection defined we are ready to do some CRUD operation on the data.</p>
+<h2 id="And-then-there-was-CRUD"><a href="#And-then-there-was-CRUD" class="headerlink" title="And then there was CRUD"></a>And then there was CRUD</h2><p>So let’s get dirty with the basic operations for Mongo DB. The Mongo DB wire protocol is built around 4 main operations <strong>insert/update/remove/query</strong>. Most operations on the database are actually queries with special json objects defining the operation on the database. But I’m getting ahead of myself. Let’s go back and look at insert first and do it with some code.</p>
+<p><strong>the requires and and other initializing stuff omitted for brevity</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Retrieve</span><br><span class="line">var MongoClient &#x3D; require(&#39;mongodb&#39;).MongoClient;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Connect to the db</span><br><span class="line">MongoClient.connect(&quot;mongodb:&#x2F;&#x2F;localhost:27017&#x2F;exampleDb&quot;, function(err, db) &#123;</span><br><span class="line">  if(err) &#123; return console.dir(err); &#125;</span><br><span class="line"></span><br><span class="line">  var collection &#x3D; db.collection(&#39;test&#39;);</span><br><span class="line">  var doc1 &#x3D; &#123;&#39;hello&#39;:&#39;doc1&#39;&#125;;</span><br><span class="line">  var doc2 &#x3D; &#123;&#39;hello&#39;:&#39;doc2&#39;&#125;;</span><br><span class="line">  var lotsOfDocs &#x3D; [&#123;&#39;hello&#39;:&#39;doc3&#39;&#125;, &#123;&#39;hello&#39;:&#39;doc4&#39;&#125;];</span><br><span class="line"></span><br><span class="line">  collection.insert(doc1);</span><br><span class="line"></span><br><span class="line">  collection.insert(doc2, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">  collection.insert(lotsOfDocs, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>A couple of variations on the theme of inserting a document as we can see. To understand why it’s important to understand how Mongo DB works during inserts of documents.</p>
+<p>Mongo DB has asynchronous <strong>insert/update/remove</strong> operations. This means that when you issue an <strong>insert</strong> operation its a fire and forget operation where the database does not reply with the status of the insert operation. To retrieve the status of the operation you have to issue a query to retrieve the last error status of the connection. To make it simpler to the developer the driver implements the <strong>{w:1}</strong> options so that this is done automatically when inserting the document. <strong>{w:1}</strong> becomes especially important when you do <strong>update</strong> or <strong>remove</strong> as otherwise it’s not possible to determine the amount of documents modified or removed.</p>
+<p>Now let’s go through the different types of inserts shown in the code above.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.insert(doc1);</span><br></pre></td></tr></table></figure>
+
+<p>Taking advantage of the async behavior and not needing confirmation about the persisting of the data to Mongo DB we just fire off the insert (we are doing live analytics, loosing a couple of records does not matter).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.insert(doc2, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>That document needs to stick. Using the <strong>{w:1}</strong> option ensure you get the error back if the document fails to insert correctly.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.insert(lotsOfDocs, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>A batch insert of document with any errors being reported. This is much more efficient if you need to insert large batches of documents as you incur a lot less overhead.</p>
+<p>Right that’s the basics of insert’s ironed out. We got some documents in there but want to update them as we need to change the content of a field. Let’s have a look at a simple example and then we will dive into how Mongo DB updates work and how to do them efficiently.</p>
+<p><strong>the requires and and other initializing stuff omitted for brevity</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Retrieve</span><br><span class="line">var MongoClient &#x3D; require(&#39;mongodb&#39;).MongoClient;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Connect to the db</span><br><span class="line">MongoClient.connect(&quot;mongodb:&#x2F;&#x2F;localhost:27017&#x2F;exampleDb&quot;, function(err, db) &#123;</span><br><span class="line">  if(err) &#123; return console.dir(err); &#125;</span><br><span class="line"></span><br><span class="line">  var collection &#x3D; db.collection(&#39;test&#39;);</span><br><span class="line">  var doc &#x3D; &#123;mykey:1, fieldtoupdate:1&#125;;</span><br><span class="line"></span><br><span class="line">  collection.insert(doc, &#123;w:1&#125;, function(err, result) &#123;</span><br><span class="line">    collection.update(&#123;mykey:1&#125;, &#123;$set:&#123;fieldtoupdate:2&#125;&#125;, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  var doc2 &#x3D; &#123;mykey:2, docs:[&#123;doc1:1&#125;]&#125;;</span><br><span class="line"></span><br><span class="line">  collection.insert(doc2, &#123;w:1&#125;, function(err, result) &#123;</span><br><span class="line">    collection.update(&#123;mykey:2&#125;, &#123;$push:&#123;docs:&#123;doc2:1&#125;&#125;&#125;, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Alright before we look at the code we want to understand how document updates work and how to do the efficiently. The most basic and less efficient way is to replace the whole document, this is not really the way to go if you want to change just a field in your document. Luckily Mongo DB provides a whole set of operations that let you modify just pieces of the document <a href="http://www.mongodb.org/display/DOCS/Atomic+Operations" target="_blank" rel="noopener">Atomic operations documentation</a>. Basically outlined below.</p>
+<ul>
+<li>$inc - increment a particular value by a certain amount</li>
+<li>$set - set a particular value</li>
+<li>$unset - delete a particular field (v1.3+)</li>
+<li>$push - append a value to an array</li>
+<li>$pushAll - append several values to an array</li>
+<li>$addToSet - adds value to the array only if its not in the array already</li>
+<li>$pop - removes the last element in an array</li>
+<li>$pull - remove a value(s) from an existing array</li>
+<li>$pullAll - remove several value(s) from an existing array</li>
+<li>$rename - renames the field</li>
+<li>$bit - bitwise operations</li>
+</ul>
+<p>Now that the operations are outline let’s dig into the specific cases show in the code example.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.update(&#123;mykey:1&#125;, &#123;$set:&#123;fieldtoupdate:2&#125;&#125;, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Right so this update will look for the document that has a field <strong>mykey</strong> equal to <strong>1</strong> and apply an update to the field <strong>fieldtoupdate</strong> setting the value to <strong>2</strong>. Since we are using the <strong>{w:1}</strong> option the result parameter in the callback will return the value <strong>1</strong> indicating that 1 document was modified by the update statement.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.update(&#123;mykey:2&#125;, &#123;$push:&#123;docs:&#123;doc2:1&#125;&#125;&#125;, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This updates adds another document to the field <strong>docs</strong> in the document identified by <strong>{mykey:2}</strong> using the atomic operation <strong>$push</strong>. This allows you to modify keep such structures as queues in Mongo DB.</p>
+<p>Let’s have a look at the remove operation for the driver. As before let’s start with a piece of code.</p>
+<p><strong>the requires and and other initializing stuff omitted for brevity</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Retrieve</span><br><span class="line">var MongoClient &#x3D; require(&#39;mongodb&#39;).MongoClient;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Connect to the db</span><br><span class="line">MongoClient.connect(&quot;mongodb:&#x2F;&#x2F;localhost:27017&#x2F;exampleDb&quot;, function(err, db) &#123;</span><br><span class="line">  if(err) &#123; return console.dir(err); &#125;</span><br><span class="line"></span><br><span class="line">  var collection &#x3D; db.collection(&#39;test&#39;);</span><br><span class="line">  var docs &#x3D; [&#123;mykey:1&#125;, &#123;mykey:2&#125;, &#123;mykey:3&#125;];</span><br><span class="line"></span><br><span class="line">  collection.insert(docs, &#123;w:1&#125;, function(err, result) &#123;</span><br><span class="line"></span><br><span class="line">    collection.remove(&#123;mykey:1&#125;);</span><br><span class="line"></span><br><span class="line">    collection.remove(&#123;mykey:2&#125;, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">    collection.remove();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Let’s examine the 3 remove variants and what they do.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.remove(&#123;mykey:1&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This leverages the fact that Mongo DB is asynchronous and that it does not return a result for <strong>insert/update/remove</strong> to allow for <strong>synchronous</strong> style execution. This particular remove query will remove the document where <strong>mykey</strong> equals <strong>1</strong>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.remove(&#123;mykey:2&#125;, &#123;w:1&#125;, function(err, result) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This remove statement removes the document where <strong>mykey</strong> equals <strong>2</strong> but since we are using <strong>{w:1}</strong> it will back to Mongo DB to get the status of the remove operation and return the number of documents removed in the result variable.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.remove();</span><br></pre></td></tr></table></figure>
+
+<p>This last one will remove all documents in the collection.</p>
+<h2 id="Time-to-Query"><a href="#Time-to-Query" class="headerlink" title="Time to Query"></a>Time to Query</h2><p>Queries is of course a fundamental part of interacting with a database and Mongo DB is no exception. Fortunately for us it has a rich query interface with cursors and close to SQL concepts for slicing and dicing your datasets. To build queries we have lots of operators to choose from <a href="http://www.mongodb.org/display/DOCS/Advanced+Queries" target="_blank" rel="noopener">Mongo DB advanced queries</a>. There are literarily tons of ways to search and ways to limit the query. Let’s look at some simple code for dealing with queries in different ways.</p>
+<p><strong>the requires and and other initializing stuff omitted for brevity</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Retrieve</span><br><span class="line">var MongoClient &#x3D; require(&#39;mongodb&#39;).MongoClient;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; Connect to the db</span><br><span class="line">MongoClient.connect(&quot;mongodb:&#x2F;&#x2F;localhost:27017&#x2F;exampleDb&quot;, function(err, db) &#123;</span><br><span class="line">  if(err) &#123; return console.dir(err); &#125;</span><br><span class="line"></span><br><span class="line">  var collection &#x3D; db.collection(&#39;test&#39;);</span><br><span class="line">  var docs &#x3D; [&#123;mykey:1&#125;, &#123;mykey:2&#125;, &#123;mykey:3&#125;];</span><br><span class="line"></span><br><span class="line">  collection.insert(docs, &#123;w:1&#125;, function(err, result) &#123;</span><br><span class="line"></span><br><span class="line">    collection.find().toArray(function(err, items) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">    var stream &#x3D; collection.find(&#123;mykey:&#123;$ne:2&#125;&#125;).stream();</span><br><span class="line">    stream.on(&quot;data&quot;, function(item) &#123;&#125;);</span><br><span class="line">    stream.on(&quot;end&quot;, function() &#123;&#125;);</span><br><span class="line"></span><br><span class="line">    collection.findOne(&#123;mykey:1&#125;, function(err, item) &#123;&#125;);</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Before we start picking apart the code there is one thing that needs to be understood, the <strong>find</strong> method does not execute the actual query. It builds an instance of <strong>Cursor</strong> that you then use to retrieve the data. This lets you manage how you retrieve the data from Mongo DB and keeps state about your current Cursor state on Mongo DB. Now let’s pick apart the queries we have here and look at what they do.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.find().toArray(function(err, items) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This query will fetch all the document in the collection and return them as an array of items. Be careful with the function <strong>toArray</strong> as it might cause a lot of memory usage as it will instantiate all the document into memory before returning the final array of items. If you have a big resultset you could run into memory issues.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var stream &#x3D; collection.find(&#123;mykey:&#123;$ne:2&#125;&#125;).stream();</span><br><span class="line">stream.on(&quot;data&quot;, function(item) &#123;&#125;);</span><br><span class="line">stream.on(&quot;end&quot;, function() &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This is the preferred way if you have to retrieve a lot of data for streaming, as data is deserialized a <strong>data</strong> event is emitted. This keeps the resident memory usage low as the documents are streamed to you. Very useful if you are pushing documents out via websockets or some other streaming socket protocol. Once there is no more document the driver will emit the <strong>end</strong> event to notify the application that it’s done.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">collection.findOne(&#123;mykey:1&#125;, function(err, item) &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>This is special supported function to retrieve just one specific document bypassing the need for a cursor object.</p>
+<p>That’s pretty much it for the quick intro on how to use the database. I have also included a list of links to where to go to find more information and also a sample crude location application I wrote using express JS and mongo DB.</p>
+<h2 id="Links-and-stuff"><a href="#Links-and-stuff" class="headerlink" title="Links and stuff"></a>Links and stuff</h2><ul>
+<li><a href="https://github.com/mongodb/node-mongodb-native/tree/master/examples" target="_blank" rel="noopener">The driver examples, good starting point for basic usage</a></li>
+<li><a href="https://github.com/mongodb/node-mongodb-native/tree/master/test" target="_blank" rel="noopener">All the integration tests, they have tons of different usage cases</a></li>
+<li><a href="http://www.mongodb.org/display/DOCS/Advanced+Queries" target="_blank" rel="noopener">The Mongo DB wiki pages such as the advanced query link</a></li>
+<li><a href="https://github.com/christkv/mongodb-presentation" target="_blank" rel="noopener">A silly simple location based application using Express JS and Mongo DB</a></li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://mongodb.github.io/node-mongodb-native/api-articles/nodekoarticle1.html" target="_blank" rel="noopener">https://mongodb.github.io/node-mongodb-native/api-articles/nodekoarticle1.html</a></p>
 
       
 
@@ -195,6 +323,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mongo DB, Node.JS, Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -245,7 +384,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/19/Thoughts/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/14/2020-05-13-Mongo-DB-Node.JS-Driver-documentation/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -259,18 +398,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/20/CSS%20Notes/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CSS Notes
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device</div>
+    <a href="/2020/05/13/HTTP%20Requests/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTTP Requests</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -297,7 +427,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mongo-DB-data-types"><span class="toc-number">1.</span> <span class="toc-text">Mongo DB data types</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Getting-that-connection-to-the-database"><span class="toc-number">2.</span> <span class="toc-text">Getting that connection to the database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mongo-DB-and-Collections"><span class="toc-number">3.</span> <span class="toc-text">Mongo DB and Collections</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#And-then-there-was-CRUD"><span class="toc-number">4.</span> <span class="toc-text">And then there was CRUD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Time-to-Query"><span class="toc-number">5.</span> <span class="toc-text">Time to Query</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Links-and-stuff"><span class="toc-number">6.</span> <span class="toc-text">Links and stuff</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">6.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
