@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.I have bee">
+<meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript">
 <meta property="og:url" content="http://yoursite.com/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
 <meta property="og:description" content="When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.I have bee">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-18T06:48:45.000Z">
-<meta property="article:modified_time" content="2020-04-18T06:49:53.887Z">
-<meta property="article:author" content="Yanjie Niu">
-<meta property="article:tag" content="JavaScript">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-17T20:01:30.374Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript">
+<meta name="twitter:description" content="When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.I have bee">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -35,8 +35,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -166,76 +166,96 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.<br>I have been contributing to this list since then, and in this article, I’ll share 11 hand-picked tips that strike me as particularly clever or useful. This post is intended to be useful for beginners, but I hope even intermediate JavaScript developers will find something new in this list.<br>While many of these tricks are handy in any context, a few of them may be better suited for code golf than production-level code, where clarity is often more important than concision; I’ll let you be the judge of that!<br>So, in no particular order, here are 11 neat ways to write more concise and more performant code.<br><br /></p>
+        <p>When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.<br>I have been contributing to this list since then, and in this article, I’ll share 11 hand-picked tips that strike me as particularly clever or useful. This post is intended to be useful for beginners, but I hope even intermediate JavaScript developers will find something new in this list.<br>While many of these tricks are handy in any context, a few of them may be better suited for code golf than production-level code, where clarity is often more important than concision; I’ll let you be the judge of that!<br>So, in no particular order, here are 11 neat ways to write more concise and more performant code.<br><br></p>
+<a id="more"></a>
+
 <h2 id="1-Filter-Unique-Values"><a href="#1-Filter-Unique-Values" class="headerlink" title="1. Filter Unique Values"></a>1. Filter Unique Values</h2><p>ARRAYS<br>The <code>Set</code> object type was introduced in ES6, and along with <code>...</code>, the ‘spread’ operator, we can use it to create a new array with only the unique values.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const array &#x3D; [1, 1, 2, 3, 5, 5, 1]</span><br><span class="line">const uniqueArray &#x3D; [...new Set(array)];console.log(uniqueArray); &#x2F;&#x2F; Result: [1, 2, 3, 5]</span><br></pre></td></tr></table></figure>
-<p>Before ES6, isolating unique values would involve a lot more code than that!<br>This trick works for arrays containing primitive types: <code>undefined</code>, <code>null</code>, <code>Boolean</code>, <code>string</code> and <code>number</code> . (If you had an array containing objects, functions or additional arrays, you’d need a different approach!)<br><br /></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const array = [1, 1, 2, 3, 5, 5, 1]</span><br><span class="line">const uniqueArray = [...new Set(array)];console.log(uniqueArray); // Result: [1, 2, 3, 5]</span><br></pre></td></tr></table></figure>
+
+<p>Before ES6, isolating unique values would involve a lot more code than that!<br>This trick works for arrays containing primitive types: <code>undefined</code>, <code>null</code>, <code>Boolean</code>, <code>string</code> and <code>number</code> . (If you had an array containing objects, functions or additional arrays, you’d need a different approach!)<br><br></p>
 <h2 id="2-Short-Circuit-Evaluation"><a href="#2-Short-Circuit-Evaluation" class="headerlink" title="2. Short-Circuit Evaluation"></a>2. Short-Circuit Evaluation</h2><p>CONDITIONALS<br>The ternary operator is a quick way to write simple (and sometimes not-so-simple) conditional statements, like these:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &gt; 100 ? &#39;Above 100&#39; : &#39;Below 100&#39;;</span><br><span class="line">x &gt; 100 ? (x &gt; 200 ? &#39;Above 200&#39; : &#39;Between 100-200&#39;) : &#39;Below 100&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &gt; 100 ? &apos;Above 100&apos; : &apos;Below 100&apos;;</span><br><span class="line">x &gt; 100 ? (x &gt; 200 ? &apos;Above 200&apos; : &apos;Between 100-200&apos;) : &apos;Below 100&apos;;</span><br></pre></td></tr></table></figure>
+
 <p>But sometimes even the ternary operator is more complicated than necessary. Instead, we can use the ‘and’ &amp;&amp; and ‘or’ || logical operators to evaluate certain expressions in an even more concise way. This is often called ‘short-circuiting’ or ‘short-circuit evaluation’.</p>
 <h3 id="How-It-Works"><a href="#How-It-Works" class="headerlink" title="How It Works"></a>How It Works</h3><p>Let’s say we want to return just one of two or more options.<br>Using <code>&amp;&amp;</code> will return the first <code>false</code> or ‘falsy’ value. If every operand evaluates to <code>true</code> , the last evaluated expression will be returned.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let one &#x3D; 1, two &#x3D; 2, three &#x3D; 3;</span><br><span class="line">console.log(one &amp;&amp; two &amp;&amp; three); &#x2F;&#x2F; Result: 3console.log(0 &amp;&amp; null); &#x2F;&#x2F; Result: 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let one = 1, two = 2, three = 3;</span><br><span class="line">console.log(one &amp;&amp; two &amp;&amp; three); // Result: 3console.log(0 &amp;&amp; null); // Result: 0</span><br></pre></td></tr></table></figure>
+
 <p>Using <code>||</code> will return the first <code>true</code> or ‘truthy’ value. If every operand evaluates to <code>false</code>, the last evaluated expression will be returned.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let one &#x3D; 1, two &#x3D; 2, three &#x3D; 3;</span><br><span class="line">console.log(one || two || three); &#x2F;&#x2F; Result: 1console.log(0 || null); &#x2F;&#x2F; Result: null</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let one = 1, two = 2, three = 3;</span><br><span class="line">console.log(one || two || three); // Result: 1console.log(0 || null); // Result: null</span><br></pre></td></tr></table></figure>
+
 <h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><p>Let’s say we want to return the <code>length</code> of a variable, but we don’t know the variable type.<br>We could use an <code>if/else</code> statement to check that <code>foo</code> is an acceptable type, but this could get pretty longwinded. Short circuit evaluation allows us to do this instead:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (foo || []).length;</span><br></pre></td></tr></table></figure>
+
 <p>If the variable <code>foo</code> is truthy, it will be returned. Otherwise, the <code>length</code> of the empty array will be returned: <code>0</code> .</p>
 <h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><p>Have you ever had problems accessing a nested object property? You might not know if the object or one of the sub-properties exists, and this can cause frustrating errors.<br>Let’s say we wanted to access a property called <code>data</code> within <code>this.state</code> , but <code>data</code> is undefined until our program has successfully returned a fetch request.<br>Depending on where we use it, calling <code>this.state.data</code> could prevent our app from running. To get around this, we could wrap it in a conditional:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (this.state.data) &#123;</span><br><span class="line">  return this.state.data;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  return &#39;Fetching Data&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (this.state.data) &#123;</span><br><span class="line">  return this.state.data;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  return &apos;Fetching Data&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>But that seems pretty repetitive. The ‘or’ operator provides a more concise solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (this.state.data || &#39;Fetching Data&#39;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (this.state.data || &apos;Fetching Data&apos;);</span><br></pre></td></tr></table></figure>
+
 <p>We can’t refactor the code above to use <code>&amp;&amp;</code> . The statement <code>&#39;Fetching Data&#39; &amp;&amp; this.state.data</code> will return <code>this.state.data</code> whether it is <code>undefined</code> or not. This is because <code>&#39;Fetching Data&#39;</code> is ‘truthy’, and so the <code>&amp;&amp;</code> will always pass over it when it is listed first.</p>
-<h3 id="A-New-Proposed-Feature-Optional-Chaining"><a href="#A-New-Proposed-Feature-Optional-Chaining" class="headerlink" title="A New Proposed Feature: Optional Chaining"></a>A New Proposed Feature: Optional Chaining</h3><p>There is currently a proposal to allow ‘optional chaining’ when attempting to return a property deep in a tree-like structure. Under the proposal, the question mark symbol <code>?</code> could be used to extract a property only if it is not <code>null</code> .<br>For example, we could refactor our example above to <code>this.state.data?.()</code> , thus only returning <code>data</code> if it is not <code>null</code> .<br>Or, if we were mainly concerned about whether <code>state</code> was defined or not, we could return <code>this.state?.data</code> .<br>The proposal is currently at Stage 1, as an experimental feature. You can read about it here, and you can use in your JavaScript now via Babel, by adding @babel/plugin-proposal-optional-chaining to your <code>.babelrc</code> file.<br><br /></p>
+<h3 id="A-New-Proposed-Feature-Optional-Chaining"><a href="#A-New-Proposed-Feature-Optional-Chaining" class="headerlink" title="A New Proposed Feature: Optional Chaining"></a>A New Proposed Feature: Optional Chaining</h3><p>There is currently a proposal to allow ‘optional chaining’ when attempting to return a property deep in a tree-like structure. Under the proposal, the question mark symbol <code>?</code> could be used to extract a property only if it is not <code>null</code> .<br>For example, we could refactor our example above to <code>this.state.data?.()</code> , thus only returning <code>data</code> if it is not <code>null</code> .<br>Or, if we were mainly concerned about whether <code>state</code> was defined or not, we could return <code>this.state?.data</code> .<br>The proposal is currently at Stage 1, as an experimental feature. You can read about it here, and you can use in your JavaScript now via Babel, by adding @babel/plugin-proposal-optional-chaining to your <code>.babelrc</code> file.<br><br></p>
 <h2 id="3-Convert-to-Boolean"><a href="#3-Convert-to-Boolean" class="headerlink" title="3. Convert to Boolean"></a>3. Convert to Boolean</h2><p>TYPE CONVERSION<br>Besides the regular boolean values <code>true</code> and <code>false</code> , JavaScript also treats all other values as either ‘truthy’ or ‘falsy’.<br>Unless otherwise defined, all values in JavaScript are ‘truthy’ with the exception of <code>0</code>, <code>&quot;&quot;</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code> and of course <code>false</code> , which are ‘falsy’.<br>We can easily switch between true and false by using the negative operator <code>!</code> , which will also convert the type to <code>&quot;boolean&quot;</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const isTrue  &#x3D; !0;</span><br><span class="line">const isFalse &#x3D; !1;</span><br><span class="line">const alsoFalse &#x3D; !!0;console.log(isTrue); &#x2F;&#x2F; Result: true</span><br><span class="line">console.log(typeof true); &#x2F;&#x2F; Result: &quot;boolean&quot;</span><br></pre></td></tr></table></figure>
-<p>This kind of type conversion can be handy in conditional statements, although the only reason you’d choose to define <code>false</code> as <code>!1</code> is if you were playing code golf!<br><br /></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const isTrue  = !0;</span><br><span class="line">const isFalse = !1;</span><br><span class="line">const alsoFalse = !!0;console.log(isTrue); // Result: true</span><br><span class="line">console.log(typeof true); // Result: &quot;boolean&quot;</span><br></pre></td></tr></table></figure>
+
+<p>This kind of type conversion can be handy in conditional statements, although the only reason you’d choose to define <code>false</code> as <code>!1</code> is if you were playing code golf!<br><br></p>
 <h2 id="4-Convert-to-String"><a href="#4-Convert-to-String" class="headerlink" title="4. Convert to String"></a>4. Convert to String</h2><p>TYPE CONVERSION<br>To quickly convert a number to a string, we can use the concatenation operator <code>+</code> followed by an empty set of quotation marks <code>&quot;&quot;</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const val &#x3D; 1 + &quot;&quot;;console.log(val); &#x2F;&#x2F; Result: &quot;1&quot;</span><br><span class="line">console.log(typeof val); &#x2F;&#x2F; Result: &quot;string&quot;</span><br></pre></td></tr></table></figure>
-<br />
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const val = 1 + &quot;&quot;;console.log(val); // Result: &quot;1&quot;</span><br><span class="line">console.log(typeof val); // Result: &quot;string&quot;</span><br></pre></td></tr></table></figure>
+
+<br>
 
 <h2 id="5-Convert-to-Number"><a href="#5-Convert-to-Number" class="headerlink" title="5. Convert to Number"></a>5. Convert to Number</h2><p>TYPE CONVERSION<br>The opposite can be quickly achieved using the addition operator <code>+</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let int &#x3D; &quot;15&quot;;</span><br><span class="line">int &#x3D; +int;console.log(int); &#x2F;&#x2F; Result: 15</span><br><span class="line">console.log(typeof int); Result: &quot;number&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let int = &quot;15&quot;;</span><br><span class="line">int = +int;console.log(int); // Result: 15</span><br><span class="line">console.log(typeof int); Result: &quot;number&quot;</span><br></pre></td></tr></table></figure>
+
 <p>This may also be used to convert booleans to numbers, as below:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(+true);  &#x2F;&#x2F; Return: 1</span><br><span class="line">console.log(+false); &#x2F;&#x2F; Return: 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(+true);  // Return: 1</span><br><span class="line">console.log(+false); // Return: 0</span><br></pre></td></tr></table></figure>
+
 <p>There may be contexts where the <code>+</code> will be interpreted as the concatenation operator rather than the addition operator. When that happens (and you want to return an integer, not a float) you can instead use two tildes: <code>~~</code> .<br>A tilde, known as the ‘bitwise NOT operator’, is an operator equivalent to <code>-n — 1</code> . So, for example, <code>~15</code> is equal to <code>-16</code> .<br>Using two tildes in a row effectively negates the operation, because <code>— ( — n — 1) — 1 = n + 1 — 1 = n</code> . In other words, <code>~ — 16</code> equals <code>15</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const int &#x3D; ~~&quot;15&quot;console.log(int); &#x2F;&#x2F; Result: 15</span><br><span class="line">console.log(typeof int); Result: &quot;number&quot;</span><br></pre></td></tr></table></figure>
-<p>Though I can’t think of many use-cases, the bitwise NOT operator can also be used on booleans: <code>~true = -2</code> and <code>~false = -1</code>.<br><br /></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const int = ~~&quot;15&quot;console.log(int); // Result: 15</span><br><span class="line">console.log(typeof int); Result: &quot;number&quot;</span><br></pre></td></tr></table></figure>
+
+<p>Though I can’t think of many use-cases, the bitwise NOT operator can also be used on booleans: <code>~true = -2</code> and <code>~false = -1</code>.<br><br></p>
 <h2 id="6-Quick-Powers"><a href="#6-Quick-Powers" class="headerlink" title="6. Quick Powers"></a>6. Quick Powers</h2><p>OPERATIONS<br>Since ES7, it has been possible to use the exponentiation operator <code>**</code> as a shorthand for powers, which is faster than writing <code>Math.pow(2, 3)</code> . This is straightforward stuff, but it makes the list because not many tutorials have been updated to include this operator!</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(2 ** 3); &#x2F;&#x2F; Result: 8</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(2 ** 3); // Result: 8</span><br></pre></td></tr></table></figure>
+
 <p>This shouldn’t be confused with the <code>^</code> symbol, commonly used to represent exponents, but which in JavaScript is the bitwise XOR operator.<br>Before ES7, shorthand existed only for powers with base 2, using the bitwise left shift operator <code>&lt;&lt;</code> :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; The following expressions are equivalent:Math.pow(2, n);</span><br><span class="line">2 &lt;&lt; (n - 1);</span><br><span class="line">2**n;</span><br></pre></td></tr></table></figure>
-<p>For example, <code>2 &lt;&lt; 3 = 16</code> is equivalent to <code>2 ** 4 = 16</code> .<br><br /></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// The following expressions are equivalent:Math.pow(2, n);</span><br><span class="line">2 &lt;&lt; (n - 1);</span><br><span class="line">2**n;</span><br></pre></td></tr></table></figure>
+
+<p>For example, <code>2 &lt;&lt; 3 = 16</code> is equivalent to <code>2 ** 4 = 16</code> .<br><br></p>
 <h2 id="7-Quick-Float-to-Integer"><a href="#7-Quick-Float-to-Integer" class="headerlink" title="7. Quick Float to Integer"></a>7. Quick Float to Integer</h2><p>OPERATIONS / TYPE CONVERSION<br>If you want to convert a float to an integer, you can use <code>Math.floor()</code> , <code>Math.ceil()</code> or <code>Math.round()</code> . But there is also a faster way to truncate a float to an integer using <code>|</code>, the bitwise OR operator.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(23.9 | 0);  &#x2F;&#x2F; Result: 23</span><br><span class="line">console.log(-23.9 | 0); &#x2F;&#x2F; Result: -23</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(23.9 | 0);  // Result: 23</span><br><span class="line">console.log(-23.9 | 0); // Result: -23</span><br></pre></td></tr></table></figure>
+
 <p>The behaviour of <code>|</code> varies depending on whether you’re dealing with positive or negative numbers, so it’s best only to use this shortcut if you’re sure.<br>If <code>n</code> is positive, <code>n | 0</code> effectively rounds down. If <code>n</code> is negative, it effectively rounds up. To put it more accurately, this operation removes whatever comes after the decimal point, truncating a float to an integer.<br>You can get the same rounding effect by using <code>~~</code>, as above, and in fact any bitwise operator would force a float to an integer. The reasons these particular operations work is that — once forced to an integer — the value is left unchanged.</p>
 <h3 id="Remove-Final-Digits"><a href="#Remove-Final-Digits" class="headerlink" title="Remove Final Digits"></a>Remove Final Digits</h3><p>The bitwise OR operator can also be used to remove any amount of digits from the end of an integer. This means we don’t have to use code like this to convert between types:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let str &#x3D; &quot;1553&quot;; </span><br><span class="line">Number(str.substring(0, str.length - 1));</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let str = &quot;1553&quot;; </span><br><span class="line">Number(str.substring(0, str.length - 1));</span><br></pre></td></tr></table></figure>
+
 <p>Instead, the bitwise OR operator allows us to write:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(1553 &#x2F; 10   | 0)  &#x2F;&#x2F; Result: 155</span><br><span class="line">console.log(1553 &#x2F; 100  | 0)  &#x2F;&#x2F; Result: 15</span><br><span class="line">console.log(1553 &#x2F; 1000 | 0)  &#x2F;&#x2F; Result: 1</span><br></pre></td></tr></table></figure>
-<br />
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(1553 / 10   | 0)  // Result: 155</span><br><span class="line">console.log(1553 / 100  | 0)  // Result: 15</span><br><span class="line">console.log(1553 / 1000 | 0)  // Result: 1</span><br></pre></td></tr></table></figure>
+
+<br>
 
 <h2 id="8-Automatic-Binding-in-Classes"><a href="#8-Automatic-Binding-in-Classes" class="headerlink" title="8. Automatic Binding in Classes"></a>8. Automatic Binding in Classes</h2><p>CLASSES<br>We can use ES6 arrow notation in class methods, and by doing so binding is implied. This will often save several lines of code in our class constructor, and we can happily say goodbye to repetitive expressions such as <code>this.myMethod = this.myMethod.bind(this)</code> !</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from React;export default class App extends Compononent &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">  super(props);</span><br><span class="line">  this.state &#x3D; &#123;&#125;;</span><br><span class="line">  &#125;myMethod &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F; This method is bound implicitly!</span><br><span class="line">  &#125;render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &#123;this.myMethod()&#125;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;&#x2F;&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from React;export default class App extends Compononent &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">  super(props);</span><br><span class="line">  this.state = &#123;&#125;;</span><br><span class="line">  &#125;myMethod = () =&gt; &#123;</span><br><span class="line">    // This method is bound implicitly!</span><br><span class="line">  &#125;render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &#123;this.myMethod()&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<br />
-<br />
+<br>
+<br>
 
 <h2 id="9-Truncate-an-Array"><a href="#9-Truncate-an-Array" class="headerlink" title="9. Truncate an Array"></a>9. Truncate an Array</h2><p>ARRAYS<br>If you want to remove values from the end of an array destructively, there’s are faster alternatives than using <code>splice()</code> .<br>For example, if you know the size of your original array, you can re-define its length property, like so:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">array.length &#x3D; 4;console.log(array); &#x2F;&#x2F; Result: [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">array.length = 4;console.log(array); // Result: [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+
 <p>This is a particularly concise solution. However, I have found the run-time of the <code>slice()</code> method to be even faster. If speed is your main goal, consider using something like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">array &#x3D; array.slice(0, 4);console.log(array); &#x2F;&#x2F; Result: [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
-<br />
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">array = array.slice(0, 4);console.log(array); // Result: [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+<br>
 
 <h2 id="10-Get-the-Last-Item-s-in-an-Array"><a href="#10-Get-the-Last-Item-s-in-an-Array" class="headerlink" title="10. Get the Last Item(s) in an Array"></a>10. Get the Last Item(s) in an Array</h2><p>ARRAYS<br>The array method <code>slice()</code> can take negative integers, and if provided it will take values from the end of the array rather than the beginning.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];console.log(array.slice(-1)); &#x2F;&#x2F; Result: [9]</span><br><span class="line">console.log(array.slice(-2)); &#x2F;&#x2F; Result: [8, 9]</span><br><span class="line">console.log(array.slice(-3)); &#x2F;&#x2F; Result: [7, 8, 9]</span><br></pre></td></tr></table></figure>
-<br />
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];console.log(array.slice(-1)); // Result: [9]</span><br><span class="line">console.log(array.slice(-2)); // Result: [8, 9]</span><br><span class="line">console.log(array.slice(-3)); // Result: [7, 8, 9]</span><br></pre></td></tr></table></figure>
+
+<br>
 
 <h2 id="11-Format-JSON-Code"><a href="#11-Format-JSON-Code" class="headerlink" title="11. Format JSON Code"></a>11. Format JSON Code</h2><p>JSON<br>Lastly, you may have used <code>JSON.stringify</code> before, but did you realise it can also help indent your JSON for you?<br>The <code>stringify()</code> method takes two optional parameters: a <code>replacer</code> function, which you can use to filter the JSON that is displayed, and a <code>space</code> value.<br>The <code>space</code> value takes an integer for the number of spaces you want or a string (such as <code>&#39;\t&#39;</code> to insert tabs), and it can make it a lot easier to read fetched JSON data.</p>
-<pre><code>console.log(JSON.stringify({ alpha: &apos;A&apos;, beta: &apos;B&apos; }, null, &apos;\t&apos;));// Result:
-// &apos;{
-//     &quot;alpha&quot;: A,
-//     &quot;beta&quot;: B
-// }&apos;</code></pre><p>Overall, I hope you found these tips as useful as I did when I first discovered them.<br>Got any JavaScript tricks of your own? I’d love to read them in the comments below!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(JSON.stringify(&#123; alpha: &apos;A&apos;, beta: &apos;B&apos; &#125;, null, &apos;\t&apos;));// Result:</span><br><span class="line">// &apos;&#123;</span><br><span class="line">//     &quot;alpha&quot;: A,</span><br><span class="line">//     &quot;beta&quot;: B</span><br><span class="line">// &#125;&apos;</span><br></pre></td></tr></table></figure>
+
+<p>Overall, I hope you found these tips as useful as I did when I first discovered them.<br>Got any JavaScript tricks of your own? I’d love to read them in the comments below!</p>
 <hr>
 <h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://medium.com/@bretcameron/12-javascript-tricks-you-wont-find-in-most-tutorials-a9c9331f169d" target="_blank" rel="noopener">https://medium.com/@bretcameron/12-javascript-tricks-you-wont-find-in-most-tutorials-a9c9331f169d</a></p>
 
@@ -342,7 +362,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/18/Typora & Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -412,7 +432,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -496,15 +515,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,7 +527,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,11 +559,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

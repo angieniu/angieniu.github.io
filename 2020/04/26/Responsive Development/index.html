@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Responsive Development | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Notes about Responsive Development 😺 YAY! Mobile-First DesignBecause the majority of web traffic is now coming from mobile devices, the current best practice is to design your site for a mobile devic">
+<meta name="keywords" content="Responsive Development">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Responsive Development">
-<meta property="og:url" content="http://yoursite.com/2020/04/26/Responsive%20Development/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/Responsive Development/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
 <meta property="og:description" content="Notes about Responsive Development 😺 YAY! Mobile-First DesignBecause the majority of web traffic is now coming from mobile devices, the current best practice is to design your site for a mobile devic">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-27T04:50:08.856Z">
-<meta property="article:modified_time" content="2020-04-27T04:50:08.856Z">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-17T20:17:54.231Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Responsive Development">
+<meta name="twitter:description" content="Notes about Responsive Development 😺 YAY! Mobile-First DesignBecause the majority of web traffic is now coming from mobile devices, the current best practice is to design your site for a mobile devic">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -34,8 +35,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -157,8 +158,8 @@
   
 
         
-        <a href="/2020/04/26/Responsive%20Development/" class="archive-article-date">
-  	<time datetime="2020-04-27T04:50:08.856Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+        <a href="/2020/04/26/Responsive Development/" class="archive-article-date">
+  	<time datetime="2020-04-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
 </a>
         
       </header>
@@ -167,6 +168,8 @@
       
         <p>Notes about Responsive Development 😺 YAY!</p>
 <h2 id="Mobile-First-Design"><a href="#Mobile-First-Design" class="headerlink" title="Mobile-First Design"></a>Mobile-First Design</h2><p>Because the majority of web traffic is now coming from mobile devices, the current best practice is to design your site for a mobile device first, and only later consider how you can take advantage of the larger screen of a desktop. This is known as “mobile-first design.” In general this boils down to the following principles:</p>
+<a id="more"></a>
+
 <ul>
 <li><strong>Layout</strong>: Blocks of content should typically stack on top of each other on narrow screens, but sit side-by-side on wider screens. You can also use the width or max-width properties to constrain the overall width of your content so that it doesn’t stretch to ridiculous line lengths on super-wide monitors. Content fixed to the viewport ( layout: fixed) should be kept to a minimum on small screens, as it reduces the amount of scrollable screen real-estate.</li>
 <li><strong>Media</strong>: Large images and video look great on large monitors, but typically don’t work as well on small screens. They also take much longer to download over slow mobile networks. Consider using background colors or linear gradient fills instead of background images on mobile; or use lower-resolution images so that they download faster.</li>
@@ -177,30 +180,18 @@
 </ul>
 <h1 id="Media-Rules"><a href="#Media-Rules" class="headerlink" title="Media Rules"></a>Media Rules</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* rules that apply to all devices */</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">255</span>, <span class="number">64</span>, <span class="number">129</span>); <span class="comment">/* background color on small screens */</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="comment">/* default font size is 16 pixels */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules that apply only to screens 768 pixels and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(...); <span class="comment">/* use background image on larger screens */</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>; <span class="comment">/* increase font size to 18 pixels on larger screens */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.mobile-call-icon</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none; <span class="comment">/* hide mobile call icon */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
 <p>The rules inside the <code>@media</code> rule can alter the formatting of any element, including completely hiding or showing it using the <code>display</code> property. Setting <code>display: none</code> will remove the element from the page, and <code>display: block</code> or <code>display: inline</code> will show it.</p>
 <h1 id="SVE-Elements"><a href="#SVE-Elements" class="headerlink" title="SVE Elements"></a>SVE Elements</h1><p>SVG elements define a <a href="https://en.wikipedia.org/wiki/Vector_graphics" target="_blank" rel="noopener">vector graphic (Links to an external site.)</a>, so they can scale up or down to any size while remaining crisp. By including them directly in the page, we avoid an additional network round-trip, and we can style them. SVG elements are commonly used for flat monochrome icons.</p>
 <h1 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h1><p>Flexbox requires one element to act as the row element, and one element per column in your layout. To make a two-column layout, your HTML and CSS would be like this:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-row"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Column 1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Column 2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">* &#123;</span><br><span class="line">  box-sizing: border-box; /* include padding and border is size calcs */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.flex-row &#123;</span><br><span class="line">  display: flex; /* start a flexbox */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.flex-column &#123;</span><br><span class="line">  flex-grow: 1; /* all columns equal size */</span><br><span class="line">  padding-left: 0.25em; /* a little padding inside each col */</span><br><span class="line">  padding-right: 0.25em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
 <h1 id="Multiple-Layouts"><a href="#Multiple-Layouts" class="headerlink" title="Multiple Layouts"></a>Multiple Layouts</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules for screens 768px and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.flex-row</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    flex-wrap: wrap; // wrap</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">    flex-basis: 50%; // 2* 2</span><br><span class="line">    <span class="selector-tag">padding-left</span>: 0<span class="selector-class">.25em</span>;</span><br><span class="line">    <span class="selector-tag">padding-right</span>: 0<span class="selector-class">.25em</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules for screens 1200px and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">1200px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">25%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
 
 <p>Also, if you want a three column layout, but with the middle column consuming <code>80%</code> of the screen width and the outer columns taking up only <code>10%</code> each, just use different style class names on the different columns, and set the <code>flex-basis</code> property appropriately.</p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.flex-row</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for all columns */</span></span><br><span class="line"><span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">0.25em</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">0.25em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for the left/right side columns */</span></span><br><span class="line"><span class="selector-class">.flex-column-sides</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">10%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for center column */</span></span><br><span class="line"><span class="selector-class">.flex-column-center</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">80%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
 <p>Remember that you can add multiple style classes to an HTML element (separated by spaces), so you can define one class for style properties that are common to all columns, and other style classes for properties that should apply to only one column (or set of similar columns). The HTML for the center column would then look like this:</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column flex-column-center"</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
 
 <h1 id="Flexbox-Nesting"><a href="#Flexbox-Nesting" class="headerlink" title="Flexbox Nesting"></a>Flexbox Nesting</h1><p>Although flexbox nesting can be powerful, you should use it sparingly, as it tends to create layouts that are difficult for both users and developers to understand.</p>
 <p>Responsive Container Elements By default the `` element will stretch to be as wide as the browser window (also called the “viewport”), and all block elements within the body will also stretch to be as wide as the body. This works well on narrower screens but it creates ridiculously wide layouts and long line-lengths on very wide desktop monitors, making your site difficult to read. It’s common to have background images and colors stretch “wall-to-wall” but the main text content is often constrained in width so that it remains easy to read on all sizes of screens.</p>
@@ -236,6 +227,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Responsive Development</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -286,7 +288,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/26/Responsive%20Development/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/26/Responsive Development/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -300,7 +302,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/27/Thoughts%20on%20Seattle%20Park%20and%20Ride%20Project/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/27/Thoughts on Seattle Park and Ride Project/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -310,7 +312,7 @@
     </a>
   
   
-    <a href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/25/May The Distance Bring Us Even Closer!/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">May The Distance Bring Us Even Closer!</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -370,7 +372,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -454,15 +455,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,7 +467,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -478,11 +499,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

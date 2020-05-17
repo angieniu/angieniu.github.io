@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>An Introduction to GeoJSON | Yanjie&#39;s Blog</title>
+  <title>An Introduction to GeoJson | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="I am working on GeoJSON data and trying to develop a standard around parking avaialbility project. Notes as below. HERE Technologies is a company that provide mapping and location data and related ser">
+<meta name="keywords" content="GeoJson">
 <meta property="og:type" content="article">
-<meta property="og:title" content="An Introduction to GeoJSON">
-<meta property="og:url" content="http://yoursite.com/2020/05/05/An%20Introduction%20to%20GeoJSON/index.html">
+<meta property="og:title" content="An Introduction to GeoJson">
+<meta property="og:url" content="http://yoursite.com/2020/05/05/An Introduction to GeoJSON/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
 <meta property="og:description" content="I am working on GeoJSON data and trying to develop a standard around parking avaialbility project. Notes as below. HERE Technologies is a company that provide mapping and location data and related ser">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://cdn2.hubspot.net/hubfs/2174253/map.png">
 <meta property="og:image" content="https://cdn2.hubspot.net/hubfs/2174253/map.png">
 <meta property="og:image" content="https://developer.here.com/blog/img/map.png">
@@ -23,10 +24,10 @@
 <meta property="og:image" content="https://cdn2.hubspot.net/hubfs/2174253/editor2.png">
 <meta property="og:image" content="https://developer.here.com/blog/img/map2.png">
 <meta property="og:image" content="https://cdn2.hubspot.net/hubfs/2174253/map2.png">
-<meta property="article:published_time" content="2020-05-06T06:59:06.516Z">
-<meta property="article:modified_time" content="2020-05-06T06:59:41.163Z">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:updated_time" content="2020-05-17T20:26:59.787Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="An Introduction to GeoJson">
+<meta name="twitter:description" content="I am working on GeoJSON data and trying to develop a standard around parking avaialbility project. Notes as below. HERE Technologies is a company that provide mapping and location data and related ser">
 <meta name="twitter:image" content="https://cdn2.hubspot.net/hubfs/2174253/map.png">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
@@ -43,8 +44,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -161,13 +162,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      An Introduction to GeoJSON
+      An Introduction to GeoJson
     </h1>
   
 
         
-        <a href="/2020/05/05/An%20Introduction%20to%20GeoJSON/" class="archive-article-date">
-  	<time datetime="2020-05-06T06:59:06.516Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
+        <a href="/2020/05/05/An Introduction to GeoJSON/" class="archive-article-date">
+  	<time datetime="2020-05-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
 </a>
         
       </header>
@@ -179,6 +180,8 @@
 <p><img src="https://cdn2.hubspot.net/hubfs/2174253/map.png" alt="img"></p>
 <p>As a new developer evangelist at HERE, I’m trying to quickly come to speed with geographic and map related terms and technologies. One of them I discovered rather quickly is a fascinating (and simple!) specification called GeoJSON.</p>
 <p>As you guess, GeoJSON is JSON related, which is great because if I never see XML again I’ll die a happy developer. Before I dig into what GeoJSON does and what problems it solves, be sure to check out the website (<a href="https://geojson.org/" target="_blank" rel="noopener">https://geojson.org</a>) and full specification (<a href="https://tools.ietf.org/html/rfc7946" target="_blank" rel="noopener">https://tools.ietf.org/html/rfc7946</a>). And by the way, definitely take a look at that specification. I spent most of my life thinking those specs were boring, mind numbing technical documents but they can actually be quite helpful. In this particular case there were a few questions I had that were answered in the spec so it was absolutely worth my time reading it!</p>
+<a id="more"></a>
+
 <h2 id="GeoJSON-is-Geographic-Data"><a href="#GeoJSON-is-Geographic-Data" class="headerlink" title="GeoJSON is Geographic Data"></a>GeoJSON is Geographic Data</h2><p>At a high level, GeoJSON is a way of representing geographic data. Let’s say you have a collection of cats (a… catalog let’s say) and the location of each cat is something you want to work with. That could be displaying them on a map, or telling a user which cat is closer to them, it doesn’t really matter.</p>
 <p>The previous example was focused on “points”, i.e. exact locations of cats, but that’s not the only type of data that can be represented in GeoJSON. Imagine you kept track of a cat’s movement through the data. That movement could be represented as a path over different points and stored in GeoJSON.</p>
 <p>As yet another example, as we know cats are very territorial. You could represent a set of cats and their territories as a set of polygons. Anything inside that polygon represents the area that belongs to the cat. (And yes, it belongs to the cat, not you.)</p>
@@ -255,6 +258,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GeoJson</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -305,7 +319,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/05/An%20Introduction%20to%20GeoJSON/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/05/An Introduction to GeoJSON/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -319,17 +333,17 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          How to use the JavaScript Fetch API to Get Data
+          How to User the JavaScript Fetch API to Get Data
         
       </div>
     </a>
   
   
-    <a href="/2020/05/04/SQL%20or%20NoSQL?/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/05/04/SQL or NoSQL?/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">SQL or NoSQL?</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -389,7 +403,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -473,15 +486,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -489,7 +498,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -497,11 +530,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

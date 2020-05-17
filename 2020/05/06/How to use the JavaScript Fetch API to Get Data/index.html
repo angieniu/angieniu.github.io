@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>How to use the JavaScript Fetch API to Get Data | Yanjie&#39;s Blog</title>
+  <title>How to User the JavaScript Fetch API to Get Data | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Notes for JavaScript Fetch API to Get Data: We all remember the dreaded XMLHttpRequest we used back in the day to make requests, it involved some really messy code, it didn’t give us promises and let’">
+<meta name="keywords" content="JavaScript, Fetch, API, Data">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to use the JavaScript Fetch API to Get Data">
-<meta property="og:url" content="http://yoursite.com/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/index.html">
+<meta property="og:title" content="How to User the JavaScript Fetch API to Get Data">
+<meta property="og:url" content="http://yoursite.com/2020/05/06/How to use the JavaScript Fetch API to Get Data/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
 <meta property="og:description" content="Notes for JavaScript Fetch API to Get Data: We all remember the dreaded XMLHttpRequest we used back in the day to make requests, it involved some really messy code, it didn’t give us promises and let’">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/S1Vs9gRTOGrud5Bt6tqI_Screen%20Shot%202017-01-10%20at%2022.21.32.png">
 <meta property="og:image" content="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/WwqF89TWRJ6R042QzJD8_Screen%20Shot%202017-01-10%20at%2022.56.43.png">
 <meta property="og:image" content="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/9z5gG0bRpqVaD94DD8Nm_Screen%20Shot%202017-01-10%20at%2023.02.26.png">
-<meta property="article:published_time" content="2020-05-07T06:43:21.002Z">
-<meta property="article:modified_time" content="2020-05-07T06:43:21.002Z">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:updated_time" content="2020-05-17T20:27:56.897Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to User the JavaScript Fetch API to Get Data">
+<meta name="twitter:description" content="Notes for JavaScript Fetch API to Get Data: We all remember the dreaded XMLHttpRequest we used back in the day to make requests, it involved some really messy code, it didn’t give us promises and let’">
 <meta name="twitter:image" content="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/S1Vs9gRTOGrud5Bt6tqI_Screen%20Shot%202017-01-10%20at%2022.21.32.png">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
@@ -38,8 +39,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -156,13 +157,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      How to use the JavaScript Fetch API to Get Data
+      How to User the JavaScript Fetch API to Get Data
     </h1>
   
 
         
-        <a href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/" class="archive-article-date">
-  	<time datetime="2020-05-07T06:43:21.002Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+        <a href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/" class="archive-article-date">
+  	<time datetime="2020-05-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
 </a>
         
       </header>
@@ -180,6 +181,8 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(url) <span class="comment">// Call the fetch function passing the url of the API as a parameter</span></span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Your code for handling the data you get from the API</span></span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// This is where you run code if the server returns any errors</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>Looks pretty simple right? So let’s starting using it…</p>
+<a id="more"></a>
+
 <h1 id="Using-fetch-to-get-data-from-an-API"><a href="#Using-fetch-to-get-data-from-an-API" class="headerlink" title="Using fetch to get data from an API"></a>Using fetch to get data from an API</h1><p>We are now going to build a simple GET request, in this case, I will use the <a href="https://randomuser.me/" target="_blank" rel="noopener">Random User API</a> and we will get 10 users and show them on the page using vanilla JavaScript.</p>
 <p><img src="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/S1Vs9gRTOGrud5Bt6tqI_Screen%20Shot%202017-01-10%20at%2022.21.32.png" alt="img"></p>
 <p>Let’s get started with the HTML, all we really need is a heading and an unordered list:</p>
@@ -258,6 +261,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript, Fetch, API, Data</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -308,7 +322,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/06/How to use the JavaScript Fetch API to Get Data/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -322,7 +336,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/07/Problem-solving%20While%20Learning/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/07/Problem-solving While Learning/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -332,8 +346,8 @@
     </a>
   
   
-    <a href="/2020/05/05/An%20Introduction%20to%20GeoJSON/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">An Introduction to GeoJSON</div>
+    <a href="/2020/05/05/An Introduction to GeoJSON/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">An Introduction to GeoJson</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -392,7 +406,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -476,15 +489,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -492,7 +501,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -500,11 +533,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,9 +12,9 @@
 <meta property="og:title" content="Yanjie&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yanjie&#39;s Blog">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -30,8 +30,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -150,13 +150,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/">How to use the JavaScript Fetch API to Get Data</a>
+      <a class="article-title" href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/">How to User the JavaScript Fetch API to Get Data</a>
     </h1>
   
 
         
-        <a href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/" class="archive-article-date">
-  	<time datetime="2020-05-07T06:43:21.002Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+        <a href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/" class="archive-article-date">
+  	<time datetime="2020-05-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
 </a>
         
       </header>
@@ -174,56 +174,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(url) <span class="comment">// Call the fetch function passing the url of the API as a parameter</span></span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Your code for handling the data you get from the API</span></span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// This is where you run code if the server returns any errors</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>Looks pretty simple right? So let’s starting using it…</p>
-<h1 id="Using-fetch-to-get-data-from-an-API"><a href="#Using-fetch-to-get-data-from-an-API" class="headerlink" title="Using fetch to get data from an API"></a>Using fetch to get data from an API</h1><p>We are now going to build a simple GET request, in this case, I will use the <a href="https://randomuser.me/" target="_blank" rel="noopener">Random User API</a> and we will get 10 users and show them on the page using vanilla JavaScript.</p>
-<p><img src="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/S1Vs9gRTOGrud5Bt6tqI_Screen%20Shot%202017-01-10%20at%2022.21.32.png" alt="img"></p>
-<p>Let’s get started with the HTML, all we really need is a heading and an unordered list:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Authors<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"authors"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>The idea is to get all the data from the Random User API and display it in list items inside the author’s list.</p>
-<p>The first step is to actually set the URL we need and also the list we are gonna put the data in, so in the Javascript we write:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'authors'</span>); <span class="comment">// Get the list where we will place our authors</span></span><br><span class="line"><span class="keyword">const</span> url = <span class="string">'https://randomuser.me/api/?results=10'</span>; <span class="comment">// Get 10 random users</span></span><br></pre></td></tr></table></figure>
-
-<p>I have set these to consts so you don’t risk changing these in the future and these two are meant to be constants through all the project. Now we get into actual Fetch API:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">fetch(url)</span><br><span class="line">  .then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Here you get the data to modify as you please</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// If there is any error you will catch them here</span></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Let’s review this code, shall we? So first we are calling the Fetch API and passing it the URL we defined as a constant above and since no more parameters are set this is a simple GET request. Then we get a response but the response we get is not JSON but an object with a series of methods we can use depending on what we want to do with the information, these methods include:</p>
-<ul>
-<li><strong>clone()</strong> - As the method implies this method creates a clone of the response.</li>
-<li><strong>redirect()</strong> - This method creates a new response but with a different URL.</li>
-<li><strong>arrayBuffer()</strong> - In here we return a promise that resolves with an ArrayBuffer.</li>
-<li><strong>formData()</strong> - Also returns a promise but one that resolves with FormData object.</li>
-<li><strong>blob()</strong> - This is one resolves with a Blob.</li>
-<li><strong>text()</strong> - In this case it resolves with a string.</li>
-<li><strong>json()</strong> - Lastly we have the method to that resolves the promise with JSON.</li>
-</ul>
-<p>Looking at all these methods the one we want is the JSON one because we want to handle our data as a JSON object so we add:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fetch(url)</span><br><span class="line">.then(<span class="function">(<span class="params">resp</span>) =&gt;</span> resp.json()) <span class="comment">// Transform the data into json</span></span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// Create and append the li's to the ul</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>Now let’s get to the part we create the list items, for that, I created two helper functions at the top of my file just to make the code simpler down the line:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createNode</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">document</span>.createElement(element); <span class="comment">// Create the type of element you pass in the parameters</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">append</span>(<span class="params">parent, el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> parent.appendChild(el); <span class="comment">// Append the second parameter(element) to the first one</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>All these functions do is append and create elements as you can see. Once this is done we can move on to the resolution of our promise and add the code we need to append these list items to our unordered list:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> authors = data.results; <span class="comment">// Get the results</span></span><br><span class="line">    <span class="keyword">return</span> authors.map(<span class="function"><span class="keyword">function</span>(<span class="params">author</span>) </span>&#123; <span class="comment">// Map through the results and for each run the code below</span></span><br><span class="line">      <span class="keyword">let</span> li = createNode(<span class="string">'li'</span>), <span class="comment">//  Create the elements we need</span></span><br><span class="line">          img = createNode(<span class="string">'img'</span>),</span><br><span class="line">          span = createNode(<span class="string">'span'</span>);</span><br><span class="line">      img.src = author.picture.medium;  <span class="comment">// Add the source of the image to be the src of the img element</span></span><br><span class="line">      span.innerHTML = <span class="string">`<span class="subst">$&#123;author.name.first&#125;</span> <span class="subst">$&#123;author.name.last&#125;</span>`</span>; <span class="comment">// Make the HTML of our span to be the first and last name of our author</span></span><br><span class="line">      append(li, img); <span class="comment">// Append all our elements</span></span><br><span class="line">      append(li, span);</span><br><span class="line">      append(ul, li);</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>So first we define authors as the response we get from the request then we map over all the authors and for each we create a list item, a span, and an image. In the image source, we place the picture of the user, the HTML of the span will be the first and last name interpolated and then all we need to do is append this to their rightful parents and voilá, our HTTP request in vanilla JavaScript is done and returning something to the HTML.</p>
-<p><img src="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/WwqF89TWRJ6R042QzJD8_Screen%20Shot%202017-01-10%20at%2022.56.43.png" alt="img"></p>
-<p>To handle our catch all I will do is console log the error as we get it but you can do whatever you want with the error such as append it to the HTML with the functions we created. This is the full code of our little request:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createNode</span>(<span class="params">element</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">document</span>.createElement(element);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">append</span>(<span class="params">parent, el</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> parent.appendChild(el);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ul = <span class="built_in">document</span>.getElementById(<span class="string">'authors'</span>);</span><br><span class="line"><span class="keyword">const</span> url = <span class="string">'https://randomuser.me/api/?results=10'</span>;</span><br><span class="line">fetch(url)</span><br><span class="line">.then(<span class="function">(<span class="params">resp</span>) =&gt;</span> resp.json())</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> authors = data.results;</span><br><span class="line">  <span class="keyword">return</span> authors.map(<span class="function"><span class="keyword">function</span>(<span class="params">author</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> li = createNode(<span class="string">'li'</span>),</span><br><span class="line">        img = createNode(<span class="string">'img'</span>),</span><br><span class="line">        span = createNode(<span class="string">'span'</span>);</span><br><span class="line">    img.src = author.picture.medium;</span><br><span class="line">    span.innerHTML = <span class="string">`<span class="subst">$&#123;author.name.first&#125;</span> <span class="subst">$&#123;author.name.last&#125;</span>`</span>;</span><br><span class="line">    append(li, img);</span><br><span class="line">    append(li, span);</span><br><span class="line">    append(ul, li);</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h2 id="Handling-more-requests-like-POST"><a href="#Handling-more-requests-like-POST" class="headerlink" title="Handling more requests like POST"></a><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data#toc-handling-more-requests-like-post" target="_blank" rel="noopener">Handling more requests like POST</a></h2><p>So this is a GET request, the default one for the fetch function but of course we can do all other types of requests and also change the headers and off course send data, all we need for this is to set our object and pass it as the second argument of the fetch function:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">'https://randomuser.me/api'</span>;</span><br><span class="line"><span class="comment">// The data we are going to send in our request</span></span><br><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">    name: <span class="string">'Sara'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// The parameters we are gonna pass to the fetch function</span></span><br><span class="line"><span class="keyword">let</span> fetchData = &#123; </span><br><span class="line">    method: <span class="string">'POST'</span>, </span><br><span class="line">    body: data,</span><br><span class="line">    headers: <span class="keyword">new</span> Headers()</span><br><span class="line">&#125;</span><br><span class="line">fetch(url, fetchData)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Handle response you get from the server</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>You can also define cache, mode and all those things you are used to defining in your POST requests.</p>
-<p>To create our object and use the fetch function we also have another option and that is to use the request constructor to create our request object, so instead of defining the object in the function itself we do this:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> url = <span class="string">'https://randomuser.me/api'</span>;</span><br><span class="line"><span class="comment">// The data we are going to send in our request</span></span><br><span class="line"><span class="keyword">let</span> data = &#123;</span><br><span class="line">    name: <span class="string">'Sara'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Create our request constructor with all the parameters we need</span></span><br><span class="line"><span class="keyword">var</span> request = <span class="keyword">new</span> Request(url, &#123;</span><br><span class="line">    method: <span class="string">'POST'</span>, </span><br><span class="line">    body: data, </span><br><span class="line">    headers: <span class="keyword">new</span> Headers()</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">fetch(request)</span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Handle response we get from the API</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>You can use the way you are most comfortable with to build your request object.</p>
-<h1 id="Final-Thoughts"><a href="#Final-Thoughts" class="headerlink" title="Final Thoughts"></a>Final Thoughts</h1><p><img src="https://scotch-res.cloudinary.com/image/upload/dpr_1,w_800,q_auto:good,f_auto/media/43/9z5gG0bRpqVaD94DD8Nm_Screen%20Shot%202017-01-10%20at%2023.02.26.png" alt="img"></p>
-<p>While the Fetch API is not yet supported by all the browsers (currently Safari does not support it) it is the beautiful replacement for XMLHttpRequest we desperately needed in our life. There are also polyfills if you really want to use it in more professional projects.</p>
-<hr>
-<p>Reference:</p>
-<p><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data" target="_blank" rel="noopener">https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data</a></p>
-
+        
       
 
       
@@ -231,11 +182,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript, Fetch, API, Data</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/How%20to%20use%20the%20JavaScript%20Fetch%20API%20to%20Get%20Data/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/">Show All >></a>
         </p>
       
 
@@ -272,13 +234,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/05/An%20Introduction%20to%20GeoJSON/">An Introduction to GeoJSON</a>
+      <a class="article-title" href="/2020/05/05/An Introduction to GeoJSON/">An Introduction to GeoJson</a>
     </h1>
   
 
         
-        <a href="/2020/05/05/An%20Introduction%20to%20GeoJSON/" class="archive-article-date">
-  	<time datetime="2020-05-06T06:59:06.516Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
+        <a href="/2020/05/05/An Introduction to GeoJSON/" class="archive-article-date">
+  	<time datetime="2020-05-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
 </a>
         
       </header>
@@ -290,54 +252,7 @@
 <p><img src="https://cdn2.hubspot.net/hubfs/2174253/map.png" alt="img"></p>
 <p>As a new developer evangelist at HERE, I’m trying to quickly come to speed with geographic and map related terms and technologies. One of them I discovered rather quickly is a fascinating (and simple!) specification called GeoJSON.</p>
 <p>As you guess, GeoJSON is JSON related, which is great because if I never see XML again I’ll die a happy developer. Before I dig into what GeoJSON does and what problems it solves, be sure to check out the website (<a href="https://geojson.org/" target="_blank" rel="noopener">https://geojson.org</a>) and full specification (<a href="https://tools.ietf.org/html/rfc7946" target="_blank" rel="noopener">https://tools.ietf.org/html/rfc7946</a>). And by the way, definitely take a look at that specification. I spent most of my life thinking those specs were boring, mind numbing technical documents but they can actually be quite helpful. In this particular case there were a few questions I had that were answered in the spec so it was absolutely worth my time reading it!</p>
-<h2 id="GeoJSON-is-Geographic-Data"><a href="#GeoJSON-is-Geographic-Data" class="headerlink" title="GeoJSON is Geographic Data"></a>GeoJSON is Geographic Data</h2><p>At a high level, GeoJSON is a way of representing geographic data. Let’s say you have a collection of cats (a… catalog let’s say) and the location of each cat is something you want to work with. That could be displaying them on a map, or telling a user which cat is closer to them, it doesn’t really matter.</p>
-<p>The previous example was focused on “points”, i.e. exact locations of cats, but that’s not the only type of data that can be represented in GeoJSON. Imagine you kept track of a cat’s movement through the data. That movement could be represented as a path over different points and stored in GeoJSON.</p>
-<p>As yet another example, as we know cats are very territorial. You could represent a set of cats and their territories as a set of polygons. Anything inside that polygon represents the area that belongs to the cat. (And yes, it belongs to the cat, not you.)</p>
-<p>If you can imagine every different way you can use a map or a globe, GeoJSON supports representing that information. Even better, the specification supports any ad hoq data as well. If we go back to the imaginary list of cats and their locations, we can associate the cats name, breed, gender, and so forth along with the geographic data.</p>
-<h2 id="GeoJSON-Parts"><a href="#GeoJSON-Parts" class="headerlink" title="GeoJSON Parts"></a>GeoJSON Parts</h2><p>GeoJSON consists of the following different parts:</p>
-<ul>
-<li>Geometry object: This is either the point, line, or polygon described earlier. Basically the location information.</li>
-<li>Feature object: This is the geometry object and the associated random ad hoq data. Remember, GeoJSON doesn’t care what data you associate with the location information.</li>
-<li>FeatureCollection: Basically just a list of feature objects.</li>
-</ul>
-<p>So typically one GeoJSON file (or dataset) will consist of a FeatureCollection containing a list of your data.</p>
-<p>Let’s take a look at a simple example.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"type"</span>: <span class="string">"FeatureCollection"</span>,</span><br><span class="line">  <span class="string">"features"</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"Feature"</span>,</span><br><span class="line">      <span class="string">"geometry"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"Point"</span>,</span><br><span class="line">        <span class="string">"coordinates"</span>: [ <span class="number">-90.0715</span>, <span class="number">29.9510</span> ]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"properties"</span>: &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Fred"</span>,</span><br><span class="line">   		<span class="string">"gender"</span>: <span class="string">"Male"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"Feature"</span>,</span><br><span class="line">      <span class="string">"geometry"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"Point"</span>,</span><br><span class="line">        <span class="string">"coordinates"</span>: [ <span class="number">-92.7298</span>, <span class="number">30.7373</span> ]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"properties"</span>: &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Martha"</span>,</span><br><span class="line">   		<span class="string">"gender"</span>: <span class="string">"Female"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">"type"</span>: <span class="string">"Feature"</span>,</span><br><span class="line">      <span class="string">"geometry"</span>: &#123;</span><br><span class="line">        <span class="string">"type"</span>: <span class="string">"Point"</span>,</span><br><span class="line">        <span class="string">"coordinates"</span>: [ <span class="number">-91.1473</span>, <span class="number">30.4711</span> ]</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">"properties"</span>: &#123;</span><br><span class="line">        <span class="string">"name"</span>: <span class="string">"Zelda"</span>,</span><br><span class="line">	    <span class="string">"gender"</span>: <span class="string">"Female"</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>At the top level you can see that I’m defining a <code>FeatureCollection</code>, or list of data. I then define my <code>features</code>, which is an array of <code>Feature</code> objects. Each Feature has a <code>geometry</code> object and a <code>properties</code> object. The <code>geometry</code> object will either be a <code>Point</code>, <code>LineString</code>, <code>Polygon</code>, <code>MultiPoint</code>, <code>MultiLineString</code>, or <code>MultiPolygon</code>. Each type should be pretty self-explanatory but certainly leave a comment if any aren’t clear. Inside <code>properties</code> you can see I’ve specified both a <code>name</code> and <code>gender</code> value for my cats. I can specify <em>any</em> data here at all, but as you can imagine, putting some thought into it and being consistent will go a long way to making your data more useful.</p>
-<h2 id="Working-with-GeoJSON"><a href="#Working-with-GeoJSON" class="headerlink" title="Working with GeoJSON"></a>Working with GeoJSON</h2><p>So given that you want to work with this type of file, how can you work with and display your data? The good news is that it’s just JSON. If you’re using JavaScript, the “effort” involved is a grand total of one line of code:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> myData = <span class="built_in">JSON</span>.parse(dataILoadedViaAjaxOrSomeSuch);</span><br></pre></td></tr></table></figure>
-
-<p>At that point you’ve got your structured data and can then iterate over the features and do… well whatever you want with them. Consider this example where I use Vue to load in the JSON above and render it as an unordered list. First the HTML:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">v-cloak</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"cat in cats"</span>&gt;</span></span><br><span class="line">      Cat &#123;&#123; cat.name &#125;&#125; is &#123;&#123; cat.gender &#125;&#125;</span><br><span class="line">      and is located at &#123;&#123; cat.pos.lat &#125;&#125;, &#123;&#123; cat.pos.lon &#125;&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Then the JavaScript:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line">Vue.config.devtools = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DATA = <span class="string">'https://api.jsonbin.io/b/5d6ed60b2d1fb96463c30e63'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el:<span class="string">'#app'</span>,</span><br><span class="line">  data:&#123;</span><br><span class="line">    cats:[]</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">async</span> created() &#123;</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(DATA);</span><br><span class="line">    <span class="keyword">let</span> geodata = <span class="keyword">await</span> response.json();</span><br><span class="line">    <span class="keyword">this</span>.cats = geodata.features.map(<span class="function"><span class="params">c</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> &#123;</span><br><span class="line">        name:c.properties.name,</span><br><span class="line">        gender:c.properties.gender,</span><br><span class="line">        pos: &#123;</span><br><span class="line">          lat:c.geometry.coordinates[<span class="number">0</span>],</span><br><span class="line">          lon:c.geometry.coordinates[<span class="number">1</span>],</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>Note I do a bit of mapping on the GeoJSON to make it simpler to use in the HTML. There’s no reason the layout need know of the GeoJSON format. You can see the result below (and feel free to play with the code):</p>
-<iframe name="cp_embed_1" src="https://codepen.io/cfjedimaster/embed/LYPOYaL?height=265&amp;theme-id=0&amp;default-tab=js%2Cresult&amp;user=cfjedimaster&amp;slug-hash=LYPOYaL&amp;pen-title=geojson1&amp;name=cp_embed_1" scrolling="no" frameborder="0" height="265" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="geojson1" class="cp_embed_iframe " loading="lazy" id="cp_embed_LYPOYaL" style="box-sizing: inherit; border: 0px; margin: 0px; padding: 0px; width: 700px; overflow: hidden; display: block;"></iframe>
-
-<p>How about rendering on a map? HERE’s <a href="https://developer.here.com/documentation/map-image/topics/quick-start-show-default-location.html" target="_blank" rel="noopener">Map Image API</a> makes it easy to display points of interest on a map. I changed my HTML to render an image:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span> <span class="attr">v-cloak</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">h2</span>&gt;</span>My Cats<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"src"</span> <span class="attr">v-if</span>=<span class="string">"poiList"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>And my JavaScript now generates an image URL based on the Map Image API:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Vue.config.productionTip = <span class="literal">false</span>;</span><br><span class="line">Vue.config.devtools = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> DATA = <span class="string">'https://api.jsonbin.io/b/5d6ed60b2d1fb96463c30e63'</span>;</span><br><span class="line"><span class="keyword">const</span> APP_ID = <span class="string">'your app id here'</span>;</span><br><span class="line"><span class="keyword">const</span> APP_CODE = <span class="string">'your app code here'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el:<span class="string">'#app'</span>,</span><br><span class="line">  data:&#123;</span><br><span class="line">    poiList:<span class="string">''</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="keyword">async</span> created() &#123;</span><br><span class="line">    <span class="keyword">let</span> response = <span class="keyword">await</span> fetch(DATA);</span><br><span class="line">    <span class="keyword">let</span> geodata = <span class="keyword">await</span> response.json();</span><br><span class="line">    <span class="keyword">this</span>.poiList = geodata.features.reduce(<span class="function">(<span class="params">acc, curr</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span>(acc !== <span class="string">''</span>) acc += <span class="string">','</span>;</span><br><span class="line">      <span class="keyword">return</span> acc += curr.geometry.coordinates[<span class="number">1</span>] + <span class="string">','</span> + curr.geometry.coordinates[<span class="number">0</span>]</span><br><span class="line">    &#125;,<span class="string">''</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  computed:&#123;</span><br><span class="line">    src() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`https://image.maps.api.here.com/mia/1.6/mapview?app_id=<span class="subst">$&#123;APP_ID&#125;</span>&amp;app_code=<span class="subst">$&#123;APP_CODE&#125;</span>&amp;poi=<span class="subst">$&#123;<span class="keyword">this</span>.poiList&#125;</span>&amp;w=400&amp;h=300&amp;z=8`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>Feel free to play around with this version here:</p>
-<iframe name="cp_embed_2" src="https://codepen.io/cfjedimaster/embed/ExYbaym?height=265&amp;theme-id=0&amp;default-tab=js%2Cresult&amp;user=cfjedimaster&amp;slug-hash=ExYbaym&amp;pen-title=geojson2&amp;name=cp_embed_2" scrolling="no" frameborder="0" height="265" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="geojson2" class="cp_embed_iframe " loading="lazy" id="cp_embed_ExYbaym" style="box-sizing: inherit; border: 0px; margin: 0px; padding: 0px; width: 700px; overflow: hidden; display: block;"></iframe>
-
-<h2 id="Testing-GeoJSON"><a href="#Testing-GeoJSON" class="headerlink" title="Testing GeoJSON"></a>Testing GeoJSON</h2><p>So hey, you absolutely love GeoJSON and want to give it a spin in your own applications? Of course you do! Here’s two tools to help make working with GeoJSON easier.</p>
-<p>First, if you’re a <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a> user (and let’s be honest, most of you are), you can find an excellent extension called <a href="https://marketplace.visualstudio.com/items?itemName=jumpinjackie.vscode-map-preview" target="_blank" rel="noopener">VSCode Map Preview</a>. As you can guess, this extension provides a map view of your GeoJSON data. Given the cat data I shared earlier, I can hit F1, run <code>Map Preview</code>, and get the following output:</p>
-<p><img src="https://cdn2.hubspot.net/hubfs/2174253/map.png" alt="map">)<img src="https://developer.here.com/blog/img/map.png" alt="img"></p>
-<p>This is a handy little tool, but note that it doesn’t currently support updating when you edit your text. You’ll have to close and re-open the preview to see changes. (This is a <a href="https://github.com/jumpinjackie/vscode-map-preview/issues/35" target="_blank" rel="noopener">known issue</a>.)</p>
-<p>Another option is the <a href="http://geojson.tools/" target="_blank" rel="noopener">GeoJSON Viewer</a> created by the <a href="https://here.xyz/" target="_blank" rel="noopener">HERE XYZ</a> team. It has a built in editor and viewer. What’s cool is that the editor provides validation on your data. As you can see here, I’m clearly not providing the right information and I’ve got real time feedback about my issues.</p>
-<p><img src="https://cdn2.hubspot.net/hubfs/2174253/editor1.png" alt="editor1">)<img src="https://developer.here.com/blog/img/editor1.png" alt="img">)<img src="https://cdn2.hubspot.net/hubfs/2174253/editor2.png" alt="editor2"></p>
-<p>The Viewer also lets you import GeoJSON data via URL or files. I took data from the <a href="https://www.nps.gov/lib/npmap.js/4.0.0/examples/data/national-parks.geojson" target="_blank" rel="noopener">National Park’s System GeoJSON file</a> and imported it into the viewer:</p>
-<p><img src="https://developer.here.com/blog/img/map2.png" alt="img">)<img src="https://cdn2.hubspot.net/hubfs/2174253/map2.png" alt="map2">As you can see, it does a pretty impressive job of rendering a lot of data!</p>
-<h2 id="What-Else"><a href="#What-Else" class="headerlink" title="What Else?"></a>What Else?</h2><p>Obviously as a simple, easily to parse spec, there’s quite a bit you can do with GeoJSON. Industry adoption will impact how successful this spec is, but if you are already offering your data via an API, there’s no reason <em>not</em> to support this format. Give it a try and if you’ve got an example of your own use of GeoJSON, leave me a comment below!</p>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p><a href="https://developer.here.com/blog/an-introduction-to-geojson" target="_blank" rel="noopener">https://developer.here.com/blog/an-introduction-to-geojson</a></p>
-
+        
       
 
       
@@ -345,11 +260,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GeoJson</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/05/An%20Introduction%20to%20GeoJSON/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/05/An Introduction to GeoJSON/">Show All >></a>
         </p>
       
 
@@ -386,13 +312,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/04/SQL%20or%20NoSQL?/">SQL or NoSQL?</a>
+      <a class="article-title" href="/2020/05/04/SQL or NoSQL?/">SQL or NoSQL?</a>
     </h1>
   
 
         
-        <a href="/2020/05/04/SQL%20or%20NoSQL?/" class="archive-article-date">
-  	<time datetime="2020-05-05T05:44:58.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
+        <a href="/2020/05/04/SQL or NoSQL?/" class="archive-article-date">
+  	<time datetime="2020-05-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
 </a>
         
       </header>
@@ -408,66 +334,7 @@
 <li>Key-Value Pairs: AWS Dynamo, Redis, Oracle NoSQL</li>
 </ul>
 <p>It becomes evident that one NoSQL database can belong to more than one category. By facing so many choices, it also poses a challenge to data architects and analytics practitioners as which one to choose and what are the factors to consider to make the right decision, even before doing the Proof-of-Concept (POC) or Minimal Viable Product (MVP). I dedicate this article to go deeper under the hood of general descriptions of NoSQL databases, to explain how NoSQL databases achieve the performance that the relational database cannot. I hope this article will help the reader to make the right decision as to whether you should go with a NoSQL or not in the first place, and if so, which ones should be the top candidates for considerations and POC/MVP testings.</p>
-<h1 id="Relational-Database-and-Normalization"><a href="#Relational-Database-and-Normalization" class="headerlink" title="Relational Database and Normalization"></a><strong>Relational Database and Normalization</strong></h1><p>Before commenting on NoSQL, we should have a good understanding of SQL and relational databases. The Relational Database was invented in 1970 by Edgar F. Codd, who was an English computer scientist. His invention led to the success of RDBMS (Relational DataBase Management System) databases in the three decades afterward, including IBM DB2, Oracle, Sybase, SQL Server, MySQL, and PostReg SQL. Around the same time, SQL (Structured Query Language) came alive to become the universal language to query and maintain the relational databases.</p>
-<p>The relational theory introduces the concept of Normalization designed to minimize data redundancy and solve data insert/update/delete anomalies, as manifested by Codd in his original paper “Further Normalization of the Data Base Relational Model”:</p>
-<ul>
-<li>To free the collection of relations from undesirable insertion, update, and deletion dependencies.</li>
-<li>To reduce the need for restructuring the collection of relations, as new types of data are introduced, and thus increase the life span of application programs.</li>
-<li>To make the relational model more informative to users.</li>
-<li>To make the collection of relations neutral to the query statistics, where these statistics are liable to change as time goes by.</li>
-</ul>
-<p>In other words, the objectives were to use related “data collections” to store information efficiently with accurate inserts, updates, and deletions. To achieve these objectives, Codd defined three normalizations, which were the principles every relational database should meet (Although more normalization forms were published afterward, they are not common in real-world cases). In simple terms, the three Normal Forms lead to the following critical aspects when designing for a relational database:</p>
-<p><strong>1st Normal Form:</strong> The database should consist of tables; each table has rows and columns; each row should have the same number of columns.</p>
-<ul>
-<li>Each column should be of the same type, and no two columns should have the same name.</li>
-<li>Each row in a table should be unique as enforced by one or more columns, called “Primary Key”. Given the Primary Key, the order of the rows does not matter.</li>
-<li>Each cell at the intersect of a column and a row should consist of one value.</li>
-</ul>
-<p><strong>2nd and 3rd Normal Forms:</strong> All the non-key columns in a table should depend and only depend on the Primary Key:</p>
-<ul>
-<li>If there are multiple columns that form the Primary Key, a non-key column should depend on all of them, but not only part of the primary keys (2nd Normal Form)</li>
-<li>A non-key column should not depend on any column not in the Primary Key (3rd Normal Form)</li>
-</ul>
-<p>For achieving the above rules, the data are stored in multiple tables of independent logical entities with the relations enforced by “Foreign Keys” that reference the Primary Keys in the other table. The relational model leads to the most efficient way of storing the data with minimal data redundancy and makes it very much extensible at table level as long as a clear relationship is well defined and the three Normal Forms are strictly followed. The relations also make the insertion/update/deletion of a piece of information only occur in one place, which removes the potential data inconsistent issues while leveraging the relationships to maintain the data integrity and accuracy, without any information loss. Lastly, the SQL language becomes a powerful database language that can retrieve any information from a relational database.</p>
-<h1 id="NoSQL-Database-Opposite-to-the-3-Normal-Forms"><a href="#NoSQL-Database-Opposite-to-the-3-Normal-Forms" class="headerlink" title="NoSQL Database: Opposite to the 3 Normal Forms"></a><strong>NoSQL Database: Opposite to the 3 Normal Forms</strong></h1><p>When Elgar invented the relation model, he likely did not imagine how many tables a relational database can ramify into and what would be the performance problem people will be facing when trying to join many tables of significant volumes. Generally speaking, there are two biggest drawbacks of relational databases that today’s NoSQL databases try to overcome:</p>
-<p><strong>Rigidity</strong> when adding columns and attributes, as manifested typically in 2 aspects:</p>
-<ul>
-<li>For unstructured or semi-structured data, an attribute usually needs to be added on the fly while only applicable for specific rows, but not every row. In addition, the value can be of different types and hard to maintain as an atomic value.</li>
-<li>The need for breaking tables and columns into relations introduces long development cycles, including database logical and physical designs, development of complex queries, testings, and production deployment.</li>
-</ul>
-<p><strong>Slow performance</strong> when many tables need to be joined, in particular when one or more tables store a large amount of data. For example:</p>
-<ul>
-<li>The slow performance usually occurs in reading when large tables need to be joined.</li>
-<li>Bulk data loading introduces a performance bottleneck when multiple related tables need to be updated at once.</li>
-</ul>
-<p>NoSQL databases, therefore, are designed to offer the flexibility of adding information and fast performance when data volume is large, while sacrificing the three Normal Forms and tolerating the risks of data redundancy and insert/update/delete abnormalities. For the same reason, a NoSQL database is best for semi-structured or unstructured data that do not fit relational database designs and data scenarios that require few constraints to enforce its accuracy. Furthermore, most NoSQL databases are designed for fast read performance with the trade of slowing down frequent updates, inserts, and deletions.</p>
-<p>On the market, there are many NoSQL databases, and different ways of categorizations, such as Key-Value pairs, Columnar type, Document, and Graph. If to look deeper, most NoSQL databases use two techniques to go around the relational databases: data storage based on Key-Value pairs and denormalization enabled by horizontal scaling.</p>
-<h2 id="1-Data-Storage-based-on-Key-Value-Pairs"><a href="#1-Data-Storage-based-on-Key-Value-Pairs" class="headerlink" title="1. Data Storage based on Key-Value Pairs"></a><strong>1. Data Storage based on Key-Value Pairs</strong></h2><p>The most common technique of overcoming the rigidity of relational tables is to create Key-Value pairs in which the value can be of any data type, such as an array or a document. Obviously, this structure abandons the relational Normal Forms completely. The JSON format is essentially a group of Key-Value pairs organized in a hierarchical fashion, which fits nicely with object-oriented programming (OOP) and is used by most APIs. Most NoSQL databases use the Key-Value pairs or JSON format under the hood:</p>
-<ul>
-<li>Key-Value Pairs: Cassandra, HBase, Redis, Amazon DynamoDB</li>
-<li>JSON: document NoSQL databases such as Mango and CouchBase; graph NoSQL databases such as Neo4j and Azure Cosmo.</li>
-</ul>
-<p>The key-value pairs give great flexibility of adding any information on the fly, without the need to consider relational integrity across different rows or tables. Furthermore, the key name and value are stored together, which makes data retrieval more efficient. After a key is indexed, the value can be retrieved quickly. The Key-Value Pairs are used when there could be many columns or fields, with each added frequently but for only a small proportion of the data. The scenario typically applies to documents, survey data, product attributes, or log data gathered from different applications and systems.</p>
-<p>The drawbacks of this structure are apparent:</p>
-<ul>
-<li>Difficult to enforce relationships between different attributes</li>
-<li>Difficult to identify data redundancies</li>
-<li>Require more storage because of the need to store the key name for every value.</li>
-<li>Expensive for specific updates and deletions.</li>
-<li>Not suitable for large scans of many data elements</li>
-</ul>
-<h2 id="2-Denormalization-Enabled-by-Horizontal-Scaling"><a href="#2-Denormalization-Enabled-by-Horizontal-Scaling" class="headerlink" title="2. Denormalization Enabled by Horizontal Scaling"></a><strong>2. Denormalization Enabled by Horizontal Scaling</strong></h2><p>A common way to improve performance in NoSQL databases is to “denormalize” the tables, meaning to store every possible column or field in one table, such that there is no need to join multiple tables when retrieving the information. Underneath, the modern NoSQL database stores the data in a distributed way in data blocks or partitions on different servers to enable horizontal scaling. As a complete opposite to Todd’s objectives for the relational database, the denormalization improves the database read performance, while bringing back data redundancy and update/insert/delete anomalies. The data should be “joined” or denormalized before loaded into the NoSQL database. It, therefore, usually requires ETL processes to prepare the data. Insertions, Updates, and Deletions to a denormalized table can be expensive and also tend to introduce data inconsistencies because a column needs to be updated in multiple places wherever the column resides.</p>
-<p>Furthermore, to enable fast retrieval from a “denormalized” structure, indexing of the key column and storing the data in a particular order and localized fashion are the essential techniques used, which, however, make the writing and loading take longer. The “denormalized” nature of the data structure makes it usually suitable for one type of use case only with a consistent retrieval pattern. For different use cases, the different denormalized structure should be built, which leads to data duplications and requires more data storage. In other words, this type of structure suits the use cases with the three characteristics listed below.</p>
-<ol>
-<li>Storing data of homogenous nature, usually used for one application</li>
-<li>Handles an unlimited large volume</li>
-<li>Consistent data retrieval patterns</li>
-</ol>
-<p>Detailed descriptions of suitable use cases for each NoSQL database are beyond the scope of this article. With an in-depth understanding of the fundamental differences between SQL and NoSQL, however, we should be able to ask the right questions and choose the right one after being clear about a specific use case and its requirements.</p>
-<h1 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a><strong>Conclusions</strong></h1><p>For an organization, both Relational and NoSQL databases are needed, which depend on different use cases and requirements. Based on the rationales stated above, you could decide which database to use before you even start to do any POC, MVP, or experimentations. Generally speaking, the NoSQL database suits certain types of applications and selective use cases, when data volume is significant, and data redundancy can be tolerated. A relational database, on the other hand. is more versatile — it can deal with any structured data, with the guaranteed performance of insert/update/delete and guaranteed data quality. Some relational databases can handle Big Data effectively, such as Amazon Red Shift and Snow Flakes, by leveraging Massive Parallel Processing (MPP), while still supporting SQL. Ultimately designing a Big Data system with excellent performance is a challenging task. It requires a full picture of the data flow, from the data sources to the final applications of the data, and to consider both Databases and Data Processing within the Big Data architecture to achieve the best performance (see my other 2 articles: <a href="https://towardsdatascience.com/big-data-architecture-in-data-processing-and-data-access-d03cff195e21" target="_blank" rel="noopener">Big Data Architecture in Data Processing and Data Access</a> and <a href="https://towardsdatascience.com/design-principles-for-big-data-performance-cd2c0e9e92bd" target="_blank" rel="noopener">Design Principles for Big Data Performance</a>).</p>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p><a href="https://towardsdatascience.com/sql-or-nosql-d3f3e3970635" target="_blank" rel="noopener">https://towardsdatascience.com/sql-or-nosql-d3f3e3970635</a></p>
-
+        
       
 
       
@@ -475,11 +342,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL, NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/04/SQL%20or%20NoSQL?/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/04/SQL or NoSQL?/">Show All >></a>
         </p>
       
 
@@ -516,13 +394,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/04/%E5%B7%B4%E9%9F%B3%E5%B8%83%E9%B2%81%E5%85%8B%E6%B2%A1%E6%9C%89%E6%B5%B7/">巴音布鲁克没有海</a>
+      <a class="article-title" href="/2020/05/03/巴音布鲁克没有海/">巴音布鲁克没有海</a>
     </h1>
   
 
         
-        <a href="/2020/05/04/%E5%B7%B4%E9%9F%B3%E5%B8%83%E9%B2%81%E5%85%8B%E6%B2%A1%E6%9C%89%E6%B5%B7/" class="archive-article-date">
-  	<time datetime="2020-05-05T01:18:35.895Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
+        <a href="/2020/05/03/巴音布鲁克没有海/" class="archive-article-date">
+  	<time datetime="2020-05-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
 </a>
         
       </header>
@@ -544,7 +422,7 @@
 <p>谈梦想，可能会陷入被人诟病炒情怀、炒冷饭。但当梦想的坚持与实现被一个人的故事具体鲜活地呈现出来的时候，那些诟病都黯然失色，只会更映衬出为梦想付诸实践的人的纯真，平凡却又伟大。</p>
 <p>感恩有实现梦想的机会，感恩亲情友情一直相伴左右。</p>
 <p>我在路上，充满热爱……</p>
-<p><a href="http://www.youtube.com/watch?v=9A88wBofLco" target="_blank" rel="noopener"><img src="http://img.youtube.com/vi/9A88wBofLco/0.jpg" alt=""></a></p>
+<p><a href="http://www.youtube.com/watch?v=9A88wBofLco" target="_blank" rel="noopener"><img src="http://img.youtube.com/vi/9A88wBofLco/0.jpg" alt></a></p>
 
       
 
@@ -557,7 +435,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/04/%E5%B7%B4%E9%9F%B3%E5%B8%83%E9%B2%81%E5%85%8B%E6%B2%A1%E6%9C%89%E6%B5%B7/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/03/巴音布鲁克没有海/">Show All >></a>
         </p>
       
 
@@ -594,13 +472,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/02/Browser%20Object%20Model%20-%20BOM%20in%20Javascript/">Browser Object Model - BOM in Javascript</a>
+      <a class="article-title" href="/2020/05/02/Browser Object Model - BOM in Javascript/">Broser Object Model</a>
     </h1>
   
 
         
-        <a href="/2020/05/02/Browser%20Object%20Model%20-%20BOM%20in%20Javascript/" class="archive-article-date">
-  	<time datetime="2020-05-03T06:23:32.254Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
+        <a href="/2020/05/02/Browser Object Model - BOM in Javascript/" class="archive-article-date">
+  	<time datetime="2020-05-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
 </a>
         
       </header>
@@ -624,29 +502,7 @@
 </blockquote>
 <p>Let’s learn briefly about all the above objects. We will learn about them in greater detail in their dedicated articles.</p>
 <p>You can open the browser console(CTRL + SHIFT + J) in this window to run the code examples in this article.</p>
-<h2 id="window"><a href="#window" class="headerlink" title="window"></a>window</h2><p>The window object represents the browser’s window containing the web document. It is the root object of the BOM hierarchy. To view properties and objects it contains execute the below code in your browser console.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F;window object</span><br><span class="line">console.log(window)</span><br></pre></td></tr></table></figure>
-
-<h2 id="window-document"><a href="#window-document" class="headerlink" title="window.document"></a>window.document</h2><p>The document object represents and returns the reference of the document loaded in the browser’s window.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F;title of the loaded document in the window</span><br><span class="line">console.log(window.document.title)</span><br></pre></td></tr></table></figure>
-
-<h2 id="window-navigator"><a href="#window-navigator" class="headerlink" title="window.navigator"></a>window.navigator</h2><p>The window.navigator object returns the reference to the Navigator Object. Navigator Object contains information about the user agent(browser) and the operating system.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F;To get the User-Agent</span><br><span class="line">console.log(window.navigator.userAgent)</span><br></pre></td></tr></table></figure>
-
-<h2 id="window-screen"><a href="#window-screen" class="headerlink" title="window.screen"></a>window.screen</h2><p>The window.screen object returns information about the user’s screen.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">&#x2F;&#x2F;get screen width</span><br><span class="line">console.log(window.screen.width)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;get screen height</span><br><span class="line">console.log(window.screen.height)</span><br></pre></td></tr></table></figure>
-
-<h2 id="window-history"><a href="#window-history" class="headerlink" title="window.history"></a>window.history</h2><p>The window.history returns a reference to the History Object. You can use it for manipulating browser session history(pages visited in the same tab).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F; go to previous web page, equivalent to clicking back button</span><br><span class="line">window.history.back();</span><br></pre></td></tr></table></figure>
-
-<h2 id="window-location"><a href="#window-location" class="headerlink" title="window.location"></a>window.location</h2><p>You can get the current page address(URL) or redirect the browser to a new web address using the window. location object.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">&#x2F;&#x2F;current page web address</span><br><span class="line">console.log(window.location.href)</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://hackinbits.com/articles/browser-object-model---bom-in-javascript" target="_blank" rel="noopener">https://hackinbits.com/articles/browser-object-model---bom-in-javascript</a></p>
-
+        
       
 
       
@@ -654,11 +510,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BOM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/02/Browser%20Object%20Model%20-%20BOM%20in%20Javascript/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/02/Browser Object Model - BOM in Javascript/">Show All >></a>
         </p>
       
 
@@ -695,13 +562,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/01/Spring%20Boot%20&%20Autoconfigurations%20In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
+      <a class="article-title" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
     </h1>
   
 
         
-        <a href="/2020/05/01/Spring%20Boot%20&%20Autoconfigurations%20In-Depth/" class="archive-article-date">
-  	<time datetime="2020-05-02T06:17:55.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
+        <a href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/" class="archive-article-date">
+  	<time datetime="2020-05-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
 </a>
         
       </header>
@@ -730,232 +597,7 @@
 <li>To show you how Spring Boot’s properties magic works. You specify a couple of properties and suddenly have working database access.</li>
 </ul>
 <p>Let’s start.</p>
-<h2 id="Spring-Boot-Basics-Conditionals"><a href="#Spring-Boot-Basics-Conditionals" class="headerlink" title="Spring Boot Basics: Conditionals"></a>Spring Boot Basics: Conditionals</h2><p>Before you become a Spring Boot guru, you need to understand just <em>one</em> very important concept: Spring Framework’s @Conditional annotation.</p>
-<p><strong>Parental Advice</strong>: Don’t skip this section, as it is the basis for <em>everything</em> that Spring Boot does. Also, I’ll make it as interesting as possible.</p>
-<h3 id="How-to-share-ApplicationContextConfigurations"><a href="#How-to-share-ApplicationContextConfigurations" class="headerlink" title="How to share ApplicationContextConfigurations?"></a>How to share ApplicationContextConfigurations?</h3><p>Imagine you are working for ReallyBigCompany™ with a couple of teams working on different Spring projects or products. But you are <em>not</em> using Spring Boot, just plain Spring Framework.</p>
-<p>Also imagine that at one point, one of your developers had a great idea to extract one common ApplicationContextConfiguration out of all projects, because she noticed that every company project uses a few of the same beans.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class ReallyBigCompanySharedContextConfiguration &#123; &#x2F;&#x2F; (1)</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public ReallyBigCompanyProprietaryFlywayClone flywayClone() &#123;</span><br><span class="line">        return new ReallyBigCompanyProprietaryFlywayClone(); &#x2F;&#x2F; (2)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>This SharedContextConfiguration would live in its own project, eventually published as its own .jar file that all your company’s Spring projects can import as a Maven/Gradle dependency.</li>
-<li>Imagine that ReallyBigCompany built a proprietary Flyway clone, i.e. something that initializes and manages databases. And as every project in your company uses a relational database, it makes sense to extract it to this shared configuration.</li>
-</ol>
-<p>Your actual project ApplicationContextConfigurations would then do this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">@Import(ReallyBigCompanySharedConfiguration.class) &#x2F;&#x2F; (1)</span><br><span class="line">public class EarlyExitUnicornProjectContextConfiguration &#123;</span><br><span class="line"></span><br><span class="line">   &#x2F;&#x2F; (2)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>Every company project from now on imports the SharedConfiguration, as it contains so many goodies (well, only the Flyway clone at the moment, but you get the point).</li>
-<li>You would specify your project-specific beans here, as normal.</li>
-</ol>
-<h3 id="What-is-the-problem-with-shared-ApplicationContextConfigurations"><a href="#What-is-the-problem-with-shared-ApplicationContextConfigurations" class="headerlink" title="What is the problem with shared ApplicationContextConfigurations?"></a>What is the problem with shared ApplicationContextConfigurations?</h3><p>Having such a shared Spring configuration in your company works, but there’s a problem on the horizon.</p>
-<p>What if you want to create another project which wants to import that shared configuration, but <em>not</em> have a ReallyBigCompanyProprietaryFlywayClone, because it does not use a relational database?</p>
-<p>Then you need a way to tell Spring: That @Configuration is fine, but please don’t create that one specific @Bean - just ignore it. Go ahead and create all other @Beans though.</p>
-<p>That’s <em>exactly</em> what Spring’s @Conditional annotation is for.</p>
-<h3 id="What-is-Spring’s-Conditional-annotation"><a href="#What-is-Spring’s-Conditional-annotation" class="headerlink" title="What is Spring’s @Conditional annotation?"></a>What is Spring’s @Conditional annotation?</h3><p>The <a href="https://spring.io/projects/spring-framework" target="_blank" rel="noopener">Spring Framework</a> offers the @Conditional annotation since version 4.0 (released on 2013). You can put it on @Bean methods, @Components or even @Configurations and it looks like so:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@Conditional(SomeCondition.class) &#x2F;&#x2F; (1)</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>It has a “Condition” class parameter, which is a class that has a method called “matches”, returning a simple Boolean.<ul>
-<li>True: (Further Evaluate/Register) Create that @Bean, @Component or @Configuration</li>
-<li>False: (Stop Evaluating/Registering) Don’t create that @Bean, @Component or @Configuration</li>
-</ul>
-</li>
-</ol>
-<p>In short: Even though an ApplicationContextConfiguration comes with certain @Bean definitions, <em>you</em> as the end-user can still somewhat influence if a bean gets created or not.</p>
-<h3 id="Making-the-shared-ApplicationContextConfiguration-Conditional"><a href="#Making-the-shared-ApplicationContextConfiguration-Conditional" class="headerlink" title="Making the shared ApplicationContextConfiguration @Conditional"></a>Making the shared ApplicationContextConfiguration @Conditional</h3><p>What does that mean for our SharedConfiguration? We could refactor it to look like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class ReallyBigCompanySharedContextConfiguration &#123;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    @Conditional(IsRelationalDatabaseCondition.class) &#x2F;&#x2F; (1)</span><br><span class="line">    public ReallyBigCompanyProprietaryFlywayClone flywayClone() &#123;</span><br><span class="line">        return new ReallyBigCompanyProprietaryFlywayClone();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>It is exactly the same ContextConfiguration as before, only now your @Bean method is also annotated with a condition that we have yet to write.</li>
-</ol>
-<p>What could this condition look like?</p>
-<h3 id="Implementing-a-Spring-Condition"><a href="#Implementing-a-Spring-Condition" class="headerlink" title="Implementing a Spring Condition"></a>Implementing a Spring Condition</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">package com.marcobehler;</span><br><span class="line"></span><br><span class="line">import org.springframework.context.annotation.Condition;</span><br><span class="line">import org.springframework.context.annotation.ConditionContext;</span><br><span class="line">import org.springframework.core.type.AnnotatedTypeMetadata;</span><br><span class="line"></span><br><span class="line">public class IsRelationalDatabaseCondition implements Condition &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) &#123;  &#x2F;&#x2F; (1)</span><br><span class="line">        return oracleJdbcDriverOnClassPath() &amp;&amp; databaseUrlSet(context); &#x2F;&#x2F; (2)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private boolean databaseUrlSet(ConditionContext context) &#123; &#x2F;&#x2F; (3)</span><br><span class="line">        return context.getEnvironment().containsProperty(&quot;spring.datasource.url&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private boolean oracleJdbcDriverOnClassPath() &#123; &#x2F;&#x2F; (4)</span><br><span class="line">        try &#123;</span><br><span class="line">            Class.forName(&quot;oracle.jdbc.driver.OracleDriver&quot;);</span><br><span class="line">            return true;</span><br><span class="line">        &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>Condition is an interface which exposes one method called “matches” that returns true/false: Has the condition been met or not.</li>
-<li>I am mixing up two conditions here: I want to check if the Oracle driver class is on the classpath. And I want to check if the user has set a database URL in a .properties file.</li>
-<li>Checking for a property is rather simple, as you can go through Spring’s environment class, which will, in turn, check all @PropertySources (think: application.properties) for a property.</li>
-<li>Checking for dependencies is also rather simple: You can check for the availability of a certain class on your classpath and if it is there, then you can assume the whole library is there.</li>
-</ol>
-<p>Though you would very likely split this class up into two different conditions in the real world, it highlights two very important conditions:</p>
-<ol>
-<li>You can create @Beans depending on specific <strong>available properties</strong>.</li>
-<li>You can create @Beans depending on specific <strong>libraries on your classpath</strong>.</li>
-</ol>
-<h3 id="Half-Time-Break-What-is-Spring-Boot"><a href="#Half-Time-Break-What-is-Spring-Boot" class="headerlink" title="Half-Time Break: What is Spring Boot?"></a>Half-Time Break: What is Spring Boot?</h3><p>Even though we haven’t covered any Spring Boot source code just yet, there is now a new insight looming.</p>
-<p>What if Spring Boot is <em>just</em> a shared context configuration with tons of @Conditionals?</p>
-<p>Conditionals that create a DataSource for you, because you have set specific properties (think: spring.datasource.url)? Or @Conditionals that boot up an embedded Tomcat server for you because you have the Tomcat libraries on your classpath?</p>
-<p>Yes, that (and not much more) is <em>exactly</em> what Spring Boot is. Don’t believe me? Let’s see some code.</p>
-<p>You might also be interested in my new <img src="https://www.marcobehler.com/images/favicon.ico" alt="img"> <a href="https://www.marcobehler.com/academy/learning-spring?utm_campaign=spring_framework_guide&utm_medium=spring_framework_guide&utm_source=spring_framework_guide" target="_blank" rel="noopener">Learning Spring</a> exercise course, which people love because of its unique approach.</p>
-<h2 id="Spring-Boot-AutoConfigurations"><a href="#Spring-Boot-AutoConfigurations" class="headerlink" title="Spring Boot: AutoConfigurations"></a>Spring Boot: AutoConfigurations</h2><h3 id="What-happens-when-you-start-a-Spring-Boot-application"><a href="#What-happens-when-you-start-a-Spring-Boot-application" class="headerlink" title="What happens when you start a Spring Boot application?"></a>What happens when you start a Spring Boot application?</h3><p>Everyone who has created a new Spring Boot application knows you’ll end up with a runnable main() method that launches Spring Boot’s magic.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.example;</span><br><span class="line"></span><br><span class="line">import org.springframework.boot.SpringApplication;</span><br><span class="line">import org.springframework.boot.autoconfigure.SpringBootApplication;</span><br><span class="line"></span><br><span class="line">@SpringBootApplication</span><br><span class="line">public class MySpringBootApp &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123; &#x2F;&#x2F; (1)</span><br><span class="line">        SpringApplication.run(MySpringBootApp.class, args);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>You run this main method and suddenly your Tomcat server boots up, your application.properties file gets read in and you can immediately start writing @RestControllers.</li>
-</ol>
-<p>How does this work?</p>
-<h3 id="Spring-Boot-Three-Internal-Core-Features"><a href="#Spring-Boot-Three-Internal-Core-Features" class="headerlink" title="Spring Boot: Three Internal Core Features"></a>Spring Boot: Three Internal Core Features</h3><p>There are many things happening when running your SpringApplication, but let’s have a look at three specific ones which, at first, don’t have much in common, but together form most of the basis of Spring Boot.</p>
-<h4 id="1-Auto-registered-PropertySources"><a href="#1-Auto-registered-PropertySources" class="headerlink" title="1. Auto-registered @PropertySources"></a>1. Auto-registered @PropertySources</h4><p>You can tell any plain Spring Framework application to read in .properties files from basically any location you want, with the help of the @PropertySource annotation.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@PropertySource(value &#x3D; &quot;classpath:application.properties&quot;, ignoreResourceNotFound &#x3D; true)</span><br></pre></td></tr></table></figure>
-
-<p>When you run the main method of your MySpringBootApp, Spring Boot will <em>automatically</em> register 17 of these PropertySources for you (even though not correct, you can think of it as 17 of these annotations automatically added to your project).</p>
-<p>You can find the complete list of default PropertySources <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-external-config" target="_blank" rel="noopener">in the official documentation</a>, but here’s an excerpt:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4. Command line arguments.</span><br><span class="line">...</span><br><span class="line">10. OS environment variables.</span><br><span class="line">...</span><br><span class="line">15. Application properties packaged inside your jar (application.properties and YAML variants).</span><br></pre></td></tr></table></figure>
-
-<p>So, Spring Boot merely has a default set of property locations that it <em>always</em> tries to read in, like command line arguments, or application.properties inside your .jar file etc. Or, it ignores the location. That’s it.</p>
-<p>Now, what does it do with these .properties? Before we have a look at that in Spring Boot’s original source code, let’s have a look at the second big thing that happens when running a Spring Boot’s main method.</p>
-<h4 id="2-Read-in-META-INF-spring-factories"><a href="#2-Read-in-META-INF-spring-factories" class="headerlink" title="2. Read-in META-INF/spring.factories"></a>2. Read-in META-INF/spring.factories</h4><p>Every Spring Boot project has a dependency on the following library: <em>org.springframework.boot:spring-boot-autoconfigure</em>. It is a simple .jar file containing pretty much <em>all</em> of Spring Boot’s magic.</p>
-<p>In addition, it comes with a file called spring.factories, under the META-INF folder.</p>
-<p><img src="https://www.marcobehler.com/images/guides/spring-boot/spring_factories.PNG" alt="Spring Factories"></p>
-<p>When you open up that file, there’s one section called “#Auto Configure”, which spans over a hundred lines.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># Auto Configure</span><br><span class="line">org.springframework.boot.autoconfigure.EnableAutoConfiguration&#x3D;\</span><br><span class="line">org.springframework.boot.autoconfigure.admin.SpringApplicationAdminJmxAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.aop.AopAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.batch.BatchAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.cassandra.CassandraAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.cloud.CloudServiceConnectorsAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.context.ConfigurationPropertiesAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.couchbase.CouchbaseAutoConfiguration,\</span><br><span class="line">org.springframework.boot.autoconfigure.dao.PersistenceExceptionTranslationAutoConfiguration,\</span><br><span class="line">&#x2F;&#x2F; 100+ more lines</span><br></pre></td></tr></table></figure>
-
-<p>These AutoConfigurations (more on that in a second) are normal Spring @Configurations with a ton of @Conditionals that Spring Boot reads in and tries to evaluate on every application startup.</p>
-<p>But before we look at these AutoConfigurations, let’s have one last look at one additional Spring Boot feature.</p>
-<h4 id="3-Enhanced-Conditional-Support"><a href="#3-Enhanced-Conditional-Support" class="headerlink" title="3. Enhanced Conditional Support"></a>3. Enhanced Conditional Support</h4><p>A couple of paragraphs earlier, we saw that Spring Framework comes with the @Conditional annotation. But that annotation is a bit low-level.</p>
-<p>Spring Boot comes with its own set of additional @Conditional annotations, which make developers’ lives easier. (Note, that the following parameter values of the @Conditional annotations are just an example)</p>
-<ul>
-<li><strong>@ConditionalOnBean(DataSource.class)</strong>. The condition is true only if the user specified a DataSource @Bean in a @Configuration.</li>
-<li><strong>@ConditionalOnClass(DataSource.class)</strong>. The condition is true if the DataSource class is on the classpath.</li>
-<li><strong>@ConditionalOnCloudPlatform(CloudPlatform.Heroku)</strong>. The condition is true if the CloudPlatform is set to Heroku.</li>
-<li><strong>@ConditionalOnExpression(“someSpELExpression)</strong>. The condition is true if the SpEL expression is true.</li>
-<li><strong>@ConditionalOnJava(JavaVersion.EIGHT)</strong>. The condition is true if the current Java version is 8.</li>
-<li><strong>@ConditionalOnJndi(“java:comp/env/ejb/myEJB”)</strong>. The condition is true if the specified JNDI context exists.</li>
-<li><strong>@ConditionalOnMissingBean(DataSource.class)</strong>. The condition is true if the user did <em>not</em> specify a DataSource @Bean in any @Configuration.</li>
-<li><strong>@ConditionalOnMissingClass(DataSource.class)</strong>. The condition is true if the DataSource class is <em>not</em> on the classpath.</li>
-<li><strong>@ConditionalOnNotWebApplication</strong>. The condition is true if the application is <em>not</em> a web application.</li>
-<li><strong>@ConditionalOnProperty(“my.property”)</strong>. The condition is true if my.property is set.</li>
-<li><strong>@ConditionalOnResource(“classpath:my.properties”)</strong>. The condition is true if my.properties exists.</li>
-<li><strong>@ConditionalOnSingleCandidate(DataSource.class)</strong>. Matches if there is exactly one <em>primary</em> DataSource bean specified in your application.</li>
-<li><strong>@ConditionalOnWebApplication</strong>. The condition is true if the application is a web application.</li>
-</ul>
-<p>So, in short, with Spring Boot you do not have to write the most common conditions yourself (like checking for a property). Instead, you can use its enhanced @Conditional annotations.</p>
-<h4 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h4><p>When Spring Boot boots up:</p>
-<ol>
-<li>It tries to read in .properties from 17 hard-coded locations.</li>
-<li>It also reads in the spring.factories file of your autoconfigure-module and finds out which AutoConfigurations it should evaluate.</li>
-<li>It has an enhanced concept of @Conditionals, compared to plain Spring. This will come in handy in a second.</li>
-</ol>
-<p>This is enough knowledge to start analyzing said AutoConfigurations.</p>
-<h3 id="Where-to-get-Spring-Boot’s-source-code"><a href="#Where-to-get-Spring-Boot’s-source-code" class="headerlink" title="Where to get Spring Boot’s source code"></a>Where to get Spring Boot’s source code</h3><p>To follow along, you might want to checkout the Spring Boot project yourself. Don’t worry, it is just a quick ‘git clone’ and project import away.</p>
-<p>Also note, that Spring Boot effectively switched to Gradle as build system in the master branch, whereas older release branches are still Maven based.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;spring-projects&#x2F;spring-boot.git</span><br></pre></td></tr></table></figure>
-
-<h3 id="How-to-analyze-an-AutoConfiguration-DataSourceAutoConfiguration"><a href="#How-to-analyze-an-AutoConfiguration-DataSourceAutoConfiguration" class="headerlink" title="How to analyze an AutoConfiguration: DataSourceAutoConfiguration"></a>How to analyze an AutoConfiguration: DataSourceAutoConfiguration</h3><p>Inside the spring-boot-autoconfigure module, you’ll find a subpackage and AutoConfiguration for <em>every</em> Spring or 3rd party library that Spring Boot integrates with.</p>
-<p>Let’s have a look at the DataSourceAutoConfiguration class first. It is the one that builds a DataSource for you, after you put a couple of properties like “spring.datasource.url” into one of your .properties files.</p>
-<p>Woohaa, look at this annotation festival! Let’s step through it line-by-line.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">@Configuration(proxyBeanMethods &#x3D; false)  &#x2F;&#x2F; (1)</span><br><span class="line">@ConditionalOnClass(&#123; DataSource.class, EmbeddedDatabaseType.class &#125;) &#x2F;&#x2F; (2)</span><br><span class="line">@EnableConfigurationProperties(DataSourceProperties.class) &#x2F;&#x2F; (3)</span><br><span class="line">@Import(&#123; DataSourcePoolMetadataProvidersConfiguration.class, DataSourceInitializationConfiguration.class &#125;) &#x2F;&#x2F; (3)</span><br><span class="line">public class DataSourceAutoConfiguration &#123;</span><br><span class="line"></span><br><span class="line">        @Configuration(proxyBeanMethods &#x3D; false)</span><br><span class="line">        @Conditional(EmbeddedDatabaseCondition.class)</span><br><span class="line">        @ConditionalOnMissingBean(&#123; DataSource.class, XADataSource.class &#125;)</span><br><span class="line">        @Import(EmbeddedDataSourceConfiguration.class)</span><br><span class="line">        protected static class EmbeddedDatabaseConfiguration &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Configuration(proxyBeanMethods &#x3D; false) &#x2F;&#x2F; (4)</span><br><span class="line">        @Conditional(PooledDataSourceCondition.class) &#x2F;&#x2F; (5)</span><br><span class="line">        @ConditionalOnMissingBean(&#123; DataSource.class, XADataSource.class &#125;) &#x2F;&#x2F; (6)</span><br><span class="line">        @Import(&#123; DataSourceConfiguration.Hikari.class, DataSourceConfiguration.Tomcat.class, &#x2F;&#x2F; (7)</span><br><span class="line">                        DataSourceConfiguration.Dbcp2.class, DataSourceConfiguration.Generic.class,</span><br><span class="line">                        DataSourceJmxConfiguration.class &#125;)</span><br><span class="line">        protected static class PooledDataSourceConfiguration &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; some more</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>A DataSourceAutoConfiguration is a normal Spring @Configuration.</li>
-<li>For the @Configuration to get evaluated further, you need to have two classes on the classpath: DataSource and EmbeddedDatabaseType. If that Conditional is false, the whole @Configuration is not evaluated.</li>
-<li>We can ignore these two lines for now, but as a quick side-note: @EnableConfigurationProperties enables that the properties you put into your .properties files can get automatically set/converted to an object, like the DataSourceProperties here.</li>
-<li>The DataSourceAutoConfiguration has two other, inner, @Configurations. One of them is the PooledDataSourceConfiguration, which will (conditionally) create a connection pool DataSource for you.</li>
-<li>It has a @Condition on a PooledDataSourceCondition, which really is a nested @ConditionalOnProperty. Ouch!</li>
-<li>The PooledDataSourceConfiguration only gets evaluated further if the user (i.e. YOU) has not specified a DataSource or an XADataSource himself, yet.</li>
-<li>The PooledDataSourceConfiguration imports quite a few <em>other</em> configurations, to be more specific: one configuration for each supported connection pool library (Hikari, Tomcat, Dbcp2, etc.).</li>
-</ol>
-<p>That is a lot to digest, but essentially it is normal Spring @Configurations, safe-guarded with @Conditionals. To top it off, let’s have a look at the imported DataSourceConfiguration.Hikari.class.</p>
-<p>Even more annotations!</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">         * Hikari DataSource configuration.</span><br><span class="line">         *&#x2F;</span><br><span class="line">        @Configuration(proxyBeanMethods &#x3D; false) &#x2F;&#x2F; (1)</span><br><span class="line">        @ConditionalOnClass(HikariDataSource.class) &#x2F;&#x2F; (2)</span><br><span class="line">        @ConditionalOnMissingBean(DataSource.class) &#x2F;&#x2F; (3)</span><br><span class="line">        @ConditionalOnProperty(name &#x3D; &quot;spring.datasource.type&quot;, havingValue &#x3D; &quot;com.zaxxer.hikari.HikariDataSource&quot;, &#x2F;&#x2F; (4)</span><br><span class="line">                        matchIfMissing &#x3D; true)</span><br><span class="line">        static class Hikari &#123;</span><br><span class="line"></span><br><span class="line">                @Bean &#x2F;&#x2F; (5)</span><br><span class="line">                @ConfigurationProperties(prefix &#x3D; &quot;spring.datasource.hikari&quot;)</span><br><span class="line">                HikariDataSource dataSource(DataSourceProperties properties) &#123;</span><br><span class="line">                        HikariDataSource dataSource &#x3D; createDataSource(properties, HikariDataSource.class);</span><br><span class="line">                        if (StringUtils.hasText(properties.getName())) &#123;</span><br><span class="line">                                dataSource.setPoolName(properties.getName());</span><br><span class="line">                        &#125;</span><br><span class="line">                        return dataSource;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>Another normal Spring @Configuration.</li>
-<li>The HikariDataSource.class must be on the classpath, i.e. hikari-cp must be added to your pom.xml/build.gradle file.</li>
-<li>The user must <em>not</em> have specified a DataSource bean himself.</li>
-<li>Either the property “spring.datasource.type” is missing, or it must have a specific value of “com.zaxxer.hikari.HikariDataSource”.</li>
-<li>If all these conditions match, then a good old Spring @Bean gets created. A HikariDataSource. This is what you would otherwise have to create yourself, by looking at HikariCP’s documentation.</li>
-</ol>
-<p>So, essentially all the DataSourceAutoConfiguration does is check for 3rd party dependencies on the classpath and a couple of properties to be set. Then it boots up a DataSource for you that you would otherwise have to configure yourself, manually.</p>
-<p>Or in simpler terms: If you have HikariCP on your classpath, then you <em>automatically</em> get a HikariDataSource @Bean created. If you had the DBCP2 library on your classpath (and Hikari excluded), then you’d get a different connection pool. Simply by switching dependencies.</p>
-<p>This is the power of @Conditionals!</p>
-<h3 id="Exercise-Analyze-the-Tomcat-AutoConfiguration"><a href="#Exercise-Analyze-the-Tomcat-AutoConfiguration" class="headerlink" title="Exercise: Analyze the Tomcat AutoConfiguration"></a>Exercise: Analyze the Tomcat AutoConfiguration</h3><p>Back to the question from the beginning: How can Spring Boot boot up an embedded Tomcat server by default? Simple:</p>
-<ol>
-<li>It needs to check if Tomcat is on the classpath. (@ConditionalOnClass(Tomcat.class))</li>
-<li>It might take into account specific properties that the user sets, like server.port.</li>
-<li>It needs to take Spring WebMVC’s DispatcherServlet and register it with Tomcat, to make your @RestControllers with their @GetMappings and @PostMappings work.</li>
-<li>It needs to start your embedded Tomcat server (and therefore your DispatcherServlet).</li>
-</ol>
-<p>The exercise for you is to find and understand those servlet specific auto-configurations, with their appropriate conditionals.</p>
-<p>A hint: Have a look at DispatcherServletAutoConfiguration, as well as EmbeddedWebServerFactoryCustomizerAutoConfiguration.</p>
-<p>And if you are done with that, you can have a look at the AutoConfiguration for one of your favorite libraries, like Flyway, or Jackson, or MongoDB.</p>
-<h3 id="Final-Answer-What-is-Spring-Boot"><a href="#Final-Answer-What-is-Spring-Boot" class="headerlink" title="Final Answer: What is Spring Boot?"></a>Final Answer: What is Spring Boot?</h3><p>Spring Boot is <em>just</em> a couple of AutoConfigurations classes (== normal Spring @Configurations), that create @Beans for you if certain @Conditions are met.</p>
-<p>Three of the most important conditions are</p>
-<ol>
-<li><strong>@ConditionalOnClass</strong>. Checking for dependencies or rather specific classes of dependencies (think: Tomcat, HikariCP, etc).</li>
-<li><strong>@ConditionalOnProperty</strong>. Self-explanatory.</li>
-<li><strong>@ConditionalOnMissingBean</strong>. If the user specified his own, e.g. DataSource, already, then Spring Boot won’t try to create its auto-configured one.</li>
-</ol>
-<p>That is what is meant by “opinionated defaults” on the Spring Boot homepage.</p>
-<p>You might also be interested in my new <img src="https://www.marcobehler.com/images/favicon.ico" alt="img"> <a href="https://www.marcobehler.com/academy/learning-spring?utm_campaign=spring_framework_guide&utm_medium=spring_framework_guide&utm_source=spring_framework_guide" target="_blank" rel="noopener">Learning Spring</a> exercise course, which people love because of its unique approach.</p>
-<h2 id="Spring-Boot-Dependencies"><a href="#Spring-Boot-Dependencies" class="headerlink" title="Spring Boot: Dependencies"></a>Spring Boot: Dependencies</h2><p>One last piece of the puzzle is missing. How do all these dependencies get on the classpath in Spring Boot projects? And how come you do not have to specify any version numbers for your 3rd party libraries?</p>
-<h3 id="Analyzing-spring-boot-starter-web"><a href="#Analyzing-spring-boot-starter-web" class="headerlink" title="Analyzing spring-boot-starter-web"></a>Analyzing spring-boot-starter-web</h3><p>The one dependency every web-based Spring Boot project includes, is the spring-boot-starter-web dependency. Its pom.xml file looks like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">                &lt;!-- other dependencies left out for conciseness --&gt;</span><br><span class="line">                &lt;dependency&gt;</span><br><span class="line">                        &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">                        &lt;artifactId&gt;spring-boot-starter-tomcat&lt;&#x2F;artifactId&gt; &lt;!-- 1 --&gt;</span><br><span class="line">                &lt;&#x2F;dependency&gt;</span><br><span class="line">                &lt;!-- other dependencies left out for conciseness --&gt;</span><br><span class="line">                &lt;dependency&gt;</span><br><span class="line">                        &lt;groupId&gt;org.springframework&lt;&#x2F;groupId&gt;</span><br><span class="line">                        &lt;artifactId&gt;spring-webmvc&lt;&#x2F;artifactId&gt; &lt;!-- 2 --&gt;</span><br><span class="line">                &lt;&#x2F;dependency&gt;</span><br><span class="line">        &lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>Among other dependencies, the spring-boot-starter-tomcat dependency gets pulled in transitively by the starter-web dependency.</li>
-<li>Also, Spring WebMVC, Spring’s web framework gets pulled in transitively.</li>
-</ol>
-<p>Now, the pom.xml file for spring-boot-starter-tomcat looks like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependencies&gt;</span><br><span class="line">                &lt;dependency&gt;</span><br><span class="line">                        &lt;groupId&gt;org.apache.tomcat.embed&lt;&#x2F;groupId&gt;</span><br><span class="line">                        &lt;artifactId&gt;tomcat-embed-core&lt;&#x2F;artifactId&gt; &lt;!-- 1 --&gt;</span><br><span class="line">                        &lt;exclusions&gt;</span><br><span class="line">                                &lt;exclusion&gt;</span><br><span class="line">                                        &lt;groupId&gt;org.apache.tomcat&lt;&#x2F;groupId&gt;</span><br><span class="line">                                        &lt;artifactId&gt;tomcat-annotations-api&lt;&#x2F;artifactId&gt;</span><br><span class="line">                                &lt;&#x2F;exclusion&gt;</span><br><span class="line">                        &lt;&#x2F;exclusions&gt;</span><br><span class="line">                &lt;&#x2F;dependency&gt;</span><br><span class="line">                &lt;!-- other dependencies left out for conciseness --&gt;</span><br><span class="line">        &lt;&#x2F;dependencies&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>This dependency is everything you need to start/run an embedded Tomcat server. Spring Boot pulls it in, and guess what that means. That by default, @ConditionalOnClass(Tomcat.class) conditions will be true! And that is exactly the condition Spring Boot evaluates to start up an embedded Tomcat server. Not so much rocket science, anymore, is it?</li>
-</ol>
-<p>In general, by browsing through the starters, you’ll find that the spring-boot-starter-web pulls in 60+ other dependencies and third-party libraries into your project - by default. From JSON and YAML libraries, to logging, to Spring’s WebMVC framework. It’s all basic Maven/Gradle dependency management.</p>
-<h3 id="Why-can-you-drop-dependency-versions-in-Spring-Boot"><a href="#Why-can-you-drop-dependency-versions-in-Spring-Boot" class="headerlink" title="Why can you drop dependency versions in Spring Boot?"></a>Why can you drop dependency versions in Spring Boot?</h3><p>This leaves us with the last question. Why don’t you (rather: almost never) have to specify third-party dependency versions, when including them in your pom.xml file? So, instead of this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hibernate-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;5.4.12.Final&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<p>You would do this in Spring Boot projects.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;hibernate-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
-
-<p>That is because the Spring Boot project that is generated by Spring’s Initializr extends from a parent project called spring-boot-dependencies. It is not so much of a project, but a simple pom.xml file.</p>
-<p>And in that pom.xml file, you have a <em>huge</em> dependencyManagement section (covering <em>every</em> 3rd party library Spring Boot integrates with), which defines dependencies that you can include in <em>your</em> pom.xml file, without specifying the version number. Because it is already specified in that parent pom.xml.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">  &lt;properties&gt;</span><br><span class="line">    &lt;hibernate.version&gt;5.4.12.Final&lt;&#x2F;hibernate.version&gt; &lt;!-- 1 --&gt;</span><br><span class="line">    &lt;!-- other versions left out for brevity --&gt;</span><br><span class="line">  &lt;&#x2F;properties&gt;</span><br><span class="line"></span><br><span class="line"> &lt;dependencyManagement&gt; &lt;!-- 2 --&gt;</span><br><span class="line"> &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-c3p0&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-core&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-ehcache&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-entitymanager&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-envers&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.hibernate&lt;&#x2F;groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;hibernate-hikaricp&lt;&#x2F;artifactId&gt;</span><br><span class="line">        &lt;version&gt;$&#123;hibernate.version&#125;&lt;&#x2F;version&gt;</span><br><span class="line">      &lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;&#x2F;dependencyManagement&gt;</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>Spring Boot puts the version numbers into the <properties> section so that you can easily override these version numbers in your sub-project.</li>
-<li>The <dependencyManagement> block is Maven’s standard feature for defining dependency versions “globally”, across all the modules of your project.</li>
-</ol>
-<p>That pom.xml file is the reason you do not have to specify 3rd party library versions anymore. Unless of course, your specific 3rd party library is not in that pom.xml file. Then you still need to define the version yourself.</p>
-<p>(Note: Inheriting from spring-boot-dependencies is one way to get Spring Boot’s dependency management working, another way would be to import the bom, but I won’t show that here.)</p>
-<h3 id="Dependency-Management-Summary"><a href="#Dependency-Management-Summary" class="headerlink" title="Dependency Management: Summary"></a>Dependency Management: Summary</h3><ul>
-<li>Starters like spring-boot-starter-web include a <em>ton</em> of third-party libraries into your project - by default. Its AutoConfigurations use these dependencies (remember: @ConditionalOnClass) to setup and preconfigure these libraries automatically.</li>
-<li>The spring-boot-dependencies pom.xml contains <em>every</em> 3rd party library (and version) that Spring Boot knows. These libraries are predefined in a dependenciesManagement section, so you do not need to specify the version numbers in your own project, anymore.</li>
-</ul>
-<p>You might also be interested in my new <img src="https://www.marcobehler.com/images/favicon.ico" alt="img"> <a href="https://www.marcobehler.com/academy/learning-spring?utm_campaign=spring_framework_guide&utm_medium=spring_framework_guide&utm_source=spring_framework_guide" target="_blank" rel="noopener">Learning Spring</a> exercise course, which people love because of its unique approach.</p>
-<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="What-is-the-latest-Spring-Boot-version"><a href="#What-is-the-latest-Spring-Boot-version" class="headerlink" title="What is the latest Spring Boot version?"></a>What is the latest Spring Boot version?</h3><p>The current stable version of Spring Boot is 2.2.6. You can always have a look at new release announcements here <a href="https://github.com/spring-projects/spring-boot/releases" target="_blank" rel="noopener">https://github.com/spring-projects/spring-boot/releases</a>.</p>
-<h3 id="How-can-I-exclude-specific-AutoConfigurations"><a href="#How-can-I-exclude-specific-AutoConfigurations" class="headerlink" title="How can I exclude specific AutoConfigurations?"></a>How can I exclude specific AutoConfigurations?</h3><p>Say you didn’t want Spring Boot to execute its DataSourceAutoConfiguration, you could disable it in multiple ways:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication(exclude &#x3D; &#123;DataSourceAutoConfiguration.class)</span><br><span class="line">public class Application &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(PayPalApplication.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>or</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">spring.autoconfigure.exclude&#x3D;org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration</span><br></pre></td></tr></table></figure>
-
-<p>Though this means you need to roughly know which AutoConfiguration is responsible for creating which @Beans, which you’ll ultimately find out in Spring Boot’s source code.</p>
-<h3 id="What-is-the-best-way-to-create-a-new-Spring-Boot-project"><a href="#What-is-the-best-way-to-create-a-new-Spring-Boot-project" class="headerlink" title="What is the best way to create a new Spring Boot project?"></a>What is the best way to create a new Spring Boot project?</h3><p>There really only is one way: Spring Initializr, available at <a href="https://start.spring.io/" target="_blank" rel="noopener">https://start.spring.io/</a>. IDEs like IntelliJ IDEA <em>also</em> use Initializr to create new Spring Boot projects for you, abstracted away under a nice GUI.</p>
-<h3 id="What-are-the-best-docs-for-Spring-Boot"><a href="#What-are-the-best-docs-for-Spring-Boot" class="headerlink" title="What are the best docs for Spring Boot?"></a>What are the best docs for Spring Boot?</h3><p>Ha, this question was a trap. There is, of course, the <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/" target="_blank" rel="noopener">official Spring Boot</a> documentation. But by now you should understand that Spring Boot really only pre-configures other libraries for you.</p>
-<p>So, for writing @RestControllers you still need to look at the official <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html" target="_blank" rel="noopener">Spring Web MVC documentation</a>. For Flyway, <a href="https://flywaydb.org/documentation/" target="_blank" rel="noopener">the Flyway documentation</a>. For Couchbase, <a href="https://www.couchbase.com/" target="_blank" rel="noopener">the Couchbase documentation</a>.</p>
-<p>And THEN you also need to know the properties that Spring Boot uses to configure these libraries. You can find a complete list here: <a href="https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html" target="_blank" rel="noopener">Common Application properties</a>. Yes, it is a loooong list.</p>
-<h3 id="How-do-I-do-logging-with-Spring-Boot"><a href="#How-do-I-do-logging-with-Spring-Boot" class="headerlink" title="How do I do logging with Spring Boot?"></a>How do I do logging with Spring Boot?</h3><p>You do not really log with Spring Boot. You do it with <a href="http://logback.qos.ch/" target="_blank" rel="noopener">Logback</a>, or <a href="https://logging.apache.org/log4j/2.x/" target="_blank" rel="noopener">Log4j 2</a>. Or some other supported 3rd party logging library.</p>
-<p>Hence, you need to understand these libraries <em>first</em>.</p>
-<p>Then, you need to understand what Spring Boot adds <em>on top</em> of these libraries, to make them easier to use. (like the logback-spring.xml file and additional supported features). See the <a href="https://docs.spring.io/spring-boot/docs/2.2.x/reference/htmlsingle/#boot-features-logging" target="_blank" rel="noopener">official documentation</a>.</p>
-<h3 id="How-do-I-do-security-or-OAuth2-with-Spring-Boot"><a href="#How-do-I-do-security-or-OAuth2-with-Spring-Boot" class="headerlink" title="How do I do security or OAuth2 with Spring Boot?"></a>How do I do security or OAuth2 with Spring Boot?</h3><p>Again, you do not do it with Spring Boot. You do it with <a href="https://spring.io/projects/spring-security" target="_blank" rel="noopener">Spring Security</a> which gets nicely preconfigured by Spring Boot.</p>
-<p>Caveat: You will need a good couple weeks to fully understand Spring Security (or be lucky enough that your copied code snippets from Stackoverflow miraculously work).</p>
-<h3 id="What-is-the-difference-between-Spring-and-Spring-Boot"><a href="#What-is-the-difference-between-Spring-and-Spring-Boot" class="headerlink" title="What is the difference between Spring and Spring Boot?"></a>What is the difference between Spring and Spring Boot?</h3><p>Spring, as in <a href="https://www.marcobehler.com/guides/spring-framework" target="_blank" rel="noopener">Spring Framework</a> is a set of tools that help you build Java applications faster (hopefully).</p>
-<p>After having read this article, you should understand that Spring Boot merely preconfigures these tools for you with sane settings (i.e. let’s always read in an classpath:application.properties file and use the property server.port to preconfigure a Tomcat server on a specific port). Hence, Spring Boot builds <em>on top</em> of Spring Framework.</p>
-<p>Things get confusing, though, as the current marketing push is to call everything Spring Boot or Spring Framework simply “Spring”.</p>
-<h3 id="What-is-the-difference-between-Spring-WebMVC-and-Spring-Boot"><a href="#What-is-the-difference-between-Spring-WebMVC-and-Spring-Boot" class="headerlink" title="What is the difference between Spring WebMVC and Spring Boot?"></a>What is the difference between Spring WebMVC and Spring Boot?</h3><p>Again, Spring Boot uses <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html" target="_blank" rel="noopener">Spring WebMVC</a> under the hood. Your Spring Boot Rest Services, i.e. @RestControllers or @Controllers are plain, old Spring WebMVC controllers.</p>
-<p>There is no difference, Spring Boot builds <em>on top</em> of Spring WebMVC.</p>
-<h2 id="Fin"><a href="#Fin" class="headerlink" title="Fin"></a>Fin</h2><p>Some final thoughts:</p>
-<p>When it comes to building Spring Boot applications, you can roughly go two ways:</p>
-<ol>
-<li>Recursively copy &amp; paste your way through your Spring Boot projects with the help of <a href="https://stackoverflow.com/" target="_blank" rel="noopener">Stackoverflow</a> or <a href="https://baeldung.com/" target="_blank" rel="noopener">Baeldung</a>.</li>
-<li>Try to <em>understand</em> what you are doing. That starts with understanding <a href="https://www.marcobehler.com/guides/spring-framework" target="_blank" rel="noopener">Spring Framework</a>. Then understanding the 3rd party libraries (like Log4j 2 or Flyway). Then understanding what Spring Boot does with all these little bits and pieces.</li>
-</ol>
-<p>In case it was not clear, the second option is the only serious way to do it :)</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.marcobehler.com/guides/spring-boot" target="_blank" rel="noopener">https://www.marcobehler.com/guides/spring-boot</a></p>
-
+        
       
 
       
@@ -963,11 +605,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/01/Spring%20Boot%20&%20Autoconfigurations%20In-Depth/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Show All >></a>
         </p>
       
 
@@ -1004,13 +657,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/">Real-time streaming in Power BI</a>
+      <a class="article-title" href="/2020/04/30/Real-time streaming in Power BI/">Real-time Streaming in Power BI</a>
     </h1>
   
 
         
-        <a href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/" class="archive-article-date">
-  	<time datetime="2020-05-01T06:45:24.414Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+        <a href="/2020/04/30/Real-time streaming in Power BI/" class="archive-article-date">
+  	<time datetime="2020-04-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
 </a>
         
       </header>
@@ -1020,136 +673,7 @@
         <p>With Power BI real-time streaming, you can stream data and update dashboards in real-time. Any visual or dashboard that can be created in Power BI can also be created to display and update real-time data and visuals. The devices and sources of streaming data can be factory sensors, social media sources, service usage metrics, and anything else from which time-sensitive data can be collected or transmitted.</p>
 <p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming-10.png" alt="Screenshot showing the results of real-time environmental sensors."></p>
 <p>This article shows you how to set up real-time streaming dataset in Power BI. But before we get to that, it’s important to understand the types of real-time datasets that are designed to display in tiles (and dashboards), and how those datasets differ.</p>
-<h2 id="Types-of-real-time-datasets"><a href="#Types-of-real-time-datasets" class="headerlink" title="Types of real-time datasets"></a>Types of real-time datasets</h2><p>There are three types of real-time datasets which are designed for display on real-time dashboards:</p>
-<ul>
-<li>Push dataset</li>
-<li>Streaming dataset</li>
-<li>PubNub streaming dataset</li>
-</ul>
-<p>First let’s understand how these datasets differ from one another (this section), then we discuss how to push data into those each of these datasets.</p>
-<h3 id="Push-dataset"><a href="#Push-dataset" class="headerlink" title="Push dataset"></a>Push dataset</h3><p>With a <strong>push dataset</strong>, data is pushed into the Power BI service. When the dataset is created, the Power BI service automatically creates a new database in the service to store the data. Since there is an underlying database that continues to store the data as it comes in, reports can be created with the data. These reports and their visuals are just like any other report visuals, which means you can use all of Power BI’s report building features to create visuals, including Power BI visuals, data alerts, pinned dashboard tiles, and more.</p>
-<p>Once a report is created using the push dataset, any of its visuals can be pinned to a dashboard. On that dashboard, visuals update in real-time whenever the data is updated. Within the service, the dashboard is triggering a tile refresh every time new data is received.</p>
-<p>There are two considerations to note about pinned tiles from a push dataset:</p>
-<ul>
-<li>Pinning an entire report using the <em>pin live page</em> option will <strong>not</strong> result in the data automatically being updated.</li>
-<li>Once a visual is pinned to a dashboard, you can use <strong>Q&amp;A</strong> to ask questions of the push dataset in natural language. Once you make a <strong>Q&amp;A</strong> query, you can pin the resulting visual back to the dashboard, and that dashboard will <em>also</em> update in real-time.</li>
-</ul>
-<h3 id="Streaming-dataset"><a href="#Streaming-dataset" class="headerlink" title="Streaming dataset"></a>Streaming dataset</h3><p>With a <strong>streaming dataset</strong>, data is also pushed into the Power BI service, with an important difference: Power BI only stores the data into a temporary cache, which quickly expires. The temporary cache is only used to display visuals which have some transient sense of history, such as a line chart that has a time window of one hour.</p>
-<p>With a <strong>streaming dataset</strong>, there is <em>no</em> underlying database, so you <em>cannot</em> build report visuals using the data that flows in from the stream. As such, you cannot make use of report functionality such as filtering, Power BI visuals, and other report functions.</p>
-<p>The only way to visualize a streaming dataset is to add a tile and use the streaming dataset as a <strong>custom streaming data</strong> data source. The custom streaming tiles that are based on a <strong>streaming dataset</strong> are optimized for quickly displaying real-time data. There is very little latency between when the data is pushed into the Power BI service and when the visual is updated, since there’s no need for the data to be entered into or read from a database.</p>
-<p>In practice, streaming datasets and their accompanying streaming visuals are best used in situations when it is critical to minimize the latency between when data is pushed and when it is visualized. In addition, it’s best practice to have the data pushed in a format that can be visualized as-is, without any additional aggregations. Examples of data that’s ready as-is include temperatures, and pre-calculated averages.</p>
-<h3 id="PubNub-streaming-dataset"><a href="#PubNub-streaming-dataset" class="headerlink" title="PubNub streaming dataset"></a>PubNub streaming dataset</h3><p>With a <strong>PubNub</strong> streaming dataset, the Power BI web client uses the PubNub SDK to read an existing PubNub data stream, and no data is stored by the Power BI service.</p>
-<p>As with the <strong>streaming dataset</strong>, with the <strong>PubNub streaming dataset</strong> there is no underlying database in Power BI, so you cannot build report visuals against the data that flows in, and cannot take advantage of report functionality such as filtering, Power BI visuals, and so on. As such, the <strong>PubNub streaming dataset</strong> can also only be visualized by adding a tile to the dashboard, and configuring a PubNub data stream as the source.</p>
-<p>Tiles based on a <strong>PubNub streaming dataset</strong> are optimized for quickly displaying real-time data. Since Power BI is directly connected to the PubNub data stream, there is very little latency between when the data is pushed into the Power BI service and when the visual is updated.</p>
-<h3 id="Streaming-dataset-matrix"><a href="#Streaming-dataset-matrix" class="headerlink" title="Streaming dataset matrix"></a>Streaming dataset matrix</h3><p>The following table (or matrix, if you like) describes the three types of datasets for real-time streaming, and lists capabilities and limitations of each.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_11.png" alt="img"></p>
-<p> Note</p>
-<p>See <a href="https://docs.microsoft.com/en-us/power-bi/developer/automation/api-rest-api-limitations" target="_blank" rel="noopener">this article</a> for information on <strong>Push</strong> limits on how much data can be pushed in.</p>
-<h2 id="Pushing-data-to-datasets"><a href="#Pushing-data-to-datasets" class="headerlink" title="Pushing data to datasets"></a>Pushing data to datasets</h2><p>The previous section described the three primary types of real-time datasets you can use in real-time streaming, and how they differ. This section describes how to create and push data into those datasets.</p>
-<p>There are three primary ways you can push data into a dataset:</p>
-<ul>
-<li>Using the Power BI REST APIs</li>
-<li>Using the Streaming Dataset UI</li>
-<li>Using Azure Stream Analytics</li>
-</ul>
-<p>Let’s take a look at each of those approaches in turn.</p>
-<h3 id="Using-Power-BI-REST-APIs-to-push-data"><a href="#Using-Power-BI-REST-APIs-to-push-data" class="headerlink" title="Using Power BI REST APIs to push data"></a>Using Power BI REST APIs to push data</h3><p><strong>Power BI REST APIs</strong> can be used to create and send data to <strong>push</strong> datasets and to <strong>streaming</strong> datasets. When you create a dataset using Power BI REST APIs, the <em>defaultMode</em> flag specifies whether the dataset is push or streaming. If no <em>defaultMode</em> flag is set, the dataset defaults to a <strong>push</strong> dataset.</p>
-<p>If the <em>defaultMode</em> value is set to <em>pushStreaming</em>, the dataset is both a <strong>push</strong> <em>and</em> <strong>streaming</strong> dataset, providing the benefits of both dataset types.</p>
-<p> Note</p>
-<p>When using datasets with the <em>defaultMode</em> flag set to <em>pushStreaming</em>, if a request exceeds the 15Kb size restriction for a <strong>streaming</strong> dataset, but is less than the 16MB size restriction of a <strong>push</strong> dataset, the request will succeed and the data will be updated in the push dataset. However, any streaming tiles will temporarily fail.</p>
-<p>Once a dataset is created, use the REST APIs to push data using the <a href="https://docs.microsoft.com/rest/api/power-bi/pushdatasets/datasets_postrows" target="_blank" rel="noopener"><strong>PostRows</strong> API</a>.</p>
-<p>All requests to REST APIs are secured using <strong>Azure AD OAuth</strong>.</p>
-<h3 id="Using-the-Streaming-Dataset-UI-to-push-data"><a href="#Using-the-Streaming-Dataset-UI-to-push-data" class="headerlink" title="Using the Streaming Dataset UI to push data"></a>Using the Streaming Dataset UI to push data</h3><p>In the Power BI service, you can create a dataset by selecting the <strong>API</strong> approach as shown in the following image.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_0b.png" alt="img"></p>
-<p>When creating the new streaming dataset, you can select to enable <strong>Historic data analysis</strong> as shown below, which has a significant impact.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_0c.png" alt="img"></p>
-<p>When <strong>Historic data analysis</strong> is disabled (it is disabled by default), you create a <strong>streaming dataset</strong> as described earlier in this article. When <strong>Historic data analysis</strong> is <em>enabled</em>, the dataset created becomes both a <strong>streaming dataset</strong> and a <strong>push dataset</strong>. This is equivalent to using the Power BI REST APIs to create a dataset with its <em>defaultMode</em> set to <em>pushStreaming</em>, as described earlier in this article.</p>
-<p> Note</p>
-<p>For streaming datasets created using the Power BI service UI, as described in the previous paragraph, Azure AD authentication is not required. In such datasets, the dataset owner receives a URL with a rowkey, which authorizes the requestor to push data into the dataset with out using an Azure AD OAuth bearer token. Take now, however, that the Azure AD (AAD) approach still works to push data into the dataset.</p>
-<h3 id="Using-Azure-Stream-Analytics-to-push-data"><a href="#Using-Azure-Stream-Analytics-to-push-data" class="headerlink" title="Using Azure Stream Analytics to push data"></a>Using Azure Stream Analytics to push data</h3><p>You can add Power BI as an output within <strong>Azure Stream Analytics</strong> (ASA), and then visualize those data streams in the Power BI service in real time. This section describes technical details about how that process occurs.</p>
-<p>Azure Stream Analytics uses the Power BI REST APIs to create its output data stream to Power BI, with <em>defaultMode</em> set to <em>pushStreaming</em> (see earlier sections in this article for information on <em>defaultMode</em>), which results in a dataset that can take advantage of both <strong>push</strong> and <strong>streaming</strong>. During creation of the dataset, Azure Stream Analytics also sets the <strong>retentionPolicy</strong> flag to <em>basicFIFO</em>; with that setting, the database supporting its push dataset stores 200,000 rows, and after that limit is reached, rows are dropped in a first-in first-out (FIFO) fashion.</p>
-<p> Caution</p>
-<p>If your Azure Stream Analytics query results in very rapid output to Power BI (for example, once or twice per second), Azure Stream Analytics will begin batching those outputs into a single request. This may cause the request size to exceed the streaming tile limit. In that case, as mentioned in previous sections, streaming tiles will fail to render. In such cases, the best practice is to slow the rate of data output to Power BI; for example, instead of a maximum value every second, set it to a maximum over 10 seconds.</p>
-<h2 id="Set-up-your-real-time-streaming-dataset-in-Power-BI"><a href="#Set-up-your-real-time-streaming-dataset-in-Power-BI" class="headerlink" title="Set up your real-time streaming dataset in Power BI"></a>Set up your real-time streaming dataset in Power BI</h2><p>Now that we’ve covered the three primary types of datasets for real-time streaming, and the three primary ways you can push data into a dataset, let’s get your real-time streaming dataset working in Power BI.</p>
-<p>To get started with real-time streaming, you need to choose one of the two ways that streaming data can be consumed in Power BI:</p>
-<ul>
-<li><strong>tiles</strong> with visuals from streaming data</li>
-<li><strong>datasets</strong> created from streaming data that persist in Power BI</li>
-</ul>
-<p>With either option, you’ll need to set up <strong>Streaming data</strong> in Power BI. To do this, in your dashboard (either an existing dashboard, or a new one) select <strong>Add a tile</strong> and then select <strong>Custom streaming data</strong>.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_1.png" alt="img"></p>
-<p>If you don’t have streaming data set up yet, don’t worry - you can select <strong>manage data</strong> to get started.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_2.png" alt="img"></p>
-<p>On this page, you can input the endpoint of your streaming dataset if you already have one created (into the text box). If you don’t have a streaming dataset yet, select the plus icon ( <strong>+</strong> ) in the upper right corner to see the available options to create a streaming dataset.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_3.png" alt="img"></p>
-<p>When you click on the <strong>+</strong> icon, you see two options:</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_4a.png" alt="img"></p>
-<p>The next section describes these options, and goes into more detail about how to create a streaming <strong>tile</strong> or how to create a <strong>dataset</strong> from the streaming data source, which you can then use later to build reports.</p>
-<h2 id="Create-your-streaming-dataset-with-the-option-you-like-best"><a href="#Create-your-streaming-dataset-with-the-option-you-like-best" class="headerlink" title="Create your streaming dataset with the option you like best"></a>Create your streaming dataset with the option you like best</h2><p>There are two ways to create a real-time streaming data feed that can be consumed and visualized by Power BI:</p>
-<ul>
-<li><strong>Power BI REST API</strong> using a real-time streaming endpoint</li>
-<li><strong>PubNub</strong></li>
-</ul>
-<p>The next sections look at each option in turn.</p>
-<h3 id="Using-the-POWER-BI-REST-API"><a href="#Using-the-POWER-BI-REST-API" class="headerlink" title="Using the POWER BI REST API"></a>Using the POWER BI REST API</h3><p><strong>Power BI REST API</strong> - Recent improvements to the Power BI REST API are designed to make real-time streaming easier for developers. When you select <strong>API</strong> from the <strong>New streaming dataset</strong> window, you’re presented with entries to provide that enable Power BI to connect to and use your endpoint:</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_5.png" alt="img"></p>
-<p>If you want Power BI to store the data that’s sent through this data stream, enable <em>Historic data analysis</em> and you’ll be able to do reporting and analysis on the collected data stream. You can also <a href="https://docs.microsoft.com/rest/api/power-bi/" target="_blank" rel="noopener">learn more about the API</a>.</p>
-<p>Once you successfully create your data stream, you’re provided with a REST API URL endpoint, which your application can call using <em>POST</em> requests to push your data to Power BI <strong>streaming data</strong> dataset you created.</p>
-<p>When making <em>POST</em> requests, you should ensure the request body matches the sample JSON provided by the Power BI user interface. For example, wrap your JSON objects in an array.</p>
-<h3 id="Using-PubNub"><a href="#Using-PubNub" class="headerlink" title="Using PubNub"></a>Using PubNub</h3><p>With the integration of <strong>PubNub</strong> streaming with Power BI, you can use your low-latency <strong>PubNub</strong> data streams (or create new ones) and use them in Power BI. When you select <strong>PubNub</strong> and then select <strong>Next</strong>, you see the following window:</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_7.png" alt="img"></p>
-<p> Warning</p>
-<p>PubNub channels can be secured by using a PubNub Access Manager (PAM) authentication key. This key will be shared with all users who have access to the dashboard. You can <a href="https://www.pubnub.com/docs/web-javascript/pam-security" target="_blank" rel="noopener">learn more about PubNub access control</a>.</p>
-<p><strong>PubNub</strong> data streams are often high volume, and are not always suitable in their original form for storage and historical analysis. To use Power BI for historical analysis of PubNub data, you’ll have to aggregate the raw PubNub stream and send it to Power BI. One way to do that is with <a href="https://azure.microsoft.com/services/stream-analytics/" target="_blank" rel="noopener">Azure Stream Analytics</a>.</p>
-<h2 id="Example-of-using-real-time-streaming-in-Power-BI"><a href="#Example-of-using-real-time-streaming-in-Power-BI" class="headerlink" title="Example of using real time streaming in Power BI"></a>Example of using real time streaming in Power BI</h2><p>Here’s a quick example of how real time streaming in Power BI works. You can follow along with this sample to see for yourself the value of real time streaming.</p>
-<p>In this sample, we use a publicly available stream from <strong>PubNub</strong>. Here are the steps:</p>
-<ol>
-<li><p>In the <strong>Power BI service</strong>, select a dashboard (or create a new one) and select <strong>Add tile</strong> &gt; <strong>Custom Streaming Data</strong> and then select the <strong>Next</strong> button.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_1.png" alt="img"></p>
-</li>
-<li><p>If you don’t have and streaming data sources yet, select the <strong>manage data</strong> link (just above the <strong>Next</strong> button), then select <strong>+ Add streaming data</strong> from the link in the upper-right of the window. Select <strong>PubNub</strong> and then select <strong>Next</strong>.</p>
-</li>
-<li><p>Create a name for your dataset, then paste in the following values into the window that appears, then select <strong>Next</strong>:</p>
-<p><em>Subscribe key:</em></p>
-<p>Copy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sub-c-5f1b7c8e-fbee-11e3-aa40-02ee2ddab7fe</span><br></pre></td></tr></table></figure>
-
-<p><em>Channel:</em></p>
-<p>Copy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pubnub-sensor-network</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_8.png" alt="img"></p>
-</li>
-<li><p>In the following window, just select the defaults (which are automatically populated), then select <strong>Create</strong>.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming_9.png" alt="img"></p>
-</li>
-<li><p>Back in your Power BI workspace, create a new dashboard and then add a tile (see above for steps, if you need them). This time when you create a tile and select <strong>Custom Streaming Data</strong>, you have a streaming data set to work with. Go ahead and play around with it. Adding the <em>number</em> fields to line charts, and then adding other tiles, you can get a real time dashboard that looks like the following:</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming-10.png" alt="Screenshot showing the results of real-time environmental sensors."></p>
-</li>
-</ol>
-<p>Give it a try, and play around with the sample dataset. Then go create your own datasets, and stream live data to Power BI.</p>
-<h2 id="Questions-and-answers"><a href="#Questions-and-answers" class="headerlink" title="Questions and answers"></a>Questions and answers</h2><p>Here are some common questions about real-time streaming in Power BI, and answers.</p>
-<h4 id="Can-I-use-filters-on-push-dataset-How-about-streaming-dataset"><a href="#Can-I-use-filters-on-push-dataset-How-about-streaming-dataset" class="headerlink" title="Can I use filters on push dataset? How about streaming dataset?"></a>Can I use filters on push dataset? How about streaming dataset?</h4><p>Unfortunately, streaming datasets do not support filtering. For push datasets, you can create a report, filter the report, and then pin the filtered visuals to a dashboard. However, there is no way to change the filter on the visual once it’s on the dashboard.</p>
-<p>Separately, you can pin the live report tile to the dashboard, in which case you can change the filters. However, live report tiles will not update in real-time as data is pushed in – you’ll have to manually update the visual by using the <em>refresh dashboard tiles</em> option in the <strong>More</strong> menu.</p>
-<p>When applying filters to push datasets with <em>DateTime</em> fields with millisecond precision, <em>equivalence</em> operators are not supported. However, operators such as greater than (&gt;) or less than (&lt;) do operate properly.</p>
-<h4 id="How-do-I-see-the-latest-value-on-a-push-dataset-How-about-streaming-dataset"><a href="#How-do-I-see-the-latest-value-on-a-push-dataset-How-about-streaming-dataset" class="headerlink" title="How do I see the latest value on a push dataset? How about streaming dataset?"></a>How do I see the latest value on a push dataset? How about streaming dataset?</h4><p>Streaming datasets are designed for displaying the latest data. You can use the <strong>Card</strong> streaming visual to easily see latest numeric values. Unfortunately, the card does not support data of type <em>DateTime</em> or <em>Text</em>. For push datasets, assuming you have a timestamp in the schema, you can try creating a report visual with the last N filter.</p>
-<h4 id="Can-I-connect-to-push-or-streaming-datasets-in-Power-BI-Desktop"><a href="#Can-I-connect-to-push-or-streaming-datasets-in-Power-BI-Desktop" class="headerlink" title="Can I connect to push or streaming datasets in Power BI Desktop?"></a>Can I connect to push or streaming datasets in Power BI Desktop?</h4><p>Unfortunately, this is not available at this time.</p>
-<h4 id="Given-the-previous-question-how-can-I-do-any-modeling-on-real-time-datasets"><a href="#Given-the-previous-question-how-can-I-do-any-modeling-on-real-time-datasets" class="headerlink" title="Given the previous question, how can I do any modeling on real-time datasets?"></a>Given the previous question, how can I do any modeling on real-time datasets?</h4><p>Modeling is not possible on a streaming dataset, since the data is not stored permanently. For a push dataset, you can use the update dataset/table REST APIs to add measures and relationships.</p>
-<h4 id="How-can-I-clear-all-the-values-on-a-push-dataset-How-about-streaming-dataset"><a href="#How-can-I-clear-all-the-values-on-a-push-dataset-How-about-streaming-dataset" class="headerlink" title="How can I clear all the values on a push dataset? How about streaming dataset?"></a>How can I clear all the values on a push dataset? How about streaming dataset?</h4><p>On a push dataset, you can use the delete rows REST API call. There is currently no way to clear data from a streaming dataset, though the data will clear itself after an hour.</p>
-<h4 id="I-set-up-an-Azure-Stream-Analytics-output-to-Power-BI-but-I-don’t-see-it-appearing-in-Power-BI-–-what’s-wrong"><a href="#I-set-up-an-Azure-Stream-Analytics-output-to-Power-BI-but-I-don’t-see-it-appearing-in-Power-BI-–-what’s-wrong" class="headerlink" title="I set up an Azure Stream Analytics output to Power BI, but I don’t see it appearing in Power BI – what’s wrong?"></a>I set up an Azure Stream Analytics output to Power BI, but I don’t see it appearing in Power BI – what’s wrong?</h4><p>Here’s a checklist you can use to troubleshoot the issue:</p>
-<ol>
-<li>Restart the Azure Stream Analytics job (jobs created before the streaming GA release will require a restart)</li>
-<li>Try reauthorizing your Power BI connection in Azure Stream Analytics</li>
-<li>Which workspace did you specify in the Azure Stream Analytics output? In the Power BI service, are you checking in that (same) workspace?</li>
-<li>Does the Azure Stream Analytics query explicitly output to the Power BI output? (using the INTO keyword)</li>
-<li>Does the Azure Stream Analytics job have data flowing through it? The dataset will only get created when there is data being transmitted.</li>
-<li>Can you look into the Azure Stream Analytics logs to see if there are any warnings or errors?</li>
-</ol>
-<h2 id="Automatic-page-refresh"><a href="#Automatic-page-refresh" class="headerlink" title="Automatic page refresh"></a>Automatic page refresh</h2><p>Automatic page refresh works at a report page level, and allows report authors to set a refresh interval for visuals in a page that is only active when the page is being consumed. Automatic page refresh is only available for DirectQuery data sources. The minimum refresh interval depends on which type of workspace the report is published in, and the capacity admin settings for Premium workspaces.</p>
-<p>Learn more about automatic page refresh in the <a href="https://docs.microsoft.com/en-us/power-bi/desktop-automatic-page-refresh" target="_blank" rel="noopener">automatic page refresh</a> article.</p>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://docs.microsoft.com/en-us/power-bi/service-real-time-streaming" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/power-bi/service-real-time-streaming</a></p>
-
+        
       
 
       
@@ -1157,11 +681,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-time Streaming Data, Power BI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/30/Real-time streaming in Power BI/">Show All >></a>
         </p>
       
 
@@ -1198,13 +733,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/Data%20Sampling%20and%20Randomization/">Data Sampling and Randomization</a>
+      <a class="article-title" href="/2020/04/29/Data Sampling and Randomization/">Data Sampling and Randomization</a>
     </h1>
   
 
         
-        <a href="/2020/04/29/Data%20Sampling%20and%20Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T21:30:50.164Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
+        <a href="/2020/04/29/Data Sampling and Randomization/" class="archive-article-date">
+  	<time datetime="2020-04-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
 </a>
         
       </header>
@@ -1214,39 +749,7 @@
         <p>Data Sampling Notes:</p>
 <p>Take-away: EG + Formula =&gt; Show thinking style</p>
 <h2 id="Reservoir-Sampling"><a href="#Reservoir-Sampling" class="headerlink" title="Reservoir Sampling"></a>Reservoir Sampling</h2><p>Q: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the probability of returning any element read so far is 1/n.</p>
-<h3 id="Solution-for-limited-data"><a href="#Solution-for-limited-data" class="headerlink" title="Solution for limited data:"></a>Solution for limited data:</h3><p>Random select one. But not good.Streaming data flow: flow, store in the disk, memory, cloud. materialize data, cost is high, like video data flow, to do sampling.space: o(n) </p>
-<h3 id="Alternative"><a href="#Alternative" class="headerlink" title="Alternative:"></a>Alternative:</h3><p>Use o(1) space to solve.index = 0 1 2 3 4 5 6 7A[]    a b c d e f g hRandom time randomly select one number, random sampling</p>
-<p>Maintain counter, maintain sample so far.<br>Step1: counter = 1; Call random.randint(0, 0), to decide whether the sample needs to be replaced, if the random number == 0, then result_so_far = al (for the first iteration, the result_so_far must be a, since there is only one data entry so far). 100% to select a. eg + formula</p>
-<p>Step2: counter = 2; random.randint(0,1), If the random number == 0, then result_so_far=blIf the random number == 1, then keep previous result_so_far = a.P(result_so_far = b) = ½.P(result_so_far = a) = 1 - ½.<br>abc so = 0, replace new. not -, continue previous. </p>
-<p>Step 3: counter = 3; random.randint(0, 2), if the random number == 0 (guarantee the new element has 1/n as the sample), then result_so_far = c; else, don’t change the existing result.P(result_so_far = c) = ⅓P(result_so_far = b) = P(result_so_far = b at step3, rsult_so_far = b at step2) = P(result_so_far = b at step3 | result_so_far = b at step2) * P(result_so_far = b at step2) = (1-⅓) * ½ = ⅓P(result_so_far = a) = ⅓</p>
-<p>p: step 2 produces b and step 3 keeps b not changed = ½ * (1-⅓) = ⅓ // ⅓ would change in the third step, otherwise 1- ⅓ not change.</p>
-<p>Step 3: counter = 4; random.randint(0,3), if the random number == 0 (guarantee the new element has 1/n as the sample), then result_so_far = d; else, don’t change the existing result.P(result_so_far = d) = ¼.P(result_so_far = c) = ¼ = (3/4) * (1/3) = ¼.</p>
-<p>Step n : counter = n; Call random(n), if the random number == 0, then result__so_far = A[n];</p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h3><p>Replace or not current? 0, replace; non-0, not replace.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generator</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">_init_</span><span class="params">(self)</span>:</span></span><br><span class="line">    self.sample = <span class="number">0</span></span><br><span class="line">    self.count = <span class="number">0</span> <span class="comment"># the counter of elements read so far.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(self, val)</span>:</span></span><br><span class="line">  self.count += <span class="number">1</span> <span class="comment"># current element is the count-th element</span></span><br><span class="line">  r = random.randint(<span class="number">0</span>, self.count - <span class="number">1</span>) <span class="comment"># randomly generate a number from - to count (exclusive) [0, count-1];</span></span><br><span class="line">  <span class="keyword">if</span> r == <span class="number">0</span>:</span><br><span class="line">    self.sample = val <span class="comment"># the probability of choosing (count-1)-th element as the final solution is 1/count;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Exploration"><a href="#Exploration" class="headerlink" title="Exploration:"></a>Exploration:</h3><p>Streaming and batch, the same. Sample = k: Assuming the number of items to select, k, is smaller than the size of the source array, S):k element out of n (k &lt;&lt; n) → P(k/n)P(result_so_far =</p>
-<p>Step 1: like above</p>
-<p>Step 2: counter =2; random.randint(,),p = 100%<br>If the random number == 2, no replace previous sampleIf the random number == 1, replace the second letter bIf the random number == 0, replace the first letter a</p>
-<p>Step 3: counter = 3; random.randint(0,2), List all cases: how to keep them all as ⅓. =&gt; have to randint(0,2). =&gt; make rules accordingly. 倒推法 reverse.p(a,b) like step2  = ⅓ p(a,c) a replaced = ⅓ p(b,c) c replaced  = ⅓.<br>step 4: 0,3<br>step 5: 0,4<br>&lt; k would be replaced.</p>
-<h2 id="Randomization-Question"><a href="#Randomization-Question" class="headerlink" title="Randomization Question"></a>Randomization Question</h2><p>Q: How to design a random number generator Random(7), with Random5().Random(5) - ⅕ return 0,1,2,3,4Random(7) – 1/7 return 0,1,2,3,4,5,6 </p>
-<p>Reversed direction is easy:       0 1 2 3 4 5 6Random(7) → Random(5)       1/7 1/7 … 1/7</p>
-<p>Probability NormalizationP(0 can be returned) = 1/7    / 5/7 = ⅕ // should first be from 0-4 and then 0. 5/7 means drop 5 6.P(1 can be returned) = 1/7   / 5/7 = 1/5P(2 can be returned) = 1/7   / 5/7 = 1/5P(3 can be returned) = 1/7    / 5/7 = 1/5P(4 can be returned) = 1/7   / 5/7 = ⅕</p>
-<p>Step1:// random 25 &gt; 7 can produce 7, random 5 * 5 =25 min, use random5 to produce random7, min is 25.Random(25) - how to implement Random(25) using Random(5)101010 -&gt; 0<em>2^0 + 1</em>2^1 + 0<em>2^2<br>matrix<br>rand 0 1 2 3 4 (rand1) 0    0 1 2 3 41    5 6 7 …..234<br>random(5) -&gt; x, random(5) -&gt; y =&gt; x + 5</em>y </p>
-<p>进制转换是相等概率产生的十进制的数, 随机取每个产生的数字概率相等，且不重复。00 – 001 – 110 – 211 – 3.</p>
-<p>// <em>5, matrix// random(5) -&gt; x, random(5) -&gt; y =&gt; x + 5</em>y =// random(5) is a function, two random5( might produce different things and produce a matrix. so should not be 6random(5).)<br>random5() * 1 + 5<em>random5()rand1        rand2<br>If more than 25, 3D, random5() * 1 + 5</em>random5() + 5^2*random5()<br>keep 0 -20 → in total 21 numbers.0: 0, 7, 14  3/25/(21/25) = 1/71: 1, 8, 15<br>6: 6, 13, 20<br>index matrix</p>
-<p>code:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random25</span><span class="params">()</span>:</span> <span class="comment"># 25 means all the numbers would be produced equally.	</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">5</span> * random5() + random5()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random7</span><span class="params">()</span>:</span> <span class="comment"># if change to 6, waste resource, coz we need to remove certain numbers.	</span></span><br><span class="line">  num = random25()	</span><br><span class="line">  <span class="keyword">while</span> num &gt; <span class="number">20</span>:		</span><br><span class="line">    num = random25()	</span><br><span class="line">    <span class="keyword">return</span> num % <span class="number">7</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<p>​                               </p>
-
+        
       
 
       
@@ -1254,11 +757,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Sampling, Randomization</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/29/Data%20Sampling%20and%20Randomization/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/29/Data Sampling and Randomization/">Show All >></a>
         </p>
       
 
@@ -1308,7 +822,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Notes about System Design Case Studies:<br><br /></p>
+        <p>Notes about System Design Case Studies:<br><br></p>
 <h2 id="URL-Shortened-Service"><a href="#URL-Shortened-Service" class="headerlink" title="URL Shortened Service"></a>URL Shortened Service</h2><p>Functionality:</p>
 <ol>
 <li>String map from long to short, post</li>
@@ -1318,29 +832,7 @@
 <p>Design:<br>Step 1: use case, constrains, bottleneck:<br>How do users use it? user size, read/write request pattern, data size, QPS (concurrency)…<br>User size: million level (twitter)<br>Data size: long to short, evaluate data size, active users, how many write …, stored for one year.   </p>
 <p>Difficulty: how to change long to short?<br>method: hash</p>
 <p>Always analyze: input and output, divide and conquer，get each smaller problem chained together to the whole issue again<br>Input: long url string<br>Output: short url string<br>Hash function: — hash code (don’t fall into specific hash code to use): output: **** bytes</p>
-<h3 id="Q1"><a href="#Q1" class="headerlink" title="Q1."></a>Q1.</h3><p>long string =&gt; integer / byte[] (hash value) =&gt; short string</p>
-<p>Not what we want yet</p>
-<p>Continue:<br>Input/output, encoding:</p>
-<h3 id="Q2"><a href="#Q2" class="headerlink" title="Q2."></a>Q2.</h3><p>byte[] –&gt; short string: encoding two methods: 1) hex: 0-9 a-f, each 4 bit 2) Base62: [a-z, A-Z, 0-9]</p>
-<p>string (changed from 128bits, 256bits, might be still ong when changed to string. ): metod: truncate, how many to truncate, too long not follow functionality; too short collision, so how many? total num would be larger than all needed, the num , the value and the url should not be similar, coz easy to collision. 1 billion birds and 100 billion cages.<br>cages refer to values – short links</p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h3><p>URL total data size: each mapping 1kb → in total TB, but QPS is bottleneck. check query read write rate, read more or write more? Read more and write less. So for writing operations, how to handle?<br>System-pressure: request – data, mapping– short string– long URL: 1 million pqs, 1million * 1megabytes, read-through puts, if stored in disk, could not; then</p>
-<h3 id="Two-solutions"><a href="#Two-solutions" class="headerlink" title="Two solutions:"></a>Two solutions:</h3><ol>
-<li>Put data cache memory</li>
-<li>More machines to make data cache memory, so each machine concurrency and the handled query number is decreasing. </li>
-</ol>
-<p>Worst case, but waste resources. In reality, dynamically elastic expansion, dynamic scaling.</p>
-<h3 id="Our-strategy"><a href="#Our-strategy" class="headerlink" title="Our strategy:"></a>Our strategy:</h3><ol>
-<li>Sharding, data cut, only hold one or several</li>
-<li>Replication: stored in different machines, several choices, reliability; and copy, security; and dispatch.</li>
-</ol>
-<br />
-<br />
-
-<h2 id="Like"><a href="#Like" class="headerlink" title="Like"></a>Like</h2><p>How to design a “Like” feature in social apps (Facebook, Wechat …)?</p>
-<h3 id="Functionalities"><a href="#Functionalities" class="headerlink" title="Functionalities?"></a>Functionalities?</h3><p>Scalability: 10,000 ; 100,000 users<br>Core functionalities: like (write), cancel like, count (optional), have I liked it or not (read operation), how many friends of mine like it.</p>
-<h3 id="Basic-design"><a href="#Basic-design" class="headerlink" title="Basic design:"></a>Basic design:</h3><p>Mapping: user - question; </p>
-<h3 id="Bottlenecks"><a href="#Bottlenecks" class="headerlink" title="Bottlenecks:"></a>Bottlenecks:</h3><p>Count, aggregation: cache track each question’s number of likes. redis, distributed cache, to store that. when there is a like request, update DB, when this person likes it, update. so count could be updated fast. no need to be through DB. throughput fast. But since it’s cache, data might lose, cache might not be enough (remove cache, based on time popularity).<br>For scalable systems, redis, persist cache data functionality. for ourselves, how to set a checkpoint/log for all data, persist, in case the cache crashed.<br>corner case cache crash.<br>Important to realize problems and solve problems. </p>
-<h3 id="Improvement"><a href="#Improvement" class="headerlink" title="Improvement"></a>Improvement</h3>
+        
       
 
       
@@ -1353,7 +845,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">System Design, URL Shortened Service, Like</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">System Design, URL Shortened Service, Like Functionality</a>
         		</li>
       		
 		</ul>
@@ -1400,13 +892,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/27/Thoughts%20on%20Seattle%20Park%20and%20Ride%20Project/">Thoughts on Seattle Park and Ride Project</a>
+      <a class="article-title" href="/2020/04/27/Thoughts on Seattle Park and Ride Project/">Thoughts on Seattle Park and Ride Project</a>
     </h1>
   
 
         
-        <a href="/2020/04/27/Thoughts%20on%20Seattle%20Park%20and%20Ride%20Project/" class="archive-article-date">
-  	<time datetime="2020-04-28T06:46:03.013Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
+        <a href="/2020/04/27/Thoughts on Seattle Park and Ride Project/" class="archive-article-date">
+  	<time datetime="2020-04-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
 </a>
         
       </header>
@@ -1415,21 +907,7 @@
       
         <p>I am responsible for user experience research and design, and web development based on UX research.</p>
 <h1 id="Two-types-of-users"><a href="#Two-types-of-users" class="headerlink" title="Two types of users:"></a>Two types of users:</h1><h2 id="1-People-struggle-to-find-available-parking-spaces-in-the-Park-and-Ride-facilities"><a href="#1-People-struggle-to-find-available-parking-spaces-in-the-Park-and-Ride-facilities" class="headerlink" title="1. People struggle to find available parking spaces in the Park and Ride facilities."></a>1. People struggle to find available parking spaces in the Park and Ride facilities.</h2><p>Then, they would miss their buses and links and not be able to send their kids to school on time and arrive at the office on time. I design a solution to alleviate drivers’ challenges.</p>
-<p>1) Diverse groups of users: </p>
-<p>Commuting becomes vivid when we consider diverse groups of users into our user research.<br>Parents with the need to send their kids to school before going to work;<br>Carpoolers;<br>Solo drivers;<br>Low-income drivers.<br> Their needs are diverse. Instead of focusing on one type of people, we design our solutions to consider all of their needs and hope to provide diverse groups with equitable access to park and ride facilities</p>
-<p>2) Coronavirus brings challenges to our user research, but we value users. So instead of cancelling user research, we came up with creative ideas to conduct remote UX research.</p>
-<p>We tried to brainstorm different ways to screen and recruit respondents.<br>Also, when designing surveys, we thought about how coronavirus might impact users’ understanding of Park and Ride Facilities and iteratively improved survey design to help solve the main problems we hope to address.</p>
-<p>We consider VARIETIES OF USER-CENTEREDNESS into our product design and implementation.</p>
-<h2 id="2-The-other-type-of-users-in-our-real-time-parking-availability-data-pipeline-is-the-information-professionals-in-the-transit-agents-like-King-County-Metro-and-Sound-Transit"><a href="#2-The-other-type-of-users-in-our-real-time-parking-availability-data-pipeline-is-the-information-professionals-in-the-transit-agents-like-King-County-Metro-and-Sound-Transit" class="headerlink" title="2. The other type of users in our real-time parking availability data pipeline is the information professionals in the transit agents, like King County Metro and Sound Transit."></a>2. The other type of users in our real-time parking availability data pipeline is the information professionals in the transit agents, like King County Metro and Sound Transit.</h2><p>Right now, they are using BI dashboards to monitor parking availability data and all the data were manually collected through staff going to the site to count in half-hour intervals.</p>
-<ul>
-<li><p>Current Situation: Staff –&gt; Half-hour Interval –&gt; Manual Data Collection –&gt; Power BI + CSV (to visualize data)</p>
-</li>
-<li><p>Our Solution: Sensor &amp; Gateway –&gt; Real-time –&gt; Automatic Data Collection –&gt; Power BI + Azure Cloud (to process and visualize data)</p>
-</li>
-</ul>
-<p>We consider SCALABILITY into our product design and implementation.</p>
-<h1 id="Reflection"><a href="#Reflection" class="headerlink" title="Reflection"></a>Reflection</h1><p>In the whole process, we are glad to climb the mountain to be qualified MSIMers to help diverse users address the information challenges they are facing and provide user-centered and scalable actionable solutions.We are toward implementing equitable and accessible integrated transit initiatives.</p>
-
+        
       
 
       
@@ -1437,11 +915,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Park and Ride, Seattle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/27/Thoughts%20on%20Seattle%20Park%20and%20Ride%20Project/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/27/Thoughts on Seattle Park and Ride Project/">Show All >></a>
         </p>
       
 
@@ -1473,7 +962,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1488,7 +977,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -1572,15 +1060,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1588,7 +1072,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1596,11 +1104,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

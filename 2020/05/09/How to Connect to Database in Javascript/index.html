@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>How to Connect to Database in Javascript | Yanjie&#39;s Blog</title>
+  <title>How to Connect to Database in JavaScript | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="Yesterday was super happy day to meet many friends! Such a great reunion online during the pandemic period. Also, I have fetched data from external api to javascript file and render map successfully.">
+<meta name="keywords" content="Database, Javascript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="How to Connect to Database in Javascript">
-<meta property="og:url" content="http://yoursite.com/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/index.html">
+<meta property="og:title" content="How to Connect to Database in JavaScript">
+<meta property="og:url" content="http://yoursite.com/2020/05/09/How to Connect to Database in Javascript/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
 <meta property="og:description" content="Yesterday was super happy day to meet many friends! Such a great reunion online during the pandemic period. Also, I have fetched data from external api to javascript file and render map successfully.">
-<meta property="og:locale" content="en_US">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="https://code-boxx.com/wp-content/uploads/2019/08/ico-download.svg">
 <meta property="og:image" content="https://code-boxx.com/wp-content/uploads/2019/08/ico-gear.svg">
 <meta property="og:image" content="https://code-boxx.com/wp-content/uploads/2019/08/ico-refresh-ccw.svg">
@@ -32,10 +33,10 @@
 <meta property="og:image" content="https://code-boxx.com/wp-content/uploads/2019/08/ico-nodes.svg">
 <meta property="og:image" content="https://code-boxx.com/wp-content/uploads/2019/08/ico-code.svg">
 <meta property="og:image" content="https://code-boxx.com/wp-content/uploads/2019/08/ico-plus-square.svg">
-<meta property="article:published_time" content="2020-05-10T06:48:46.639Z">
-<meta property="article:modified_time" content="2020-05-10T06:52:31.526Z">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:updated_time" content="2020-05-17T20:34:05.828Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="How to Connect to Database in JavaScript">
+<meta name="twitter:description" content="Yesterday was super happy day to meet many friends! Such a great reunion online during the pandemic period. Also, I have fetched data from external api to javascript file and render map successfully.">
 <meta name="twitter:image" content="https://code-boxx.com/wp-content/uploads/2019/08/ico-download.svg">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
@@ -52,8 +53,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -170,13 +171,13 @@
         
   
     <h1 class="article-title" itemprop="name">
-      How to Connect to Database in Javascript
+      How to Connect to Database in JavaScript
     </h1>
   
 
         
-        <a href="/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/" class="archive-article-date">
-  	<time datetime="2020-05-10T06:48:46.639Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
+        <a href="/2020/05/09/How to Connect to Database in Javascript/" class="archive-article-date">
+  	<time datetime="2020-05-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
 </a>
         
       </header>
@@ -213,6 +214,10 @@
 <td></td>
 </tr>
 </tbody></table>
+<a id="more"></a>
+
+
+
 <h2 id="EXTRA-SOURCE-CODE-DOWNLOAD"><a href="#EXTRA-SOURCE-CODE-DOWNLOAD" class="headerlink" title="EXTRA SOURCE CODE DOWNLOAD"></a>EXTRA SOURCE CODE DOWNLOAD</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-download.svg" alt="img"></p>
 <p>First, here is the download link to the example source code as promised.</p>
 <h3 id="SOURCE-CODE-DOWNLOAD"><a href="#SOURCE-CODE-DOWNLOAD" class="headerlink" title="SOURCE CODE DOWNLOAD"></a>SOURCE CODE DOWNLOAD</h3><p><a href="https://code-boxx.com/wp-content/uploads/2019/07/js-connect-db.zip" target="_blank" rel="noopener">Click here to download</a> the source code, I have released it under the MIT license, so feel free to build on top of it or use it in your own project.</p>
@@ -256,18 +261,18 @@
 <p>So far so good? Let us now go into one of the most common situations, connecting to the server database via an AJAX call to a server-side script. Take note that this example is based on PHP and MySQL, but the concept of creating a server-side script first is the same for any programming language – I will leave links to database connections for various languages in the extras section below.</p>
 <h3 id="DUMMY-DATABASE"><a href="#DUMMY-DATABASE" class="headerlink" title="DUMMY DATABASE"></a>DUMMY DATABASE</h3><p>For the purpose of demonstration, we will use this simple dummy table.</p>
 <p>1a-dummy.sql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;users&#96; (</span><br><span class="line">  &#96;user_id&#96; int(11) NOT NULL,</span><br><span class="line">  &#96;user_name&#96; varchar(255) NOT NULL</span><br><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;latin1;</span><br><span class="line"></span><br><span class="line">INSERT INTO &#96;users&#96; (&#96;user_id&#96;, &#96;user_name&#96;) VALUES</span><br><span class="line">(1, &#39;John Doe&#39;),</span><br><span class="line">(2, &#39;Jane Doe&#39;),</span><br><span class="line">(3, &#39;Johan Doe&#39;),</span><br><span class="line">(4, &#39;June Doe&#39;);</span><br><span class="line"></span><br><span class="line">ALTER TABLE &#96;users&#96;</span><br><span class="line">  ADD PRIMARY KEY (&#96;user_id&#96;),</span><br><span class="line">  ADD KEY &#96;user_name&#96; (&#96;user_name&#96;);</span><br><span class="line"></span><br><span class="line">ALTER TABLE &#96;users&#96;</span><br><span class="line">  MODIFY &#96;user_id&#96; int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT&#x3D;5;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `users` (</span><br><span class="line">  `user_id` int(11) NOT NULL,</span><br><span class="line">  `user_name` varchar(255) NOT NULL</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=latin1;</span><br><span class="line"></span><br><span class="line">INSERT INTO `users` (`user_id`, `user_name`) VALUES</span><br><span class="line">(1, &apos;John Doe&apos;),</span><br><span class="line">(2, &apos;Jane Doe&apos;),</span><br><span class="line">(3, &apos;Johan Doe&apos;),</span><br><span class="line">(4, &apos;June Doe&apos;);</span><br><span class="line"></span><br><span class="line">ALTER TABLE `users`</span><br><span class="line">  ADD PRIMARY KEY (`user_id`),</span><br><span class="line">  ADD KEY `user_name` (`user_name`);</span><br><span class="line"></span><br><span class="line">ALTER TABLE `users`</span><br><span class="line">  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="SERVER-SIDE-SCRIPT"><a href="#SERVER-SIDE-SCRIPT" class="headerlink" title="SERVER-SIDE SCRIPT"></a>SERVER-SIDE SCRIPT</h3><p>Next, we will create the server-side script that connects to the database.</p>
 <p>1b-database.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;* (A) SETTINGS *&#x2F;</span><br><span class="line">&#x2F;&#x2F; ! CHANGE THESE TO YOUR OWN !</span><br><span class="line">error_reporting(E_ALL &amp; ~E_NOTICE);</span><br><span class="line">define(&#39;DB_HOST&#39;, &#39;localhost&#39;);</span><br><span class="line">define(&#39;DB_NAME&#39;, &#39;test&#39;);</span><br><span class="line">define(&#39;DB_CHARSET&#39;, &#39;utf8&#39;);</span><br><span class="line">define(&#39;DB_USER&#39;, &#39;root&#39;);</span><br><span class="line">define(&#39;DB_PASSWORD&#39;, &#39;&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* (B) CONNECT DATABASE *&#x2F;</span><br><span class="line">try &#123;</span><br><span class="line">  $_PDO &#x3D; new PDO(</span><br><span class="line">    &quot;mysql:host&#x3D;&quot; . DB_HOST . &quot;;charset&#x3D;&quot; . DB_CHARSET . &quot;;dbname&#x3D;&quot; . DB_NAME, </span><br><span class="line">    DB_USER, DB_PASSWORD, [</span><br><span class="line">      PDO::ATTR_ERRMODE &#x3D;&gt; PDO::ERRMODE_EXCEPTION,</span><br><span class="line">      PDO::ATTR_DEFAULT_FETCH_MODE &#x3D;&gt; PDO::FETCH_ASSOC,</span><br><span class="line">      PDO::ATTR_EMULATE_PREPARES &#x3D;&gt; false,</span><br><span class="line">      PDO::ATTR_PERSISTENT &#x3D;&gt; true</span><br><span class="line">    ]</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">catch (Exception $ex) &#123;</span><br><span class="line">  if (LOG_KEEP) &#123; addlog($ex-&gt;getMessage()); &#125;</span><br><span class="line">  die(&quot;Error connecting to the database&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* (C) HANDLE REQUESTS *&#x2F;</span><br><span class="line">if ($_POST[&#39;req&#39;]) &#123; switch ($_POST[&#39;req&#39;]) &#123;</span><br><span class="line">  case &quot;get&quot;:</span><br><span class="line">    $_STMT &#x3D; $_PDO-&gt;prepare(&quot;SELECT * FROM &#96;users&#96;&quot;);</span><br><span class="line">    $_STMT-&gt;execute();</span><br><span class="line">    $users &#x3D; $_STMT-&gt;fetchAll();</span><br><span class="line">    echo json_encode($users);</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case &quot;add&quot;:</span><br><span class="line">    $pass &#x3D; true;</span><br><span class="line">    $error &#x3D; &quot;&quot;;</span><br><span class="line">    try &#123;</span><br><span class="line">      $_STMT &#x3D; $_PDO-&gt;prepare(&quot;INSERT INTO &#96;users&#96; (&#96;user_name&#96;) VALUES (?)&quot;);</span><br><span class="line">      $_STMT-&gt;execute([$_POST[&#39;name&#39;]]);</span><br><span class="line">      &#x2F;&#x2F; $lastID &#x3D; $_PDO-&gt;lastInsertID();</span><br><span class="line">    &#125; catch (Exception $ex) &#123;</span><br><span class="line">      $pass &#x3D; false;</span><br><span class="line">      $error &#x3D; $ex-&gt;getMessage();</span><br><span class="line">    &#125;</span><br><span class="line">    echo json_encode([</span><br><span class="line">      &quot;status&quot; &#x3D;&gt; $pass,</span><br><span class="line">      &quot;message&quot; &#x3D;&gt; $error</span><br><span class="line">    ]);</span><br><span class="line">    break;</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* (D) CLOSE DATABASE CONNECTION *&#x2F;</span><br><span class="line">$_PDO &#x3D; null;</span><br><span class="line">$_STMT &#x3D; null;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">/* (A) SETTINGS */</span><br><span class="line">// ! CHANGE THESE TO YOUR OWN !</span><br><span class="line">error_reporting(E_ALL &amp; ~E_NOTICE);</span><br><span class="line">define(&apos;DB_HOST&apos;, &apos;localhost&apos;);</span><br><span class="line">define(&apos;DB_NAME&apos;, &apos;test&apos;);</span><br><span class="line">define(&apos;DB_CHARSET&apos;, &apos;utf8&apos;);</span><br><span class="line">define(&apos;DB_USER&apos;, &apos;root&apos;);</span><br><span class="line">define(&apos;DB_PASSWORD&apos;, &apos;&apos;);</span><br><span class="line"></span><br><span class="line">/* (B) CONNECT DATABASE */</span><br><span class="line">try &#123;</span><br><span class="line">  $_PDO = new PDO(</span><br><span class="line">    &quot;mysql:host=&quot; . DB_HOST . &quot;;charset=&quot; . DB_CHARSET . &quot;;dbname=&quot; . DB_NAME, </span><br><span class="line">    DB_USER, DB_PASSWORD, [</span><br><span class="line">      PDO::ATTR_ERRMODE =&gt; PDO::ERRMODE_EXCEPTION,</span><br><span class="line">      PDO::ATTR_DEFAULT_FETCH_MODE =&gt; PDO::FETCH_ASSOC,</span><br><span class="line">      PDO::ATTR_EMULATE_PREPARES =&gt; false,</span><br><span class="line">      PDO::ATTR_PERSISTENT =&gt; true</span><br><span class="line">    ]</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">catch (Exception $ex) &#123;</span><br><span class="line">  if (LOG_KEEP) &#123; addlog($ex-&gt;getMessage()); &#125;</span><br><span class="line">  die(&quot;Error connecting to the database&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">/* (C) HANDLE REQUESTS */</span><br><span class="line">if ($_POST[&apos;req&apos;]) &#123; switch ($_POST[&apos;req&apos;]) &#123;</span><br><span class="line">  case &quot;get&quot;:</span><br><span class="line">    $_STMT = $_PDO-&gt;prepare(&quot;SELECT * FROM `users`&quot;);</span><br><span class="line">    $_STMT-&gt;execute();</span><br><span class="line">    $users = $_STMT-&gt;fetchAll();</span><br><span class="line">    echo json_encode($users);</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case &quot;add&quot;:</span><br><span class="line">    $pass = true;</span><br><span class="line">    $error = &quot;&quot;;</span><br><span class="line">    try &#123;</span><br><span class="line">      $_STMT = $_PDO-&gt;prepare(&quot;INSERT INTO `users` (`user_name`) VALUES (?)&quot;);</span><br><span class="line">      $_STMT-&gt;execute([$_POST[&apos;name&apos;]]);</span><br><span class="line">      // $lastID = $_PDO-&gt;lastInsertID();</span><br><span class="line">    &#125; catch (Exception $ex) &#123;</span><br><span class="line">      $pass = false;</span><br><span class="line">      $error = $ex-&gt;getMessage();</span><br><span class="line">    &#125;</span><br><span class="line">    echo json_encode([</span><br><span class="line">      &quot;status&quot; =&gt; $pass,</span><br><span class="line">      &quot;message&quot; =&gt; $error</span><br><span class="line">    ]);</span><br><span class="line">    break;</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br><span class="line">/* (D) CLOSE DATABASE CONNECTION */</span><br><span class="line">$_PDO = null;</span><br><span class="line">$_STMT = null;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
 
 <p>Just change the database settings to your own, and how we work with this script works is easy – Simply post a request and the required parameters. For example, send <code>$_POST[&#39;req&#39;] = &quot;add&quot;</code> and <code>$_POST[&#39;name&#39;] = &quot;USER NAME&quot;</code> to add a new user.</p>
 <p>Remember from earlier that we mentioned using the server-side script as a layer of protection? This is exactly it – Users can only make certain requests through this script, and we can implement more checks as required. For example, only administrators who are logged in can get all users.</p>
 <h3 id="CLIENT-SIDE-JAVASCRIPT"><a href="#CLIENT-SIDE-JAVASCRIPT" class="headerlink" title="CLIENT-SIDE JAVASCRIPT"></a>CLIENT-SIDE JAVASCRIPT</h3><p>1c-javascript.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function getUsers() &#123;</span><br><span class="line">        &#x2F;&#x2F; APPEND FORM DATA</span><br><span class="line">        var data &#x3D; new FormData();</span><br><span class="line">        data.append(&#39;req&#39;, &#39;get&#39;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; AJAX CALL</span><br><span class="line">        var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">        xhr.open(&#39;POST&#39;, &quot;1b-database.php&quot;, true);</span><br><span class="line">        xhr.onload &#x3D; function()&#123;</span><br><span class="line">          console.log(this.response);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.send(data);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      function addUser() &#123;</span><br><span class="line">        &#x2F;&#x2F; APPEND FORM DATA</span><br><span class="line">        var data &#x3D; new FormData();</span><br><span class="line">        data.append(&#39;req&#39;, &#39;add&#39;);</span><br><span class="line">        data.append(&#39;name&#39;, document.getElementById(&quot;user-name&quot;).value);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; AJAX CALL</span><br><span class="line">        var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">        xhr.open(&#39;POST&#39;, &quot;1b-database.php&quot;, true);</span><br><span class="line">        xhr.onload &#x3D; function()&#123;</span><br><span class="line">          console.log(this.response);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.send(data);</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;!-- GET ALL USERS --&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;Get Users&quot; onclick&#x3D;&quot;return getUsers()&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- ADD USERS --&gt;</span><br><span class="line">    &lt;form onsubmit&#x3D;&quot;return addUser();&quot;&gt;</span><br><span class="line">      &lt;input type&#x3D;&quot;text&quot; value&#x3D;&quot;NAME HERE&quot; id&#x3D;&quot;user-name&quot; required&#x2F;&gt;</span><br><span class="line">      &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;Add User&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function getUsers() &#123;</span><br><span class="line">        // APPEND FORM DATA</span><br><span class="line">        var data = new FormData();</span><br><span class="line">        data.append(&apos;req&apos;, &apos;get&apos;);</span><br><span class="line"></span><br><span class="line">        // AJAX CALL</span><br><span class="line">        var xhr = new XMLHttpRequest();</span><br><span class="line">        xhr.open(&apos;POST&apos;, &quot;1b-database.php&quot;, true);</span><br><span class="line">        xhr.onload = function()&#123;</span><br><span class="line">          console.log(this.response);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.send(data);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      function addUser() &#123;</span><br><span class="line">        // APPEND FORM DATA</span><br><span class="line">        var data = new FormData();</span><br><span class="line">        data.append(&apos;req&apos;, &apos;add&apos;);</span><br><span class="line">        data.append(&apos;name&apos;, document.getElementById(&quot;user-name&quot;).value);</span><br><span class="line"></span><br><span class="line">        // AJAX CALL</span><br><span class="line">        var xhr = new XMLHttpRequest();</span><br><span class="line">        xhr.open(&apos;POST&apos;, &quot;1b-database.php&quot;, true);</span><br><span class="line">        xhr.onload = function()&#123;</span><br><span class="line">          console.log(this.response);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.send(data);</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;!-- GET ALL USERS --&gt;</span><br><span class="line">    &lt;input type=&quot;button&quot; value=&quot;Get Users&quot; onclick=&quot;return getUsers()&quot;/&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- ADD USERS --&gt;</span><br><span class="line">    &lt;form onsubmit=&quot;return addUser();&quot;&gt;</span><br><span class="line">      &lt;input type=&quot;text&quot; value=&quot;NAME HERE&quot; id=&quot;user-name&quot; required/&gt;</span><br><span class="line">      &lt;input type=&quot;submit&quot; value=&quot;Add User&quot;/&gt;</span><br><span class="line">    &lt;/form&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>Finally, all that is left in the Javascript is to make AJAX calls to the server-side script.</p>
 <h3 id="WHAT-ABOUT-OTHER-PROGRAMMING-LANGUAGE-amp-DATABASES"><a href="#WHAT-ABOUT-OTHER-PROGRAMMING-LANGUAGE-amp-DATABASES" class="headerlink" title="WHAT ABOUT OTHER PROGRAMMING LANGUAGE &amp; DATABASES?"></a>WHAT ABOUT OTHER PROGRAMMING LANGUAGE &amp; DATABASES?</h3><p>As in the introduction above, the concept is the same and there are 3 parts to deal with:</p>
@@ -279,7 +284,7 @@
 <h2 id="SECTION-C-LOCAL-STORAGE"><a href="#SECTION-C-LOCAL-STORAGE" class="headerlink" title="SECTION C LOCAL STORAGE"></a>SECTION C LOCAL STORAGE</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-nodes.svg" alt="img"></p>
 <p>Only need some temporary storage? Here is how we do it with the simple Web Storage API.</p>
 <h3 id="THE-BASICS"><a href="#THE-BASICS" class="headerlink" title="THE BASICS"></a>THE BASICS</h3><p>2a-localstorage-basics.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      &#x2F;&#x2F; (1) SET - Save data into local storage</span><br><span class="line">      &#x2F;&#x2F; In format of key &#x3D;&gt; value</span><br><span class="line">      localStorage.setItem(&quot;Foo&quot;, &quot;Bar&quot;);</span><br><span class="line">      localStorage.setItem(&quot;Hello&quot;, &quot;World&quot;);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (2) GET - Retrive data with given key</span><br><span class="line">      var data &#x3D; localStorage.getItem(&quot;Foo&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line">      data &#x3D; localStorage.getItem(&quot;Hello&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (3) REMOVE - Remove data with given key</span><br><span class="line">      localStorage.removeItem(&quot;Foo&quot;);</span><br><span class="line">      data &#x3D; localStorage.getItem(&quot;Foo&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (4) CLEAR - Remove everything</span><br><span class="line">      localStorage.clear();</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      // (1) SET - Save data into local storage</span><br><span class="line">      // In format of key =&gt; value</span><br><span class="line">      localStorage.setItem(&quot;Foo&quot;, &quot;Bar&quot;);</span><br><span class="line">      localStorage.setItem(&quot;Hello&quot;, &quot;World&quot;);</span><br><span class="line"></span><br><span class="line">      // (2) GET - Retrive data with given key</span><br><span class="line">      var data = localStorage.getItem(&quot;Foo&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line">      data = localStorage.getItem(&quot;Hello&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line"></span><br><span class="line">      // (3) REMOVE - Remove data with given key</span><br><span class="line">      localStorage.removeItem(&quot;Foo&quot;);</span><br><span class="line">      data = localStorage.getItem(&quot;Foo&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line"></span><br><span class="line">      // (4) CLEAR - Remove everything</span><br><span class="line">      localStorage.clear();</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 <p>Local storage is very simple, and there are only 4 operations:</p>
 <ul>
@@ -290,7 +295,7 @@
 </ul>
 <h3 id="OBJECT-STORAGE"><a href="#OBJECT-STORAGE" class="headerlink" title="OBJECT STORAGE"></a>OBJECT STORAGE</h3><p>But the problem with local storage is that it only stores strings. To store and retrieve arrays/objects, we will have to use <code>JSON.stringify()</code> and <code>JSON.parse()</code>.</p>
 <p>2b-localstorage-json.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      &#x2F;&#x2F; (1) DATA OBJECT</span><br><span class="line">      var user &#x3D; &#123;</span><br><span class="line">        name : &quot;John Doe&quot;,</span><br><span class="line">        email : &quot;john@doe.com&quot;,</span><br><span class="line">        gender : &quot;Doe&quot;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (2) CONVERT JSON STRING</span><br><span class="line">      user &#x3D; JSON.stringify(user);</span><br><span class="line">      console.log(user);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (3) STORE IN LOCAL STORAGE</span><br><span class="line">      localStorage.setItem(&quot;User&quot;, user);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (4) RETRIEVE - SIMPLY GET AND DECODE</span><br><span class="line">      user &#x3D; localStorage.getItem(&quot;User&quot;);</span><br><span class="line">      user &#x3D; JSON.parse(user);</span><br><span class="line">      console.log(user);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      // (1) DATA OBJECT</span><br><span class="line">      var user = &#123;</span><br><span class="line">        name : &quot;John Doe&quot;,</span><br><span class="line">        email : &quot;john@doe.com&quot;,</span><br><span class="line">        gender : &quot;Doe&quot;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      // (2) CONVERT JSON STRING</span><br><span class="line">      user = JSON.stringify(user);</span><br><span class="line">      console.log(user);</span><br><span class="line"></span><br><span class="line">      // (3) STORE IN LOCAL STORAGE</span><br><span class="line">      localStorage.setItem(&quot;User&quot;, user);</span><br><span class="line"></span><br><span class="line">      // (4) RETRIEVE - SIMPLY GET AND DECODE</span><br><span class="line">      user = localStorage.getItem(&quot;User&quot;);</span><br><span class="line">      user = JSON.parse(user);</span><br><span class="line">      console.log(user);</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -310,7 +315,7 @@
 <li><a href="https://node-postgres.com/" target="_blank" rel="noopener">Postgres</a></li>
 </ul>
 <h3 id="THE-SCRIPT"><a href="#THE-SCRIPT" class="headerlink" title="THE SCRIPT"></a>THE SCRIPT</h3><p>3-node-db.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; (1) LOAD DB MODULE</span><br><span class="line">const mysql &#x3D; require(&quot;mysql&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; (2) CREATE CONNECTION</span><br><span class="line">&#x2F;&#x2F; ! CHANGE THESE TO YOUR OWN !</span><br><span class="line">const db &#x3D; mysql.createConnection(&#123;</span><br><span class="line">  host: &#39;localhost&#39;,</span><br><span class="line">  user: &#39;root&#39;,</span><br><span class="line">  password: &#39;&#39;,</span><br><span class="line">  database: &#39;test&#39;</span><br><span class="line">&#125;);</span><br><span class="line">db.connect((err) &#x3D;&gt; &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  console.log(&quot;DB connection OK&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; (3) QUERY</span><br><span class="line">db.query(&quot;SELECT * FROM &#96;users&#96;&quot;, function (err, results) &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  console.log(results);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">// (1) LOAD DB MODULE</span><br><span class="line">const mysql = require(&quot;mysql&quot;);</span><br><span class="line"></span><br><span class="line">// (2) CREATE CONNECTION</span><br><span class="line">// ! CHANGE THESE TO YOUR OWN !</span><br><span class="line">const db = mysql.createConnection(&#123;</span><br><span class="line">  host: &apos;localhost&apos;,</span><br><span class="line">  user: &apos;root&apos;,</span><br><span class="line">  password: &apos;&apos;,</span><br><span class="line">  database: &apos;test&apos;</span><br><span class="line">&#125;);</span><br><span class="line">db.connect((err) =&gt; &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  console.log(&quot;DB connection OK&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// (3) QUERY</span><br><span class="line">db.query(&quot;SELECT * FROM `users`&quot;, function (err, results) &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  console.log(results);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
 <p>Yep, it’s that simple – Just load the database module and make a connection. But take note that this is based on MySQL again, install and load your own if you are using something else.</p>
 <h2 id="EXTRA-USEFUL-BITS"><a href="#EXTRA-USEFUL-BITS" class="headerlink" title="EXTRA USEFUL BITS"></a>EXTRA USEFUL BITS</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-plus-square.svg" alt="img"></p>
@@ -358,6 +363,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Database, Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -408,7 +424,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/09/How to Connect to Database in Javascript/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -422,7 +438,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/10/Go%20Language/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/10/Go Language/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -432,8 +448,8 @@
     </a>
   
   
-    <a href="/2020/05/08/Ingestion%20and%20processing%20of%20real-time%20automotive%20IoT%20data%20%20/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Ingestion and processing of real-time automotive IoT data  </div>
+    <a href="/2020/05/08/Ingestion and processing of real-time automotive IoT data  /" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Ingestion and Processing of Real-Time Automotive IoT Data</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -492,7 +508,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -576,15 +591,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -592,7 +603,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,11 +635,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

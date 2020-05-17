@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,9 +12,9 @@
 <meta property="og:title" content="Yanjie&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yanjie&#39;s Blog">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -30,8 +30,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -150,13 +150,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/Responsive%20Development/">Responsive Development</a>
+      <a class="article-title" href="/2020/04/26/Responsive Development/">Responsive Development</a>
     </h1>
   
 
         
-        <a href="/2020/04/26/Responsive%20Development/" class="archive-article-date">
-  	<time datetime="2020-04-27T04:50:08.856Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+        <a href="/2020/04/26/Responsive Development/" class="archive-article-date">
+  	<time datetime="2020-04-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
 </a>
         
       </header>
@@ -165,47 +165,7 @@
       
         <p>Notes about Responsive Development 😺 YAY!</p>
 <h2 id="Mobile-First-Design"><a href="#Mobile-First-Design" class="headerlink" title="Mobile-First Design"></a>Mobile-First Design</h2><p>Because the majority of web traffic is now coming from mobile devices, the current best practice is to design your site for a mobile device first, and only later consider how you can take advantage of the larger screen of a desktop. This is known as “mobile-first design.” In general this boils down to the following principles:</p>
-<ul>
-<li><strong>Layout</strong>: Blocks of content should typically stack on top of each other on narrow screens, but sit side-by-side on wider screens. You can also use the width or max-width properties to constrain the overall width of your content so that it doesn’t stretch to ridiculous line lengths on super-wide monitors. Content fixed to the viewport ( layout: fixed) should be kept to a minimum on small screens, as it reduces the amount of scrollable screen real-estate.</li>
-<li><strong>Media</strong>: Large images and video look great on large monitors, but typically don’t work as well on small screens. They also take much longer to download over slow mobile networks. Consider using background colors or linear gradient fills instead of background images on mobile; or use lower-resolution images so that they download faster.</li>
-<li><strong>Fonts</strong>: Font sizes may need to be adjusted so that text remains readable as the screen size changes. You can also increase the size of headings or callout text on wider monitors to take advantage of the extra room.</li>
-<li><strong>Navigation</strong>: Site navigation links take up a lot of room on small screens and may end up wrapping to multiple lines. Keep the site navigation hidden on small screens and show it only when the user taps a menu icon (colloquially known as the “hamburger icon”). Most CSS frameworks provide some kind of collapsible navigation on mobile.</li>
-<li><strong>Input and Interaction</strong>: Tap/click targets need to be large-enough on mobile to select using a finger, especially for people with poor eyesight or thick fingers. Tiny icons placed right next to one another, or one-word hyperlinks are difficult to select accurately. Specifying a data type on form fields (e.g., email address, phone number, date, integer) also generates optimized on-screen keyboards, making data entry much easier.</li>
-<li><strong>Content</strong>: For some sites, you may even want to adjust what content is shown to mobile users as opposed to desktop users. For example, a phone number might become a large “call” icon with a tel: hyperlink on phone-sized screens, but simply appear as a normal telephone number on larger screens.</li>
-</ul>
-<h1 id="Media-Rules"><a href="#Media-Rules" class="headerlink" title="Media Rules"></a>Media Rules</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* rules that apply to all devices */</span></span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(<span class="number">255</span>, <span class="number">64</span>, <span class="number">129</span>); <span class="comment">/* background color on small screens */</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">16px</span>; <span class="comment">/* default font size is 16 pixels */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules that apply only to screens 768 pixels and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(...); <span class="comment">/* use background image on larger screens */</span></span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>; <span class="comment">/* increase font size to 18 pixels on larger screens */</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.mobile-call-icon</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none; <span class="comment">/* hide mobile call icon */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>The rules inside the <code>@media</code> rule can alter the formatting of any element, including completely hiding or showing it using the <code>display</code> property. Setting <code>display: none</code> will remove the element from the page, and <code>display: block</code> or <code>display: inline</code> will show it.</p>
-<h1 id="SVE-Elements"><a href="#SVE-Elements" class="headerlink" title="SVE Elements"></a>SVE Elements</h1><p>SVG elements define a <a href="https://en.wikipedia.org/wiki/Vector_graphics" target="_blank" rel="noopener">vector graphic (Links to an external site.)</a>, so they can scale up or down to any size while remaining crisp. By including them directly in the page, we avoid an additional network round-trip, and we can style them. SVG elements are commonly used for flat monochrome icons.</p>
-<h1 id="Flexbox"><a href="#Flexbox" class="headerlink" title="Flexbox"></a>Flexbox</h1><p>Flexbox requires one element to act as the row element, and one element per column in your layout. To make a two-column layout, your HTML and CSS would be like this:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-row"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Column 1<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>Column 2<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>...<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">* &#123;</span><br><span class="line">  box-sizing: border-box; /* include padding and border is size calcs */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.flex-row &#123;</span><br><span class="line">  display: flex; /* start a flexbox */</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.flex-column &#123;</span><br><span class="line">  flex-grow: 1; /* all columns equal size */</span><br><span class="line">  padding-left: 0.25em; /* a little padding inside each col */</span><br><span class="line">  padding-right: 0.25em;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Multiple-Layouts"><a href="#Multiple-Layouts" class="headerlink" title="Multiple Layouts"></a>Multiple Layouts</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules for screens 768px and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">768px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.flex-row</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: flex;</span><br><span class="line">    flex-wrap: wrap; // wrap</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">    flex-basis: 50%; // 2* 2</span><br><span class="line">    <span class="selector-tag">padding-left</span>: 0<span class="selector-class">.25em</span>;</span><br><span class="line">    <span class="selector-tag">padding-right</span>: 0<span class="selector-class">.25em</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* rules for screens 1200px and wider */</span></span><br><span class="line"><span class="keyword">@media</span> (<span class="attribute">min-width:</span> <span class="number">1200px</span>) &#123;</span><br><span class="line">  <span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">    <span class="attribute">flex-basis</span>: <span class="number">25%</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>Also, if you want a three column layout, but with the middle column consuming <code>80%</code> of the screen width and the outer columns taking up only <code>10%</code> each, just use different style class names on the different columns, and set the <code>flex-basis</code> property appropriately.</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.flex-row</span> &#123;</span><br><span class="line">  <span class="attribute">flex-grow</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for all columns */</span></span><br><span class="line"><span class="selector-class">.flex-column</span> &#123;</span><br><span class="line">  <span class="attribute">padding-left</span>: <span class="number">0.25em</span>;</span><br><span class="line">  <span class="attribute">padding-right</span>: <span class="number">0.25em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for the left/right side columns */</span></span><br><span class="line"><span class="selector-class">.flex-column-sides</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">10%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* styles for center column */</span></span><br><span class="line"><span class="selector-class">.flex-column-center</span> &#123;</span><br><span class="line">  <span class="attribute">flex-basis</span>: <span class="number">80%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>Remember that you can add multiple style classes to an HTML element (separated by spaces), so you can define one class for style properties that are common to all columns, and other style classes for properties that should apply to only one column (or set of similar columns). The HTML for the center column would then look like this:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"flex-column flex-column-center"</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h1 id="Flexbox-Nesting"><a href="#Flexbox-Nesting" class="headerlink" title="Flexbox Nesting"></a>Flexbox Nesting</h1><p>Although flexbox nesting can be powerful, you should use it sparingly, as it tends to create layouts that are difficult for both users and developers to understand.</p>
-<p>Responsive Container Elements By default the `` element will stretch to be as wide as the browser window (also called the “viewport”), and all block elements within the body will also stretch to be as wide as the body. This works well on narrower screens but it creates ridiculously wide layouts and long line-lengths on very wide desktop monitors, making your site difficult to read. It’s common to have background images and colors stretch “wall-to-wall” but the main text content is often constrained in width so that it remains easy to read on all sizes of screens.</p>
-<p>Setting <code>margin-left</code> and <code>margin-right</code> to <code>auto</code> will ensure that the container element remains horizontally centered when its width begins to be constrained, which happens on screens wider than <code>768px</code>. </p>
-<h1 id="Resources-Link"><a href="#Resources-Link" class="headerlink" title="Resources Link"></a>Resources Link</h1><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a></p>
-<p><a href="http://flexboxfroggy.com/" target="_blank" rel="noopener">http://flexboxfroggy.com/</a></p>
-
+        
       
 
       
@@ -213,11 +173,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Responsive Development</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/Responsive%20Development/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/26/Responsive Development/">Show All >></a>
         </p>
       
 
@@ -254,13 +225,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/">May The Distance Bring Us Even Closer!</a>
+      <a class="article-title" href="/2020/04/25/May The Distance Bring Us Even Closer!/">May The Distance Bring Us Even Closer!</a>
     </h1>
   
 
         
-        <a href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/" class="archive-article-date">
-  	<time datetime="2020-04-25T07:10:00.474Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
+        <a href="/2020/04/25/May The Distance Bring Us Even Closer!/" class="archive-article-date">
+  	<time datetime="2020-04-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
 </a>
         
       </header>
@@ -272,8 +243,8 @@
 <p>First time to watch Arabic videos. Together with his explaination, it’s all become vivid and moving!</p>
 <p>I feel watching Ramadan television commercial by Zain has been an annual ritual for people in this community to share the same belief wherever they are.</p>
 <p>Spread the Love! ❤️</p>
-<h2 id="Coronavirus"><a href="#Coronavirus" class="headerlink" title="Coronavirus"></a>Coronavirus</h2><p><a href="http://www.youtube.com/watch?v=0bF16Ph3uEI" target="_blank" rel="noopener" title="Zain2020"><img src="http://img.youtube.com/vi/0bF16Ph3uEI/0.jpg" alt=""></a></p>
-<h2 id="Jerusalem"><a href="#Jerusalem" class="headerlink" title="Jerusalem"></a>Jerusalem</h2><p><a href="http://www.youtube.com/watch?v=JIJB7cv97Dg" target="_blank" rel="noopener" title="Zain2018"><img src="http://img.youtube.com/vi/JIJB7cv97Dg/0.jpg" alt=""></a></p>
+<h2 id="Coronavirus"><a href="#Coronavirus" class="headerlink" title="Coronavirus"></a>Coronavirus</h2><p><a href="http://www.youtube.com/watch?v=0bF16Ph3uEI" title="Zain2020" target="_blank" rel="noopener"><img src="http://img.youtube.com/vi/0bF16Ph3uEI/0.jpg" alt></a></p>
+<h2 id="Jerusalem"><a href="#Jerusalem" class="headerlink" title="Jerusalem"></a>Jerusalem</h2><p><a href="http://www.youtube.com/watch?v=JIJB7cv97Dg" title="Zain2018" target="_blank" rel="noopener"><img src="http://img.youtube.com/vi/JIJB7cv97Dg/0.jpg" alt></a></p>
 
       
 
@@ -282,11 +253,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ramdan</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/25/May%20The%20Distance%20Bring%20Us%20Even%20Closer!/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/25/May The Distance Bring Us Even Closer!/">Show All >></a>
         </p>
       
 
@@ -323,12 +305,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/">生活小记</a>
+      <a class="article-title" href="/2020/04/24/生活小记/">生活小记</a>
     </h1>
   
 
         
-        <a href="/2020/04/24/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/" class="archive-article-date">
+        <a href="/2020/04/24/生活小记/" class="archive-article-date">
   	<time datetime="2020-04-24T08:29:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
 </a>
         
@@ -354,7 +336,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/%E7%94%9F%E6%B4%BB%E5%B0%8F%E8%AE%B0/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/24/生活小记/">Show All >></a>
         </p>
       
 
@@ -391,7 +373,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/Create-A-Google-Map-In-A-Website/">Create-A-Google-Map-In-A-Website</a>
+      <a class="article-title" href="/2020/04/23/Create-A-Google-Map-In-A-Website/">Create A Google Map In A Website</a>
     </h1>
   
 
@@ -405,9 +387,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="Google’s-API-Map"><a href="#Google’s-API-Map" class="headerlink" title="Google’s API Map"></a>Google’s API Map</h1><h2 id="1-html5-code-to-get-that-work"><a href="#1-html5-code-to-get-that-work" class="headerlink" title="1. html5 code to get that work"></a>1. html5 code to get that work</h2><h2 id="2-Google’s-API-guideline"><a href="#2-Google’s-API-guideline" class="headerlink" title="2. Google’s API guideline"></a>2. Google’s API guideline</h2><p><a href="https://developers.google.com/maps/documentation/javascript/get-api-key" target="_blank" rel="noopener">https://developers.google.com/maps/documentation/javascript/get-api-key</a></p>
-<h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;map&quot;&gt;&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"map"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="4-API-map-JavaScript-code"><a href="#4-API-map-JavaScript-code" class="headerlink" title="4. API map JavaScript code"></a>4. API map JavaScript code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function initMap()&#123;</span><br><span class="line">var location &#x3D; &#123;lat: -25.363, lng: 131.044&#125;</span><br><span class="line">var map &#x3D; new     </span><br><span class="line">    google.maps.Map(document.getElementById(&quot;map&quot;), &#123;</span><br><span class="line">    zoom: 4,</span><br><span class="line">    center: location</span><br><span class="line">&#125;);</span><br><span class="line">  var marker &#x3D; new google.maps.Marker(&#123;</span><br><span class="line">    position: location,</span><br><span class="line">    map: map</span><br><span class="line">  &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"></span><br><span class="line">&lt;script async defer src&#x3D;&quot;https:&#x2F;&#x2F;maps.ggogleapis.com&#x2F;maps&#x2F;api&#x2F;js?key&#x3D;&amp;callback&#x3D;initMap&quot;&gt;&lt;&#x2F;script&gt;script&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="4-API-map-JavaScript-code"><a href="#4-API-map-JavaScript-code" class="headerlink" title="4. API map JavaScript code"></a>4. API map JavaScript code</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">initMap</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> location = &#123;<span class="attr">lat</span>: <span class="number">-25.363</span>, <span class="attr">lng</span>: <span class="number">131.044</span>&#125;</span><br><span class="line"><span class="keyword">var</span> map = <span class="keyword">new</span>     </span><br><span class="line">    google.maps.Map(<span class="built_in">document</span>.getElementById(<span class="string">"map"</span>), &#123;</span><br><span class="line">    zoom: <span class="number">4</span>,</span><br><span class="line">    center: location</span><br><span class="line">&#125;);</span><br><span class="line">  <span class="keyword">var</span> marker = <span class="keyword">new</span> google.maps.Marker(&#123;</span><br><span class="line">    position: location,</span><br><span class="line">    map: map</span><br><span class="line">  &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script async defer src="https:/</span><span class="regexp">/maps.ggogleapis.com/m</span>aps/api/js?key=&amp;callback=initMap<span class="string">"&gt;&lt;/script&gt;script&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h1 id="Embed-a-Google-Map-in-a-Website"><a href="#Embed-a-Google-Map-in-a-Website" class="headerlink" title="Embed a Google Map in a Website"></a>Embed a Google Map in a Website</h1><p><a href="https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&amp;hl=en" target="_blank" rel="noopener">https://support.google.com/maps/answer/144361?co=GENIE.Platform%3DDesktop&amp;hl=en</a></p>
 
@@ -470,13 +452,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/">Principles-For-Lifelong-Meaningful-Relationships</a>
+      <a class="article-title" href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/">Principles For Lifelong MEaningful Relationships</a>
     </h1>
   
 
         
         <a href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/" class="archive-article-date">
-  	<time datetime="2020-04-23T04:24:57.909Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
+  	<time datetime="2020-04-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
 </a>
         
       </header>
@@ -484,24 +466,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Started to read Principles by Ray Dalio again and found some other inspiring principles from his recent post. Share here together with my takeaway. Glad to see his way to systemize these principles and test them in his own life. </p>
-<h2 id="Principle-1-What-creates-and-sustains-truly-great-relationships-like-great-marriages-and-great-partnerships-is-the-unwavering-belief-that-nothing-is-more-important-than-the-relationship"><a href="#Principle-1-What-creates-and-sustains-truly-great-relationships-like-great-marriages-and-great-partnerships-is-the-unwavering-belief-that-nothing-is-more-important-than-the-relationship" class="headerlink" title="Principle 1: What creates and sustains truly great relationships (like great marriages and great partnerships) is the unwavering belief that nothing is more important than the relationship."></a>Principle 1: What creates and sustains truly great relationships (like great marriages and great partnerships) is the unwavering belief that nothing is more important than the relationship.</h2><p>Bad times and disagreements are understandble. Mutual demonstrated commitment to the belief creates the willingness to work things out. </p>
-<p>Of course, in the early stage of a relationship, no reason to belive nothing is more importatn than the relationship and that the mutual commitments are there. It takes time to get it tested. Because of that, you just have to have faith that it’s true and act as if it’s true and then see if the other person does the same. </p>
-<p>Also, when facing those challenging bad times and disagreements in a relationship, and when making those important calls of what’s most important, you need to think hard about how important the relationship you have really is relative to how important getting your way is because the decisions you will make at those times either strengthen your relationship or weaken it.</p>
-<h2 id="Principle-2-If-you-need-to-assess-the-value-of-your-relationship-think-hard-about-whether-your-most-important-values-and-principles-are-aligned-putting-the-really-important-ones-ahead-of-the-not-so-important-ones"><a href="#Principle-2-If-you-need-to-assess-the-value-of-your-relationship-think-hard-about-whether-your-most-important-values-and-principles-are-aligned-putting-the-really-important-ones-ahead-of-the-not-so-important-ones" class="headerlink" title="Principle 2: If you need to assess the value of your relationship, think hard about whether your most important values and principles are aligned, putting the really important ones ahead of the not so important ones."></a>Principle 2: If you need to assess the value of your relationship, think hard about whether your most important values and principles are aligned, putting the really important ones ahead of the not so important ones.</h2><p>a) the greatest things to have in life are great relationships, especially your most important relationships, </p>
-<p>b) you won’t be able to have great long-term relationships if you can’t get past the the disagreements and the imperfections because all relationships have disagreements and imperfections, </p>
-<p>c) no relationship will work in the long run if your most important values and principles are not aligned, and </p>
-<p>d) it takes a whole lot of trying and figuring things out in order come up with the best path. </p>
-<h2 id="Principle-3-The-key-to-all-good-relationships-is-to-a-be-in-sync-about-how-you-should-be-with-each-other-especially-how-you-should-disagree-and-get-past-your-disagreements-and-b-give-far-more-than-you-demand-with-those-who-will-do-the-same-with-you"><a href="#Principle-3-The-key-to-all-good-relationships-is-to-a-be-in-sync-about-how-you-should-be-with-each-other-especially-how-you-should-disagree-and-get-past-your-disagreements-and-b-give-far-more-than-you-demand-with-those-who-will-do-the-same-with-you" class="headerlink" title="Principle 3: The key to all good relationships is to a) be in sync about how you should be with each other, especially how you should disagree and get past your disagreements, and b) give far more than you demand with those who will do the same with you."></a>Principle 3: The key to all good relationships is to a) be in sync about how you should be with each other, especially how you should disagree and get past your disagreements, and b) give far more than you demand with those who will do the same with you.</h2><p>The biggest source of problems in most relationships is that one or both parties have some notion about how the other should behave and they get angry if the other doesn’t behave that way. In their arguments they exchange accusations in the form of “You should have”.</p>
-<p>“Should”?!</p>
-<p>What should you do instead? </p>
-<p>First, when you are in one of those disagreements, step out of the disagreement for the moment to see if you can establish an agreed-upon principle about how you should be with each other. </p>
-<p>Then go back into the disagreement and be that way, keeping in mind your new principle. </p>
-<p>In the future </p>
-<p>a) operate by that principle, </p>
-<p>or b) modify the principle in the same way. </p>
-<p>Second, when in doubt, give each other slack rather than be prickly. At the end of the day, you will have a good relationship if you make the other person happy and they make you happy, so please drop the scolding “should haves.” </p>
-<p>Empathetically consider the other’s perspective.</p>
-
+        
       
 
       
@@ -509,6 +474,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Principles</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -550,13 +526,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/21/System%20Design%20Notes/">System Design Notes</a>
+      <a class="article-title" href="/2020/04/21/System Design Notes/">System Design Notes</a>
     </h1>
   
 
         
-        <a href="/2020/04/21/System%20Design%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T21:10:26.237Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
+        <a href="/2020/04/21/System Design Notes/" class="archive-article-date">
+  	<time datetime="2020-04-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
 </a>
         
       </header>
@@ -566,43 +542,8 @@
         <p>System Design Notes </p>
 <h1 id="Feed-Product"><a href="#Feed-Product" class="headerlink" title="Feed Product:"></a>Feed Product:</h1><p>1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algorithm (relationship and interest) in the ranking consideration.<br>what is it? As a user, what I hope to use, the core functionalities, use cases. many core functionalities, what they are, what I will focus on to dissect, for products.<br>product directed</p>
 <p>2) functionalities: input – output – output as input — . deconstruct process in system design. signature. restful api.<br>Use cases: quantitative. data size, peak time query per second qps, read write query what they are, read more write less other patterns.<br>Story feed product:<br>Functionalities, use casesvoting dashboard, voting, real-time voting visualization</p>
-<h1 id="Case-Study-Leaderboard-Voting-Map"><a href="#Case-Study-Leaderboard-Voting-Map" class="headerlink" title="Case Study: Leaderboard, Voting Map"></a>Case Study: Leaderboard, Voting Map</h1><p>excellent pay attention to it.<br>How to make leaderboard:how to design and implement it.voting board/map.<br>Core features:top 100, time window: last 1 month, real-time fetch data // use case common sense, leaderboard.From the perspective of users: certain time windows, calculate scores, and sort. use case:</p>
-<ol>
-<li><p>data size: 10,000 active users, 10-20/day/ person, acceptance rate 50%. submission number: daily: 100,000, month: 3,000,000, annual: 36,500,000</p>
-</li>
-<li><p>query per second: peak time, average concurrent visiting, visting frequency: query per day: hope to get result immediately. result real-time expectation. offline calculation or real-time online calculation. response time short. </p>
-</li>
-<li><p>calculate score: ranking, score: fields (number, acceptance rate, time) don’t over dig into it.web application, packaging core functionalities. we believe it’s done, and integrate the whole design, flow architecture and product design. input and output as key words in the process. the best ranking / recommendation algorithm for data scientists to do.</p>
-<p>**** challenges and core features defined well , input and output and fit in the whole design.<br>input and output (score):how about input: time window number of questions, and acceptance rate, submission history. </p>
-</li>
-</ol>
-<p>Design:what data, data model, input and output, and data calculation and implement step by step.</p>
-<p>Leaderboard:core data:all users’ submission history, basic info.</p>
-<p>– relational database model. which question, accept or not, when submitted. schema to use, several tables and relationships. data model to use. query to check relationships, given time window, for person, submit how many,acceptance rate, and time, personal info. query submission history, calculate score, put to sort algorithm and sort.<br> think about it from a data model, do not think about speed to query right now. no need to use non-relational.</p>
-<h2 id="Problems"><a href="#Problems" class="headerlink" title="Problems:"></a>Problems:</h2><p>slow: combine use case to discuss. the core is what query it is like. </p>
-<p>1) ad hoc query: transactional base query, specific condition and data related not that much. I hope to find what questions I do accept or not. query fast, coz index.</p>
-<p>2) aggregation query: scan this table, terrifying, no need to scan all the submission history. but the time window might need to be large enough. // basic design.database query, scan all data.<br>all voting board: all data, time window, – the past window, the most popular music, to scan all the history? no. </p>
-<h2 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization:"></a>Optimization:</h2><p>leaderboard:</p>
-<p>scan daily? no. history data. or specific data within one day. and immediate update. – for unchanged history offline batch processing, aggregation process, real-time data, real-time checking.</p>
-<p>two parts of data:</p>
-<p>1) history data, offline data, daily and weekly preprocessing aggregation. past week data，daily data put into history, 固化, would not be changed. </p>
-<p>2) real-time data would be updated. the old would be merged into history data. size small and real-time updated.</p>
-<p>3) combine them, accurate cover history and real-time update. so ranking score, to scan today’s submission history, at most 100,000 * 365 per year. previous accepted rate data in history, the total data size is limited.<br>so put unchanged data 固化, batch processing, offline aggregation, in the evening to do;small dataset, online-real-time;combined with a compressed history dataset.</p>
-<p>Tool: flink, spark use one api to deal with both. </p>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h1><p>What to consider:</p>
-<ol>
-<li><p>1) query slow and fast, query size2) query features, large, slow: real-time, optimization, try to find immutable dataset. </p>
-</li>
-<li><p>immutable data/thing is the best and the easiest to deal with, offline deal with, query, request deal with. </p>
-</li>
-<li><p>input and output</p>
-</li>
-<li><p>data size, qps, pee and average</p>
-</li>
-<li><p>read vs write</p>
-</li>
-</ol>
-
+<h1 id="Case-Study-Leaderboard-Voting-Map"><a href="#Case-Study-Leaderboard-Voting-Map" class="headerlink" title="Case Study: Leaderboard, Voting Map"></a>Case Study: Leaderboard, Voting Map</h1>
+        
       
 
       
@@ -610,11 +551,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">System Design</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/21/System%20Design%20Notes/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/21/System Design Notes/">Show All >></a>
         </p>
       
 
@@ -651,13 +603,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/CSS%20Notes/">CSS Notes</a>
+      <a class="article-title" href="/2020/04/20/CSS Notes/">CSS Notes</a>
     </h1>
   
 
         
-        <a href="/2020/04/20/CSS%20Notes/" class="archive-article-date">
-  	<time datetime="2020-04-20T21:29:18.248Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+        <a href="/2020/04/20/CSS Notes/" class="archive-article-date">
+  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
 </a>
         
       </header>
@@ -676,126 +628,7 @@
 <ol start="2">
 <li>For large CSS files, professionals will typically minify them before deploying them to a production server, which involves removing all the whitespace to make the file smaller.</li>
 </ol>
-<h1 id="Selectors"><a href="#Selectors" class="headerlink" title="Selectors"></a>Selectors</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors</a></p>
-<ol>
-<li><p>Element selectors</p>
-</li>
-<li><p>Class selectors:</p>
-</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all elements with class="alert alert-warning"</span></span><br><span class="line"><span class="comment">(i.e., elements that have both classes) */</span></span><br><span class="line"><span class="selector-class">.alert</span><span class="selector-class">.alert-warning</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="3">
-<li>ID Selectors: The <code>id</code> attribute is commonly used to create bookmark hyperlinks (i.e., links that scroll the page to a particular section of the page), id selectors are a handy way to style those elements.</li>
-</ol>
-<ol start="4">
-<li>Descendant Selectors:</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects only the p elements contained within header elements */</span></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects elements with class="logo"</span></span><br><span class="line"><span class="comment">contained within p elements</span></span><br><span class="line"><span class="comment">contained within header elements */</span></span><br><span class="line"><span class="selector-tag">header</span> <span class="selector-tag">p</span> <span class="selector-class">.logo</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>It’s best practice to use no more than two or three.</p>
-<p> If you really want to select only direct children, you can use this variant of the syntax, known as a <strong>child selector</strong>:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects only the p elements that are direct children the header element  */</span></span><br><span class="line"><span class="selector-tag">header</span> &gt; <span class="selector-tag">p</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<ol start="5">
-<li>Group Selectors:</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all h1, h2, and h3 elements  */</span></span><br><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span> &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>: <span class="number">300</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Group selectors are an excellent way to adhere to the <strong>DRY principle</strong>: <strong>D</strong>on’t <strong>R</strong>epeat <strong>Y</strong>ourself! </p>
-<ol start="6">
-<li>Hover and Focus Pseudo Selectors:</li>
-</ol>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* selects all elements with class="nav-link" */</span></span><br><span class="line"><span class="selector-class">.nav-link</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* selects all elements with class="nav-link" that are being hovered over with the mouse */</span></span><br><span class="line"><span class="selector-class">.nav-link</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="comment">/* change color to red */</span></span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* selects all &lt;input&gt; elements that have keyboard focus */</span></span><br><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:focus</span> &#123;</span><br><span class="line">    <span class="comment">/* change background color to yellow */</span></span><br><span class="line">    <span class="attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Specificity-Calculated"><a href="#Specificity-Calculated" class="headerlink" title="Specificity Calculated"></a>Specificity Calculated</h1><p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity</a></p>
-<h1 id="Font"><a href="#Font" class="headerlink" title="Font"></a>Font</h1><p> Most web sites these days use <a href="https://www.fonts.com/content/learning/fontology/level-1/type-anatomy/serif-vs-sans-for-text-in-responsive-design" target="_blank" rel="noopener">sans-serifed</a> fonts for body text, as it tends to be easier to read at smaller point sizes.</p>
-<h1 id="Colors"><a href="#Colors" class="headerlink" title="Colors"></a>Colors</h1><p> We use a hexadecimal representation of a numeric color value, like <code>#FF0000</code>, which is pure red.</p>
-<p>The hex representation starts with a <code>#</code> symbol and is followed by six hexadecimal characters. The first two are the amount of red, the second two the amount of green, and the final two are the amount of blue. Hexadecimal <code>FF</code> is the same as decimal <code>255</code>.</p>
-<p>Amazing <a href="https://color.adobe.com/" target="_blank" rel="noopener">Adobe Color CC</a> tool. You can <a href="https://color.adobe.com/explore/newest/" target="_blank" rel="noopener">explore ready-made color palettes</a>, or design your own. You can also upload a photo and let the tool design a color palette for you based on the colors in the photo (click the camera icon on the top-right).</p>
-<h1 id="Measurement-Units"><a href="#Measurement-Units" class="headerlink" title="Measurement Units"></a>Measurement Units</h1><p>The absolute units are as follows:</p>
-<table>
-<thead>
-<tr>
-<th>Unit</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>cm</td>
-<td>centimeters</td>
-</tr>
-<tr>
-<td>mm</td>
-<td>millimeters</td>
-</tr>
-<tr>
-<td>in</td>
-<td>inches</td>
-</tr>
-<tr>
-<td>px</td>
-<td>pixels, which are defined as 1/96 of an inch, regardless of how dense the pixels are on the current display</td>
-</tr>
-<tr>
-<td>pt</td>
-<td>points, which are defined as 1/72 of an inch</td>
-</tr>
-</tbody></table>
-<p>In addition to these absolute units, you can also use these relative units:</p>
-<table>
-<thead>
-<tr>
-<th>Unit</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>em</td>
-<td>the height of the current element’s font</td>
-</tr>
-<tr>
-<td>rem</td>
-<td>the height of the root element’s font (i.e., the font used on the root <code>html</code> element). To calculate from the base size to <code>rem</code> it would be based on percentage, but in decimal format. So 100% is <code>1.0rem</code> 150% is <code>1.5rem</code> and 200% is <code>2.0rem</code>.</td>
-</tr>
-<tr>
-<td>%</td>
-<td>a percentage of the parent element dimensions or parent element’s font</td>
-</tr>
-<tr>
-<td>vw</td>
-<td>one percent of the viewport width (i.e., the width of the browser window)</td>
-</tr>
-<tr>
-<td>vh</td>
-<td>one percent of the viewport height (i.e., the height of the browser window)</td>
-</tr>
-</tbody></table>
-<p>Absolute units are best for things you want to be consistent across devices (e.g., font size, or maximum width of some content). Relative units are best for things you want to adjust based on context (the width of a column in a multi-column layout, or the relative font size of an `` compared to the base font).</p>
-<h1 id="The-Box-Model"><a href="#The-Box-Model" class="headerlink" title="The Box Model"></a>The Box Model</h1><h3 id="Block-vs-inline-display"><a href="#Block-vs-inline-display" class="headerlink" title="Block vs inline display"></a>Block vs inline display</h3><p>Elements that are displayed as blocks by default include <code>p</code>, <code>div</code>, <code>ul</code>, <code>ol</code>, <code>li</code>, <code>header</code>, <code>main</code>, <code>article</code>, <code>footer</code>, <code>aside</code>, and many more. </p>
-<p>Elements that are displayed inline by default include <code>em</code>, <code>strong</code>, <code>span</code>, <code>a</code>, <code>small</code>, <code>abbr</code>, and several more.</p>
-<h3 id="Adjusting-width-and-height"><a href="#Adjusting-width-and-height" class="headerlink" title="Adjusting width and height"></a>Adjusting width and height</h3><p>You can adjust the default <code>width</code> and <code>height</code> of block elements using the <code>width</code> and <code>height</code> CSS properties, but you need to careful when doing so. If your element contains content, you should adjust only the <code>width</code> and never the <code>height</code>. If you constraint the <code>width</code> and the <code>height</code>, the element might not have enough room to display all of its content. But if you constrain only the <code>width</code>, the element will automatically grow taller to accommodate its content.</p>
-<p>Alternatively you can specify a <code>min-width</code> or <code>max-width</code> CSS property to ensure that the width is at least or at most a particular size. For example, setting <code>max-width</code> to <code>1170px</code> will allow the element to grow in width up to, but not beyond, <code>1170px</code>.</p>
-<h3 id="Margins-borders-and-padding"><a href="#Margins-borders-and-padding" class="headerlink" title="Margins, borders, and padding"></a>Margins, borders, and padding</h3><p>Elements displayed as blocks can also have a margin, border, and padding. </p>
-<h3 id="Horizontally-centering-constrained-width-elements"><a href="#Horizontally-centering-constrained-width-elements" class="headerlink" title="Horizontally centering constrained-width elements"></a>Horizontally centering constrained-width elements</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">    <span class="attribute">max-width</span>: <span class="number">1170px</span>;</span><br><span class="line">    <span class="attribute">margin-left</span>: auto;</span><br><span class="line">    <span class="attribute">margin-right</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="Resources"><a href="#Resources" class="headerlink" title="Resources:"></a>Resources:</h1><p>CSS Cheat Sheet:</p>
-<p><a href="https://cdn.makeawebsitehub.com/wp-content/uploads/2016/07/css3-mega-cheat-sheet-A4.pdf" target="_blank" rel="noopener">https://cdn.makeawebsitehub.com/wp-content/uploads/2016/07/css3-mega-cheat-sheet-A4.pdf</a></p>
-<p>Interactive CSS Cheat Sheet:</p>
-<p><a href="http://htmlcheatsheet.com/css/" target="_blank" rel="noopener">http://htmlcheatsheet.com/css/</a></p>
-
+        
       
 
       
@@ -803,11 +636,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/CSS%20Notes/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/20/CSS Notes/">Show All >></a>
         </p>
       
 
@@ -850,7 +694,7 @@
 
         
         <a href="/2020/04/19/Thoughts/" class="archive-article-date">
-  	<time datetime="2020-04-20T06:34:04.940Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
+  	<time datetime="2020-04-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
 </a>
         
       </header>
@@ -907,13 +751,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/">Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device</a>
+      <a class="article-title" href="/2020/04/18/Typora & Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device/">Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device</a>
     </h1>
   
 
         
-        <a href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/" class="archive-article-date">
-  	<time datetime="2020-04-19T06:26:06.617Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
+        <a href="/2020/04/18/Typora & Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device/" class="archive-article-date">
+  	<time datetime="2020-04-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
 </a>
         
       </header>
@@ -927,38 +771,7 @@
 <p>But despite their position as some of the most sophisticated smartphone technology makers in the world, they’ve never faced a task quite like this. In its scale and complexity, the <a href="https://www.cnn.com/asia/live-news/coronavirus-pandemic-intl-04-15-20/index.html" target="_blank" rel="noopener">pandemic</a> adds tremendous challenges to all the normal questions that come with technology design, such as privacy and usability concerns. Chief among them: Can they even get enough people to use their solution for it to really work?</p>
 <p>Apple (<a href="https://money.cnn.com/quote/quote.html?symb=AAPL&source=story_quote_link" target="_blank" rel="noopener">AAPL</a>) and Google (<a href="https://money.cnn.com/quote/quote.html?symb=GOOG&source=story_quote_link" target="_blank" rel="noopener">GOOG</a>)’s ambitious plan to help track the spread of the coronavirus using Bluetooth technology could need as many as half of all Americans to participate, and likely more, in order for the tracing scheme to work most effectively, according to company officials and outside experts. That requires not just user opt-in, but also sufficient testing, something the US system is struggling badly with. Still, experts say the tech companies’ solution could play an important role in fighting the pandemic.</p>
 <p>For the past two and a half weeks the companies have worked together with public health authorities to outline the broad strokes of the plan, the companies told reporters on Monday. If they succeed in helping fight the spread of the coronavirus, they could be hailed as heroes, perhaps even solidifying the foothold in health services they’ve both sought to establish for years. But now comes the hard part, as Apple and Google try to adapt their technological solution to the messy reality of a complex social and physical problem.</p>
-<h3 id="The-plan"><a href="#The-plan" class="headerlink" title="The plan"></a>The plan</h3><p>The core idea behind the companies’ proposal is a time-tested way of controlling outbreaks: Contact tracing, or the work of identifying how a pathogen is jumping from person to person based on who those people have been in contact with. Typically done by human interviewers, contact tracing has been used in conjunction with heavy testing to combat other infectious diseases, like Ebola — but it may be far too slow and labor-intensive to do by hand during a worldwide pandemic. Apple and Google’s response is to automate contact tracing at a global level, anonymously.</p>
-<p>On Monday, the two companies released further details about their two-stage plan in a press briefing.</p>
-<p>In the first stage, set to launch next month, Apple and Google will create a way for public health officials to tap into a new feature in iOS and Android using specially built apps that users will be able to voluntarily download, for free. Only recognized public health authorities will be allowed to interact with the feature, known as an API. Company officials also said they are working directly with health agencies and in many cases have offered app templates to use as a starting point.</p>
-<p>People who test positive for the novel coronavirus, the companies have said, will be able to enter their results in the apps without revealing their identities to the public. Anyone else who’s downloaded a compatible app that has been in direct contact with those patients will then receive a notification that they may have been exposed. Instead of location data, the entire system hinges on Bluetooth, the short-range wireless standard that many consumers already use to pair smartphones, earbuds, laptops and sound systems.</p>
-<h3 id="Privacy-matters"><a href="#Privacy-matters" class="headerlink" title="Privacy matters"></a>Privacy matters</h3><p>Companies like Google and especially Apple have tried to prove their privacy commitments to anxious consumers in the past. But with nothing less than the public’s health at stake, expectations that they’ll honor those commitments are now higher than ever.</p>
-<p>The prospect of large-scale pandemic surveillance has many privacy advocates wary, saying it could ultimately open the door to more intrusive spying, even if it begins with good intentions.</p>
-<p>Still, in recent weeks, academics and industry have coalesced around Bluetooth-based proximity tracking over GPS location tracking, largely because geolocation data can often be reverse-engineered to deduce a person’s identity.</p>
-<p>There’s still a privacy risk with the Bluetooth solution (no system is foolproof) but it’s far lower by comparison, because it doesn’t track where a smartphone goes — only that it’s come into contact with other devices, said Vi Hart, lead author of a recent Harvard University <a href="https://ethics.harvard.edu/outpacing-virus" target="_blank" rel="noopener">white paper</a> on digital contact tracing methods. And, she told CNN, the system becomes even safer if the phones are tracked using randomly generated numbers rather than being linked directly to their owners’ accounts or identities.</p>
-<p>“The version we’re recommending is where your phone basically yells nonsense, it’s gibberish,” Hart told CNN in an interview. “Everyone’s phone is just yelling random nonsense, and your phone collects the nonsense it hears.”</p>
-<p>In their announcement last week, Apple and Google said their system follows those principles. Users who test positive for the coronavirus will then have their random nonsense automatically uploaded to a server, where it can be read by other phones.</p>
-<h3 id="‘Without-testing-these-apps-are-going-to-be-of-limited-value’"><a href="#‘Without-testing-these-apps-are-going-to-be-of-limited-value’" class="headerlink" title="‘Without testing, these apps are going to be of limited value’"></a><strong>‘Without testing, these apps are going to be of limited value’</strong></h3><p>But even if Apple and Google can win over privacy skeptics, the plan still raises other challenges in implementation. How will health officials ensure no person is falsely reporting a positive test? Will the system record two people as having been in close contact even if they are on opposite sides of a wall in separate apartments?</p>
-<p>The companies said they are still looking into how test results should be reported to the contact tracing system, but told reporters on Monday that the answer will likely come from the health officials who are authorized to report cases and make public policy decisions.</p>
-<p>One proposal under consideration, company officials said, was to have hospitals and test centers issue special, authorized QR codes with each positive test result. Then, people who receive the code could scan it as part of their self-reporting in the tech platforms’ contact tracing system. That approach could limit false positives, experts say.</p>
-<p>Because of how greatly the contact tracing method depends on testing and public health reporting, many experts say Apple and Google’s solution can’t be viewed as a silver bullet. More testing will be critical.</p>
-<p>“Without testing, these apps are going to be of limited value,” said Faiza Patel, director of the Liberty &amp; National Security Program at New York University’s Brennan Center for Justice. “We’re hoping to reach 500,000 tests per day over the next few weeks, but we need in the millions.”</p>
-<p>The companies did not respond to questions about how the technology will handle instances where people may be in close proximity but not in actual contact. Researchers said it may be necessary to assume that more people have been in contact with each other than in reality, even if that means more people staying home than actually needed.</p>
-<p>The alternative would be precisely the disaster some public health experts fear: A reopening of the economy, followed by a second wave of mass infections that could overwhelm the health care system.</p>
-<h3 id="A-social-good-that’s-also-good-for-business"><a href="#A-social-good-that’s-also-good-for-business" class="headerlink" title="A social good that’s also good for business"></a><strong>A social good that’s also good for business</strong></h3><p>And then there’s the massive scale at which people will need to adopt Apple and Google’s digital contact tracing if it’s to scale effectively. Even assuming the companies can solve the technical details and persuade people the tool is safe and private, they and public health officials must still convince millions — if not billions — of people to participate and heed its notifications.</p>
-<p>“Problem is, you need a large data set,” said Christian Boos, a technology executive leading a digital contact tracing effort in Europe. “If you wanted this to be the only measure to bend the curve, then you’d need 60% participation [in every country it’s deployed].”</p>
-<p>A similar study from <a href="http://www.ox.ac.uk/news/2020-04-02-controlling-coronavirus-using-mobile-app-trace-close-proximity-contacts" target="_blank" rel="noopener">Oxford University</a> concluded last month that if app-based contact tracing were the only intervention applied, participation would need to be “near-universal” and that compliance with public health guidelines would have to be “near-perfect.”</p>
-<p>That’s consistent with other mathematical calculations, according to the Harvard white paper, citing one study that concluded adoption would need to hit at least 40% and others saying it may need to be as high as 80%.</p>
-<p>Successfully reaching that target might be complicated by another messy byproduct of the real world: inequalities of technological access.</p>
-<p>“My in-laws, for example, are still using a flip phone. They’re in the most at-risk population, but they’re not going to use this app,” said Patel.</p>
-<p>Other barriers keeping people from opting in could include limited battery life on older devices, reluctance to try new apps, or even simple confusion about how to join the program.</p>
-<p>That’s where the second stage of Apple and Google’s plan comes in. In hopes of getting more people to use the underlying tech, the plan calls for integrating the contact tracing more deeply into iOS and Android’s user interface over the coming months, so that users can opt into the program straight from their devices without needing to download a separate app first.</p>
-<p>It’s too early to say whether that tactic may successfully boost adoption of the tool. But Apple and Google have decades of experience studying user behavior and trying to make it as easy as possible — or in the industry lingo, minimize the friction — to use their products.</p>
-<p>If it works, experts say, it could lead to a bonanza for the companies once the pandemic is over. They will have established more credibility in the health services sector in just a few months than over years of acquisitions, announcements and initiatives in the space.</p>
-<p>“There’s a level of altruism here, but there’s also a tremendous amount of opportunism to place themselves in a very favorable light,” said Jeffrey Chester, executive director of the Center for Digital Democracy, a privacy rights group.</p>
-<p>Even if their efforts don’t pan out, the companies will get credit for having tried, according to Chester, especially given concerns that the federal government’s response has been sluggish.</p>
-<hr>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://www.cnn.com/2020/04/15/tech/google-apple-coronavirus-tracker/index.html" target="_blank" rel="noopener">https://www.cnn.com/2020/04/15/tech/google-apple-coronavirus-tracker/index.html</a></p>
-
+        
       
 
       
@@ -966,11 +779,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Typora, Coronavirus Tracking Device</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/18/Typora%20&%20Apple%20and%20Google%20Plan%20to%20Use%20Smartphone%20as%20a%20Coronavirus%20Tracking%20Device/">Show All >></a>
+          <a class="article-more-a" href="/2020/04/18/Typora & Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device/">Show All >></a>
         </p>
       
 
@@ -1020,79 +844,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.<br>I have been contributing to this list since then, and in this article, I’ll share 11 hand-picked tips that strike me as particularly clever or useful. This post is intended to be useful for beginners, but I hope even intermediate JavaScript developers will find something new in this list.<br>While many of these tricks are handy in any context, a few of them may be better suited for code golf than production-level code, where clarity is often more important than concision; I’ll let you be the judge of that!<br>So, in no particular order, here are 11 neat ways to write more concise and more performant code.<br><br /></p>
-<h2 id="1-Filter-Unique-Values"><a href="#1-Filter-Unique-Values" class="headerlink" title="1. Filter Unique Values"></a>1. Filter Unique Values</h2><p>ARRAYS<br>The <code>Set</code> object type was introduced in ES6, and along with <code>...</code>, the ‘spread’ operator, we can use it to create a new array with only the unique values.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const array &#x3D; [1, 1, 2, 3, 5, 5, 1]</span><br><span class="line">const uniqueArray &#x3D; [...new Set(array)];console.log(uniqueArray); &#x2F;&#x2F; Result: [1, 2, 3, 5]</span><br></pre></td></tr></table></figure>
-<p>Before ES6, isolating unique values would involve a lot more code than that!<br>This trick works for arrays containing primitive types: <code>undefined</code>, <code>null</code>, <code>Boolean</code>, <code>string</code> and <code>number</code> . (If you had an array containing objects, functions or additional arrays, you’d need a different approach!)<br><br /></p>
-<h2 id="2-Short-Circuit-Evaluation"><a href="#2-Short-Circuit-Evaluation" class="headerlink" title="2. Short-Circuit Evaluation"></a>2. Short-Circuit Evaluation</h2><p>CONDITIONALS<br>The ternary operator is a quick way to write simple (and sometimes not-so-simple) conditional statements, like these:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &gt; 100 ? &#39;Above 100&#39; : &#39;Below 100&#39;;</span><br><span class="line">x &gt; 100 ? (x &gt; 200 ? &#39;Above 200&#39; : &#39;Between 100-200&#39;) : &#39;Below 100&#39;;</span><br></pre></td></tr></table></figure>
-<p>But sometimes even the ternary operator is more complicated than necessary. Instead, we can use the ‘and’ &amp;&amp; and ‘or’ || logical operators to evaluate certain expressions in an even more concise way. This is often called ‘short-circuiting’ or ‘short-circuit evaluation’.</p>
-<h3 id="How-It-Works"><a href="#How-It-Works" class="headerlink" title="How It Works"></a>How It Works</h3><p>Let’s say we want to return just one of two or more options.<br>Using <code>&amp;&amp;</code> will return the first <code>false</code> or ‘falsy’ value. If every operand evaluates to <code>true</code> , the last evaluated expression will be returned.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let one &#x3D; 1, two &#x3D; 2, three &#x3D; 3;</span><br><span class="line">console.log(one &amp;&amp; two &amp;&amp; three); &#x2F;&#x2F; Result: 3console.log(0 &amp;&amp; null); &#x2F;&#x2F; Result: 0</span><br></pre></td></tr></table></figure>
-<p>Using <code>||</code> will return the first <code>true</code> or ‘truthy’ value. If every operand evaluates to <code>false</code>, the last evaluated expression will be returned.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let one &#x3D; 1, two &#x3D; 2, three &#x3D; 3;</span><br><span class="line">console.log(one || two || three); &#x2F;&#x2F; Result: 1console.log(0 || null); &#x2F;&#x2F; Result: null</span><br></pre></td></tr></table></figure>
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><p>Let’s say we want to return the <code>length</code> of a variable, but we don’t know the variable type.<br>We could use an <code>if/else</code> statement to check that <code>foo</code> is an acceptable type, but this could get pretty longwinded. Short circuit evaluation allows us to do this instead:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (foo || []).length;</span><br></pre></td></tr></table></figure>
-<p>If the variable <code>foo</code> is truthy, it will be returned. Otherwise, the <code>length</code> of the empty array will be returned: <code>0</code> .</p>
-<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><p>Have you ever had problems accessing a nested object property? You might not know if the object or one of the sub-properties exists, and this can cause frustrating errors.<br>Let’s say we wanted to access a property called <code>data</code> within <code>this.state</code> , but <code>data</code> is undefined until our program has successfully returned a fetch request.<br>Depending on where we use it, calling <code>this.state.data</code> could prevent our app from running. To get around this, we could wrap it in a conditional:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (this.state.data) &#123;</span><br><span class="line">  return this.state.data;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  return &#39;Fetching Data&#39;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>But that seems pretty repetitive. The ‘or’ operator provides a more concise solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (this.state.data || &#39;Fetching Data&#39;);</span><br></pre></td></tr></table></figure>
-<p>We can’t refactor the code above to use <code>&amp;&amp;</code> . The statement <code>&#39;Fetching Data&#39; &amp;&amp; this.state.data</code> will return <code>this.state.data</code> whether it is <code>undefined</code> or not. This is because <code>&#39;Fetching Data&#39;</code> is ‘truthy’, and so the <code>&amp;&amp;</code> will always pass over it when it is listed first.</p>
-<h3 id="A-New-Proposed-Feature-Optional-Chaining"><a href="#A-New-Proposed-Feature-Optional-Chaining" class="headerlink" title="A New Proposed Feature: Optional Chaining"></a>A New Proposed Feature: Optional Chaining</h3><p>There is currently a proposal to allow ‘optional chaining’ when attempting to return a property deep in a tree-like structure. Under the proposal, the question mark symbol <code>?</code> could be used to extract a property only if it is not <code>null</code> .<br>For example, we could refactor our example above to <code>this.state.data?.()</code> , thus only returning <code>data</code> if it is not <code>null</code> .<br>Or, if we were mainly concerned about whether <code>state</code> was defined or not, we could return <code>this.state?.data</code> .<br>The proposal is currently at Stage 1, as an experimental feature. You can read about it here, and you can use in your JavaScript now via Babel, by adding @babel/plugin-proposal-optional-chaining to your <code>.babelrc</code> file.<br><br /></p>
-<h2 id="3-Convert-to-Boolean"><a href="#3-Convert-to-Boolean" class="headerlink" title="3. Convert to Boolean"></a>3. Convert to Boolean</h2><p>TYPE CONVERSION<br>Besides the regular boolean values <code>true</code> and <code>false</code> , JavaScript also treats all other values as either ‘truthy’ or ‘falsy’.<br>Unless otherwise defined, all values in JavaScript are ‘truthy’ with the exception of <code>0</code>, <code>&quot;&quot;</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code> and of course <code>false</code> , which are ‘falsy’.<br>We can easily switch between true and false by using the negative operator <code>!</code> , which will also convert the type to <code>&quot;boolean&quot;</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const isTrue  &#x3D; !0;</span><br><span class="line">const isFalse &#x3D; !1;</span><br><span class="line">const alsoFalse &#x3D; !!0;console.log(isTrue); &#x2F;&#x2F; Result: true</span><br><span class="line">console.log(typeof true); &#x2F;&#x2F; Result: &quot;boolean&quot;</span><br></pre></td></tr></table></figure>
-<p>This kind of type conversion can be handy in conditional statements, although the only reason you’d choose to define <code>false</code> as <code>!1</code> is if you were playing code golf!<br><br /></p>
-<h2 id="4-Convert-to-String"><a href="#4-Convert-to-String" class="headerlink" title="4. Convert to String"></a>4. Convert to String</h2><p>TYPE CONVERSION<br>To quickly convert a number to a string, we can use the concatenation operator <code>+</code> followed by an empty set of quotation marks <code>&quot;&quot;</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const val &#x3D; 1 + &quot;&quot;;console.log(val); &#x2F;&#x2F; Result: &quot;1&quot;</span><br><span class="line">console.log(typeof val); &#x2F;&#x2F; Result: &quot;string&quot;</span><br></pre></td></tr></table></figure>
-<br />
-
-<h2 id="5-Convert-to-Number"><a href="#5-Convert-to-Number" class="headerlink" title="5. Convert to Number"></a>5. Convert to Number</h2><p>TYPE CONVERSION<br>The opposite can be quickly achieved using the addition operator <code>+</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let int &#x3D; &quot;15&quot;;</span><br><span class="line">int &#x3D; +int;console.log(int); &#x2F;&#x2F; Result: 15</span><br><span class="line">console.log(typeof int); Result: &quot;number&quot;</span><br></pre></td></tr></table></figure>
-<p>This may also be used to convert booleans to numbers, as below:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(+true);  &#x2F;&#x2F; Return: 1</span><br><span class="line">console.log(+false); &#x2F;&#x2F; Return: 0</span><br></pre></td></tr></table></figure>
-<p>There may be contexts where the <code>+</code> will be interpreted as the concatenation operator rather than the addition operator. When that happens (and you want to return an integer, not a float) you can instead use two tildes: <code>~~</code> .<br>A tilde, known as the ‘bitwise NOT operator’, is an operator equivalent to <code>-n — 1</code> . So, for example, <code>~15</code> is equal to <code>-16</code> .<br>Using two tildes in a row effectively negates the operation, because <code>— ( — n — 1) — 1 = n + 1 — 1 = n</code> . In other words, <code>~ — 16</code> equals <code>15</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const int &#x3D; ~~&quot;15&quot;console.log(int); &#x2F;&#x2F; Result: 15</span><br><span class="line">console.log(typeof int); Result: &quot;number&quot;</span><br></pre></td></tr></table></figure>
-<p>Though I can’t think of many use-cases, the bitwise NOT operator can also be used on booleans: <code>~true = -2</code> and <code>~false = -1</code>.<br><br /></p>
-<h2 id="6-Quick-Powers"><a href="#6-Quick-Powers" class="headerlink" title="6. Quick Powers"></a>6. Quick Powers</h2><p>OPERATIONS<br>Since ES7, it has been possible to use the exponentiation operator <code>**</code> as a shorthand for powers, which is faster than writing <code>Math.pow(2, 3)</code> . This is straightforward stuff, but it makes the list because not many tutorials have been updated to include this operator!</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(2 ** 3); &#x2F;&#x2F; Result: 8</span><br></pre></td></tr></table></figure>
-<p>This shouldn’t be confused with the <code>^</code> symbol, commonly used to represent exponents, but which in JavaScript is the bitwise XOR operator.<br>Before ES7, shorthand existed only for powers with base 2, using the bitwise left shift operator <code>&lt;&lt;</code> :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; The following expressions are equivalent:Math.pow(2, n);</span><br><span class="line">2 &lt;&lt; (n - 1);</span><br><span class="line">2**n;</span><br></pre></td></tr></table></figure>
-<p>For example, <code>2 &lt;&lt; 3 = 16</code> is equivalent to <code>2 ** 4 = 16</code> .<br><br /></p>
-<h2 id="7-Quick-Float-to-Integer"><a href="#7-Quick-Float-to-Integer" class="headerlink" title="7. Quick Float to Integer"></a>7. Quick Float to Integer</h2><p>OPERATIONS / TYPE CONVERSION<br>If you want to convert a float to an integer, you can use <code>Math.floor()</code> , <code>Math.ceil()</code> or <code>Math.round()</code> . But there is also a faster way to truncate a float to an integer using <code>|</code>, the bitwise OR operator.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(23.9 | 0);  &#x2F;&#x2F; Result: 23</span><br><span class="line">console.log(-23.9 | 0); &#x2F;&#x2F; Result: -23</span><br></pre></td></tr></table></figure>
-<p>The behaviour of <code>|</code> varies depending on whether you’re dealing with positive or negative numbers, so it’s best only to use this shortcut if you’re sure.<br>If <code>n</code> is positive, <code>n | 0</code> effectively rounds down. If <code>n</code> is negative, it effectively rounds up. To put it more accurately, this operation removes whatever comes after the decimal point, truncating a float to an integer.<br>You can get the same rounding effect by using <code>~~</code>, as above, and in fact any bitwise operator would force a float to an integer. The reasons these particular operations work is that — once forced to an integer — the value is left unchanged.</p>
-<h3 id="Remove-Final-Digits"><a href="#Remove-Final-Digits" class="headerlink" title="Remove Final Digits"></a>Remove Final Digits</h3><p>The bitwise OR operator can also be used to remove any amount of digits from the end of an integer. This means we don’t have to use code like this to convert between types:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let str &#x3D; &quot;1553&quot;; </span><br><span class="line">Number(str.substring(0, str.length - 1));</span><br></pre></td></tr></table></figure>
-<p>Instead, the bitwise OR operator allows us to write:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(1553 &#x2F; 10   | 0)  &#x2F;&#x2F; Result: 155</span><br><span class="line">console.log(1553 &#x2F; 100  | 0)  &#x2F;&#x2F; Result: 15</span><br><span class="line">console.log(1553 &#x2F; 1000 | 0)  &#x2F;&#x2F; Result: 1</span><br></pre></td></tr></table></figure>
-<br />
-
-<h2 id="8-Automatic-Binding-in-Classes"><a href="#8-Automatic-Binding-in-Classes" class="headerlink" title="8. Automatic Binding in Classes"></a>8. Automatic Binding in Classes</h2><p>CLASSES<br>We can use ES6 arrow notation in class methods, and by doing so binding is implied. This will often save several lines of code in our class constructor, and we can happily say goodbye to repetitive expressions such as <code>this.myMethod = this.myMethod.bind(this)</code> !</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from React;export default class App extends Compononent &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">  super(props);</span><br><span class="line">  this.state &#x3D; &#123;&#125;;</span><br><span class="line">  &#125;myMethod &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F; This method is bound implicitly!</span><br><span class="line">  &#125;render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &#123;this.myMethod()&#125;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">      &lt;&#x2F;&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<br />
-<br />
-
-<h2 id="9-Truncate-an-Array"><a href="#9-Truncate-an-Array" class="headerlink" title="9. Truncate an Array"></a>9. Truncate an Array</h2><p>ARRAYS<br>If you want to remove values from the end of an array destructively, there’s are faster alternatives than using <code>splice()</code> .<br>For example, if you know the size of your original array, you can re-define its length property, like so:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">array.length &#x3D; 4;console.log(array); &#x2F;&#x2F; Result: [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
-<p>This is a particularly concise solution. However, I have found the run-time of the <code>slice()</code> method to be even faster. If speed is your main goal, consider using something like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">array &#x3D; array.slice(0, 4);console.log(array); &#x2F;&#x2F; Result: [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
-<br />
-
-<h2 id="10-Get-the-Last-Item-s-in-an-Array"><a href="#10-Get-the-Last-Item-s-in-an-Array" class="headerlink" title="10. Get the Last Item(s) in an Array"></a>10. Get the Last Item(s) in an Array</h2><p>ARRAYS<br>The array method <code>slice()</code> can take negative integers, and if provided it will take values from the end of the array rather than the beginning.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array &#x3D; [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];console.log(array.slice(-1)); &#x2F;&#x2F; Result: [9]</span><br><span class="line">console.log(array.slice(-2)); &#x2F;&#x2F; Result: [8, 9]</span><br><span class="line">console.log(array.slice(-3)); &#x2F;&#x2F; Result: [7, 8, 9]</span><br></pre></td></tr></table></figure>
-<br />
-
-<h2 id="11-Format-JSON-Code"><a href="#11-Format-JSON-Code" class="headerlink" title="11. Format JSON Code"></a>11. Format JSON Code</h2><p>JSON<br>Lastly, you may have used <code>JSON.stringify</code> before, but did you realise it can also help indent your JSON for you?<br>The <code>stringify()</code> method takes two optional parameters: a <code>replacer</code> function, which you can use to filter the JSON that is displayed, and a <code>space</code> value.<br>The <code>space</code> value takes an integer for the number of spaces you want or a string (such as <code>&#39;\t&#39;</code> to insert tabs), and it can make it a lot easier to read fetched JSON data.</p>
-<pre><code>console.log(JSON.stringify({ alpha: &apos;A&apos;, beta: &apos;B&apos; }, null, &apos;\t&apos;));// Result:
-// &apos;{
-//     &quot;alpha&quot;: A,
-//     &quot;beta&quot;: B
-// }&apos;</code></pre><p>Overall, I hope you found these tips as useful as I did when I first discovered them.<br>Got any JavaScript tricks of your own? I’d love to read them in the comments below!</p>
-<hr>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://medium.com/@bretcameron/12-javascript-tricks-you-wont-find-in-most-tutorials-a9c9331f169d" target="_blank" rel="noopener">https://medium.com/@bretcameron/12-javascript-tricks-you-wont-find-in-most-tutorials-a9c9331f169d</a></p>
-
+        <p>When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.<br>I have been contributing to this list since then, and in this article, I’ll share 11 hand-picked tips that strike me as particularly clever or useful. This post is intended to be useful for beginners, but I hope even intermediate JavaScript developers will find something new in this list.<br>While many of these tricks are handy in any context, a few of them may be better suited for code golf than production-level code, where clarity is often more important than concision; I’ll let you be the judge of that!<br>So, in no particular order, here are 11 neat ways to write more concise and more performant code.<br><br></p>
+        
       
 
       
@@ -1147,7 +900,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1162,7 +915,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -1246,15 +998,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1262,7 +1010,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1270,11 +1042,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Data Sampling and Randomization | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Data Sampling Notes: Take-away: EG + Formula &#x3D;&gt; Show thinking style Reservoir SamplingQ: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the proba">
+  <meta name="description" content="Data Sampling Notes: Take-away: EG + Formula =&amp;gt; Show thinking style Reservoir SamplingQ: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the proba">
+<meta name="keywords" content="Data Sampling, Randomization">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Data Sampling and Randomization">
-<meta property="og:url" content="http://yoursite.com/2020/04/29/Data%20Sampling%20and%20Randomization/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/04/29/Data Sampling and Randomization/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="Data Sampling Notes: Take-away: EG + Formula &#x3D;&gt; Show thinking style Reservoir SamplingQ: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the proba">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-29T21:30:50.164Z">
-<meta property="article:modified_time" content="2020-04-29T21:35:56.404Z">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:description" content="Data Sampling Notes: Take-away: EG + Formula =&amp;gt; Show thinking style Reservoir SamplingQ: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the proba">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-17T20:23:07.047Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Data Sampling and Randomization">
+<meta name="twitter:description" content="Data Sampling Notes: Take-away: EG + Formula =&amp;gt; Show thinking style Reservoir SamplingQ: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the proba">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -34,8 +35,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -157,8 +158,8 @@
   
 
         
-        <a href="/2020/04/29/Data%20Sampling%20and%20Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T21:30:50.164Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
+        <a href="/2020/04/29/Data Sampling and Randomization/" class="archive-article-date">
+  	<time datetime="2020-04-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
 </a>
         
       </header>
@@ -168,6 +169,8 @@
         <p>Data Sampling Notes:</p>
 <p>Take-away: EG + Formula =&gt; Show thinking style</p>
 <h2 id="Reservoir-Sampling"><a href="#Reservoir-Sampling" class="headerlink" title="Reservoir Sampling"></a>Reservoir Sampling</h2><p>Q: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the probability of returning any element read so far is 1/n.</p>
+<a id="more"></a>
+
 <h3 id="Solution-for-limited-data"><a href="#Solution-for-limited-data" class="headerlink" title="Solution for limited data:"></a>Solution for limited data:</h3><p>Random select one. But not good.Streaming data flow: flow, store in the disk, memory, cloud. materialize data, cost is high, like video data flow, to do sampling.space: o(n) </p>
 <h3 id="Alternative"><a href="#Alternative" class="headerlink" title="Alternative:"></a>Alternative:</h3><p>Use o(1) space to solve.index = 0 1 2 3 4 5 6 7A[]    a b c d e f g hRandom time randomly select one number, random sampling</p>
 <p>Maintain counter, maintain sample so far.<br>Step1: counter = 1; Call random.randint(0, 0), to decide whether the sample needs to be replaced, if the random number == 0, then result_so_far = al (for the first iteration, the result_so_far must be a, since there is only one data entry so far). 100% to select a. eg + formula</p>
@@ -178,8 +181,6 @@
 <p>Step n : counter = n; Call random(n), if the random number == 0, then result__so_far = A[n];</p>
 <h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary:"></a>Summary:</h3><p>Replace or not current? 0, replace; non-0, not replace.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Generator</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">_init_</span><span class="params">(self)</span>:</span></span><br><span class="line">    self.sample = <span class="number">0</span></span><br><span class="line">    self.count = <span class="number">0</span> <span class="comment"># the counter of elements read so far.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(self, val)</span>:</span></span><br><span class="line">  self.count += <span class="number">1</span> <span class="comment"># current element is the count-th element</span></span><br><span class="line">  r = random.randint(<span class="number">0</span>, self.count - <span class="number">1</span>) <span class="comment"># randomly generate a number from - to count (exclusive) [0, count-1];</span></span><br><span class="line">  <span class="keyword">if</span> r == <span class="number">0</span>:</span><br><span class="line">    self.sample = val <span class="comment"># the probability of choosing (count-1)-th element as the final solution is 1/count;</span></span><br></pre></td></tr></table></figure>
-
-
 
 <h3 id="Exploration"><a href="#Exploration" class="headerlink" title="Exploration:"></a>Exploration:</h3><p>Streaming and batch, the same. Sample = k: Assuming the number of items to select, k, is smaller than the size of the source array, S):k element out of n (k &lt;&lt; n) → P(k/n)P(result_so_far =</p>
 <p>Step 1: like above</p>
@@ -193,11 +194,6 @@
 <p>// <em>5, matrix// random(5) -&gt; x, random(5) -&gt; y =&gt; x + 5</em>y =// random(5) is a function, two random5( might produce different things and produce a matrix. so should not be 6random(5).)<br>random5() * 1 + 5<em>random5()rand1        rand2<br>If more than 25, 3D, random5() * 1 + 5</em>random5() + 5^2*random5()<br>keep 0 -20 → in total 21 numbers.0: 0, 7, 14  3/25/(21/25) = 1/71: 1, 8, 15<br>6: 6, 13, 20<br>index matrix</p>
 <p>code:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random25</span><span class="params">()</span>:</span> <span class="comment"># 25 means all the numbers would be produced equally.	</span></span><br><span class="line">  <span class="keyword">return</span> <span class="number">5</span> * random5() + random5()</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">random7</span><span class="params">()</span>:</span> <span class="comment"># if change to 6, waste resource, coz we need to remove certain numbers.	</span></span><br><span class="line">  num = random25()	</span><br><span class="line">  <span class="keyword">while</span> num &gt; <span class="number">20</span>:		</span><br><span class="line">    num = random25()	</span><br><span class="line">    <span class="keyword">return</span> num % <span class="number">7</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-
 
 <p>​                               </p>
 
@@ -229,6 +225,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Sampling, Randomization</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -279,7 +286,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/29/Data%20Sampling%20and%20Randomization/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/29/Data Sampling and Randomization/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,11 +300,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/30/Real-time%20streaming%20in%20Power%20BI/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/30/Real-time streaming in Power BI/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Real-time streaming in Power BI
+          Real-time Streaming in Power BI
         
       </div>
     </a>
@@ -363,7 +370,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -447,15 +453,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,7 +465,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -471,11 +497,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

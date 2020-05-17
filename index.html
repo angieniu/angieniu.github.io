@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -12,9 +12,9 @@
 <meta property="og:title" content="Yanjie&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Yanjie&#39;s Blog">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -30,8 +30,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -377,161 +377,6 @@
 
 
   
-    <article id="post-HTTP Requests" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/13/HTTP%20Requests/">HTTP Requests</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/13/HTTP%20Requests/" class="archive-article-date">
-  	<time datetime="2020-05-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>HTTP messages are how data is exchanged between a server and a client. There are two types of messages: <em>requests</em> sent by the client to trigger an action on the server, and <em>responses</em>, the answer from the server.</p>
-<p>HTTP messages are composed of textual information encoded in ASCII, and span over multiple lines. In HTTP/1.1, and earlier versions of the protocol, these messages were openly sent across the connection. In HTTP/2, the once human-readable message is now divided up into HTTP frames, providing optimization and performance improvements.</p>
-<p>Web developers, or webmasters, rarely craft these textual HTTP messages themselves: software, a Web browser, proxy, or Web server, perform this action. They provide HTTP messages through config files (for proxies or servers), APIs (for browsers), or other interfaces.</p>
-<p><img src="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png" alt="From a user-, script-, or server- generated event, an HTTP/1.x msg is generated, and if HTTP/2 is in use, it is binary framed into an HTTP/2 stream, then sent."></p>
-<p>The HTTP/2 binary framing mechanism has been designed to not require any alteration of the APIs or config files applied: it is broadly transparent to the user.</p>
-<p>HTTP requests, and responses, share similar structure and are composed of:</p>
-<ol>
-<li>A <em>start-line</em> describing the requests to be implemented, or its status of whether successful or a failure. This start-line is always a single line.</li>
-<li>An optional set of <em>HTTP headers</em> specifying the request, or describing the body included in the message.</li>
-<li>A blank line indicating all meta-information for the request has been sent.</li>
-<li>An optional <em>body</em> containing data associated with the request (like content of an HTML form), or the document associated with a response. The presence of the body and its size is specified by the start-line and HTTP headers.</li>
-</ol>
-<p>The start-line and HTTP headers of the HTTP message are collectively known as the <em>head</em> of the requests, whereas its payload is known as the <em>body</em>.</p>
-<p><img src="https://mdn.mozillademos.org/files/13827/HTTPMsgStructure2.png" alt="Requests and responses share a common structure in HTTP"></p>
-<h2 id="HTTP-Requests"><a href="#HTTP-Requests" class="headerlink" title="HTTP Requests"></a>HTTP Requests</h2><h3 id="Start-line"><a href="#Start-line" class="headerlink" title="Start line"></a>Start line</h3><p>HTTP requests are messages sent by the client to initiate an action on the server. Their <em>start-line</em> contain three elements:</p>
-<ol>
-<li><p>An <em><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods" target="_blank" rel="noopener">HTTP method</a></em>, a verb (like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET" target="_blank" rel="noopener"><code>GET</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT" target="_blank" rel="noopener"><code>PUT</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST" target="_blank" rel="noopener"><code>POST</code></a>) or a noun (like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD" target="_blank" rel="noopener"><code>HEAD</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS" target="_blank" rel="noopener"><code>OPTIONS</code></a>), that describes the action to be performed. For example, <code>GET</code> indicates that a resource should be fetched or <code>POST</code> means that data is pushed to the server (creating or modifying a resource, or generating a temporary document to send back).</p>
-</li>
-<li><p>The</p>
-</li>
-</ol>
-<p>   request target</p>
-<p>   , usually a</p>
-<p>   URL</p>
-<p>   , or the absolute path of the protocol, port, and domain are usually characterized by the request context. The format of this request target varies between different HTTP methods. It can be</p>
-<ul>
-<li>An absolute path, ultimately followed by a <code>&#39;?&#39;</code> and query string. This is the most common form, known as the <em>origin form</em>, and is used with <code>GET</code>, <code>POST</code>, <code>HEAD</code>, and <code>OPTIONS</code> methods.<br><code>POST / HTTP/1.1GET /background.png HTTP/1.0HEAD /test.html?query=alibaba HTTP/1.1OPTIONS /anypage.html HTTP/1.0</code></li>
-<li>A complete URL, known as the <em>absolute form</em>, is mostly used with <code>GET</code> when connected to a proxy.<br><code>GET http://developer.mozilla.org/en-US/docs/Web/HTTP/Messages HTTP/1.1</code></li>
-<li>The authority component of a URL, consisting of the domain name and optionally the port (prefixed by a <code>&#39;:&#39;</code>), is called the <em>authority form</em>. It is only used with <code>CONNECT</code> when setting up an HTTP tunnel.<br><code>CONNECT developer.mozilla.org:80 HTTP/1.1</code></li>
-<li>The <em>asterisk form</em>, a simple asterisk (<code>&#39;*&#39;</code>) is used with <code>OPTIONS</code>, representing the server as a whole.<br><code>OPTIONS * HTTP/1.1</code></li>
-</ul>
-<ol start="3">
-<li>The <em>HTTP version</em>, which defines the structure of the remaining message, acting as an indicator of the expected version to use for the response.</li>
-</ol>
-<h3 id="Headers"><a href="#Headers" class="headerlink" title="Headers"></a>Headers</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers" target="_blank" rel="noopener">HTTP headers</a> from a request follow the same basic structure of an HTTP header: a case-insensitive string followed by a colon (<code>&#39;:&#39;</code>) and a value whose structure depends upon the header. The whole header, including the value, consist of one single line, which can be quite long.</p>
-<p>There are numerous request headers available. They can be divided in several groups:</p>
-<ul>
-<li><em>General headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Via" target="_blank" rel="noopener"><code>Via</code></a>, apply to the message as a whole.</li>
-<li><em>Request headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent" target="_blank" rel="noopener"><code>User-Agent</code></a>, <code>Accept-Type</code>, modify the request by specifying it further (like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language" target="_blank" rel="noopener"><code>Accept-Language</code></a>), by giving context (like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referer" target="_blank" rel="noopener"><code>Referer</code></a>), or by conditionally restricting it (like <code>If-None</code>).</li>
-<li><em>Entity headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length" target="_blank" rel="noopener"><code>Content-Length</code></a> which apply to the body of the request. Obviously, there is no such header transmitted if there is no body in the request.</li>
-</ul>
-<p><img src="https://mdn.mozillademos.org/files/13821/HTTP_Request_Headers2.png" alt="Example of headers in an HTTP request"></p>
-<h3 id="Body"><a href="#Body" class="headerlink" title="Body"></a>Body</h3><p>The final part of the request is its body. Not all requests have one: requests fetching resources, like <code>GET</code>, <code>HEAD</code>, <code>DELETE</code>, or <code>OPTIONS</code>, usually don’t need one. Some requests send data to the server in order to update it: as often the case with <code>POST</code> requests (containing HTML form data).</p>
-<p>Bodies can be broadly divided into two categories:</p>
-<ul>
-<li>Single-resource bodies, consisting of one single file, defined by the two headers: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="noopener"><code>Content-Type</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length" target="_blank" rel="noopener"><code>Content-Length</code></a>.</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#multipartform-data" target="_blank" rel="noopener">Multiple-resource bodies</a>, consisting of a multipart body, each containing a different bit of information. This is typically associated with <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms" target="_blank" rel="noopener">HTML Forms</a>.</li>
-</ul>
-<h2 id="HTTP-Responses"><a href="#HTTP-Responses" class="headerlink" title="HTTP Responses"></a>HTTP Responses</h2><h3 id="Status-line"><a href="#Status-line" class="headerlink" title="Status line"></a>Status line</h3><p>The start line of an HTTP response, called the <em>status line</em>, contains the following information:</p>
-<ol>
-<li>The <em>protocol version</em>, usually <code>HTTP/1.1</code>.</li>
-<li>A <em>status code</em>, indicating success or failure of the request. Common status codes are <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/200" target="_blank" rel="noopener"><code>200</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404" target="_blank" rel="noopener"><code>404</code></a>, or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/302" target="_blank" rel="noopener"><code>302</code></a></li>
-<li>A <em>status text</em>. A brief, purely informational, textual description of the status code to help a human understand the HTTP message.</li>
-</ol>
-<p>A typical status line looks like: <code>HTTP/1.1 404 Not Found</code>.</p>
-<h3 id="Headers-1"><a href="#Headers-1" class="headerlink" title="Headers"></a>Headers</h3><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers" target="_blank" rel="noopener">HTTP headers</a> for responses follow the same structure as any other header: a case-insensitive string followed by a colon (<code>&#39;:&#39;</code>) and a value whose structure depends upon the type of the header. The whole header, including its value, presents as a single line.</p>
-<p>There are numerous response headers available. These can be divided into several groups:</p>
-<ul>
-<li><em>General headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Via" target="_blank" rel="noopener"><code>Via</code></a>, apply to the whole message.</li>
-<li><em>Response headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Vary" target="_blank" rel="noopener"><code>Vary</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Ranges" target="_blank" rel="noopener"><code>Accept-Ranges</code></a>, give additional information about the server which doesn’t fit in the status line.</li>
-<li><em>Entity headers</em>, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length" target="_blank" rel="noopener"><code>Content-Length</code></a>, apply to the body of the response. Typically, no such headers are transmitted when there is no body in the response.</li>
-</ul>
-<p><img src="https://mdn.mozillademos.org/files/13823/HTTP_Response_Headers2.png" alt="Example of headers in an HTTP response"></p>
-<h3 id="Body-1"><a href="#Body-1" class="headerlink" title="Body"></a>Body</h3><p>The last part of a response is the body. Not all responses have one: responses with a status code, like <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/201" target="_blank" rel="noopener"><code>201</code></a> or <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/204" target="_blank" rel="noopener"><code>204</code></a>, usually don’t.</p>
-<p>Bodies can be broadly divided into three categories:</p>
-<ul>
-<li>Single-resource bodies, consisting of a single file of known length, defined by the two headers: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type" target="_blank" rel="noopener"><code>Content-Type</code></a> and <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Length" target="_blank" rel="noopener"><code>Content-Length</code></a>.</li>
-<li>Single-resource bodies, consisting of a single file of unknown length, encoded by chunks with <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding" target="_blank" rel="noopener"><code>Transfer-Encoding</code></a> set to <code>chunked</code>.</li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#multipartform-data" target="_blank" rel="noopener">Multiple-resource bodies</a>, consisting of a multipart body, each containing a different section of information. These are relatively rare.</li>
-</ul>
-<h2 id="HTTP-2-Frames"><a href="#HTTP-2-Frames" class="headerlink" title="HTTP/2 Frames"></a>HTTP/2 Frames</h2><p>HTTP/1.x messages have a few drawbacks for performance:</p>
-<ul>
-<li>Headers, unlike bodies, are uncompressed.</li>
-<li>Headers are often very similar from one message to the next one, yet still repeated across connections.</li>
-<li>No multiplexing can be done. Several connections need opening on the same server: and warm TCP connections are more efficient than cold ones.</li>
-</ul>
-<p>HTTP/2 introduces an extra step: it divides HTTP/1.x messages into frames which are embedded in a stream. Data and header frames are separated, this allows header compression. Several streams can be combined together, a process called <em>multiplexing</em>, allowing more efficient underlying TCP connections.</p>
-<p><img src="https://mdn.mozillademos.org/files/13819/Binary_framing2.png" alt="HTTP/2 modify the HTTP message to divide them in frames (part of a single stream), allowing for more optimization."></p>
-<p>HTTP frames are now transparent to Web developers. This is an additional step in HTTP/2, between HTTP/1.1 messages and the underlying transport protocol. No changes are needed in the APIs used by Web developers to utilize HTTP frames; when available in both the browser and the server, HTTP/2 is switched on and used.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>HTTP messages are the key in using HTTP; their structure is simple, and they are highly extensible. The HTTP/2 framing mechanism adds a new intermediate layer between the HTTP/1.x syntax and the underlying transport protocol, without fundamentally modifying it: building upon proven mechanisms.</p>
-<hr>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/HTTP/Messages</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/13/HTTP%20Requests/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-What’s The Difference Between Cache And Cookies" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -539,12 +384,12 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/13/What%E2%80%99s%20The%20Difference%20Between%20Cache%20And%20Cookies/">What&#39;s The Difference Between Cache and Cokies</a>
+      <a class="article-title" href="/2020/05/13/What’s The Difference Between Cache And Cookies/">What&#39;s The Difference Between Cache and Cokies</a>
     </h1>
   
 
         
-        <a href="/2020/05/13/What%E2%80%99s%20The%20Difference%20Between%20Cache%20And%20Cookies/" class="archive-article-date">
+        <a href="/2020/05/13/What’s The Difference Between Cache And Cookies/" class="archive-article-date">
   	<time datetime="2020-05-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
 </a>
         
@@ -576,7 +421,94 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/13/What%E2%80%99s%20The%20Difference%20Between%20Cache%20And%20Cookies/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/13/What’s The Difference Between Cache And Cookies/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-HTTP Requests" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/HTTP Requests/">HTTP Requests</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/HTTP Requests/" class="archive-article-date">
+  	<time datetime="2020-05-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>HTTP messages are how data is exchanged between a server and a client. There are two types of messages: <em>requests</em> sent by the client to trigger an action on the server, and <em>responses</em>, the answer from the server.</p>
+<p>HTTP messages are composed of textual information encoded in ASCII, and span over multiple lines. In HTTP/1.1, and earlier versions of the protocol, these messages were openly sent across the connection. In HTTP/2, the once human-readable message is now divided up into HTTP frames, providing optimization and performance improvements.</p>
+<p>Web developers, or webmasters, rarely craft these textual HTTP messages themselves: software, a Web browser, proxy, or Web server, perform this action. They provide HTTP messages through config files (for proxies or servers), APIs (for browsers), or other interfaces.</p>
+<p><img src="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png" alt="From a user-, script-, or server- generated event, an HTTP/1.x msg is generated, and if HTTP/2 is in use, it is binary framed into an HTTP/2 stream, then sent."></p>
+<p>The HTTP/2 binary framing mechanism has been designed to not require any alteration of the APIs or config files applied: it is broadly transparent to the user.</p>
+<p>HTTP requests, and responses, share similar structure and are composed of:</p>
+<ol>
+<li>A <em>start-line</em> describing the requests to be implemented, or its status of whether successful or a failure. This start-line is always a single line.</li>
+<li>An optional set of <em>HTTP headers</em> specifying the request, or describing the body included in the message.</li>
+<li>A blank line indicating all meta-information for the request has been sent.</li>
+<li>An optional <em>body</em> containing data associated with the request (like content of an HTML form), or the document associated with a response. The presence of the body and its size is specified by the start-line and HTTP headers.</li>
+</ol>
+<p>The start-line and HTTP headers of the HTTP message are collectively known as the <em>head</em> of the requests, whereas its payload is known as the <em>body</em>.</p>
+<p><img src="https://mdn.mozillademos.org/files/13827/HTTPMsgStructure2.png" alt="Requests and responses share a common structure in HTTP"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/HTTP Requests/">Show All >></a>
         </p>
       
 
@@ -613,13 +545,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/RESTful,%20Sessions,%20Cookies/">RESTful, Sessions, Cookies</a>
+      <a class="article-title" href="/2020/05/11/RESTful, Sessions, Cookies/">RESTful, Sessions, Cookies</a>
     </h1>
   
 
         
-        <a href="/2020/05/12/RESTful,%20Sessions,%20Cookies/" class="archive-article-date">
-  	<time datetime="2020-05-13T06:47:34.434Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+        <a href="/2020/05/11/RESTful, Sessions, Cookies/" class="archive-article-date">
+  	<time datetime="2020-05-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
 </a>
         
       </header>
@@ -712,11 +644,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RESTful, session, cookies</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/12/RESTful,%20Sessions,%20Cookies/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/11/RESTful, Sessions, Cookies/">Show All >></a>
         </p>
       
 
@@ -753,13 +696,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/10/Go%20Language/">Go Language</a>
+      <a class="article-title" href="/2020/05/10/Go Language/">Go Language</a>
     </h1>
   
 
         
-        <a href="/2020/05/10/Go%20Language/" class="archive-article-date">
-  	<time datetime="2020-05-11T06:18:07.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
+        <a href="/2020/05/10/Go Language/" class="archive-article-date">
+  	<time datetime="2020-05-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
 </a>
         
       </header>
@@ -776,7 +719,7 @@
 <p>(efficiency)</p>
 <p>Java: compiler JVM (compiling from programming language to machine language) (compiling byte code, the middle layer), JIT (just in time, parse byte code in advance, precompile machine code before running for certain repetitive parts). </p>
 <p>GC+VM (write once run everywhere)+ java web service commercizlization (tomcat, j2ee enterprise architect)</p>
-<p>script language: Fast to development: Ruby, Python, Perl: high-level, fast, fun for humans, lower, inefficient for computers. no jvm, jit engine, optimization worse. language dynamic.</p>
+<p>Script language: Fast to development: Ruby, Python, Perl: high-level, fast, fun for humans, lower, inefficient for computers. no jvm, jit engine, optimization worse. language dynamic.</p>
 <p>Type System:</p>
 <p>Static type: variable type, static. Java, C++ define integer i, in the scope the type could not be changed; but Python and Ruby could.  </p>
 <p>Dynamic type: Python, Ruby.</p>
@@ -787,37 +730,7 @@
 <li>complie language. garbage collector, allocate and assign resources, (java). collect, slow. </li>
 <li>concurrency, cloud computing.</li>
 </ol>
-<p>javascript: every process runs single tread, how to further use os resources, asynchronism, non-blocking. node.js, promise, callback – object, when event triggered, implement – event pool on top of program, if event happends, it would make the promise and callback registered to the event, starts to run. walk around.</p>
-<p>python: gil, global interpreter lock. each python process only has one thread at one time, asynchronism IO to deal with concurrentcy.</p>
-<p>For Go: go routine, as call routine, different from thread (depends on os, scheduler, force to switch, any time). VS call routine: defined in code, when to switch.   协程 co-routine.</p>
-<p>scheduler, event/routine implementation.</p>
-<p>90s, one core cpu, context switch, stimulate concurrency. </p>
-<p>– </p>
-<p>since 2005, 4 core cpu speed keeps stable, Moore’s law down. processor limited, use concurrency, dual core cpu, to deal with. increase processor concurrency mechanism. </p>
-<p>OS:</p>
-<p>multi-process: </p>
-<p>scheduling, seems like smooth. but when using process to do concurrency, each process memory does not relate. New process could not be shared. share the same memory address. </p>
-<p>multi-tread: </p>
-<p>same process, several task, share memory, share variable.</p>
-<p>Drawback: </p>
-<p>trend: data race. even when we to use critical section, how to define critical section.  thread, mue text, signal.</p>
-<p>So go use Go routine: based on co-routine.</p>
-<p>Go routine: communicating-sequential-processes + co-routine.</p>
-<hr>
-<p>Go: no throw exception. </p>
-<p>return err, efficient.  each function call. faster than exception. </p>
-<p>coz exception, resources, not local scope, except check it to be put in another position.</p>
-<p>each function call, check err, proactively check fault. </p>
-<p>channel: message passing, write in channel, checking point, </p>
-<p>go func() – go routine.</p>
-<p>&lt;-     -&gt;: as queue.</p>
-<p>go routine:  several co-routine could run on one thread. shared resources, channel pass data. </p>
-<hr>
-<p>:= assign</p>
-<p>nil: null</p>
-<p>defer: stack, last in first out.</p>
-<p>Resource acquisition is initialization. Destruction  is reverse. </p>
-
+        
       
 
       
@@ -825,11 +738,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GoLang</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/10/Go%20Language/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/10/Go Language/">Show All >></a>
         </p>
       
 
@@ -866,13 +790,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/">How to Connect to Database in Javascript</a>
+      <a class="article-title" href="/2020/05/09/How to Connect to Database in Javascript/">How to Connect to Database in JavaScript</a>
     </h1>
   
 
         
-        <a href="/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/" class="archive-article-date">
-  	<time datetime="2020-05-10T06:48:46.639Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
+        <a href="/2020/05/09/How to Connect to Database in Javascript/" class="archive-article-date">
+  	<time datetime="2020-05-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
 </a>
         
       </header>
@@ -909,123 +833,7 @@
 <td></td>
 </tr>
 </tbody></table>
-<h2 id="EXTRA-SOURCE-CODE-DOWNLOAD"><a href="#EXTRA-SOURCE-CODE-DOWNLOAD" class="headerlink" title="EXTRA SOURCE CODE DOWNLOAD"></a>EXTRA SOURCE CODE DOWNLOAD</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-download.svg" alt="img"></p>
-<p>First, here is the download link to the example source code as promised.</p>
-<h3 id="SOURCE-CODE-DOWNLOAD"><a href="#SOURCE-CODE-DOWNLOAD" class="headerlink" title="SOURCE CODE DOWNLOAD"></a>SOURCE CODE DOWNLOAD</h3><p><a href="https://code-boxx.com/wp-content/uploads/2019/07/js-connect-db.zip" target="_blank" rel="noopener">Click here to download</a> the source code, I have released it under the MIT license, so feel free to build on top of it or use it in your own project.</p>
-<h3 id="QUICK-START"><a href="#QUICK-START" class="headerlink" title="QUICK START"></a>QUICK START</h3><ul>
-<li>Download and unzip into a folder.</li>
-<li>There are 3 sets of code in this tutorial, each prepended with a number.<ul>
-<li>Follow files starting with <code>1-</code> if you want to connect to a database on the server (AJAX call to a server-side script).</li>
-<li>Files with <code>2-</code> for local storage.</li>
-<li>Finally, files with <code>3-</code> for NodeJS database connection.</li>
-</ul>
-</li>
-</ul>
-<h2 id="SECTION-A-THE-BASICS"><a href="#SECTION-A-THE-BASICS" class="headerlink" title="SECTION A THE BASICS"></a>SECTION A THE BASICS</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-gear.svg" alt="img"></p>
-<p>Before we go into any code, here is a small section dedicated to the confused beginners – What server-side and client-side is, and how Javascript can be used beyond webpages. Feel free to skip this section if you are already a code ninja.</p>
-<h3 id="SERVER-AND-CLIENT"><a href="#SERVER-AND-CLIENT" class="headerlink" title="SERVER AND CLIENT"></a>SERVER AND CLIENT</h3><p><a href="https://code-boxx.com/wp-content/uploads/2018/05/server-client-model.jpg" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2018/05/server-client-model-small.jpg" alt="img"></a></p>
-<p>To clear things up a little bit, most beginners probably know Javascript from web development. I.E. Creating web pages. In this traditional client-server model:</p>
-<ul>
-<li>A user accesses a web page, the browser sends a request to the server.</li>
-<li>The server then responds by sending back the requested web page.</li>
-</ul>
-<p>As simple as this might be, please take extra note that Javascript is downloaded and runs on the client computer.</p>
-<h3 id="CLIENT-JAVASCRIPT-TO-DATABASE"><a href="#CLIENT-JAVASCRIPT-TO-DATABASE" class="headerlink" title="CLIENT JAVASCRIPT TO DATABASE"></a>CLIENT JAVASCRIPT TO DATABASE</h3><p><img src="https://code-boxx.com/wp-content/uploads/2019/07/js-php-db.jpg" alt="img"></p>
-<p>So for Javascript to connect to the database in this model:</p>
-<ul>
-<li>We will usually create a server-side script first (in PHP, ASP, Python, etc…) that will connect to the database.</li>
-<li>Javascript will communicate with this server-side script instead.</li>
-</ul>
-<h3 id="WHY-DIRECT-DATABASE-CONNECTION-IS-BAD"><a href="#WHY-DIRECT-DATABASE-CONNECTION-IS-BAD" class="headerlink" title="WHY DIRECT DATABASE CONNECTION IS BAD"></a>WHY DIRECT DATABASE CONNECTION IS BAD</h3><p><img src="https://code-boxx.com/wp-content/uploads/2019/07/js-db.jpg" alt="img"></p>
-<p>If you are looking to directly connect a client Javascript to the server database, without any server-side scripts – I will strongly discourage it for security reasons.</p>
-<ul>
-<li>Remember that Javascript is downloaded onto the client computer? This means that anyone can mess around with the scripts, do funny things to the database.</li>
-<li>We will have to open a direct connection to the database on the Internet, which also means the database will be vulnerable to any attack on the Internet.</li>
-<li>There is a reason why server-side scripts exist – They are transparent and cannot be easily messed with. Users will not know how server scripts run, and we can put protection checks in place.</li>
-<li>There is also a reason why most databases don’t offer a direct HTTP interface – It adds another layer of security when the database cannot be directly accessed.</li>
-</ul>
-<p>With that, I will omit this type of connection from this guide. But if you still want to swim in the shark-infested cyber ocean – Check out the <a href="https://github.com/adamcooke/mysql-http-api" target="_blank" rel="noopener">HTTP API for MySQL database servers</a>.</p>
-<h3 id="LOCAL-STORAGE"><a href="#LOCAL-STORAGE" class="headerlink" title="LOCAL STORAGE"></a>LOCAL STORAGE</h3><p><img src="https://code-boxx.com/wp-content/uploads/2019/07/js-local.jpg" alt="img"></p>
-<p>So alternatively, if you are just looking to save some simple temporary data – There is a Web Storage API that allows Javascript to save limited stuff onto the client computer.</p>
-<h3 id="SERVER-SIDE-JAVASCRIPT"><a href="#SERVER-SIDE-JAVASCRIPT" class="headerlink" title="SERVER-SIDE JAVASCRIPT"></a>SERVER-SIDE JAVASCRIPT</h3><p>Now, if you have not heard of it – Yes, Javascript has evolved beyond “the thing behind web pages”, and we can run it independently on a server. There is a project called <a href="https://nodejs.org/en/" target="_blank" rel="noopener">NodeJS</a>, and we can do all sorts of awesome stuff with it – Chat servers, GPS tracking, HTTP servers, and of course, connecting to database servers. So check it out if you have not already done so.</p>
-<h2 id="SECTION-B-DATABASE-VIA-AJAX"><a href="#SECTION-B-DATABASE-VIA-AJAX" class="headerlink" title="SECTION B DATABASE VIA AJAX"></a>SECTION B DATABASE VIA AJAX</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-refresh-ccw.svg" alt="img"></p>
-<p>So far so good? Let us now go into one of the most common situations, connecting to the server database via an AJAX call to a server-side script. Take note that this example is based on PHP and MySQL, but the concept of creating a server-side script first is the same for any programming language – I will leave links to database connections for various languages in the extras section below.</p>
-<h3 id="DUMMY-DATABASE"><a href="#DUMMY-DATABASE" class="headerlink" title="DUMMY DATABASE"></a>DUMMY DATABASE</h3><p>For the purpose of demonstration, we will use this simple dummy table.</p>
-<p>1a-dummy.sql</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &#96;users&#96; (</span><br><span class="line">  &#96;user_id&#96; int(11) NOT NULL,</span><br><span class="line">  &#96;user_name&#96; varchar(255) NOT NULL</span><br><span class="line">) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;latin1;</span><br><span class="line"></span><br><span class="line">INSERT INTO &#96;users&#96; (&#96;user_id&#96;, &#96;user_name&#96;) VALUES</span><br><span class="line">(1, &#39;John Doe&#39;),</span><br><span class="line">(2, &#39;Jane Doe&#39;),</span><br><span class="line">(3, &#39;Johan Doe&#39;),</span><br><span class="line">(4, &#39;June Doe&#39;);</span><br><span class="line"></span><br><span class="line">ALTER TABLE &#96;users&#96;</span><br><span class="line">  ADD PRIMARY KEY (&#96;user_id&#96;),</span><br><span class="line">  ADD KEY &#96;user_name&#96; (&#96;user_name&#96;);</span><br><span class="line"></span><br><span class="line">ALTER TABLE &#96;users&#96;</span><br><span class="line">  MODIFY &#96;user_id&#96; int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT&#x3D;5;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="SERVER-SIDE-SCRIPT"><a href="#SERVER-SIDE-SCRIPT" class="headerlink" title="SERVER-SIDE SCRIPT"></a>SERVER-SIDE SCRIPT</h3><p>Next, we will create the server-side script that connects to the database.</p>
-<p>1b-database.php</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">&#x2F;* (A) SETTINGS *&#x2F;</span><br><span class="line">&#x2F;&#x2F; ! CHANGE THESE TO YOUR OWN !</span><br><span class="line">error_reporting(E_ALL &amp; ~E_NOTICE);</span><br><span class="line">define(&#39;DB_HOST&#39;, &#39;localhost&#39;);</span><br><span class="line">define(&#39;DB_NAME&#39;, &#39;test&#39;);</span><br><span class="line">define(&#39;DB_CHARSET&#39;, &#39;utf8&#39;);</span><br><span class="line">define(&#39;DB_USER&#39;, &#39;root&#39;);</span><br><span class="line">define(&#39;DB_PASSWORD&#39;, &#39;&#39;);</span><br><span class="line"></span><br><span class="line">&#x2F;* (B) CONNECT DATABASE *&#x2F;</span><br><span class="line">try &#123;</span><br><span class="line">  $_PDO &#x3D; new PDO(</span><br><span class="line">    &quot;mysql:host&#x3D;&quot; . DB_HOST . &quot;;charset&#x3D;&quot; . DB_CHARSET . &quot;;dbname&#x3D;&quot; . DB_NAME, </span><br><span class="line">    DB_USER, DB_PASSWORD, [</span><br><span class="line">      PDO::ATTR_ERRMODE &#x3D;&gt; PDO::ERRMODE_EXCEPTION,</span><br><span class="line">      PDO::ATTR_DEFAULT_FETCH_MODE &#x3D;&gt; PDO::FETCH_ASSOC,</span><br><span class="line">      PDO::ATTR_EMULATE_PREPARES &#x3D;&gt; false,</span><br><span class="line">      PDO::ATTR_PERSISTENT &#x3D;&gt; true</span><br><span class="line">    ]</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line">catch (Exception $ex) &#123;</span><br><span class="line">  if (LOG_KEEP) &#123; addlog($ex-&gt;getMessage()); &#125;</span><br><span class="line">  die(&quot;Error connecting to the database&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* (C) HANDLE REQUESTS *&#x2F;</span><br><span class="line">if ($_POST[&#39;req&#39;]) &#123; switch ($_POST[&#39;req&#39;]) &#123;</span><br><span class="line">  case &quot;get&quot;:</span><br><span class="line">    $_STMT &#x3D; $_PDO-&gt;prepare(&quot;SELECT * FROM &#96;users&#96;&quot;);</span><br><span class="line">    $_STMT-&gt;execute();</span><br><span class="line">    $users &#x3D; $_STMT-&gt;fetchAll();</span><br><span class="line">    echo json_encode($users);</span><br><span class="line">    break;</span><br><span class="line"></span><br><span class="line">  case &quot;add&quot;:</span><br><span class="line">    $pass &#x3D; true;</span><br><span class="line">    $error &#x3D; &quot;&quot;;</span><br><span class="line">    try &#123;</span><br><span class="line">      $_STMT &#x3D; $_PDO-&gt;prepare(&quot;INSERT INTO &#96;users&#96; (&#96;user_name&#96;) VALUES (?)&quot;);</span><br><span class="line">      $_STMT-&gt;execute([$_POST[&#39;name&#39;]]);</span><br><span class="line">      &#x2F;&#x2F; $lastID &#x3D; $_PDO-&gt;lastInsertID();</span><br><span class="line">    &#125; catch (Exception $ex) &#123;</span><br><span class="line">      $pass &#x3D; false;</span><br><span class="line">      $error &#x3D; $ex-&gt;getMessage();</span><br><span class="line">    &#125;</span><br><span class="line">    echo json_encode([</span><br><span class="line">      &quot;status&quot; &#x3D;&gt; $pass,</span><br><span class="line">      &quot;message&quot; &#x3D;&gt; $error</span><br><span class="line">    ]);</span><br><span class="line">    break;</span><br><span class="line">&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;* (D) CLOSE DATABASE CONNECTION *&#x2F;</span><br><span class="line">$_PDO &#x3D; null;</span><br><span class="line">$_STMT &#x3D; null;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Just change the database settings to your own, and how we work with this script works is easy – Simply post a request and the required parameters. For example, send <code>$_POST[&#39;req&#39;] = &quot;add&quot;</code> and <code>$_POST[&#39;name&#39;] = &quot;USER NAME&quot;</code> to add a new user.</p>
-<p>Remember from earlier that we mentioned using the server-side script as a layer of protection? This is exactly it – Users can only make certain requests through this script, and we can implement more checks as required. For example, only administrators who are logged in can get all users.</p>
-<h3 id="CLIENT-SIDE-JAVASCRIPT"><a href="#CLIENT-SIDE-JAVASCRIPT" class="headerlink" title="CLIENT-SIDE JAVASCRIPT"></a>CLIENT-SIDE JAVASCRIPT</h3><p>1c-javascript.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      function getUsers() &#123;</span><br><span class="line">        &#x2F;&#x2F; APPEND FORM DATA</span><br><span class="line">        var data &#x3D; new FormData();</span><br><span class="line">        data.append(&#39;req&#39;, &#39;get&#39;);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; AJAX CALL</span><br><span class="line">        var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">        xhr.open(&#39;POST&#39;, &quot;1b-database.php&quot;, true);</span><br><span class="line">        xhr.onload &#x3D; function()&#123;</span><br><span class="line">          console.log(this.response);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.send(data);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      function addUser() &#123;</span><br><span class="line">        &#x2F;&#x2F; APPEND FORM DATA</span><br><span class="line">        var data &#x3D; new FormData();</span><br><span class="line">        data.append(&#39;req&#39;, &#39;add&#39;);</span><br><span class="line">        data.append(&#39;name&#39;, document.getElementById(&quot;user-name&quot;).value);</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; AJAX CALL</span><br><span class="line">        var xhr &#x3D; new XMLHttpRequest();</span><br><span class="line">        xhr.open(&#39;POST&#39;, &quot;1b-database.php&quot;, true);</span><br><span class="line">        xhr.onload &#x3D; function()&#123;</span><br><span class="line">          console.log(this.response);</span><br><span class="line">        &#125;;</span><br><span class="line">        xhr.send(data);</span><br><span class="line">        return false;</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;!-- GET ALL USERS --&gt;</span><br><span class="line">    &lt;input type&#x3D;&quot;button&quot; value&#x3D;&quot;Get Users&quot; onclick&#x3D;&quot;return getUsers()&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- ADD USERS --&gt;</span><br><span class="line">    &lt;form onsubmit&#x3D;&quot;return addUser();&quot;&gt;</span><br><span class="line">      &lt;input type&#x3D;&quot;text&quot; value&#x3D;&quot;NAME HERE&quot; id&#x3D;&quot;user-name&quot; required&#x2F;&gt;</span><br><span class="line">      &lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;Add User&quot;&#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;form&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Finally, all that is left in the Javascript is to make AJAX calls to the server-side script.</p>
-<h3 id="WHAT-ABOUT-OTHER-PROGRAMMING-LANGUAGE-amp-DATABASES"><a href="#WHAT-ABOUT-OTHER-PROGRAMMING-LANGUAGE-amp-DATABASES" class="headerlink" title="WHAT ABOUT OTHER PROGRAMMING LANGUAGE &amp; DATABASES?"></a>WHAT ABOUT OTHER PROGRAMMING LANGUAGE &amp; DATABASES?</h3><p>As in the introduction above, the concept is the same and there are 3 parts to deal with:</p>
-<ul>
-<li>First, create the relevant tables in the database.</li>
-<li>Secondly, create the server-side script that will act as the middle man – Accept requests from Javascript, do checks, and connect to the database.</li>
-<li>Finally, deal with the Javascript that will call the server-side script.</li>
-</ul>
-<h2 id="SECTION-C-LOCAL-STORAGE"><a href="#SECTION-C-LOCAL-STORAGE" class="headerlink" title="SECTION C LOCAL STORAGE"></a>SECTION C LOCAL STORAGE</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-nodes.svg" alt="img"></p>
-<p>Only need some temporary storage? Here is how we do it with the simple Web Storage API.</p>
-<h3 id="THE-BASICS"><a href="#THE-BASICS" class="headerlink" title="THE BASICS"></a>THE BASICS</h3><p>2a-localstorage-basics.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      &#x2F;&#x2F; (1) SET - Save data into local storage</span><br><span class="line">      &#x2F;&#x2F; In format of key &#x3D;&gt; value</span><br><span class="line">      localStorage.setItem(&quot;Foo&quot;, &quot;Bar&quot;);</span><br><span class="line">      localStorage.setItem(&quot;Hello&quot;, &quot;World&quot;);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (2) GET - Retrive data with given key</span><br><span class="line">      var data &#x3D; localStorage.getItem(&quot;Foo&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line">      data &#x3D; localStorage.getItem(&quot;Hello&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (3) REMOVE - Remove data with given key</span><br><span class="line">      localStorage.removeItem(&quot;Foo&quot;);</span><br><span class="line">      data &#x3D; localStorage.getItem(&quot;Foo&quot;);</span><br><span class="line">      console.log(data);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (4) CLEAR - Remove everything</span><br><span class="line">      localStorage.clear();</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>Local storage is very simple, and there are only 4 operations:</p>
-<ul>
-<li><code>localStorage.setItem(KEY, VALUE)</code> – Saves data into the local storage.</li>
-<li><code>localStorage.getItem(KEY)</code> – Retrieves data from the local storage.</li>
-<li><code>localStorage.removeItem(KEY)</code> – Removes data from the local storage.</li>
-<li><code>localStorage.clear()</code> – Remove everything.</li>
-</ul>
-<h3 id="OBJECT-STORAGE"><a href="#OBJECT-STORAGE" class="headerlink" title="OBJECT STORAGE"></a>OBJECT STORAGE</h3><p>But the problem with local storage is that it only stores strings. To store and retrieve arrays/objects, we will have to use <code>JSON.stringify()</code> and <code>JSON.parse()</code>.</p>
-<p>2b-localstorage-json.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      &#x2F;&#x2F; (1) DATA OBJECT</span><br><span class="line">      var user &#x3D; &#123;</span><br><span class="line">        name : &quot;John Doe&quot;,</span><br><span class="line">        email : &quot;john@doe.com&quot;,</span><br><span class="line">        gender : &quot;Doe&quot;</span><br><span class="line">      &#125;;</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (2) CONVERT JSON STRING</span><br><span class="line">      user &#x3D; JSON.stringify(user);</span><br><span class="line">      console.log(user);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (3) STORE IN LOCAL STORAGE</span><br><span class="line">      localStorage.setItem(&quot;User&quot;, user);</span><br><span class="line"></span><br><span class="line">      &#x2F;&#x2F; (4) RETRIEVE - SIMPLY GET AND DECODE</span><br><span class="line">      user &#x3D; localStorage.getItem(&quot;User&quot;);</span><br><span class="line">      user &#x3D; JSON.parse(user);</span><br><span class="line">      console.log(user);</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<h2 id="SECTION-D-NODEJS-DATABASE"><a href="#SECTION-D-NODEJS-DATABASE" class="headerlink" title="SECTION D NODEJS DATABASE"></a>SECTION D NODEJS DATABASE</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-code.svg" alt="img"></p>
-<p>In this final section, we will walk through how to connect to a database in NodeJS.</p>
-<h3 id="INSTALL-DATABASE-MODULE"><a href="#INSTALL-DATABASE-MODULE" class="headerlink" title="INSTALL DATABASE MODULE"></a>INSTALL DATABASE MODULE</h3><p>First, navigate to your project folder in the command line, and install the database module:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\YOUR\PROJECT&gt; npm install mysql</span><br></pre></td></tr></table></figure>
-
-<p>For the sake of simplicity, we are just going to reuse the above dummy database table and MySQL. If you are not planning to use MySQL, there are also several other Node Database Modules:</p>
-<ul>
-<li><a href="https://www.npmjs.com/package/mssql" target="_blank" rel="noopener">MSSQL</a></li>
-<li><a href="https://mongodb.github.io/node-mongodb-native/" target="_blank" rel="noopener">MongoDB</a></li>
-<li><a href="https://node-postgres.com/" target="_blank" rel="noopener">Postgres</a></li>
-</ul>
-<h3 id="THE-SCRIPT"><a href="#THE-SCRIPT" class="headerlink" title="THE SCRIPT"></a>THE SCRIPT</h3><p>3-node-db.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; (1) LOAD DB MODULE</span><br><span class="line">const mysql &#x3D; require(&quot;mysql&quot;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; (2) CREATE CONNECTION</span><br><span class="line">&#x2F;&#x2F; ! CHANGE THESE TO YOUR OWN !</span><br><span class="line">const db &#x3D; mysql.createConnection(&#123;</span><br><span class="line">  host: &#39;localhost&#39;,</span><br><span class="line">  user: &#39;root&#39;,</span><br><span class="line">  password: &#39;&#39;,</span><br><span class="line">  database: &#39;test&#39;</span><br><span class="line">&#125;);</span><br><span class="line">db.connect((err) &#x3D;&gt; &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  console.log(&quot;DB connection OK&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; (3) QUERY</span><br><span class="line">db.query(&quot;SELECT * FROM &#96;users&#96;&quot;, function (err, results) &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  console.log(results);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Yep, it’s that simple – Just load the database module and make a connection. But take note that this is based on MySQL again, install and load your own if you are using something else.</p>
-<h2 id="EXTRA-USEFUL-BITS"><a href="#EXTRA-USEFUL-BITS" class="headerlink" title="EXTRA USEFUL BITS"></a>EXTRA USEFUL BITS</h2><p><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-plus-square.svg" alt="img"></p>
-<p>That’s all for this tutorial, and here is a small section on some extras and links that may be useful to you.</p>
-<h3 id="LINKS-amp-REFERENCES"><a href="#LINKS-amp-REFERENCES" class="headerlink" title="LINKS &amp; REFERENCES"></a>LINKS &amp; REFERENCES</h3><ul>
-<li><a href="https://www.php.net/manual/en/book.pdo.php" target="_blank" rel="noopener">PHP PDO Database Connection</a></li>
-<li><a href="https://docs.microsoft.com/en-us/aspnet/web-pages/overview/data/5-working-with-data" target="_blank" rel="noopener">ASP Database</a></li>
-<li><a href="https://www.tutorialspoint.com/python/python_database_access" target="_blank" rel="noopener">Python Database</a></li>
-<li><a href="https://www.tutorialspoint.com/ruby/ruby_database_access" target="_blank" rel="noopener">Ruby DBI</a></li>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank" rel="noopener">Javascript Local Storage</a></li>
-</ul>
-<h3 id="OTHER-NOTEWORTHY-TUTORIALS"><a href="#OTHER-NOTEWORTHY-TUTORIALS" class="headerlink" title="OTHER NOTEWORTHY TUTORIALS"></a>OTHER NOTEWORTHY TUTORIALS</h3><ul>
-<li><a href="https://code-boxx.com/vanilla-javascript-ajax/" target="_blank" rel="noopener">Vanilla Javascript AJAX</a></li>
-<li><a href="https://code-boxx.com/json-php-javascript-beginners/" target="_blank" rel="noopener">JSON</a></li>
-<li><a href="https://code-boxx.com/import-sql-file-in-mysql/" target="_blank" rel="noopener">Import SQL files in MySQL</a></li>
-</ul>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://code-boxx.com/connect-database-javascript/" target="_blank" rel="noopener">https://code-boxx.com/connect-database-javascript/</a></p>
-
+        
       
 
       
@@ -1033,11 +841,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Database, Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/09/How%20to%20Connect%20to%20Database%20in%20Javascript/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/09/How to Connect to Database in Javascript/">Show All >></a>
         </p>
       
 
@@ -1074,13 +893,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/Ingestion%20and%20processing%20of%20real-time%20automotive%20IoT%20data%20%20/">Ingestion and processing of real-time automotive IoT data  </a>
+      <a class="article-title" href="/2020/05/08/Ingestion and processing of real-time automotive IoT data  /">Ingestion and Processing of Real-Time Automotive IoT Data</a>
     </h1>
   
 
         
-        <a href="/2020/05/08/Ingestion%20and%20processing%20of%20real-time%20automotive%20IoT%20data%20%20/" class="archive-article-date">
-  	<time datetime="2020-05-09T05:23:14.561Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
+        <a href="/2020/05/08/Ingestion and processing of real-time automotive IoT data  /" class="archive-article-date">
+  	<time datetime="2020-05-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
 </a>
         
       </header>
@@ -1110,76 +929,7 @@
 <li>Business analysts can use Microsoft Power BI to analyze warehoused data.</li>
 <li>Web, mobile and other applications can be built on the serving layer as well. For example, we can expose APIs based on the serving layer data for third-party uses.</li>
 </ol>
-<h3 id="Components"><a href="#Components" class="headerlink" title="Components"></a>Components</h3><p>IoT device-generated events (data or messages) are ingested, processed, and then stored for further analysis, presentation, and action, using the following Azure components:</p>
-<ul>
-<li><a href="https://azure.microsoft.com/services/iot-hub" target="_blank" rel="noopener">Azure IoT Hub</a> is in the ingestion layer. IoT Hub also support bi-directional communication back to devices, allowing Actions to be sent from the cloud or <a href="https://azure.microsoft.com/services/iot-edge/" target="_blank" rel="noopener">Azure IoT Edge</a> to the device.</li>
-<li><a href="https://azure.microsoft.com/services/databricks" target="_blank" rel="noopener">Azure Databricks</a> is located in the transformation and analytics layer. Databricks uses the azure-eventhubs-spark_2.11:2.3.6 Maven library to connect to IoT Hub’s Event Hub compatible endpoint.</li>
-<li><a href="https://azure.microsoft.com/services/cosmos-db" target="_blank" rel="noopener">Azure Cosmos DB</a>, <a href="https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview" target="_blank" rel="noopener">Azure SQL Database</a>, and Azure Synapse Analytics are in the Serving storage layer, where Azure Databricks can write the data via data connectors.</li>
-<li><a href="https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-overview-what-is" target="_blank" rel="noopener">Azure Synapse</a> is a distributed system for storing and analyzing large datasets. Its use of massive parallel processing (MPP) makes it suitable for running high-performance analytics.</li>
-<li><a href="https://docs.microsoft.com/power-bi" target="_blank" rel="noopener">Power BI</a> is a suite of business analytics tools to analyze data and share insights. Power BI can query a semantic model stored in Analysis Services, or it can query Azure Synapse directly.</li>
-<li><a href="https://docs.microsoft.com/azure/active-directory" target="_blank" rel="noopener">Azure Active Directory (Azure AD)</a> authenticates users, when connecting to <a href="https://azure.microsoft.com/services/databricks" target="_blank" rel="noopener">Azure Databricks</a>. If we would build a cube in <a href="https://docs.microsoft.com/azure/analysis-services" target="_blank" rel="noopener">Analysis Services</a> based on the model based on Azure Synapse data, we could use Azure AD to connect to the Analysis Services server through Power BI. Data Factory can also use Azure AD to authenticate to Azure Synapse via a service principal or Managed Service Identity (MSI).</li>
-<li><a href="https://docs.microsoft.com/azure/app-service/app-service-web-overview" target="_blank" rel="noopener">Azure App Services</a> can be used to build web and mobile applications. <a href="https://azure.microsoft.com/services/app-service/api" target="_blank" rel="noopener">Azure API App</a> can be used to expose data to third parties, based on the data stored in the Serving Layer.</li>
-</ul>
-<h2 id="Alternatives"><a href="#Alternatives" class="headerlink" title="Alternatives"></a>Alternatives</h2><p><img src="https://docs.microsoft.com/en-us/azure/architecture/example-scenario/data/media/architecture-realtime-analytics-vehicle-data2.png" alt="Architecture components described below for alternative technologies"></p>
-<p>A more generalized big data pipeline could be implemented using other Azure components.</p>
-<ul>
-<li>In the stream ingestion layer, we could use <a href="https://azure.microsoft.com/services/event-hubs" target="_blank" rel="noopener">Event Hubs</a> or <a href="https://docs.microsoft.com/azure/hdinsight/kafka/apache-kafka-introduction" target="_blank" rel="noopener">Apache Kafka on HDInsight</a> to ingest data. <strong>It is important to note these services only offer uni-directional communication, no device management, no edge capabilities and are recommended for non-IoT scenarios such as streaming data pipelines.</strong> Refer to <a href="https://docs.microsoft.com/azure/iot-hub/iot-hub-compare-event-hubs" target="_blank" rel="noopener">Connecting IoT Devices to Azure: IoT Hub and Event Hubs</a> for a more detailed comparison.</li>
-<li>In the transformation and analytics layer, we could use <a href="https://docs.microsoft.com/azure/hdinsight/storm/apache-storm-overview" target="_blank" rel="noopener">HDInsight Storm</a>, <a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-overview" target="_blank" rel="noopener">HDInsight Spark</a> or <a href="https://azure.microsoft.com/services/stream-analytics" target="_blank" rel="noopener">Azure Stream Analytics</a> to perform streaming analytics, and <a href="https://azure.microsoft.com/services/functions/" target="_blank" rel="noopener">Azure Functions</a> to perform payload transformations.</li>
-<li>In the service storage layer, we could use <a href="https://docs.microsoft.com/azure/analysis-services" target="_blank" rel="noopener">Analysis Services</a> to provide a semantic model for your data. It can also increase system performance when analyzing your data. You can build the model based on Azure DW data. <a href="https://azure.microsoft.com/services/data-explorer/" target="_blank" rel="noopener">Azure Data Explorer</a> and <a href="https://azure.microsoft.com/services/time-series-insights/" target="_blank" rel="noopener">Time Series Insights</a> could be used for storing and analyzing time series data.</li>
-</ul>
-<h2 id="Considerations"><a href="#Considerations" class="headerlink" title="Considerations"></a>Considerations</h2><p>The technologies in this architecture were chosen based on the scale needed to process events, the SLA of the services, the cost management and ease of management of the components.</p>
-<ul>
-<li><p><a href="https://azure.microsoft.com/services/iot-hub" target="_blank" rel="noopener">Azure IoT Hub</a> comes with a 99.9% SLA and has integrated disaster recovery capabilities.</p>
-</li>
-<li><p><a href="https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks" target="_blank" rel="noopener">Azure Databricks</a> is optimized from the ground up for performance and cost-efficiency in the cloud. The Databricks Runtime adds several key capabilities to Apache Spark workloads that can increase performance and reduce costs by as much as 10-100x when running on Azure, including:</p>
-</li>
-<li><p>Azure Databricks integrates deeply with Azure databases and stores:</p>
-</li>
-</ul>
-<p>  Azure Synapse</p>
-<p>  ,</p>
-<p>  Azure Cosmos DB</p>
-<p>  ,</p>
-<p>  Azure Data Lake Storage</p>
-<p>  , and</p>
-<p>  Azure Blob Storage</p>
-<ul>
-<li>Autoscaling and autotermination for Spark clusters to automatically minimize costs.</li>
-<li>Performance optimizations including caching, indexing, and advanced query optimization, which can improve performance by as much as 10-100x over traditional Apache Spark deployments in cloud or on-premises environments.</li>
-<li>Integration with Azure Active Directory enables you to run complete Azure-based solutions using Azure Databricks.</li>
-<li>Role-based access in Azure Databricks enables fine-grained user permissions for notebooks, clusters, jobs, and data.</li>
-<li>Comes with Enterprise-grade SLAs.</li>
-</ul>
-<ul>
-<li><p>Azure Cosmos DB is Microsoft’s globally distributed, multi-model database. Azure Cosmos DB was built from the ground up with global distribution and horizontal scale at its core. It offers turnkey global distribution across any number of Azure regions by transparently scaling and replicating your data wherever your users are. You can elastically scale throughput and storage worldwide, and pay only for the throughput and storage you need.</p>
-</li>
-<li><p>The massively parallel processing architecture of Azure Synapse provides scalability and high performance.</p>
-</li>
-<li><p>Azure Synapse has guaranteed SLAs and recommended practices for achieving high availability.</p>
-</li>
-<li><p>When analysis activity is low, the company can scale Azure Synapse on demand, reducing or even pausing compute to lower costs.</p>
-</li>
-<li><p>The Azure Synapse security model provides connection security, authentication, and authorization via Azure AD or SQL Server authentication, and encryption.</p>
-</li>
-</ul>
-<h2 id="Pricing"><a href="#Pricing" class="headerlink" title="Pricing"></a>Pricing</h2><p>Review <a href="https://azure.microsoft.com/pricing/details/databricks" target="_blank" rel="noopener">Azure Databricks pricing</a>, <a href="https://azure.microsoft.com/pricing/details/iot-hub/" target="_blank" rel="noopener">Azure IoT Hub pricing</a>, <a href="https://azure.com/e/b798fb70c53e4dd19fdeacea4db78276" target="_blank" rel="noopener">pricing sample for a data warehousing scenario</a> via the Azure pricing calculator. Adjust the values to see how your requirements affect your costs.</p>
-<ul>
-<li><a href="https://azure.microsoft.com/pricing/details/iot-hub/" target="_blank" rel="noopener">Azure IoT Hub</a> is a fully managed cloud service that makes it easy, fast, and cost-effective to ingest massive amounts of IoT data</li>
-<li><a href="https://azure.microsoft.com/services/databricks" target="_blank" rel="noopener">Azure Databricks</a> offers two distinct workloads on several <a href="https://azure.microsoft.com/pricing/details/databricks/#instances" target="_blank" rel="noopener">VM Instances</a> tailored for your data analytics workflow — the Data Engineering workload makes it easy for data engineers to build and execute jobs, and the Data Analytics workload makes it easy for data scientists to explore, visualize, manipulate, and share data and insights interactively.</li>
-<li><a href="https://azure.microsoft.com/services/cosmos-db" target="_blank" rel="noopener">Azure Cosmos DB</a> guarantees single-digit-millisecond latencies at the 99th percentile anywhere in the world, offers <a href="https://docs.microsoft.com/azure/cosmos-db/consistency-levels" target="_blank" rel="noopener">multiple well-defined consistency models</a> to fine-tune performance, and guarantees high availability with multi-homing capabilities — all backed by industry leading comprehensive <a href="https://azure.microsoft.com/support/legal/sla/cosmos-db" target="_blank" rel="noopener">service level agreements</a> (SLAs).</li>
-<li><a href="https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2" target="_blank" rel="noopener">Azure Synapse</a> allows you to scale your compute and storage levels independently. Compute resources are charged per hour, and you can scale or pause these resources on demand. Storage resources are billed per terabyte, so your costs will increase as you ingest more data.</li>
-<li><a href="https://azure.microsoft.com/pricing/details/analysis-services" target="_blank" rel="noopener">Analysis Services</a> is available in developer, basic, and standard tiers. Instances are priced based on query processing units (QPUs) and available memory. To keep your costs lower, minimize the number of queries you run, how much data they process, and how often they run.</li>
-<li><a href="https://powerbi.microsoft.com/pricing" target="_blank" rel="noopener">Power BI</a> has different product options for different requirements. <a href="https://azure.microsoft.com/pricing/details/power-bi-embedded" target="_blank" rel="noopener">Power BI Embedded</a> provides an Azure-based option for embedding Power BI functionality inside your applications. A Power BI Embedded instance is included in the pricing sample above.</li>
-</ul>
-<h2 id="Next-steps"><a href="#Next-steps" class="headerlink" title="Next steps"></a>Next steps</h2><ul>
-<li>Review the <a href="https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/iot" target="_blank" rel="noopener">Azure IoT reference architecture</a> that shows a recommended architecture for IoT applications on Azure using PaaS (platform-as-a-service) components.</li>
-<li>Review the <a href="https://azure.microsoft.com/solutions/architecture/real-time-analytics" target="_blank" rel="noopener">Real-time analytics</a> reference architecture that includes big data pipeline flow.</li>
-<li>Review the <a href="https://azure.microsoft.com/solutions/architecture/advanced-analytics-on-big-data" target="_blank" rel="noopener">Advanced analytics on big data</a> reference architecture to get a peek on how different Azure components can help build a big data pipeline.</li>
-</ul>
-<hr>
-<p>Reference:</p>
-<p><a href="https://docs.microsoft.com/en-us/azure/architecture/example-scenario/data/realtime-analytics-vehicle-iot" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/azure/architecture/example-scenario/data/realtime-analytics-vehicle-iot</a></p>
-
+        
       
 
       
@@ -1187,11 +937,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-Time Data, IoT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/Ingestion%20and%20processing%20of%20real-time%20automotive%20IoT%20data%20%20/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/08/Ingestion and processing of real-time automotive IoT data  /">Show All >></a>
         </p>
       
 
@@ -1228,13 +989,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/07/Problem-solving%20While%20Learning/">Problem-solving While Learning</a>
+      <a class="article-title" href="/2020/05/07/Problem-solving While Learning/">Problem-solving While Learning</a>
     </h1>
   
 
         
-        <a href="/2020/05/07/Problem-solving%20While%20Learning/" class="archive-article-date">
-  	<time datetime="2020-05-08T06:45:40.083Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
+        <a href="/2020/05/07/Problem-solving While Learning/" class="archive-article-date">
+  	<time datetime="2020-05-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
 </a>
         
       </header>
@@ -1268,11 +1029,22 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Problem-solving</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/07/Problem-solving%20While%20Learning/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/07/Problem-solving While Learning/">Show All >></a>
         </p>
       
 
@@ -1304,7 +1076,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1319,7 +1091,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -1403,15 +1174,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1419,7 +1186,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1427,11 +1218,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

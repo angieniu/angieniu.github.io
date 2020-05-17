@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <meta name="renderer" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>SQL or NoSQL? | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="I am thinking about what database to use for our real-time parking availability project. Some notes below: NoSQL database is more and more popular in the modern data architecture. It has become a powe">
+<meta name="keywords" content="SQL, NoSQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL or NoSQL?">
-<meta property="og:url" content="http://yoursite.com/2020/05/04/SQL%20or%20NoSQL">
+<meta property="og:url" content="http://yoursite.com/2020/05/04/SQL or NoSQL">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
 <meta property="og:description" content="I am thinking about what database to use for our real-time parking availability project. Some notes below: NoSQL database is more and more popular in the modern data architecture. It has become a powe">
-<meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-05-05T05:44:58.442Z">
-<meta property="article:modified_time" content="2020-05-05T05:45:46.733Z">
-<meta property="article:author" content="Yanjie Niu">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-05-17T20:26:15.447Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL or NoSQL?">
+<meta name="twitter:description" content="I am thinking about what database to use for our real-time parking availability project. Some notes below: NoSQL database is more and more popular in the modern data architecture. It has become a powe">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -34,8 +35,8 @@
 
   
 
-<meta name="generator" content="Hexo 4.2.0"></head>
-
+</head>
+</html>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -157,8 +158,8 @@
   
 
         
-        <a href="/2020/05/04/SQL%20or%20NoSQL?/" class="archive-article-date">
-  	<time datetime="2020-05-05T05:44:58.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
+        <a href="/2020/05/04/SQL or NoSQL?/" class="archive-article-date">
+  	<time datetime="2020-05-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
 </a>
         
       </header>
@@ -174,6 +175,8 @@
 <li>Key-Value Pairs: AWS Dynamo, Redis, Oracle NoSQL</li>
 </ul>
 <p>It becomes evident that one NoSQL database can belong to more than one category. By facing so many choices, it also poses a challenge to data architects and analytics practitioners as which one to choose and what are the factors to consider to make the right decision, even before doing the Proof-of-Concept (POC) or Minimal Viable Product (MVP). I dedicate this article to go deeper under the hood of general descriptions of NoSQL databases, to explain how NoSQL databases achieve the performance that the relational database cannot. I hope this article will help the reader to make the right decision as to whether you should go with a NoSQL or not in the first place, and if so, which ones should be the top candidates for considerations and POC/MVP testings.</p>
+<a id="more"></a>
+
 <h1 id="Relational-Database-and-Normalization"><a href="#Relational-Database-and-Normalization" class="headerlink" title="Relational Database and Normalization"></a><strong>Relational Database and Normalization</strong></h1><p>Before commenting on NoSQL, we should have a good understanding of SQL and relational databases. The Relational Database was invented in 1970 by Edgar F. Codd, who was an English computer scientist. His invention led to the success of RDBMS (Relational DataBase Management System) databases in the three decades afterward, including IBM DB2, Oracle, Sybase, SQL Server, MySQL, and PostReg SQL. Around the same time, SQL (Structured Query Language) came alive to become the universal language to query and maintain the relational databases.</p>
 <p>The relational theory introduces the concept of Normalization designed to minimize data redundancy and solve data insert/update/delete anomalies, as manifested by Codd in his original paper “Further Normalization of the Data Base Relational Model”:</p>
 <ul>
@@ -262,6 +265,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL, NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -312,7 +326,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/04/SQL%20or%20NoSQL" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/04/SQL or NoSQL" alt="微信分享二维码">
     </div>
 </div>
 
@@ -326,17 +340,17 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/05/An%20Introduction%20to%20GeoJSON/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/05/05/An Introduction to GeoJSON/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          An Introduction to GeoJSON
+          An Introduction to GeoJson
         
       </div>
     </a>
   
   
-    <a href="/2020/05/04/%E5%B7%B4%E9%9F%B3%E5%B8%83%E9%B2%81%E5%85%8B%E6%B2%A1%E6%9C%89%E6%B5%B7/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/05/03/巴音布鲁克没有海/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">巴音布鲁克没有海</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -396,7 +410,6 @@
     		&copy; 2020 Yanjie Niu
     	</div>
       	<div class="footer-right">
-                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
         </div>
     </div>
   </div>
@@ -480,15 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -496,7 +505,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -504,11 +537,67 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortened Service, Like</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
