@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 35</a>
+<a>Total Number of Articles: 37</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,203 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Go Language" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/10/Go Language/">Go Language</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/10/Go Language/" class="archive-article-date">
+  	<time datetime="2020-05-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Notes about Go Language:</p>
+<p>Language Comparision: </p>
+<ol>
+<li>Language Abstract Model</li>
+<li>Type conversion.</li>
+</ol>
+<p>Efficiency: C++, C, Rust: Complile lanugage, cpu directly recognize before running. machine code, binary 0 1. windows .exe, linux.</p>
+<p>(efficiency)</p>
+<p>Java: compiler JVM (compiling from programming language to machine language) (compiling byte code, the middle layer), JIT (just in time, parse byte code in advance, precompile machine code before running for certain repetitive parts). </p>
+<p>GC+VM (write once run everywhere)+ java web service commercizlization (tomcat, j2ee enterprise architect)</p>
+<p>Script language: Fast to development: Ruby, Python, Perl: high-level, fast, fun for humans, lower, inefficient for computers. no jvm, jit engine, optimization worse. language dynamic.</p>
+<p>Type System:</p>
+<p>Static type: variable type, static. Java, C++ define integer i, in the scope the type could not be changed; but Python and Ruby could.  </p>
+<p>Dynamic type: Python, Ruby.</p>
+<p>Weak type: variable, whether it would be implied transferred. Java C++ Perl. easy for text processing.  but when the project is big, hard without type check. </p>
+<p>Strong type: String + integer, in python, run, different type, bind to a variable.</p>
+<p>Go: efficient and fast to implement, balance. </p>
+<ol>
+<li>complie language. garbage collector, allocate and assign resources, (java). collect, slow. </li>
+<li>concurrency, cloud computing.</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GoLang</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/10/Go Language/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-How to Connect to Database in Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/09/How to Connect to Database in Javascript/">How to Connect to Database in JavaScript</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/09/How to Connect to Database in Javascript/" class="archive-article-date">
+  	<time datetime="2020-05-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Yesterday was super happy day to meet many friends! Such a great reunion online during the pandemic period.</p>
+<p>Also, I have fetched data from external api to javascript file and render map successfully. I will work on building database. Good guidance to start with.</p>
+<h2 id="INTRODUCTION-DATABASE-TROUBLE"><a href="#INTRODUCTION-DATABASE-TROUBLE" class="headerlink" title="INTRODUCTION DATABASE TROUBLE"></a>INTRODUCTION DATABASE TROUBLE</h2><p>Welcome to a tutorial on how to connect to a database in Javascript. Yes, it is totally possible to connect to a database with modern Javascript these days. But it is a different process depending on where you are applying it to:</p>
+<ul>
+<li>When used on a web page (client-side Javascript), we usually make an AJAX call to a server-side script first. That in turn, will make a connection to the database.</li>
+<li>Javascript can also directly access a server-side database, but provided that it has an open HTTP API. This is a security risk though, and it should never be considered.</li>
+<li>Alternatively, there is the web storage API that allows Javascript to save some data on the client computer.</li>
+<li>Finally, with NodeJS (server-side Javascript), we can easily connect to a database with the correct module installed.</li>
+</ul>
+<p>So just how exactly do we connect to the database in the above cases? Let us walk through some examples, and read on to find out!</p>
+<p>ⓘ I have included a zip file with all the example source code at the start of this tutorial, so you don’t have to copy-paste everything… Or if you just want to dive straight in.</p>
+<h2 id="NAVIGATION-TABLE-OF-CONTENTS"><a href="#NAVIGATION-TABLE-OF-CONTENTS" class="headerlink" title="NAVIGATION TABLE OF CONTENTS"></a>NAVIGATION TABLE OF CONTENTS</h2><table>
+<thead>
+<tr>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-download" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-download.svg" alt="img"></a><strong>Extra</strong> Source Code Download</th>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-basics" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-gear.svg" alt="img"></a><strong>Section A</strong> The Basics</th>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-ajax" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-refresh-ccw.svg" alt="img"></a><strong>Section B</strong> AJAX Database</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-local" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-nodes.svg" alt="img"></a><strong>Section C</strong> Local Storage</td>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-node" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-code.svg" alt="img"></a><strong>Section D</strong> NodeJS Database</td>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-extra" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-plus-square.svg" alt="img"></a><strong>Extra</strong> Useful Bits &amp; Links</td>
+</tr>
+<tr>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-end" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-thumbs-up.svg" alt="img"></a><strong>Closing</strong> What’s Next?</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Database, Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/09/How to Connect to Database in Javascript/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Ingestion and processing of real-time automotive IoT data  " class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -839,158 +1036,6 @@
 
 
   
-    <article id="post-Real-time streaming in Power BI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/30/Real-time streaming in Power BI/">Real-time Streaming in Power BI</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/30/Real-time streaming in Power BI/" class="archive-article-date">
-  	<time datetime="2020-04-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>With Power BI real-time streaming, you can stream data and update dashboards in real-time. Any visual or dashboard that can be created in Power BI can also be created to display and update real-time data and visuals. The devices and sources of streaming data can be factory sensors, social media sources, service usage metrics, and anything else from which time-sensitive data can be collected or transmitted.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming-10.png" alt="Screenshot showing the results of real-time environmental sensors."></p>
-<p>This article shows you how to set up real-time streaming dataset in Power BI. But before we get to that, it’s important to understand the types of real-time datasets that are designed to display in tiles (and dashboards), and how those datasets differ.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-time Streaming Data, Power BI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/Real-time streaming in Power BI/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Data Sampling and Randomization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/Data Sampling and Randomization/">Data Sampling and Randomization</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/29/Data Sampling and Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Data Sampling Notes:</p>
-<p>Take-away: EG + Formula =&gt; Show thinking style</p>
-<h2 id="Reservoir-Sampling"><a href="#Reservoir-Sampling" class="headerlink" title="Reservoir Sampling"></a>Reservoir Sampling</h2><p>Q: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the probability of returning any element read so far is 1/n.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Sampling, Randomization</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/29/Data Sampling and Randomization/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1115,6 +1160,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
@@ -1123,7 +1176,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1131,7 +1184,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,7 +1200,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1155,7 +1208,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1171,15 +1228,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
