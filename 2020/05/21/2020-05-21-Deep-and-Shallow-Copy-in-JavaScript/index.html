@@ -6,15 +6,61 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: System Design, URL Shortened Service, Like Functionality | Yanjie&#39;s Blog</title>
+  <title>Deep and Shallow Copy in JavaScript | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/System-Design-URL-Shortened-Service-Like-Functionality/index.html">
+  <meta name="description" content="Often, to create an exact copy of an object in JavaScript, we need to create a new Object from existing objects. There are various methods to achieve this. This article is focused on the different way">
+<meta name="keywords" content="Shallow Copy, Deep Copy, JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep and Shallow Copy in JavaScript">
+<meta property="og:url" content="http://yoursite.com/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="Often, to create an exact copy of an object in JavaScript, we need to create a new Object from existing objects. There are various methods to achieve this. This article is focused on the different way">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*600VH4fZWf3oJB2EaZAPjg.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/808/1*600VH4fZWf3oJB2EaZAPjg.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*82ltUDhL8IaQVFcDE5ooVQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/661/1*82ltUDhL8IaQVFcDE5ooVQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*1Sz4ykJ0Q9VBwPqrRO4dKA.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/647/1*1Sz4ykJ0Q9VBwPqrRO4dKA.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*rXbBDvej4K_RvgONqts_dQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/685/1*rXbBDvej4K_RvgONqts_dQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*Hvx-bRAU1ZvaFA0R0uxcRg.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/683/1*Hvx-bRAU1ZvaFA0R0uxcRg.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*nClk5q2vuazirMwPF8xyTg.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/662/1*nClk5q2vuazirMwPF8xyTg.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*7y_NAB2O7FQ48eec42IquQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/829/1*7y_NAB2O7FQ48eec42IquQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*Rl8f7CEo_-vKHB3OR3gl5Q.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/596/1*Rl8f7CEo_-vKHB3OR3gl5Q.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*vbr2b_OGHBA1ZkJ_S4ojpg.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/720/1*vbr2b_OGHBA1ZkJ_S4ojpg.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*Yu_6q4Z5266wWRTDDlkbJQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/628/1*Yu_6q4Z5266wWRTDDlkbJQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*lxwvKs5KVKCMA_72SrcJcQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/756/1*lxwvKs5KVKCMA_72SrcJcQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*lxwvKs5KVKCMA_72SrcJcQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/756/1*lxwvKs5KVKCMA_72SrcJcQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*DPOM4FfrSdYdAC9-BiFwcw.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/777/1*DPOM4FfrSdYdAC9-BiFwcw.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*MpjsID6hlD7EDrqcx50p_w.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/730/1*MpjsID6hlD7EDrqcx50p_w.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*3ChASDqj9BaACMe5L7VLZw.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/657/1*3ChASDqj9BaACMe5L7VLZw.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*sr0ZVacvrZ_a6P2KGT16CQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/763/1*sr0ZVacvrZ_a6P2KGT16CQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*sr0ZVacvrZ_a6P2KGT16CQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/763/1*sr0ZVacvrZ_a6P2KGT16CQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*CT0mK3RFLGl6ritfGQvCJw.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/646/1*CT0mK3RFLGl6ritfGQvCJw.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*mJ_EYQ9EW4_okjVyrVETXQ.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/812/1*mJ_EYQ9EW4_okjVyrVETXQ.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*xL73lWypikwzPimRvcmuOA.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/675/1*xL73lWypikwzPimRvcmuOA.png">
+<meta property="og:updated_time" content="2020-05-22T08:22:43.447Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Deep and Shallow Copy in JavaScript">
+<meta name="twitter:description" content="Often, to create an exact copy of an object in JavaScript, we need to create a new Object from existing objects. There are various methods to achieve this. This article is focused on the different way">
+<meta name="twitter:image" content="https://miro.medium.com/max/60/1*600VH4fZWf3oJB2EaZAPjg.png?q=20">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,60 +188,414 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-05-21-Deep-and-Shallow-Copy-in-JavaScript" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/" class="archive-article-date">
-  	<time datetime="2020-04-29T05:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/">System Design Case Study: URL Shortened Service &amp; Like</a>
+    <h1 class="article-title" itemprop="name">
+      Deep and Shallow Copy in JavaScript
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/" class="archive-article-date">
+  	<time datetime="2020-05-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Often, to create an exact copy of an object in JavaScript, we need to create a new Object from existing objects. There are various methods to achieve this. This article is focused on <em>the different ways in which an object can be cloned/copied</em>. But before we dig deep into the details, we need to first understand the concept of deep and shallow copying of objects.</p>
+<hr>
+<h1 id="Understanding-Deep-and-Shallow-Copy"><a href="#Understanding-Deep-and-Shallow-Copy" class="headerlink" title="Understanding Deep and Shallow Copy"></a>Understanding Deep and Shallow Copy</h1><p><img src="https://miro.medium.com/max/60/1*600VH4fZWf3oJB2EaZAPjg.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/808/1*600VH4fZWf3oJB2EaZAPjg.png" alt="img"></p>
+<p>Let’s look into the details of the shallow and deep copy. As the image above shows, a shallow copy has common data shared between the copy and the original, whereas the deep copy of an object, does not have any data shared.</p>
+<p>In the object below, we have a few properties which represent value types (name, age, designation) and other properties that represent a complex object (address). Properties containing complex objects are referred to as “reference variable”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var userName = &#123;</span><br><span class="line">  name: &quot;Mayank Gupta&quot;,</span><br><span class="line">  age: 30,</span><br><span class="line">  designation: &quot;Developer&quot;,</span><br><span class="line">  address: &#123;</span><br><span class="line">    street: &quot;Rohini&quot;,</span><br><span class="line">    city: &quot;Delhi&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Shallow-Copying-Objects"><a href="#Shallow-Copying-Objects" class="headerlink" title="Shallow Copying Objects"></a>Shallow Copying Objects</h1><p>An Object can be considered as <strong>Shallow Copied</strong> when a separate copy of top-level value type properties is assigned to the new Object and the properties that represent an object are copied by reference to the destination folder.</p>
+<p>Summary for Shallow Copy:</p>
+<ol>
+<li>Destination object contains a separate copy of name, age, and designation.</li>
+<li>Reference of Complex Object (“address”) is copied to Destination Object</li>
+</ol>
+<p>In the case of Shallow Copy, the separate copy of the reference variable is not created. The memory reference of the complex Object in Source Object is copied to the Destination Object.</p>
+<hr>
+<h1 id="Disadvantages-of-Shallow-Copy"><a href="#Disadvantages-of-Shallow-Copy" class="headerlink" title="Disadvantages of Shallow Copy"></a>Disadvantages of Shallow Copy</h1><p>The problem with shallow copy is that, if the user makes changes to the complex object (update street property of address object) of the source object (userName), it is also reflected in the Destination Object, since it points to the same memory address.</p>
+<p><em>Changes to the reference objects in source object are also reflected in the Destination Object.</em></p>
+<hr>
+<h1 id="Deep-Copy-of-Object"><a href="#Deep-Copy-of-Object" class="headerlink" title="Deep Copy of Object"></a>Deep Copy of Object</h1><p>The object is said to be deep copied when <em>each property to the object points to separate copy, even if the property points to an object</em> (reference values). A separate copy of the reference object is created for the destination object. In case of deep copy, source object reference properties and destination object reference properties are pointing to different memory locations.</p>
+<p>A summary of deep copy:</p>
+<ul>
+<li>The destination object contains a separate copy of name, age, and designation. Separate instances of value types.</li>
+<li>Separate Reference for Complex Objects (“address”) is created</li>
+</ul>
+<p><em>“Address” property of Source and destination object point to different memory locations.</em> If the user updates the address property in the source object, the updates are not reflected in the destination object.</p>
+<a id="more"></a>
+
+<hr>
+<h1 id="Different-Ways-to-Copy-Objects"><a href="#Different-Ways-to-Copy-Objects" class="headerlink" title="Different Ways to Copy Objects"></a>Different Ways to Copy Objects</h1><p>There are multiple ways to copy an object, each with advantages and disadvantages:</p>
+<ol>
+<li>Using “for-of” loop to iterate through the object properties</li>
+<li>Using “JSON.parse” and “JSON.stringify”</li>
+<li>Working with “Object.assign” function</li>
+<li>Using “Object.create” to copy objects</li>
+<li>Using recursion for object copying</li>
+</ol>
+<h2 id="1-Copy-Properties-of-Source-using-“for-in”-loop"><a href="#1-Copy-Properties-of-Source-using-“for-in”-loop" class="headerlink" title="1. Copy Properties of Source using “for-in” loop"></a>1. Copy Properties of Source using “for-in” loop</h2><p>This is the easiest method to copy an object. This method involves iterating each property of the object and copy those key-value pairs to the destination object.</p>
+<p>Let’s take a look at this approach with some sample code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var employeeData = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var destinationObject = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">for(property in employeeData) &#123;</span><br><span class="line">  destinationObject[property] = employeeData[property];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject);</span><br></pre></td></tr></table></figure>
+
+<p>Benefits of using this method:</p>
+<ol>
+<li>It’s one of the simplest ways to copy the properties</li>
+<li>Copies the user-defined methods to the destination object</li>
+</ol>
+<p>User-defined functions inside the object can be copied using this approach, where a new function is copied to the destination object. Let’s see how that works:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var employeeData = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;,</span><br><span class="line">  getData: function() &#123;</span><br><span class="line">    alert(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var destinationObject = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">for(property in employeeData) &#123;</span><br><span class="line">  destinationObject[property] = employeeData[property];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject);</span><br></pre></td></tr></table></figure>
+
+<p>The Object <code>employeeData</code> contains a function. Using the <code>for-in</code>, we can iterate all the enumerable properties also involving function. The object created <code>destinationObject</code>, also contains this function implementation available to this object. The copied output is displayed below:</p>
+<p><img src="https://miro.medium.com/max/60/1*82ltUDhL8IaQVFcDE5ooVQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/661/1*82ltUDhL8IaQVFcDE5ooVQ.png" alt="img"></p>
+<p>\3. We <em>can copy Prototype Functions and Properties</em></p>
+<p><em>“for-of” can even iterate through the “prototype” properties and methods</em> of an Object, therefore all prototype functions and properties can be copied to the <code>destinationObject</code>. Here’s an example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">function Employee() &#123;</span><br><span class="line">    this.name = &quot;Mayank&quot;;</span><br><span class="line">    this.age =  20;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Employee.prototype.showData = function() &#123;</span><br><span class="line">    console.log(&quot;User Name: &quot; + this.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var userDetails = new Employee();</span><br><span class="line"></span><br><span class="line">var destinationObject = &#123;&#125;</span><br><span class="line">for(key in userDetails) &#123;</span><br><span class="line">    destinationObject[key] = userDetails[key]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject)</span><br></pre></td></tr></table></figure>
+
+<p>Here, the employee constructor function contains a prototype function <code>showDetails</code>. We can iterate over all keys associated with the object, including the prototype methods and properties, using <code>for-of</code>. Since we have access to prototype properties and functions during iteration, we can copy these key-value pairs to the destination object. The output of the above execution is given below:</p>
+<p><img src="https://miro.medium.com/max/60/1*1Sz4ykJ0Q9VBwPqrRO4dKA.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/647/1*1Sz4ykJ0Q9VBwPqrRO4dKA.png" alt="img"></p>
+<h2 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a><strong>Disadvantages</strong></h2><p><em>It can only Iterate the “enumerable” properties of the object.</em></p>
+<p>We can define properties as “non-enumerable”. If the property is specified as “non-enumerable”, we cannot iterate through that property using the “for-of” loop, so it won’t be copied to the destination object.</p>
+<p>See the code below for an in-depth explanation:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">var employeeData = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;,</span><br><span class="line">  getData: function() &#123;</span><br><span class="line">    alert(this.name)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Object.defineProperty(employeeData, &apos;salary&apos;, &#123;</span><br><span class="line">  value: 10000,</span><br><span class="line">  writable: false,</span><br><span class="line">  enumerable: true</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var destinationObject = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">for(property in employeeData) &#123;</span><br><span class="line">  destinationObject[property] = employeeData[property];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject);</span><br></pre></td></tr></table></figure>
+
+<p>Here we are adding a non-enumerable property to the <code>employeeData</code> object. In this case, the <code>for-of</code> loop cannot iterate through the non-iterable properties and hence, the property cannot be copied.</p>
+<p>The output for the above execution is:</p>
+<p><img src="https://miro.medium.com/max/60/1*rXbBDvej4K_RvgONqts_dQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/685/1*rXbBDvej4K_RvgONqts_dQ.png" alt="img"></p>
+<p>The salary property is not copied in this case, since its non-enumerable property of the source object.</p>
+<p><em>Complex objects are copied by reference (no deep copy).</em></p>
+<iframe src="https://medium.com/media/445251c37e229fd0f35f6c7ea4db65b0" allowfullscreen frameborder="0" height="571" width="680" title="referenceDataUpdate.js" class="s t u hn ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 571px;"></iframe>
+
+<p><a href="https://gist.github.com/Mayankgupta688/99238304741498c90ff933228b58da9c" target="_blank" rel="noopener">https://gist.github.com/Mayankgupta688/99238304741498c90ff933228b58da9c</a></p>
+<p>The object properties are copied by reference. The code above contains the reference inside the property “address”. When we copy the address from <code>employeeData</code> to <code>destinationObject</code>, the reference of the object is copied and not the actual object.</p>
+<p>So, if you make any changes to <code>employeeData</code>, it will be available to <code>destinationObject</code> also, since they are pointing to the same reference.</p>
+<p>So in this case, a deep copy of objects is not created.</p>
+<hr>
+<h1 id="Other-Ways-to-Iterate-the-Objects-in-JavaScript"><a href="#Other-Ways-to-Iterate-the-Objects-in-JavaScript" class="headerlink" title="Other Ways to Iterate the Objects in JavaScript"></a>Other Ways to Iterate the Objects in JavaScript</h1><p>There are other ways to iterate through the keys of an object in JavaScript.</p>
+<ul>
+<li>Use <code>Object.keys</code></li>
+<li>Using <code>Object. getOwnPropertyNames</code></li>
+</ul>
+<p>These methods are similar to iterating with <code>for-of</code>. Let’s see the differences and the purpose of these functions and properties</p>
+<p><em>Iterating with Object.keys</em></p>
+<ol>
+<li>Object.key does not iterate the prototype property</li>
+<li>Object.key cannot iterate through non-enumerable properties.</li>
+</ol>
+<p><em>Iterating with Object. getOwnPropertyNames</em></p>
+<ol>
+<li>Object.getOwnPropertyNames does not iterate the prototype property</li>
+<li>It can iterate through non-enumerable properties.</li>
+</ol>
+<p>This is the distinctive functionality of <code>Object.getOwnPropertyName</code>: it can also get non-enumerable properties.</p>
+<p>See the code below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">var employeeData = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;,</span><br><span class="line">  address: &#123;</span><br><span class="line">    state: &quot;Delhi&quot;,</span><br><span class="line">    country: &quot;India&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var destinationObject = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">for(property in employeeData) &#123;</span><br><span class="line">  destinationObject[property] = employeeData[property];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject);</span><br><span class="line"></span><br><span class="line">employeeData.address.state = &quot;Haryana&quot;;</span><br><span class="line"></span><br><span class="line">console.log(&quot;Source Object Data Updated....&quot;)</span><br><span class="line"></span><br><span class="line">console.dir(&quot;Destination State Data: &quot; + destinationObject.address.state);</span><br></pre></td></tr></table></figure>
+
+<p>Here <code>salary</code> is a non-enumerable property. <code>getOwnPropertyNames</code> can be used to retrieve any non-enumerable value, also along with the enumerable properties. The code of the above execution is:</p>
+<p><img src="https://miro.medium.com/max/60/1*Hvx-bRAU1ZvaFA0R0uxcRg.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/683/1*Hvx-bRAU1ZvaFA0R0uxcRg.png" alt="img"></p>
+<p>We can use either of the iteration technique to iterate through the list of all the properties that exist inside an object. The properties available from the iterations can be used to copy the property from one object to another.</p>
+<hr>
+<h1 id="2-Use-JSON-Stringify-and-JSON-Parse"><a href="#2-Use-JSON-Stringify-and-JSON-Parse" class="headerlink" title="2. Use JSON Stringify and JSON Parse"></a>2. Use JSON Stringify and JSON Parse</h1><p>In the following approach, we can convert the object to the JSON string using <code>JSON.stringify</code>. Once the Object has been stringified, it can be converted back to object using “JSON.parse” and saved into a separate object. This will help us achieve a deep copy of the specified object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var employeeData = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Object.defineProperty(employeeData, &apos;salary&apos;, &#123;</span><br><span class="line">  value: 10000,</span><br><span class="line">  writable: false,</span><br><span class="line">  enumerable: false</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">console.dir(Object.getOwnPropertyNames(employeeData));</span><br></pre></td></tr></table></figure>
+
+<p>The output for the specified code is:</p>
+<p><img src="https://miro.medium.com/max/60/1*nClk5q2vuazirMwPF8xyTg.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/662/1*nClk5q2vuazirMwPF8xyTg.png" alt="img"></p>
+<p>A new copy of the object is created. The object copied points to a different memory location. This method provides a deep copy of the specified object.</p>
+<p>The advantages of this method are:</p>
+<ol>
+<li>It can create deep copy of the object:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var userInfo = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;,</span><br><span class="line">  address: &#123;</span><br><span class="line">    streetNumber: 10,</span><br><span class="line">    city: &quot;Delhi&quot;,</span><br><span class="line">    country: &quot;India&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var stringifiedObject = JSON.stringify(userInfo);</span><br><span class="line"></span><br><span class="line">var newDeepCopy = JSON.parse(stringifiedObject);</span><br><span class="line"></span><br><span class="line">console.dir(newDeepCopy)</span><br></pre></td></tr></table></figure>
+
+<p>In the code above, we need to copy a complex object. The object <code>userInfo</code> contains value and reference type variable(“address”). The “address” property point to a reference object. Using <code>JSON.stringify</code>, we create a JSON string for the entire object <code>userInfo</code><strong>.</strong> When we parse this JSON string into the object a separate reference is created for each of the complex and value type properties of the source object. Hence, we’re able to create a deep Ccopy of <code>userInfo</code>.</p>
+<p>Since we’re achieving a deep copy of the source object, updating the <code>streetNumber</code> property in <code>userInfo</code>, will not impact the property of <code>newDeepCopy</code> Object, since they do not share the same reference.</p>
+<p>This is the output for the code above:</p>
+<p><img src="https://miro.medium.com/max/60/1*7y_NAB2O7FQ48eec42IquQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/829/1*7y_NAB2O7FQ48eec42IquQ.png" alt="img"></p>
+<p>There are some disadvantages to this method.</p>
+<ol>
+<li>The method cannot be used to copy the user-defined methods. The methods added to the object are not copied to the destination object.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var userInfo = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;,</span><br><span class="line">  getData: function() &#123;</span><br><span class="line">    console.log(this.name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var stringifiedObject = JSON.stringify(userInfo);</span><br><span class="line"></span><br><span class="line">var newDeepCopy = JSON.parse(stringifiedObject);</span><br><span class="line"></span><br><span class="line">console.dir(newDeepCopy)</span><br></pre></td></tr></table></figure>
+
+<p>The output for the following deep copy object is:</p>
+<p><img src="https://miro.medium.com/max/60/1*Rl8f7CEo_-vKHB3OR3gl5Q.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/596/1*Rl8f7CEo_-vKHB3OR3gl5Q.png" alt="img"></p>
+<p>As you can see, using <code>JSON.parse</code>, the user-defined function in the object is not copied to the destination object. So this method is not a fool-proof way to deep copy an object.</p>
+<p>\2. This method <em>cannot copy the “non-enumerable” properties.</em></p>
+<p>The problem with this approach is that the non-enumerable properties cannot be copied. Internally, <code>JSON.stringify</code> iterates through the enumerable properties of an object and adds it to the string representation.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var employeeData = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Object.defineProperty(employeeData, &apos;salary&apos;, &#123;</span><br><span class="line">  value: 10000,</span><br><span class="line">  enumerable: false</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var objectString = JSON.stringify(employeeData);</span><br><span class="line"></span><br><span class="line">var destinationObject = JSON.parse(objectString);</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject)</span><br></pre></td></tr></table></figure>
+
+<p>The output for this execution is shown below:</p>
+<p><img src="https://miro.medium.com/max/60/1*vbr2b_OGHBA1ZkJ_S4ojpg.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/720/1*vbr2b_OGHBA1ZkJ_S4ojpg.png" alt="img"></p>
+<p>The resulting object does not contain “salary” property which was the non-enumerable property of the <code>userInfo</code> object.</p>
+<p>\3. Cannot copy “prototype” properties and functions of the object.</p>
+<p>The code below creates an object from the constructor function — <code>showData</code> is associated with the prototype property of constructor function. If we try to copy the object using this method, the prototype functions are not copied.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">function Employee() &#123;</span><br><span class="line">    this.name = &quot;Mayank&quot;;</span><br><span class="line">    this.age =  20;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Employee.prototype.showData = function() &#123;</span><br><span class="line">    console.log(&quot;User Name: &quot; + this.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var userDetails = new Employee();</span><br><span class="line"></span><br><span class="line">var stringObject = JSON.stringify(userDetails);</span><br><span class="line"></span><br><span class="line">var destinationObject = JSON.parse(stringObject);</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject)</span><br></pre></td></tr></table></figure>
+
+<p>The output of the above execution is given below. We do not have any Prototype Functions associated with the <code>destinationObject</code>.</p>
+<p><img src="https://miro.medium.com/max/60/1*Yu_6q4Z5266wWRTDDlkbJQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/628/1*Yu_6q4Z5266wWRTDDlkbJQ.png" alt="img"></p>
+<hr>
+<h1 id="3-Copy-Objects-with-“Object-assign”"><a href="#3-Copy-Objects-with-“Object-assign”" class="headerlink" title="3. Copy Objects with “Object.assign”"></a>3. Copy Objects with “Object.assign”</h1><p>This is another method used to create copies of the object. <code>Object.assign</code> is used to copy all the enumerable properties of all the object specified — it can copy properties from multiple objects. Let’s look at how this function is used in more detail.</p>
+<p>This is the output from the above execution:</p>
+<p><img src="https://miro.medium.com/max/60/1*lxwvKs5KVKCMA_72SrcJcQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/756/1*lxwvKs5KVKCMA_72SrcJcQ.png" alt="img"></p>
+<p>Let’s look at the advantages and disadvantages of this method.</p>
+<p>Disadvantages of using <code>Object.assign</code>:</p>
+<ol>
+<li>“Object.assign” <em>cannot copy through non-enumerable properties.</em></li>
+</ol>
+<p>The assign method does not copy the non-enumerable properties of the Object. If the property or method is non-enumerable, it won’t be copied.</p>
+<p>Here is an example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var employeeData = &#123;</span><br><span class="line">  name: &quot;Mayank&quot;,</span><br><span class="line">  age: 31,</span><br><span class="line">  designation: &quot;Developer&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Object.defineProperty(employeeData, &apos;salary&apos;, &#123;</span><br><span class="line">  value: 10000,</span><br><span class="line">  enumerable: false</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var destinationObject = Object.assign(employeeData);</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject)</span><br></pre></td></tr></table></figure>
+
+<p>The output for the code above is shown below. We can see that the non-enumerable property <code>salary</code> is not the part of the object created.</p>
+<p><img src="https://miro.medium.com/max/60/1*lxwvKs5KVKCMA_72SrcJcQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/756/1*lxwvKs5KVKCMA_72SrcJcQ.png" alt="img"></p>
+<p>\2. Object.assign does not copy prototype properties and methods.</p>
+<p>None of the prototype properties and objects are added to the copied object. Let’s see this in the example below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function Employee() &#123;</span><br><span class="line">    this.name = &quot;Mayank&quot;;</span><br><span class="line">    this.age =  20;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Employee.prototype.showData = function() &#123;</span><br><span class="line">    console.log(&quot;User Name: &quot; + this.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var userDetails = new Employee();</span><br><span class="line"></span><br><span class="line">var destinationObject = Object.assign(userDetails);</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject)</span><br></pre></td></tr></table></figure>
+
+<p>In the above code, the prototype function <code>showDetails</code> is not copied to the <code>destinationObject</code>. <code>Object.assign</code> only copies the properties available through <code>Object.getOwnPropertyNames</code><strong>.</strong> Therefore, this method cannot be used for copying prototype properties and functions. The output for the above execution is shown below:</p>
+<p><img src="https://miro.medium.com/max/60/1*DPOM4FfrSdYdAC9-BiFwcw.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/777/1*DPOM4FfrSdYdAC9-BiFwcw.png" alt="img"></p>
+<p>\3. Does not create a deep copy of the source object</p>
+<p>This method does not create a deep copy of Source Object, it makes a shallow copy of the data. For the properties containing reference or complex data, the reference is copied to the destination object, instead of creating a separate object.</p>
+<p>Advantages of <code>Object. assign</code><strong>:</strong></p>
+<p>\1. Functions can be copied from source to destination object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">function Employee() &#123;</span><br><span class="line">    this.name = &quot;Mayank&quot;;</span><br><span class="line">    this.age =  20;</span><br><span class="line">    this.showDetails = function() &#123;</span><br><span class="line">      console.dir(this.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var userDetails = new Employee();</span><br><span class="line"></span><br><span class="line">var destinationObject = Object.assign(userDetails);</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject)</span><br></pre></td></tr></table></figure>
+
+<p>The code above copies the user defined functions from the source object to destination object. The output also contains the <code>showDetails</code> function also.</p>
+<p><img src="https://miro.medium.com/max/60/1*MpjsID6hlD7EDrqcx50p_w.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/730/1*MpjsID6hlD7EDrqcx50p_w.png" alt="img"></p>
+<p>\2. <code>Object.assign</code> can be used to copy multiple object properties.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var firstObject = &#123;</span><br><span class="line">    userName: &quot;Mayank&quot;,</span><br><span class="line">    age: 30,</span><br><span class="line">    designation: &quot;Developer&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var secondObject = &#123;</span><br><span class="line">    street: &quot;Rohini&quot;,</span><br><span class="line">    country: &quot;India&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var destinationObject = Object.assign(firstObject, secondObject);</span><br><span class="line"></span><br><span class="line">console.dir(destinationObject)</span><br></pre></td></tr></table></figure>
+
+<p>All the properties which are enumerable from all the objects specified in the array are copied to the destination object.</p>
+<hr>
+<h1 id="4-Working-with-Object-create-to-Copy-Object"><a href="#4-Working-with-Object-create-to-Copy-Object" class="headerlink" title="4. Working with Object.create to Copy Object"></a>4. Working with Object.create to Copy Object</h1><p><code>Object.create</code> is another function that can make the properties of one object available to other objects. This method creates a new object using the existing object as a prototype, following the concept of prototype inheritance. The existing object is made available as a prototype making all the properties available to the new object.</p>
+<p>Let’s see this method in detail.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var userInfo = &#123;</span><br><span class="line">    name: &quot;Mayank&quot;,</span><br><span class="line">    age: 30,</span><br><span class="line">    salary: 10000,</span><br><span class="line">    designation: &quot;Developer&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var newObject = Object.create(userInfo);</span><br><span class="line"></span><br><span class="line">console.log(newObject)</span><br></pre></td></tr></table></figure>
+
+<p>In the above code, we are using <code>Object.create</code>, to create a new object. Using this method, we do not add properties to the new object. The new object we have created does not contain any properties like name, age, and salary. See the image below:</p>
+<p><img src="https://miro.medium.com/max/60/1*3ChASDqj9BaACMe5L7VLZw.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/657/1*3ChASDqj9BaACMe5L7VLZw.png" alt="img"></p>
+<p>The output shows that none of the property is added to the new object created. <em>How can we still access the</em> <code>name</code> <em>property using this Object?</em></p>
+<p><img src="https://miro.medium.com/max/60/1*sr0ZVacvrZ_a6P2KGT16CQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/763/1*sr0ZVacvrZ_a6P2KGT16CQ.png" alt="img"></p>
+<p>As stated earlier, the object <code>userInfo</code> is not available in the prototype chain of the newly created object. So when we access the property “name”, it will be accessed from the prototypal chain of the object.</p>
+<p><img src="https://miro.medium.com/max/60/1*sr0ZVacvrZ_a6P2KGT16CQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/763/1*sr0ZVacvrZ_a6P2KGT16CQ.png" alt="img"></p>
+<p>The properties are available in the <code>__proto__</code> property of the newly created object, which points to the object in the prototypal chain, hence making properties available to the object.</p>
+<p><img src="https://miro.medium.com/max/60/1*CT0mK3RFLGl6ritfGQvCJw.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/646/1*CT0mK3RFLGl6ritfGQvCJw.png" alt="img"></p>
+<p>The above lines of code state that <code>userInfo.name</code> and <code>newObject.name</code> point to the same memory location. And <code>userInfo</code> does not contain the separate implementation of this property.</p>
+<p>Let’s look at the advantages and disadvantages of this method.</p>
+<p><em>Advantages of</em> <code>Object.create</code><em>:</em></p>
+<ol>
+<li>All the methods and properties which are available to the <code>userInfo</code> object are available to the new object that is created, since it exists as the part of prototypal chain.</li>
+</ol>
+<p><img src="https://miro.medium.com/max/60/1*mJ_EYQ9EW4_okjVyrVETXQ.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/812/1*mJ_EYQ9EW4_okjVyrVETXQ.png" alt="img"></p>
+<p>\2. The Property is made available through the prototypal chain, so the object need not consume more memory space to save the existing functions and properties. No separate memory space is consumed, so the methods and the properties can be reused.</p>
+<p>This method provides function and property re-usability in cases when we have some hierarchical data representation, or if we need to show some inheritance traits from source object to destination object</p>
+<p><em>Disadvantages of</em> <code>Object.create</code>:</p>
+<ol>
+<li>The newly created object does not create a separate property. Modifying the property from the Source Object modifies the data available to the new Object also.</li>
+</ol>
+<p>The developer may assume that the property belongs to the newly created object. Modifying the property or function in source object are reflected in the destination or the new object created.</p>
+<p><img src="https://miro.medium.com/max/60/1*xL73lWypikwzPimRvcmuOA.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/675/1*xL73lWypikwzPimRvcmuOA.png" alt="img"></p>
+<p>If you want to have a dedicated <code>name</code> property for each object created using <code>Object.create</code>, we need to add property explicitly to newly created object. In the code below, we’ve added a separate property to the new object created — in this case it will not access the <code>name</code> data from prototype chain.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var userInfo = &#123;</span><br><span class="line">    name: &quot;Mayank&quot;,</span><br><span class="line">    age: 30,</span><br><span class="line">    salary: 10000,</span><br><span class="line">    designation: &quot;Developer&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var newObject = Object.create(userInfo);</span><br><span class="line"></span><br><span class="line">newObject.name = &quot;New Name&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>\2. Does not create a deep copy for the object.</p>
+<p>It does not create the deep copy — the object follows the concept of inheritance. The new object does not contain separate properties and methods. The properties and methods are accessed from the parent in the inheritance chain, so a separate object is created.</p>
+<hr>
+<h1 id="5-Using-Recursion-for-Object-Copying"><a href="#5-Using-Recursion-for-Object-Copying" class="headerlink" title="5. Using Recursion for Object Copying"></a>5. Using Recursion for Object Copying</h1><p>Recursion is the most reliable and effective method to ensure deep copying and maximum scenario coverage. In most of the scenarios above the methods do not provide a deep copy of the object being copied. Using recursion we can try to create an effective way to deep copy the object.</p>
+<h2 id="Concept-of-recursion-in-deep-copy"><a href="#Concept-of-recursion-in-deep-copy" class="headerlink" title="Concept of recursion in deep copy"></a>Concept of recursion in deep copy</h2><p>Recursion can be used to create a deep copy of the source object. We use recursion to ensure that we cover the maximum possible scenarios. We can iterate through the object and copy the value type variables of the object. If the source object contains some complex objects, we can iterate through the complex object properties recursively and copy those properties to the destination object.</p>
+<p>Shown below is the object representing the source object to be copied. The object contains value and reference types along with a function. We want to create a deep copy of this object. We need to ensure that the function is copied and a separate instance of <code>address</code> object is created. <code>address</code> represents a reference type in the object.</p>
+<p>We’re not taking a more complex scenario in the code below — we’ll restrict the complexity of the source object to have a reference variable, along with functions and value types.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">var userDetails = &#123;</span><br><span class="line">    name: &quot;Mayank&quot;,</span><br><span class="line">    age: 30,</span><br><span class="line">    designation: &quot;Developer&quot;,</span><br><span class="line">    address: &#123;</span><br><span class="line">            street: &quot;Rohini&quot;,</span><br><span class="line">            country: &quot;India&quot;</span><br><span class="line">    &#125;, showDetails: function() &#123;</span><br><span class="line">        console.log(&quot;UserName: &quot; + this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Let’s take a look at the code to create a deep copy of the source object <code>userName</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">var userDetails = &#123;</span><br><span class="line">    name: &quot;Mayank&quot;,</span><br><span class="line">    age: 30,</span><br><span class="line">    designation: &quot;Developer&quot;,</span><br><span class="line">    address: &#123;</span><br><span class="line">            street: &quot;Rohini&quot;,</span><br><span class="line">            country: &quot;India&quot;</span><br><span class="line">    &#125;, showDetails: function() &#123;</span><br><span class="line">        console.log(&quot;UserName: &quot; + this.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var destinationObject = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">function deepCopy(sourceObject, destinationObject) &#123;</span><br><span class="line"></span><br><span class="line">    for(key in sourceObject) &#123;</span><br><span class="line">        if(typeof sourceObject[key] != &quot;object&quot;) &#123;</span><br><span class="line">            destinationObject[key] = sourceObject[key];</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            destinationObject[key] = &#123;&#125;;</span><br><span class="line">            deepCopy(sourceObject[key], destinationObject[key]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">deepCopy(userDetails, destinationObject);</span><br></pre></td></tr></table></figure>
+
+<p>In this code, we are using <code>for-in</code>to iterate through the list of properties inside the source object (<code>userName</code>). We iterate through each key in the object and look at whether the property represented by key is a complex object or not. If the key represents a complex object, we assign an empty object to the same key in the destination object and recursively calls for the <code>deepCopy</code>function sending <code>sourceObject[key]</code> as <code>sourceObject</code> parameter and <code>destinationObject[key]</code> as <code>destinationObject</code> parameter to the function. It iterates over the property of the complex object again and assigns it to the same key in the destination object.</p>
+<p>This method can help us achieve a deep copy of an object. We can also extend this thought process to cater to more complex scenarios.</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/better-programming/deep-and-shallow-copy-in-javascript-110f395330c5" target="_blank" rel="noopener">https://medium.com/better-programming/deep-and-shallow-copy-in-javascript-110f395330c5</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">System Design, URL Shortened Service, Like Functionality</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Shallow Copy, Deep Copy, JavaScript</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/05/20/2020-05-20-Preflight-Request/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Preflight Request</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Understanding-Deep-and-Shallow-Copy"><span class="toc-number">1.</span> <span class="toc-text">Understanding Deep and Shallow Copy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Shallow-Copying-Objects"><span class="toc-number">2.</span> <span class="toc-text">Shallow Copying Objects</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Disadvantages-of-Shallow-Copy"><span class="toc-number">3.</span> <span class="toc-text">Disadvantages of Shallow Copy</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Deep-Copy-of-Object"><span class="toc-number">4.</span> <span class="toc-text">Deep Copy of Object</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Different-Ways-to-Copy-Objects"><span class="toc-number">5.</span> <span class="toc-text">Different Ways to Copy Objects</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Copy-Properties-of-Source-using-“for-in”-loop"><span class="toc-number">5.1.</span> <span class="toc-text">1. Copy Properties of Source using “for-in” loop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Disadvantages"><span class="toc-number">5.2.</span> <span class="toc-text">Disadvantages</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Other-Ways-to-Iterate-the-Objects-in-JavaScript"><span class="toc-number">6.</span> <span class="toc-text">Other Ways to Iterate the Objects in JavaScript</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Use-JSON-Stringify-and-JSON-Parse"><span class="toc-number">7.</span> <span class="toc-text">2. Use JSON Stringify and JSON Parse</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Copy-Objects-with-“Object-assign”"><span class="toc-number">8.</span> <span class="toc-text">3. Copy Objects with “Object.assign”</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Working-with-Object-create-to-Copy-Object"><span class="toc-number">9.</span> <span class="toc-text">4. Working with Object.create to Copy Object</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Using-Recursion-for-Object-Copying"><span class="toc-number">10.</span> <span class="toc-text">5. Using Recursion for Object Copying</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Concept-of-recursion-in-deep-copy"><span class="toc-number">10.1.</span> <span class="toc-text">Concept of recursion in deep copy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">10.1.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +621,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
