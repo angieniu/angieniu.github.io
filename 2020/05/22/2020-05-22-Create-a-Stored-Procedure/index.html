@@ -6,15 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Mongo DB, Node.JS, Database | Yanjie&#39;s Blog</title>
+  <title>Create a Stored Procedure | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Mongo-DB-Node-JS-Database/index.html">
+  <meta name="description" content="APPLIES TO: SQL Server Azure SQL Database Azure Synapse Analytics (SQL Data Warehouse) Parallel Data Warehouse This topic describes how to create a Transact-SQL stored procedure by using SQL Server Ma">
+<meta name="keywords" content="SQL, Stored Procedure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Create a Stored Procedure">
+<meta property="og:url" content="http://yoursite.com/2020/05/22/2020-05-22-Create-a-Stored-Procedure/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="APPLIES TO: SQL Server Azure SQL Database Azure Synapse Analytics (SQL Data Warehouse) Parallel Data Warehouse This topic describes how to create a Transact-SQL stored procedure by using SQL Server Ma">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15">
+<meta property="og:image" content="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15">
+<meta property="og:image" content="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15">
+<meta property="og:image" content="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15">
+<meta property="og:updated_time" content="2020-05-24T07:52:56.303Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Create a Stored Procedure">
+<meta name="twitter:description" content="APPLIES TO: SQL Server Azure SQL Database Azure Synapse Analytics (SQL Data Warehouse) Parallel Data Warehouse This topic describes how to create a Transact-SQL stored procedure by using SQL Server Ma">
+<meta name="twitter:image" content="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,60 +152,296 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-05-22-Create-a-Stored-Procedure" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/14/2020-05-13-Mongo-DB-Node.JS-Driver-documentation/" class="archive-article-date">
-  	<time datetime="2020-05-14T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/14/2020-05-13-Mongo-DB-Node.JS-Driver-documentation/">Mongo DB Node.JS Driver documentation</a>
+    <h1 class="article-title" itemprop="name">
+      Create a Stored Procedure
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/" class="archive-article-date">
+  	<time datetime="2020-05-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>APPLIES TO:</strong> <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">SQL Server <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Azure SQL Database <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Azure Synapse Analytics (SQL Data Warehouse) <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Parallel Data Warehouse</p>
+<p>This topic describes how to create a Transact-SQL stored procedure by using SQL Server Management Studio and by using the Transact-SQL CREATE PROCEDURE statement.</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><ul>
+<li><strong>Before you begin:</strong> <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#Permissions" target="_blank" rel="noopener">Permissions</a></li>
+<li><strong>To create a procedure, using:</strong> <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#SSMSProcedure" target="_blank" rel="noopener">SQL Server Management Studio</a>, <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#TsqlProcedure" target="_blank" rel="noopener">Transact-SQL</a></li>
+</ul>
+<h2 id="Permissions"><a href="#Permissions" class="headerlink" title="Permissions"></a>Permissions</h2><p>Requires CREATE PROCEDURE permission in the database and ALTER permission on the schema in which the procedure is being created.</p>
+<h2 id="How-to-Create-a-Stored-Procedure"><a href="#How-to-Create-a-Stored-Procedure" class="headerlink" title="How to Create a Stored Procedure"></a>How to Create a Stored Procedure</h2><p>You can use one of the following:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#SSMSProcedure" target="_blank" rel="noopener">SQL Server Management Studio</a></li>
+<li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#TsqlProcedure" target="_blank" rel="noopener">Transact-SQL</a></li>
+</ul>
+<h3 id="Using-SQL-Server-Management-Studio"><a href="#Using-SQL-Server-Management-Studio" class="headerlink" title="Using SQL Server Management Studio"></a>Using SQL Server Management Studio</h3><p><strong>To create a procedure in Object Explorer</strong></p>
+<ol>
+<li><p>In <strong>Object Explorer</strong>, connect to an instance of Database Engine and then expand that instance.</p>
+</li>
+<li><p>Expand <strong>Databases</strong>, expand the <strong>AdventureWorks2012</strong> database, and then expand <strong>Programmability</strong>.</p>
+</li>
+<li><p>Right-click <strong>Stored Procedures</strong>, and then click <strong>New Stored Procedure</strong>.</p>
+</li>
+<li><p>On the <strong>Query</strong> menu, click <strong>Specify Values for Template Parameters</strong>.</p>
+</li>
+<li><p>In the <strong>Specify Values for Template Parameters</strong> dialog box, enter the following values for the parameters shown.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Author</td>
+<td align="left"><em>Your name</em></td>
+</tr>
+<tr>
+<td align="left">Create Date</td>
+<td align="left"><em>Today’s date</em></td>
+</tr>
+<tr>
+<td align="left">Description</td>
+<td align="left">Returns employee data.</td>
+</tr>
+<tr>
+<td align="left">Procedure_name</td>
+<td align="left">HumanResources.uspGetEmployeesTest</td>
+</tr>
+<tr>
+<td align="left">@Param1</td>
+<td align="left">@LastName</td>
+</tr>
+<tr>
+<td align="left">@Datatype_For_Param1</td>
+<td align="left"><strong>nvarchar</strong>(50)</td>
+</tr>
+<tr>
+<td align="left">Default_Value_For_Param1</td>
+<td align="left">NULL</td>
+</tr>
+<tr>
+<td align="left">@Param2</td>
+<td align="left">@FirstName</td>
+</tr>
+<tr>
+<td align="left">@Datatype_For_Param2</td>
+<td align="left"><strong>nvarchar</strong>(50)</td>
+</tr>
+<tr>
+<td align="left">Default_Value_For_Param2</td>
+<td align="left">NULL</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Query Editor</strong>, replace the SELECT statement with the following statement:</p>
+<p>SQLCopy</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> FirstName, LastName, Department  </span><br><span class="line"><span class="keyword">FROM</span> HumanResources.vEmployeeDepartmentHistory  </span><br><span class="line"><span class="keyword">WHERE</span> FirstName = @FirstName <span class="keyword">AND</span> LastName = @LastName  </span><br><span class="line">    <span class="keyword">AND</span> EndDate <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To test the syntax, on the <strong>Query</strong> menu, click <strong>Parse</strong>. If an error message is returned, compare the statements with the information above and correct as needed.</p>
+</li>
+<li><p>To create the procedure, from the <strong>Query</strong> menu, click <strong>Execute</strong>. The procedure is created as an object in the database.</p>
+</li>
+<li><p>To see the procedure listed in Object Explorer, right-click <strong>Stored Procedures</strong> and select <strong>Refresh</strong>.</p>
+</li>
+<li><p>To run the procedure, in Object Explorer, right-click the stored procedure name <strong>HumanResources.uspGetEmployeesTest</strong> and select <strong>Execute Stored Procedure</strong>.</p>
+</li>
+<li><p>In the <strong>Execute Procedure</strong> window, enter Margheim as the value for the parameter @LastName and enter the value Diane as the value for the parameter @FirstName.</p>
+<p>Warning</p>
+</li>
+</ol>
+<p>Validate all user input. Do not concatenate user input before you validate it. Never execute a command constructed from unvalidated user input.</p>
+<h3 id="Using-Transact-SQL"><a href="#Using-Transact-SQL" class="headerlink" title="Using Transact-SQL"></a>Using Transact-SQL</h3><p><strong>To create a procedure in Query Editor</strong></p>
+<ol>
+<li><p>In <strong>Object Explorer</strong>, connect to an instance of Database Engine.</p>
+</li>
+<li><p>From the <strong>File</strong> menu, click <strong>New Query</strong>.</p>
+</li>
+<li><p>Copy and paste the following example into the query window and click <strong>Execute</strong>. This example creates the same stored procedure as above using a different procedure name.</p>
+<p>Copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">USE AdventureWorks2012;  </span><br><span class="line">GO  </span><br><span class="line">CREATE PROCEDURE HumanResources.uspGetEmployeesTest2   </span><br><span class="line">    @LastName nvarchar(50),   </span><br><span class="line">    @FirstName nvarchar(50)   </span><br><span class="line">AS   </span><br><span class="line"></span><br><span class="line">    SET NOCOUNT ON;  </span><br><span class="line">    SELECT FirstName, LastName, Department  </span><br><span class="line">    FROM HumanResources.vEmployeeDepartmentHistory  </span><br><span class="line">    WHERE FirstName = @FirstName AND LastName = @LastName  </span><br><span class="line">    AND EndDate IS NULL;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To run the procedure, copy and paste the following example into a new query window and click <strong>Execute</strong>. Notice that different methods of specifying the parameter values are shown.</p>
+<p>Copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXECUTE HumanResources.uspGetEmployeesTest2 N&apos;Ackerman&apos;, N&apos;Pilar&apos;;  </span><br><span class="line">-- Or  </span><br><span class="line">EXEC HumanResources.uspGetEmployeesTest2 @LastName = N&apos;Ackerman&apos;, @FirstName = N&apos;Pilar&apos;;  </span><br><span class="line">GO  </span><br><span class="line">-- Or  </span><br><span class="line">EXECUTE HumanResources.uspGetEmployeesTest2 @FirstName = N&apos;Pilar&apos;, @LastName = N&apos;Ackerman&apos;;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="See-Also"><a href="#See-Also" class="headerlink" title="See Also"></a>See Also</h2><p><a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/create-procedure-transact-sql?view=sql-server-ver15" target="_blank" rel="noopener">CREATE PROCEDURE (Transact-SQL)</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mongo DB, Node.JS, Database</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQL, Stored Procedure</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/22/2020-05-22-Create-a-Stored-Procedure/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/05/23/2020-05-23-React/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          React
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Deep and Shallow Copy in JavaScript</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Permissions"><span class="toc-number">2.</span> <span class="toc-text">Permissions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-Create-a-Stored-Procedure"><span class="toc-number">3.</span> <span class="toc-text">How to Create a Stored Procedure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-SQL-Server-Management-Studio"><span class="toc-number">3.1.</span> <span class="toc-text">Using SQL Server Management Studio</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Transact-SQL"><span class="toc-number">3.2.</span> <span class="toc-text">Using Transact-SQL</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#See-Also"><span class="toc-number">5.</span> <span class="toc-text">See Also</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +467,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
