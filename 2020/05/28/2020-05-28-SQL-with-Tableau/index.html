@@ -6,15 +6,38 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/5 | Yanjie&#39;s Blog</title>
+  <title>SQL with Tableau | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/05/page/3/index.html">
+  <meta name="description" content="In this tutorial, we will learn how to connect Tableau to a Microsoft SQL Server database and then analyze the data to get insights. Data is an integral part of the lives of Data Scientists. Right fro">
+<meta name="keywords" content="SQL, Relational Database, Tableau">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL with Tableau">
+<meta property="og:url" content="http://yoursite.com/2020/05/28/2020-05-28-SQL-with-Tableau/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="In this tutorial, we will learn how to connect Tableau to a Microsoft SQL Server database and then analyze the data to get insights. Data is an integral part of the lives of Data Scientists. Right fro">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554507/1.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/2.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/3.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/4.gif">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/5.gif">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/6.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/7.gif">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/8.gif">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/9.gif">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/10.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/11.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/12.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/13.gif">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554508/14.gif">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/15.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/16.png">
+<meta property="og:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/17.png">
+<meta property="og:updated_time" content="2020-05-29T08:35:12.556Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="SQL with Tableau">
+<meta name="twitter:description" content="In this tutorial, we will learn how to connect Tableau to a Microsoft SQL Server database and then analyze the data to get insights. Data is an integral part of the lives of Data Scientists. Right fro">
+<meta name="twitter:image" content="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554507/1.png">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,356 +165,273 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-05-28-SQL-with-Tableau" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SQL with Tableau
+    </h1>
+  
+
+        
+        <a href="/2020/05/28/2020-05-28-SQL-with-Tableau/" class="archive-article-date">
+  	<time datetime="2020-05-28T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In this tutorial, we will learn how to connect Tableau to a Microsoft SQL Server database and then analyze the data to get insights.</p>
+<p>Data is an integral part of the lives of Data Scientists. Right from the sales and Profit of a company, to passengers in an airport, everything constitutes data. Now, all this data is recorded and most of the times stored in files called databases and an essential task of a Data Scientist is to be able to access data from databases and then analyze them. Most of the ETL tools that tend to help in the cleaning part are actually running SQL commands under the hood. So having some knowledge of SQL can be quite a valuable resource for a Tableau user.</p>
+<a id="more"></a>
+
+<h2 id="Objective"><a href="#Objective" class="headerlink" title="Objective"></a>Objective</h2><p>Apart from the various visualization advantages that Tableau offers, it also has an amazing out of the box connection capabilities. Tableau can easily integrate with DBMS like SQL. This offers increased advantages regarding functionalities and comes in handy for Data Scientists who are used to working in SQL. Tableau provides an optimized, live connector to SQL Server so that we can create charts, reports, and dashboards while working directly with our data.</p>
+<h2 id="Pre-requisites"><a href="#Pre-requisites" class="headerlink" title="Pre-requisites"></a>Pre-requisites</h2><p>This article assumes some familiarity with Tableau, its properties and how it is used to do the analysis. Since this article will be focused only on SQL with Tableau, it is suggested to go through the following existing tutorials which serve as an excellent primer to both Tableau and SQL:</p>
+<p><a href="https://www.datacamp.com/community/tutorials/data-visualisation-tableau" target="_blank" rel="noopener"><strong>Data Visualisation with Tableau</strong></a></p>
+<p><a href="https://www.datacamp.com/community/tutorials/sql-tutorial-query" target="_blank" rel="noopener"><strong>SQL Tutorial: How To Write Better Queries</strong></a></p>
+<h2 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h2><ul>
+<li><h4 id="1-Tableau"><a href="#1-Tableau" class="headerlink" title="1. Tableau"></a><a href="https://www.datacamp.com/community/tutorials/sql-tableau#tableau" target="_blank" rel="noopener">1. Tableau</a></h4></li>
+<li><h4 id="2-Relational-Databases-A-Quick-Overview"><a href="#2-Relational-Databases-A-Quick-Overview" class="headerlink" title="2. Relational Databases: A Quick Overview"></a><a href="https://www.datacamp.com/community/tutorials/sql-tableau#relational-database" target="_blank" rel="noopener">2. Relational Databases: A Quick Overview</a></h4></li>
+<li><h4 id="3-Connecting-to-SQL-Server"><a href="#3-Connecting-to-SQL-Server" class="headerlink" title="3. Connecting to SQL Server"></a><a href="https://www.datacamp.com/community/tutorials/sql-tableau#sql-server" target="_blank" rel="noopener">3. Connecting to SQL Server</a></h4></li>
+<li><h4 id="4-Importing-SQL-data-into-Tableau"><a href="#4-Importing-SQL-data-into-Tableau" class="headerlink" title="4. Importing SQL data into Tableau"></a><a href="https://www.datacamp.com/community/tutorials/sql-tableau#importing" target="_blank" rel="noopener">4. Importing SQL data into Tableau</a></h4></li>
+<li><h4 id="5-Custom-SQL"><a href="#5-Custom-SQL" class="headerlink" title="5. Custom SQL"></a><a href="https://www.datacamp.com/community/tutorials/sql-tableau#custom-sql" target="_blank" rel="noopener">5. Custom SQL</a></h4></li>
+<li><h4 id="6-Data-Source-Filters"><a href="#6-Data-Source-Filters" class="headerlink" title="6. Data Source Filters"></a><a href="https://www.datacamp.com/community/tutorials/sql-tableau#data-source-filters" target="_blank" rel="noopener">6. Data Source Filters</a></h4></li>
+<li><h4 id="7-Analysis-in-Tableau"><a href="#7-Analysis-in-Tableau" class="headerlink" title="7. Analysis in Tableau"></a><a href="https://www.datacamp.com/community/tutorials/sql-tableau#analysis" target="_blank" rel="noopener">7. Analysis in Tableau</a></h4></li>
+<li><h4 id="8-Conclusion"><a href="#8-Conclusion" class="headerlink" title="8. Conclusion"></a><a href="https://www.datacamp.com/community/tutorials/sql-tableau#conclusion" target="_blank" rel="noopener">8. Conclusion</a></h4></li>
+</ul>
+<h1 id="1-Tableau-1"><a href="#1-Tableau-1" class="headerlink" title="1. Tableau"></a>1. Tableau</h1><p><a href="https://www.tableau.com/" target="_blank" rel="noopener">Tableau Software</a> is an American computer software company headquartered in Seattle which generates interactive data visualization products focused on BI. The main products offered by Tableau are Tableau Desktop, Tableau Public and Tableau Online. You can read more about them <a href="https://www.datacamp.com/community/tutorials/data-visualisation-tableau" target="_blank" rel="noopener">here</a>. For the purpose of this tutorial, we will be working with the <strong>Tableau Desktop</strong>(14 days trial available), since the free Tableau Public version doesn’t provide the SQL connectivity.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><p>Download the Tableau Desktop edition from the <a href="https://www.tableau.com/products/desktop" target="_blank" rel="noopener">official website</a>. Follow the installation instructions, and if the following screen appears on clicking the Tableau Icon, you are good to go.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554507/1.png" alt="img"></p>
+<h1 id="2-Relational-Databases-A-Quick-Overview-1"><a href="#2-Relational-Databases-A-Quick-Overview-1" class="headerlink" title="2. Relational Databases: A Quick Overview"></a>2. Relational Databases: A Quick Overview</h1><p>The <a href="https://medium.com/analytics-vidhya/programming-with-databases-in-python-using-sqlite-4cecbef51ab9" target="_blank" rel="noopener">Database management system</a> (DBMS) is the software that interacts with end users, applications, and the database itself to capture and analyze data. The DBMS used for Relational databases is called <strong>Relational Database Management Systems(RDBMS).</strong></p>
+<p>A Relational database consists of one or more <strong>tables</strong> of information. The <strong>rows in</strong> the table are called <strong>records</strong> and the <strong>columns</strong> in the table are called <strong>fields or</strong> <strong>attributes</strong>. A database that contains two or more related tables is called a <strong>relational</strong> database, i.e., interrelated data. The major RDBMS are Oracle, MySQL, Microsoft SQL Server, PostgreSQL, Microsoft Access and SQLite.</p>
+<p><strong><em>The main idea behind a relational database is that your data gets broken down into common themes, with one table dedicated to describing the records of each theme.\</em></strong></p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/2.png" alt="img">)<a href="https://www.guru99.com/relational-data-model-dbms.html" target="_blank" rel="noopener">Source</a></p>
+<h2 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h2><p>SQL or the <strong>structured query language</strong> is a language that has been designed for the purpose of RDBMS. It is a declarative language for manipulating data, to access the database. SQL is used to insert, modify, update and query data in the databases. SQL can be regarded as a <strong>language for database</strong>s.</p>
+<h1 id="3-Connecting-to-SQL-Server-1"><a href="#3-Connecting-to-SQL-Server-1" class="headerlink" title="3. Connecting to SQL Server"></a>3. Connecting to SQL Server</h1><p>There is a hidden value in our Microsoft SQL Server data which lies buried under the standard reports and complex BI tools. <strong>Tableau delivers insight by equipping anyone to do a sophisticated visual analysis of SQL Server data.</strong> We can connect Tableau to SQL Server live for tuned, platform-specific queries, or directly bring data into Tableau’s analytical engine to take the burden off the database.</p>
+<p>Let us walk through an example depicting how to connect SQL server database to Tableau Desktop and then use it to create visualizations.</p>
+<h2 id="Sample-Database"><a href="#Sample-Database" class="headerlink" title="Sample Database"></a>Sample Database</h2><p>For the demonstration purpose, we will be using a publicly accessible SQL Server instance on AWS and a database which has been created based on the Tableau’s built-in <strong>Superstore</strong> dataset. It contains information about products, sales, profits, etc. Our aim as Data Analysts is to analyze the data and find critical areas of improvement within this fictitious company. This SQL server instance has been hosted by <a href="https://www.blogger.com/profile/03698843288892226027" target="_blank" rel="noopener">Ken Flerlage</a>, who regularly writes blogs for Tableau users.</p>
+<h2 id="Accessing-the-sample-database"><a href="#Accessing-the-sample-database" class="headerlink" title="Accessing the sample database"></a>Accessing the sample database</h2><ul>
+<li>Install the <a href="https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017" target="_blank" rel="noopener">SQL Server Management Studio</a>(SSMS). SSMS is a free and integrated environment for managing any SQL infrastructure. With SSMS one can deploy, monitor, and upgrade the data-tier components used by your applications, as well as build queries and scripts.</li>
+<li>Once downloaded and installed on to your system, you will see the following screen asking for specific credentials.</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/3.png" alt="img"></p>
+<p>Enter the following credentials:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Server Name: ec2-52-14-205-70.us-east-2.compute.amazonaws.com</span><br><span class="line"></span><br><span class="line">Authentication: SQL Server Authentication</span><br><span class="line"></span><br><span class="line">Login: SQL</span><br><span class="line"></span><br><span class="line">Password: SQL</span><br></pre></td></tr></table></figure>
+
+<p>You will now be granted a ‘Read Only’ access to the ‘<strong>SuperStoreUS</strong>’ database.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/4.gif" alt="img"></p>
+<p>For our example, <strong>ec2–52–14–205–70.us-east-2.compute.amazonaws.com</strong> is the name of the instance, <strong>SuperstoreUS</strong> and <strong>Test</strong> are the databases, and <strong>Orders</strong>, <strong>Customer</strong>s etc. are the tables within the <strong>SuperstoreUS database</strong>. Thus there can be multiple instances, and each instance can further contain numerous databases which can also have multiple tables.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/5.gif" alt="img"></p>
+<h1 id="4-Importing-SQL-data-into-Tableau-1"><a href="#4-Importing-SQL-data-into-Tableau-1" class="headerlink" title="4. Importing SQL data into Tableau"></a>4. Importing SQL data into Tableau</h1><h2 id="Setting-up-the-connection"><a href="#Setting-up-the-connection" class="headerlink" title="Setting up the connection"></a>Setting up the connection</h2><p>Open the Tableau Desktop and navigate to the start screen. Here the connect pane offers a lot of choices in terms of the data sources that can be connected to Tableau. We will connect to the <a href="https://en.wikipedia.org/wiki/Microsoft_SQL_Server" target="_blank" rel="noopener">Microsoft SQL Server</a>.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/6.png" alt="img"></p>
+<p>On Clicking the <code>Microsoft SQL Server</code> option, a new screen will open up which will ask for the Server to which we want Tableau to be connected too. Enter the details, and a familiar looking Tableau workspace opens up.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/7.gif" alt="img"></p>
+<p>Now, We can select from the list of available databases. Here we will select the SuperStore US database.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/8.gif" alt="img"></p>
+<p>You can now click and drag the desired table on to the view. Let’s drag in the <code>orders</code> table for further analysis. The preview pane gives us options of <code>Update Now</code>, which loads the preview manually or <code>Automatically Update</code>.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/9.gif" alt="img"></p>
+<h2 id="Getting-data-from-multiple-Tables-from-the-same-database"><a href="#Getting-data-from-multiple-Tables-from-the-same-database" class="headerlink" title="Getting data from multiple Tables from the same database"></a>Getting data from multiple Tables from the same database</h2><p>It is also possible to get in data from more than one Table in Tableau, through <strong>joins</strong>. Joining is combining the tables which are related by some common fields. For instance, it is possible to join <code>Orders</code> and the <code>Returns</code> table since they have a common column called <code>Order-ID</code>. Join simply creates a virtual table by adding columns from different tables side by side.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/10.png" alt="img">)<a href="https://onlinehelp.tableau.com/current/pro/desktop/en-us/datasource_plan.htm" target="_blank" rel="noopener">Join</a></p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/11.png" alt="img"></p>
+<p>In case, the analysis requires working with data from multiple sources. It is called <strong>Data Blending</strong>. You can read more about blending <a href="https://www.datacamp.com/community/tutorials/spreadsheets-tableau#data-blending" target="_blank" rel="noopener">here</a>.</p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/12.png" alt="img">)<a href="https://onlinehelp.tableau.com/current/pro/desktop/en-us/datasource_plan.htm" target="_blank" rel="noopener">Blend</a></p>
+<h1 id="5-Custom-SQL-1"><a href="#5-Custom-SQL-1" class="headerlink" title="5. Custom SQL"></a>5. Custom SQL</h1><p>Custom SQL gives the users control over the data that they want to bring into Tableau. This feature is not particularly about writing SQL queries but mainly about defining the data set. The process of defining a new custom SQL is as follows:</p>
+<ul>
+<li>Click on the custom SQL Tab on the left side of the screen, and a dialogue box opens up.</li>
+<li>Write the custom query that you want to execute in the dialogue box</li>
+<li>Update the results and what we get are only orders where quantities are greater than 4.</li>
+<li>Now move over to your worksheet and start exploring with Tableau.</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554506/13.gif" alt="img"></p>
+<p>This was a simple query since the data is limited. However, you can even execute complex queries too.</p>
+<h1 id="6-Data-Source-Filters-1"><a href="#6-Data-Source-Filters-1" class="headerlink" title="6. Data Source Filters"></a>6. Data Source Filters</h1><p>Just like Custom SQL, it is also possible to get some specific data into Tableau with <strong>Data Source filter</strong>s. Let’s see how to work with these filters.</p>
+<ul>
+<li>Drag the <code>Orders</code> tab on to the view. The orders table contains a field called <code>Region</code> signifying four regions in the U.S where the products are sold.</li>
+<li>Let’s say we want the orders only pertaining to <strong>West</strong> and the <strong>Central</strong> Region. Go to filters in the upper right-hand corner and click <code>Add</code>, and <code>Add again</code></li>
+<li>A list of fields gets populated. Select the <code>Region</code> field or any field of your choice.</li>
+<li>Now, what we see is a list of probable values for the field we selected. Select the desired ones and click OK.</li>
+<li>This returns the filtered data from the connection level.</li>
+</ul>
+<p><em>Keep in mind that both</em> <strong><em>custom SQL Query\</em></strong> <em>and the</em> <strong><em>Data Source Filter\</em></strong> <em>methods should be used only for specific use cases. The best option would be first to connect the data to Tableau and then use the filters within Tableau.</em></p>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554508/14.gif" alt="img"></p>
+<h1 id="7-Analysis-in-Tableau-1"><a href="#7-Analysis-in-Tableau-1" class="headerlink" title="7. Analysis in Tableau"></a>7. Analysis in Tableau</h1><p>After getting the data from the SQL server into Tableau, it can be easily analyzed in Tableau. Let’s analyze the data that we have in our worksheet in multiple ways:</p>
+<ul>
+<li>We could analyze the State-wise sales</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/15.png" alt="img"></p>
+<ul>
+<li>Or we could find those States where Sales figures are more than 5000.</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/16.png" alt="img"></p>
+<ul>
+<li>Another point of analysis could be Sales vs. the Profit scenario.</li>
+</ul>
+<p><img src="https://res.cloudinary.com/dchysltjf/image/upload/f_auto,q_auto:best/v1551554505/17.png" alt="img"></p>
+<p>Thus, the analysis in Tableau after getting the data from SQL Server is pretty straightforward just like any other standard analysis.</p>
+<h1 id="8-Conclusion-1"><a href="#8-Conclusion-1" class="headerlink" title="8. Conclusion"></a>8. Conclusion</h1><p>Using SQL and Tableau together takes the data analysis to the next level. We can easily connect the SQL Server to Tableau and extract the data directly into it. Tableau enables the users to toggle connections with a click to apply in-memory queries to a larger dataset. SQL is a pretty useful tool and when leveraged with the expertise of Tableau can help to make the analysis more powerful and insightful.</p>
+<p>If you would like to learn more in SQL, take DataCamp’s <a href="https://www.datacamp.com/courses/intro-to-sql-for-data-science" target="_blank" rel="noopener">Intro to SQL for Data Science</a> course.</p>
+<hr>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a href="https://onlinehelp.tableau.com/current/pro/desktop/en-us/examples_sqlserver.htm" target="_blank" rel="noopener">Microsoft SQL Server — Tableau</a></li>
+<li><a href="https://medium.com/analytics-vidhya/programming-with-databases-in-python-using-sqlite-4cecbef51ab9" target="_blank" rel="noopener">Programming with Databases in Python using SQLite</a></li>
+<li><a href="https://www.datacamp.com/community/tutorials/sql-tableau" target="_blank" rel="noopener">https://www.datacamp.com/community/tutorials/sql-tableau</a></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/09/How to Connect to Database in Javascript/" class="archive-article-date">
-  	<time datetime="2020-05-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/09/How to Connect to Database in Javascript/">How to Connect to Database in JavaScript</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Database, Javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL, Relational Database, Tableau</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/28/2020-05-28-SQL-with-Tableau/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/08/Ingestion and processing of real-time automotive IoT data  /" class="archive-article-date">
-  	<time datetime="2020-05-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Self-Summary about Golang Project</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/08/Ingestion and processing of real-time automotive IoT data  /">Ingestion and Processing of Real-Time Automotive IoT Data</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-Time Data, IoT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Objective"><span class="toc-number">1.</span> <span class="toc-text">Objective</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pre-requisites"><span class="toc-number">2.</span> <span class="toc-text">Pre-requisites</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Table-of-Contents"><span class="toc-number">3.</span> <span class="toc-text">Table of Contents</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Tableau"><span class="toc-number">3.0.1.</span> <span class="toc-text">1. Tableau</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Relational-Databases-A-Quick-Overview"><span class="toc-number">3.0.2.</span> <span class="toc-text">2. Relational Databases: A Quick Overview</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Connecting-to-SQL-Server"><span class="toc-number">3.0.3.</span> <span class="toc-text">3. Connecting to SQL Server</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Importing-SQL-data-into-Tableau"><span class="toc-number">3.0.4.</span> <span class="toc-text">4. Importing SQL data into Tableau</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-Custom-SQL"><span class="toc-number">3.0.5.</span> <span class="toc-text">5. Custom SQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-Data-Source-Filters"><span class="toc-number">3.0.6.</span> <span class="toc-text">6. Data Source Filters</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Analysis-in-Tableau"><span class="toc-number">3.0.7.</span> <span class="toc-text">7. Analysis in Tableau</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Conclusion"><span class="toc-number">3.0.8.</span> <span class="toc-text">8. Conclusion</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Tableau-1"><span class="toc-number"></span> <span class="toc-text">1. Tableau</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-number">1.</span> <span class="toc-text">Installation</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-Relational-Databases-A-Quick-Overview-1"><span class="toc-number"></span> <span class="toc-text">2. Relational Databases: A Quick Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#SQL"><span class="toc-number">1.</span> <span class="toc-text">SQL</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-Connecting-to-SQL-Server-1"><span class="toc-number"></span> <span class="toc-text">3. Connecting to SQL Server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sample-Database"><span class="toc-number">1.</span> <span class="toc-text">Sample Database</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Accessing-the-sample-database"><span class="toc-number">2.</span> <span class="toc-text">Accessing the sample database</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Importing-SQL-data-into-Tableau-1"><span class="toc-number"></span> <span class="toc-text">4. Importing SQL data into Tableau</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Setting-up-the-connection"><span class="toc-number">1.</span> <span class="toc-text">Setting up the connection</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Getting-data-from-multiple-Tables-from-the-same-database"><span class="toc-number">2.</span> <span class="toc-text">Getting data from multiple Tables from the same database</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-Custom-SQL-1"><span class="toc-number"></span> <span class="toc-text">5. Custom SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-Data-Source-Filters-1"><span class="toc-number"></span> <span class="toc-text">6. Data Source Filters</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-Analysis-in-Tableau-1"><span class="toc-number"></span> <span class="toc-text">7. Analysis in Tableau</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Conclusion-1"><span class="toc-number"></span> <span class="toc-text">8. Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">0.1.</span> <span class="toc-text">References</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/07/Problem-solving While Learning/" class="archive-article-date">
-  	<time datetime="2020-05-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/07/Problem-solving While Learning/">Problem-solving While Learning</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Problem-solving</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/" class="archive-article-date">
-  	<time datetime="2020-05-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/">How to User the JavaScript Fetch API to Get Data</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript, Fetch, API, Data</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/05/An Introduction to GeoJSON/" class="archive-article-date">
-  	<time datetime="2020-05-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/05/An Introduction to GeoJSON/">An Introduction to GeoJson</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GeoJson</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/04/SQL or NoSQL?/" class="archive-article-date">
-  	<time datetime="2020-05-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/04/SQL or NoSQL?/">SQL or NoSQL?</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL, NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/03/巴音布鲁克没有海/" class="archive-article-date">
-  	<time datetime="2020-05-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/03/巴音布鲁克没有海/">巴音布鲁克没有海</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/Browser Object Model - BOM in Javascript/" class="archive-article-date">
-  	<time datetime="2020-05-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/Browser Object Model - BOM in Javascript/">Broser Object Model</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BOM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/" class="archive-article-date">
-  	<time datetime="2020-05-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/05/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2020/05/">1</a><a class="page-number" href="/archives/2020/05/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -518,8 +458,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
