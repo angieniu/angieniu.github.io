@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 46</a>
+<a>Total Number of Articles: 47</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,91 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-CSS Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/CSS Notes/">CSS Notes</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/20/CSS Notes/" class="archive-article-date">
+  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Some notes about CSS:</p>
+<h1 id="Normalizing-Browswer-Defaults"><a href="#Normalizing-Browswer-Defaults" class="headerlink" title="Normalizing Browswer Defaults"></a>Normalizing Browswer Defaults</h1><ol>
+<li><p>It’s good practice to include normalize.css as the first stylesheet you link to from your page. The link to your stylesheet comes after, so that your rules will build upon those defined in normalize.css.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- normalize.css --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- our own stylesheet --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/styles.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Files that end with <code>.min.css</code> have been “minified,” which just means that all the spaces have been taken out to make the file smaller and faster to download. When loading a library file from an online location like this, always use the <code>.min.css</code> version if it’s available.</p>
+<p>This works well in every case except when you are offline, which can happen when you are doing development. If you need access to normalize.css while offline, <a href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" target="_blank" rel="noopener">download it</a> to your project folder and link to it using a relative path, just like the link to your own stylesheet. By convention, we typically put files like this into a <code>lib/</code> folder, to keep them separate from our own files that we actively change.</p>
+</li>
+</ol>
+<ol start="2">
+<li>For large CSS files, professionals will typically minify them before deploying them to a production server, which involves removing all the whitespace to make the file smaller.</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/20/CSS Notes/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Thoughts" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -685,7 +770,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,7 +778,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -709,19 +798,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,15 +822,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,7 +834,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -777,19 +866,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -817,6 +906,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
@@ -834,10 +927,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
             
             <div class="clearfix"></div>
