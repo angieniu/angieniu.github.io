@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 47</a>
+<a>Total Number of Articles: 48</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,157 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-RESTful, Sessions, Cookies" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/11/RESTful, Sessions, Cookies/">RESTful, Sessions, Cookies</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/11/RESTful, Sessions, Cookies/" class="archive-article-date">
+  	<time datetime="2020-05-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Notes on RESTful API (stateless) VS Session:   (<strong>^▽^</strong>)</p>
+<h2 id="Stateless-applications"><a href="#Stateless-applications" class="headerlink" title="Stateless applications"></a>Stateless applications</h2><ul>
+<li>Web application servers are generally “stateless”:<ul>
+<li>Each HTTP request is independent; server can’t tell if 2 requests came from the same browser or user.</li>
+<li>Web server applications maintain no information in memory from request to request (only information on disk survives from one request to another).</li>
+</ul>
+</li>
+<li>Statelessness not always convenient for application developers: need to tie together a series of requests from the same user.</li>
+</ul>
+<h2 id="Browser-cookies"><a href="#Browser-cookies" class="headerlink" title="Browser cookies"></a>Browser cookies</h2><ul>
+<li>Cookie basics:<ul>
+<li>The first time a browser connects with a particular server, there are no cookies.</li>
+<li>When the server responds it includes a Set-Cookie: header that defines a cookie.</li>
+<li>Each cookie is just a name-value pair.</li>
+<li>In the future whenever the browser connects with the same server, it includes a Cookie: header containing the name and value, which the server can use to connect related requests.</li>
+</ul>
+</li>
+<li>What’s in a cookie?<ul>
+<li>Name and data.<ul>
+<li>Data size limited by browsers (typically &lt; 4 KB).</li>
+<li>A server can define multiple cookies with different names, but browsers limit the number of cookies per server (around 50).</li>
+</ul>
+</li>
+<li>Domain for this cookie: server, port (optional), URL prefix (optional). The cookie is only included in requests matching its domain.</li>
+<li>Expiration date: browser can delete old cookies.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Sessions"><a href="#Sessions" class="headerlink" title="Sessions"></a>Sessions</h2><ul>
+<li>Cookies are used by the server to implement</li>
+</ul>
+<p>  sessions</p>
+<p>  :</p>
+<ul>
+<li>A pool of data related to an active connection (one browser instance).</li>
+</ul>
+<ul>
+<li>Typically the cookie for an application contains an identifier for a session.</li>
+</ul>
+<ul>
+<li><p>Web frameworks like Rails do most of the work of managing sessions and cookies:</p>
+<ul>
+<li>Rails provides</li>
+</ul>
+</li>
+</ul>
+<pre><code>session
+
+, a hash-like object in which you can store anything you like
+
+- Data will be available in all future requests from the same browser.</code></pre><ul>
+<li><p>Rails automatically checks for a session cookie at the start of each request:</p>
+<ul>
+<li>Cookie exists? use it to find session data</li>
+<li>No cookie? Create new session, new cookie</li>
+</ul>
+</li>
+<li><p>End of each request: save session data where it can be found by future requests.</p>
+</li>
+</ul>
+<ul>
+<li><p>Managing session state:</p>
+<ul>
+<li>Approach #1: just keep state in main memory</li>
+<li>Approach #2: store session state in files on disk</li>
+<li>Approach #3: store session state in a database</li>
+<li>Most frameworks allow you to control session storage:<ul>
+<li>Provide an object that saves and restores session data.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Server must eventually delete stale session data.</p>
+</li>
+</ul>
+<ul>
+<li>Sessions have numerous security issues, which we will discuss later.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RESTful, session, cookies</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/11/RESTful, Sessions, Cookies/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Go Language" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -941,101 +1092,6 @@
 
 
   
-    <article id="post-Spring Boot &amp; Autoconfigurations In-Depth" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/" class="archive-article-date">
-  	<time datetime="2020-05-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This guide would provide an in-depth understanding of what Spring Boot is, how its AutoConfigurations work and what the difference with the Spring Framework is.</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It looks like everyone and their grandma are using <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">Spring Boot</a> to build projects. But very few can answer the question: “What is Spring Boot?”</p>
-<p><strong>The short answer</strong>:</p>
-<p>Spring Boot’s website offers the following answer: “Spring Boot takes an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss.”</p>
-<p>Wow, that doesn’t help at all, does it?</p>
-<p><strong>Luckily, there’s also a long answer</strong>:</p>
-<p>The remainder of this article.</p>
-<h3 id="A-quick-caveat"><a href="#A-quick-caveat" class="headerlink" title="A quick caveat"></a>A quick caveat</h3><p>I can give you a 99,99% guarantee, that you’d rather want to read the <a href="https://www.marcobehler.com/guides/spring-framework" target="_blank" rel="noopener">What is Spring Framework?</a> article first, if…:</p>
-<ul>
-<li>…you are completely new to Spring Boot (or Java).</li>
-<li>…you think “Spring Framework, Spring Web MVC and Spring Boot are all the same”.</li>
-<li>…you think “Cut all this other crap, I just want to learn about Spring Boot!”.</li>
-<li>(Especially if you think “cut all this other crap”).</li>
-</ul>
-<p>Take the time to finish the previous article first, then come back here.</p>
-<p>Furthermore, if you are looking for some simple copy &amp; paste Spring Boot REST/microservice tutorials, I would advise you to go to <a href="https://spring.io/guides" target="_blank" rel="noopener">https://spring.io/guides</a>, instead.</p>
-<h3 id="This-article’s-goals"><a href="#This-article’s-goals" class="headerlink" title="This article’s goals"></a>This article’s goals</h3><ul>
-<li>To give you an in-depth understanding of Spring Boot and its AutoConfigurations.</li>
-<li>To show you how Spring Boot <em>automagically</em> boots up a Tomcat server whenever you run a main() method.</li>
-<li>To show you how Spring Boot’s properties magic works. You specify a couple of properties and suddenly have working database access.</li>
-</ul>
-<p>Let’s start.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1156,15 +1212,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1172,7 +1224,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1184,11 +1236,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1196,7 +1244,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1204,7 +1252,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1212,11 +1260,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1240,11 +1296,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1252,19 +1308,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
