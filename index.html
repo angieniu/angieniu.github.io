@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 48</a>
+<a>Total Number of Articles: 49</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,201 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Function vs Class Defined Component" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/31/Function vs Class Defined Component/">REACT Notes</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/31/Function vs Class Defined Component/" class="archive-article-date">
+  	<time datetime="2020-05-31T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Function-vs-Class-Defined-Component"><a href="#Function-vs-Class-Defined-Component" class="headerlink" title="Function vs Class Defined Component"></a>Function vs Class Defined Component</h3><p>function defined component:</p>
+<ol>
+<li>no state (state是component的私有属性)    </li>
+<li>no 生命周期函数   </li>
+<li>stateless componenet VS state component</li>
+<li>选择哪个看是否需要state</li>
+</ol>
+<h3 id="How-to-create-virtual-dom-in-REACT"><a href="#How-to-create-virtual-dom-in-REACT" class="headerlink" title="How to create virtual dom in REACT?"></a>How to create virtual dom in REACT?</h3><ol>
+<li>There is one method createElement.</li>
+</ol>
+<p>const ele1 = React.createElement(‘h1’, {className: ‘box’}, ‘hello react!’)</p>
+<p>ele1 is element, js 对象。</p>
+<p>渲染：ReactDOM.render(ele1, document.getElementById(‘app’)); // ele1 放虚拟元素，虚拟dom真实dom关联。</p>
+<p>这种方法: nested elements 繁琐，所以通过jsx实现create virtual dom.</p>
+<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX  {}"></a>JSX  {}</h3><p>const ele1 = </p><h1 classname="box">Hello React! </h1><p></p>
+<p>ReactDOM.render(ele1, document.getElementById(‘app’));</p>
+<p>const res = arr.map((item, index) =&gt; {</p>
+<p>return </p><p key="{idex}">{item}</p>})<p></p>
+<p>ReactDOM.render(<div>{res} </div>,</p>
+<p>document.getElementById(‘app’));</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div&gt; 根元素</span><br></pre></td></tr></table></figure>
+
+<p>jsx on render{res} yes</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">const a = 10；</span><br><span class="line"></span><br><span class="line">const str = &quot;this is a str&quot;;</span><br><span class="line"></span><br><span class="line">const obj = &#123;&quot;a&quot;: 1, &quot;b&quot;: 2&#125;;</span><br><span class="line">const res = &lt;div&gt;</span><br><span class="line"></span><br><span class="line">hello</span><br><span class="line">&lt;hr /&gt;</span><br><span class="line">a</span><br><span class="line">        &lt;hr /&gt;</span><br><span class="line">        &#123;a&#125;</span><br><span class="line">        &lt;hr /&gt;</span><br><span class="line">        &#123;str&#125;</span><br><span class="line">        &lt;hr /&gt;</span><br><span class="line">        &#123;arr&#125;</span><br><span class="line">        &lt;hr /&gt;</span><br><span class="line">        &#123;JSON.stringify(obj)&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">      </span><br><span class="line">const res = &lt;div&gt; hello &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">const arr = [&lt;p key=&quot;1&quot;&gt; first&lt;/p&gt;, &lt;p key=&quot;2&quot;&gt; second&lt;/p&gt;, &lt;p key=&quot;3&quot;&gt; third&lt;/p&gt;]</span><br><span class="line"></span><br><span class="line">ReactDOM.render(res, document.getElementById(&apos;app&apos;)); //res而不是&#123;res&#125;，因为&#123;&#125;是取值的意思，取值&#123;&#125;用在html里，这里是ReactDOM.render()，所以res应该是html结构&lt;div&gt;&lt;/div&gt;的东西。</span><br><span class="line"></span><br><span class="line">const arr =[&apos;apple&apos;, &apos;pear&apos;, &apos;berry&apos;];</span><br><span class="line">// method1: forEach</span><br><span class="line">const newArr =[];</span><br><span class="line">arr.forEach((item, index) =&gt; &#123;</span><br><span class="line">  console.log(item)；</span><br><span class="line">  const temp = &lt;p key=&#123;index&#125;&gt; &#123;item&#125; &lt;/p&gt;</span><br><span class="line">        newArr.push(temp);</span><br><span class="line">&#125;);</span><br><span class="line">const res = &lt;div&gt; &#123;newArr&#125; &lt;/div&gt;</span><br><span class="line">      ReactDOM.render(res, documenet.getElementById(&apos;app&apos;));</span><br><span class="line">//3个平行的标签渲染需要div标签</span><br><span class="line">ReactDOM.render(&lt;h1&gt; hello react&lt;/h1&gt;, document.getElementById(&apos;app&apos;));</span><br></pre></td></tr></table></figure>
+
+<h3 id="React-Component"><a href="#React-Component" class="headerlink" title="React Component"></a>React Component</h3><p>Two ways to define react componentUse JavaScript function<br><strong>// use JavaScript function</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function Hello(props) &#123;  console.log(props);  return &lt;p&gt;hello react &#123;props.person.name&#125;&lt;/p&gt;&#125;</span><br><span class="line">const person = &#123;  name : &apos;Joe&apos;,  age : 10&#125;</span><br><span class="line">ReactDOM.render(  &lt;Hello person=&#123;person&#125;/&gt;,  //实例化component，用tag形式</span><br><span class="line">                document.getElementById(&apos;root&apos;));</span><br></pre></td></tr></table></figure>
+
+<p><strong>// use ES6 class</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Hello extends React.Component &#123;  constructor() &#123;    super();  &#125;</span><br><span class="line">  render() &#123;    return &lt;h1&gt;hello react, &#123;this.props.name&#125;&lt;/h1&gt;  &#125;&#125; //和变量定义有关系，但和html结构没什么关系，因为即使在&lt;h1&gt; &lt;/h1&gt;这种html里面，也可以&#123;this.props.person.name&#125;</span><br><span class="line">ReactDOM.render(  &lt;Hello name=&#123;&apos;Lucy&apos;&#125;&gt;&lt;/Hello&gt;,  document.getElementById(&apos;root&apos;));</span><br></pre></td></tr></table></figure>
+
+<p>eg2:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Hello extends React.Component &#123;</span><br><span class="line">// (optional) </span><br><span class="line">  constructor(props)&#123; //通过props拿到数据</span><br><span class="line">super(props);</span><br><span class="line">console.log(props) // props显示key value pair.</span><br><span class="line">&#125;</span><br><span class="line">render()&#123; // return virtual element through render()</span><br><span class="line">return &lt;div&gt; </span><br><span class="line">&lt;h1&gt;hello react! &lt;/h1&gt; // 组件由虚拟元素组成</span><br><span class="line">&lt;h2&gt; hello &#123;this.props.person.name&#125;&lt;/h2&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">const person = &#123;</span><br><span class="line">  name: &quot;Joe&quot;,</span><br><span class="line">  age: 10</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">&lt;Hello data=&#123;10&#125;, person=&#123;person&#125; /&gt;, //组件需要进行外部数据传递，则通过props接收数据, key value pair. key: person. value： &#123;person&#125;是传入的数据。</span><br><span class="line">                //用&#123;10&#125;因为是传参,key value pair. </span><br><span class="line">document.getElementById(&apos;app&apos;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">// 组件外部数据</span><br><span class="line">// 1. 传入: data = &#123;person&#125;</span><br><span class="line">// &lt;Hello key = value /&gt; eg: data = &#123;person&#125;</span><br><span class="line">// 2. 使用 在组件函数中 通过props获取数据。</span><br></pre></td></tr></table></figure>
+
+<h3 id><a href="#" class="headerlink" title="{}"></a>{}</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">return (</span><br><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;h1&gt;Parent Component&lt;/h1&gt;</span><br><span class="line">	&lt;p&gt;My value is &#123;this.state.res&#125;&lt;/p&gt;</span><br><span class="line">	&lt;h1&gt;10&lt;/h1&gt; //如果把10写在标签之间插入content里面，&#123;&#125;与否效果一样。</span><br><span class="line">	&lt;hr /&gt;</span><br><span class="line">  &lt;Child data = &#123;tihs.state.res&#125; newdata = &#123;10&#125;  changeValueFn=&#123;this.getValue&#125; /&gt; // &#123;&#125; 属性差值则必须有&#123;&#125;,key value pair， data是Child标签的属性。</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&#123;&#123;</span><br><span class="line">&quot;width&quot;: &quot;200px&quot;,</span><br><span class="line">&quot;backgroundColor&quot;: `rbg($&#123;this.state.r&#125;, $&#123;this.state.g&#125;, $&#123;this.state.b&#125;)`</span><br><span class="line">&#125;&#125;&gt;</span><br><span class="line">  &lt;p style=&#123;&#123;</span><br><span class="line">    &apos;fontSize&apos;: this.state.a</span><br><span class="line">  &#125;&#125;&gt; hello react &lt;/p&gt;</span><br><span class="line">//外&#123;&#125; 插值， 内&#123;&#125; 定义的object，把object引用进来。  &#123;color: red, font-size: 666&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="This"><a href="#This" class="headerlink" title="This"></a>This</h3><p>this：访问类Class当中的东西，私有属性，变量、函数，就用this。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">var t = 10; //全局变量，在parent class里面可以直接用。 window.t 可以不写window，在render里面直接写t，但是一般不用全局变量。所以一般都用this.</span><br><span class="line">class Parent extends React.Component &#123;</span><br><span class="line">	constructor()&#123;</span><br><span class="line">		super();</span><br><span class="line">		this.state =&#123;</span><br><span class="line">		res: 10</span><br><span class="line">		&#125;</span><br><span class="line">		this.a = 10; //this //data type通过赋值决定。 //但这样子类通过this.props不能继承a,除非用this.a</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	var a = 10; // var已经不能这么声明了，正确写法 a = 10; 也就是this.a = 10 (缩略成了 a = 10,不用再constructor里面写this.a = 10); </span><br><span class="line">	// class 里面定义方法。</span><br><span class="line">	</span><br><span class="line">	render()&#123;</span><br><span class="line">		return (</span><br><span class="line">		&lt;div&gt;</span><br><span class="line">			&lt;h1&gt;Parent Component&lt;/h1&gt;</span><br><span class="line">			&lt;p&gt;My value is &#123;this.state.res&#125;&lt;/p&gt; </span><br><span class="line">			&lt;hr /&gt;</span><br><span class="line">			&lt;Child data=&#123;this.state.res&#125;</span><br><span class="line">				changeValueFn=&#123;this.getValue&#125;</span><br><span class="line">			/&gt;</span><br><span class="line">		&lt;/div&gt;</span><br><span class="line">		)</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	getValue = (item) =&gt; &#123;</span><br><span class="line">	console.log(item)</span><br><span class="line">	this.setState(&#123;</span><br><span class="line">		res: item</span><br><span class="line">	&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Class Child extend React.Component &#123;</span><br><span class="line">render()&#123;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="setState"><a href="#setState" class="headerlink" title="setState:"></a>setState:</h3><p>setState(): 异步操作, batch, queue.</p>
+<p>[Method 1] setState(object)   eg: this.setState({a: this.state.a + 10})</p>
+<p>[Method 2] setState(function)  eg: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.setState((preState) =&gt; &#123;return &#123;a: preState.a + 10&#125;)&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>could use pre</p>
+<p>回调函数, 执行完操作之后，调用函数产生。</p>
+<p>如果对状态值实时性要求高，建议放到回调函数里面写。 </p>
+<p>注：当message不涉及preState.a,可以把a:preState.a + 10 和message: preState.message + “Hello”放到一起。如果两个之间有影响，分开写不同的setState，否则可以合起来。某一个属性依赖于前一个属性，实时更新的话，最好分开。 </p>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">change2()&#123;</span><br><span class="line">	this.setState((preState) =&gt; &#123;</span><br><span class="line">	return &#123;</span><br><span class="line">	a: preState.a + 10,</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;, () =&gt; &#123;console.log(this.state.a)&#125;//第二个回调函数一定是第一个回调函数执行完以后, 这个时候a是实时更新的。</span><br><span class="line">&#125;</span><br><span class="line">this.setState(</span><br><span class="line">(preState) = &gt; &#123;</span><br><span class="line">return &#123;</span><br><span class="line">message: `current a = $&#123;preState.a&#125;`,</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line">console.log(this.state);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Event-Handler"><a href="#Event-Handler" class="headerlink" title="Event Handler"></a>Event Handler</h3><h4 id="Method-1-onClick-箭头函数more-used"><a href="#Method-1-onClick-箭头函数more-used" class="headerlink" title="Method 1. onClick, 箭头函数more used."></a>Method 1. onClick, 箭头函数more used.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick = &#123;</span><br><span class="line">() =&gt; &#123;this.setState(&#123;a: this.state.a + 10&#125;)</span><br><span class="line">      &#125;</span><br><span class="line">&#125;&gt; </span><br><span class="line"> //回调函数中定义函数体，用箭头函数包一下的原因：避免deadloop, and not click and update.</span><br></pre></td></tr></table></figure>
+
+<h4 id="Method-2-定义函数"><a href="#Method-2-定义函数" class="headerlink" title="Method 2. 定义函数"></a>Method 2. 定义函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;this.changeHandler&#125;&gt;add me + 10 &lt;/button&gt;</span><br><span class="line">changeHandler()&#123;</span><br><span class="line">console.log(&apos;clicked! -&gt;&apos;, this); // 当click时this指向了window</span><br><span class="line">this.setState(&#123; //setState在React.Component. 父App1</span><br><span class="line">a: this.state.a + 10</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//所以需要函数指针绑定 this永远绑定到component app1 instance.</span><br><span class="line">constructor()&#123;</span><br><span class="line">  this.changeHandler = this.changeHandler.bind(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="React特点"><a href="#React特点" class="headerlink" title="React特点"></a>React特点</h3><p>Component   </p>
+<p>   /      \</p>
+<p>State  render</p>
+<p>Data   view</p>
+<p>when button =&gt; change data (state.a -&gt; setState -&gt; render), change view. 所以view变化的本质是data的变化。不用管view和data的关联，React自己handle了（调用render(),由 component生命周期决定，component自动更新）。React设计模型：MVVM, model, view, view, model (数据的变化会导致视图变化，视图变化本质是由数据变化带来的。)</p>
+<p>eg: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&#123;&#123;</span><br><span class="line">    &apos;fontSize&apos;: this.state.a</span><br><span class="line">  &#125;&#125;&gt; hello react &lt;/p&gt;</span><br><span class="line">? &#123;&#123;json object&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Controlled-Components"><a href="#Controlled-Components" class="headerlink" title="Controlled Components"></a>Controlled Components</h3><p>value + onChange数据双向绑定two way binding，数据实时相等：</p>
+<p>cod: App3中定义三个状态state，把状态和input关联，value 是view是state，onChange是来改变状态的, 叠加使用，状态数据修改，onChange调用this.setState的变化会导致rerender = &gt; r, g, b又改变了。</p>
+<p>input, radio, checkbox,range, slider, toggle button.</p>
+<p>form不一定</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">class App2 extends React.Component&#123;</span><br><span class="line">  constructor()&#123;</span><br><span class="line">    super();</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      str: &apos;hello&apos;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line">  return(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;&#123;this.state.str&#125;&lt;/h1&gt; //? 不能只有str, 因为</span><br><span class="line">      &lt;input type = &apos;text&apos;</span><br><span class="line">        value =&#123;this.state.str&#125; //初始值设置</span><br><span class="line">        onChange=&#123;</span><br><span class="line">          (e) =&gt; &#123;</span><br><span class="line">            console.log(e.target.value)</span><br><span class="line">            this.setState(&#123;</span><br><span class="line">              str: e.target.value //? setState里面str即可</span><br><span class="line">            &#125;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Uncontrolled-Component"><a href="#Uncontrolled-Component" class="headerlink" title="Uncontrolled Component"></a>Uncontrolled Component</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=&quot;text/babel&quot;&gt; //必须有babel</span><br><span class="line">  // Uncontrolled Component</span><br><span class="line">  // 2 method:</span><br><span class="line">  // method1 (not recommended): using ref + this.refs</span><br><span class="line">  //      step 1: define -&gt; ref</span><br><span class="line">  // 			step2: use -&gt; this.refs</span><br><span class="line"></span><br><span class="line">	class App extends React.Component &#123;</span><br><span class="line">		render()&#123;</span><br><span class="line">			return(</span><br><span class="line">				&lt;div&gt; //必须有div root，当然如果只有一个元素不用，不过一般有很多个。</span><br><span class="line">					&lt;h1&gt;Hello React&lt;/h1&gt;</span><br><span class="line">          &lt;hr /&gt;</span><br><span class="line">          &lt;input type=&quot;text&quot; ref=&quot;myRef&quot; /&gt;</span><br><span class="line">          &lt;hr /&gt;</span><br><span class="line">          &lt;button onClick=&#123; () =&gt; &#123;</span><br><span class="line">                console.log(this.refs)</span><br><span class="line">            console.log(this.refs.myRef.value)</span><br><span class="line">              &#125;&#125;&gt;click me&lt;/button&gt;</span><br><span class="line">				&lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">  ReactDOM.render(&lt;App /&gt;, document.getElementById(&apos;box&apos;)) </span><br><span class="line">          // virtual component, actual component</span><br><span class="line">&lt;/script&gt;  </span><br><span class="line"></span><br><span class="line">    // method 2: recommended: using React.createRef() + this.*.current // * 是我们叫ref的name。</span><br><span class="line">  // step1: define </span><br><span class="line">// step2: use -&gt; this.*.current</span><br><span class="line">  &lt;script type=&quot;text/babel&quot;&gt; //必须有babel</span><br><span class="line">	class App extends React.Component &#123;</span><br><span class="line">    constructor()&#123;</span><br><span class="line">      super();</span><br><span class="line">      //step1: define ref</span><br><span class="line">      this.myInput = React.createRef();</span><br><span class="line">    &#125;</span><br><span class="line">		render()&#123;</span><br><span class="line">			return(</span><br><span class="line">				&lt;div&gt; //必须有div</span><br><span class="line">					&lt;h1 ref=&quot;myRef2&quot;&gt;Hello React&lt;/h1&gt;</span><br><span class="line">          &lt;hr /&gt;</span><br><span class="line">          &lt;input type=&quot;text&quot; ref=&quot;myRef&quot; /&gt;</span><br><span class="line">          &lt;/hr&gt;</span><br><span class="line">          &lt;button onClick=&#123; () =&gt; &#123;</span><br><span class="line">                console.log(this.refs)</span><br><span class="line">            console.log(this.refs.myRef.value)</span><br><span class="line">              &#125;&#125;&gt;click me&lt;/button&gt;</span><br><span class="line">				&lt;hr /&gt;</span><br><span class="line">        &lt;hr /&gt;</span><br><span class="line">        &lt;input type=&quot;text&quot; ref=&#123;this.myInput&#125; /&gt;</span><br><span class="line">        &lt;button onClick=&#123;() =&gt; &#123;</span><br><span class="line">            console.log(this.myInput) // -&gt; object</span><br><span class="line">						console.log(this.myInput.current.value)</span><br><span class="line">          &#125;&#125;&gt;click me &lt;.button&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">  ReactDOM.render(&lt;App /&gt;, document.getElementById(&apos;box&apos;)) </span><br><span class="line">          // virtual component, actual component</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>as a bridge, 连接两个函数，且作为bridge在两者之间进行数据传递。</p>
+<p>使用回调函数，拿到值。定义回调函数，返回值。使用时可以接收定义的返回值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function fn(a, cb)&#123; //cb定义的时候，不需要（）</span><br><span class="line">a++;</span><br><span class="line">cb(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="组件开发"><a href="#组件开发" class="headerlink" title="组件开发"></a>组件开发</h3><p>Todo App -&gt; TodoBD -&gt; TodoItem      左边从上往下传data，右边从下往上传改的数据。</p>
+<p>如果用了Redux数据管理，就不会出现多层跨层传递。像database一样，去Redux取数据。</p>
+<p>React&lt;=2 层数据传递可以理解。&gt;2层则需要用Redux，否则是不好的设计。</p>
+<h3 id="Filter-amp-Map"><a href="#Filter-amp-Map" class="headerlink" title="Filter &amp; Map"></a>Filter &amp; Map</h3><p>filter用来删除，map主要进行元素遍历、改。</p>
+<h3 id="Hooks-（React）"><a href="#Hooks-（React）" class="headerlink" title="Hooks （React）"></a>Hooks （React）</h3><p>use context 全局数据 （redux数据管理）,所有child component都可以用。</p>
+<p><strong>React Hooks 的意思是，组件尽量写成纯函数，如果需要外部功能和副作用，就用钩子把外部代码”钩”进来。</strong> React Hooks 就是那些钩子。</p>
+<p>你需要什么功能，就使用什么钩子。React 默认提供了一些常用钩子，你也可以封装自己的钩子。</p>
+<p>所有的钩子都是为函数引入外部功能，所以 React 约定，钩子一律使用<code>use</code>前缀命名，便于识别。你要使用 xxx 功能，钩子就命名为 usexxx。</p>
+<p>下面介绍 React 默认提供的四个最常用的钩子。</p>
+<blockquote>
+<ul>
+<li>useState()</li>
+<li>useContext()</li>
+<li>useReducer()</li>
+<li>useEffect()</li>
+</ul>
+</blockquote>
+<p><a href="https://www.ruanyifeng.com/blog/2019/09/react-hooks.html" target="_blank" rel="noopener">https://www.ruanyifeng.com/blog/2019/09/react-hooks.html</a></p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>A. state:</p>
+<ol>
+<li>define: this.state = {}</li>
+<li>read: {this.state.x}</li>
+<li>update: 1) setState({}) 2) setState(() =&gt; {})</li>
+</ol>
+<p>setState -&gt; rerender</p>
+<p>B. Event Handling:</p>
+<ol>
+<li>() =&gt; {}. no need to consider this</li>
+<li>common function,  fn =&gt; fn.bind(this)</li>
+</ol>
+<p>C. Controlled Component: data two way binding 数据的双向绑定是我要实时拿到数据，是否显示到view只是双向绑定的一部分，可以显示也可以不显示，但强调的是实时性。data-&gt; view -&gt;实时性  A  - A  AB - AB</p>
+<p>input: value + onChange (函数拿数据). </p>
+<p>实时，controlled component，数据双向绑定。</p>
+<p>controlled component -&gt; value(checked) + onChange</p>
+<p>非实时性，数据单向绑定，data –render （渲染无所谓） –&gt; view    ABC全处理完 ABC</p>
+<p>input validation -&gt; uncontrolled component,不能敲一个字就检查一次吧，enter或focus移除再做检查</p>
+<p>D. uncontrolled components: </p>
+<p>Method 1. define ref 2. this.ref</p>
+<p>Method 2. React.createRef  2. use: this.*.current</p>
+<p>E. 数据通信</p>
+<p>1.父组件到子组件：1）在父组件中子组件标签上定义一组key ： value pair  2)在子组件中props读取, read only</p>
+<p>2.子-&gt;父：callback function: 1) parent component: in child component tag &lt;子 key: value pair 且 value是fn&gt; 2）parent component define fn body 箭头函数或者bind。3) child component:  call callback function  this.props.fn() 即callback function传递数据</p>
+<p>本质是父组件里的函数修改父组件里的state 父fn -&gt; 父state</p>
+<p>原因：react是单向数据流，只能读数据。改数据不能直接改。相当于有get函数，没有set函数。props单向只读，传的数据不能直接修改，如何修改？只能通过调用函数修改。</p>
+<p>3.兄弟-&gt;兄弟：lca 父组件， 父子关系，没有兄弟关系，公有数据放在parent component</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/31/Function vs Class Defined Component/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-05-30-遇见技术-人文-社会-伦理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1028,187 +1223,6 @@
 
 
   
-    <article id="post-2020-05-22-Create-a-Stored-Procedure" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/">Create a Stored Procedure</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/" class="archive-article-date">
-  	<time datetime="2020-05-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>APPLIES TO:</strong> <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">SQL Server <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Azure SQL Database <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Azure Synapse Analytics (SQL Data Warehouse) <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Parallel Data Warehouse</p>
-<p>This topic describes how to create a Transact-SQL stored procedure by using SQL Server Management Studio and by using the Transact-SQL CREATE PROCEDURE statement.</p>
-<h2 id><a href="#" class="headerlink" title></a></h2><ul>
-<li><strong>Before you begin:</strong> <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#Permissions" target="_blank" rel="noopener">Permissions</a></li>
-<li><strong>To create a procedure, using:</strong> <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#SSMSProcedure" target="_blank" rel="noopener">SQL Server Management Studio</a>, <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#TsqlProcedure" target="_blank" rel="noopener">Transact-SQL</a></li>
-</ul>
-<h2 id="Permissions"><a href="#Permissions" class="headerlink" title="Permissions"></a>Permissions</h2><p>Requires CREATE PROCEDURE permission in the database and ALTER permission on the schema in which the procedure is being created.</p>
-<h2 id="How-to-Create-a-Stored-Procedure"><a href="#How-to-Create-a-Stored-Procedure" class="headerlink" title="How to Create a Stored Procedure"></a>How to Create a Stored Procedure</h2><p>You can use one of the following:</p>
-<ul>
-<li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#SSMSProcedure" target="_blank" rel="noopener">SQL Server Management Studio</a></li>
-<li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#TsqlProcedure" target="_blank" rel="noopener">Transact-SQL</a></li>
-</ul>
-<h3 id="Using-SQL-Server-Management-Studio"><a href="#Using-SQL-Server-Management-Studio" class="headerlink" title="Using SQL Server Management Studio"></a>Using SQL Server Management Studio</h3><p><strong>To create a procedure in Object Explorer</strong></p>
-<ol>
-<li><p>In <strong>Object Explorer</strong>, connect to an instance of Database Engine and then expand that instance.</p>
-</li>
-<li><p>Expand <strong>Databases</strong>, expand the <strong>AdventureWorks2012</strong> database, and then expand <strong>Programmability</strong>.</p>
-</li>
-<li><p>Right-click <strong>Stored Procedures</strong>, and then click <strong>New Stored Procedure</strong>.</p>
-</li>
-<li><p>On the <strong>Query</strong> menu, click <strong>Specify Values for Template Parameters</strong>.</p>
-</li>
-<li><p>In the <strong>Specify Values for Template Parameters</strong> dialog box, enter the following values for the parameters shown.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Parameter</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Author</td>
-<td align="left"><em>Your name</em></td>
-</tr>
-<tr>
-<td align="left">Create Date</td>
-<td align="left"><em>Today’s date</em></td>
-</tr>
-<tr>
-<td align="left">Description</td>
-<td align="left">Returns employee data.</td>
-</tr>
-<tr>
-<td align="left">Procedure_name</td>
-<td align="left">HumanResources.uspGetEmployeesTest</td>
-</tr>
-<tr>
-<td align="left">@Param1</td>
-<td align="left">@LastName</td>
-</tr>
-<tr>
-<td align="left">@Datatype_For_Param1</td>
-<td align="left"><strong>nvarchar</strong>(50)</td>
-</tr>
-<tr>
-<td align="left">Default_Value_For_Param1</td>
-<td align="left">NULL</td>
-</tr>
-<tr>
-<td align="left">@Param2</td>
-<td align="left">@FirstName</td>
-</tr>
-<tr>
-<td align="left">@Datatype_For_Param2</td>
-<td align="left"><strong>nvarchar</strong>(50)</td>
-</tr>
-<tr>
-<td align="left">Default_Value_For_Param2</td>
-<td align="left">NULL</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>Click <strong>OK</strong>.</p>
-</li>
-<li><p>In the <strong>Query Editor</strong>, replace the SELECT statement with the following statement:</p>
-<p>SQLCopy</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> FirstName, LastName, Department  </span><br><span class="line"><span class="keyword">FROM</span> HumanResources.vEmployeeDepartmentHistory  </span><br><span class="line"><span class="keyword">WHERE</span> FirstName = @FirstName <span class="keyword">AND</span> LastName = @LastName  </span><br><span class="line">    <span class="keyword">AND</span> EndDate <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>To test the syntax, on the <strong>Query</strong> menu, click <strong>Parse</strong>. If an error message is returned, compare the statements with the information above and correct as needed.</p>
-</li>
-<li><p>To create the procedure, from the <strong>Query</strong> menu, click <strong>Execute</strong>. The procedure is created as an object in the database.</p>
-</li>
-<li><p>To see the procedure listed in Object Explorer, right-click <strong>Stored Procedures</strong> and select <strong>Refresh</strong>.</p>
-</li>
-<li><p>To run the procedure, in Object Explorer, right-click the stored procedure name <strong>HumanResources.uspGetEmployeesTest</strong> and select <strong>Execute Stored Procedure</strong>.</p>
-</li>
-<li><p>In the <strong>Execute Procedure</strong> window, enter Margheim as the value for the parameter @LastName and enter the value Diane as the value for the parameter @FirstName.</p>
-<p>Warning</p>
-</li>
-</ol>
-<p>Validate all user input. Do not concatenate user input before you validate it. Never execute a command constructed from unvalidated user input.</p>
-<h3 id="Using-Transact-SQL"><a href="#Using-Transact-SQL" class="headerlink" title="Using Transact-SQL"></a>Using Transact-SQL</h3><p><strong>To create a procedure in Query Editor</strong></p>
-<ol>
-<li><p>In <strong>Object Explorer</strong>, connect to an instance of Database Engine.</p>
-</li>
-<li><p>From the <strong>File</strong> menu, click <strong>New Query</strong>.</p>
-</li>
-<li><p>Copy and paste the following example into the query window and click <strong>Execute</strong>. This example creates the same stored procedure as above using a different procedure name.</p>
-<p>Copy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">USE AdventureWorks2012;  </span><br><span class="line">GO  </span><br><span class="line">CREATE PROCEDURE HumanResources.uspGetEmployeesTest2   </span><br><span class="line">    @LastName nvarchar(50),   </span><br><span class="line">    @FirstName nvarchar(50)   </span><br><span class="line">AS   </span><br><span class="line"></span><br><span class="line">    SET NOCOUNT ON;  </span><br><span class="line">    SELECT FirstName, LastName, Department  </span><br><span class="line">    FROM HumanResources.vEmployeeDepartmentHistory  </span><br><span class="line">    WHERE FirstName = @FirstName AND LastName = @LastName  </span><br><span class="line">    AND EndDate IS NULL;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>To run the procedure, copy and paste the following example into a new query window and click <strong>Execute</strong>. Notice that different methods of specifying the parameter values are shown.</p>
-<p>Copy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXECUTE HumanResources.uspGetEmployeesTest2 N&apos;Ackerman&apos;, N&apos;Pilar&apos;;  </span><br><span class="line">-- Or  </span><br><span class="line">EXEC HumanResources.uspGetEmployeesTest2 @LastName = N&apos;Ackerman&apos;, @FirstName = N&apos;Pilar&apos;;  </span><br><span class="line">GO  </span><br><span class="line">-- Or  </span><br><span class="line">EXECUTE HumanResources.uspGetEmployeesTest2 @FirstName = N&apos;Pilar&apos;, @LastName = N&apos;Ackerman&apos;;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="See-Also"><a href="#See-Also" class="headerlink" title="See Also"></a>See Also</h2><p><a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/create-procedure-transact-sql?view=sql-server-ver15" target="_blank" rel="noopener">CREATE PROCEDURE (Transact-SQL)</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQL, Stored Procedure</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1313,15 +1327,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,7 +1347,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,7 +1359,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1353,19 +1371,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1389,6 +1403,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
               </li>
              
@@ -1409,15 +1427,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1433,6 +1451,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
@@ -1442,10 +1464,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1461,11 +1479,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
             
             <div class="clearfix"></div>
