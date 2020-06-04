@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Yanjie&#39;s Blog</title>
+  <title>How Does the Frontend Communicate with the Backend? | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="How to connect the frontend and the backend? How do they communicate?  There are many different ways how to structure a web application. The frontend can take different forms, and it can be daunting">
+<meta name="keywords" content="Frontend - Backend Communication">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How Does the Frontend Communicate with the Backend?">
+<meta property="og:url" content="http://yoursite.com/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="How to connect the frontend and the backend? How do they communicate?  There are many different ways how to structure a web application. The frontend can take different forms, and it can be daunting">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-06-04T07:00:15.095Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="How Does the Frontend Communicate with the Backend?">
+<meta name="twitter:description" content="How to connect the frontend and the backend? How do they communicate?  There are many different ways how to structure a web application. The frontend can take different forms, and it can be daunting">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,36 +147,157 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/" class="archive-article-date">
-  	<time datetime="2020-06-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/">How Does the Frontend Communicate with the Backend?</a>
+    <h1 class="article-title" itemprop="name">
+      How Does the Frontend Communicate with the Backend?
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/" class="archive-article-date">
+  	<time datetime="2020-06-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>How to connect the frontend and the backend?</p>
+<p>How do they communicate?</p>
+</blockquote>
+<p>There are many different ways how to structure a web application. The frontend can take different forms, and it can be daunting to understand how to connect the two.</p>
+<p>This article is an overview of what goes on between the backend and the frontend of a web application - how the two communicate.</p>
+<p>Let’s start with fundamentals.</p>
+<a id="more"></a>
+<h2 id="Why-do-the-frontend-and-backend-exist-in-the-first-place"><a href="#Why-do-the-frontend-and-backend-exist-in-the-first-place" class="headerlink" title="Why do the frontend and backend exist in the first place?"></a>Why do the frontend and backend exist in the first place?</h2><p>The backend and frontend both work together to serve <strong>a single goal</strong>. It’s pretty helpful to keep it in mind at all times. They are made, so <strong>a user can access them</strong>. In detail this interaction can look like this:</p>
+<ul>
+<li>The user</li>
+</ul>
+<p>  points their browser to one of your website’s urls</p>
+<ul>
+<li>This makes the browser send out one or more requests to your server</li>
+<li>The browser waits to receive responses from your server</li>
+<li>Every response is used to render a part of the site</li>
+</ul>
+<ul>
+<li><p>The user waits for the browser to render the page</p>
+</li>
+<li><p>The user <strong>sees a useful and usable page</strong></p>
+</li>
+<li><p>The user</p>
+</li>
+</ul>
+<p>  interacts with the page</p>
+<ul>
+<li>Causing more requests to be sent out, to get more data and display new information, and so on</li>
+</ul>
+<p>It’s all about the user.</p>
+<p>The front- and backend make this possible by causing requests to be sent and answering with responses.</p>
+<p>Before diving deeper, we should make sure we’re talking about the same things.</p>
+<h2 id="Definitions"><a href="#Definitions" class="headerlink" title="Definitions"></a>Definitions</h2><p>To make sure that we are on the same page, here are descriptions of possible ambiguous “big words” in this article:</p>
+<p><strong>Server</strong> - the abstract “thing” where the browser’s requests arrive. We don’t care about that detail to much here. It’s enough to know that the backend code is running on the server as well as other services. Request for the backend arrive at the server and are eventually passed on to your backend code.</p>
+<p><strong>Backend</strong> - the part of your web app which is not directly visible to the user. It receives requests and prepares data which is transmitted back to the user’s browser. Backend code is built to be running on a server and it’s never running on the user’s machine.</p>
+<p><strong>Frontend</strong> - the parts of your web application which are intended to be used directly by the the user’s browser. Code which is executed inside the browser, or markup which is interpreted while rendering a page. HTML, CSS and in-browser JavaScript are good examples for what I would consider to be part of the frontend concept. But only in their finished form. While the backend code can be <em>assembling</em> a HTML response, the final HTML arriving in the browser is meant here.</p>
+<p><strong>Browser</strong> - an application running on the user’s device. It sends out HTTP requests, receives responses, processes the received data, and uses it to render a viewable page. All of communication from the user’s side goes through their browser.</p>
+<h2 id="When-does-the-browser-talk-to-the-backend"><a href="#When-does-the-browser-talk-to-the-backend" class="headerlink" title="When does the browser talk to the backend?"></a>When does the browser talk to the backend?</h2><p>HTTP requests arrive from the browser at the backend. Those requests may contain data in the HTTP headers or request body. The intent may be to request new data or to transmit user-created data to the backend.</p>
+<p>HTTP requests, are constructed inside the user’s browser and sent off. There’s a response for each request, carrying information in the HTTP headers and the request body. Those responses arrive back at the backend arrive back at the user’s browser.</p>
+<p>What needs to happen, to make the browser have to send out a request? Those requests which are fired because a user clicked a link or by JS code running in the background. But there are more possible triggers:</p>
+<ul>
+<li>The user enters a URL, which makes the browser go and request it.</li>
+<li>The browser reads the incoming HTML, and notices that there’s a resource it needs to load, such as a JS file, an image or a CSS file. It goes ahead and requests each with a single new HTTP request. Usually this happens while loading a website. (Those requests don’t have to go to the same backend, you could load JS from another site. People like to use CDNs for that as it’s pretty fast and convenient.)</li>
+<li>A user clicks on a plain-ol’ link the webpage is loaded and rendered. The browser knows that they need to navigate to a new page and requests the corresponding URL.</li>
+<li>JavaScript is executed on the site, and wants to have some data loaded in the background. Requests are being made, but the browser does that in the background. It doesn’t reload the whole page. That’s AJAX. Javascript can be triggered by a user clicking something, and it can tell the browser that the click wasn’t meant to navigate to a new page. This can be confusing.</li>
+</ul>
+<p>That’s pretty much all scenarios which can make a browser fire off requests to the backend. In each case, there are HTTP requests and responses involved.</p>
+<h2 id="What-do-they-send-to-each-other"><a href="#What-do-they-send-to-each-other" class="headerlink" title="What do they send to each other?"></a>What do they send to each other?</h2><p>This one can differ! But there’s a very popular way of doing things, which is used most often. It’s a good way of doing things for 99% of all frontend-backend communication scenarios.</p>
+<p>The magic is within the HTTP request/response payloads. The backend usually responds with certain contents of the HTTP body:</p>
+<ul>
+<li>HTML-formatted responses</li>
+<li>other static files (CSS, JS, images, …)</li>
+<li>JSON-formatted data</li>
+<li>No body at all. Just a status code and header fields.</li>
+</ul>
+<p>The frontend sends:</p>
+<ul>
+<li>Simple HTTP requests without a body</li>
+<li>Form data</li>
+<li>JSON-formatted data</li>
+</ul>
+<h2 id="Let’s-look-at-some-examples"><a href="#Let’s-look-at-some-examples" class="headerlink" title="Let’s look at some examples"></a>Let’s look at some examples</h2><p>So far so good! Let’s take those vague descriptions from above, and look at some very concrete examples. Even though you know everything you need by now, it can be hard to connect the dots to real-life examples as there can be a lot of complexity and confusion sprinkled in.</p>
+<p>I hope that these examples will help you see how everything fits in. And understand how the backend and frontend communicate.</p>
+<h3 id="Scenario-Just-static-content"><a href="#Scenario-Just-static-content" class="headerlink" title="Scenario: Just static content"></a>Scenario: Just static content</h3><p>If a browser requests something like <code>http://example.com/style.css</code>, this is usually handled by the web server (like Nginx) of the backend. The request is a GET for that resource, and the backend responds with a response, containing the content of the file.</p>
+<p>Such static files <em>can</em> be served by the web application (application server) itself, but usually this is considered to be in poor taste. Web servers are really quick with this task, and web apps are kinda clumsy about it.</p>
+<h3 id="Vanilla-Django-using-Django-templates"><a href="#Vanilla-Django-using-Django-templates" class="headerlink" title="Vanilla Django, using Django templates"></a>Vanilla Django, using Django templates</h3><p>The next case is about requesting <em>dynamic</em> content. From the browser side, it looks the same as requesting static content - there’s a request which is fired off to a URL like <code>http://example.com/cute-puppies</code>. The browser does not care which part of the backend will handle the request, it just wants answers. (NOW.)</p>
+<p>The requests arrives at the server, is passed to the web server (Nginx for example), and the web server hands the request over to the app server (Django handled by Gunicorn). The web server simply does what it’s configured to do. Nothing magical here.</p>
+<p>Anyway. Django gets the request, processes it, maybe looks up some data in a database and sends out a response.</p>
+<blockquote>
+<p>In more detail: Your Django app reacts to the request. The requested URL is interpreted using your urls.py configurations. The correct view is selected to handle the request. The view code might use a model to get data from the database, and renders out a template, passing data in a context object to it. Phew. This is what a “classical” Django project is. You get that out of the box, and this is a very good way to start for almost every web project out there.</p>
+</blockquote>
+<p>The resulting HTML is packaged in a response. The response contains an HTML page inside of the HTTP body.</p>
+<p>The browser receives the response, and renders the DOM from the HTML. From there, the browser probably makes more requests to load those puppy images and some CSS so it can style the page. Those resources are static, and should be handled as in the first example case.</p>
+<h3 id="Sprinkled-in-interactivity-with-jQuery-Vue-js-or-vanilla-JS"><a href="#Sprinkled-in-interactivity-with-jQuery-Vue-js-or-vanilla-JS" class="headerlink" title="Sprinkled in interactivity with jQuery, Vue.js or vanilla JS"></a>Sprinkled in interactivity with jQuery, Vue.js or vanilla JS</h3><p>Now, it gets a bit more fancy: JavaScript enters the picture in the frontend.</p>
+<p>Imagine, that a dynamic page is loaded from the backend, just as described in the previous example. The returned HTML contains JS code inside a <code>script</code> tag.</p>
+<p>The browser will render the page and start executing the JS code.</p>
+<p>In this case, the code is only setting up some interactivity. Maybe to hide or show elements dynamically when a button is pressed, or to do on-demand communication with the backend.</p>
+<p>The JS code, no matter which flavor, can ask for more requests to be sent to the backend. Fresh data can be requested this way, and the JS code takes care of handling it once it arrives without doing complete page reloads. HTTP requests triggered by JS code usually are made in the background.</p>
+<p>We have the same page as before, but can trigger browser events without reloading the page. This makes for a more continuous user experience, as they don’t see the screen flash and new data loads smoothly, without breaking the UX flow.</p>
+<h3 id="Frontend-framework-integrated-Vue-js-for-example"><a href="#Frontend-framework-integrated-Vue-js-for-example" class="headerlink" title="Frontend framework integrated: Vue.js for example"></a>Frontend framework integrated: Vue.js for example</h3><p>Now we get into JS framework territory. This case is the same as above, but the template returned by the backend is not necessarily complete. Chunks of the final page are missing from the initial HTML response.</p>
+<p>Instead, it contains JS code which is responsible for filling in the blanks. In the previous example, the HTML markup was complete, and JS was only adding some interactivity.</p>
+<p>The effect is, that the final HTML which is shown to the user is not the one which leaves the server.</p>
+<p>The browser takes care of executing JS code once the page arrives, which in turn builds the rest of the page. You can do this conveniently with Vue.js - read more <a href="https://vsupalov.com/vue-js-in-django-template" target="_blank" rel="noopener">here</a>.</p>
+<h3 id="Single-Page-Application-SPA-data-is-fetched-afterwards"><a href="#Single-Page-Application-SPA-data-is-fetched-afterwards" class="headerlink" title="Single Page Application (SPA) - data is fetched afterwards"></a>Single Page Application (SPA) - data is fetched afterwards</h3><p>With the single-page-app architecture, a static page is loaded with a bunch of JS in it. Your backend code isn’t being used for this initial request. There’s nothing dynamic about it after all - it’s just about loading very simple HTML and fetching JS in the beginning.</p>
+<p>The web server provides those. Django usually involved in serving the static assets in that case - the web server or another service such as AWS S3 takes care of those.</p>
+<p>Once the HTML and JS has arrived at the browser, the JS is executed and starts making requests to the server for <strong>DATA</strong>. This is what the backend code provides - usually in the form of JSON responses.</p>
+<p>The JavaScript code inside the static page takes care of loading data from your backend, and the DOM is built dynamically based on that data, starting with a blank page. The DOM elements which are dynamically assembled by JS are shown to the user. Your backend code does not know about how that page looks, and does not care much. It only cares about responding to data requests with JSON responses.</p>
+<h3 id="Server-side-rendering"><a href="#Server-side-rendering" class="headerlink" title="Server-side rendering"></a>Server-side rendering</h3><p>In the previous case, the browser initially received an empty page with some JS linked from it.</p>
+<p>As it turns out, this is something which search engines don’t like. They think those initially-empty pages are boring and this causes them to think less of your site.</p>
+<p>They would much rather see a nice-looking, complete site.</p>
+<p>This is what server-side rendering is for. The initial HTML and JS loaded on the server, and pre-rendered to HTML, but using frontend technology!</p>
+<p>Essentially, there’s a part of the backend which pretends to be a browser for a while! It makes requests to your backend code and builds a HTML site by executing the JS part of the frontend code.</p>
+<p>Once it’s done, the browser gets an HTML response, which was produced by JS code. The Django server is used to provide JSON data for that rendering step.</p>
+<p>“Why all the hassle?” you may ask. Well, this is what you have to do if you want to have an SPA architecture, but still be friends with search engines.</p>
+<p>Mainly, SSR is used for SEO reasons. It’s used to fix problems which are caused by delivering empty (or just incomplete), yet-to-be-assembled-by-JS HTML responses in the first place. There can be performance and caching upsides, but those usually don’t matter as much.</p>
+<h2 id="In-Conclusion"><a href="#In-Conclusion" class="headerlink" title="In Conclusion"></a>In Conclusion</h2><p>That’s it! I hope this article was useful to you, and you have a better overview of how the backend and the frontend communicate after reading it.</p>
+<p>There are a lot of special cases, and things can get tricky, but in the end it’s only HTML and JSON going between the server and the user’s browser.</p>
+<p>If you’re not sure which way to structure the communication between your frontend and backend - just keep it as simple as possible.</p>
+<p>There’s no need to start out with a SPA from the get-go. You also don’t have to do heavy lifting inside of the frontend code. It’s great to have your backend responsible for building HTML responses, and get more fancy once you see the actual need to do so.</p>
+<hr>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a href="https://vsupalov.com/how-backend-and-frontend-communicate/" target="_blank" rel="noopener">https://vsupalov.com/how-backend-and-frontend-communicate/</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -183,342 +309,118 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/02/2020-06-02-糖糖-🍬🍬/" class="archive-article-date">
-  	<time datetime="2020-06-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/02/2020-06-02-糖糖-🍬🍬/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">糖糖 🍬🍬</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/02/2020-06-02-糖糖-🍬🍬/">糖糖 🍬🍬</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-do-the-frontend-and-backend-exist-in-the-first-place"><span class="toc-number">1.</span> <span class="toc-text">Why do the frontend and backend exist in the first place?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Definitions"><span class="toc-number">2.</span> <span class="toc-text">Definitions</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#When-does-the-browser-talk-to-the-backend"><span class="toc-number">3.</span> <span class="toc-text">When does the browser talk to the backend?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-do-they-send-to-each-other"><span class="toc-number">4.</span> <span class="toc-text">What do they send to each other?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Let’s-look-at-some-examples"><span class="toc-number">5.</span> <span class="toc-text">Let’s look at some examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Scenario-Just-static-content"><span class="toc-number">5.1.</span> <span class="toc-text">Scenario: Just static content</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vanilla-Django-using-Django-templates"><span class="toc-number">5.2.</span> <span class="toc-text">Vanilla Django, using Django templates</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sprinkled-in-interactivity-with-jQuery-Vue-js-or-vanilla-JS"><span class="toc-number">5.3.</span> <span class="toc-text">Sprinkled in interactivity with jQuery, Vue.js or vanilla JS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Frontend-framework-integrated-Vue-js-for-example"><span class="toc-number">5.4.</span> <span class="toc-text">Frontend framework integrated: Vue.js for example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Single-Page-Application-SPA-data-is-fetched-afterwards"><span class="toc-number">5.5.</span> <span class="toc-text">Single Page Application (SPA) - data is fetched afterwards</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Server-side-rendering"><span class="toc-number">5.6.</span> <span class="toc-text">Server-side rendering</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#In-Conclusion"><span class="toc-number">6.</span> <span class="toc-text">In Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-number">6.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/01/2020-05-27-JavaScript-Q-&-A-3/" class="archive-article-date">
-  	<time datetime="2020-06-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/01/2020-05-27-JavaScript-Q-&-A-3/">JavaScript Q &amp; A 3</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript, Web Development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/31/Function vs Class Defined Component/" class="archive-article-date">
-  	<time datetime="2020-05-31T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/31/Function vs Class Defined Component/">REACT Notes</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/30/2020-05-30-遇见技术-人文-社会-伦理/" class="archive-article-date">
-  	<time datetime="2020-05-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/30/2020-05-30-遇见技术-人文-社会-伦理/">遇见技术 人文 社会 伦理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/29/2020-05-29-SQL-with-PowerBI/" class="archive-article-date">
-  	<time datetime="2020-05-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/29/2020-05-29-SQL-with-PowerBI/">SQL with PowerBI</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SQL, PowerBI, Data Visualization</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/28/2020-05-28-SQL-with-Tableau/" class="archive-article-date">
-  	<time datetime="2020-05-28T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/28/2020-05-28-SQL-with-Tableau/">SQL with Tableau</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL, Relational Database, Tableau</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/" class="archive-article-date">
-  	<time datetime="2020-05-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/">Self-Summary about Golang Project</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/27/2020-05-27-Visual-Studio,-User-Experience/" class="archive-article-date">
-  	<time datetime="2020-05-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/27/2020-05-27-Visual-Studio,-User-Experience/">Visual Studio, User Experience</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">visual studio, user experience</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/" class="archive-article-date">
-  	<time datetime="2020-05-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">JavaScript Q &amp; A 2</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="page-number" href="/archives/2020/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/6/">6</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -545,8 +447,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
