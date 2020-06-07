@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 54</a>
+<a>Total Number of Articles: 55</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,89 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-System-Design-Case-Study-URL-Shortened-Service-Like" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/">System Design Case Study: URL Shortened Service &amp; Like</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/" class="archive-article-date">
+  	<time datetime="2020-04-29T05:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Notes about System Design Case Studies:<br><br></p>
+<h2 id="URL-Shortened-Service"><a href="#URL-Shortened-Service" class="headerlink" title="URL Shortened Service"></a>URL Shortened Service</h2><p>Functionality:</p>
+<ol>
+<li>String map from long to short, post</li>
+<li>Short to long, store mapping, DB, read operation later is ok.</li>
+<li>Click post, from short to long.</li>
+</ol>
+<p>Design:<br>Step 1: use case, constrains, bottleneck:<br>How do users use it? user size, read/write request pattern, data size, QPS (concurrency)…<br>User size: million level (twitter)<br>Data size: long to short, evaluate data size, active users, how many write …, stored for one year.   </p>
+<p>Difficulty: how to change long to short?<br>method: hash</p>
+<p>Always analyze: input and output, divide and conquer，get each smaller problem chained together to the whole issue again<br>Input: long url string<br>Output: short url string<br>Hash function: — hash code (don’t fall into specific hash code to use): output: **** bytes</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">System Design, URL Shortened Service, Like Functionality</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Thoughts on Seattle Park and Ride Project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -820,86 +903,6 @@
 
 
   
-    <article id="post-Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/18/Typora & Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device/">Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/18/Typora & Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device/" class="archive-article-date">
-  	<time datetime="2020-04-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Two things to share today.</p>
-<h1 id="Recommended-Editor"><a href="#Recommended-Editor" class="headerlink" title="Recommended Editor"></a>Recommended Editor</h1><p>Typora is a markdown-friendly editor, good for Hexo users.</p>
-<hr>
-<h1 id="Apple-and-Google-Want-Your-Phone-To-Become-a-Coronavirus-Tracking-Device-Can-It-Really-Work"><a href="#Apple-and-Google-Want-Your-Phone-To-Become-a-Coronavirus-Tracking-Device-Can-It-Really-Work" class="headerlink" title="Apple and Google Want Your Phone To Become a Coronavirus Tracking Device. Can It Really Work?"></a>Apple and Google Want Your Phone To Become a Coronavirus Tracking Device. Can It Really Work?</h1><p>Apple and Google grew into global forces by creating wildly popular devices and applications. Their products became iconic for their elegant, user-friendly designs, and for their ability to handle heaps of data. Now those companies, who have often gone head-to-head in the past, are trying to apply that technical sensibility and mass appeal to <a href="https://www.cnn.com/2020/04/10/tech/apple-google-contact-tracing-technology/index.html" target="_blank" rel="noopener">develop a huge program</a> to help track — and ultimately contain — the spread of the coronavirus.</p>
-<p>But despite their position as some of the most sophisticated smartphone technology makers in the world, they’ve never faced a task quite like this. In its scale and complexity, the <a href="https://www.cnn.com/asia/live-news/coronavirus-pandemic-intl-04-15-20/index.html" target="_blank" rel="noopener">pandemic</a> adds tremendous challenges to all the normal questions that come with technology design, such as privacy and usability concerns. Chief among them: Can they even get enough people to use their solution for it to really work?</p>
-<p>Apple (<a href="https://money.cnn.com/quote/quote.html?symb=AAPL&source=story_quote_link" target="_blank" rel="noopener">AAPL</a>) and Google (<a href="https://money.cnn.com/quote/quote.html?symb=GOOG&source=story_quote_link" target="_blank" rel="noopener">GOOG</a>)’s ambitious plan to help track the spread of the coronavirus using Bluetooth technology could need as many as half of all Americans to participate, and likely more, in order for the tracing scheme to work most effectively, according to company officials and outside experts. That requires not just user opt-in, but also sufficient testing, something the US system is struggling badly with. Still, experts say the tech companies’ solution could play an important role in fighting the pandemic.</p>
-<p>For the past two and a half weeks the companies have worked together with public health authorities to outline the broad strokes of the plan, the companies told reporters on Monday. If they succeed in helping fight the spread of the coronavirus, they could be hailed as heroes, perhaps even solidifying the foothold in health services they’ve both sought to establish for years. But now comes the hard part, as Apple and Google try to adapt their technological solution to the messy reality of a complex social and physical problem.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Typora, Coronavirus Tracking Device</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/18/Typora & Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1008,11 +1011,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1028,11 +1031,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1052,27 +1059,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1080,7 +1071,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1100,15 +1103,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1120,6 +1119,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
@@ -1128,11 +1131,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1140,11 +1143,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1152,11 +1155,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1164,11 +1167,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1177,6 +1180,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">JavaScript, Web Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">front-end</a>
               </li>
             
             <div class="clearfix"></div>
