@@ -6,20 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript | Yanjie&#39;s Blog</title>
+  <title>Node.js Express FrameWork Tutorial | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.I have bee">
-<meta name="keywords" content="JavaScript">
+  <meta name="description" content="In this tutorial, we will study the Express framework. This framework is built in such a way that it acts as a minimal and flexible Node.js web application framework, providing a robust set of feature">
+<meta name="keywords" content="Node.js, Express FrameWork">
 <meta property="og:type" content="article">
-<meta property="og:title" content="11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript">
-<meta property="og:url" content="http://yoursite.com/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/index.html">
+<meta property="og:title" content="Node.js Express FrameWork Tutorial">
+<meta property="og:url" content="http://yoursite.com/2020/06/07/2020-06-07-Node.js-Express-FrameWork-Tutorial/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.I have bee">
+<meta property="og:description" content="In this tutorial, we will study the Express framework. This framework is built in such a way that it acts as a minimal and flexible Node.js web application framework, providing a robust set of feature">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-17T20:01:30.374Z">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre1.png">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre2.png">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre3.png">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre4.png">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre5.png">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre6.png">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre7.png">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre8.png">
+<meta property="og:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre9.png">
+<meta property="og:updated_time" content="2020-06-08T07:28:54.080Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript">
-<meta name="twitter:description" content="When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.I have bee">
+<meta name="twitter:title" content="Node.js Express FrameWork Tutorial">
+<meta name="twitter:description" content="In this tutorial, we will study the Express framework. This framework is built in such a way that it acts as a minimal and flexible Node.js web application framework, providing a robust set of feature">
+<meta name="twitter:image" content="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre1.png">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -147,118 +157,170 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2020-06-07-Node.js-Express-FrameWork-Tutorial" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      11 JavaScript Tricks You Won&#39;t Find in Most Tutorials: Useful tips for writing more concise and performant JavaScript
+      Node.js Express FrameWork Tutorial
     </h1>
   
 
         
-        <a href="/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/" class="archive-article-date">
-  	<time datetime="2020-04-18T06:48:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+        <a href="/2020/06/07/2020-06-07-Node.js-Express-FrameWork-Tutorial/" class="archive-article-date">
+  	<time datetime="2020-06-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>When I began learning JavaScript, I made a list of every time-saving trick that I found in other people’s code, on code challenge websites, and anywhere other than the tutorials I was using.<br>I have been contributing to this list since then, and in this article, I’ll share 11 hand-picked tips that strike me as particularly clever or useful. This post is intended to be useful for beginners, but I hope even intermediate JavaScript developers will find something new in this list.<br>While many of these tricks are handy in any context, a few of them may be better suited for code golf than production-level code, where clarity is often more important than concision; I’ll let you be the judge of that!<br>So, in no particular order, here are 11 neat ways to write more concise and more performant code.<br><br></p>
+        <p>In this tutorial, we will study the Express framework. This framework is built in such a way that it acts as a minimal and flexible Node.js web application framework, providing a robust set of features for building single and multipage, and hybrid web application.</p>
+<p>In this tutorial, you will learn-</p>
+<ul>
+<li><a href="https://www.guru99.com/node-js-express.html#1" target="_blank" rel="noopener">What is Express.js?</a></li>
+<li><a href="https://www.guru99.com/node-js-express.html#2" target="_blank" rel="noopener">Installing and using Express</a></li>
+<li><a href="https://www.guru99.com/node-js-express.html#3" target="_blank" rel="noopener">What are Routes?</a></li>
+<li><a href="https://www.guru99.com/node-js-express.html#4" target="_blank" rel="noopener">Sample Web server using express.js</a></li>
+</ul>
 <a id="more"></a>
 
-<h2 id="1-Filter-Unique-Values"><a href="#1-Filter-Unique-Values" class="headerlink" title="1. Filter Unique Values"></a>1. Filter Unique Values</h2><p>ARRAYS<br>The <code>Set</code> object type was introduced in ES6, and along with <code>...</code>, the ‘spread’ operator, we can use it to create a new array with only the unique values.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const array = [1, 1, 2, 3, 5, 5, 1]</span><br><span class="line">const uniqueArray = [...new Set(array)];console.log(uniqueArray); // Result: [1, 2, 3, 5]</span><br></pre></td></tr></table></figure>
+<h2 id="What-is-Express-js"><a href="#What-is-Express-js" class="headerlink" title="What is Express.js?"></a>What is Express.js?</h2><p>Express.js is a Node js web application server framework, which is specifically designed for building single-page, multi-page, and hybrid web applications.</p>
+<p>It has become the standard server framework for node.js. Express is the backend part of something known as the MEAN stack.</p>
+<p>The MEAN is a free and open-source<a href="https://www.guru99.com/interactive-javascript-tutorials.html" target="_blank" rel="noopener"> JavaScript </a>software stack for building dynamic web sites and web applications which has the following components;</p>
+<p><strong>1) MongoDB</strong> - The standard NoSQL database</p>
+<p><strong>2) Express.js</strong> - The default web applications framework</p>
+<p><strong>3) Angular.js</strong> - The JavaScript MVC framework used for web applications</p>
+<p><strong>4) Node.js</strong> - Framework used for scalable server-side and networking applications.</p>
+<p>The Express.js framework makes it very easy to develop an application which can be used to handle multiple types of requests like the GET, PUT, and POST and DELETE requests.</p>
+<h2 id="Installing-and-using-Express"><a href="#Installing-and-using-Express" class="headerlink" title="Installing and using Express"></a>Installing and using Express</h2><p>Express gets installed via the Node Package Manager. This can be done by executing the following line in the command line</p>
+<p><strong>npm install express</strong></p>
+<p>The above command requests the Node package manager to download the required express modules and install them accordingly.</p>
+<p>Let’s use our newly installed Express framework and create a simple “Hello World” application.</p>
+<p>Our application is going to create a simple server module which will listen on port number 3000. In our example, if a request is made through the browser on this port number, then server application will send a ‘Hello’ World’ response to the client.</p>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre1.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre1.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var express=require(&apos;express&apos;);</span><br><span class="line">var app=express();</span><br><span class="line">app.get(&apos;/&apos;,function(req,res)</span><br><span class="line">&#123;</span><br><span class="line">res.send(&apos;Hello World!&apos;);</span><br><span class="line">&#125;);</span><br><span class="line">var server=app.listen(3000,function() &#123;&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>Before ES6, isolating unique values would involve a lot more code than that!<br>This trick works for arrays containing primitive types: <code>undefined</code>, <code>null</code>, <code>Boolean</code>, <code>string</code> and <code>number</code> . (If you had an array containing objects, functions or additional arrays, you’d need a different approach!)<br><br></p>
-<h2 id="2-Short-Circuit-Evaluation"><a href="#2-Short-Circuit-Evaluation" class="headerlink" title="2. Short-Circuit Evaluation"></a>2. Short-Circuit Evaluation</h2><p>CONDITIONALS<br>The ternary operator is a quick way to write simple (and sometimes not-so-simple) conditional statements, like these:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x &gt; 100 ? &apos;Above 100&apos; : &apos;Below 100&apos;;</span><br><span class="line">x &gt; 100 ? (x &gt; 200 ? &apos;Above 200&apos; : &apos;Between 100-200&apos;) : &apos;Below 100&apos;;</span><br></pre></td></tr></table></figure>
+<p><strong>Code Explanation:</strong></p>
+<ol>
+<li>In our first line of code, we are using the require function to include the “express module.”</li>
+<li>Before we can start using the express module, we need to make an object of it.</li>
+<li>Here we are creating a callback function. This function will be called whenever anybody browses to the root of our web application which is <strong><a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a></strong> . The callback function will be used to send the string ‘Hello World’ to the web page.</li>
+<li>In the callback function, we are sending the string “Hello World” back to the client. The ‘res’ parameter is used to send content back to the web page. This ‘res’ parameter is something that is provided by the ‘request’ module to enable one to send content back to the web page.</li>
+<li>We are then using the listen to function to make our server application listen to client requests on port no 3000. You can specify any available port over here.</li>
+</ol>
+<p>If the command is executed successfully, the following Output will be shown when you run your code in the browser.</p>
+<p><strong>Output:</strong></p>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre2.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre2.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<p>From the output,</p>
+<ul>
+<li>You can clearly see that we if browse to the URL of localhost on port 3000, you will see the string ‘Hello World’ displayed on the page.</li>
+<li>Because in our code we have mentioned specifically for the server to listen on port no 3000, we are able to view the output when browsing to this URL.</li>
+</ul>
+<h2 id="What-are-Routes"><a href="#What-are-Routes" class="headerlink" title="What are Routes?"></a>What are Routes?</h2><p>Routing determine the way in which an application responds to a client request to a particular endpoint.</p>
+<p>For example, a client can make a GET, POST, PUT or DELETE http request for various URL such as the ones shown below;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:3000/Books</span><br><span class="line">http://localhost:3000/Students</span><br></pre></td></tr></table></figure>
 
-<p>But sometimes even the ternary operator is more complicated than necessary. Instead, we can use the ‘and’ &amp;&amp; and ‘or’ || logical operators to evaluate certain expressions in an even more concise way. This is often called ‘short-circuiting’ or ‘short-circuit evaluation’.</p>
-<h3 id="How-It-Works"><a href="#How-It-Works" class="headerlink" title="How It Works"></a>How It Works</h3><p>Let’s say we want to return just one of two or more options.<br>Using <code>&amp;&amp;</code> will return the first <code>false</code> or ‘falsy’ value. If every operand evaluates to <code>true</code> , the last evaluated expression will be returned.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let one = 1, two = 2, three = 3;</span><br><span class="line">console.log(one &amp;&amp; two &amp;&amp; three); // Result: 3console.log(0 &amp;&amp; null); // Result: 0</span><br></pre></td></tr></table></figure>
+<p>In the above example,</p>
+<ul>
+<li>If a GET request is made for the first URL, then the response should ideally be a list of books.</li>
+<li>If the GET request is made for the second URL, then the response should ideally be a list of Students.</li>
+<li>So based on the URL which is accessed, a different functionality on the webserver will be invoked, and accordingly, the response will be sent to the client. This is the concept of routing.</li>
+</ul>
+<p>Each route can have one or more handler functions, which are executed when the route is matched.</p>
+<p>The general syntax for a route is shown below</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.METHOD(PATH, HANDLER)</span><br></pre></td></tr></table></figure>
 
-<p>Using <code>||</code> will return the first <code>true</code> or ‘truthy’ value. If every operand evaluates to <code>false</code>, the last evaluated expression will be returned.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let one = 1, two = 2, three = 3;</span><br><span class="line">console.log(one || two || three); // Result: 1console.log(0 || null); // Result: null</span><br></pre></td></tr></table></figure>
+<p>Wherein,</p>
+<p>1) app is an instance of the express module</p>
+<p>2) METHOD is an HTTP request method (GET, POST, PUT or DELETE)</p>
+<p>3) PATH is a path on the server.</p>
+<p>4) HANDLER is the function executed when the route is matched.</p>
+<p>Let’s look at an example of how we can implement routes in the express. Our example will create 3 routes as</p>
+<ol>
+<li>A /Node route which will display the string “Tutorial on Node” if this route is accessed</li>
+<li>A /Angular route which will display the string “Tutorial on Angular” if this route is accessed</li>
+<li>A default route / which will display the string “Welcome to Guru99 Tutorials.”</li>
+</ol>
+<p>Our basic code will remain the same as previous examples. The below snippet is an add-on to showcase how routing is implemented.</p>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre3.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre3.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var express = require(&apos;express&apos;);</span><br><span class="line">var app = express();</span><br><span class="line">app.route(&apos;/Node&apos;).get(function(req,res)</span><br><span class="line">&#123;</span><br><span class="line">    res.send(&quot;Tutorial on Node&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">app.route(&apos;/Angular&apos;).get(function(req,res)</span><br><span class="line">&#123;</span><br><span class="line">    res.send(&quot;Tutorial on Angular&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">app.get(&apos;/&apos;,function(req,res)&#123;</span><br><span class="line">    res.send(&apos;Welcome to Guru99 Tutorials&apos;);</span><br><span class="line">&#125;));</span><br></pre></td></tr></table></figure>
 
-<h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example 1"></a>Example 1</h3><p>Let’s say we want to return the <code>length</code> of a variable, but we don’t know the variable type.<br>We could use an <code>if/else</code> statement to check that <code>foo</code> is an acceptable type, but this could get pretty longwinded. Short circuit evaluation allows us to do this instead:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (foo || []).length;</span><br></pre></td></tr></table></figure>
+<p><strong>Code Explanation:</strong></p>
+<ol>
+<li>Here we are defining a route if the URL</li>
+</ol>
+<p>   <a href="http://localhost:3000/Node" target="_blank" rel="noopener">http://localhost:3000/Node</a></p>
+<p>   is selected in the browser. To the route, we are attaching a callback function which will be called when we browse to the Node URL.</p>
+<p>   The function has 2 parameters.</p>
+<ul>
+<li>The main parameter we will be using is the ‘res’ parameter, which can be used to send information back to the client.</li>
+<li>The ‘req’ parameter has information about the request being made. Sometimes additional parameters could be sent as part of the request being made, and hence the ‘req’ parameter can be used to find the additional parameters being sent.</li>
+</ul>
+<ol>
+<li>We are using the send function to send the string “Tutorial on Node” back to the client if the Node route is chosen.</li>
+<li>Here we are defining a route if the URL <strong><a href="http://localhost:3000/Angular" target="_blank" rel="noopener">http://localhost:3000/Angular</a></strong> is selected in the browser. To the route, we are attaching a callback function which will be called when we browse to the Angular URL.</li>
+<li>We are using the send function to send the string “Tutorial on Angular” back to the client if the Angular route is chosen.</li>
+<li>This is the default route which is chosen when one browses to the route of the application – <strong><a href="http://localhost:3000" target="_blank" rel="noopener">http://localhost:3000</a></strong>. When the default route is chosen, the message “Welcome to Guru99 Tutorials” will be sent to the client.</li>
+</ol>
+<p>If the command is executed successfully, the following Output will be shown when you run your code in the browser.</p>
+<p><strong>Output:</strong></p>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre4.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre4.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<p>From the output,</p>
+<ul>
+<li>You can clearly see that we if browse to the URL of localhost on port 3000, you will see the string ‘Welcome to Guru99 Tutorials’ displayed on the page.</li>
+<li>Because in our code, we have mentioned that our default URL would display this message.</li>
+</ul>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre5.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre5.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<p>From the output,</p>
+<ul>
+<li>You can see that if the URL has been changed to /Node, the respective Node route would be chosen and the string “Tutorial On Node’ is displayed.</li>
+</ul>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre6.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre6.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<p>From the output,</p>
+<ul>
+<li>You can see that if the URL has been changed to /Angular, the respective Node route would be chosen and the string “Tutorial On Angular” is displayed.</li>
+</ul>
+<h2 id="Sample-Web-server-using-express-js"><a href="#Sample-Web-server-using-express-js" class="headerlink" title="Sample Web server using express.js"></a>Sample Web server using express.js</h2><p>From our above example, we have seen how we can decide on what output to show based on routing. This sort of routing is what is used in most modern-day web applications. The other part of a web server is about using templates in Node js.</p>
+<p>When creating quick on-the-fly Node applications, an easy and fast way is to use templates for the application. There are many frameworks available in the market for making templates. In our case, we will take the example of the jade framework for templating.</p>
+<p>Jade gets installed via the Node Package manager. This can be done by executing the following line in the command line</p>
+<p><strong>npm install jade</strong></p>
+<p>The above command requests the Node package manager to download the required jade modules and install them accordingly.</p>
+<p><strong>NOTE:</strong> In the latest version of Node jade has been deprecated. Instead, use pug.</p>
+<p>Let’s use our newly installed jade framework and create some basic templates.</p>
+<p><strong>Step 1)</strong> The first step is to create a jade template. Create a file called index.jade and insert the below code. Ensure to create the file in “views” folder</p>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre7.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre7.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<ol>
+<li>Here we are specifying that the title of the page will be changed to whatever value is passed when this template gets invoked.</li>
+<li>We are also specifying that the text in the header tag will get replaced to whatever gets passed in the jade template.</li>
+</ol>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre8.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre8.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var express=require(&apos;express&apos;);</span><br><span class="line">var app=express();</span><br><span class="line">app.set(&apos;view engine&apos;,&apos;jade&apos;);</span><br><span class="line">app.get(&apos;/&apos;,function(req,res)</span><br><span class="line">&#123;</span><br><span class="line">res.render(&apos;index&apos;,</span><br><span class="line">&#123;title:&apos;Guru99&apos;,message:&apos;Welcome&apos;&#125;)</span><br><span class="line">&#125;);</span><br><span class="line">var server=app.listen(3000,function() &#123;&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>If the variable <code>foo</code> is truthy, it will be returned. Otherwise, the <code>length</code> of the empty array will be returned: <code>0</code> .</p>
-<h3 id="Example-2"><a href="#Example-2" class="headerlink" title="Example 2"></a>Example 2</h3><p>Have you ever had problems accessing a nested object property? You might not know if the object or one of the sub-properties exists, and this can cause frustrating errors.<br>Let’s say we wanted to access a property called <code>data</code> within <code>this.state</code> , but <code>data</code> is undefined until our program has successfully returned a fetch request.<br>Depending on where we use it, calling <code>this.state.data</code> could prevent our app from running. To get around this, we could wrap it in a conditional:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (this.state.data) &#123;</span><br><span class="line">  return this.state.data;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  return &apos;Fetching Data&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>But that seems pretty repetitive. The ‘or’ operator provides a more concise solution:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return (this.state.data || &apos;Fetching Data&apos;);</span><br></pre></td></tr></table></figure>
-
-<p>We can’t refactor the code above to use <code>&amp;&amp;</code> . The statement <code>&#39;Fetching Data&#39; &amp;&amp; this.state.data</code> will return <code>this.state.data</code> whether it is <code>undefined</code> or not. This is because <code>&#39;Fetching Data&#39;</code> is ‘truthy’, and so the <code>&amp;&amp;</code> will always pass over it when it is listed first.</p>
-<h3 id="A-New-Proposed-Feature-Optional-Chaining"><a href="#A-New-Proposed-Feature-Optional-Chaining" class="headerlink" title="A New Proposed Feature: Optional Chaining"></a>A New Proposed Feature: Optional Chaining</h3><p>There is currently a proposal to allow ‘optional chaining’ when attempting to return a property deep in a tree-like structure. Under the proposal, the question mark symbol <code>?</code> could be used to extract a property only if it is not <code>null</code> .<br>For example, we could refactor our example above to <code>this.state.data?.()</code> , thus only returning <code>data</code> if it is not <code>null</code> .<br>Or, if we were mainly concerned about whether <code>state</code> was defined or not, we could return <code>this.state?.data</code> .<br>The proposal is currently at Stage 1, as an experimental feature. You can read about it here, and you can use in your JavaScript now via Babel, by adding @babel/plugin-proposal-optional-chaining to your <code>.babelrc</code> file.<br><br></p>
-<h2 id="3-Convert-to-Boolean"><a href="#3-Convert-to-Boolean" class="headerlink" title="3. Convert to Boolean"></a>3. Convert to Boolean</h2><p>TYPE CONVERSION<br>Besides the regular boolean values <code>true</code> and <code>false</code> , JavaScript also treats all other values as either ‘truthy’ or ‘falsy’.<br>Unless otherwise defined, all values in JavaScript are ‘truthy’ with the exception of <code>0</code>, <code>&quot;&quot;</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code> and of course <code>false</code> , which are ‘falsy’.<br>We can easily switch between true and false by using the negative operator <code>!</code> , which will also convert the type to <code>&quot;boolean&quot;</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const isTrue  = !0;</span><br><span class="line">const isFalse = !1;</span><br><span class="line">const alsoFalse = !!0;console.log(isTrue); // Result: true</span><br><span class="line">console.log(typeof true); // Result: &quot;boolean&quot;</span><br></pre></td></tr></table></figure>
-
-<p>This kind of type conversion can be handy in conditional statements, although the only reason you’d choose to define <code>false</code> as <code>!1</code> is if you were playing code golf!<br><br></p>
-<h2 id="4-Convert-to-String"><a href="#4-Convert-to-String" class="headerlink" title="4. Convert to String"></a>4. Convert to String</h2><p>TYPE CONVERSION<br>To quickly convert a number to a string, we can use the concatenation operator <code>+</code> followed by an empty set of quotation marks <code>&quot;&quot;</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const val = 1 + &quot;&quot;;console.log(val); // Result: &quot;1&quot;</span><br><span class="line">console.log(typeof val); // Result: &quot;string&quot;</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="5-Convert-to-Number"><a href="#5-Convert-to-Number" class="headerlink" title="5. Convert to Number"></a>5. Convert to Number</h2><p>TYPE CONVERSION<br>The opposite can be quickly achieved using the addition operator <code>+</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let int = &quot;15&quot;;</span><br><span class="line">int = +int;console.log(int); // Result: 15</span><br><span class="line">console.log(typeof int); Result: &quot;number&quot;</span><br></pre></td></tr></table></figure>
-
-<p>This may also be used to convert booleans to numbers, as below:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(+true);  // Return: 1</span><br><span class="line">console.log(+false); // Return: 0</span><br></pre></td></tr></table></figure>
-
-<p>There may be contexts where the <code>+</code> will be interpreted as the concatenation operator rather than the addition operator. When that happens (and you want to return an integer, not a float) you can instead use two tildes: <code>~~</code> .<br>A tilde, known as the ‘bitwise NOT operator’, is an operator equivalent to <code>-n — 1</code> . So, for example, <code>~15</code> is equal to <code>-16</code> .<br>Using two tildes in a row effectively negates the operation, because <code>— ( — n — 1) — 1 = n + 1 — 1 = n</code> . In other words, <code>~ — 16</code> equals <code>15</code> .</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const int = ~~&quot;15&quot;console.log(int); // Result: 15</span><br><span class="line">console.log(typeof int); Result: &quot;number&quot;</span><br></pre></td></tr></table></figure>
-
-<p>Though I can’t think of many use-cases, the bitwise NOT operator can also be used on booleans: <code>~true = -2</code> and <code>~false = -1</code>.<br><br></p>
-<h2 id="6-Quick-Powers"><a href="#6-Quick-Powers" class="headerlink" title="6. Quick Powers"></a>6. Quick Powers</h2><p>OPERATIONS<br>Since ES7, it has been possible to use the exponentiation operator <code>**</code> as a shorthand for powers, which is faster than writing <code>Math.pow(2, 3)</code> . This is straightforward stuff, but it makes the list because not many tutorials have been updated to include this operator!</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(2 ** 3); // Result: 8</span><br></pre></td></tr></table></figure>
-
-<p>This shouldn’t be confused with the <code>^</code> symbol, commonly used to represent exponents, but which in JavaScript is the bitwise XOR operator.<br>Before ES7, shorthand existed only for powers with base 2, using the bitwise left shift operator <code>&lt;&lt;</code> :</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// The following expressions are equivalent:Math.pow(2, n);</span><br><span class="line">2 &lt;&lt; (n - 1);</span><br><span class="line">2**n;</span><br></pre></td></tr></table></figure>
-
-<p>For example, <code>2 &lt;&lt; 3 = 16</code> is equivalent to <code>2 ** 4 = 16</code> .<br><br></p>
-<h2 id="7-Quick-Float-to-Integer"><a href="#7-Quick-Float-to-Integer" class="headerlink" title="7. Quick Float to Integer"></a>7. Quick Float to Integer</h2><p>OPERATIONS / TYPE CONVERSION<br>If you want to convert a float to an integer, you can use <code>Math.floor()</code> , <code>Math.ceil()</code> or <code>Math.round()</code> . But there is also a faster way to truncate a float to an integer using <code>|</code>, the bitwise OR operator.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">console.log(23.9 | 0);  // Result: 23</span><br><span class="line">console.log(-23.9 | 0); // Result: -23</span><br></pre></td></tr></table></figure>
-
-<p>The behaviour of <code>|</code> varies depending on whether you’re dealing with positive or negative numbers, so it’s best only to use this shortcut if you’re sure.<br>If <code>n</code> is positive, <code>n | 0</code> effectively rounds down. If <code>n</code> is negative, it effectively rounds up. To put it more accurately, this operation removes whatever comes after the decimal point, truncating a float to an integer.<br>You can get the same rounding effect by using <code>~~</code>, as above, and in fact any bitwise operator would force a float to an integer. The reasons these particular operations work is that — once forced to an integer — the value is left unchanged.</p>
-<h3 id="Remove-Final-Digits"><a href="#Remove-Final-Digits" class="headerlink" title="Remove Final Digits"></a>Remove Final Digits</h3><p>The bitwise OR operator can also be used to remove any amount of digits from the end of an integer. This means we don’t have to use code like this to convert between types:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let str = &quot;1553&quot;; </span><br><span class="line">Number(str.substring(0, str.length - 1));</span><br></pre></td></tr></table></figure>
-
-<p>Instead, the bitwise OR operator allows us to write:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.log(1553 / 10   | 0)  // Result: 155</span><br><span class="line">console.log(1553 / 100  | 0)  // Result: 15</span><br><span class="line">console.log(1553 / 1000 | 0)  // Result: 1</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="8-Automatic-Binding-in-Classes"><a href="#8-Automatic-Binding-in-Classes" class="headerlink" title="8. Automatic Binding in Classes"></a>8. Automatic Binding in Classes</h2><p>CLASSES<br>We can use ES6 arrow notation in class methods, and by doing so binding is implied. This will often save several lines of code in our class constructor, and we can happily say goodbye to repetitive expressions such as <code>this.myMethod = this.myMethod.bind(this)</code> !</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from React;export default class App extends Compononent &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">  super(props);</span><br><span class="line">  this.state = &#123;&#125;;</span><br><span class="line">  &#125;myMethod = () =&gt; &#123;</span><br><span class="line">    // This method is bound implicitly!</span><br><span class="line">  &#125;render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;&gt;</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">          &#123;this.myMethod()&#125;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">      &lt;/&gt;</span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<br>
-<br>
-
-<h2 id="9-Truncate-an-Array"><a href="#9-Truncate-an-Array" class="headerlink" title="9. Truncate an Array"></a>9. Truncate an Array</h2><p>ARRAYS<br>If you want to remove values from the end of an array destructively, there’s are faster alternatives than using <code>splice()</code> .<br>For example, if you know the size of your original array, you can re-define its length property, like so:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">array.length = 4;console.log(array); // Result: [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
-
-<p>This is a particularly concise solution. However, I have found the run-time of the <code>slice()</code> method to be even faster. If speed is your main goal, consider using something like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];</span><br><span class="line">array = array.slice(0, 4);console.log(array); // Result: [0, 1, 2, 3]</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="10-Get-the-Last-Item-s-in-an-Array"><a href="#10-Get-the-Last-Item-s-in-an-Array" class="headerlink" title="10. Get the Last Item(s) in an Array"></a>10. Get the Last Item(s) in an Array</h2><p>ARRAYS<br>The array method <code>slice()</code> can take negative integers, and if provided it will take values from the end of the array rather than the beginning.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];console.log(array.slice(-1)); // Result: [9]</span><br><span class="line">console.log(array.slice(-2)); // Result: [8, 9]</span><br><span class="line">console.log(array.slice(-3)); // Result: [7, 8, 9]</span><br></pre></td></tr></table></figure>
-
-<br>
-
-<h2 id="11-Format-JSON-Code"><a href="#11-Format-JSON-Code" class="headerlink" title="11. Format JSON Code"></a>11. Format JSON Code</h2><p>JSON<br>Lastly, you may have used <code>JSON.stringify</code> before, but did you realise it can also help indent your JSON for you?<br>The <code>stringify()</code> method takes two optional parameters: a <code>replacer</code> function, which you can use to filter the JSON that is displayed, and a <code>space</code> value.<br>The <code>space</code> value takes an integer for the number of spaces you want or a string (such as <code>&#39;\t&#39;</code> to insert tabs), and it can make it a lot easier to read fetched JSON data.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">console.log(JSON.stringify(&#123; alpha: &apos;A&apos;, beta: &apos;B&apos; &#125;, null, &apos;\t&apos;));// Result:</span><br><span class="line">// &apos;&#123;</span><br><span class="line">//     &quot;alpha&quot;: A,</span><br><span class="line">//     &quot;beta&quot;: B</span><br><span class="line">// &#125;&apos;</span><br></pre></td></tr></table></figure>
-
-<p>Overall, I hope you found these tips as useful as I did when I first discovered them.<br>Got any JavaScript tricks of your own? I’d love to read them in the comments below!</p>
+<p><strong>Code Explanation:</strong></p>
+<ol>
+<li>The first thing to specify in the application is “view engine” that will be used to render the templates. Since we are going to use jade to render our templates, we specify this accordingly.</li>
+<li>The render function is used to render a web page. In our example, we are rendering the template (index.jade) which was created earlier.</li>
+<li>We are passing the values of “Guru99” and “Welcome” to the parameters “title” and “message” respectively. These values will be replaced by the ‘title’, and ‘message’ parameters declared in the index.jade template.</li>
+</ol>
+<p>If the command is executed successfully, the following Output will be shown when you run your code in the browser.</p>
+<p><strong>Output:</strong></p>
+<p><a href="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre9.png" target="_blank" rel="noopener"><img src="https://www.guru99.com/images/NodeJS/010716_0613_NodejsExpre9.png" alt="Node.js Express FrameWork Tutorial - Learn in 10 Minutes"></a></p>
+<p>From the output,</p>
+<ul>
+<li>We can see that the title of the page gets set to “Guru99” and the header of the page gets set to “Welcome.”</li>
+<li>This is because of the jade template which gets invoked in our node js application.</li>
+</ul>
+<p><strong>Summary</strong></p>
+<ul>
+<li>The express framework is the most common framework used for developing Node js applications. The express framework is built on top of the node.js framework and helps in fast-tracking development of server-based applications.</li>
+<li>Routes are used to divert users to different parts of the web applications based on the request made. The response for each route can be varied depending on what needs to be shown to the user.</li>
+<li>Templates can be used to inject content in an efficient manner. Jade is one of the most popular templating engines used in Node.js applications.</li>
+</ul>
 <hr>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://medium.com/@bretcameron/12-javascript-tricks-you-wont-find-in-most-tutorials-a9c9331f169d" target="_blank" rel="noopener">https://medium.com/@bretcameron/12-javascript-tricks-you-wont-find-in-most-tutorials-a9c9331f169d</a></p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a href="https://www.guru99.com/node-js-express.html" target="_blank" rel="noopener">https://www.guru99.com/node-js-express.html</a></p>
 
       
 
@@ -293,7 +355,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Node.js, Express FrameWork</a>
         		</li>
       		
 		</ul>
@@ -349,7 +411,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/17/11-JavaScript-Tricks-You-Won-t-Find-in-Most-Tutorials-Useful-tips-for-writing-more-concise-and-performant-JavaScript/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/07/2020-06-07-Node.js-Express-FrameWork-Tutorial/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -363,18 +425,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/04/18/Typora & Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Typora &amp; Apple and Google Plan to Use Smartphone as a Coronavirus Tracking Device
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/16/How-to-build-a-real-time-parking-availability-system/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">How to build a real-time parking availability system?</div>
+    <a href="/2020/06/06/Front End Developer Questions/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Frontend Development Questions</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -401,7 +454,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Filter-Unique-Values"><span class="toc-number">1.</span> <span class="toc-text">1. Filter Unique Values</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Short-Circuit-Evaluation"><span class="toc-number">2.</span> <span class="toc-text">2. Short-Circuit Evaluation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#How-It-Works"><span class="toc-number">2.1.</span> <span class="toc-text">How It Works</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-1"><span class="toc-number">2.2.</span> <span class="toc-text">Example 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Example-2"><span class="toc-number">2.3.</span> <span class="toc-text">Example 2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#A-New-Proposed-Feature-Optional-Chaining"><span class="toc-number">2.4.</span> <span class="toc-text">A New Proposed Feature: Optional Chaining</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Convert-to-Boolean"><span class="toc-number">3.</span> <span class="toc-text">3. Convert to Boolean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Convert-to-String"><span class="toc-number">4.</span> <span class="toc-text">4. Convert to String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Convert-to-Number"><span class="toc-number">5.</span> <span class="toc-text">5. Convert to Number</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Quick-Powers"><span class="toc-number">6.</span> <span class="toc-text">6. Quick Powers</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-Quick-Float-to-Integer"><span class="toc-number">7.</span> <span class="toc-text">7. Quick Float to Integer</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Remove-Final-Digits"><span class="toc-number">7.1.</span> <span class="toc-text">Remove Final Digits</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-Automatic-Binding-in-Classes"><span class="toc-number">8.</span> <span class="toc-text">8. Automatic Binding in Classes</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-Truncate-an-Array"><span class="toc-number">9.</span> <span class="toc-text">9. Truncate an Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-Get-the-Last-Item-s-in-an-Array"><span class="toc-number">10.</span> <span class="toc-text">10. Get the Last Item(s) in an Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#11-Format-JSON-Code"><span class="toc-number">11.</span> <span class="toc-text">11. Format JSON Code</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-number">11.0.1.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Express-js"><span class="toc-number">1.</span> <span class="toc-text">What is Express.js?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installing-and-using-Express"><span class="toc-number">2.</span> <span class="toc-text">Installing and using Express</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-are-Routes"><span class="toc-number">3.</span> <span class="toc-text">What are Routes?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sample-Web-server-using-express-js"><span class="toc-number">4.</span> <span class="toc-text">Sample Web server using express.js</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-number">4.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
