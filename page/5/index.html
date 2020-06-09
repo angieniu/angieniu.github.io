@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 57</a>
+<a>Total Number of Articles: 58</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,101 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Spring Boot &amp; Autoconfigurations In-Depth" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/" class="archive-article-date">
+  	<time datetime="2020-05-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This guide would provide an in-depth understanding of what Spring Boot is, how its AutoConfigurations work and what the difference with the Spring Framework is.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It looks like everyone and their grandma are using <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">Spring Boot</a> to build projects. But very few can answer the question: “What is Spring Boot?”</p>
+<p><strong>The short answer</strong>:</p>
+<p>Spring Boot’s website offers the following answer: “Spring Boot takes an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss.”</p>
+<p>Wow, that doesn’t help at all, does it?</p>
+<p><strong>Luckily, there’s also a long answer</strong>:</p>
+<p>The remainder of this article.</p>
+<h3 id="A-quick-caveat"><a href="#A-quick-caveat" class="headerlink" title="A quick caveat"></a>A quick caveat</h3><p>I can give you a 99,99% guarantee, that you’d rather want to read the <a href="https://www.marcobehler.com/guides/spring-framework" target="_blank" rel="noopener">What is Spring Framework?</a> article first, if…:</p>
+<ul>
+<li>…you are completely new to Spring Boot (or Java).</li>
+<li>…you think “Spring Framework, Spring Web MVC and Spring Boot are all the same”.</li>
+<li>…you think “Cut all this other crap, I just want to learn about Spring Boot!”.</li>
+<li>(Especially if you think “cut all this other crap”).</li>
+</ul>
+<p>Take the time to finish the previous article first, then come back here.</p>
+<p>Furthermore, if you are looking for some simple copy &amp; paste Spring Boot REST/microservice tutorials, I would advise you to go to <a href="https://spring.io/guides" target="_blank" rel="noopener">https://spring.io/guides</a>, instead.</p>
+<h3 id="This-article’s-goals"><a href="#This-article’s-goals" class="headerlink" title="This article’s goals"></a>This article’s goals</h3><ul>
+<li>To give you an in-depth understanding of Spring Boot and its AutoConfigurations.</li>
+<li>To show you how Spring Boot <em>automagically</em> boots up a Tomcat server whenever you run a main() method.</li>
+<li>To show you how Spring Boot’s properties magic works. You specify a couple of properties and suddenly have working database access.</li>
+</ul>
+<p>Let’s start.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Real-time streaming in Power BI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -830,83 +925,6 @@
 
 
   
-    <article id="post-System Design Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/21/System Design Notes/">System Design Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/21/System Design Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>System Design Notes </p>
-<h1 id="Feed-Product"><a href="#Feed-Product" class="headerlink" title="Feed Product:"></a>Feed Product:</h1><p>1) What is a Feed product?– Twitter, weibo, when refresh and login, first feed what is supposed to be recommended, news feed, follow people’s posts. ranking and algorithm (relationship and interest) in the ranking consideration.<br>what is it? As a user, what I hope to use, the core functionalities, use cases. many core functionalities, what they are, what I will focus on to dissect, for products.<br>product directed</p>
-<p>2) functionalities: input – output – output as input — . deconstruct process in system design. signature. restful api.<br>Use cases: quantitative. data size, peak time query per second qps, read write query what they are, read more write less other patterns.<br>Story feed product:<br>Functionalities, use casesvoting dashboard, voting, real-time voting visualization</p>
-<h1 id="Case-Study-Leaderboard-Voting-Map"><a href="#Case-Study-Leaderboard-Voting-Map" class="headerlink" title="Case Study: Leaderboard, Voting Map"></a>Case Study: Leaderboard, Voting Map</h1>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">System Design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/21/System Design Notes/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1027,15 +1045,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1044,10 +1066,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1071,10 +1089,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
@@ -1083,11 +1097,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1095,11 +1113,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1111,11 +1129,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1143,19 +1161,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1167,11 +1185,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
