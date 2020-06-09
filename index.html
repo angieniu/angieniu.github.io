@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 56</a>
+<a>Total Number of Articles: 57</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,89 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-08-Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/08/2020-06-08-Git/">Git</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/08/2020-06-08-Git/" class="archive-article-date">
+  	<time datetime="2020-06-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Endlessly renaming your files may be a solid process for a 4th grader learning Microsoft Word, but you’re an engineer! We have the technology for greater version control but to the newly “git-nitiated” it can be intimidating. Often people ignore, or delay, accepting it.</p>
+<p>In this post we’ll accomplish the following feats:</p>
+<ul>
+<li>Initialize an empty repo and build it from scratch</li>
+<li>Create an SSH key and add it to our account</li>
+<li>Make changes to our codebase and sync them with <strong>origin</strong></li>
+</ul>
+<p><img src="https://miro.medium.com/max/60/1*4JB7nC3r18THkeONi6Rdvw.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/461/1*4JB7nC3r18THkeONi6Rdvw.png" alt="img"></p>
+<p>Better git your priorities in order…</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/08/2020-06-08-Git/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-07-Node.js-Express-FrameWork-Tutorial" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -858,7 +941,7 @@
 <p>cod: App3中定义三个状态state，把状态和input关联，value 是view是state，onChange是来改变状态的, 叠加使用，状态数据修改，onChange调用this.setState的变化会导致rerender = &gt; r, g, b又改变了。</p>
 <p>input, radio, checkbox,range, slider, toggle button.</p>
 <p>form不一定</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      str: <span class="string">'hello'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;&#123;<span class="keyword">this</span>.state.str&#125;&lt;<span class="regexp">/h1&gt; /</span><span class="regexp">/? 不能只有str, 因为</span></span><br><span class="line"><span class="regexp">      &lt;input type = 'text'</span></span><br><span class="line"><span class="regexp">        value =&#123;this.state.str&#125; /</span><span class="regexp">/初始值设置</span></span><br><span class="line"><span class="regexp">        onChange=&#123;</span></span><br><span class="line"><span class="regexp">          (e) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">            console.log(e.target.value)</span></span><br><span class="line"><span class="regexp">            this.setState(&#123;</span></span><br><span class="line"><span class="regexp">              str: e.target.value /</span><span class="regexp">/? setState里面str即可</span></span><br><span class="line"><span class="regexp">            &#125;)</span></span><br><span class="line"><span class="regexp">          &#125;</span></span><br><span class="line"><span class="regexp">        &#125;&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      str: <span class="string">'hello'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;&#123;<span class="keyword">this</span>.state.str&#125;&lt;<span class="regexp">/h1&gt; /</span><span class="regexp">/不能只有str, 因为str是state的一个属性， state是component的属性，这里的input的值需要和component的state绑定，这样每次执行setState都会自动调用render函数。 如果直接写str是无法将state和render进行连接。</span></span><br><span class="line"><span class="regexp">      &lt;input type = 'text'</span></span><br><span class="line"><span class="regexp">        value =&#123;this.state.str&#125; /</span><span class="regexp">/初始值设置</span></span><br><span class="line"><span class="regexp">        onChange=&#123;</span></span><br><span class="line"><span class="regexp">          (e) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">            console.log(e.target.value)</span></span><br><span class="line"><span class="regexp">            this.setState(&#123;/</span><span class="regexp">/this指代是当前的component, 但是由于component是继承于react.component, 所以这个setState函数实际上是在react.component中定义的。</span></span><br><span class="line"><span class="regexp">              str: e.target.value /</span><span class="regexp">/setState里面str即可，这里的str是state的attr, 所以不需要指定this.state.</span></span><br><span class="line"><span class="regexp">            &#125;)</span></span><br><span class="line"><span class="regexp">          &#125;</span></span><br><span class="line"><span class="regexp">        &#125;&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Uncontrolled-Component"><a href="#Uncontrolled-Component" class="headerlink" title="Uncontrolled Component"></a>Uncontrolled Component</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/babel"</span>&gt; <span class="comment">//必须有babel</span></span><br><span class="line">  <span class="comment">// Uncontrolled Component</span></span><br><span class="line">  <span class="comment">// 2 method:</span></span><br><span class="line">  <span class="comment">// method1 (not recommended): using ref + this.refs</span></span><br><span class="line">  <span class="comment">//      step 1: define -&gt; ref</span></span><br><span class="line">  <span class="comment">// 			step2: use -&gt; this.refs</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">		render()&#123;</span><br><span class="line">			<span class="keyword">return</span>(</span><br><span class="line">				&lt;div&gt; <span class="comment">//必须有div root，当然如果只有一个元素不用，不过一般有很多个。</span></span><br><span class="line">					&lt;h1&gt;Hello React&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">          &lt;hr /</span>&gt;</span><br><span class="line">          &lt;input type=<span class="string">"text"</span> ref=<span class="string">"myRef"</span> /&gt;</span><br><span class="line">          &lt;hr /&gt;</span><br><span class="line">          &lt;button onClick=&#123; () =&gt; &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">this</span>.refs)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.refs.myRef.value)</span><br><span class="line">              &#125;&#125;&gt;click me&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">				&lt;/</span>div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>)) </span><br><span class="line">          <span class="comment">// virtual component, actual component</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;  </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ method 2: recommended: using React.createRef() + this.*.current /</span><span class="regexp">/ * 是我们叫ref的name。</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ step1: define </span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ step2: use -&gt; this.*.current</span></span><br><span class="line"><span class="regexp">  &lt;script type="text/</span>babel<span class="string">"&gt; //必须有babel</span></span><br><span class="line"><span class="string">	class App extends React.Component &#123;</span></span><br><span class="line"><span class="string">    constructor()&#123;</span></span><br><span class="line"><span class="string">      super();</span></span><br><span class="line"><span class="string">      //step1: define ref</span></span><br><span class="line"><span class="string">      this.myInput = React.createRef();</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">		render()&#123;</span></span><br><span class="line"><span class="string">			return(</span></span><br><span class="line"><span class="string">				&lt;div&gt; //必须有div</span></span><br><span class="line"><span class="string">					&lt;h1 ref="</span>myRef2<span class="string">"&gt;Hello React&lt;/h1&gt;</span></span><br><span class="line"><span class="string">          &lt;hr /&gt;</span></span><br><span class="line"><span class="string">          &lt;input type="</span>text<span class="string">" ref="</span>myRef<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">          &lt;/hr&gt;</span></span><br><span class="line"><span class="string">          &lt;button onClick=&#123; () =&gt; &#123;</span></span><br><span class="line"><span class="string">                console.log(this.refs)</span></span><br><span class="line"><span class="string">            console.log(this.refs.myRef.value)</span></span><br><span class="line"><span class="string">              &#125;&#125;&gt;click me&lt;/button&gt;</span></span><br><span class="line"><span class="string">				&lt;hr /&gt;</span></span><br><span class="line"><span class="string">        &lt;hr /&gt;</span></span><br><span class="line"><span class="string">        &lt;input type="</span>text<span class="string">" ref=&#123;this.myInput&#125; /&gt;</span></span><br><span class="line"><span class="string">        &lt;button onClick=&#123;() =&gt; &#123;</span></span><br><span class="line"><span class="string">            console.log(this.myInput) // -&gt; object</span></span><br><span class="line"><span class="string">						console.log(this.myInput.current.value)</span></span><br><span class="line"><span class="string">          &#125;&#125;&gt;click me &lt;.button&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">			)</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">  ReactDOM.render(&lt;App /&gt;, document.getElementById('box')) </span></span><br><span class="line"><span class="string">          // virtual component, actual component</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
 
@@ -1035,84 +1118,6 @@
 
 
   
-    <article id="post-2020-05-29-SQL-with-PowerBI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/2020-05-29-SQL-with-PowerBI/">SQL with PowerBI</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/29/2020-05-29-SQL-with-PowerBI/" class="archive-article-date">
-  	<time datetime="2020-05-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Some videos I feel helpful:</p>
-<p><a href="https://www.youtube.com/watch?v=SNyjeb9Rd7M" target="_blank" rel="noopener">https://www.youtube.com/watch?v=SNyjeb9Rd7M</a></p>
-<p><a href="https://www.youtube.com/watch?v=NJPc1iseBvM" target="_blank" rel="noopener">https://www.youtube.com/watch?v=NJPc1iseBvM</a></p>
-<p>In this tutorial, we’ll learn how to connect PowerBI to a Microsoft SQL Server database and then analyze the data to get insights.</p>
-<p><a href="https://powerbi.microsoft.com/en-us/" target="_blank" rel="noopener">Power BI</a> is a cloud-based business analytics service from <a href="https://www.microsoft.com/en-in" target="_blank" rel="noopener">Microsoft</a> that enables anyone to visualize and analyze data, with better speed, understanding an efficiency. It is a powerful as well as a flexible tool for connecting with and analyzing a wide variety of data. Apart from the various visualization advantages that Power BI offers, it has an amazing out of the box connection capabilities like easily integrating with Databases. This offers increased advantages regarding functionalities and comes in handy for Data Scientists who are used to working in SQL. Power BI provides an optimized, live connector to SQL Server so that we can easily create charts, reports, and dashboards by directly working with a large amount of data.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">SQL, PowerBI, Data Visualization</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/2020-05-29-SQL-with-PowerBI/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1213,10 +1218,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1229,15 +1230,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1253,23 +1258,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1281,11 +1278,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1293,19 +1294,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1317,11 +1318,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1329,15 +1330,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1349,23 +1346,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1377,6 +1370,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
@@ -1385,11 +1382,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
