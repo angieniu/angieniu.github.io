@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: React | Yanjie&#39;s Blog</title>
+  <title>Yarn vs NPM | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/React/index.html">
+  <meta name="description" content="Yarn is a new JavaScript package manager built by Facebook, Google, Exponent and Tilde. As can be read in the official announcement, its purpose is to solve a handful of problems that these teams face">
+<meta name="keywords" content="yarn, npm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yarn vs NPM">
+<meta property="og:url" content="http://yoursite.com/2020/06/09/2020-06-09-Yarn-vs-NPM/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="Yarn is a new JavaScript package manager built by Facebook, Google, Exponent and Tilde. As can be read in the official announcement, its purpose is to solve a handful of problems that these teams face">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/10/1476870188yarn.jpg">
+<meta property="og:image" content="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/10/1476651912yarn-install-output.png">
+<meta property="og:updated_time" content="2020-06-10T08:15:19.780Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Yarn vs NPM">
+<meta name="twitter:description" content="Yarn is a new JavaScript package manager built by Facebook, Google, Exponent and Tilde. As can be read in the official announcement, its purpose is to solve a handful of problems that these teams face">
+<meta name="twitter:image" content="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/10/1476870188yarn.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,60 +150,256 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-09-Yarn-vs-NPM" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/31/Function vs Class Defined Component/" class="archive-article-date">
-  	<time datetime="2020-05-31T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/31/Function vs Class Defined Component/">REACT Notes</a>
+    <h1 class="article-title" itemprop="name">
+      Yarn vs NPM
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/09/2020-06-09-Yarn-vs-NPM/" class="archive-article-date">
+  	<time datetime="2020-06-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Yarn is a new JavaScript package manager built by Facebook, Google, Exponent and Tilde. As can be read in the <a href="https://code.facebook.com/posts/1840075619545360" target="_blank" rel="noopener">official announcement</a>, its purpose is to solve a handful of problems that these teams faced with npm, namely:</p>
+<ul>
+<li>installing packages wasn’t fast/consistent enough, and</li>
+<li>there were security concerns, as npm allows packages to run code on installation.</li>
+</ul>
+<p>But, don’t be alarmed! This is not an attempt to replace npm completely. Yarn is only a new CLI client that fetches modules from the npm registry. Nothing about the registry itself will change — you’ll still be able to fetch and publish packages as normal.</p>
+<p>Should everyone jump aboard the Yarn hype train now? Chances are you never encountered these problems with npm. In this article, we’re going to compare npm and Yarn, so you can decide which is best for you.</p>
+<p><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/10/1476870188yarn.jpg" alt="Yarn logo"></p>
+<h2 id="Yarn-vs-npm-Functional-Differences"><a href="#Yarn-vs-npm-Functional-Differences" class="headerlink" title="Yarn vs npm: Functional Differences"></a>Yarn vs npm: Functional Differences</h2><p>At a first glance Yarn and npm appear similar. As we peek under the hood though, we realize what makes Yarn different.</p>
+<a id="more"></a>
+
+<h3 id="The-yarn-lock-File"><a href="#The-yarn-lock-File" class="headerlink" title="The yarn.lock File"></a>The yarn.lock File</h3><p>In <code>package.json</code>, the file where both npm and Yarn keep track of the project’s dependencies, version numbers aren’t always exact. Instead, you can define a range of versions. This way you can choose a specific major and minor version of a package, but allow npm to install the latest patch that might fix some bugs.</p>
+<p>In an ideal world of <a href="http://semver.org/" target="_blank" rel="noopener">semantic versioning</a>, patched releases won’t include any breaking changes. This, unfortunately, is not always true. The strategy employed by npm may result into two machines with the same <code>package.json</code> file, having different versions of a package installed, possibly introducing bugs.</p>
+<p>To avoid package version mis-matches, an exact installed version is pinned down in a lock file. Every time a module is added, Yarn creates (or updates) a <code>yarn.lock</code> file. This way you can guarantee another machine installs the exact same package, while still having a range of allowed versions defined in <code>package.json</code>.</p>
+<p>In npm, the <code>npm shrinkwrap</code> command generates a lock file as well, and <code>npm install</code> reads that file before reading <code>package.json</code>, much like how Yarn reads <code>yarn.lock</code> first. The important difference here is that Yarn always creates and updates <code>yarn.lock</code>, while npm doesn’t create one by default and only updates <code>npm-shrinkwrap.json</code> when it exists.</p>
+<ol>
+<li><a href="https://yarnpkg.com/en/docs/configuration#toc-use-yarn-lock-to-pin-your-dependencies" target="_blank" rel="noopener">yarn.lock documentation</a></li>
+<li><a href="https://docs.npmjs.com/cli/shrinkwrap" target="_blank" rel="noopener">npm shrinkwrap documentation</a></li>
+</ol>
+<h3 id="Parallel-Installation"><a href="#Parallel-Installation" class="headerlink" title="Parallel Installation"></a>Parallel Installation</h3><p>Whenever npm or Yarn needs to install a package, it carries out a series of tasks. In npm, these tasks are executed per package and sequentially, meaning it will wait for a package to be fully installed before moving on to the next. Yarn executes these tasks in parallel, increasing performance.</p>
+<p>For comparison, I installed the <a href="https://www.npmjs.com/package/express" target="_blank" rel="noopener">express</a> package using both npm and Yarn without a shrinkwrap/lock file and with a clean cache. This installs 42 packages in total.</p>
+<ul>
+<li>npm: 9 seconds</li>
+<li>Yarn: 1.37 seconds</li>
+</ul>
+<p>I couldn’t believe my eyes. Repeating the steps yielded similar results. I then installed the <a href="https://www.npmjs.com/package/gulp" target="_blank" rel="noopener">gulp</a> package, resulting in 195 dependencies.</p>
+<ul>
+<li>npm: 11 seconds</li>
+<li>Yarn: 7.81 seconds</li>
+</ul>
+<p>It seems the difference closely depends on the amount of packages that are being installed. Either way, Yarn is consistently faster.</p>
+<h3 id="Cleaner-Output"><a href="#Cleaner-Output" class="headerlink" title="Cleaner Output"></a>Cleaner Output</h3><p>By default npm is very verbose. For example, it recursively lists all installed packages when running <code>npm install &lt;package&gt;</code>. Yarn on the other hand, isn’t verbose at all. When details can be obtained via other commands, it lists significantly less information with appropriate emojis (unless you’re on Windows).</p>
+<p><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/10/1476651912yarn-install-output.png" alt="The output of the &quot;yarn install&quot; command"></p>
+<h2 id="Yarn-vs-npm-CLI-Differences"><a href="#Yarn-vs-npm-CLI-Differences" class="headerlink" title="Yarn vs npm: CLI Differences"></a>Yarn vs npm: CLI Differences</h2><p>Other than some functional differences, Yarn also has different commands. Some npm commands were removed, others modified and a couple of interesting commands were added.</p>
+<h3 id="yarn-global"><a href="#yarn-global" class="headerlink" title="yarn global"></a>yarn global</h3><p>Unlike npm, where global operations are performed using the <code>-g</code> or <code>--global</code> flag, Yarn commands need to be prefixed with <code>global</code>. Just like npm, project-specific dependencies shouldn’t need to be installed globally.</p>
+<p>The <code>global</code> prefix only works for <code>yarn add</code>, <code>yarn bin</code>, <code>yarn ls</code> and <code>yarn remove</code>. With the exception of <code>yarn add</code>, these commands are identical to their npm equivalent.</p>
+<ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/global" target="_blank" rel="noopener">yarn global documentation</a></li>
+</ol>
+<h3 id="yarn-install"><a href="#yarn-install" class="headerlink" title="yarn install"></a>yarn install</h3><p>The <code>npm install</code> command will install dependencies from the <code>package.json</code> file and allows you to add new packages. <code>yarn install</code> only installs the dependencies listed in <code>yarn.lock</code> or <code>package.json</code>, in that order.</p>
+<ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/install" target="_blank" rel="noopener">yarn install documentation</a></li>
+<li><a href="https://docs.npmjs.com/cli/install" target="_blank" rel="noopener">npm install documentation</a></li>
+</ol>
+<h3 id="yarn-add-–dev"><a href="#yarn-add-–dev" class="headerlink" title="yarn add [–dev]"></a>yarn add [–dev]</h3><p>Similar to <code>npm install &lt;package&gt;</code>, <code>yarn add &lt;package&gt;</code> allows you to add and install a dependency. As the name of the command implies, it adds a dependency, meaning it automatically saves a reference to the package in the <code>package.json</code> file, just as npm’s <code>--save</code> flag does. Yarn’s <code>--dev</code> flag adds the package as a developer dependency, like npm’s <code>--save-dev</code> flag.</p>
+<ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/add" target="_blank" rel="noopener">yarn add documentation</a></li>
+<li><a href="https://docs.npmjs.com/cli/install" target="_blank" rel="noopener">npm install documentation</a></li>
+</ol>
+<h3 id="yarn-licenses-ls-generate-disclaimer"><a href="#yarn-licenses-ls-generate-disclaimer" class="headerlink" title="yarn licenses [ls|generate-disclaimer]"></a>yarn licenses [ls|generate-disclaimer]</h3><p>At the time of writing, no npm equivalent is available. <code>yarn licenses ls</code> lists the licenses of all installed packages. <code>yarn licenses generate-disclaimer</code> generates a disclaimer containing the contents of all licenses of all packages. Some licenses state that you must include the project’s license in your project, making this a rather useful tool to do that.</p>
+<ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/licenses" target="_blank" rel="noopener">yarn licenses documentation</a></li>
+</ol>
+<h3 id="yarn-why"><a href="#yarn-why" class="headerlink" title="yarn why"></a>yarn why</h3><p>This command peeks into the dependency graph and figures out why given package is installed in your project. Perhaps you explicitly added it, perhaps it’s a dependency of a package you installed. <code>yarn why</code> helps you figure that out.</p>
+<ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/why" target="_blank" rel="noopener">yarn why documentation</a></li>
+</ol>
+<h3 id="yarn-upgrade-package"><a href="#yarn-upgrade-package" class="headerlink" title="yarn upgrade [package]"></a>yarn upgrade [package]</h3><p>This command upgrades packages to the latest version conforming to the version rules set in <code>package.json</code> and recreates <code>yarn.lock</code>. This is similar to <code>npm update</code>.</p>
+<p>Interestingly, when specifying a package, it updates that package to latest release and updates the tag defined in <code>package.json</code>. This means this command might update packages to a new major release.</p>
+<ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/upgrade" target="_blank" rel="noopener">yarn upgrade documentation</a></li>
+</ol>
+<h3 id="yarn-generate-lock-entry"><a href="#yarn-generate-lock-entry" class="headerlink" title="yarn generate-lock-entry"></a>yarn generate-lock-entry</h3><p>The <code>yarn generate-lock-entry</code> command generates a <code>yarn.lock</code> file based on the dependencies set in <code>package.json</code>. This is similar to <code>npm shrinkwrap</code>. This command should be used with caution, as the lock file is generated and updated automatically when adding and upgrading dependencies via <code>yarn add</code> and <code>yarn upgrade</code>.</p>
+<ol>
+<li><a href="https://yarnpkg.com/en/docs/cli/generate-lock-entry" target="_blank" rel="noopener">yarn generate-lock-entry documentation</a></li>
+<li><a href="https://docs.npmjs.com/cli/shrinkwrap" target="_blank" rel="noopener">npm shrinkwrap documentation</a></li>
+</ol>
+<h2 id="Stability-and-Reliability"><a href="#Stability-and-Reliability" class="headerlink" title="Stability and Reliability"></a>Stability and Reliability</h2><p>Could the Yarn hype train become derailed? It did receive a lot of <a href="https://github.com/yarnpkg/yarn/issues" target="_blank" rel="noopener">issue reports</a> the first day it was released into the public, but the rate of resolved issues is also astounding. Both indicate that the community is working hard to find and remove bugs. Looking at the number and type of issues, Yarn appears stable for most users, but might not yet be suitable for edge cases.</p>
+<p>Note that although a package manager is probably vital for your project, it is just a package manager. If something goes wrong, reinstalling packages shouldn’t be difficult, and nor is reverting back to npm.</p>
+<h2 id="The-Future"><a href="#The-Future" class="headerlink" title="The Future"></a>The Future</h2><p>Perhaps you’re aware of the history between Node.js and io.js. To recap: io.js was a fork of Node.js, created by some core contributors after some disagreement over the project’s governance. Instead, io.js chose an open governance. In less than a year, both teams came to an agreement, io.js was merged back into Node.js, and the former was discontinued. Regardless of the rights or wrongs, this introduced a lot of great features into Node.js.</p>
+<p>I’m seeing similar patterns with npm and Yarn. Although Yarn isn’t a fork, it improves several flaws npm has. Wouldn’t it be cool if npm learned from this and asked Facebook, Google and the other Yarn contributors to help improve npm instead? Although it is way too early to say if this will happen, I hope it will.</p>
+<p>Either way, Yarn’s future looks bright. The community appears excited and is receiving this new package manager well. Unfortunately, no road map is available, so I am not sure what surprises Yarn has in store for us.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Yarn scores points with way better defaults compared to npm. We get a lockfile for free, installing packages is blazing fast and they are automatically stored in <code>package.json</code>. The impact of installing and using Yarn is also minimal. You can try it on just one project, and see if it works for you or not. This makes Yarn a perfect drop-in substitute for npm.</p>
+<p>I would definitely recommend trying Yarn on a single project sooner or later. If you are cautious about installing and using new software, give it a couple of months. After all, npm is battle-tested, and that is definitely worth something in the world of software development.</p>
+<p>If you happen to find yourself waiting for npm to finish installing packages, that might be the perfect moment to read the <a href="https://yarnpkg.com/en/docs/migrating-from-npm" target="_blank" rel="noopener">migration guide</a> ;)</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.sitepoint.com/yarn-vs-npm/" target="_blank" rel="noopener">https://www.sitepoint.com/yarn-vs-npm/</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yarn, npm</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/09/2020-06-09-Yarn-vs-NPM/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/09/2020-06-09-Git-Debug/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git Debug</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Yarn-vs-npm-Functional-Differences"><span class="toc-number">1.</span> <span class="toc-text">Yarn vs npm: Functional Differences</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#The-yarn-lock-File"><span class="toc-number">1.1.</span> <span class="toc-text">The yarn.lock File</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Parallel-Installation"><span class="toc-number">1.2.</span> <span class="toc-text">Parallel Installation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cleaner-Output"><span class="toc-number">1.3.</span> <span class="toc-text">Cleaner Output</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Yarn-vs-npm-CLI-Differences"><span class="toc-number">2.</span> <span class="toc-text">Yarn vs npm: CLI Differences</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#yarn-global"><span class="toc-number">2.1.</span> <span class="toc-text">yarn global</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yarn-install"><span class="toc-number">2.2.</span> <span class="toc-text">yarn install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yarn-add-–dev"><span class="toc-number">2.3.</span> <span class="toc-text">yarn add [–dev]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yarn-licenses-ls-generate-disclaimer"><span class="toc-number">2.4.</span> <span class="toc-text">yarn licenses [ls|generate-disclaimer]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yarn-why"><span class="toc-number">2.5.</span> <span class="toc-text">yarn why</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yarn-upgrade-package"><span class="toc-number">2.6.</span> <span class="toc-text">yarn upgrade [package]</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yarn-generate-lock-entry"><span class="toc-number">2.7.</span> <span class="toc-text">yarn generate-lock-entry</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stability-and-Reliability"><span class="toc-number">3.</span> <span class="toc-text">Stability and Reliability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Future"><span class="toc-number">4.</span> <span class="toc-text">The Future</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">5.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">5.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +425,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
