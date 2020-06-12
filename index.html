@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 60</a>
+<a>Total Number of Articles: 61</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,95 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/11/2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/">How to create an Android project with the MVVM architectural pattern [Part 1].</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/11/2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/" class="archive-article-date">
+  	<time datetime="2020-06-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://miro.medium.com/max/1534/1*tSHvX51lF0BwYFbmFaobpg.png" alt="img"></p>
+<p>After a long time, I just started to write something related to Android development that will help for the new beginners. If you are an experienced Android developer you already know what I am going to talk about. But this is for you if you have some basic experience in Android development. So if we are going to start a Mobile application project we always care about the architecture of the application.</p>
+<p>Why we need proper architecture?<br>With the use of architecture, we can easily maintain our code in the future as well as we can easily write unit testing for it. <a href="https://en.wikipedia.org/wiki/Model–view–presenter" target="_blank" rel="noopener"><strong>MVP</strong></a> and <a href="https://en.wikipedia.org/wiki/Model–view–viewmodel" target="_blank" rel="noopener"><strong>MVVM</strong></a> are the most popular architectural patterns among android developers.I’m not going to discuss the difference between those architectural patterns because both patterns we can use in different scenarios. After joining <a href="https://global.rakuten.com/corp/about/company/" target="_blank" rel="noopener">Rakuten</a> I got a chance to worked with high scale Android project. So I felt how much it make easy to develop if we select proper architecture. Let’s start to talk about MVVM.</p>
+<p>In the part 1 section, I will describe MVVM shortly and folder structure about the project.</p>
+<p>For this project, we are using a few popular libraries. I hope that readers will familiar with those. I will explain the use of these libraries in the next sections. Here is the list of libraries<br>•Rx Java<br>•Dagger2<br>•Retrofit</p>
+<p>Here you can see how was my current project folder structure looks like.</p>
+<p><img src="https://miro.medium.com/max/46/1*pydTWaXUUGSaemUrvITWJA.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/504/1*pydTWaXUUGSaemUrvITWJA.png" alt="img"></p>
+<p>When we are talking about MVVM pattern we need to talk about Model, ViewModel, and View. Each section has different duties to perform. Above picture, you can clearly see that the folder structure divided into those sections. Apart from that folder called “di” can be seen. That section was allocated for dependency injection. So we are using Dagger 2 library for this. We can discuss more details about this section in the next tutorial.</p>
+<p>Below you can see a short description for View, ViewModel, and Model.No need to worry if you can not get full idea about that. We can discuss it with a code example in the next tutorial.</p>
+<p><strong>View</strong> — What the user sees, the UI, it also can hold events. It is bound to a View Model through data binding.</p>
+<p><strong>ViewModel</strong> — Can have states &amp; detect changes. It is a data representation of the actual raw data in the model. It is not the UI (View) it is not the data (Model), it is the ‘In Between’ link.only the View Model does so it can write back changes to the Model if required.</p>
+<p><strong>Model</strong> — The Model is the stored raw data, it gives the View Model the data so it can manipulate it but it’s not the actual data so the logic is performed in the View Model first before anything committal to the data comes this way.</p>
+<p>In the next tutorial, I will explain how to implement MVVM along with other libraries to fulfill our requirement. Please read more about MVVM and try to create a small project. Thank you for reading this.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/@rajithaperera_81165/how-to-create-an-android-project-with-the-mvvm-architectural-pattern-part-1-ac7029653056" target="_blank" rel="noopener">https://medium.com/@rajithaperera_81165/how-to-create-an-android-project-with-the-mvvm-architectural-pattern-part-1-ac7029653056</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Android, MVVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/11/2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-10-Add-Firebase-to-JavaScript-Project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -899,83 +988,9 @@
 
 
   
-    <article id="post-2020-06-02-糖糖-🍬🍬" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/02/2020-06-02-糖糖-🍬🍬/">糖糖 🍬🍬</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/02/2020-06-02-糖糖-🍬🍬/" class="archive-article-date">
-  	<time datetime="2020-06-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天得知糖糖走了，本来能量满满的我，忽然间有点儿感伤。</p>
-<p>初识糖糖时，觉得他嗓音有种别样的沙哑与磁性，当时就觉得他应该是教了太多课了。</p>
-<p>之后，我总能从他身上发现点点滴滴令人感动的细节。</p>
-<p>为了答疑，凌晨1点多可能才下课，之后才来个夜宵，备课或者回答学生零零散散的问题还可能拖到更晚。糖糖说，他前几天凌晨5点才睡觉，心疼。</p>
-<p>每每这个时候，我会在想糖糖的另一半一定也很心疼糖糖。</p>
-<p>生活中的糖糖，早上7点多会开始准备忙着送孩子。褪去老师的外衣，一个尽职尽责的爸爸形象跃然纸上。</p>
-<p>糖糖是我最喜欢的老师之一。并不是因为他知识上能够驾驭各种题目，因为一定有不少人能做到这一点。但是他每一次讲题，我都能感受到他是真正的热爱传授知识，想尽各种办法给学生讲懂，愿意倾听，也会积极回应。这些，不是每一个会做题的人能做到的，或有耐心愿意去做的。</p>
-<p>正是因为他是这么好的一个老师，所以他不教课了，也为他感到开心。他可以有更多时间去休息休息，享受生活，陪伴家人，做做自己的研究。</p>
-<p>昔日有幸，聆听教诲，感恩！</p>
-<p>他日有缘，江湖相见，期盼！</p>
-<p>我会让这一天早点儿到来的！ 🤗</p>
-<p>Cultivate more self-compassion;<br>Keep in mind to take more care of the people we love, those who love us, and ourselves! That’s what I have learned through Tangtang’s decision-making. Good luck with your new journey!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/02/2020-06-02-糖糖-🍬🍬/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1077,6 +1092,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1085,15 +1104,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1101,11 +1116,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1113,11 +1124,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1133,10 +1148,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
@@ -1145,7 +1156,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1153,7 +1168,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1161,7 +1176,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,19 +1220,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,11 +1264,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
