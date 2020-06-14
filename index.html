@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 62</a>
+<a>Total Number of Articles: 63</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -202,6 +202,92 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/">Android Architecture Patterns Part 2 Model-View-Presenter</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/" class="archive-article-date">
+  	<time datetime="2020-06-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It’s about time we developers start thinking about how we can apply good architecture patterns in our Android apps. To help with this, Google offers <a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="noopener">Android Architecture Blueprints</a>, where <a href="https://github.com/erikhellman" target="_blank" rel="noopener">Erik Hellman</a> and I worked together on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/" target="_blank" rel="noopener">MVP &amp; RxJava</a> sample. Let’s have a look at how we applied it and the pros and cons of this approach.</p>
+<p><a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/" target="_blank" rel="noopener">googlesamples/android-architectureandroid-architecture - A collection of samples to discuss and showcase different architectural tools and patterns for…github.com</a></p>
+<h1 id="The-Model-View-Presenter-Pattern"><a href="#The-Model-View-Presenter-Pattern" class="headerlink" title="The Model-View-Presenter Pattern"></a>The Model-View-Presenter Pattern</h1><p>Here are the roles of every component:</p>
+<ul>
+<li><strong>Model</strong> — the data layer. Responsible for handling the business logic and communication with the network and database layers.</li>
+<li><strong>View</strong> — the UI layer. Displays the data and notifies the Presenter about user actions.</li>
+<li><strong>Presenter</strong> — retrieves the data from the Model, applies the UI logic and manages the state of the View, decides what to display and reacts to user input notifications from the View.</li>
+</ul>
+<p>Since the View and the Presenter work closely together, they need to have a reference to one another. To make the Presenter unit testable with JUnit, the View is abstracted and an interface for it used. The relationship between the Presenter and its corresponding View is defined in a <code>Contract</code> interface class, making the code more readable and the connection between the two easier to understand.</p>
+<p><img src="https://miro.medium.com/max/60/0*VOr9hgXEmoTxyoyz.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/2000/0*VOr9hgXEmoTxyoyz.png" alt="img"></p>
+<p>Model-View-Presenter class structure</p>
+<h1 id="The-Model-View-Presenter-Pattern-amp-RxJava-in-Android-Architecture-Blueprints"><a href="#The-Model-View-Presenter-Pattern-amp-RxJava-in-Android-Architecture-Blueprints" class="headerlink" title="The Model-View-Presenter Pattern &amp; RxJava in Android Architecture Blueprints"></a>The Model-View-Presenter Pattern &amp; RxJava in Android Architecture Blueprints</h1><p>The blueprint sample is a <a href="https://github.com/googlesamples/android-architecture/wiki/To-do-app-specification" target="_blank" rel="noopener">”To Do” application</a>. It lets a user create, read, update and delete “To Do” tasks, as well as apply filters to the displayed list of tasks. RxJava is used to move off the main thread and be able to handle asynchronous operations.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android, MVP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/">Show All >></a>
         </p>
       
 
@@ -836,7 +922,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/05/2020-06-05-EZ-Park-&-Ride/">EZ Park &amp; Ride</a>
+      <a class="article-title" href="/2020/06/05/2020-06-05-EZ-Park-&-Ride/">EZ Park &amp; Ride Demo Video</a>
     </h1>
   
 
@@ -849,9 +935,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>I have been leading a group project sponsored and guided by King County Transit Center, Sound Transit, Microsoft, City of Seattle Transportation, and so forth. My role is the UX researcher and software engineer in the team. Today is the day to present it! </p>
+        <p>I have been doing a group project, sponsored and supported by Microsoft, Mobility Innovation Center, Seattle Department of Transporation, King County Metro, SoundTransit, and Bosch. My role is the UX researcher and software engineer in the team. Today is the day to present it! </p>
+<p>This project is to improve the user experience of Park &amp; Ride facilities in the Greater Seattle Area with a data-driven approach.  </p>
+<p>Park &amp; Ride facilities allow commuters to a less stressful drive along congested roads and a search for inexpensive city-center parking. They may well reduce congestion by assisting the use of public transport in congested urban areas. Commuters are expecting to get more information before they plan their daily ride, such as the available spots in the facility.  </p>
+<p>This project aims to connect users and the public transportation facilities together, through providing real-time solution about parking availability and communicating parking availability to the traveling public.  </p>
 <p>I really appreciate the whole experience! YAY ^_^</p>
-<p><a href="http://www.youtube.com/watch?v=MX8p_gGdEGk" target="_blank" rel="noopener"><img src="http://img.youtube.com/vi/MX8p_gGdEGk/0.jpg" alt></a></p>
+<p><a href="http://www.youtube.com/watch?v=0ETBjdwgXzU" target="_blank" rel="noopener"><img src="http://img.youtube.com/vi/0ETBjdwgXzU/0.jpg" alt></a></p>
 
       
 
@@ -876,96 +965,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/06/05/2020-06-05-EZ-Park-&-Ride/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-04-React-Lifecycle-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">React Lifecycle Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/" class="archive-article-date">
-  	<time datetime="2020-06-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="React关注数据，view会因此变化"><a href="#React关注数据，view会因此变化" class="headerlink" title="React关注数据，view会因此变化"></a>React关注数据，view会因此变化</h3><p>Data model: 从这个需求中，得看出:</p>
-<p>1.list: task []</p>
-<p>2.done, undone =&gt;  array sublist stored. task [] -&gt;[done]</p>
-<p>​                                                                                 \ [undone]</p>
-<p>3.增删查改操作</p>
-<h3 id="React-Lifecycle"><a href="#React-Lifecycle" class="headerlink" title="React Lifecycle"></a>React Lifecycle</h3><p>Mounting的render实现了上树到真实的dom。</p>
-<p>Mounting的componentDidMount: 一般用于从server拿数据，constructor里面和render里面 (render里面reset数据会死循环)都不会去拿数据，一般componentDidMount里面有reset。作用：1.更新组件私有数据 2.对真实dom进行操作</p>
-<h3 id="Parent-Child"><a href="#Parent-Child" class="headerlink" title="Parent - Child"></a>Parent - Child</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">APP</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span>  // <span class="title">parent</span> <span class="title">component</span></span></span><br><span class="line"><span class="class"></span>&#123; <span class="keyword">constructor</span>()&#123;</span><br><span class="line">	<span class="keyword">super</span>();</span><br><span class="line">	<span class="keyword">this</span>.state = &#123;</span><br><span class="line">		todos: [</span><br><span class="line">		 &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">title</span>: <span class="string">"task1"</span>, <span class="attr">done</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">		 ... </span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	render()&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1&gt;ToDo App&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">		&lt;HD addTodo=&#123;this.addItem&#125; /</span>&gt;</span><br><span class="line">		&lt;BD todoList=&#123;<span class="keyword">this</span>.state.todos&#125; /&gt;</span><br><span class="line">		&lt;FT /&gt;</span><br><span class="line">		&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	addItem = (item) =&gt; &#123; /</span><span class="regexp">/ parent 拿到子组件传回来的，进行状态更新</span></span><br><span class="line"><span class="regexp">		console.log(item);</span></span><br><span class="line"><span class="regexp">		this.setState(&#123; </span></span><br><span class="line"><span class="regexp">			todos: [</span></span><br><span class="line"><span class="regexp">				...this.state.todos,</span></span><br><span class="line"><span class="regexp">				&#123;</span></span><br><span class="line"><span class="regexp">					id: Math.floor(Math.random() * 100),</span></span><br><span class="line"><span class="regexp">					title: item,</span></span><br><span class="line"><span class="regexp">					done: false</span></span><br><span class="line"><span class="regexp">				&#125;</span></span><br><span class="line"><span class="regexp">			]</span></span><br><span class="line"><span class="regexp">		&#125;)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">class HD extends React.Component&#123;</span></span><br><span class="line"><span class="regexp">	constructor()&#123;</span></span><br><span class="line"><span class="regexp">	super();</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/ define</span></span><br><span class="line"><span class="regexp">	this.input = React.createRef();</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	render()&#123;</span></span><br><span class="line"><span class="regexp">	return(</span></span><br><span class="line"><span class="regexp">	&lt;div&gt;</span></span><br><span class="line"><span class="regexp">	&lt;input type="text" ref=&#123;this.input&#125; /</span>&gt;</span><br><span class="line">	&lt;button onClick=&#123;() =&gt; &#123;<span class="comment">//get ref</span></span><br><span class="line">	<span class="keyword">const</span> val = <span class="keyword">this</span>.input.current.value</span><br><span class="line">	<span class="comment">//use cb 调用par ent组件传给子组件的函数 , cb否则是自动点击</span></span><br><span class="line">	<span class="keyword">this</span>.props.addToDo(val)</span><br><span class="line">	<span class="keyword">this</span>.input.current.value = <span class="string">''</span>; <span class="comment">//清空已经键入的数据</span></span><br><span class="line">	&#125;&#125;</span><br><span class="line">	&gt;add <span class="keyword">new</span> task&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">	)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="setSet-Two-Methods"><a href="#setSet-Two-Methods" class="headerlink" title="setSet Two Methods"></a>setSet Two Methods</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//法1：不需要更新之后，再做另外操作，</span></span><br><span class="line">addItem = <span class="function">(<span class="params">item</span>) =&gt;</span> &#123; <span class="comment">// parent 拿到子组件传回来的，进行状态更新</span></span><br><span class="line">		<span class="built_in">console</span>.log(item);</span><br><span class="line">		<span class="keyword">this</span>.setState(&#123;  <span class="comment">//setState 异步</span></span><br><span class="line">			todos: [</span><br><span class="line">				...this.state.todos,</span><br><span class="line">				&#123;</span><br><span class="line">					id: <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100</span>),</span><br><span class="line">					title: item,</span><br><span class="line">					done: <span class="literal">false</span></span><br><span class="line">				&#125;</span><br><span class="line">			]</span><br><span class="line">		&#125;)</span><br><span class="line">	也可以&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//法2： this.setState(preState =&#123;&#125;) //传入回调函数. 需要等更新之后，再做另外操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">preState</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">todos: <span class="keyword">this</span>.state.todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id? &#123;...item, <span class="attr">done</span>: states&#125;: item)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于this.setState(preState =&gt; (&#123; todos: preState.todos.map(item =&gt; </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// item.id === id? &#123;...item, done: states&#125;: item), ()=&gt;&#123;&#125;) 多用于逻辑结构复</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//杂，希望setState之后再执行下面的函数()=&gt; &#123;&#125;用preState. 传两个回调函数。</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vs</span><br><span class="line"></span><br><span class="line">updateItem = <span class="function">(<span class="params">id, status</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line"></span><br><span class="line">​	todos: <span class="keyword">this</span>.state.todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id? &#123;...item, <span class="attr">done</span>: states&#125;: item)</span><br><span class="line"></span><br><span class="line">&#125;)&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="onClick-this绑定"><a href="#onClick-this绑定" class="headerlink" title="onClick, this绑定"></a>onClick, this绑定</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>()&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.state = &#123;</span><br><span class="line">			isShow: <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>);<span class="comment">//this永远指向Parent</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	&lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is Parent<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">	&lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt; show/hide &lt;<span class="regexp">/button&gt; /</span><span class="regexp">/ 点击事件有可能改变this指向，所以绑定函数在constructor里面</span></span><br><span class="line"><span class="regexp">	&lt;hr /</span>&gt;</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">this</span>.state.isShow ? <span class="xml"><span class="tag">&lt;<span class="name">Child</span> /&gt;</span></span>: <span class="literal">null</span></span><br><span class="line">	&#125;</span><br><span class="line">	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">handleClick()&#123;</span></span><br><span class="line"><span class="regexp">	this.setState(&#123;</span></span><br><span class="line"><span class="regexp">		isShow: !this.state.isShow</span></span><br><span class="line"><span class="regexp">	&#125;)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">VS &lt;button onClick = &#123;</span></span><br><span class="line"><span class="regexp">  () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    this.setState(&#123;</span></span><br><span class="line"><span class="regexp">      isShow: !this.state.isShow</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="JSON-JS"><a href="#JSON-JS" class="headerlink" title="JSON, JS"></a>JSON, JS</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">json: &#123;<span class="string">"key"</span> : <span class="string">'Joe'</span>&#125; <span class="comment">//.json file</span></span><br><span class="line">js: &#123;<span class="attr">key</span> : <span class="string">'Joe'</span>&#125; <span class="comment">// js file</span></span><br><span class="line">    &#123;<span class="string">"key"</span> : <span class="string">'Joe'</span>&#125;</span><br><span class="line">    &#123;<span class="string">"first-name"</span>: <span class="string">'Joe'</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>前后端通信</p>
-<p>react有axios</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Lifecycle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">Show All >></a>
         </p>
       
 
@@ -1195,6 +1194,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
@@ -1255,15 +1258,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">

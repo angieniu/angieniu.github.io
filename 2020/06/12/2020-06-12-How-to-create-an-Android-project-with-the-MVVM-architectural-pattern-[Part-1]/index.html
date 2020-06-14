@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Client, Server | Yanjie&#39;s Blog</title>
+  <title>Android Architecture Patterns Part 2 Model-View-Presenter | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Client-Server/index.html">
+  <meta name="description" content="It’s about time we developers start thinking about how we can apply good architecture patterns in our Android apps. To help with this, Google offers Android Architecture Blueprints, where Erik Hellman">
+<meta name="keywords" content="Android, MVP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Architecture Patterns Part 2 Model-View-Presenter">
+<meta property="og:url" content="http://yoursite.com/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="It’s about time we developers start thinking about how we can apply good architecture patterns in our Android apps. To help with this, Google offers Android Architecture Blueprints, where Erik Hellman">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://miro.medium.com/max/60/0*VOr9hgXEmoTxyoyz.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/2000/0*VOr9hgXEmoTxyoyz.png">
+<meta property="og:updated_time" content="2020-06-14T06:03:29.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Android Architecture Patterns Part 2 Model-View-Presenter">
+<meta name="twitter:description" content="It’s about time we developers start thinking about how we can apply good architecture patterns in our Android apps. To help with this, Google offers Android Architecture Blueprints, where Erik Hellman">
+<meta name="twitter:image" content="https://miro.medium.com/max/60/0*VOr9hgXEmoTxyoyz.png?q=20">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,60 +150,234 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/" class="archive-article-date">
-  	<time datetime="2020-05-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/">Difference Between Client and Server</a>
+    <h1 class="article-title" itemprop="name">
+      Android Architecture Patterns Part 2 Model-View-Presenter
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/" class="archive-article-date">
+  	<time datetime="2020-06-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It’s about time we developers start thinking about how we can apply good architecture patterns in our Android apps. To help with this, Google offers <a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="noopener">Android Architecture Blueprints</a>, where <a href="https://github.com/erikhellman" target="_blank" rel="noopener">Erik Hellman</a> and I worked together on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/" target="_blank" rel="noopener">MVP &amp; RxJava</a> sample. Let’s have a look at how we applied it and the pros and cons of this approach.</p>
+<p><a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/" target="_blank" rel="noopener">googlesamples/android-architectureandroid-architecture - A collection of samples to discuss and showcase different architectural tools and patterns for…github.com</a></p>
+<h1 id="The-Model-View-Presenter-Pattern"><a href="#The-Model-View-Presenter-Pattern" class="headerlink" title="The Model-View-Presenter Pattern"></a>The Model-View-Presenter Pattern</h1><p>Here are the roles of every component:</p>
+<ul>
+<li><strong>Model</strong> — the data layer. Responsible for handling the business logic and communication with the network and database layers.</li>
+<li><strong>View</strong> — the UI layer. Displays the data and notifies the Presenter about user actions.</li>
+<li><strong>Presenter</strong> — retrieves the data from the Model, applies the UI logic and manages the state of the View, decides what to display and reacts to user input notifications from the View.</li>
+</ul>
+<p>Since the View and the Presenter work closely together, they need to have a reference to one another. To make the Presenter unit testable with JUnit, the View is abstracted and an interface for it used. The relationship between the Presenter and its corresponding View is defined in a <code>Contract</code> interface class, making the code more readable and the connection between the two easier to understand.</p>
+<p><img src="https://miro.medium.com/max/60/0*VOr9hgXEmoTxyoyz.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/2000/0*VOr9hgXEmoTxyoyz.png" alt="img"></p>
+<p>Model-View-Presenter class structure</p>
+<h1 id="The-Model-View-Presenter-Pattern-amp-RxJava-in-Android-Architecture-Blueprints"><a href="#The-Model-View-Presenter-Pattern-amp-RxJava-in-Android-Architecture-Blueprints" class="headerlink" title="The Model-View-Presenter Pattern &amp; RxJava in Android Architecture Blueprints"></a>The Model-View-Presenter Pattern &amp; RxJava in Android Architecture Blueprints</h1><p>The blueprint sample is a <a href="https://github.com/googlesamples/android-architecture/wiki/To-do-app-specification" target="_blank" rel="noopener">”To Do” application</a>. It lets a user create, read, update and delete “To Do” tasks, as well as apply filters to the displayed list of tasks. RxJava is used to move off the main thread and be able to handle asynchronous operations.</p>
+<a id="more"></a>
+
+<h1 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h1><p>The Model works with the remote and local data sources to get and save the data. This is where the business logic is handled. For example, when requesting the list of <code>Task</code>s, the Model would try to retrieve them from the local data source. If it is empty, it will query the network, save the response in the local data source and then return the list.</p>
+<p>The retrieval of tasks is done with the help of RxJava:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Observable&lt;List&lt;Task&gt;&gt; getTasks()&#123; </span><br><span class="line">  ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The Model receives as parameters in the constructor <strong>interfaces of the local and remote data sources</strong>, making the Model completely independent from any Android classes and thus easy to unit test with JUnit. For example, to test that <code>getTasks</code> requests data from the local source, we implemented the following test:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">@Mock </span><br><span class="line">private TasksDataSource mTasksRemoteDataSource;  </span><br><span class="line">@Mock </span><br><span class="line">private TasksDataSource mTasksLocalDataSource; </span><br><span class="line">... </span><br><span class="line">@Test </span><br><span class="line">public void getTasks_requestsAllTasksFromLocalDataSource() &#123;</span><br><span class="line">     // Given that the local data source has data available               </span><br><span class="line">     setTasksAvailable(mTasksLocalDataSource, TASKS);</span><br><span class="line">     // And the remote data source does not have any data available         </span><br><span class="line">     setTasksNotAvailable(mTasksRemoteDataSource);</span><br><span class="line">     </span><br><span class="line">      // When tasks are requested from the tasks repository     </span><br><span class="line">      TestSubscriber&lt;List&lt;Task&gt;&gt; testSubscriber = </span><br><span class="line">                                             new TestSubscriber&lt;&gt;();     </span><br><span class="line">      mTasksRepository.getTasks().subscribe(testSubscriber);      // Then tasks are loaded from the local data source             </span><br><span class="line">      verify(mTasksLocalDataSource).getTasks();      </span><br><span class="line">      testSubscriber.assertValue(TASKS); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><p>The View works with the Presenter to display the data and it notifies the Presenter about the user’s actions. In MVP Activities, Fragments and custom Android views can be Views. Our choice was to use Fragments.</p>
+<p>All Views implement the same BaseView interface that allows setting a Presenter.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface BaseView&lt;T&gt; &#123;</span><br><span class="line">    void setPresenter(T presenter);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The View notifies the Presenter that it is ready to be updated by calling the <code>subscribe</code>method of the Presenter in <code>onResume</code>. The View calls <code>presenter.unsubscribe()</code> in <code>onPause</code> to tell the Presenter that it is no longer interested in being updated. If the implementation of the View is an Android custom view, then the <code>subscribe</code> and <code>unsubscribe</code> methods have to be called on <code>onAttachedToWindow</code> and <code>onDetachedFromWindow</code>. User actions, like button clicks, will trigger corresponding methods in the Presenter, this being the one that decides what should happen next.</p>
+<p>The Views are tested with Espresso. The statistics screen, for example, needs to display the number of active and completed tasks. The test that checks that this is done correctly first puts some tasks in the <code>TaskRepository</code>; then launches the <code>StatisticsActivity</code> and checks content of the views:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Before </span><br><span class="line">public void setup() &#123;</span><br><span class="line">     // Given some tasks</span><br><span class="line">     TasksRepository.destroyInstance();</span><br><span class="line">     TasksRepository repository = Injection.provideTasksRepository(    InstrumentationRegistry.getContext());     repository.saveTask(new Task(&quot;Title1&quot;, &quot;&quot;, false));</span><br><span class="line">     repository.saveTask(new Task(&quot;Title2&quot;, &quot;&quot;, true));     // Lazily start the Activity from the ActivityTestRule</span><br><span class="line">     Intent startIntent = new Intent();</span><br><span class="line">     mStatisticsActivityTestRule.launchActivity(startIntent);</span><br><span class="line">&#125;@Test </span><br><span class="line">public void Tasks_ShowsNonEmptyMessage() throws Exception &#123;</span><br><span class="line">     // Check that the active and completed tasks text is displayed</span><br><span class="line">     Context context = InstrumentationRegistry.getTargetContext();</span><br><span class="line">     String expectedActiveTaskText = context   </span><br><span class="line">         .getString(R.string.statistics_active_tasks);</span><br><span class="line">     String expectedCompletedTaskText = context  </span><br><span class="line">         .getString(R.string.statistics_completed_tasks);     onView(withText(containsString(expectedActiveTaskText)))  </span><br><span class="line">         .check(matches(isDisplayed()));</span><br><span class="line">     onView(withText(containsString(expectedCompletedTaskText)))  </span><br><span class="line">         .check(matches(isDisplayed()));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Presenter"><a href="#Presenter" class="headerlink" title="Presenter"></a>Presenter</h1><p>The Presenter and its corresponding View are created by the Activity. References to the View and to the <code>TaskRepository</code> - the Model - are given to the constructor of the Presenter. In the implementation of the constructor, the Presenter will call the <code>setPresenter</code> method of the View. This can be simplified when using a dependency injection framework that allows the injection of the Presenters in the corresponding views, reducing the coupling of the classes. The implementation of the ToDo-MVP with Dagger is covered in <a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="noopener">another sample</a>.</p>
+<p>All Presenters implement the same BasePresenter interface.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public interface BasePresenter &#123;</span><br><span class="line">      void subscribe();</span><br><span class="line">      void unsubscribe();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>When the <code>subscribe</code> method is called, the Presenter starts requesting the data from the Model, then it applies the UI logic to the received data and sets it to the View. For example, in the <code>StatisticsPresenter</code>, all tasks are requested from the <code>TaskRepository</code> - then the retrieved tasks are used to compute the number of active and completed tasks. These numbers will be used as parameters for the <code>showStatistics(int numberOfActiveTasks, int numberOfCompletedTasks)</code> method of the View.</p>
+<p>A unit test to check that indeed the <code>showStatistics</code> method is called with the correct values is easy to implement. We are mocking the <code>TaskRepository</code> and the <code>StatisticsContract.View</code> and give the mocked objects as parameters to the constructor of a <code>StatisticsPresenter</code> object. The test implementation is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Test </span><br><span class="line">public void loadNonEmptyTasksFromRepository_CallViewToDisplay() &#123;</span><br><span class="line">     // Given an initialized StatisticsPresenter with</span><br><span class="line">     // 1 active and 2 completed tasks</span><br><span class="line">     setTasksAvailable(TASKS);      // When loading of Tasks is requested</span><br><span class="line">     mStatisticsPresenter.subscribe();      // Then the correct data is passed on to the view</span><br><span class="line">     verify(mStatisticsView).showStatistics(1, 2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The role of the <code>unsubscribe</code> method is to clear all the subscriptions of the Presenter, thus avoiding memory leaks.</p>
+<p>Apart from <code>subscribe</code> and <code>unsubscribe</code>, each Presenter exposes other methods, corresponding to the user actions in the View. For example, the <code>AddEditTaskPresenter</code>, adds methods like <code>createTask</code>, that would be called when the user presses the button that creates a new task. This ensures that all the user actions - and consequently all the UI logic - go through the Presenter and thereby can be unit tested.</p>
+<h1 id="Disadvantages-of-Model-View-Presenter-Pattern"><a href="#Disadvantages-of-Model-View-Presenter-Pattern" class="headerlink" title="Disadvantages of Model-View-Presenter Pattern"></a>Disadvantages of Model-View-Presenter Pattern</h1><p>The Model-View-Presenter pattern brings with it a very good separation of concerns. While this is for sure a pro, when developing a small app or a prototype, this can seem like an overhead. To decrease the number of interfaces used, some developers remove the <code>Contract</code> interface class, and the interface for the Presenter.</p>
+<p>One of the pitfalls of MVP appears when moving the UI logic to the Presenter: this becomes now an all-knowing class, with thousands of lines of code. To solve this, split the code even more and remember to create classes that have only one responsibility and are unit testable.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>The <a href="https://upday.github.io/blog/model-view-controller/" target="_blank" rel="noopener">Model-View-Controller pattern</a> has two main disadvantages: firstly, the View has a reference to both the Controller and the Model; and secondly, it does not limit the handling of UI logic to a single class, this responsibility being shared between the Controller and the View or the Model. The Model-View-Presenter pattern solves both of these issues by breaking the connection that the View has with the Model and creating only <strong>one class that handles</strong> everything related to <strong>the presentation of the View</strong> — the Presenter: a single class that is easy to unit test.</p>
+<p>What if we want an event-based architecture, where the View reacts on changes? Stay tuned for the next patterns sampled in the <a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="noopener">Android Architecture Blueprints</a> to see how this can be implemented. Until then, read about our <a href="https://upday.github.io/blog/model-view-viewmodel/" target="_blank" rel="noopener">Model-View-ViewModel pattern</a> implementation in the upday app.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/upday-devs/android-architecture-patterns-part-2-model-view-presenter-8a6faaae14a5" target="_blank" rel="noopener">https://medium.com/upday-devs/android-architecture-patterns-part-2-model-view-presenter-8a6faaae14a5</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Client, Server</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android, MVP</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Android Architecture Patterns Part 3 Model-View-ViewModel
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/06/11/2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">How to create an Android project with the MVVM architectural pattern [Part 1].</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Model-View-Presenter-Pattern"><span class="toc-number">1.</span> <span class="toc-text">The Model-View-Presenter Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Model-View-Presenter-Pattern-amp-RxJava-in-Android-Architecture-Blueprints"><span class="toc-number">2.</span> <span class="toc-text">The Model-View-Presenter Pattern &amp; RxJava in Android Architecture Blueprints</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Model"><span class="toc-number">3.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#View"><span class="toc-number">4.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Presenter"><span class="toc-number">5.</span> <span class="toc-text">Presenter</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Disadvantages-of-Model-View-Presenter-Pattern"><span class="toc-number">6.</span> <span class="toc-text">Disadvantages of Model-View-Presenter Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">7.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +403,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

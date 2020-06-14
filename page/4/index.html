@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 62</a>
+<a>Total Number of Articles: 63</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,81 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-05-16-Ajax-poll-request-every-10-seconds" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/16/2020-05-16-Ajax-poll-request-every-10-seconds/">Ajax poll request every 10 seconds</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/16/2020-05-16-Ajax-poll-request-every-10-seconds/" class="archive-article-date">
+  	<time datetime="2020-05-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>I am working on improving my web application and thinking about how to fetch data and show real-time streaming data in my app. One method as below to try:</p>
+<p>This is a short tutorial on how to send an <a href="http://thisinterestsme.com/simple-ajax-request-example-jquery-php/" target="_blank" rel="noopener">Ajax request</a> every 10 seconds – something that is often referred to as polling. Obviously, if needs be, you can change the code to send a request every 60 seconds instead. In this article, I will be using the JavaScript library JQuery.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript, refresh page, Ajax, SetInterval</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/16/2020-05-16-Ajax-poll-request-every-10-seconds/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-05-15-IoT-What-is-a-Gateway" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1000,90 +1075,6 @@
 
 
   
-    <article id="post-How to use the JavaScript Fetch API to Get Data" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/">How to User the JavaScript Fetch API to Get Data</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/" class="archive-article-date">
-  	<time datetime="2020-05-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Notes for JavaScript Fetch API to Get Data:</p>
-<p>We all remember the dreaded XMLHttpRequest we used back in the day to make requests, it involved some really messy code, it didn’t give us promises and let’s just be honest, it wasn’t pretty JavaScript, right? Maybe if you were using jQuery, you used the cleaner syntax with <code>jQuery.ajax()</code>.</p>
-<p>Well JavaScript has it’s own built-in clean way now. Along comes the Fetch API a new standard to make server request jam-packed with promises and all those things we learned to love over the years.</p>
-<h2 id="How-do-we-use-the-Fetch-API"><a href="#How-do-we-use-the-Fetch-API" class="headerlink" title="How do we use the Fetch API?"></a><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data#toc-how-do-we-use-the-fetch-api-" target="_blank" rel="noopener">How do we use the Fetch API?</a></h2><h3 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h3><ul>
-<li><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data#toc-how-do-we-use-the-fetch-api-" target="_blank" rel="noopener">How do we use the Fetch API?</a></li>
-<li><a href="https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data#toc-handling-more-requests-like-post" target="_blank" rel="noopener">Handling more requests like POST</a></li>
-</ul>
-<p>In a very simple manner all you really do is call fetch with the URL you want, by default the Fetch API uses the GET method, so a very simple call would be like this:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">fetch(url) <span class="comment">// Call the fetch function passing the url of the API as a parameter</span></span><br><span class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Your code for handling the data you get from the API</span></span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// This is where you run code if the server returns any errors</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<p>Looks pretty simple right? So let’s starting using it…</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript, Fetch, API, Data</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1284,6 +1275,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
@@ -1344,15 +1339,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
