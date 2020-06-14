@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Yanjie&#39;s Blog</title>
+  <title>Android Architecture Patterns Part 3 Model-View-ViewModel | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/5/index.html">
+  <meta name="description" content="After four different designs in the first six months of the development of the upday app, we learned one important lesson: we need an architecture pattern that allows fast reaction to design changes!">
+<meta name="keywords" content="MVVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Architecture Patterns Part 3 Model-View-ViewModel">
+<meta property="og:url" content="http://yoursite.com/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="After four different designs in the first six months of the development of the upday app, we learned one important lesson: we need an architecture pattern that allows fast reaction to design changes!">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://miro.medium.com/max/60/0*5mD214cjNXU-V6lf.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/1400/0*5mD214cjNXU-V6lf.png">
+<meta property="og:updated_time" content="2020-06-14T05:07:50.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Android Architecture Patterns Part 3 Model-View-ViewModel">
+<meta name="twitter:description" content="After four different designs in the first six months of the development of the upday app, we learned one important lesson: we need an architecture pattern that allows fast reaction to design changes!">
+<meta name="twitter:image" content="https://miro.medium.com/max/60/0*5mD214cjNXU-V6lf.png?q=20">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,394 +150,228 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-13-Android-Architecture-Patterns-Part-3" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android Architecture Patterns Part 3 Model-View-ViewModel
+    </h1>
+  
+
+        
+        <a href="/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/" class="archive-article-date">
+  	<time datetime="2020-06-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-13</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>After four different designs in the first six months of the development of the upday app, we learned one important lesson: we need an architecture pattern that allows fast reaction to design changes! The solution we chose in the end was Model-View-ViewModel. Discover with me what MVVM is; how we are applying it at upday and what makes it so perfect for us.</p>
+<h1 id="The-Model-View-ViewModel-Pattern"><a href="#The-Model-View-ViewModel-Pattern" class="headerlink" title="The Model-View-ViewModel Pattern"></a>The Model-View-ViewModel Pattern</h1><p>The main players in the MVVM pattern are:</p>
+<ul>
+<li>The <em>View</em> — that informs the ViewModel about the user’s actions</li>
+<li>The <em>ViewModel</em> — exposes streams of data relevant to the View</li>
+<li>The <em>DataModel</em> — abstracts the data source. The ViewModel works with the DataModel to get and save the data.</li>
+</ul>
+<p>At a first glance, MVVM seems very similar to the <a href="https://upday.github.io/blog/model-view-presenter/" target="_blank" rel="noopener">Model-View-Presenter pattern</a>, because both of them do a great job in abstracting the view’s state and behavior. The Presentation Model abstracts a View independent from a specific user-interface platform, whereas the MVVM pattern was created to simplify the <strong>event driven</strong> programming of user interfaces.</p>
+<p>If the MVP pattern meant that the Presenter was telling the View directly what to display, in MVVM, <strong>ViewModel exposes streams of events</strong> to which the Views can bind to. Like this, the ViewModel does not need to hold a reference to the View anymore, like the Presenter is. This also means that all the interfaces that the MVP pattern requires, are now dropped.</p>
+<p>The Views also notify the ViewModel about different actions. Thus, the MVVM pattern supports two-way data binding between the View and ViewModel and there is a many-to-one relationship between View and ViewModel. View has a reference to ViewModel but <strong>ViewModel has no information about the View</strong>. The consumer of the data should know about the producer, but the producer — the ViewModel — doesn’t know, and doesn’t care, who consumes the data.</p>
+<p><img src="https://miro.medium.com/max/60/0*5mD214cjNXU-V6lf.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1400/0*5mD214cjNXU-V6lf.png" alt="img"></p>
+<p>Model-View-ViewModel class structure</p>
+<h1 id="Model-View-ViewModel-at-upday"><a href="#Model-View-ViewModel-at-upday" class="headerlink" title="Model-View-ViewModel at upday"></a>Model-View-ViewModel at upday</h1><p>A quick look at the Android posts on the upday blog will instantly reveal what our favorite library is: RxJava. So it’s no wonder, because RxJava is the backbone of upday’s code! The event driven part required by MVVM is done using RxJava’s <code>Observable</code>s. Here’s how we apply MVVM in the Android app at upday, with the help of RxJava:</p>
+<a id="more"></a>
+
+<h1 id="DataModel"><a href="#DataModel" class="headerlink" title="DataModel"></a>DataModel</h1><p>The DataModel exposes data easily consumable through event streams — RxJava’s <code>Observable</code>s. It composes data from multiple sources, like the network layer, database or shared preferences and exposes easily consumable data to whomever needs it. The DataModels hold the entire business logic.</p>
+<p>Our strong emphasis on the single responsibility principle leads to creating a DataModel for every feature in the app. For example, we have an ArticleDataModel that composes its output from the API service and database layer. This DataModel handles the business logic ensuring that the latest news from the database is retrieved, by applying an age filter.</p>
+<h1 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a>ViewModel</h1><p>The ViewModel is a model for the View of the app: an abstraction of the View. The ViewModel retrieves the necessary data from the DataModel, applies the UI logic and then exposes relevant data for the View to consume. Similar to the DataModel, the ViewModel exposes the data via <code>Observable</code>s.</p>
+<p>We learned two things about the ViewModel the hard way:</p>
+<ul>
+<li>The ViewModel should expose states for the View, rather than just events. For example, if we need to display the name and the email address of a <code>User</code>, rather than creating two streams for this, we create a <code>DisplayableUser</code> object that encapsulates the two fields. The stream will emit every time the display name or the email changes. This way, we ensure that our View always displays the current state of the <code>User</code>.</li>
+<li>We should make sure that every action of the user goes through the ViewModel and that any possible logic of the View is moved in the ViewModel.</li>
+</ul>
+<p>We wrote about these two topics in a blog post about <a href="https://upday.github.io/blog/mvvm_rx_common_mistakes" target="_blank" rel="noopener">common mistakes in MVVM + RxJava</a>.</p>
+<h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><p>The View is the actual user interface in the app. It can be an <code>Activity</code>, a <code>Fragment</code> or any custom Android <code>View</code>. For <code>Activities</code> and <code>Fragment</code>s, we are binding and unbinding from the event sources on <code>onResume()</code> and <code>onPause()</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">private final CompositeSubscription mSubscription = new CompositeSubscription();</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void onResume() &#123;</span><br><span class="line">    super.onResume();</span><br><span class="line">    mSubscription.add(mViewModel.getSomeData()</span><br><span class="line">                 .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                 .subscribe(this::updateView,</span><br><span class="line">                            this::handleError));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Override</span><br><span class="line">public void onPause() &#123;</span><br><span class="line">   mSubscription.clear();</span><br><span class="line">   super.onPause();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If the MVVM View is a custom Android <code>View</code>, the binding is done in the constructor. To ensure that the subscription is not preserved, leading to <a href="https://medium.com/square-corner-blog/android-leak-pattern-subscriptions-in-views-18f0860aa74c" target="_blank" rel="noopener">possible memory leaks</a>, the unbinding happens in <code>onDetachedFromWindow</code>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">private final CompositeSubscription mSubscription = new CompositeSubscription();public MyView(Context context, MyViewModel viewModel) &#123;</span><br><span class="line">      ...</span><br><span class="line">      mSubscription.add(mViewModel.getSomeData()</span><br><span class="line">                       .observeOn(AndroidSchedulers.mainThread())</span><br><span class="line">                       .subscribe(this::updateView,</span><br><span class="line">                                  this::handleError));</span><br><span class="line">  &#125;@Override</span><br><span class="line">  public void onDetachedFromWindow() &#123;</span><br><span class="line">      mSubscription.clear();</span><br><span class="line">      super.onDetachedFromWindow();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Testability-Of-The-Model-View-ViewModel-Classes"><a href="#Testability-Of-The-Model-View-ViewModel-Classes" class="headerlink" title="Testability Of The Model-View-ViewModel Classes"></a>Testability Of The Model-View-ViewModel Classes</h1><p>One of the main reasons why we love the Model-View-ViewModel pattern is that it is so easy to test.</p>
+<h1 id="DataModel-1"><a href="#DataModel-1" class="headerlink" title="DataModel"></a>DataModel</h1><p>The use of <a href="https://en.wikipedia.org/wiki/Inversion_of_control" target="_blank" rel="noopener">inversion of control pattern</a>, heavily applied in our code, and the lack of any Android classes, facilitate the implementation of unit tests of the DataModel.</p>
+<h1 id="ViewModel-1"><a href="#ViewModel-1" class="headerlink" title="ViewModel"></a>ViewModel</h1><p>We see the Views and the unit tests as two different types of consumers of data from the ViewModel. The ViewModel is completely separated from the UI or any Android classes, therefore straightforward to unit test.</p>
+<p>Consider the following example where the ViewModel just exposes some data from the DataModel:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class ViewModel &#123;</span><br><span class="line">    private final IDataModel mDataModel;public ViewModel(IDataModel dataModel) &#123;</span><br><span class="line">        mDataModel = dataModel;</span><br><span class="line">    &#125;public Observable&lt;Data&gt; getSomeData() &#123;</span><br><span class="line">        return mDataModel.getSomeData();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The tests for the ViewModel are easy to implement. With the help of Mockito, we are mocking the DataModel and we control the returned data for the methods used. Then, we make sure that when we subscribe to the <code>Observable</code> returned by <code>getSomeData()</code>, the expected data is emitted.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class ViewModelTest &#123;@Mock</span><br><span class="line">private IDataModel mDataModel;</span><br><span class="line">private ViewModel mViewModel;@Before</span><br><span class="line">public void setUp() throws Exception &#123;</span><br><span class="line">    MockitoAnnotations.initMocks(this);    mViewModel = new ViewModel(mDataModel);</span><br><span class="line">&#125;@Test</span><br><span class="line">public void testGetSomeData_emitsCorrectData() &#123;</span><br><span class="line">    SomeData data = new SomeData();</span><br><span class="line">            </span><br><span class="line">    Mockito.when(mDataModel.getSomeData())</span><br><span class="line">           .thenReturn(Observable.just(data));</span><br><span class="line">    TestSubscriber&lt;SomeData&gt; testSubscriber = </span><br><span class="line">new TestSubscriber&lt;&gt;();    mViewModel.getSomeData().subscribe(testSubscriber);    testSubscriber.assertValue(data);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If the ViewModel needs access to Android classes, we create wrappers that we call <code>Provider</code>s. For example, for Android resources we created a <code>IResourceProvider</code>, that exposes methods like <code>String getString(@StringRes final int id)</code>. The implementation of the <code>IResourceProvider</code> will contain a reference to the <code>Context</code> but, the ViewModel will only refer to an <code>IResourceProvider</code> injected.</p>
+<p>As we have mentioned above, and in our <a href="https://upday.github.io/blog/mvvm_rx_common_mistakes" target="_blank" rel="noopener">common mistakes</a> blog post, we are creating model objects to hold the state of the data. This also allows a higher degree of testability and control of the data that is emitted by the ViewModel.</p>
+<h1 id="View-1"><a href="#View-1" class="headerlink" title="View"></a>View</h1><p>Given that the logic in the UI is minimal, the Views are easy to test with Espresso. We are also using libraries like DaggerMock and MockWebServer to improve the stability of our UI tests.</p>
+<h1 id="Is-MVVM-The-Right-Solution"><a href="#Is-MVVM-The-Right-Solution" class="headerlink" title="Is MVVM The Right Solution?"></a>Is MVVM The Right Solution?</h1><p>We have been using MVVM together with RxJava for almost a year now. We have seen that since the View is just a consumer of the ViewModel, it was easy to just replace different UI elements, with minimal, or sometimes zero changes in other classes.</p>
+<p>We have also learned how important separation of concerns is and that we should split the code more, creating small Views and small ViewModels that only have specific responsibilities. The ViewModels are injected in the Views. This means that most of the times, we just add the Views in the XML UI, without doing any other changes. Therefore, when our UI requirements change again, we can easily replace some Views with new ones.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>MVVM combines the advantages of separation of concerns provided by <a href="https://upday.github.io/blog/model-view-presenter/" target="_blank" rel="noopener">MVP</a>, while leveraging the advantages of data bindings. The result is a pattern where the model drives as many of the operations as possible, minimizing the logic in the view.</p>
+<p>After the design changes during the “infancy” of our app, we switched to MVVM in upday’s “adolescence” — a period of mistakes from which we learned a lot. Now, we can be proud of an app that has proven its resistance to another redesign. We are finally close to being able to call upday a mature app.</p>
+<p>A simple example of the MVVM implementation can be found <a href="https://github.com/florina-muntenescu/DroidconMVVM" target="_blank" rel="noopener">here</a>.A “Hello, World!” comparison between MVP and MVVM can be found <a href="https://github.com/florina-muntenescu/MVPvsMVVM" target="_blank" rel="noopener">here</a>. Check out also our post on Model-View-Presenter.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/upday-devs/android-architecture-patterns-part-3-model-view-viewmodel-e7eeee76b73b" target="_blank" rel="noopener">https://medium.com/upday-devs/android-architecture-patterns-part-3-model-view-viewmodel-e7eeee76b73b</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/05/An Introduction to GeoJSON/" class="archive-article-date">
-  	<time datetime="2020-05-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/05/An Introduction to GeoJSON/">An Introduction to GeoJson</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GeoJson</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MVVM</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/04/SQL or NoSQL?/" class="archive-article-date">
-  	<time datetime="2020-05-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/11/2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">How to create an Android project with the MVVM architectural pattern [Part 1].</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/04/SQL or NoSQL?/">SQL or NoSQL?</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL, NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#The-Model-View-ViewModel-Pattern"><span class="toc-number">1.</span> <span class="toc-text">The Model-View-ViewModel Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Model-View-ViewModel-at-upday"><span class="toc-number">2.</span> <span class="toc-text">Model-View-ViewModel at upday</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DataModel"><span class="toc-number">3.</span> <span class="toc-text">DataModel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ViewModel"><span class="toc-number">4.</span> <span class="toc-text">ViewModel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#View"><span class="toc-number">5.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Testability-Of-The-Model-View-ViewModel-Classes"><span class="toc-number">6.</span> <span class="toc-text">Testability Of The Model-View-ViewModel Classes</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DataModel-1"><span class="toc-number">7.</span> <span class="toc-text">DataModel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ViewModel-1"><span class="toc-number">8.</span> <span class="toc-text">ViewModel</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#View-1"><span class="toc-number">9.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Is-MVVM-The-Right-Solution"><span class="toc-number">10.</span> <span class="toc-text">Is MVVM The Right Solution?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">11.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">11.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/03/巴音布鲁克没有海/" class="archive-article-date">
-  	<time datetime="2020-05-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/03/巴音布鲁克没有海/">巴音布鲁克没有海</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/Browser Object Model - BOM in Javascript/" class="archive-article-date">
-  	<time datetime="2020-05-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/Browser Object Model - BOM in Javascript/">Broser Object Model</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">BOM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/" class="archive-article-date">
-  	<time datetime="2020-05-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/Real-time streaming in Power BI/" class="archive-article-date">
-  	<time datetime="2020-04-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/Real-time streaming in Power BI/">Real-time Streaming in Power BI</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-time Streaming Data, Power BI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/29/Data Sampling and Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/29/Data Sampling and Randomization/">Data Sampling and Randomization</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Sampling, Randomization</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/" class="archive-article-date">
-  	<time datetime="2020-04-29T05:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/">System Design Case Study: URL Shortened Service &amp; Like</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">System Design, URL Shortened Service, Like Functionality</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/27/Thoughts on Seattle Park and Ride Project/" class="archive-article-date">
-  	<time datetime="2020-04-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/27/Thoughts on Seattle Park and Ride Project/">Thoughts on Seattle Park and Ride Project</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Park and Ride, Seattle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/Responsive Development/" class="archive-article-date">
-  	<time datetime="2020-04-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/Responsive Development/">Responsive Development</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Responsive Development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/4/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/6/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -556,8 +398,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
