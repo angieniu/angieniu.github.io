@@ -6,15 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/5 | Yanjie&#39;s Blog</title>
+  <title>The React Hooks API | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/05/page/3/index.html">
+  <meta name="description" content="In this tutorial, you are going to learn and understand what React hooks are, the basic React Hooks that are available and also examples of how to write them for your React applications. In the proces">
+<meta name="keywords" content="React Hooks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The React Hooks API">
+<meta property="og:url" content="http://yoursite.com/2020/06/14/2020-06-14-The-React-Hooks-API/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="In this tutorial, you are going to learn and understand what React hooks are, the basic React Hooks that are available and also examples of how to write them for your React applications. In the proces">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/345c665e-86b5-44d3-8372-9389da157f86/01-use-state-project-800w.gif">
+<meta property="og:image" content="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_400/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/af586a2d-ddad-4083-b931-027cd802b8c4/02-use-effect-project.png">
+<meta property="og:image" content="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_400/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/0d4690d1-2fa3-4197-b401-a4ea26d1ca03/03-use-effect-project-2.png">
+<meta property="og:updated_time" content="2020-06-15T07:10:54.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="The React Hooks API">
+<meta name="twitter:description" content="In this tutorial, you are going to learn and understand what React hooks are, the basic React Hooks that are available and also examples of how to write them for your React applications. In the proces">
+<meta name="twitter:image" content="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/345c665e-86b5-44d3-8372-9389da157f86/01-use-state-project-800w.gif">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,394 +151,316 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-14-The-React-Hooks-API" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      The React Hooks API
+    </h1>
+  
+
+        
+        <a href="/2020/06/14/2020-06-14-The-React-Hooks-API/" class="archive-article-date">
+  	<time datetime="2020-06-14T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-14</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><em>In this tutorial, you are going to learn and understand what React hooks are, the basic React Hooks that are available and also examples of how to write them for your React applications. In the process, you will also get to know about some additional hooks that were shipped with React 16.8 and also how to write your own custom React Hooks.</em></p>
+<p>When React 16.8 was released officially in early February 2019, it shipped with an additional API that lets you use state and other features in React without writing a class. This additional API is called <strong>Hooks</strong> and they’re becoming popular in the React ecosystem, from open-sourced projects to being used in production applications.</p>
+<p>React Hooks are completely opt-in which means that rewriting existing code is unecessary, they do not contain any breaking changes, and they’re available for use with the release of React 16.8. Some curious developers have been making use of the Hooks API even before it was released officially, but back then it was not stable and was only an experimental feature. Now it is stable and recommended for React developers to use.</p>
+<p><strong>Note</strong>: <em>We won’t be talking about React or JavaScript in general. A good knowledge of ReactJS and JavaScript will come in handy as you work through this tutorial.</em></p>
+<h3 id="What-Are-React-Hooks"><a href="#What-Are-React-Hooks" class="headerlink" title="What Are React Hooks?"></a>What Are React Hooks?</h3><p>React Hooks are in-built functions that allow React developers to use state and lifecycle methods inside functional components, they also work together with existing code, so they can easily be adopted into a codebase. The way Hooks were pitched to the public was that they allow developers to use state in functional components but under the hood, Hooks are much more powerful than that. They allow React Developers to enjoy the following benefits:</p>
+<ul>
+<li>Improved code reuse;</li>
+<li>Better code composition;</li>
+<li>Better defaults;</li>
+<li>Sharing non-visual logic with the use of custom hooks;</li>
+<li>Flexibility in moving up and down the <code>components</code> tree.</li>
+</ul>
+<p>With React Hooks, developers get the power to use functional components for almost everything they need to do from just rendering UI to also handling state and also logic — which is pretty neat.</p>
+<a id="more"></a>
+
+<h3 id="Motivation-Behind-The-Release-Of-React-Hooks"><a href="#Motivation-Behind-The-Release-Of-React-Hooks" class="headerlink" title="Motivation Behind The Release Of React Hooks"></a>Motivation Behind The Release Of React Hooks</h3><p>According to the <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">ReactJS official documentation</a>, the following are the motivation behind the release of React Hooks:</p>
+<ul>
+<li><strong>Reusing stateful logic between components is difficult.</strong><br>With Hooks, you can reuse logic between your components without changing their architecture or structure.</li>
+<li><strong>Complex components can be difficult to understand.</strong><br>When components become larger and carry out many operations, it becomes difficult to understand in the long run. Hooks solve this by allowing you separate a particular single component into various smaller functions based upon what pieces of this separated component are related (such as setting up a subscription or fetching data), rather than having to force a split based on lifecycle methods.</li>
+<li><strong>Classes are quite confusing.</strong><br>Classes are a hindrance to learning React properly; you would need to understand how <code>this</code> in JavaScript works which differs from other languages. React Hooks solves this problem by allowing developers to use the best of React features without having to use classes.</li>
+</ul>
+<h3 id="The-Rules-Of-Hooks"><a href="#The-Rules-Of-Hooks" class="headerlink" title="The Rules Of Hooks"></a>The Rules Of Hooks</h3><p>There are two main rules that are strictly to be adhered to as stated by the React core team in which they outlined in the <a href="https://reactjs.org/docs/hooks-rules.html" target="_blank" rel="noopener">hooks proposal documentation</a>.</p>
+<ul>
+<li>Make sure to not use Hooks inside loops, conditions, or nested functions;</li>
+<li>Only use Hooks from inside React Functions.</li>
+</ul>
+<h3 id="Basic-React-Hooks"><a href="#Basic-React-Hooks" class="headerlink" title="Basic React Hooks"></a>Basic React Hooks</h3><p>There are 10 in-built hooks that was shipped with React 16.8 but the basic (commonly used) hooks include:</p>
+<ul>
+<li><a href="https://www.smashingmagazine.com/2020/04/react-hooks-api-guide/#useState" target="_blank" rel="noopener"><code>useState()</code></a></li>
+<li><a href="https://www.smashingmagazine.com/2020/04/react-hooks-api-guide/#useEffect" target="_blank" rel="noopener"><code>useEffect()</code></a></li>
+<li><a href="https://www.smashingmagazine.com/2020/04/react-hooks-api-guide/#useContext" target="_blank" rel="noopener"><code>useContext()</code></a></li>
+<li><a href="https://www.smashingmagazine.com/2020/04/react-hooks-api-guide/#useReducer" target="_blank" rel="noopener"><code>useReducer()</code></a></li>
+</ul>
+<p>These are the 4 basic hooks that are commonly used by React developers that have adopted React Hooks into their codebases.</p>
+<h4 id="useState"><a href="#useState" class="headerlink" title="useState()"></a><code>useState()</code></h4><p>The <code>useState()</code> hook allows React developers to update, handle and manipulate state inside functional components without needing to convert it to a class component. Let’s use the code snippet below is a simple Age counter component and we will use it to explain the power and syntax of the <code>useState()</code> hook.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [age, setAge] = useState(<span class="number">19</span>);</span><br><span class="line">  <span class="keyword">const</span> handleClick = <span class="function"><span class="params">()</span> =&gt;</span> setAge(age + <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> </span><br><span class="line">      &lt;div&gt; </span><br><span class="line">          I am &#123;age&#125; Years Old </span><br><span class="line">        &lt;div&gt; </span><br><span class="line">        &lt;button onClick=&#123;handleClick&#125;&gt;Increase my age! &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>div&gt;</span><br><span class="line">   &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>If you’ve noticed, our component looks pretty simple, concise and it’s now a functional component and also does not have the level of complexity that a class component would have.</p>
+<p>The <code>useState()</code> hook receives an initial state as an argument and then returns, by making use of array destructuring in JavaScript, the two variables in the array can be named what. The first variable is the actual state, while the second variable is a function that is meant for updating the state by providing a new state.</p>
+<p><a href="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/ec6c1643-97e5-405a-b39d-c1bcc56bcac8/01-use-state-project.gif" target="_blank" rel="noopener"><img src="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/345c665e-86b5-44d3-8372-9389da157f86/01-use-state-project-800w.gif" alt="img"></a>Our finished React app (<a href="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/ec6c1643-97e5-405a-b39d-c1bcc56bcac8/01-use-state-project.gif" target="_blank" rel="noopener">Large preview</a>)</p>
+<p>This is how our component should look when it is rendered in our React application. By clicking on the “Increase my Age” button, the state of the age will change and the component would work just like a class component with state.</p>
+<h4 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect()"></a><code>useEffect()</code></h4><p>The <code>useEffect()</code> hook accepts a function that would contain effectual code. In functional components, effects like mutations, subscriptions, timers, logging, and other effects are not allowed to be placed inside a functional component because doing so would lead to a lot of inconsistencies when the UI is rendered and also confusing bugs.</p>
+<p>In using the <code>useEffect()</code> hook, the effectual function passed into it will execute right after the render has been displayed on the screen. Effects are basically peeked into the imperative way of building UIs that is quite different from React’s functional way.</p>
+<p>By default, effects are executed mainly after the render has been completed, but you have the option to also fire them when certain values change.</p>
+<p>The <code>useEffect()</code> hook mostly into play for side-effects that are usually used for interactions with the Browser/DOM API or external API-like data fetching or subscriptions. Also, if you are already familiar with how React lifecycle methods work, you can also think of <code>useEffect()</code> hook as <strong>component mounting</strong>, <strong>updating</strong> and <strong>unmounting</strong> — all combined in one function. It lets us replicate the lifecycle methods in functional components.</p>
+<p>We will use the code snippets below to explain the most basic way that we can by using the <code>useEffect()</code> hook.</p>
+<h5 id="Step-1-Define-The-State-Of-Your-Application"><a href="#Step-1-Define-The-State-Of-Your-Application" class="headerlink" title="Step 1: Define The State Of Your Application"></a>Step 1: Define The State Of Your Application</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;useState&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//Define State</span></span><br><span class="line">    <span class="keyword">const</span> [name, setName] = useState(&#123;<span class="attr">firstName</span>: <span class="string">'name'</span>, <span class="attr">surname</span>: <span class="string">'surname'</span>&#125;);</span><br><span class="line">    <span class="keyword">const</span> [title, setTitle] = useState(<span class="string">'BIO'</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;Title: &#123;title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">            &lt;h3&gt;Name: &#123;name.firstName&#125;&lt;/</span>h3&gt;</span><br><span class="line">            &lt;h3&gt;Surname: &#123;name.surname&#125;&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App</span><br></pre></td></tr></table></figure>
+
+<p>Just like we discussed in the previous section on how to use the <code>useState()</code> hook to handle state inside functional components, we used it in our code snippet to set the state for our app that renders my full name.</p>
+<h5 id="Step-2-Call-The-useEffect-Hook"><a href="#Step-2-Call-The-useEffect-Hook" class="headerlink" title="Step 2: Call The useEffect Hook"></a>Step 2: Call The useEffect Hook</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;useState, useEffect&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//Define State</span></span><br><span class="line">    <span class="keyword">const</span> [name, setName] = useState(&#123;<span class="attr">firstName</span>: <span class="string">'name'</span>, <span class="attr">surname</span>: <span class="string">'surname'</span>&#125;);</span><br><span class="line">    <span class="keyword">const</span> [title, setTitle] = useState(<span class="string">'BIO'</span>);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">//Call the use effect hook</span></span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setName(&#123;<span class="attr">name</span>: <span class="string">'Shedrack'</span>, <span class="attr">surname</span>: <span class="string">'Akintayo'</span>&#125;)</span><br><span class="line">    &#125;, [])<span class="comment">//pass in an empty array as a second argument</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;Title: &#123;title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">            &lt;h3&gt;Name: &#123;name.firstName&#125;&lt;/</span>h3&gt;</span><br><span class="line">            &lt;h3&gt;Surname: &#123;name.surame&#125;&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App</span><br></pre></td></tr></table></figure>
+
+<p>We have now imported the <code>useEffect</code> hook and also made use of the <code>useEffect()</code> function to set the state of our the name and surname property which is pretty neat and concise.</p>
+<p>You may have noticed the <code>useEffect</code> hook in the second argument which is an empty array; this is because it contains a call to the <code>setFullName</code> which does not have a list of dependencies. Passing the second argument will prevent an infinite chain of updates (<code>componentDidUpdate()</code>) and it’ll also allow our <code>useEffect()</code> hook to act as a <code>componentDidMount</code> lifecycle method and render once without re-rendering on every change in the tree.</p>
+<p>Our React app should now look like this:</p>
+<p><a href="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/af586a2d-ddad-4083-b931-027cd802b8c4/02-use-effect-project.png" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_400/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/af586a2d-ddad-4083-b931-027cd802b8c4/02-use-effect-project.png" alt="img"></a>React app using the <code>useEffect</code> Hook (<a href="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/af586a2d-ddad-4083-b931-027cd802b8c4/02-use-effect-project.png" target="_blank" rel="noopener">Large preview</a>)</p>
+<p>We can also use change the <code>title</code> property of our application inside the <code>useEffect()</code> function by calling the <code>setTitle()</code> function, like so:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123;useState, useEffect&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//Define State</span></span><br><span class="line">    <span class="keyword">const</span> [name, setName] = useState(&#123;<span class="attr">firstName</span>: <span class="string">'name'</span>, <span class="attr">surname</span>: <span class="string">'surname'</span>&#125;);</span><br><span class="line">    <span class="keyword">const</span> [title, setTitle] = useState(<span class="string">'BIO'</span>);</span><br><span class="line">   </span><br><span class="line">    <span class="comment">//Call the use effect hook</span></span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      setName(&#123;<span class="attr">name</span>: <span class="string">'Shedrack'</span>, <span class="attr">surname</span>: <span class="string">'Akintayo'</span>&#125;)</span><br><span class="line">      setTitle(&#123;<span class="string">'My Full Name'</span>&#125;) <span class="comment">//Set Title</span></span><br><span class="line">    &#125;, [])<span class="comment">// pass in an empty array as a second argument</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">        &lt;div&gt;</span><br><span class="line">            &lt;h1&gt;Title: &#123;title&#125;&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">            &lt;h3&gt;Name: &#123;name.firstName&#125;&lt;/</span>h3&gt;</span><br><span class="line">            &lt;h3&gt;Surname: &#123;name.surame&#125;&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>div&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App</span><br></pre></td></tr></table></figure>
+
+<p>Now after our application has rerendered, it now shows the new title.</p>
+<p><a href="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/0d4690d1-2fa3-4197-b401-a4ea26d1ca03/03-use-effect-project-2.png" target="_blank" rel="noopener"><img src="https://res.cloudinary.com/indysigner/image/fetch/f_auto,q_auto/w_400/https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/0d4690d1-2fa3-4197-b401-a4ea26d1ca03/03-use-effect-project-2.png" alt="img"></a>Our finished project (<a href="https://cloud.netlifyusercontent.com/assets/344dbf88-fdf9-42bb-adb4-46f01eedd629/0d4690d1-2fa3-4197-b401-a4ea26d1ca03/03-use-effect-project-2.png" target="_blank" rel="noopener">Large preview</a>)</p>
+<h4 id="useContext"><a href="#useContext" class="headerlink" title="useContext()"></a><code>useContext()</code></h4><p>The <code>useContext()</code> hook accepts a context object, i.e the value that is returned from <code>React.createContext</code>, and then it returns the current context value for that context.</p>
+<p>This hook gives functional components easy access to your React app context. Before the <code>useContext</code> hook was introduced you would need to set up a <code>contextType</code> or a <code>&lt;Consumer&gt;</code> to access your global state passed down from some provider in a class component.</p>
+<p>Basically, the <code>useContext</code> hook works with the React Context API which is a way to share data deeply throughout your app without the need to manually pass your app props down through various levels. Now, the <code>useContext()</code> makes using Context a little easier.</p>
+<p>The code snippets below will show how the Context API works and how the <code>useContext</code> Hook makes it better.</p>
+<h5 id="The-Normal-Way-To-Use-The-Context-API"><a href="#The-Normal-Way-To-Use-The-Context-API" class="headerlink" title="The Normal Way To Use The Context API"></a>The Normal Way To Use The Context API</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> NumberContext = React.createContext();</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;NumberContext.Provider value=&#123;<span class="number">45</span>&#125;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Display /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>NumberContext.Provider&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Display</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;NumberContext.Consumer&gt;</span><br><span class="line">      &#123;value =&gt; <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>The answer to the question is &#123;value&#125;.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">    &lt;<span class="regexp">/NumberContext.Consumer&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;App /</span>&gt;, <span class="built_in">document</span>.querySelector(<span class="string">"#root"</span>));</span><br></pre></td></tr></table></figure>
+
+<p>Let’s now break down the code snippet and explain each concept.</p>
+<p>Below, we are creating a context called <code>NumberContext</code>. It is meant to return an object with two values: <code>{ Provider, Consumer }</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> NumberContext = React.createContext();</span><br></pre></td></tr></table></figure>
+
+<p>Then we use the <code>Provider</code> value that was returned from the <code>NumberContext</code> we created to make a particular value available to all the children.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;NumberContext.Provider value=&#123;<span class="number">45</span>&#125;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Display /&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>NumberContext.Provider&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>With that, we can use the <code>Consumer</code> value that was returned from the <code>NumberContext</code> we created to get the value we made available to all children. If you have noticed, this component did not get any props.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Display</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;NumberContext.Consumer&gt;</span><br><span class="line">      &#123;value =&gt; <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>The answer to the question is &#123;value&#125;.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">    &lt;<span class="regexp">/NumberContext.Consumer&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">ReactDOM.render(&lt;App /</span>&gt;, <span class="built_in">document</span>.querySelector(<span class="string">"#root"</span>));</span><br></pre></td></tr></table></figure>
+
+<p>Note how we were able to get the value from the <code>App</code> component into the <code>Display</code> component by wrapping our content in a <code>NumberContext.Consumer</code> and using the render props method to retrieve the value and render it.</p>
+<p>Everything works well and the render props method we used is a really good pattern for handling dynamic data, but in the long run, it does introduce some unnecessary nesting and confusion if you’re not used to it.</p>
+<h5 id="Using-The-useContext-Method"><a href="#Using-The-useContext-Method" class="headerlink" title="Using The useContext Method"></a>Using The useContext Method</h5><p>To explain the <code>useContext</code> method we will rewrite the <code>Display</code> component using the useContext hook.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// import useContext (or we could write React.useContext)</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; useContext &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// old code goes here</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Display</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> value = useContext(NumberContext);</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>The answer is &#123;value&#125;.<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>That’s all we need to do in order to display our value. Pretty neat, right? You call the <code>useContext()</code> hook and pass in the context object we created and we grab the value from it.</p>
+<p><strong>Note:</strong> <em>Don’t forget that the argument that is passed to the useContext hook must be the context object itself and any component calling the useContext will always re-render when the context value changes.</em></p>
+<h4 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer()"></a><code>useReducer()</code></h4><p>The <code>useReducer</code> hook is used for handling complex states and transitions in state. It takes in a <code>reducer</code> function and also an initial state input; then, it returns the current state and also a <code>dispatch</code> function as output by the means of array destructuring.</p>
+<p>The code below is the proper syntax for using the <code>useReducer</code> hook.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialArg, init);</span><br></pre></td></tr></table></figure>
+
+<p>It is sort of an alternative to the <code>useState</code> hook; it is usually preferable to <code>useState</code> when you have complex state logic that has to do with multiple sub-values or when the next state is dependent on the previous one.</p>
+<h3 id="Other-React-Hooks-Available"><a href="#Other-React-Hooks-Available" class="headerlink" title="Other React Hooks Available"></a>Other React Hooks Available</h3><table>
+<thead>
+<tr>
+<th><code>useCallback</code></th>
+<th>This hook returns a callback function that is memoized and that only changes if one dependency in the dependency tree changes.</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>useMemo</code></td>
+<td>This hook returns a memoized value, you can pass in a “create” function and also an array of dependencies. The value it returns will only use the memoized value again if one of the dependencies in the dependency tree changes.</td>
+</tr>
+<tr>
+<td><code>useRef</code></td>
+<td>This hook returns a mutable ref object whose <code>.current</code> property is initialized to the passed argument (<code>initialValue</code>). The returned object will be available for the full lifetime of the component.</td>
+</tr>
+<tr>
+<td><code>useImperativeHandle</code></td>
+<td>This hook is used for customizing the instance value that is made available for parent components when using refs in React.</td>
+</tr>
+<tr>
+<td><code>useLayoutEffect</code></td>
+<td>This hook similar to the <code>useEffect</code> hook, however, it fires synchronously after all DOM mutations. It also renders in the same way as <code>componentDidUpdate</code> and <code>componentDidMount</code>.</td>
+</tr>
+<tr>
+<td><code>useDebugValue</code></td>
+<td>This hook can be used to display a label for custom hooks in the React Dev Tools. It is very useful for debugging with the React Dev Tools.</td>
+</tr>
+</tbody></table>
+<h3 id="Custom-React-Hooks"><a href="#Custom-React-Hooks" class="headerlink" title="Custom React Hooks"></a>Custom React Hooks</h3><p>A “custom Hook” is a JavaScript function whose names are prefixed with the word <code>use</code> and can be used to call other Hooks. It also lets you to extract component logic into reusable functions; they are normal JavaScript functions that can make use of other Hooks inside of it, and also contain a common stateful logic that can be made use of within multiple components.</p>
+<p>The code snippets below demonstrate an example of a custom React Hook for implementing infinite scroll (by <a href="https://github.com/pflevy" target="_blank" rel="noopener">Paulo Levy</a>):</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> useInfiniteScroll = <span class="function">(<span class="params">start = <span class="number">30</span>, pace = <span class="number">10</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [limit, setLimit] = useState(start);</span><br><span class="line">  <span class="built_in">window</span>.onscroll = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (</span><br><span class="line">      <span class="built_in">window</span>.innerHeight + <span class="built_in">document</span>.documentElement.scrollTop ===</span><br><span class="line">      <span class="built_in">document</span>.documentElement.offsetHeight</span><br><span class="line">    ) &#123;</span><br><span class="line">      setLimit(limit + pace);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> limit;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>This custom Hook accepts two arguments which are <code>start</code> and <code>pace</code>. The start argument is the starting number of elements to be rendered while the pace argument is the subsequent number of elements that are to be rendered. By default, the <code>start</code> and <code>pace</code> arguments are set to <code>30</code> and <code>10</code> respectively which means you can actually call the Hook without any arguments and those default values will be used instead.</p>
+<p>So in order to use this Hook within a React app, we would use it with an online API that returns ‘fake’ data:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useInfiniteScroll &#125; <span class="keyword">from</span> <span class="string">"./useInfiniteScroll"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">let</span> infiniteScroll = useInfiniteScroll();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> [tableContent, setTableContent] = useState([]);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    fetch(<span class="string">"https://jsonplaceholder.typicode.com/todos/"</span>)</span><br><span class="line">      .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">      .then(<span class="function"><span class="params">json</span> =&gt;</span> setTableContent(json));</span><br><span class="line">  &#125;, []);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div style=&#123;&#123; <span class="attr">textAlign</span>: <span class="string">"center"</span> &#125;&#125;&gt;</span><br><span class="line">      &lt;table&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">          &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;User ID&lt;<span class="regexp">/th&gt;</span></span><br><span class="line"><span class="regexp">            &lt;th&gt;Title&lt;/</span>th&gt;</span><br><span class="line">          &lt;<span class="regexp">/tr&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">          &#123;tableContent.slice(<span class="number">0</span>, infiniteScroll).map(<span class="function"><span class="params">content</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">              &lt;tr key=&#123;content.id&#125;&gt;</span><br><span class="line">                &lt;td style=&#123;&#123; <span class="attr">paddingTop</span>: <span class="string">"10px"</span> &#125;&#125;&gt;&#123;content.userId&#125;&lt;<span class="regexp">/td&gt;</span></span><br><span class="line"><span class="regexp">                &lt;td style=&#123;&#123; paddingTop: "10px" &#125;&#125;&gt;&#123;content.title&#125;&lt;/</span>td&gt;</span><br><span class="line">              &lt;<span class="regexp">/tr&gt;</span></span><br><span class="line"><span class="regexp">            );</span></span><br><span class="line"><span class="regexp">          &#125;)&#125;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>tbody&gt;</span><br><span class="line">      &lt;<span class="regexp">/table&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+<p>The code above will render a list of fake data (<code>userID</code> and <code>title</code>) that make use of the infinite scroll hook to display the initial number of data on the screen.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I hope you enjoyed working through this tutorial. You could always read more on React Hooks from the references below.</p>
+<p>If you have any questions, you can leave them in the comments section and I’ll be happy to answer every single one!</p>
+<p><em>The supporting repo for this article is <a href="https://github.com/hacktivist123/React-Hooks-Project" target="_blank" rel="noopener">available on Github</a>.</em></p>
+<h4 id="RESOURCES-AND-FURTHER-READING"><a href="#RESOURCES-AND-FURTHER-READING" class="headerlink" title="RESOURCES AND FURTHER READING"></a>RESOURCES AND FURTHER READING</h4><ul>
+<li>“<a href="https://reactjs.org/docs/hooks-reference.htm" target="_blank" rel="noopener">Hooks API Reference</a>,” React.js Docs</li>
+<li>“<a href="https://www.robinwieruch.de/react-hooks/" target="_blank" rel="noopener">What Are React Hooks?</a>,” Robin Wieruch</li>
+<li>“<a href="https://daveceddia.com/usecontext-hook/" target="_blank" rel="noopener">How The <code>useContext</code> Hook Works</a>,” Dave Ceddia</li>
+<li>“<a href="https://medium.com/javascript-in-plain-english/react-hooks-how-to-use-useeffect-ecea3e90d84f" target="_blank" rel="noopener">React Hooks: How To Use <code>useEffect()</code></a>,” Hossein Ahmadi, Medium</li>
+<li>“<a href="https://blog.bitsrc.io/writing-your-own-custom-hooks-4fbcf77e112e" target="_blank" rel="noopener">Writing Your Own Custom React Hooks</a>,” Aayush Jaiswal, Medium</li>
+<li>“<a href="http://usehooks.com/" target="_blank" rel="noopener">Easy To Understand React Hook Recipes</a>,” Gabe Ragland, useHooks(🐠)</li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.smashingmagazine.com/2020/04/react-hooks-api-guide/" target="_blank" rel="noopener">https://www.smashingmagazine.com/2020/04/react-hooks-api-guide/</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/12/HTTP Requests/" class="archive-article-date">
-  	<time datetime="2020-05-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/12/HTTP Requests/">HTTP Requests</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React Hooks</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/14/2020-06-14-The-React-Hooks-API/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/11/RESTful, Sessions, Cookies/" class="archive-article-date">
-  	<time datetime="2020-05-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Android Architecture Patterns Part 3 Model-View-ViewModel</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/11/RESTful, Sessions, Cookies/">RESTful, Sessions, Cookies</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RESTful, session, cookies</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-Are-React-Hooks"><span class="toc-number">1.</span> <span class="toc-text">What Are React Hooks?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Motivation-Behind-The-Release-Of-React-Hooks"><span class="toc-number">2.</span> <span class="toc-text">Motivation Behind The Release Of React Hooks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#The-Rules-Of-Hooks"><span class="toc-number">3.</span> <span class="toc-text">The Rules Of Hooks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Basic-React-Hooks"><span class="toc-number">4.</span> <span class="toc-text">Basic React Hooks</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#useState"><span class="toc-number">4.1.</span> <span class="toc-text">useState()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#useEffect"><span class="toc-number">4.2.</span> <span class="toc-text">useEffect()</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-1-Define-The-State-Of-Your-Application"><span class="toc-number">4.2.1.</span> <span class="toc-text">Step 1: Define The State Of Your Application</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Step-2-Call-The-useEffect-Hook"><span class="toc-number">4.2.2.</span> <span class="toc-text">Step 2: Call The useEffect Hook</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#useContext"><span class="toc-number">4.3.</span> <span class="toc-text">useContext()</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#The-Normal-Way-To-Use-The-Context-API"><span class="toc-number">4.3.1.</span> <span class="toc-text">The Normal Way To Use The Context API</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Using-The-useContext-Method"><span class="toc-number">4.3.2.</span> <span class="toc-text">Using The useContext Method</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#useReducer"><span class="toc-number">4.4.</span> <span class="toc-text">useReducer()</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Other-React-Hooks-Available"><span class="toc-number">5.</span> <span class="toc-text">Other React Hooks Available</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Custom-React-Hooks"><span class="toc-number">6.</span> <span class="toc-text">Custom React Hooks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">7.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RESOURCES-AND-FURTHER-READING"><span class="toc-number">7.1.</span> <span class="toc-text">RESOURCES AND FURTHER READING</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">8.</span> <span class="toc-text">Reference</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/10/Go Language/" class="archive-article-date">
-  	<time datetime="2020-05-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/10/Go Language/">Go Language</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GoLang</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/09/How to Connect to Database in Javascript/" class="archive-article-date">
-  	<time datetime="2020-05-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/09/How to Connect to Database in Javascript/">How to Connect to Database in JavaScript</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Database, Javascript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/08/Ingestion and processing of real-time automotive IoT data  /" class="archive-article-date">
-  	<time datetime="2020-05-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/08/Ingestion and processing of real-time automotive IoT data  /">Ingestion and Processing of Real-Time Automotive IoT Data</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-Time Data, IoT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/07/Problem-solving While Learning/" class="archive-article-date">
-  	<time datetime="2020-05-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/07/Problem-solving While Learning/">Problem-solving While Learning</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Problem-solving</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/" class="archive-article-date">
-  	<time datetime="2020-05-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/06/How to use the JavaScript Fetch API to Get Data/">How to User the JavaScript Fetch API to Get Data</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript, Fetch, API, Data</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/05/An Introduction to GeoJSON/" class="archive-article-date">
-  	<time datetime="2020-05-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/05/An Introduction to GeoJSON/">An Introduction to GeoJson</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GeoJson</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/04/SQL or NoSQL?/" class="archive-article-date">
-  	<time datetime="2020-05-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/04/SQL or NoSQL?/">SQL or NoSQL?</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL, NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/03/巴音布鲁克没有海/" class="archive-article-date">
-  	<time datetime="2020-05-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/03/巴音布鲁克没有海/">巴音布鲁克没有海</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/05/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/2020/05/">1</a><a class="page-number" href="/archives/2020/05/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/2020/05/page/4/">4</a><a class="extend next" rel="next" href="/archives/2020/05/page/4/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -556,8 +487,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
