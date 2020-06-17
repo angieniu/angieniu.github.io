@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making | Yanjie&#39;s Blog</title>
+  <title>Higher-Order Components | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/GCS-GCE-GKE-System-Design-Loadbalancing-CICD-K-D-Search-Authentication-Video-Making/index.html">
+  <meta name="description" content="A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nat">
+<meta name="keywords" content="React, Higher-Order Component, Higher-Order Function">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Higher-Order Components">
+<meta property="og:url" content="http://yoursite.com/2020/06/16/2020-06-16-Higher-Order-Components/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nat">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-06-17T04:33:15.223Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Higher-Order Components">
+<meta name="twitter:description" content="A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nat">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,60 +147,279 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-16-Higher-Order-Components" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/" class="archive-article-date">
-  	<time datetime="2020-05-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/">Self-Summary about Golang Project</a>
+    <h1 class="article-title" itemprop="name">
+      Higher-Order Components
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/16/2020-06-16-Higher-Order-Components/" class="archive-article-date">
+  	<time datetime="2020-06-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nature.</p>
+<p>Concretely, <strong>a higher-order component is a function that takes a component and returns a new component.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const EnhancedComponent = higherOrderComponent(WrappedComponent);</span><br></pre></td></tr></table></figure>
+
+<p>Whereas a component transforms props into UI, a higher-order component transforms a component into another component.</p>
+<p>HOCs are common in third-party React libraries, such as Redux’s <a href="https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect" target="_blank" rel="noopener"><code>connect</code></a> and Relay’s <a href="http://facebook.github.io/relay/docs/en/fragment-container.html" target="_blank" rel="noopener"><code>createFragmentContainer</code></a>.</p>
+<p>In this document, we’ll discuss why higher-order components are useful, and how to write your own.</p>
+<a id="more"></a>
+
+<h2 id="Use-HOCs-For-Cross-Cutting-Concerns"><a href="#Use-HOCs-For-Cross-Cutting-Concerns" class="headerlink" title="Use HOCs For Cross-Cutting Concerns"></a>Use HOCs For Cross-Cutting Concerns</h2><blockquote>
+<p><strong>Note</strong></p>
+<p>We previously recommended mixins as a way to handle cross-cutting concerns. We’ve since realized that mixins create more trouble than they are worth. <a href="https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html" target="_blank" rel="noopener">Read more</a> about why we’ve moved away from mixins and how you can transition your existing components.</p>
+</blockquote>
+<p>Components are the primary unit of code reuse in React. However, you’ll find that some patterns aren’t a straightforward fit for traditional components.</p>
+<p>For example, say you have a <code>CommentList</code> component that subscribes to an external data source to render a list of comments:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">class CommentList extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.handleChange = this.handleChange.bind(this);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      // &quot;DataSource&quot; is some global data source</span><br><span class="line">      comments: DataSource.getComments()</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    // Subscribe to changes</span><br><span class="line">    DataSource.addChangeListener(this.handleChange);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    // Clean up listener</span><br><span class="line">    DataSource.removeChangeListener(this.handleChange);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange() &#123;</span><br><span class="line">    // Update component state whenever the data source changes</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      comments: DataSource.getComments()</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;this.state.comments.map((comment) =&gt; (</span><br><span class="line">          &lt;Comment comment=&#123;comment&#125; key=&#123;comment.id&#125; /&gt;</span><br><span class="line">        ))&#125;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Later, you write a component for subscribing to a single blog post, which follows a similar pattern:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">class BlogPost extends React.Component &#123;</span><br><span class="line">  constructor(props) &#123;</span><br><span class="line">    super(props);</span><br><span class="line">    this.handleChange = this.handleChange.bind(this);</span><br><span class="line">    this.state = &#123;</span><br><span class="line">      blogPost: DataSource.getBlogPost(props.id)</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    DataSource.addChangeListener(this.handleChange);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  componentWillUnmount() &#123;</span><br><span class="line">    DataSource.removeChangeListener(this.handleChange);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  handleChange() &#123;</span><br><span class="line">    this.setState(&#123;</span><br><span class="line">      blogPost: DataSource.getBlogPost(this.props.id)</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    return &lt;TextBlock text=&#123;this.state.blogPost&#125; /&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>CommentList</code> and <code>BlogPost</code> aren’t identical — they call different methods on <code>DataSource</code>, and they render different output. But much of their implementation is the same:</p>
+<ul>
+<li>On mount, add a change listener to <code>DataSource</code>.</li>
+<li>Inside the listener, call <code>setState</code> whenever the data source changes.</li>
+<li>On unmount, remove the change listener.</li>
+</ul>
+<p>You can imagine that in a large app, this same pattern of subscribing to <code>DataSource</code> and calling <code>setState</code> will occur over and over again. We want an abstraction that allows us to define this logic in a single place and share it across many components. This is where higher-order components excel.</p>
+<p>We can write a function that creates components, like <code>CommentList</code> and <code>BlogPost</code>, that subscribe to <code>DataSource</code>. The function will accept as one of its arguments a child component that receives the subscribed data as a prop. Let’s call the function <code>withSubscription</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const CommentListWithSubscription = withSubscription(</span><br><span class="line">  CommentList,</span><br><span class="line">  (DataSource) =&gt; DataSource.getComments()</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">const BlogPostWithSubscription = withSubscription(</span><br><span class="line">  BlogPost,</span><br><span class="line">  (DataSource, props) =&gt; DataSource.getBlogPost(props.id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>The first parameter is the wrapped component. The second parameter retrieves the data we’re interested in, given a <code>DataSource</code> and the current props.</p>
+<p>When <code>CommentListWithSubscription</code> and <code>BlogPostWithSubscription</code> are rendered, <code>CommentList</code> and <code>BlogPost</code> will be passed a <code>data</code> prop with the most current data retrieved from <code>DataSource</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">// This function takes a component...</span><br><span class="line">function withSubscription(WrappedComponent, selectData) &#123;</span><br><span class="line">  // ...and returns another component...</span><br><span class="line">  return class extends React.Component &#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">      super(props);</span><br><span class="line">      this.handleChange = this.handleChange.bind(this);</span><br><span class="line">      this.state = &#123;</span><br><span class="line">        data: selectData(DataSource, props)</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">      // ... that takes care of the subscription...</span><br><span class="line">      DataSource.addChangeListener(this.handleChange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">      DataSource.removeChangeListener(this.handleChange);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleChange() &#123;</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        data: selectData(DataSource, this.props)</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">      // ... and renders the wrapped component with the fresh data!</span><br><span class="line">      // Notice that we pass through any additional props</span><br><span class="line">      return &lt;WrappedComponent data=&#123;this.state.data&#125; &#123;...this.props&#125; /&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Note that a HOC doesn’t modify the input component, nor does it use inheritance to copy its behavior. Rather, a HOC <em>composes</em> the original component by <em>wrapping</em> it in a container component. A HOC is a pure function with zero side-effects.</p>
+<p>And that’s it! The wrapped component receives all the props of the container, along with a new prop, <code>data</code>, which it uses to render its output. The HOC isn’t concerned with how or why the data is used, and the wrapped component isn’t concerned with where the data came from.</p>
+<p>Because <code>withSubscription</code> is a normal function, you can add as many or as few arguments as you like. For example, you may want to make the name of the <code>data</code> prop configurable, to further isolate the HOC from the wrapped component. Or you could accept an argument that configures <code>shouldComponentUpdate</code>, or one that configures the data source. These are all possible because the HOC has full control over how the component is defined.</p>
+<p>Like components, the contract between <code>withSubscription</code> and the wrapped component is entirely props-based. This makes it easy to swap one HOC for a different one, as long as they provide the same props to the wrapped component. This may be useful if you change data-fetching libraries, for example.</p>
+<h2 id="Don’t-Mutate-the-Original-Component-Use-Composition"><a href="#Don’t-Mutate-the-Original-Component-Use-Composition" class="headerlink" title="Don’t Mutate the Original Component. Use Composition."></a>Don’t Mutate the Original Component. Use Composition.</h2><p>Resist the temptation to modify a component’s prototype (or otherwise mutate it) inside a HOC.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function logProps(InputComponent) &#123;</span><br><span class="line">  InputComponent.prototype.componentDidUpdate = function(prevProps) &#123;</span><br><span class="line">    console.log(&apos;Current props: &apos;, this.props);</span><br><span class="line">    console.log(&apos;Previous props: &apos;, prevProps);</span><br><span class="line">  &#125;;</span><br><span class="line">  // The fact that we&apos;re returning the original input is a hint that it has</span><br><span class="line">  // been mutated.</span><br><span class="line">  return InputComponent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// EnhancedComponent will log whenever props are received</span><br><span class="line">const EnhancedComponent = logProps(InputComponent);</span><br></pre></td></tr></table></figure>
+
+<p>There are a few problems with this. One is that the input component cannot be reused separately from the enhanced component. More crucially, if you apply another HOC to <code>EnhancedComponent</code> that <em>also</em> mutates <code>componentDidUpdate</code>, the first HOC’s functionality will be overridden! This HOC also won’t work with function components, which do not have lifecycle methods.</p>
+<p>Mutating HOCs are a leaky abstraction—the consumer must know how they are implemented in order to avoid conflicts with other HOCs.</p>
+<p>Instead of mutation, HOCs should use composition, by wrapping the input component in a container component:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function logProps(WrappedComponent) &#123;</span><br><span class="line">  return class extends React.Component &#123;</span><br><span class="line">    componentDidUpdate(prevProps) &#123;</span><br><span class="line">      console.log(&apos;Current props: &apos;, this.props);</span><br><span class="line">      console.log(&apos;Previous props: &apos;, prevProps);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">      // Wraps the input component in a container, without mutating it. Good!</span><br><span class="line">      return &lt;WrappedComponent &#123;...this.props&#125; /&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This HOC has the same functionality as the mutating version while avoiding the potential for clashes. It works equally well with class and function components. And because it’s a pure function, it’s composable with other HOCs, or even with itself.</p>
+<p>You may have noticed similarities between HOCs and a pattern called <strong>container components</strong>. Container components are part of a strategy of separating responsibility between high-level and low-level concerns. Containers manage things like subscriptions and state, and pass props to components that handle things like rendering UI. HOCs use containers as part of their implementation. You can think of HOCs as parameterized container component definitions.</p>
+<h2 id="Convention-Pass-Unrelated-Props-Through-to-the-Wrapped-Component"><a href="#Convention-Pass-Unrelated-Props-Through-to-the-Wrapped-Component" class="headerlink" title="Convention: Pass Unrelated Props Through to the Wrapped Component"></a>Convention: Pass Unrelated Props Through to the Wrapped Component</h2><p>HOCs add features to a component. They shouldn’t drastically alter its contract. It’s expected that the component returned from a HOC has a similar interface to the wrapped component.</p>
+<p>HOCs should pass through props that are unrelated to its specific concern. Most HOCs contain a render method that looks something like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  // Filter out extra props that are specific to this HOC and shouldn&apos;t be</span><br><span class="line">  // passed through</span><br><span class="line">  const &#123; extraProp, ...passThroughProps &#125; = this.props;</span><br><span class="line"></span><br><span class="line">  // Inject props into the wrapped component. These are usually state values or</span><br><span class="line">  // instance methods.</span><br><span class="line">  const injectedProp = someStateOrInstanceMethod;</span><br><span class="line"></span><br><span class="line">  // Pass props to wrapped component</span><br><span class="line">  return (</span><br><span class="line">    &lt;WrappedComponent</span><br><span class="line">      injectedProp=&#123;injectedProp&#125;</span><br><span class="line">      &#123;...passThroughProps&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This convention helps ensure that HOCs are as flexible and reusable as possible.</p>
+<h2 id="Convention-Maximizing-Composability"><a href="#Convention-Maximizing-Composability" class="headerlink" title="Convention: Maximizing Composability"></a>Convention: Maximizing Composability</h2><p>Not all HOCs look the same. Sometimes they accept only a single argument, the wrapped component:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const NavbarWithRouter = withRouter(Navbar);</span><br></pre></td></tr></table></figure>
+
+<p>Usually, HOCs accept additional arguments. In this example from Relay, a config object is used to specify a component’s data dependencies:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const CommentWithRelay = Relay.createContainer(Comment, config);</span><br></pre></td></tr></table></figure>
+
+<p>The most common signature for HOCs looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// React Redux&apos;s `connect`</span><br><span class="line">const ConnectedComment = connect(commentSelector, commentActions)(CommentList);</span><br></pre></td></tr></table></figure>
+
+<p><em>What?!</em> If you break it apart, it’s easier to see what’s going on.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// connect is a function that returns another function</span><br><span class="line">const enhance = connect(commentListSelector, commentListActions);</span><br><span class="line">// The returned function is a HOC, which returns a component that is connected</span><br><span class="line">// to the Redux store</span><br><span class="line">const ConnectedComment = enhance(CommentList);</span><br></pre></td></tr></table></figure>
+
+<p>In other words, <code>connect</code> is a higher-order function that returns a higher-order component!</p>
+<p>This form may seem confusing or unnecessary, but it has a useful property. Single-argument HOCs like the one returned by the <code>connect</code> function have the signature <code>Component =&gt; Component</code>. Functions whose output type is the same as its input type are really easy to compose together.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// Instead of doing this...</span><br><span class="line">const EnhancedComponent = withRouter(connect(commentSelector)(WrappedComponent))</span><br><span class="line"></span><br><span class="line">// ... you can use a function composition utility</span><br><span class="line">// compose(f, g, h) is the same as (...args) =&gt; f(g(h(...args)))</span><br><span class="line">const enhance = compose(</span><br><span class="line">  // These are both single-argument HOCs</span><br><span class="line">  withRouter,</span><br><span class="line">  connect(commentSelector)</span><br><span class="line">)</span><br><span class="line">const EnhancedComponent = enhance(WrappedComponent)</span><br></pre></td></tr></table></figure>
+
+<p>(This same property also allows <code>connect</code> and other enhancer-style HOCs to be used as decorators, an experimental JavaScript proposal.)</p>
+<p>The <code>compose</code> utility function is provided by many third-party libraries including lodash (as <a href="https://lodash.com/docs/#flowRight" target="_blank" rel="noopener"><code>lodash.flowRight</code></a>), <a href="https://redux.js.org/api/compose" target="_blank" rel="noopener">Redux</a>, and <a href="https://ramdajs.com/docs/#compose" target="_blank" rel="noopener">Ramda</a>.</p>
+<h2 id="Convention-Wrap-the-Display-Name-for-Easy-Debugging"><a href="#Convention-Wrap-the-Display-Name-for-Easy-Debugging" class="headerlink" title="Convention: Wrap the Display Name for Easy Debugging"></a>Convention: Wrap the Display Name for Easy Debugging</h2><p>The container components created by HOCs show up in the <a href="https://github.com/facebook/react-devtools" target="_blank" rel="noopener">React Developer Tools</a> like any other component. To ease debugging, choose a display name that communicates that it’s the result of a HOC.</p>
+<p>The most common technique is to wrap the display name of the wrapped component. So if your higher-order component is named <code>withSubscription</code>, and the wrapped component’s display name is <code>CommentList</code>, use the display name <code>WithSubscription(CommentList)</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function withSubscription(WrappedComponent) &#123;</span><br><span class="line">  class WithSubscription extends React.Component &#123;/* ... */&#125;</span><br><span class="line">  WithSubscription.displayName = `WithSubscription($&#123;getDisplayName(WrappedComponent)&#125;)`;</span><br><span class="line">  return WithSubscription;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function getDisplayName(WrappedComponent) &#123;</span><br><span class="line">  return WrappedComponent.displayName || WrappedComponent.name || &apos;Component&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Caveats"><a href="#Caveats" class="headerlink" title="Caveats"></a>Caveats</h2><p>Higher-order components come with a few caveats that aren’t immediately obvious if you’re new to React.</p>
+<h3 id="Don’t-Use-HOCs-Inside-the-render-Method"><a href="#Don’t-Use-HOCs-Inside-the-render-Method" class="headerlink" title="Don’t Use HOCs Inside the render Method"></a>Don’t Use HOCs Inside the render Method</h3><p>React’s diffing algorithm (called reconciliation) uses component identity to determine whether it should update the existing subtree or throw it away and mount a new one. If the component returned from <code>render</code> is identical (<code>===</code>) to the component from the previous render, React recursively updates the subtree by diffing it with the new one. If they’re not equal, the previous subtree is unmounted completely.</p>
+<p>Normally, you shouldn’t need to think about this. But it matters for HOCs because it means you can’t apply a HOC to a component within the render method of a component:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  // A new version of EnhancedComponent is created on every render</span><br><span class="line">  // EnhancedComponent1 !== EnhancedComponent2</span><br><span class="line">  const EnhancedComponent = enhance(MyComponent);</span><br><span class="line">  // That causes the entire subtree to unmount/remount each time!</span><br><span class="line">  return &lt;EnhancedComponent /&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The problem here isn’t just about performance — remounting a component causes the state of that component and all of its children to be lost.</p>
+<p>Instead, apply HOCs outside the component definition so that the resulting component is created only once. Then, its identity will be consistent across renders. This is usually what you want, anyway.</p>
+<p>In those rare cases where you need to apply a HOC dynamically, you can also do it inside a component’s lifecycle methods or its constructor.</p>
+<h3 id="Static-Methods-Must-Be-Copied-Over"><a href="#Static-Methods-Must-Be-Copied-Over" class="headerlink" title="Static Methods Must Be Copied Over"></a>Static Methods Must Be Copied Over</h3><p>Sometimes it’s useful to define a static method on a React component. For example, Relay containers expose a static method <code>getFragment</code> to facilitate the composition of GraphQL fragments.</p>
+<p>When you apply a HOC to a component, though, the original component is wrapped with a container component. That means the new component does not have any of the static methods of the original component.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// Define a static method</span><br><span class="line">WrappedComponent.staticMethod = function() &#123;/*...*/&#125;</span><br><span class="line">// Now apply a HOC</span><br><span class="line">const EnhancedComponent = enhance(WrappedComponent);</span><br><span class="line"></span><br><span class="line">// The enhanced component has no static method</span><br><span class="line">typeof EnhancedComponent.staticMethod === &apos;undefined&apos; // true</span><br></pre></td></tr></table></figure>
+
+<p>To solve this, you could copy the methods onto the container before returning it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function enhance(WrappedComponent) &#123;</span><br><span class="line">  class Enhance extends React.Component &#123;/*...*/&#125;</span><br><span class="line">  // Must know exactly which method(s) to copy :(</span><br><span class="line">  Enhance.staticMethod = WrappedComponent.staticMethod;</span><br><span class="line">  return Enhance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>However, this requires you to know exactly which methods need to be copied. You can use <a href="https://github.com/mridgway/hoist-non-react-statics" target="_blank" rel="noopener">hoist-non-react-statics</a> to automatically copy all non-React static methods:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import hoistNonReactStatic from &apos;hoist-non-react-statics&apos;;</span><br><span class="line">function enhance(WrappedComponent) &#123;</span><br><span class="line">  class Enhance extends React.Component &#123;/*...*/&#125;</span><br><span class="line">  hoistNonReactStatic(Enhance, WrappedComponent);</span><br><span class="line">  return Enhance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Another possible solution is to export the static method separately from the component itself.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Instead of...</span><br><span class="line">MyComponent.someFunction = someFunction;</span><br><span class="line">export default MyComponent;</span><br><span class="line"></span><br><span class="line">// ...export the method separately...</span><br><span class="line">export &#123; someFunction &#125;;</span><br><span class="line"></span><br><span class="line">// ...and in the consuming module, import both</span><br><span class="line">import MyComponent, &#123; someFunction &#125; from &apos;./MyComponent.js&apos;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Refs-Aren’t-Passed-Through"><a href="#Refs-Aren’t-Passed-Through" class="headerlink" title="Refs Aren’t Passed Through"></a>Refs Aren’t Passed Through</h3><p>While the convention for higher-order components is to pass through all props to the wrapped component, this does not work for refs. That’s because <code>ref</code> is not really a prop — like <code>key</code>, it’s handled specially by React. If you add a ref to an element whose component is the result of a HOC, the ref refers to an instance of the outermost container component, not the wrapped component.</p>
+<p>The solution for this problem is to use the <code>React.forwardRef</code> API (introduced with React 16.3). <a href="https://reactjs.org/docs/forwarding-refs.html" target="_blank" rel="noopener">Learn more about it in the forwarding refs section</a>.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://reactjs.org/docs/higher-order-components.html" target="_blank" rel="noopener">https://reactjs.org/docs/higher-order-components.html</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Higher-Order Component, Higher-Order Function</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/16/2020-06-16-Higher-Order-Components/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/15/2020-06-15-星空🌃,相遇🌈,感恩-世间美好-与你环环相扣/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">星空🌃,相遇🌈,感恩 世间美好 与你环环相扣</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-HOCs-For-Cross-Cutting-Concerns"><span class="toc-number">1.</span> <span class="toc-text">Use HOCs For Cross-Cutting Concerns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Don’t-Mutate-the-Original-Component-Use-Composition"><span class="toc-number">2.</span> <span class="toc-text">Don’t Mutate the Original Component. Use Composition.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Convention-Pass-Unrelated-Props-Through-to-the-Wrapped-Component"><span class="toc-number">3.</span> <span class="toc-text">Convention: Pass Unrelated Props Through to the Wrapped Component</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Convention-Maximizing-Composability"><span class="toc-number">4.</span> <span class="toc-text">Convention: Maximizing Composability</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Convention-Wrap-the-Display-Name-for-Easy-Debugging"><span class="toc-number">5.</span> <span class="toc-text">Convention: Wrap the Display Name for Easy Debugging</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Caveats"><span class="toc-number">6.</span> <span class="toc-text">Caveats</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Don’t-Use-HOCs-Inside-the-render-Method"><span class="toc-number">6.1.</span> <span class="toc-text">Don’t Use HOCs Inside the render Method</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Static-Methods-Must-Be-Copied-Over"><span class="toc-number">6.2.</span> <span class="toc-text">Static Methods Must Be Copied Over</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Refs-Aren’t-Passed-Through"><span class="toc-number">6.3.</span> <span class="toc-text">Refs Aren’t Passed Through</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">6.4.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +445,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
