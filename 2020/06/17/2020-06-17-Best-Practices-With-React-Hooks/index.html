@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Yanjie&#39;s Blog</title>
+  <title>Best Practices With React Hooks | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/page/2/index.html">
+  <meta name="description" content="This article covers the rules of React Hooks and how to effectively start using them in your projects. Please note that in order to follow this article in detail, you will need to know how to use Reac">
+<meta name="keywords" content="React, Hooks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Best Practices With React Hooks">
+<meta property="og:url" content="http://yoursite.com/2020/06/17/2020-06-17-Best-Practices-With-React-Hooks/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="This article covers the rules of React Hooks and how to effectively start using them in your projects. Please note that in order to follow this article in detail, you will need to know how to use Reac">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-06-18T06:34:41.165Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Best Practices With React Hooks">
+<meta name="twitter:description" content="This article covers the rules of React Hooks and how to effectively start using them in your projects. Please note that in order to follow this article in detail, you will need to know how to use Reac">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,383 +147,303 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-17-Best-Practices-With-React-Hooks" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Best Practices With React Hooks
+    </h1>
+  
+
+        
+        <a href="/2020/06/17/2020-06-17-Best-Practices-With-React-Hooks/" class="archive-article-date">
+  	<time datetime="2020-06-17T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>This article covers the rules of React Hooks and how to effectively start using them in your projects. Please note that in order to follow this article in detail, you will need to know <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">how to use React Hooks</a>.</p>
+<p>React Hooks are a new addition in React 16.8 that let you use state and other React features without writing a <code>class</code> component. In other words, <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">Hooks</a> are functions that let you “hook into” React state and lifecycle features from function components. (They do not work inside <code>class</code> components.)</p>
+<p>React provides a few built-in Hooks like <code>useState</code>. You can also create your own Hooks to reuse stateful behavior between different components. The example below shows a counter whose state is managed using the <code>useState()</code> hook. Each time you click on the button, we make use of <code>setCount()</code> to update the value of <code>count</code> by <code>1</code>.</p>
+<iframe id="cp_embed_QWbXMyM" src="https://codepen.io/smashingmag/embed/QWbXMyM?height=500&amp;theme-id=light&amp;slug-hash=QWbXMyM&amp;user=smashingmag&amp;default-tab=result" scrolling="no" frameborder="0" height="500" allowtransparency="true" allowfullscreen="true" name="CodePen Embed" title="CodePen Embed" class="cp_embed_iframe " style="box-sizing: border-box; max-width: 100%; border: 0px; height: 500px; width: 592px; overflow: hidden;"></iframe>
+
+<p>See the Pen <a href="https://codepen.io/smashingmag/pen/QWbXMyM" target="_blank" rel="noopener">React Hook example with Counter</a> by <a href="https://codepen.io/adeneye-abiodun-david" target="_blank" rel="noopener">Adeneye Abiodun David</a>.</p>
+<p>This example renders a counter with a value of <code>0</code>. When you click the button, it increments the value by <code>1</code>. The initial value of the component is defined using <code>useState</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>As you can see, we set that to be <code>0</code>. Then we use the <code>onClick()</code> method to call <code>setCount</code> when we want to increment the value.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;() =&gt; setCount(count + <span class="number">1</span>)&#125;&gt;</span><br><span class="line">  Click me</span><br><span class="line">&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Before the release of React Hooks, this example would have used more lines of code, as we’d have had to make use of a <code>class</code> component.</p>
+<h3 id="Rules-Of-React-Hooks"><a href="#Rules-Of-React-Hooks" class="headerlink" title="Rules Of React Hooks"></a>Rules Of React Hooks</h3><p>Before we dive deep into the best practices, we need to understand the rules of React Hooks which are also some of the fundamental concepts of the practices presented in this article.</p>
+<p>React Hooks are JavaScript functions, but you need to follow two rules when using them.</p>
+<ol>
+<li><a href="https://www.smashingmagazine.com/2020/04/react-hooks-best-practices/#call-hooks-top-level" target="_blank" rel="noopener">Call Hooks at the top level</a>;</li>
+<li><a href="https://www.smashingmagazine.com/2020/04/react-hooks-best-practices/#call-hooks-react-components" target="_blank" rel="noopener">Only call Hooks from React components</a>.</li>
+</ol>
+<p><strong>Note</strong>: <em>These two rules were introduced in React Hooks, as opposed to being part of JavaScript itself.</em></p>
+<p>Let’s look at these rules in more detail.</p>
+<a id="more"></a>
+
+<h3 id="Call-Hooks-At-The-Top-Level"><a href="#Call-Hooks-At-The-Top-Level" class="headerlink" title="Call Hooks At The Top Level"></a>Call Hooks At The Top Level</h3><p>Don’t call Hooks inside loops, conditions, or nested functions. Always use Hooks at the top level of your React function. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That’s what allows React to correctly preserve the state of Hooks between multiple <code>useState</code> and <code>useEffect</code> calls.</p>
+<p>Let’s make a <code>Form</code> component which will have two states:</p>
+<ul>
+<li><code>accountName</code></li>
+<li><code>accountDetail</code></li>
+</ul>
+<p>These states will have default values, we’ll make use of the <code>useEffect</code> hook to persist the state to either the local storage of our browser or to the title of our document.</p>
+<p>Now, this component will be maybe to successfully manage its state if it remains the same between multiple calls of <code>useState</code> and <code>useEffect</code>.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Form</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 1. Use the accountName state variable</span></span><br><span class="line">  <span class="keyword">const</span> [accountName, setAccountName] = useState(<span class="string">'David'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2. Use an effect for persisting the form</span></span><br><span class="line">  useEffect(<span class="function"><span class="keyword">function</span> <span class="title">persistForm</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    localStorage.setItem(<span class="string">'formData'</span>, accountName);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 3. Use the accountDetail state variable</span></span><br><span class="line">  <span class="keyword">const</span> [accountDetail, setAccountDetail] = useState(<span class="string">'Active'</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 4. Use an effect for updating the title</span></span><br><span class="line">  useEffect(<span class="function"><span class="keyword">function</span> <span class="title">updateStatus</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.title = accountName + <span class="string">' '</span> + accountDetail;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If the order of our Hooks changes (which can be possible when they are called in loops or conditionals), React will have a hard time figuring out how to preserve the state of our component.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ------------</span></span><br><span class="line">useState(<span class="string">'David'</span>)           <span class="comment">// 1. Initialize the accountName state variable with 'David'</span></span><br><span class="line">useEffect(persistForm)     <span class="comment">// 2. Add an effect for persisting the form</span></span><br><span class="line">useState(<span class="string">'Active'</span>)        <span class="comment">// 3. Initialize the accountdetail state variable with 'Active'</span></span><br><span class="line">useEffect(updateStatus)     <span class="comment">// 4. Add an effect for updating the status</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// -------------</span></span><br><span class="line"><span class="comment">// Second render</span></span><br><span class="line"><span class="comment">// -------------</span></span><br><span class="line">useState(<span class="string">'David'</span>)           <span class="comment">// 1. Read the accountName state variable (argument is ignored)</span></span><br><span class="line">useEffect(persistForm)     <span class="comment">// 2. Replace the effect for persisting the form</span></span><br><span class="line">useState(<span class="string">'Active'</span>)        <span class="comment">// 3. Read the accountDetail state variable (argument is ignored)</span></span><br><span class="line">useEffect(updateStatus)     <span class="comment">// 4. Replace the effect for updating the status</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<p>That’s the order React follows to call our hooks. Since the order remains the same, it will be able to preserve the state of our component. But what happens if we put a Hook call inside a condition?</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 🔴 We're breaking the first rule by using a Hook in a condition</span></span><br><span class="line">  <span class="keyword">if</span> (accountName !== <span class="string">''</span>) &#123;</span><br><span class="line">    useEffect(<span class="function"><span class="keyword">function</span> <span class="title">persistForm</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      localStorage.setItem(<span class="string">'formData'</span>, accountName);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>accountName !== &#39;&#39;</code> condition is <code>true</code> on the first render, so we run this Hook. However, on the next render the user might clear the form, making the condition <code>false</code>. Now that we skip this Hook during rendering, the order of the Hook calls becomes different:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">useState(<span class="string">'David'</span>)           <span class="comment">// 1. Read the accountName state variable (argument is ignored)</span></span><br><span class="line"><span class="comment">// useEffect(persistForm)  // 🔴 This Hook was skipped!</span></span><br><span class="line">useState(<span class="string">'Active'</span>)        <span class="comment">// 🔴 2 (but was 3). Fail to read the accountDetails state variable</span></span><br><span class="line">useEffect(updateStatus)     <span class="comment">// 🔴 3 (but was 4). Fail to replace the effect</span></span><br></pre></td></tr></table></figure>
+
+<p>React wouldn’t know what to return for the second <code>useState</code> Hook call. React expected that the second Hook call in this component corresponds to the <code>persistForm</code> effect, just like during the previous render — but it doesn’t anymore. From that point on, every next <code>Hook</code> call after the one we skipped would also shift by one — leading to bugs.</p>
+<p>This is why Hooks must be called on the top level of our components. If we want to run an effect conditionally, we can put that condition <em>inside</em> our Hook.</p>
+<p><strong>Note</strong>: <em>Check out the <a href="https://reactjs.org/docs/hooks-rules.html" target="_blank" rel="noopener">React Hook docs</a> to read more on this topic.</em></p>
+<h3 id="Only-Call-Hooks-From-React-Components"><a href="#Only-Call-Hooks-From-React-Components" class="headerlink" title="Only Call Hooks From React Components"></a>Only Call Hooks From React Components</h3><p>Don’t call Hooks from regular JavaScript functions. Instead, you can call Hooks from React function components. Let’s take look at the difference between JavaScript function and React component below:</p>
+<h5 id="JavaScript-Function"><a href="#JavaScript-Function" class="headerlink" title="JavaScript Function"></a>JavaScript Function</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useState &#125; = <span class="string">"react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">toCelsius</span>(<span class="params">fahrenheit</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [name, setName] = useState(<span class="string">"David"</span>);</span><br><span class="line">  <span class="keyword">return</span> (<span class="number">5</span>/<span class="number">9</span>) * (fahrenheit<span class="number">-32</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">"demo"</span>).innerHTML = toCelsius;</span><br></pre></td></tr></table></figure>
+
+<p>Here we import the <code>useState</code> hook from the React package, and then declared our function. But this is invalid as it is not a React component.</p>
+<h5 id="React-Function"><a href="#React-Function" class="headerlink" title="React Function"></a>React Function</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState&#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">"react-dom"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Account</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [name, setName] = useState(<span class="string">"David"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>Hello, &#123;name&#125;! The price is <span class="tag">&lt;<span class="name">b</span>&gt;</span>&#123;props.total&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span> and the total amount is <span class="tag">&lt;<span class="name">b</span>&gt;</span>&#123;props.amount&#125;<span class="tag">&lt;/<span class="name">b</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line">ReactDom.render(</span><br><span class="line">  &lt;Account total=&#123;<span class="number">20</span>&#125; amount=&#123;<span class="number">5000</span>&#125; /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>Even though the body of both looks similar, the latter becomes a component when we import React into the file. This is what makes it possible for us to use things like <a href="https://reactjs.org/docs/introducing-jsx.html" target="_blank" rel="noopener">JSX</a> and React hooks inside.</p>
+<p>If you happened to import your preferred hook without importing React (which makes it a regular function), you will not be able to make use of the Hook you’ve imported as the Hook is accessible only in React component.</p>
+<h4 id="CALL-HOOKS-FROM-CUSTOM-HOOKS"><a href="#CALL-HOOKS-FROM-CUSTOM-HOOKS" class="headerlink" title="CALL HOOKS FROM CUSTOM HOOKS"></a>CALL HOOKS FROM CUSTOM HOOKS</h4><p>A custom Hook is a JavaScript function whose name starts with <code>use</code> and that may call other Hooks. For example, <code>useUserName</code> is used below a custom Hook that calls the <code>useState</code> and <code>useEffect</code> hooks. It fetches data from an API, loops through the data, and calls <code>setIsPresent()</code> if the specific username it received is present in the API data.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">useUserName</span>(<span class="params">userName</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [isPresent, setIsPresent] = useState(<span class="literal">false</span>);</span><br><span class="line">  </span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> data = MockedApi.fetchData();</span><br><span class="line">    data.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">      res.forEach(<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (e.name === userName) &#123;</span><br><span class="line">          setIsPresent(<span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">return</span> isPresent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>We can then go on to reuse the functionality of this hook in other places where we need such in our application. In such places, except when needed, we don’t have to call <code>useState</code> or <code>useEffect</code> anymore.</p>
+<p>By following this rule, you ensure that all stateful logic in a component is clearly visible from its source code.</p>
+<h4 id="ESLINT-PLUGIN"><a href="#ESLINT-PLUGIN" class="headerlink" title="ESLINT PLUGIN"></a>ESLINT PLUGIN</h4><p>ESLint plugin called <a href="https://www.npmjs.com/package/eslint-plugin-react-hooks" target="_blank" rel="noopener"><code>eslint-plugin-react-hooks</code></a> enforces the rules above. This comes in handy in enforcing the rules when working on a project. I suggest you make use of this plugin when working on your project, especially when working with others. You can add this plugin to your project if you’d like to try it:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Your ESLint configuration</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"plugins"</span>: [</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="string">"react-hooks"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">"rules"</span>: &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="string">"react-hooks/rules-of-hooks"</span>: <span class="string">"error"</span>, <span class="comment">// Checks rules of Hooks</span></span><br><span class="line">    <span class="string">"react-hooks/exhaustive-deps"</span>: <span class="string">"warn"</span> <span class="comment">// Checks effect dependencies</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>This plugin is included by default in <a href="https://reactjs.org/docs/create-a-new-react-app.html#create-react-app" target="_blank" rel="noopener">Create React App</a>. So you don’t need to add it if you bootstrap your React applications using Create-React-App.</p>
+<h3 id="Thinking-In-Hooks"><a href="#Thinking-In-Hooks" class="headerlink" title="Thinking In Hooks"></a>Thinking In Hooks</h3><p>Let’s take a brief look at <code>class</code> components and functional components (with Hooks), before diving into the few Hooks best practices.</p>
+<p>The simplest way to define a component in React is to write a JavaScript function that returns a React element:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello, &#123;props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The <code>Welcome</code> component accepts <code>props</code> which is an object that contains data and returns a React element. We can then import and render this component in another component.</p>
+<p>The <code>class</code> component uses a programming methodology called <strong>Encapsulation</strong> which basically means that everything relevant to the class component will live within it. Life-cycle methods (<code>constructors</code>, <code>componentDidMount()</code>, <code>render</code>, and so on) give components a predictable structure.</p>
+<p>Encapsulation is one of the fundamentals of OOP (<strong>O</strong>bject-<strong>O</strong>riented <strong>P</strong>rogramming). It refers to the bundling of data within the methods that operate on that data, and is used to hide the values or state of a structured data object inside a class — preventing unauthorized parties’ direct access to them.</p>
+<p>With Hooks, the composition of a component changes from being a combination of life-cycle Hooks — to functionalities with some render at the end.</p>
+<h4 id="FUNCTION-COMPONENT"><a href="#FUNCTION-COMPONENT" class="headerlink" title="FUNCTION COMPONENT"></a>FUNCTION COMPONENT</h4><p>The example below shows how custom Hooks can be used in a functional component (without showcasing what the body is). However, what it does or can do is not limited. It could be instantiating state variables, consuming contexts, subscribing the component to various side effects — or all of the above if you’re using a custom hook!</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> </span>&#123;</span><br><span class="line">  useHook&#123;...&#125;;</span><br><span class="line">  useHook&#123;...&#125;;</span><br><span class="line">  useHook&#123;...&#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    ...</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="CLASS-COMPONENT"><a href="#CLASS-COMPONENT" class="headerlink" title="CLASS COMPONENT"></a>CLASS COMPONENT</h4><p>A <code>class</code> component requires you to extend from <code>React.Component</code> and create a <code>render</code> function which returns a React element. This requires more code but will also give you some benefits.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;...&#125;</span><br><span class="line">  componentDidMount() &#123;...&#125;</span><br><span class="line">  componentWillUnmount() &#123;...&#125;</span><br><span class="line">  render() &#123;...&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>There are some benefits you get by using functional components in React:</p>
+<ol>
+<li>It will get easier to separate container and presentational components because you need to think more about your component’s state if you don’t have access to <code>setState()</code> in your component.</li>
+<li>Functional components are much <strong>easier to read and test</strong> because they are plain JavaScript functions without state or lifecycle-hooks.</li>
+<li>You end up with <strong>less code.</strong></li>
+<li>The React team <a href="https://reactjs.org/blog/2015/10/07/react-v0.14.html#stateless-functional-components" target="_blank" rel="noopener">mentioned</a> that there may be a <strong>performance</strong> boost for functional components in future React versions.</li>
+</ol>
+<p>This leads to the first best practice when using React Hooks.</p>
+<h3 id="Hooks-Best-Practices"><a href="#Hooks-Best-Practices" class="headerlink" title="Hooks Best Practices"></a>Hooks Best Practices</h3><h4 id="1-SIMPLIFY-YOUR-HOOKS"><a href="#1-SIMPLIFY-YOUR-HOOKS" class="headerlink" title="1. SIMPLIFY YOUR HOOKS"></a>1. SIMPLIFY YOUR HOOKS</h4><p>Keeping React Hooks simple will give you the power to effectively control and manipulate what goes on in a component throughout its lifetime. <strong>Avoid writing custom Hooks as much as possible</strong>; you can inline a <code>useState()</code> or <code>useEffect()</code> instead of creating your own hook.</p>
+<p>If you find yourself making use of a bunch of custom Hooks that are related in functionality, you can create a custom hook that acts as a wrapper for these. Let’s take a look at two different functional components with hooks below.</p>
+<h5 id="Functional-Component-v1"><a href="#Functional-Component-v1" class="headerlink" title="Functional Component v1"></a>Functional Component v1</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> </span>&#123;</span><br><span class="line">  useHook(...);</span><br><span class="line">  useHook(...);</span><br><span class="line">  useHook(...);</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    &lt;div&gt;...&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="Functional-Component-v2"><a href="#Functional-Component-v2" class="headerlink" title="Functional Component v2"></a>Functional Component v2</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> </span>&#123;</span><br><span class="line">  useCustomHook(...);</span><br><span class="line">    useHook(...);</span><br><span class="line">    useHook(...);</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    &lt;div&gt;...&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>v2 is a better version because it keeps the hook simple and all other <code>useHook</code>s are inline accordingly. This allows us to create functionality that can be reused across different components and also gives us more power to control and manipulate our components effectively. Instead of adopting v1 in which our components are littered with Hooks, you should make use of v2 which will make debugging easy and your code cleaner.</p>
+<h4 id="2-ORGANIZE-AND-STRUCTURE-YOUR-HOOKS"><a href="#2-ORGANIZE-AND-STRUCTURE-YOUR-HOOKS" class="headerlink" title="2. ORGANIZE AND STRUCTURE YOUR HOOKS"></a>2. ORGANIZE AND STRUCTURE YOUR HOOKS</h4><p>One of the advantages of React Hooks is the ability to write less code that is easy to read. In some cases, the amount of <code>useEffect()</code> and <code>useState()</code> can still be confusing. When you keep your component organized it will help in readability and keep the flow of your components consistent and predictable. If your custom Hooks are too complicated, you can always break them down to sub-custom Hooks. Extract the logic of your component to custom Hooks to make your code readable.</p>
+<h4 id="3-USE-REACT-HOOKS-SNIPPETS"><a href="#3-USE-REACT-HOOKS-SNIPPETS" class="headerlink" title="3. USE REACT HOOKS SNIPPETS"></a>3. USE REACT HOOKS SNIPPETS</h4><p>React Hooks Snippets is a Visual Studio Code extension to make React Hooks easier and faster. Currently, five hooks are supported:</p>
+<ul>
+<li><code>useState()</code></li>
+<li><code>useEffect()</code></li>
+<li><code>useContext()</code></li>
+<li><code>useCallback()</code></li>
+<li><code>useMemo()</code></li>
+</ul>
+<p>Other snippets have also been added. I have tried working with these Hooks and it has been one of the best practices I’ve personally used while working with them.</p>
+<p>There are two ways you can add React Hooks snippets to your project:</p>
+<ol>
+<li><strong>Command</strong><br>Launch the VS Code Quick open (Ctrl+P), paste <code>ext install ALDuncanson.react-hooks-snippets</code> and press Enter.</li>
+<li><strong>Extension Marketplace</strong><br>Launch ‘VS Code Extension Marketplace’ (Ctrl+Shift+X) and search for ‘React Hook Snippets’. Then, look for the ‘Alduncanson’ icon.</li>
+</ol>
+<p>I recommend the first snippet. Read more about the snippets <a href="https://marketplace.visualstudio.com/items?itemName=AlDuncanson.react-hooks-snippets" target="_blank" rel="noopener">here</a> or check for the lastest Hooks snippets <a href="https://marketplace.visualstudio.com/" target="_blank" rel="noopener">here</a>.</p>
+<h4 id="4-PUT-HOOKS-RULES-INTO-CONSIDERATION"><a href="#4-PUT-HOOKS-RULES-INTO-CONSIDERATION" class="headerlink" title="4. PUT HOOKS RULES INTO CONSIDERATION"></a>4. PUT HOOKS RULES INTO CONSIDERATION</h4><p>Endeavor to always put the two rules of Hooks we learned earlier into consideration while working with React Hooks.</p>
+<ul>
+<li>Only call your Hooks at the top level. Don’t call Hooks inside loops, conditions or nested functions.</li>
+<li>Always call Hooks from React function components or from custom Hooks, don’t call Hooks from regular JavaScript functions.</li>
+</ul>
+<p>The ESlint plugin called <a href="https://www.npmjs.com/package/eslint-plugin-react-hooks" target="_blank" rel="noopener"><code>eslint-plugin-react-hooks</code></a> enforces these two rules, you can add this plugin to your project if you’d like it as we explain above in rules of hooks section.</p>
+<p>Best practices have not been fully resolved because Hooks are still relatively new. So adoption should be taken with precaution one would take in adopting in any early technology. With that in mind, Hooks are the way for the future of React.</p>
+<h3 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h3><p>I hope you enjoyed this tutorial. We’ve learned the two most important rules of React Hooks and how to effectively think in Hooks. We looked at functional components and some best practices in writing Hooks the right and effective way. As brief as the rules are, it’s important to make them your guiding compass when writing rules. If you are prone to forget it, you can make use of the ESLint plugin to enforce it.</p>
+<p>I hope you will take all of the lessons learned here in your next React project. Good luck!</p>
+<h4 id="RESOURCES"><a href="#RESOURCES" class="headerlink" title="RESOURCES"></a>RESOURCES</h4><ul>
+<li>“<a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">Introducing Hooks</a>,” React Docs</li>
+<li>“<a href="https://medium.com/@Zwenza/functional-vs-class-components-in-react-231e3fbd7108" target="_blank" rel="noopener">Functional vs Class-Components In React</a>,” David Jöch, Medium</li>
+<li>“<a href="https://reactjs.org/blog/2016/07/13/mixins-considered-harmful.html" target="_blank" rel="noopener">Mixins Considered Harmful</a>,” Dan Abramov, React Blog</li>
+<li>“<a href="https://medium.com/@bryanmanuele/react-hooks-best-practices-a-shift-in-mindset-8fd0e58e4b0b" target="_blank" rel="noopener">React Hooks: Best Practices And A Shift In Mindset</a>,” Bryan Manuele, Medium</li>
+<li>“<a href="https://marketplace.visualstudio.com/items?itemName=antmdvs.vscode-react-hooks-snippets" target="_blank" rel="noopener">React Hooks Snippets For VS Code</a>,” Anthony Davis, Visual Code Marketplace</li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.smashingmagazine.com/2020/04/react-hooks-best-practices/" target="_blank" rel="noopener">https://www.smashingmagazine.com/2020/04/react-hooks-best-practices/</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/08/2020-06-08-Git/" class="archive-article-date">
-  	<time datetime="2020-06-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/08/2020-06-08-Git/">Git</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Hooks</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/17/2020-06-17-Best-Practices-With-React-Hooks/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/07/2020-06-07-Node.js-Express-FrameWork-Tutorial/" class="archive-article-date">
-  	<time datetime="2020-06-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-07</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/16/2020-06-16-Higher-Order-Components/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Higher-Order Components</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/07/2020-06-07-Node.js-Express-FrameWork-Tutorial/">Node.js Express FrameWork Tutorial</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Node.js, Express FrameWork</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Rules-Of-React-Hooks"><span class="toc-number">1.</span> <span class="toc-text">Rules Of React Hooks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Call-Hooks-At-The-Top-Level"><span class="toc-number">2.</span> <span class="toc-text">Call Hooks At The Top Level</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Only-Call-Hooks-From-React-Components"><span class="toc-number">3.</span> <span class="toc-text">Only Call Hooks From React Components</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#JavaScript-Function"><span class="toc-number">3.0.1.</span> <span class="toc-text">JavaScript Function</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#React-Function"><span class="toc-number">3.0.2.</span> <span class="toc-text">React Function</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CALL-HOOKS-FROM-CUSTOM-HOOKS"><span class="toc-number">3.1.</span> <span class="toc-text">CALL HOOKS FROM CUSTOM HOOKS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ESLINT-PLUGIN"><span class="toc-number">3.2.</span> <span class="toc-text">ESLINT PLUGIN</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Thinking-In-Hooks"><span class="toc-number">4.</span> <span class="toc-text">Thinking In Hooks</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#FUNCTION-COMPONENT"><span class="toc-number">4.1.</span> <span class="toc-text">FUNCTION COMPONENT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CLASS-COMPONENT"><span class="toc-number">4.2.</span> <span class="toc-text">CLASS COMPONENT</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hooks-Best-Practices"><span class="toc-number">5.</span> <span class="toc-text">Hooks Best Practices</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-SIMPLIFY-YOUR-HOOKS"><span class="toc-number">5.1.</span> <span class="toc-text">1. SIMPLIFY YOUR HOOKS</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Functional-Component-v1"><span class="toc-number">5.1.1.</span> <span class="toc-text">Functional Component v1</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Functional-Component-v2"><span class="toc-number">5.1.2.</span> <span class="toc-text">Functional Component v2</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ORGANIZE-AND-STRUCTURE-YOUR-HOOKS"><span class="toc-number">5.2.</span> <span class="toc-text">2. ORGANIZE AND STRUCTURE YOUR HOOKS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-USE-REACT-HOOKS-SNIPPETS"><span class="toc-number">5.3.</span> <span class="toc-text">3. USE REACT HOOKS SNIPPETS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-PUT-HOOKS-RULES-INTO-CONSIDERATION"><span class="toc-number">5.4.</span> <span class="toc-text">4. PUT HOOKS RULES INTO CONSIDERATION</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Conclusion"><span class="toc-number">6.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RESOURCES"><span class="toc-number">6.1.</span> <span class="toc-text">RESOURCES</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">7.</span> <span class="toc-text">Reference</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/06/Front End Developer Questions/" class="archive-article-date">
-  	<time datetime="2020-06-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-06</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/06/Front End Developer Questions/">Frontend Development Questions</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">front-end</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/05/2020-06-05-EZ-Park-&-Ride/" class="archive-article-date">
-  	<time datetime="2020-06-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/05/2020-06-05-EZ-Park-&-Ride/">EZ Park &amp; Ride Demo Video</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/" class="archive-article-date">
-  	<time datetime="2020-06-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">React Lifecycle Notes</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Lifecycle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/" class="archive-article-date">
-  	<time datetime="2020-06-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/">How Does the Frontend Communicate with the Backend?</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Frontend - Backend Communication</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/02/2020-06-02-糖糖-🍬🍬/" class="archive-article-date">
-  	<time datetime="2020-06-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/02/2020-06-02-糖糖-🍬🍬/">糖糖 🍬🍬</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/06/01/2020-05-27-JavaScript-Q-&-A-3/" class="archive-article-date">
-  	<time datetime="2020-06-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/06/01/2020-05-27-JavaScript-Q-&-A-3/">JavaScript Q &amp; A 3</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">JavaScript, Web Development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/31/Function vs Class Defined Component/" class="archive-article-date">
-  	<time datetime="2020-05-31T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/31/Function vs Class Defined Component/">REACT Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/30/2020-05-30-遇见技术-人文-社会-伦理/" class="archive-article-date">
-  	<time datetime="2020-05-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/30/2020-05-30-遇见技术-人文-社会-伦理/">遇见技术 人文 社会 伦理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -545,8 +470,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
