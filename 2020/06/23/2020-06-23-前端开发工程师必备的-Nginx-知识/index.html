@@ -6,15 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/4 | Yanjie&#39;s Blog</title>
+  <title>前端开发工程师必备的 Nginx 知识 | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/04/index.html">
+  <meta name="description" content="nginx在应用程序中的作用 解决跨域 请求过滤 配置gzip 负载均衡 静态资源服务器   nginx是一个高性能的HTTP和反向代理服务器，也是一个通用的TCP/UDP代理服务器，最初由俄罗斯人Igor Sysoev编写。  nginx现在几乎是众多大型网站的必用技术，大多数情况下，我们不需要亲自去配置它，但是了解它在应用程序中所担任的角色，以及如何解决这些问题是非常必要的。 下面我将从ngi">
+<meta name="keywords" content="Nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端开发工程师必备的 Nginx 知识">
+<meta property="og:url" content="http://yoursite.com/2020/06/23/2020-06-23-前端开发工程师必备的-Nginx-知识/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="nginx在应用程序中的作用 解决跨域 请求过滤 配置gzip 负载均衡 静态资源服务器   nginx是一个高性能的HTTP和反向代理服务器，也是一个通用的TCP/UDP代理服务器，最初由俄罗斯人Igor Sysoev编写。  nginx现在几乎是众多大型网站的必用技术，大多数情况下，我们不需要亲自去配置它，但是了解它在应用程序中所担任的角色，以及如何解决这些问题是非常必要的。 下面我将从ngi">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-00451a322567691c73d81cb669731f56_720w.png">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-1fc2fa64ea5ccc33a2dda880eacbc67d_720w.png">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-ffcc9b52af2545ee9678d6288bc4730a_720w.png">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-47886b173c1fcfef535368b956fb1940_720w.jpg">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-85923974a547cdc6ce5b90725627847a_720w.jpg">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-0ab1fb0d1448cdfcec7b1cc53f6f9fa7_720w.png">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-bc038b51863147b8fcb87e8a326e4141_720w.png">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-7ccd1211e72a68ec304c226047767b95_720w.png">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-0f6e589e8376de38019d4808df322de2_720w.jpg">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-d9b6b5c2967115e4dae40a2190571094_720w.png">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-3790ea019ed719ccd28a714567168930_720w.png">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-4df56aa30b5f3fa68583f5850b755a2f_720w.png">
+<meta property="og:updated_time" content="2020-06-24T05:57:53.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="前端开发工程师必备的 Nginx 知识">
+<meta name="twitter:description" content="nginx在应用程序中的作用 解决跨域 请求过滤 配置gzip 负载均衡 静态资源服务器   nginx是一个高性能的HTTP和反向代理服务器，也是一个通用的TCP/UDP代理服务器，最初由俄罗斯人Igor Sysoev编写。  nginx现在几乎是众多大型网站的必用技术，大多数情况下，我们不需要亲自去配置它，但是了解它在应用程序中所担任的角色，以及如何解决这些问题是非常必要的。 下面我将从ngi">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-00451a322567691c73d81cb669731f56_720w.png">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,394 +160,378 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-23-前端开发工程师必备的-Nginx-知识" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端开发工程师必备的 Nginx 知识
+    </h1>
+  
+
+        
+        <a href="/2020/06/23/2020-06-23-前端开发工程师必备的-Nginx-知识/" class="archive-article-date">
+  	<time datetime="2020-06-23T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-23</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="nginx在应用程序中的作用"><a href="#nginx在应用程序中的作用" class="headerlink" title="nginx在应用程序中的作用"></a>nginx在应用程序中的作用</h2><ul>
+<li>解决跨域</li>
+<li>请求过滤</li>
+<li>配置gzip</li>
+<li>负载均衡</li>
+<li>静态资源服务器</li>
+</ul>
+<blockquote>
+<p>nginx是一个高性能的HTTP和反向代理服务器，也是一个通用的TCP/UDP代理服务器，最初由俄罗斯人Igor Sysoev编写。</p>
+</blockquote>
+<p>nginx现在几乎是众多大型网站的必用技术，大多数情况下，我们不需要亲自去配置它，但是了解它在应用程序中所担任的角色，以及如何解决这些问题是非常必要的。</p>
+<p>下面我将从nginx在企业中的真实应用来解释nginx在应用程序中起到的作用。</p>
+<p>为了便于理解，首先先来了解一下一些基础知识，<code>nginx是一个高性能的反向代理服务器</code>那么什么是反向代理呢？</p>
+<h2 id="正向代理与反向代理"><a href="#正向代理与反向代理" class="headerlink" title="正向代理与反向代理"></a>正向代理与反向代理</h2><p>代理是在服务器和客户端之间假设的一层服务器，代理将接收客户端的请求并将它转发给服务器，然后将服务端的响应转发给客户端。</p>
+<p>不管是正向代理还是反向代理，实现的都是上面的功能。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-00451a322567691c73d81cb669731f56_720w.png" alt="img"></p>
+<h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h3><blockquote>
+<p><strong>正向代理</strong>，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。</p>
+</blockquote>
+<p><strong>正向代理</strong>是为我们服务的，即为客户端服务的，客户端可以根据正向代理访问到它本身无法访问到的服务器资源。</p>
+<p><strong>正向代理</strong>对我们是透明的，对服务端是非透明的，即服务端并不知道自己收到的是来自代理的访问还是来自真实客户端的访问。</p>
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><blockquote>
+<p><strong>反向代理</strong>（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
+</blockquote>
+<p><strong>反向代理</strong>是为服务端服务的，反向代理可以帮助服务器接收来自客户端的请求，帮助服务器做请求转发，负载均衡等。</p>
+<p><strong>反向代理</strong>对服务端是透明的，对我们是非透明的，即我们并不知道自己访问的是代理服务器，而服务器知道反向代理在为他服务。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-1fc2fa64ea5ccc33a2dda880eacbc67d_720w.png" alt="img"></p>
+<a id="more"></a>
+
+<h2 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h2><h3 id="配置结构"><a href="#配置结构" class="headerlink" title="配置结构"></a>配置结构</h3><p>下面是一个nginx配置文件的基本结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">events &#123; </span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http </span><br><span class="line">&#123;</span><br><span class="line">    server</span><br><span class="line">    &#123; </span><br><span class="line">        location path</span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">        location path</span><br><span class="line">        &#123;</span><br><span class="line">            ...</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">    server</span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>main</code>:nginx的全局配置，对全局生效。</li>
+<li><code>events</code>:配置影响nginx服务器或与用户的网络连接。</li>
+<li><code>http</code>：可以嵌套多个server，配置代理，缓存，日志定义等绝大多数功能和第三方模块的配置。</li>
+<li><code>server</code>：配置虚拟主机的相关参数，一个http中可以有多个server。</li>
+<li><code>location</code>：配置请求的路由，以及各种页面的处理情况。</li>
+<li><code>upstream</code>：配置后端服务器具体地址，负载均衡配置不可或缺的部分。</li>
+</ul>
+<h3 id="内置变量"><a href="#内置变量" class="headerlink" title="内置变量"></a>内置变量</h3><p>下面是<code>nginx</code>一些配置中常用的内置全局变量，你可以在配置的任何位置使用它们。</p>
+<table>
+<thead>
+<tr>
+<th>变量名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>$host</code></td>
+<td>请求信息中的<code>Host</code>，如果请求中没有<code>Host</code>行，则等于设置的服务器名</td>
+</tr>
+<tr>
+<td><code>$request_method</code></td>
+<td>客户端请求类型，如<code>GET</code>、<code>POST</code></td>
+</tr>
+<tr>
+<td><code>$remote_addr</code></td>
+<td>客户端的<code>IP</code>地址</td>
+</tr>
+<tr>
+<td><code>$args</code></td>
+<td>请求中的参数</td>
+</tr>
+<tr>
+<td><code>$content_length</code></td>
+<td>请求头中的<code>Content-length</code>字段</td>
+</tr>
+<tr>
+<td><code>$http_user_agent</code></td>
+<td>客户端agent信息</td>
+</tr>
+<tr>
+<td><code>$http_cookie</code></td>
+<td>客户端cookie信息</td>
+</tr>
+<tr>
+<td><code>$remote_addr</code></td>
+<td>客户端的IP地址</td>
+</tr>
+<tr>
+<td><code>$remote_port</code></td>
+<td>客户端的端口</td>
+</tr>
+<tr>
+<td><code>$server_protocol</code></td>
+<td>请求使用的协议，如<code>HTTP/1.0</code>、·HTTP/1.1`</td>
+</tr>
+<tr>
+<td><code>$server_addr</code></td>
+<td>服务器地址</td>
+</tr>
+<tr>
+<td><code>$server_name</code></td>
+<td>服务器名称</td>
+</tr>
+<tr>
+<td><code>$server_port</code></td>
+<td>服务器的端口号</td>
+</tr>
+</tbody></table>
+<h2 id="解决跨域"><a href="#解决跨域" class="headerlink" title="解决跨域"></a>解决跨域</h2><p>先追本溯源以下，跨域究竟是怎么回事。</p>
+<h3 id="跨域的定义"><a href="#跨域的定义" class="headerlink" title="跨域的定义"></a>跨域的定义</h3><p>同源策略限制了从同一个源加载的文档或脚本如何与来自另一个源的资源进行交互。这是一个用于隔离潜在恶意文件的重要安全机制。通常不允许不同源间的读操作。</p>
+<h3 id="同源的定义"><a href="#同源的定义" class="headerlink" title="同源的定义"></a>同源的定义</h3><p>如果两个页面的协议，端口（如果有指定）和域名都相同，则两个页面具有相同的源。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-ffcc9b52af2545ee9678d6288bc4730a_720w.png" alt="img"></p>
+<h3 id="nginx解决跨域的原理"><a href="#nginx解决跨域的原理" class="headerlink" title="nginx解决跨域的原理"></a>nginx解决跨域的原理</h3><p>例如：</p>
+<ul>
+<li>前端server的域名为：<code>fe.server.com</code></li>
+<li>后端服务的域名为：<code>dev.server.com</code></li>
+</ul>
+<p>现在我在<code>fe.server.com</code>对<code>dev.server.com</code>发起请求一定会出现跨域。</p>
+<p>现在我们只需要启动一个nginx服务器，将<code>server_name</code>设置为<code>fe.server.com</code>,然后设置相应的location以拦截前端需要跨域的请求，最后将请求代理回<code>dev.server.com</code>。如下面的配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        server_name  fe.server.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass dev.server.com;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样可以完美绕过浏览器的同源策略：<code>fe.server.com</code>访问<code>nginx</code>的<code>fe.server.com</code>属于同源访问，而<code>nginx</code>对服务端转发的请求不会触发浏览器的同源策略。</p>
+<h2 id="请求过滤"><a href="#请求过滤" class="headerlink" title="请求过滤"></a>请求过滤</h2><p><img src="https://pic1.zhimg.com/80/v2-47886b173c1fcfef535368b956fb1940_720w.jpg" alt="img"></p>
+<p>根据状态码过滤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">error_page 500 501 502 503 504 506 /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        #将跟路径改编为存放html的路径。</span><br><span class="line">        root /root/static/html;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据URL名称过滤，精准匹配URL，不匹配的URL全部重定向到主页。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">    rewrite  ^.*$ /index.html  redirect;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据请求类型过滤。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ( $request_method !~ ^(GET|POST|HEAD)$ ) &#123;</span><br><span class="line">        return 403;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置gzip"><a href="#配置gzip" class="headerlink" title="配置gzip"></a>配置gzip</h2><p><img src="https://pic3.zhimg.com/80/v2-85923974a547cdc6ce5b90725627847a_720w.jpg" alt="img"></p>
+<p><code>GZIP</code>是规定的三种标准HTTP压缩格式之一。目前绝大多数的网站都在使用 <code>GZIP</code> 传输 <code>HTML</code>、<code>CSS</code>、<code>JavaScript</code> 等资源文件。</p>
+<p>对于文本文件，<code>GZip</code> 的效果非常明显，开启后传输所需流量大约会降至 <code>1/4 ~ 1/3</code>。</p>
+<p>并不是每个浏览器都支持<code>gzip</code>的，如何知道客户端是否支持<code>gzip</code>呢，请求头中的<code>Accept-Encoding</code>来标识对压缩的支持。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-0ab1fb0d1448cdfcec7b1cc53f6f9fa7_720w.png" alt="img"></p>
+<p>启用<code>gzip</code>同时需要客户端和服务端的支持，如果客户端支持<code>gzip</code>的解析，那么只要服务端能够返回<code>gzip</code>的文件就可以启用<code>gzip</code>了,我们可以通过<code>nginx</code>的配置来让服务端支持<code>gzip</code>。下面的<code>respone</code>中<code>content-encoding:gzip</code>，指服务端开启了<code>gzip</code>的压缩方式。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-bc038b51863147b8fcb87e8a326e4141_720w.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gzip                    on;</span><br><span class="line">    gzip_http_version       1.1;        </span><br><span class="line">    gzip_comp_level         5;</span><br><span class="line">    gzip_min_length         1000;</span><br><span class="line">    gzip_types text/csv text/xml text/css text/plain text/javascript application/javascript application/x-javascript application/json application/xml;</span><br></pre></td></tr></table></figure>
+
+<h3 id="gzip"><a href="#gzip" class="headerlink" title="gzip"></a>gzip</h3><ul>
+<li>开启或者关闭<code>gzip</code>模块</li>
+<li>默认值为 <code>off</code></li>
+<li>可配置为 <code>on / off</code></li>
+</ul>
+<h3 id="gzip-http-version"><a href="#gzip-http-version" class="headerlink" title="gzip_http_version"></a>gzip_http_version</h3><ul>
+<li>启用 <code>GZip</code> 所需的 <code>HTTP</code> 最低版本</li>
+<li>默认值为 <code>HTTP/1.1</code></li>
+</ul>
+<p>这里为什么默认版本不是<code>1.0</code>呢？</p>
+<p><code>HTTP</code> 运行在 <code>TCP</code> 连接之上，自然也有着跟 <code>TCP</code> 一样的三次握手、慢启动等特性。</p>
+<p>启用持久连接情况下，服务器发出响应后让<code>TCP</code>连接继续打开着。同一对客户/服务器之间的后续请求和响应可以通过这个连接发送。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-7ccd1211e72a68ec304c226047767b95_720w.png" alt="img"></p>
+<p>为了尽可能的提高 <code>HTTP</code> 性能，使用持久连接就显得尤为重要了。</p>
+<p><code>HTTP/1.1</code> 默认支持 <code>TCP</code> 持久连接，<code>HTTP/1.0</code> 也可以通过显式指定 <code>Connection: keep-alive</code> 来启用持久连接。对于<code>TCP</code> 持久连接上的 <code>HTTP</code> 报文，客户端需要一种机制来准确判断结束位置，而在 <code>HTTP/1.0</code> 中，这种机制只有 <code>Content-Length</code>。而在<code>HTTP/1.1</code> 中新增的 <code>Transfer-Encoding: chunked</code> 所对应的分块传输机制可以完美解决这类问题。</p>
+<p><code>nginx</code>同样有着配置<code>chunked的</code>属性<code>chunked_transfer_encoding</code>，这个属性是默认开启的。</p>
+<p><code>Nginx</code> 在启用了<code>GZip</code>的情况下，不会等文件 <code>GZip</code> 完成再返回响应，而是边压缩边响应，这样可以显著提高 <code>TTFB</code>(<code>Time To First Byte</code>，首字节时间，WEB 性能优化重要指标)。这样唯一的问题是，<code>Nginx</code> 开始返回响应时，它无法知道将要传输的文件最终有多大，也就是无法给出 <code>Content-Length</code> 这个响应头部。</p>
+<p>所以，在<code>HTTP1.0</code>中如果利用<code>Nginx</code> 启用了<code>GZip</code>，是无法获得 <code>Content-Length</code> 的，这导致HTTP1.0中开启持久链接和使用<code>GZip</code>只能二选一，所以在这里<code>gzip_http_version</code>默认设置为<code>1.1</code>。</p>
+<h3 id="gzip-comp-level"><a href="#gzip-comp-level" class="headerlink" title="gzip_comp_level"></a>gzip_comp_level</h3><ul>
+<li>压缩级别，级别越高压缩率越大，当然压缩时间也就越长（传输快但比较消耗cpu）。</li>
+<li>默认值为 <code>1</code></li>
+<li>压缩级别取值为<code>1-9</code></li>
+</ul>
+<h3 id="gzip-min-length"><a href="#gzip-min-length" class="headerlink" title="gzip_min_length"></a>gzip_min_length</h3><ul>
+<li>设置允许压缩的页面最小字节数，<code>Content-Length</code>小于该值的请求将不会被压缩</li>
+<li>默认值:<code>0</code></li>
+<li>当设置的值较小时，压缩后的长度可能比原文件大，建议设置<code>1000</code>以上</li>
+</ul>
+<h3 id="gzip-types"><a href="#gzip-types" class="headerlink" title="gzip_types"></a>gzip_types</h3><ul>
+<li>要采用gzip压缩的文件类型(<code>MIME</code>类型)</li>
+<li>默认值:<code>text/html</code>(默认不压缩<code>js</code>/<code>css</code>)</li>
+</ul>
+<h2 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h2><h3 id="什么是负载均衡"><a href="#什么是负载均衡" class="headerlink" title="什么是负载均衡"></a>什么是负载均衡</h3><p><img src="https://pic3.zhimg.com/80/v2-0f6e589e8376de38019d4808df322de2_720w.jpg" alt="img"></p>
+<p>如上面的图，前面是众多的服务窗口，下面有很多用户需要服务，我们需要一个工具或策略来帮助我们将如此多的用户分配到每个窗口，来达到资源的充分利用以及更少的排队时间。</p>
+<p>把前面的服务窗口想像成我们的后端服务器，而后面终端的人则是无数个客户端正在发起请求。负载均衡就是用来帮助我们将众多的客户端请求合理的分配到各个服务器，以达到服务端资源的充分利用和更少的请求时间。</p>
+<h3 id="nginx如何实现负载均衡"><a href="#nginx如何实现负载均衡" class="headerlink" title="nginx如何实现负载均衡"></a>nginx如何实现负载均衡</h3><p>Upstream指定后端服务器地址列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream balanceServer &#123;</span><br><span class="line">    server 10.1.22.33:12345;</span><br><span class="line">    server 10.1.22.34:12345;</span><br><span class="line">    server 10.1.22.35:12345;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在server中拦截响应请求，并将请求转发到Upstream中配置的服务器列表。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        server_name  fe.server.com;</span><br><span class="line">        listen 80;</span><br><span class="line">        location /api &#123;</span><br><span class="line">            proxy_pass http://balanceServer;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的配置只是指定了nginx需要转发的服务端列表，并没有指定分配策略。</p>
+<h3 id="nginx实现负载均衡的策略"><a href="#nginx实现负载均衡的策略" class="headerlink" title="nginx实现负载均衡的策略"></a>nginx实现负载均衡的策略</h3><p><img src="https://pic1.zhimg.com/80/v2-d9b6b5c2967115e4dae40a2190571094_720w.png" alt="img"></p>
+<p><strong>轮询策略</strong></p>
+<p>默认情况下采用的策略，将所有客户端请求轮询分配给服务端。这种策略是可以正常工作的，但是如果其中某一台服务器压力太大，出现延迟，会影响所有分配在这台服务器下的用户。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream balanceServer &#123;</span><br><span class="line">    server 10.1.22.33:12345;</span><br><span class="line">    server 10.1.22.34:12345;</span><br><span class="line">    server 10.1.22.35:12345;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic1.zhimg.com/80/v2-3790ea019ed719ccd28a714567168930_720w.png" alt="img"></p>
+<p><strong>最小连接数策略</strong></p>
+<p>将请求优先分配给压力较小的服务器，它可以平衡每个队列的长度，并避免向压力大的服务器添加更多的请求。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream balanceServer &#123;</span><br><span class="line">    least_conn;</span><br><span class="line">    server 10.1.22.33:12345;</span><br><span class="line">    server 10.1.22.34:12345;</span><br><span class="line">    server 10.1.22.35:12345;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://pic4.zhimg.com/80/v2-4df56aa30b5f3fa68583f5850b755a2f_720w.png" alt="img"></p>
+<p><strong>最快响应时间策略</strong></p>
+<p>依赖于NGINX Plus，优先分配给响应时间最短的服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream balanceServer &#123;</span><br><span class="line">    fair;</span><br><span class="line">    server 10.1.22.33:12345;</span><br><span class="line">    server 10.1.22.34:12345;</span><br><span class="line">    server 10.1.22.35:12345;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>客户端ip绑定</strong></p>
+<p>来自同一个ip的请求永远只分配一台服务器，有效解决了动态网页存在的session共享问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream balanceServer &#123;</span><br><span class="line">    ip_hash;</span><br><span class="line">    server 10.1.22.33:12345;</span><br><span class="line">    server 10.1.22.34:12345;</span><br><span class="line">    server 10.1.22.35:12345;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="静态资源服务器"><a href="#静态资源服务器" class="headerlink" title="静态资源服务器"></a>静态资源服务器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">location ~* \.(png|gif|jpg|jpeg)$ &#123;</span><br><span class="line">    root    /root/static/;  </span><br><span class="line">    autoindex on;</span><br><span class="line">    access_log  off;</span><br><span class="line">    expires     10h;# 设置过期时间为10小时          </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>匹配以<code>png|gif|jpg|jpeg</code>为结尾的请求，并将请求转发到本地路径，<code>root</code>中指定的路径即nginx本地路径。同时也可以进行一些缓存的设置。</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://segmentfault.com/a/1190000018454271?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io" target="_blank" rel="noopener">https://segmentfault.com/a/1190000018454271?hmsr=toutiao.io&amp;utm_medium=toutiao.io&amp;utm_source=toutiao.io</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/Real-time streaming in Power BI/" class="archive-article-date">
-  	<time datetime="2020-04-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/Real-time streaming in Power BI/">Real-time Streaming in Power BI</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-time Streaming Data, Power BI</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/23/2020-06-23-前端开发工程师必备的-Nginx-知识/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/29/Data Sampling and Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/23/2020-06-23-How-Are-Function-Components-Different-from-Classes/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">How Are Function Components Different from Classes?</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/29/Data Sampling and Randomization/">Data Sampling and Randomization</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Sampling, Randomization</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nginx在应用程序中的作用"><span class="toc-number">1.</span> <span class="toc-text">nginx在应用程序中的作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正向代理与反向代理"><span class="toc-number">2.</span> <span class="toc-text">正向代理与反向代理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#正向代理"><span class="toc-number">2.1.</span> <span class="toc-text">正向代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#反向代理"><span class="toc-number">2.2.</span> <span class="toc-text">反向代理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本配置"><span class="toc-number">3.</span> <span class="toc-text">基本配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置结构"><span class="toc-number">3.1.</span> <span class="toc-text">配置结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#内置变量"><span class="toc-number">3.2.</span> <span class="toc-text">内置变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决跨域"><span class="toc-number">4.</span> <span class="toc-text">解决跨域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#跨域的定义"><span class="toc-number">4.1.</span> <span class="toc-text">跨域的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同源的定义"><span class="toc-number">4.2.</span> <span class="toc-text">同源的定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx解决跨域的原理"><span class="toc-number">4.3.</span> <span class="toc-text">nginx解决跨域的原理</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#请求过滤"><span class="toc-number">5.</span> <span class="toc-text">请求过滤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置gzip"><span class="toc-number">6.</span> <span class="toc-text">配置gzip</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip"><span class="toc-number">6.1.</span> <span class="toc-text">gzip</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip-http-version"><span class="toc-number">6.2.</span> <span class="toc-text">gzip_http_version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip-comp-level"><span class="toc-number">6.3.</span> <span class="toc-text">gzip_comp_level</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip-min-length"><span class="toc-number">6.4.</span> <span class="toc-text">gzip_min_length</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#gzip-types"><span class="toc-number">6.5.</span> <span class="toc-text">gzip_types</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#负载均衡"><span class="toc-number">7.</span> <span class="toc-text">负载均衡</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是负载均衡"><span class="toc-number">7.1.</span> <span class="toc-text">什么是负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx如何实现负载均衡"><span class="toc-number">7.2.</span> <span class="toc-text">nginx如何实现负载均衡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#nginx实现负载均衡的策略"><span class="toc-number">7.3.</span> <span class="toc-text">nginx实现负载均衡的策略</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态资源服务器"><span class="toc-number">8.</span> <span class="toc-text">静态资源服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">8.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/" class="archive-article-date">
-  	<time datetime="2020-04-29T05:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/">System Design Case Study: URL Shortened Service &amp; Like</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">System Design, URL Shortened Service, Like Functionality</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/27/Thoughts on Seattle Park and Ride Project/" class="archive-article-date">
-  	<time datetime="2020-04-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/27/Thoughts on Seattle Park and Ride Project/">Thoughts on Seattle Park and Ride Project</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Park and Ride, Seattle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/Responsive Development/" class="archive-article-date">
-  	<time datetime="2020-04-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/Responsive Development/">Responsive Development</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Responsive Development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/25/May The Distance Bring Us Even Closer!/" class="archive-article-date">
-  	<time datetime="2020-04-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/25/May The Distance Bring Us Even Closer!/">May The Distance Bring Us Even Closer!</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ramdan</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/生活小记/" class="archive-article-date">
-  	<time datetime="2020-04-24T08:29:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/生活小记/">生活小记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/23/Create-A-Google-Map-In-A-Website/" class="archive-article-date">
-  	<time datetime="2020-04-24T06:22:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/Create-A-Google-Map-In-A-Website/">Create A Google Map In A Website</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Google Map API</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/" class="archive-article-date">
-  	<time datetime="2020-04-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/">Principles For Lifelong MEaningful Relationships</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Principles</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/System Design Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/System Design Notes/">System Design Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">System Design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/04/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/04/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -556,8 +558,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
