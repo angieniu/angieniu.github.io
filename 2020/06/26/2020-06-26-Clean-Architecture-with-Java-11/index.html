@@ -6,15 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Database, Javascript | Yanjie&#39;s Blog</title>
+  <title>Clean Architecture with Java 11 | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Database-Javascript/index.html">
+  <meta name="description" content="IntroductionSoftware architecture has been one of the most important topics in the last couple years when it comes to software engineering. Robert C. Martin (aka Uncle Bob) deeply developed his vision">
+<meta name="keywords" content="Java11, Clean Software Architecture, Jigsaw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Clean Architecture with Java 11">
+<meta property="og:url" content="http://yoursite.com/2020/06/26/2020-06-26-Clean-Architecture-with-Java-11/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="IntroductionSoftware architecture has been one of the most important topics in the last couple years when it comes to software engineering. Robert C. Martin (aka Uncle Bob) deeply developed his vision">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*HwV1WkWjf9mnECGcB94lpA.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/733/1*HwV1WkWjf9mnECGcB94lpA.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*hkoxy-ajOU4jXtVn_FO5zw.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/386/1*hkoxy-ajOU4jXtVn_FO5zw.png">
+<meta property="og:image" content="https://miro.medium.com/max/38/1*KzoQycHeYR7feShtXWw_hg.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/373/1*KzoQycHeYR7feShtXWw_hg.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*a5B85qrmObLgs0nAOxlzwA.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/407/1*a5B85qrmObLgs0nAOxlzwA.png">
+<meta property="og:updated_time" content="2020-06-27T07:32:14.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Clean Architecture with Java 11">
+<meta name="twitter:description" content="IntroductionSoftware architecture has been one of the most important topics in the last couple years when it comes to software engineering. Robert C. Martin (aka Uncle Bob) deeply developed his vision">
+<meta name="twitter:image" content="https://miro.medium.com/max/60/1*HwV1WkWjf9mnECGcB94lpA.png?q=20">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,60 +156,311 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-06-26-Clean-Architecture-with-Java-11" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/09/How to Connect to Database in Javascript/" class="archive-article-date">
-  	<time datetime="2020-05-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/09/How to Connect to Database in Javascript/">How to Connect to Database in JavaScript</a>
+    <h1 class="article-title" itemprop="name">
+      Clean Architecture with Java 11
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/06/26/2020-06-26-Clean-Architecture-with-Java-11/" class="archive-article-date">
+  	<time datetime="2020-06-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Software architecture has been one of the most important topics in the last couple years when it comes to software engineering. <a href="https://en.wikipedia.org/wiki/Robert_C._Martin" target="_blank" rel="noopener">Robert C. Martin</a> (aka Uncle Bob) deeply developed his vision of a clean architecture in <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164/ref=sr_1_1?ie=UTF8&qid=1529335011&sr=8-1&keywords=clean+architecture" target="_blank" rel="noopener">his book</a>, that I highly recommend. But when it comes to implementation, things get difficult and many questions appear. Where do I start? How do I structure my project? How do I apply Uncle Bob’s principles to the technology I want to use? I will try to answer those questions from the point of view of a Java web developer that would like to use Java 11 and Jigsaw modules from Java 9. This will give you a more concrete vision of Uncle Bob’s clean architecture.</p>
+<h1 id="Clean-architecture"><a href="#Clean-architecture" class="headerlink" title="Clean architecture"></a>Clean architecture</h1><p>Before diving into the implementation, let’s have a look at the architecture:</p>
+<p><img src="https://miro.medium.com/max/60/1*HwV1WkWjf9mnECGcB94lpA.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/733/1*HwV1WkWjf9mnECGcB94lpA.png" alt="img"></p>
+<ul>
+<li><strong>Entities:</strong> These are the business objects of your application. These should not be affected by any change external to them, and these should be the most stable code within your application. These can be POJOs, objects with methods, or even data structures.</li>
+<li><strong>Use Cases:</strong> Implement and encapsulate all of the business rules.</li>
+<li><strong>Interface Adapters:</strong> Convert and present data to the use case and entity layers.</li>
+<li><strong>Frameworks and Drivers:</strong> Contain any frameworks or tools you need to run your application.</li>
+</ul>
+<p>The key concepts here are:</p>
+<ul>
+<li>Any layer can only reference a layer below it and know nothing about what’s going on above.</li>
+<li>The use cases and entities are the heart of your application and should have a minimal set of external library dependencies.</li>
+</ul>
+<h1 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h1><h1 id="Setup-of-the-project"><a href="#Setup-of-the-project" class="headerlink" title="Setup of the project"></a>Setup of the project</h1><p>We are going to use Gradle multi-project and <a href="http://openjdk.java.net/projects/jigsaw/" target="_blank" rel="noopener">Java Jigsaw</a> modules to enforce the dependencies between the different layers.</p>
+<p>The application we are going to build is very simple and the architecture will probably appear overkill for such a project, but this is the best way to understand how this all works.</p>
+<p>The features of the application will be:</p>
+<ul>
+<li>Create a user.</li>
+<li>Find a user.</li>
+<li>List all users.</li>
+<li>Login a user with their password.</li>
+</ul>
+<p>To do so, we will start with the inner layers (entities/use cases), then the interface adapters layer, and we will finish with the outer layer. We will also demonstrate the flexibility of the architecture by changing the implementation details and switching between frameworks.</p>
+<p>Here is a view of the project:</p>
+<p><img src="https://miro.medium.com/max/60/1*hkoxy-ajOU4jXtVn_FO5zw.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/386/1*hkoxy-ajOU4jXtVn_FO5zw.png" alt="img"></p>
+<p>Let’s dive into the implementation.</p>
+<a id="more"></a>
+
+<h1 id="Inner-layers"><a href="#Inner-layers" class="headerlink" title="Inner layers"></a>Inner layers</h1><p>Our entities and use cases are separated in two sub-projects, ‘domain’ and ‘use-case’:</p>
+<p><img src="https://miro.medium.com/max/38/1*KzoQycHeYR7feShtXWw_hg.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/373/1*KzoQycHeYR7feShtXWw_hg.png" alt="img"></p>
+<p>Domain and Use-case</p>
+<p>These two sub-projects represent the heart of our application.</p>
+<p><strong>The architecture must be very explicit.</strong> By having a very quick look at the example above, we know right away what kind of operations exist and where. If you were to create a single <code>UserService</code> instead it would be difficult to tell what kind of operations exist within that service, and you would need to dive into the implementation to understand what the service does. In our clean architecture, we just need to have a quick look at the <em>usecase</em> package to understand what kind of operations are supported.</p>
+<p>The <em>entity</em> package contains all the entities. In our case we are going to have only one, a <code>User</code>:</p>
+<iframe src="https://medium.com/media/15710630a64743f39c202888b7f52363" allowfullscreen frameborder="0" height="307" width="680" title class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 307px;"></iframe>
+
+<p>The <em>usecase</em> sub-module contains our business logic. We are going to start with an easy use case, <code>FindUser</code>:</p>
+<iframe src="https://medium.com/media/fe99deb3afe4bb4a8a97aeefd24e9909" allowfullscreen frameborder="0" height="505" width="680" title="FindUser" class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 505px;"></iframe>
+
+<p>We have two operations, and those two operations need to retrieve users from a repository. This looks pretty standard in a service oriented architecture. <code>UserRepository</code> is an interface that is <strong>NOT implemented within our current sub-project</strong>. This is <strong>considered a detail</strong> in our architecture, and <strong>details are implemented in outer layers</strong>. Its implementation will be provided when the usecase is instantiated (via Dependency Injection for example). This provides some advantages:</p>
+<ul>
+<li>Whatever the implementation is, the business logic remains the same.</li>
+<li>Any change in the implementation does not affect the business logic.</li>
+<li>It is very easy to totally change the implementation because it has no effect on the business logic.</li>
+</ul>
+<p>Note that the interface is also known as a <strong>port</strong>, as it makes the bridge between the business logic and the outside world.</p>
+<p>Let’s now build a first iteration of our <code>CreateUser</code> use case.</p>
+<iframe src="https://medium.com/media/424d3fa28055fed5ecef17b0740acaf1" allowfullscreen frameborder="0" height="630" width="680" title="CreateUser" class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 630px;"></iframe>
+
+<p>In the same way as the <code>FindUser</code> use-case, we need a repository, a way to generate an ID, and a way to encode a password. These are also details and not business rules, and will be implemented later in outer layers.</p>
+<p>We also want to validate that the provided user is valid (contains correct data), and that it does not exist already. This leads to our final iteration of the use-case:</p>
+<iframe src="https://medium.com/media/9ee0315e1b8ae4545a7f00a08af2cf68" allowfullscreen frameborder="0" height="762" width="680" title="CreateUser2" class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 762px;"></iframe>
+
+<p>If the user is not valid or exists already, a custom runtime exception is thrown. Those custom exceptions should be handled by other layers.</p>
+<p>Our last use-case, <code>LoginUser</code>, is pretty straight forward, and is available in <a href="https://github.com/carlphilipp/clean-architecture-example/blob/master/usecase/src/main/java/com/slalom/example/usecase/LoginUser.java" target="_blank" rel="noopener">GitHub</a>.</p>
+<p>Finally, to enforce boundaries, both sub-projects use <a href="http://openjdk.java.net/projects/jigsaw/" target="_blank" rel="noopener">Jigsaw</a> modules. Jigsaw modules allow us to expose to the outside world only what needs to be exposed, so no implementation details are leaked. For example, there is no reason to expose the <code>UserValidator</code> class:</p>
+<iframe src="https://medium.com/media/e2a5297030b973a7eacb3d416a8124fa" allowfullscreen frameborder="0" height="329" width="680" title="module-info" class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 329px;"></iframe>
+
+<p>To summarize the role of the inner layers:</p>
+<ul>
+<li>The inner layers contain domain objects and business rules. This should be the most stable and tested part of the application.</li>
+<li>Any interaction with the outside world (like a database, or an external service) is not implemented in the inner layers. We use ports (interfaces) to represent them.</li>
+<li>No framework is used and minimal dependencies.</li>
+<li>Jigsaw modules allow us to hide implementation details.</li>
+</ul>
+<h1 id="Outer-layers"><a href="#Outer-layers" class="headerlink" title="Outer layers"></a>Outer layers</h1><h1 id="Adapters"><a href="#Adapters" class="headerlink" title="Adapters"></a>Adapters</h1><p>Now that we have our entities and use cases, we can implement the details. To be able to demonstrate that the architecture is very flexible, we are going to create several implementations and use them in different contexts.</p>
+<p><img src="https://miro.medium.com/max/60/1*a5B85qrmObLgs0nAOxlzwA.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/407/1*a5B85qrmObLgs0nAOxlzwA.png" alt="img"></p>
+<p>Adapters</p>
+<p>Let’s start with the repository.</p>
+<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository:"></a>Repository:</h2><p><code>UserRepository</code> implementation with a simple <code>HashMap</code>:</p>
+<iframe src="https://medium.com/media/01f30754ff29a1b53d82407530a12229" allowfullscreen frameborder="0" height="857" width="680" title="UserRepository" class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 857px;"></iframe>
+
+<p>Another implementation with Hazelcast can be found on <a href="https://github.com/carlphilipp/clean-architecture-example/blob/master/adapter/repository/in-memory-hazelcast/src/main/java/com/slalom/example/db/hazelcast/HazelcastUserRepository.java" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Other-adapters"><a href="#Other-adapters" class="headerlink" title="Other adapters:"></a>Other adapters:</h2><p>Other adapters are implemented the same way just by implementing the interface declared in the domain. You can find them on <a href="https://github.com/carlphilipp/clean-architecture-example/tree/master/adapter" target="_blank" rel="noopener">GitGub</a>:</p>
+<ul>
+<li><a href="https://github.com/carlphilipp/clean-architecture-example/blob/master/adapter/encoder/sha256/src/main/java/com/slalom/example/encoder/Sha256PasswordEncoder.java" target="_blank" rel="noopener">Password encoder</a></li>
+<li><a href="https://github.com/carlphilipp/clean-architecture-example/blob/master/adapter/id-generator/jug/src/main/java/com/slalom/example/jug/JugIdGenerator.java" target="_blank" rel="noopener">Jug Id Generator</a></li>
+<li><a href="https://github.com/carlphilipp/clean-architecture-example/blob/master/adapter/id-generator/uuid/src/main/java/com/slalom/example/uuid/UuidGenerator.java" target="_blank" rel="noopener">Uuid Generator</a></li>
+</ul>
+<h1 id="Putting-everything-together"><a href="#Putting-everything-together" class="headerlink" title="Putting everything together"></a>Putting everything together</h1><p>Now that we have our implementation details, we need to assemble them together. To do so, we need to create a config folder that contains the configuration of the app and an application folder that contains code to run the application.</p>
+<p>Here is one of the configs:</p>
+<iframe src="https://medium.com/media/68467d9b33ed4c4b122034cff982d15c" allowfullscreen frameborder="0" height="439" width="680" title="ManualConfig" class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 439px;"></iframe>
+
+<p>This config initializes the use cases with relevant adapters. If you wanted to change the implementation you could easily switch from one adapter implementation to another without having to modify the use-case code.</p>
+<p>The following is the class that runs the application:</p>
+<iframe src="https://medium.com/media/138be9b8ac069402c7927621af373692" allowfullscreen frameborder="0" height="740" width="680" title="Main" class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 740px;"></iframe>
+
+<h1 id="Web-Frameworks"><a href="#Web-Frameworks" class="headerlink" title="Web Frameworks"></a>Web Frameworks</h1><p>What if you want to use a web framework like Spring Boot or Vert.x? It’s pretty easy — we just need to:</p>
+<ul>
+<li>Create a new configuration for the web app.</li>
+<li>Create a new application runner.</li>
+<li>Add controllers in the adapter folder. The controller will be responsible for communicating with the inner layers.</li>
+</ul>
+<p>Here is what the Spring controller looks like:</p>
+<iframe src="https://medium.com/media/94e14534126132dc34af6900b77705da" allowfullscreen frameborder="0" height="806" width="680" title="UserController" class="s t u im ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 806px;"></iframe>
+
+<p>You can find the full example of this application in <a href="https://github.com/carlphilipp/clean-architecture-example" target="_blank" rel="noopener">GitHub</a> using both Spring Boot and Vert.x.</p>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>We tried in this article to show how powerful Uncle Bob’s clean architecture is. Hopefully it’s a little bit clearer for you.</p>
+<p><strong>Pros:</strong></p>
+<ul>
+<li><strong>Power:</strong> Your business logic is protected, and nothing from the outside can make it fail. Your code does not depend on any external framework “controlled” by someone else.</li>
+<li><strong>Flexibility:</strong> Any adapter can be replaced at anytime by any other implementation of your choice. Switching from Spring boot to Vert.x or Dropwizard can be done very quickly.</li>
+<li><strong>Defer decisions:</strong> What database do I need? What web framework do I need? You can build your business logic without knowing those details.</li>
+<li><strong>High maintainability:</strong> It’s easy to identify what component fails.</li>
+<li><strong>Implement faster:</strong> As the architecture separates concerns, you can concentrate on one task at a time and develop faster. This also should reduce the amount of technical debt.</li>
+<li><strong>Tests:</strong> Unit testing is easier as the dependencies are well-defined, it’s easy to mock or stub.</li>
+<li><strong>Integration tests:</strong> You can create a specific implementation of any external service you want to hit during your integration tests. For instance, if you do not want to hit a DB hosted in the cloud because you pay per request, just use a in-memory implementation of your adapter.</li>
+</ul>
+<p><strong>Cons:</strong></p>
+<ul>
+<li><strong>Learning curve:</strong> At the beginning, the architecture can be overwhelming, especially for junior developers.</li>
+<li><strong>More</strong> classes, <strong>more</strong> packages, <strong>more</strong> sub-projects. To my knowledge, there is nothing much that can be done about that. As a polygot developer, I would encourage Java developers to explore other languages like Kotlin. Kotlin can, in that case, help a lot in reducing the amount of files created.</li>
+<li>The <strong>complexity</strong> of the project is higher.</li>
+<li>For small projects, this can simply be <strong>over-engineered</strong>.</li>
+</ul>
+<p>The project on <a href="https://github.com/carlphilipp/clean-architecture-example" target="_blank" rel="noopener">GitHub</a> provides more details about how to handle the web frameworks. I would encourage you to checkout the code and play with it if you are interested.</p>
+<p>Github:</p>
+<ul>
+<li><a href="https://github.com/carlphilipp/clean-architecture-example" target="_blank" rel="noopener">https://github.com/carlphilipp/clean-architecture-example</a></li>
+</ul>
+<p>References:</p>
+<ul>
+<li><a href="https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank" rel="noopener">https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html</a></li>
+<li>Uncle Bob’s book: <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164" target="_blank" rel="noopener">https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164</a></li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/slalom-build/clean-architecture-with-java-11-f78bba431041" target="_blank" rel="noopener">https://medium.com/slalom-build/clean-architecture-with-java-11-f78bba431041</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Database, Javascript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java11, Clean Software Architecture, Jigsaw</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/26/2020-06-26-Clean-Architecture-with-Java-11/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/06/25/2020-06-25-Uncontrolled-Components/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Uncontrolled Components</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Clean-architecture"><span class="toc-number">2.</span> <span class="toc-text">Clean architecture</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Implementation"><span class="toc-number">3.</span> <span class="toc-text">Implementation</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Setup-of-the-project"><span class="toc-number">4.</span> <span class="toc-text">Setup of the project</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Inner-layers"><span class="toc-number">5.</span> <span class="toc-text">Inner layers</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Outer-layers"><span class="toc-number">6.</span> <span class="toc-text">Outer layers</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Adapters"><span class="toc-number">7.</span> <span class="toc-text">Adapters</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Repository"><span class="toc-number">7.1.</span> <span class="toc-text">Repository:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-adapters"><span class="toc-number">7.2.</span> <span class="toc-text">Other adapters:</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Putting-everything-together"><span class="toc-number">8.</span> <span class="toc-text">Putting everything together</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Web-Frameworks"><span class="toc-number">9.</span> <span class="toc-text">Web Frameworks</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusion"><span class="toc-number">10.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">10.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +486,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
