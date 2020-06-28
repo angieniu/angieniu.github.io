@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 76</a>
+<a>Total Number of Articles: 78</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,301 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-28-Creating-your-first-app-with-Flickr-API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/2020-06-28-Creating-your-first-app-with-Flickr-API/">Retrieve a Gallery Using Flickr API &amp; Creating app with Flickr API</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/28/2020-06-28-Creating-your-first-app-with-Flickr-API/" class="archive-article-date">
+  	<time datetime="2020-06-28T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Retrieve-a-gallery-using-the-Flickr-API"><a href="#Retrieve-a-gallery-using-the-Flickr-API" class="headerlink" title="Retrieve a gallery using the Flickr API"></a>Retrieve a gallery using the Flickr API</h1><p>Use the Flickr API to get photo images from <a href="https://www.flickr.com/photos/flickr/galleries/72157647277042064/" target="_blank" rel="noopener">this Flickr gallery</a>.</p>
+<ul>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#flickr-overview" target="_blank" rel="noopener">Flickr Overview</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#1-get-an-api-key-to-make-requests" target="_blank" rel="noopener">1. Get an API key to make requests</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#2-determine-the-resource-and-endpoint-you-need" target="_blank" rel="noopener">2. Determine the resource and endpoint you need</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#3-construct-the-request" target="_blank" rel="noopener">3. Construct the request</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#4-analyze-the-response" target="_blank" rel="noopener">4. Analyze the response</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#5-pull-out-the-information-you-need" target="_blank" rel="noopener">5. Pull out the information you need</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#final-result" target="_blank" rel="noopener">Final Result</a></li>
+</ul>
+<h2 id="Flickr-Overview"><a href="#Flickr-Overview" class="headerlink" title="Flickr Overview"></a>Flickr Overview</h2><p>In this Flickr API example, we want to get all the photos from a specific Flickr gallery called <a href="https://www.flickr.com/photos/flickr/galleries/72157647277042064/" target="_blank" rel="noopener">Color in Nature</a> and display them on a web page. Here’s the gallery we want:</p>
+<p><a href="https://www.flickr.com/photos/flickr/galleries/72157647277042064/" target="_blank" rel="noopener"><img src="https://idratherbewritingmedia.com/images/api/flickrgallery.png" alt="Flickr gallery"></a></p>
+<p>To achieve our goal, we’ll need to call several endpoints. Hopefully, this activity will demonstrate the shortcomings of just having reference documentation. When one endpoint requires another endpoint response as an input, you might have to communicate these workflows through tutorials.</p>
+<p><em>Sponsored message:</em></p>
+<p>Stoplight lets your team collaborate on the OpenAPI spec using visual modeling tools that everyone on the team can use. You can work together on the OpenAPI spec in a central online space or through local client apps that sync the information. <a href="https://stoplight.io/?utm_source=idratherbewriting" target="_blank" rel="noopener">Learn more at Stoplight</a>.</p>
+<h2 id="1-Get-an-API-key-to-make-requests"><a href="#1-Get-an-API-key-to-make-requests" class="headerlink" title="1. Get an API key to make requests"></a>1. Get an API key to make requests</h2><p>Before you can make a request with the Flickr API, you’ll need an API key, which you can read more about <a href="https://www.flickr.com/services/apps/create/" target="_blank" rel="noopener">here</a>. When you register an app, you’re given a key and secret.</p>
+<h2 id="2-Determine-the-resource-and-endpoint-you-need"><a href="#2-Determine-the-resource-and-endpoint-you-need" class="headerlink" title="2. Determine the resource and endpoint you need"></a>2. Determine the resource and endpoint you need</h2><p>From the list of <a href="https://www.flickr.com/services/api/" target="_blank" rel="noopener">Flickr’s API methods</a>, the <a href="https://www.flickr.com/services/api/flickr.galleries.getPhotos.html" target="_blank" rel="noopener">flickr.galleries.getPhotos</a> endpoint, which is listed under the galleries resource, is the one that will get photos from a gallery.</p>
+<p><a href="https://www.flickr.com/services/api/flickr.galleries.getPhotos.html" target="_blank" rel="noopener"><img src="https://idratherbewritingmedia.com/images/api/flickr_get_photos.png" alt="Flickr getPhotos endpoint"></a></p>
+<p>One of the arguments we need for the <code>getPhotos</code> endpoint is the <code>gallery_id</code>. Before we can get the <code>gallery_id</code>, however, we have to use another endpoint to retrieve it. <em>Somewhat unintuitively, the <code>gallery_id</code> is *not\</em> the ID that appears in the URL of the gallery.*</p>
+<p>Instead, we use the <a href="https://www.flickr.com/services/api/explore/flickr.urls.lookupGallery" target="_blank" rel="noopener"><code>flickr.urls.lookupGallery</code></a> endpoint listed in the URLs resource section to get the <code>gallery_id</code> from a gallery URL:</p>
+<p><a href="https://www.flickr.com/services/api/explore/flickr.urls.lookupGallery" target="_blank" rel="noopener"><img src="https://idratherbewritingmedia.com/images/api/flickr_gallery_id.png" alt="Flickr lookupGallery endpoint endpoint"></a></p>
+<p>The <code>gallery_id</code> for <a href="https://www.flickr.com/photos/flickr/galleries/72157647277042064/" target="_blank" rel="noopener">Color in Nature</a> is <code>66911286-72157647277042064</code>. We now have the arguments we need for the <a href="https://www.flickr.com/services/api/flickr.galleries.getPhotos.html" target="_blank" rel="noopener"><code>flickr.galleries.getPhotos</code></a> endpoint.</p>
+<p><em>Sponsored message:</em></p>
+<p>SwaggerHub brings together all the power of the open source Swagger tooling into one integrated platform for designing and documenting APIs with Swagger (OpenAPI). <a href="https://swagger.io/tools/swaggerhub/?utm_medium=display&utm_source=idratherbewriting&utm_campaign=irbwsponsor" target="_blank" rel="noopener">Get started for free</a>.</p>
+<h2 id="3-Construct-the-request"><a href="#3-Construct-the-request" class="headerlink" title="3. Construct the request"></a>3. Construct the request</h2><p>We can make the request to get the list of photos for this specific <code>gallery_id</code>.</p>
+<p>Flickr provides an API Explorer to simplify calls to the endpoints. If we go to the <a href="https://www.flickr.com/services/api/explore/flickr.galleries.getPhotos" target="_blank" rel="noopener">API Explorer for the <code>galleries.getPhotos</code> endpoint</a>, we can plug in the <code>gallery_id</code> and see the response, as well as get the URL syntax for the endpoint.</p>
+<p><a href="https://www.flickr.com/services/api/explore/flickr.galleries.getPhotos" target="_blank" rel="noopener"><img src="https://idratherbewritingmedia.com/images/api/flickrcallmethod.png" alt="Using the Flickr API Explorer to get the request syntax"></a></p>
+<p>Insert the <code>gallery_id</code>, select <strong>JSON</strong> for the output, select <strong>Do not sign call</strong> (we’re just testing here, so we don’t need extra security), and then click <strong>Call Method</strong>.</p>
+<p>Here’s the result:</p>
+<p><img src="https://idratherbewritingmedia.com/images/api/flickrresultfromcallmethod.png" alt="Flickr gallery response"></p>
+<p>The URL below the response shows the right syntax for using this method:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:<span class="comment">//api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&amp;api_key=APIKEY&amp;gallery_id=66911286-72157647277042064&amp;format=json&amp;nojsoncallback=1</span></span><br></pre></td></tr></table></figure>
+
+<p>I have removed my API key from code samples to prevent possible abuse to my API keys. If you’re following along, swap in your own API key here.</p>
+<p>If you submit the request directly in your browser using the given URL, you can see the same response but in the browser rather than the API Explorer:</p>
+<p><img src="https://idratherbewritingmedia.com/images/api/flickrresponseinbrowser.png" alt="Flickr response in the browser"></p>
+<p>I’m using the <a href="https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en" target="_blank" rel="noopener">JSON Formatting extension for Chrome</a> to make the JSON response more readable. Without this plugin, the JSON response is compressed.</p>
+<h2 id="4-Analyze-the-response"><a href="#4-Analyze-the-response" class="headerlink" title="4. Analyze the response"></a>4. Analyze the response</h2><p>All the necessary information is included in this response in order to display photos on our site, but it’s not entirely intuitive how we construct the image source URLs from the response.</p>
+<p>In other words, the information a user needs to achieve a goal isn’t explicit in the API <em>reference</em> documentation. The reference docs explain only what’s returned in the response, not how to actually use the response.</p>
+<p>The <a href="https://www.flickr.com/services/api/misc.urls.html" target="_blank" rel="noopener">Photo Source URLs</a> page in the documentation explains it:</p>
+<blockquote>
+<p>You can construct the source URL to a photo once you know its ID, server ID, farm ID, and secret, as returned by many API methods. The URL takes the following format:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; https://farm&#123;farm-id&#125;.staticflickr.com/&#123;server-id&#125;/&#123;id&#125;_&#123;secret&#125;.jpg</span><br><span class="line">&gt; 	or</span><br><span class="line">&gt; https://farm&#123;farm-id&#125;.staticflickr.com/&#123;server-id&#125;/&#123;id&#125;_&#123;secret&#125;_[mstzb].jpg</span><br><span class="line">&gt; 	or</span><br><span class="line">&gt; https://farm&#123;farm-id&#125;.staticflickr.com/&#123;server-id&#125;/&#123;id&#125;_&#123;o-secret&#125;_o.(jpg|gif|png)</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>Here’s what an item in the JSON response looks like:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"photos"</span>: &#123;</span><br><span class="line">    <span class="attr">"page"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"pages"</span>: <span class="number">1</span>,</span><br><span class="line">    <span class="attr">"perpage"</span>: <span class="number">100</span>,</span><br><span class="line">    <span class="attr">"total"</span>: <span class="number">13</span>,</span><br><span class="line">    <span class="attr">"photo"</span>: [</span><br><span class="line">      &#123;</span><br><span class="line">      <span class="attr">"id"</span>: <span class="string">"8432423659"</span>,</span><br><span class="line">      <span class="attr">"owner"</span>: <span class="string">"37107167@N07"</span>,</span><br><span class="line">      <span class="attr">"secret"</span>: <span class="string">"dd1b834ec5"</span>,</span><br><span class="line">      <span class="attr">"server"</span>: <span class="string">"8187"</span>,</span><br><span class="line">      <span class="attr">"farm"</span>: <span class="number">9</span>,</span><br><span class="line">      <span class="attr">"title"</span>: <span class="string">"Color"</span>,</span><br><span class="line">      <span class="attr">"ispublic"</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="attr">"isfriend"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">"isfamily"</span>: <span class="number">0</span>,</span><br><span class="line">      <span class="attr">"is_primary"</span>: <span class="number">1</span>,</span><br><span class="line">      <span class="attr">"has_comment"</span>: <span class="number">0</span></span><br><span class="line">      &#125;,</span><br><span class="line">      ...</span><br><span class="line">    ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You access these fields through dot notation. It’s a good idea to log the whole object to the console just to explore it better.</p>
+<p><em>Sponsored message:</em></p>
+<p>With Document360, you can have private knowledge bases for your customers in an isolated way, with the ability to bulk import users or let them self-register. <a href="https://document360.io/?ref=idratherbewriting" target="_blank" rel="noopener">Start your free trial</a></p>
+<h2 id="5-Pull-out-the-information-you-need"><a href="#5-Pull-out-the-information-you-need" class="headerlink" title="5. Pull out the information you need"></a>5. Pull out the information you need</h2><p>The following code uses jQuery to loop through each of the responses and inserts the necessary components into an image tag to display each photo.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-tag">img</span> &#123;<span class="attribute">max-height</span>:<span class="number">125px</span>; <span class="attribute">margin</span>:<span class="number">3px</span>; <span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#dedede</span>;&#125;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> settings = &#123;</span></span><br><span class="line"><span class="actionscript">  <span class="string">"async"</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">  <span class="string">"crossDomain"</span>: <span class="literal">true</span>,</span></span><br><span class="line"><span class="actionscript">  <span class="string">"url"</span>: <span class="string">"https://api.flickr.com/services/rest/?method=flickr.galleries.getPhotos&amp;api_key=APIKEY&amp;gallery_id=66911286-72157647277042064&amp;format=json&amp;nojsoncallback=1"</span>,</span></span><br><span class="line"><span class="actionscript">  <span class="string">"method"</span>: <span class="string">"GET"</span>,</span></span><br><span class="line"><span class="actionscript">  <span class="string">"headers"</span>: &#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="javascript">$.ajax(settings).done(<span class="function"><span class="keyword">function</span> (<span class="params">data</span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">  <span class="built_in">console</span>.log(data);</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="javascript">$(<span class="string">"#galleryTitle"</span>).append(data.photos.photo[<span class="number">0</span>].title + <span class="string">" Gallery"</span>);</span></span><br><span class="line"><span class="javascript">    	$.each( data.photos.photo, <span class="function"><span class="keyword">function</span>(<span class="params"> i, gp </span>) </span>&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> farmId = gp.farm;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> serverId = gp.server;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> id = gp.id;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> secret = gp.secret;</span></span><br><span class="line"></span><br><span class="line"><span class="javascript"><span class="built_in">console</span>.log(farmId + <span class="string">", "</span> + serverId + <span class="string">", "</span> + id + <span class="string">", "</span> + secret);</span></span><br><span class="line"></span><br><span class="line"><span class="actionscript"><span class="comment">//  https://farm&#123;farm-id&#125;.staticflickr.com/&#123;server-id&#125;/&#123;id&#125;_&#123;secret&#125;.jpg</span></span></span><br><span class="line"></span><br><span class="line"><span class="javascript">$(<span class="string">"#flickr"</span>).append(<span class="string">'&lt;img src="https://farm'</span> + farmId + <span class="string">'.staticflickr.com/'</span> + serverId + <span class="string">'/'</span> + id + <span class="string">'_'</span> + secret + <span class="string">'.jpg"/&gt;'</span>);</span></span><br><span class="line"></span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"galleryTitle"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"clear:both;"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"flickr"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Here’s what the code is doing:</p>
+<ul>
+<li>In this code, the <a href="https://api.jquery.com/jquery.ajax/" target="_blank" rel="noopener">ajax method</a> from jQuery gets the JSON payload. The payload is assigned to the <code>data</code> argument and then logged to the console.</li>
+<li>The data object contains an object called <code>photos</code>, which contains an array called <code>photo</code>. The <code>title</code> field is a property in an object in the <code>photo</code> array. The <code>title</code> is accessed through this dot notation: <code>data.photos.photo[0].title</code>.</li>
+<li>To get each item in the object, jQuery’s <a href="https://api.jquery.com/jquery.each/" target="_blank" rel="noopener">each method</a> loops through an object’s properties. Note that jQuery <code>each</code> method is commonly used for looping through results to get values. For the first argument (<code>data.photos.photo</code>), you identify the object that you want to access. For the <code>function( i, gp )</code> arguments, you list an index and value. You can use any names you want here. <code>gp</code> becomes a variable that refers to the <code>data.photos.photo</code> object you’re looping through. <code>i</code> refers to the starting point through the object. (You don’t need to refer to <code>i</code> beyond the instance here unless you want to begin or end the loop at a certain point.)</li>
+<li>To access the properties in the JSON object, we use <code>gp.farm</code> instead of <code>data.photos.photo[0].farm</code>, because <code>gp</code> is an object reference to <code>data.photos.photo[i]</code>.</li>
+<li>After the <code>each</code> function iterates through the response, I added some variables to make it easier to work with these components (using <code>serverId</code> instead of <code>gp.server</code>, etc.). And a <code>console.log</code> message checks to ensure we’re getting values for each of the elements we need.</li>
+<li>This comment shows where we need to plug in each of the variables:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//  https://farm&#123;farm-id&#125;.staticflickr.com/&#123;server-id&#125;/&#123;id&#125;_&#123;secret&#125;.jpg</span></span><br></pre></td></tr></table></figure>
+
+<p>The final line shows how you insert those variables into the HTML:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$("#flickr").append('<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"https://farm' + farmId + '.staticflickr.com/' + serverId + '/' + id + '_' + secret + '.jpg"</span>/&gt;</span>');</span><br></pre></td></tr></table></figure>
+
+<p>A common pattern in programming is to loop through a response. This code example used the <code>each</code> method from jQuery to look through all the items in the response and do something with each item. Sometimes you incorporate logic that loops through items and looks for certain conditions present to decide whether to take some action. Pay attention to methods for looping, as they are common scenarios in programming.</p>
+<p>For more information, see these topics:</p>
+<ul>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_json_console.html" target="_blank" rel="noopener">Inspect the JSON from the response payload</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_access_json_values.html" target="_blank" rel="noopener">Access and print a specific JSON value</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_diving_into_dot_notation.html" target="_blank" rel="noopener">Dive into dot notation</a></li>
+</ul>
+<h2 id="Final-Result"><a href="#Final-Result" class="headerlink" title="Final Result"></a>Final Result</h2><p>You can view a demo of the <a href="https://idratherbewriting.com/learnapidoc/assets/files/flickr-gallery-example.html" target="_blank" rel="noopener">Color Gallery integration here</a>.</p>
+<p>The result looks like this:</p>
+<p><a href="https://idratherbewriting.com/learnapidoc/assets/files/flickr-gallery-example.html" target="_blank" rel="noopener"><img src="https://idratherbewritingmedia.com/images/api/flickrcolorgallerydemo.png" alt="Color Gallery integrated through the Flickr API"></a>Color Gallery integrated through the Flickr API</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html" target="_blank" rel="noopener">https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html</a></p>
+<h1 id="Creating-App-With-Flickr-API"><a href="#Creating-App-With-Flickr-API" class="headerlink" title="Creating App With Flickr API"></a>Creating App With Flickr API</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>Using Flickr API you can retrieve a plethora of photographs and in turn, may create awesome applications. Moreover, you may upload your application to Flickr’s marketplace APP Garden and make bucks and recognition too.</p>
+<p>In this tutorial, we will see how to get started with Flickr API. We will create a simple application using Flickr API and in the course, we learn some nuances of how to unleash the potential of Flickr’s awesome photo sharing services.</p>
+<p><a href="https://www.w3resource.com/API/flickr/your-first-app-on-flicker-api.html" target="_blank" rel="noopener">Live demo of your first Flickr App</a></p>
+<p><strong>Obtaining an API key</strong></p>
+<p>Like so many other API’s, here too, you have to obtain an API key from Flickr. You must have an Yahoo! account to log in to the flickr.com or if you don’t have one, you have to sign up to Flickr. Once you are within Flickr, point your browser to <a href="https://www.flickr.com/services/api/" target="_blank" rel="noopener">https://www.flickr.com/services/api/</a>. Go to ‘Create an APP’ for creating an API key. Click on the link “Request an API Key”.</p>
+<p><img src="https://www.w3resource.com/w3r_images/obtain-api-key-step1.png" alt="Obtain API key step 1"></p>
+<p>This will turn up two options, whether you want to go for a commercial app or a non-commercial one. Click on the appropriate link according to your intention.</p>
+<p><img src="https://www.w3resource.com/w3r_images/obtain-api-key-step2.png" alt="Obtain API key step 2"></p>
+<p>That you will take you to a page where you have to provide them with a name for your app and a short description.</p>
+<p>You have to acknowledge two trivia regarding rights and terms of use also. Please, the read the Terms Of use document spending a couple of minutes because that will help you take decisions both from entrepreneurs as well as developers point of view. Once you complete, hit Submit and you will be provided with an APP Key and Secret. Preserve these properly because you will need these in future while writing your app.</p>
+<p><img src="https://www.w3resource.com/w3r_images/obtain-api-key-step3.png" alt="Obtain API key step 3"></p>
+<p><strong>Outline of our app</strong></p>
+<p>In this app we will fetch hundred recent photos from Flickr and then filter them according to the size(in pixels) supplied by the user. Flickr offers several sizes of a photo and users can choose accordingly.</p>
+<p><strong>Which methods we will use</strong></p>
+<p>Flickr offers various methods to do a certain task. When you are developing an application, first and foremost you have to find out which method will do your job. Though, there may be occasions, when you need to use more than one methods to fit the bill.</p>
+<p>For our application, we need to things to be done. First, fetching most recent photographs and second, filtering those photos available with respect to a specific size from given option of sizes.</p>
+<p>From the list placed under API Methods in <a href="https://www.flickr.com/services/api/" target="_blank" rel="noopener">https://www.flickr.com/services/api/</a>, you will find ‘flickr.photos.getRecent’ method, which will suffice to perform former of our two requirements..</p>
+<p>For the latter, we will use ‘flickr.photos.getSizes’ method.</p>
+<p><strong>Understanding methods</strong></p>
+<p>Flickr API’s methods construct an endpoint (an url) which returns data in XML or JSON format. Once that is done, you may decode that data using many programming languages and present that to your users. Every Flickr API method has got several arguments to be passed, Some required and some optional.</p>
+<p>Clicking on the flickr.photos.getRecent will take you to <a href="https://www.flickr.com/services/api/flickr.photos.getRecent.html" target="_blank" rel="noopener">https://www.flickr.com/services/api/flickr.photos.getRecent.html</a>. A documentation of the methods is available here. You can see that there four types of arguments can be used with this method. Among them, ‘api_key’ is required.</p>
+<p>You can pass a number of optional arguments as ‘extra’ to fetch some very useful information like description, license, date_upload, date_taken, owner_name etc. regarding the photos returned.</p>
+<p>‘per_page another optional argument returns a number of photos to return per page, If this argument is not supplied, a hundred photos are returned by default.</p>
+<p>To return the number of pages containing results, another optional argument ‘page’ may be used. If not used, only a single page of the result will be returned.</p>
+<p>Just below this, you will find a link pointing to the API explorer of this method. You can find the structure of the endpoint in Flickr’s API Explorer. Click on the link available and you will find a page with instruments to construct the endpoint. For the same of simplicity, we will take the only per_page and assign a value of 10, so ten photos from the band of recent photos will only be returned.</p>
+<p><strong>Format of data returned</strong></p>
+<p>Next to ‘Output’ in this page, you will find several options in which data may be returned. Options available are XML(REST), JSON, JSONP and PHP Serial. Selecting XML will return data in XML format, JSON will return data in JSON format, if you are using PHP Serial format i.e PHP’s built-in serialized data structure format, the returned data matches JSON response format and you can use, PHP’s serialize() and unserialize() functions. For this, we will select JSON.</p>
+<p><strong>A bit about Sign Call</strong></p>
+<p>This is the application of authentication methods while using Flickr API. If you use ‘Sign call as your_username with full permissions?’ or ‘Sign call with no user token?’, in both cases, authentication will be implied. Often, authentication methods are accompanied by a user token, if you choose the later of the two options given, no user token will be required. For both of the cases, the user has to sign in using Flickr’s authentication. For the third option ‘Do not sign call?’, that will be not required. For now, we will be selecting this option. Hit ‘Call Method’ we will be provided with a set of data returned in JSON format and a url.</p>
+<p><strong>Structure of the URL</strong></p>
+<p>Spending a little bit of time understanding the URL will help us to understand the formation and in turn will help us to construct as well as modify the URL.</p>
+<p>The URL looks like following: <a href="https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&amp;api_key=your_key&amp;per_page=10&amp;format=json&amp;nojsoncallback=1" target="_blank" rel="noopener">https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&amp;api_key=your_key&amp;per_page=10&amp;format=json&amp;nojsoncallback=1</a></p>
+<p>Sp the url begins with <a href="https://api.flickr.com/services/rest/" target="_blank" rel="noopener">https://api.flickr.com/services/rest/</a>?. Note that we must have https enabled from the server we are running this URL, since FLick’r API does not support http without SSL(Secure Socket Layer). Then method keyword adds the method you want to use, ‘flickr.photos.getRecent’ in this case. An ‘&amp;’ is used to add the next part of the URL. You have to supply ‘api_key’ here. Then it is specified that ‘format=json’, i.e. we are using JSON format and then ‘nojsoncallback=1’ specifies that we want raw JSON with no wrapper function. If you want to use a callback function instead, you may use ‘jsoncallback=name_of_your_callback_function’.</p>
+<p>For the ‘flickr.photos.getSizes’ the method also we will construct the URL in the similar fashion.</p>
+<p><strong>Programming and representing data</strong></p>
+<p>Time for some code now. As you have a URL which may return data of your demand, in JSON format here, you have to use a programming language to decode that JSON data and present that to the user. ‘<a href="https://www.flickr.com/services/api/&#39;" target="_blank" rel="noopener">https://www.flickr.com/services/api/&#39;</a> page provides you with a list of programming language usage under ‘API Kits’ section. For this application, we will use Jquery to decode the JSON data returned and then append that to the HTML page. We will also collect the size of the photos user want those to be displayed.</p>
+<p>So, we have three steps to go. First, we have to decode JSON data returned by ‘flickr.photos.getRecent’ method. Second, we have to collect data from browser supplied by the user to filter the available photos according to the size user want to see and then display only photos with that size. The code for the job is given below. Download the code, replace the api_key with yours, and play around.</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>Creating your first app with Flickr API<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>&gt;</span></span><br><span class="line"><span class="css"><span class="selector-id">#sq</span>,<span class="selector-id">#lg-sq</span>,<span class="selector-id">#thumb</span>,<span class="selector-id">#small</span>,<span class="selector-id">#mid</span>,<span class="selector-id">#ori</span> &#123;</span></span><br><span class="line">width: 100%</span><br><span class="line">&#125;</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"</span>&gt;</span></span></span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="actionscript"><span class="keyword">var</span> apiurl,myresult,apiurl_size,selected_size;</span></span><br><span class="line"><span class="actionscript">apiurl = <span class="string">"https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&amp;api_key=ca370d51a054836007519a00ff4ce59e&amp;per_page=10&amp;format=json&amp;nojsoncallback=1"</span>;</span></span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$(<span class="string">"#sq"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">selected_size=75;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$(<span class="string">"#lg-sq"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">selected_size=150;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$(<span class="string">"#thumb"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">selected_size=100;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$(<span class="string">"#small"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">selected_size=240;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$(<span class="string">"#mid"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">selected_size=500;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$(<span class="string">"#ori"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line">selected_size=640;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br><span class="line"><span class="javascript">$(<span class="built_in">document</span>).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$(<span class="string">'#button'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$.getJSON(apiurl,<span class="function"><span class="keyword">function</span>(<span class="params">json</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$.each(json.photos.photo,<span class="function"><span class="keyword">function</span>(<span class="params">i,myresult</span>)</span>&#123;</span></span><br><span class="line"><span class="actionscript">apiurl_size = <span class="string">"https://api.flickr.com/services/rest/?method=flickr.photos.getSizes&amp;api_key=ca370d51a054836007519a00ff4ce59e&amp;photo_id="</span>+myresult.id+<span class="string">"&amp;format=json&amp;nojsoncallback=1"</span>;</span></span><br><span class="line"><span class="javascript">$.getJSON(apiurl_size,<span class="function"><span class="keyword">function</span>(<span class="params">size</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">$.each(size.sizes.size,<span class="function"><span class="keyword">function</span>(<span class="params">i,myresult_size</span>)</span>&#123;</span></span><br><span class="line">if(myresult_size.width==selected_size)&#123;</span><br><span class="line"><span class="handlebars"><span class="xml">$("#results").append('<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"'+myresult_size.url+'"</span> <span class="attr">target</span>=<span class="string">"_blank"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"'+myresult_size.source+'"</span>/&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>');</span></span></span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line">&#125;)</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-12"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Select size of photos (in pixels) you want them to be displayed<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">id</span>=<span class="string">"sq"</span>&gt;</span>Square [75X75]<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">id</span>=<span class="string">"lg-sq"</span>&gt;</span>Large Square [150X150]<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">id</span>=<span class="string">"thumb"</span>&gt;</span>Thumbnail<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">id</span>=<span class="string">"small"</span>&gt;</span>Small<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">id</span>=<span class="string">"mid"</span>&gt;</span>Medium<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-2"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">id</span>=<span class="string">"ori"</span>&gt;</span>Original<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-12"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span>&gt;</span>Hit This button to fetch photos<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"btn btn-success"</span> <span class="attr">id</span>=<span class="string">"button"</span>&gt;</span>Fetch Recent Photos<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">hr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-md-12"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"results"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Reference-1"><a href="#Reference-1" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.w3resource.com/API/flickr/tutorial.php" target="_blank" rel="noopener">https://www.w3resource.com/API/flickr/tutorial.php</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Android, Flickr API, Image Search</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/28/2020-06-28-Creating-your-first-app-with-Flickr-API/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-06-27-Android-Weather-App" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/27/2020-06-27-Android-Weather-App/">Android Weather App</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/27/2020-06-27-Android-Weather-App/" class="archive-article-date">
+  	<time datetime="2020-06-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UI-Main-Thread-amp-Multi-Threading"><a href="#UI-Main-Thread-amp-Multi-Threading" class="headerlink" title="UI/Main Thread &amp; Multi Threading"></a>UI/Main Thread &amp; Multi Threading</h1><p>event looper handled.</p>
+<ol>
+<li>UI Thread, Main Thread: updates, click or scroll, infinient loop, read to-do tasks, put to message queue, task too many, UI lag. message queue: every event, small and short, UI 执行快。main thread - &gt; message queue</li>
+<li>heavylifting Thread 1: disk io 文件读写 执行完了告诉message queue执行完了，执行过程不再queue里面</li>
+<li>Thread 2: network request, download 执行完了告诉message queue执行完了，执行过程不再queue里面</li>
+</ol>
+<p>AsyncTask 起始和结束的时候，会有event post到message queue里面，onprogress也会post event。heavylifting report back to ui.</p>
+<h1 id="Room"><a href="#Room" class="headerlink" title="Room"></a>Room</h1><p>app 很多时候都适合backend连的多，local database用处不是很大，client-heavy会用local database。</p>
+<p>Room: object relation mapping, ORM solution. define newsresponse, 自己对应到table里面，objectsaved， 传上去了。</p>
+<p>DAO: database object.</p>
+<h1 id="Other-Android-Components"><a href="#Other-Android-Components" class="headerlink" title="Other Android Components"></a>Other Android Components</h1><h2 id="ContentProvider-用得少了"><a href="#ContentProvider-用得少了" class="headerlink" title="ContentProvider(用得少了):"></a>ContentProvider(用得少了):</h2><p>contact list, music library: music playback app, no need to store all music in app. could use market media ContentProvider to fetch all music of user in the phone. </p>
+<h2 id="BroadcastReceiver："><a href="#BroadcastReceiver：" class="headerlink" title="BroadcastReceiver："></a>BroadcastReceiver：</h2><p>wallpaper app, charging, heavy operation, 3d wallpaper, render fast, download new dynamic pictures, listen BroadcastReceiver component. When user is charging, the system would send a broadcast, all apps can listen. charging event can let wallpaper app do heavy operation.</p>
+<p>also, network change, wifi or network.</p>
+<p>但被滥用。</p>
+<h1 id="Navigation-Graph"><a href="#Navigation-Graph" class="headerlink" title="Navigation Graph"></a>Navigation Graph</h1><p>vs deep link简单</p>
+<h1 id="Experience"><a href="#Experience" class="headerlink" title="Experience"></a>Experience</h1><p>安卓 clean v (ios ye), focus one</p>
+<p>android: full-stack: restful api, http post, http get, scalability, network info</p>
+<p>有react native, flutter, 但一开始native足矣。</p>
+<p>mobile 算法 sim</p>
+<p>mobile稀缺。</p>
+<p>web engineer更稀缺，framework evolve快。</p>
+<p>backend 多。</p>
+<h1 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h1><p>UI: material.io</p>
+<p>CS 193p: ios</p>
+<h1 id="Android-Weather-App"><a href="#Android-Weather-App" class="headerlink" title="Android Weather App"></a>Android Weather App</h1><h2 id="Step-1-Create-a-basic-android-application"><a href="#Step-1-Create-a-basic-android-application" class="headerlink" title="Step 1: Create a basic android application"></a>Step 1: Create a basic android application</h2><p>The application is a basic weather app which displays basic weather information depending on the users location.</p>
+<h2 id="Step-2-Create-a-welcome-slider"><a href="#Step-2-Create-a-welcome-slider" class="headerlink" title="Step 2: Create a welcome slider"></a>Step 2: Create a welcome slider</h2><p>You can create any custom welcome slider that you like. I have chosen <a href="https://github.com/TangoAgency/material-intro-screen" target="_blank" rel="noopener">Material Intro Slider</a> for this project. In my custom welcome slider i just ask the users name and user the greet the user later on. In the second custom slider greet the user depending on the time of the day and similarly display an image or AM/PM accordingly.</p>
+<p><img src="https://miro.medium.com/max/38/1*SJ8SZszDbRllgxZKwScM6w.jpeg?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1600/1*SJ8SZszDbRllgxZKwScM6w.jpeg" alt="img"></p>
+<h2 id="Step-3-Create-the-basic-Main-Page-UI"><a href="#Step-3-Create-the-basic-Main-Page-UI" class="headerlink" title="Step 3: Create the basic Main Page UI"></a>Step 3: Create the basic Main Page UI</h2><p>I have created a basic UI that look like cards and each card displays current location weather information.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/27/2020-06-27-Android-Weather-App/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-26-Clean-Architecture-with-Java-11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -965,212 +1260,6 @@
 
 
   
-    <article id="post-2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/">React Object, Element, Component, Instance, Property Spread Notation Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/" class="archive-article-date">
-  	<time datetime="2020-06-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。</p>
-<p>上面代码中，大括号就定义了一个对象，它被赋值给变量o。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  p: <span class="string">'Hello World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>这个对象内部包含一个键值对（又称为“成员”），p是“键名”（成员的名称），字符串Hello World是“键值”（成员的值）。</p>
-<p>键名与键值之间用冒号分隔。如果对象内部包含多个键值对，每个键值对之间用逗号分隔。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  p1: <span class="string">'Hello'</span>,</span><br><span class="line">  p2: <span class="string">'World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，对象o包含两个键值对，又称为包含两个属性p1和p2。</p>
-<h5 id="生成对象的三种方法："><a href="#生成对象的三种方法：" class="headerlink" title="生成对象的三种方法："></a>生成对象的三种方法：</h5><ul>
-<li>直接使用大括号生成（{}）</li>
-<li>用new命令生成一个Object对象的实例</li>
-<li>使用Object.create方法生成。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">var</span> o3 = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype);</span><br></pre></td></tr></table></figure>
-
-<p>上面三行语句是等价的,一般来说:</p>
-<p>第一种采用大括号的写法比较简洁，<br>第二种采用构造函数的写法清晰地表示了意图，<br>第三种写法一般用在需要对象继承的场合</p>
-<h3 id="Component-VS-Instance"><a href="#Component-VS-Instance" class="headerlink" title="Component VS Instance"></a>Component VS Instance</h3><p>通过创建一个类<code>class</code>来声明一个按钮组件(<code>Button component</code>)。应用程序运行的时候，在屏幕上你可能有这个组件(<code>component</code>)的好多个实例(<code>instance</code>),每个实例都有自己的属性和仅仅属于自己的状态。</p>
-<h3 id="Element-Elements-Describe-the-Tree"><a href="#Element-Elements-Describe-the-Tree" class="headerlink" title="Element: Elements Describe the Tree"></a>Element: Elements Describe the Tree</h3><p>元素是构成 React 应用的最小砖块。</p>
-<p>元素描述了你在屏幕上想看到的内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;h1&gt;Hello, world&lt;/h1&gt;;</span><br></pre></td></tr></table></figure>
-
-<p>与浏览器的 DOM 元素不同，React 元素是创建开销极小的普通对象。React DOM 会负责更新 DOM 来与 React 元素保持一致。</p>
-<p>在React中，这是元素<code>element</code>帮助我们的地方。<strong>一个元素是一个普通对象，他描述一个组件实例和它所要求的属性，或者一个DOM节点和它所要求的属性</strong>。它仅仅包含以下有关信息 :</p>
-<ul>
-<li>组件类型 (比如，这是一个按钮 <code>Button</code>)</li>
-<li>属性 (比如，它的颜色 <code>color</code>)</li>
-<li>它所包含的若干个子元素</li>
-</ul>
-<p>一个元素并不是一个的实例。相反，它是一种告诉React你想在屏幕上看到什么的手段。元素上的任何方法你都不能调用。它只是一个不可变的描述性对象，仅有两个字段(field):<code>type(string|ReactClass)</code> 和 <code>props : Object</code> 。</p>
-<h4 id="Case-1-DOM元素DOM-Elements"><a href="#Case-1-DOM元素DOM-Elements" class="headerlink" title="Case 1: DOM元素DOM Elements"></a>Case 1: DOM元素DOM Elements</h4><p>当一个元素类型<code>type</code>是字符串(<code>string</code>)时，该元素表示一个DOM节点,其类型字符串是该DOM节点的标签名称,另外一个属性<code>props</code>对应地表示DOM节点属性。这是React要往屏幕上渲染的内容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: <span class="string">'button'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    className: <span class="string">'button button-blue'</span>,</span><br><span class="line">    children: &#123;</span><br><span class="line">      type: <span class="string">'b'</span>,</span><br><span class="line">      props: &#123;</span><br><span class="line">        children: <span class="string">'OK!'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>该元素只是以一种普通对象的形式描述了如下HTML片段 :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">'button button-blue'</span>&gt;</span><br><span class="line">  &lt;b&gt;</span><br><span class="line">    OK!</span><br><span class="line">  &lt;<span class="regexp">/b&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure>
-
-<p>父子节点都是描述，而不是真正的实例。当你创建它们时，他们不指向屏幕上的任何东西。你可以创建它们然后把它们丢掉，这都没太大关系。</p>
-<p>React元素很容易遍历，不需要分析，而且他们显然比真正的DOM元素更轻量级，因为他们只是普通的对象(object)！</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-17-Best-Practices-With-React-Hooks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/2020-06-17-Best-Practices-With-React-Hooks/">Best Practices With React Hooks</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/17/2020-06-17-Best-Practices-With-React-Hooks/" class="archive-article-date">
-  	<time datetime="2020-06-17T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This article covers the rules of React Hooks and how to effectively start using them in your projects. Please note that in order to follow this article in detail, you will need to know <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">how to use React Hooks</a>.</p>
-<p>React Hooks are a new addition in React 16.8 that let you use state and other React features without writing a <code>class</code> component. In other words, <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">Hooks</a> are functions that let you “hook into” React state and lifecycle features from function components. (They do not work inside <code>class</code> components.)</p>
-<p>React provides a few built-in Hooks like <code>useState</code>. You can also create your own Hooks to reuse stateful behavior between different components. The example below shows a counter whose state is managed using the <code>useState()</code> hook. Each time you click on the button, we make use of <code>setCount()</code> to update the value of <code>count</code> by <code>1</code>.</p>
-<iframe id="cp_embed_QWbXMyM" src="https://codepen.io/smashingmag/embed/QWbXMyM?height=500&amp;theme-id=light&amp;slug-hash=QWbXMyM&amp;user=smashingmag&amp;default-tab=result" scrolling="no" frameborder="0" height="500" allowtransparency="true" allowfullscreen="true" name="CodePen Embed" title="CodePen Embed" class="cp_embed_iframe " style="box-sizing: border-box; max-width: 100%; border: 0px; height: 500px; width: 592px; overflow: hidden;"></iframe>
-
-<p>See the Pen <a href="https://codepen.io/smashingmag/pen/QWbXMyM" target="_blank" rel="noopener">React Hook example with Counter</a> by <a href="https://codepen.io/adeneye-abiodun-david" target="_blank" rel="noopener">Adeneye Abiodun David</a>.</p>
-<p>This example renders a counter with a value of <code>0</code>. When you click the button, it increments the value by <code>1</code>. The initial value of the component is defined using <code>useState</code>.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-
-<p>As you can see, we set that to be <code>0</code>. Then we use the <code>onClick()</code> method to call <code>setCount</code> when we want to increment the value.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;() =&gt; setCount(count + <span class="number">1</span>)&#125;&gt;</span><br><span class="line">  Click me</span><br><span class="line">&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Before the release of React Hooks, this example would have used more lines of code, as we’d have had to make use of a <code>class</code> component.</p>
-<h3 id="Rules-Of-React-Hooks"><a href="#Rules-Of-React-Hooks" class="headerlink" title="Rules Of React Hooks"></a>Rules Of React Hooks</h3><p>Before we dive deep into the best practices, we need to understand the rules of React Hooks which are also some of the fundamental concepts of the practices presented in this article.</p>
-<p>React Hooks are JavaScript functions, but you need to follow two rules when using them.</p>
-<ol>
-<li><a href="https://www.smashingmagazine.com/2020/04/react-hooks-best-practices/#call-hooks-top-level" target="_blank" rel="noopener">Call Hooks at the top level</a>;</li>
-<li><a href="https://www.smashingmagazine.com/2020/04/react-hooks-best-practices/#call-hooks-react-components" target="_blank" rel="noopener">Only call Hooks from React components</a>.</li>
-</ol>
-<p><strong>Note</strong>: <em>These two rules were introduced in React Hooks, as opposed to being part of JavaScript itself.</em></p>
-<p>Let’s look at these rules in more detail.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Hooks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/17/2020-06-17-Best-Practices-With-React-Hooks/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1303,6 +1392,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
@@ -1311,15 +1404,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1327,7 +1412,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1335,11 +1420,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1359,7 +1448,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,11 +1468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1383,11 +1476,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1395,15 +1484,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1411,7 +1492,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1419,7 +1504,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1427,11 +1520,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1459,19 +1556,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1495,11 +1592,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1507,11 +1604,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">

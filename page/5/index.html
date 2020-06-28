@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 76</a>
+<a>Total Number of Articles: 78</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,189 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-05-21-Deep-and-Shallow-Copy-in-JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/">Deep and Shallow Copy in JavaScript</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/" class="archive-article-date">
+  	<time datetime="2020-05-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Often, to create an exact copy of an object in JavaScript, we need to create a new Object from existing objects. There are various methods to achieve this. This article is focused on <em>the different ways in which an object can be cloned/copied</em>. But before we dig deep into the details, we need to first understand the concept of deep and shallow copying of objects.</p>
+<hr>
+<h1 id="Understanding-Deep-and-Shallow-Copy"><a href="#Understanding-Deep-and-Shallow-Copy" class="headerlink" title="Understanding Deep and Shallow Copy"></a>Understanding Deep and Shallow Copy</h1><p><img src="https://miro.medium.com/max/60/1*600VH4fZWf3oJB2EaZAPjg.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/808/1*600VH4fZWf3oJB2EaZAPjg.png" alt="img"></p>
+<p>Let’s look into the details of the shallow and deep copy. As the image above shows, a shallow copy has common data shared between the copy and the original, whereas the deep copy of an object, does not have any data shared.</p>
+<p>In the object below, we have a few properties which represent value types (name, age, designation) and other properties that represent a complex object (address). Properties containing complex objects are referred to as “reference variable”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var userName = &#123;</span><br><span class="line">  name: &quot;Mayank Gupta&quot;,</span><br><span class="line">  age: 30,</span><br><span class="line">  designation: &quot;Developer&quot;,</span><br><span class="line">  address: &#123;</span><br><span class="line">    street: &quot;Rohini&quot;,</span><br><span class="line">    city: &quot;Delhi&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Shallow-Copying-Objects"><a href="#Shallow-Copying-Objects" class="headerlink" title="Shallow Copying Objects"></a>Shallow Copying Objects</h1><p>An Object can be considered as <strong>Shallow Copied</strong> when a separate copy of top-level value type properties is assigned to the new Object and the properties that represent an object are copied by reference to the destination folder.</p>
+<p>Summary for Shallow Copy:</p>
+<ol>
+<li>Destination object contains a separate copy of name, age, and designation.</li>
+<li>Reference of Complex Object (“address”) is copied to Destination Object</li>
+</ol>
+<p>In the case of Shallow Copy, the separate copy of the reference variable is not created. The memory reference of the complex Object in Source Object is copied to the Destination Object.</p>
+<hr>
+<h1 id="Disadvantages-of-Shallow-Copy"><a href="#Disadvantages-of-Shallow-Copy" class="headerlink" title="Disadvantages of Shallow Copy"></a>Disadvantages of Shallow Copy</h1><p>The problem with shallow copy is that, if the user makes changes to the complex object (update street property of address object) of the source object (userName), it is also reflected in the Destination Object, since it points to the same memory address.</p>
+<p><em>Changes to the reference objects in source object are also reflected in the Destination Object.</em></p>
+<hr>
+<h1 id="Deep-Copy-of-Object"><a href="#Deep-Copy-of-Object" class="headerlink" title="Deep Copy of Object"></a>Deep Copy of Object</h1><p>The object is said to be deep copied when <em>each property to the object points to separate copy, even if the property points to an object</em> (reference values). A separate copy of the reference object is created for the destination object. In case of deep copy, source object reference properties and destination object reference properties are pointing to different memory locations.</p>
+<p>A summary of deep copy:</p>
+<ul>
+<li>The destination object contains a separate copy of name, age, and designation. Separate instances of value types.</li>
+<li>Separate Reference for Complex Objects (“address”) is created</li>
+</ul>
+<p><em>“Address” property of Source and destination object point to different memory locations.</em> If the user updates the address property in the source object, the updates are not reflected in the destination object.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Shallow Copy, Deep Copy, JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-05-20-Preflight-Request" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/20/2020-05-20-Preflight-Request/">Preflight Request</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/20/2020-05-20-Preflight-Request/" class="archive-article-date">
+  	<time datetime="2020-05-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A CORS preflight request is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/CORS" target="_blank" rel="noopener">CORS</a> request that checks to see if the <a href="https://developer.mozilla.org/en-US/docs/Glossary/CORS" target="_blank" rel="noopener">CORS</a> protocol is understood and a server is aware using specific methods and headers.</p>
+<p>It is an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS" target="_blank" rel="noopener"><code>OPTIONS</code></a> request, using three HTTP request headers: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Method" target="_blank" rel="noopener"><code>Access-Control-Request-Method</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Headers" target="_blank" rel="noopener"><code>Access-Control-Request-Headers</code></a>, and the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener"><code>Origin</code></a> header.</p>
+<p>A preflight request is automatically issued by a browser and in normal cases, front-end developers don’t need to craft such requests themselves. It appears when request is qualified as <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Preflighted_requests" target="_blank" rel="noopener">“to be preflighted”</a> and ommited for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Simple_requests" target="_blank" rel="noopener">simple requests</a>.</p>
+<p>For example, a client might be asking a server if it would allow a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE" target="_blank" rel="noopener"><code>DELETE</code></a> request, before sending a <code>DELETE</code> request, by using a preflight request:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS /resource/foo </span><br><span class="line">Access-Control-Request-Method: DELETE </span><br><span class="line">Access-Control-Request-Headers: origin, x-requested-with</span><br><span class="line">Origin: https://foo.bar.org</span><br></pre></td></tr></table></figure>
+
+<p>If the server allows it, then it will respond to the preflight request with an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods" target="_blank" rel="noopener"><code>Access-Control-Allow-Methods</code></a> response header, which lists <code>DELETE</code>:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 204 No Content</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Access-Control-Allow-Origin: https://foo.bar.org</span><br><span class="line">Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE</span><br><span class="line">Access-Control-Max-Age: 86400</span><br></pre></td></tr></table></figure>
+
+<p>The preflight response can be optionally cached for the requests created in the same url using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age" target="_blank" rel="noopener">Access-Control-Max-Age</a> header like in the above example.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Options, CORS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/20/2020-05-20-Preflight-Request/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-05-19-Difference-Between-Client-and-Server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -800,251 +983,6 @@
 
 
   
-    <article id="post-RESTful, Sessions, Cookies" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/11/RESTful, Sessions, Cookies/">RESTful, Sessions, Cookies</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/11/RESTful, Sessions, Cookies/" class="archive-article-date">
-  	<time datetime="2020-05-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Notes on RESTful API (stateless) VS Session:   (<strong>^▽^</strong>)</p>
-<h2 id="Stateless-applications"><a href="#Stateless-applications" class="headerlink" title="Stateless applications"></a>Stateless applications</h2><ul>
-<li>Web application servers are generally “stateless”:<ul>
-<li>Each HTTP request is independent; server can’t tell if 2 requests came from the same browser or user.</li>
-<li>Web server applications maintain no information in memory from request to request (only information on disk survives from one request to another).</li>
-</ul>
-</li>
-<li>Statelessness not always convenient for application developers: need to tie together a series of requests from the same user.</li>
-</ul>
-<h2 id="Browser-cookies"><a href="#Browser-cookies" class="headerlink" title="Browser cookies"></a>Browser cookies</h2><ul>
-<li>Cookie basics:<ul>
-<li>The first time a browser connects with a particular server, there are no cookies.</li>
-<li>When the server responds it includes a Set-Cookie: header that defines a cookie.</li>
-<li>Each cookie is just a name-value pair.</li>
-<li>In the future whenever the browser connects with the same server, it includes a Cookie: header containing the name and value, which the server can use to connect related requests.</li>
-</ul>
-</li>
-<li>What’s in a cookie?<ul>
-<li>Name and data.<ul>
-<li>Data size limited by browsers (typically &lt; 4 KB).</li>
-<li>A server can define multiple cookies with different names, but browsers limit the number of cookies per server (around 50).</li>
-</ul>
-</li>
-<li>Domain for this cookie: server, port (optional), URL prefix (optional). The cookie is only included in requests matching its domain.</li>
-<li>Expiration date: browser can delete old cookies.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Sessions"><a href="#Sessions" class="headerlink" title="Sessions"></a>Sessions</h2><ul>
-<li>Cookies are used by the server to implement</li>
-</ul>
-<p>  sessions</p>
-<p>  :</p>
-<ul>
-<li>A pool of data related to an active connection (one browser instance).</li>
-</ul>
-<ul>
-<li>Typically the cookie for an application contains an identifier for a session.</li>
-</ul>
-<ul>
-<li><p>Web frameworks like Rails do most of the work of managing sessions and cookies:</p>
-<ul>
-<li>Rails provides</li>
-</ul>
-</li>
-</ul>
-<pre><code>session
-
-, a hash-like object in which you can store anything you like
-
-- Data will be available in all future requests from the same browser.</code></pre><ul>
-<li><p>Rails automatically checks for a session cookie at the start of each request:</p>
-<ul>
-<li>Cookie exists? use it to find session data</li>
-<li>No cookie? Create new session, new cookie</li>
-</ul>
-</li>
-<li><p>End of each request: save session data where it can be found by future requests.</p>
-</li>
-</ul>
-<ul>
-<li><p>Managing session state:</p>
-<ul>
-<li>Approach #1: just keep state in main memory</li>
-<li>Approach #2: store session state in files on disk</li>
-<li>Approach #3: store session state in a database</li>
-<li>Most frameworks allow you to control session storage:<ul>
-<li>Provide an object that saves and restores session data.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Server must eventually delete stale session data.</p>
-</li>
-</ul>
-<ul>
-<li>Sessions have numerous security issues, which we will discuss later.</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RESTful, session, cookies</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/11/RESTful, Sessions, Cookies/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Go Language" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/10/Go Language/">Go Language</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/10/Go Language/" class="archive-article-date">
-  	<time datetime="2020-05-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Notes about Go Language:</p>
-<p>Language Comparision: </p>
-<ol>
-<li>Language Abstract Model</li>
-<li>Type conversion.</li>
-</ol>
-<p>Efficiency: C++, C, Rust: Complile lanugage, cpu directly recognize before running. machine code, binary 0 1. windows .exe, linux.</p>
-<p>(efficiency)</p>
-<p>Java: compiler JVM (compiling from programming language to machine language) (compiling byte code, the middle layer), JIT (just in time, parse byte code in advance, precompile machine code before running for certain repetitive parts). </p>
-<p>GC+VM (write once run everywhere)+ java web service commercizlization (tomcat, j2ee enterprise architect)</p>
-<p>Script language: Fast to development: Ruby, Python, Perl: high-level, fast, fun for humans, lower, inefficient for computers. no jvm, jit engine, optimization worse. language dynamic.</p>
-<p>Type System:</p>
-<p>Static type: variable type, static. Java, C++ define integer i, in the scope the type could not be changed; but Python and Ruby could.  </p>
-<p>Dynamic type: Python, Ruby.</p>
-<p>Weak type: variable, whether it would be implied transferred. Java C++ Perl. easy for text processing.  but when the project is big, hard without type check. </p>
-<p>Strong type: String + integer, in python, run, different type, bind to a variable.</p>
-<p>Go: efficient and fast to implement, balance. </p>
-<ol>
-<li>complie language. garbage collector, allocate and assign resources, (java). collect, slow. </li>
-<li>concurrency, cloud computing.</li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GoLang</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/10/Go Language/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1177,6 +1115,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
@@ -1185,15 +1127,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1201,7 +1135,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1209,11 +1143,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1233,7 +1171,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,11 +1191,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,11 +1199,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1269,15 +1207,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1285,7 +1215,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1293,7 +1227,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1301,11 +1243,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,19 +1279,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1369,11 +1315,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1381,11 +1327,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
