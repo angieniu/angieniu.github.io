@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 82</a>
+<a>Total Number of Articles: 83</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,96 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-04-React-Lifecycle-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">React Lifecycle Notes</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/" class="archive-article-date">
+  	<time datetime="2020-06-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="React关注数据，view会因此变化"><a href="#React关注数据，view会因此变化" class="headerlink" title="React关注数据，view会因此变化"></a>React关注数据，view会因此变化</h3><p>Data model: 从这个需求中，得看出:</p>
+<p>1.list: task []</p>
+<p>2.done, undone =&gt;  array sublist stored. task [] -&gt;[done]</p>
+<p>​                                                                                 \ [undone]</p>
+<p>3.增删查改操作</p>
+<h3 id="React-Lifecycle"><a href="#React-Lifecycle" class="headerlink" title="React Lifecycle"></a>React Lifecycle</h3><p>Mounting的render实现了上树到真实的dom。</p>
+<p>Mounting的componentDidMount: 一般用于从server拿数据，constructor里面和render里面 (render里面reset数据会死循环)都不会去拿数据，一般componentDidMount里面有reset。作用：1.更新组件私有数据 2.对真实dom进行操作</p>
+<h3 id="Parent-Child"><a href="#Parent-Child" class="headerlink" title="Parent - Child"></a>Parent - Child</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">APP</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span>  // <span class="title">parent</span> <span class="title">component</span></span></span><br><span class="line"><span class="class"></span>&#123; <span class="keyword">constructor</span>()&#123;</span><br><span class="line">	<span class="keyword">super</span>();</span><br><span class="line">	<span class="keyword">this</span>.state = &#123;</span><br><span class="line">		todos: [</span><br><span class="line">		 &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">title</span>: <span class="string">"task1"</span>, <span class="attr">done</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">		 ... </span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	render()&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1&gt;ToDo App&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">		&lt;HD addTodo=&#123;this.addItem&#125; /</span>&gt;</span><br><span class="line">		&lt;BD todoList=&#123;<span class="keyword">this</span>.state.todos&#125; /&gt;</span><br><span class="line">		&lt;FT /&gt;</span><br><span class="line">		&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	addItem = (item) =&gt; &#123; /</span><span class="regexp">/ parent 拿到子组件传回来的，进行状态更新</span></span><br><span class="line"><span class="regexp">		console.log(item);</span></span><br><span class="line"><span class="regexp">		this.setState(&#123; </span></span><br><span class="line"><span class="regexp">			todos: [</span></span><br><span class="line"><span class="regexp">				...this.state.todos,</span></span><br><span class="line"><span class="regexp">				&#123;</span></span><br><span class="line"><span class="regexp">					id: Math.floor(Math.random() * 100),</span></span><br><span class="line"><span class="regexp">					title: item,</span></span><br><span class="line"><span class="regexp">					done: false</span></span><br><span class="line"><span class="regexp">				&#125;</span></span><br><span class="line"><span class="regexp">			]</span></span><br><span class="line"><span class="regexp">		&#125;)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">class HD extends React.Component&#123;</span></span><br><span class="line"><span class="regexp">	constructor()&#123;</span></span><br><span class="line"><span class="regexp">	super();</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/ define</span></span><br><span class="line"><span class="regexp">	this.input = React.createRef();</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	render()&#123;</span></span><br><span class="line"><span class="regexp">	return(</span></span><br><span class="line"><span class="regexp">	&lt;div&gt;</span></span><br><span class="line"><span class="regexp">	&lt;input type="text" ref=&#123;this.input&#125; /</span>&gt;</span><br><span class="line">	&lt;button onClick=&#123;() =&gt; &#123;<span class="comment">//get ref</span></span><br><span class="line">	<span class="keyword">const</span> val = <span class="keyword">this</span>.input.current.value</span><br><span class="line">	<span class="comment">//use cb 调用par ent组件传给子组件的函数 , cb否则是自动点击</span></span><br><span class="line">	<span class="keyword">this</span>.props.addToDo(val)</span><br><span class="line">	<span class="keyword">this</span>.input.current.value = <span class="string">''</span>; <span class="comment">//清空已经键入的数据</span></span><br><span class="line">	&#125;&#125;</span><br><span class="line">	&gt;add <span class="keyword">new</span> task&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">	)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="setSet-Two-Methods"><a href="#setSet-Two-Methods" class="headerlink" title="setSet Two Methods"></a>setSet Two Methods</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//法1：不需要更新之后，再做另外操作，</span></span><br><span class="line">addItem = <span class="function">(<span class="params">item</span>) =&gt;</span> &#123; <span class="comment">// parent 拿到子组件传回来的，进行状态更新</span></span><br><span class="line">		<span class="built_in">console</span>.log(item);</span><br><span class="line">		<span class="keyword">this</span>.setState(&#123;  <span class="comment">//setState 异步</span></span><br><span class="line">			todos: [</span><br><span class="line">				...this.state.todos,</span><br><span class="line">				&#123;</span><br><span class="line">					id: <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100</span>),</span><br><span class="line">					title: item,</span><br><span class="line">					done: <span class="literal">false</span></span><br><span class="line">				&#125;</span><br><span class="line">			]</span><br><span class="line">		&#125;)</span><br><span class="line">	也可以&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//法2： this.setState(preState =&#123;&#125;) //传入回调函数. 需要等更新之后，再做另外操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">preState</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">todos: <span class="keyword">this</span>.state.todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id? &#123;...item, <span class="attr">done</span>: states&#125;: item)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于this.setState(preState =&gt; (&#123; todos: preState.todos.map(item =&gt; </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// item.id === id? &#123;...item, done: states&#125;: item), ()=&gt;&#123;&#125;) 多用于逻辑结构复</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//杂，希望setState之后再执行下面的函数()=&gt; &#123;&#125;用preState. 传两个回调函数。</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vs</span><br><span class="line"></span><br><span class="line">updateItem = <span class="function">(<span class="params">id, status</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line"></span><br><span class="line">​	todos: <span class="keyword">this</span>.state.todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id? &#123;...item, <span class="attr">done</span>: states&#125;: item)</span><br><span class="line"></span><br><span class="line">&#125;)&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="onClick-this绑定"><a href="#onClick-this绑定" class="headerlink" title="onClick, this绑定"></a>onClick, this绑定</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>()&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.state = &#123;</span><br><span class="line">			isShow: <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>);<span class="comment">//this永远指向Parent</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	&lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is Parent<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">	&lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt; show/hide &lt;<span class="regexp">/button&gt; /</span><span class="regexp">/ 点击事件有可能改变this指向，所以绑定函数在constructor里面</span></span><br><span class="line"><span class="regexp">	&lt;hr /</span>&gt;</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">this</span>.state.isShow ? <span class="xml"><span class="tag">&lt;<span class="name">Child</span> /&gt;</span></span>: <span class="literal">null</span></span><br><span class="line">	&#125;</span><br><span class="line">	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">handleClick()&#123;</span></span><br><span class="line"><span class="regexp">	this.setState(&#123;</span></span><br><span class="line"><span class="regexp">		isShow: !this.state.isShow</span></span><br><span class="line"><span class="regexp">	&#125;)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">VS &lt;button onClick = &#123;</span></span><br><span class="line"><span class="regexp">  () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    this.setState(&#123;</span></span><br><span class="line"><span class="regexp">      isShow: !this.state.isShow</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="JSON-JS"><a href="#JSON-JS" class="headerlink" title="JSON, JS"></a>JSON, JS</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">json: &#123;<span class="string">"key"</span> : <span class="string">'Joe'</span>&#125; <span class="comment">//.json file</span></span><br><span class="line">js: &#123;<span class="attr">key</span> : <span class="string">'Joe'</span>&#125; <span class="comment">// js file</span></span><br><span class="line">    &#123;<span class="string">"key"</span> : <span class="string">'Joe'</span>&#125;</span><br><span class="line">    &#123;<span class="string">"first-name"</span>: <span class="string">'Joe'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>前后端通信</p>
+<p>react有axios</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Lifecycle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -855,126 +945,6 @@
 
 
   
-    <article id="post-2020-05-27-Self-Summary-about-Golang-Project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/">Self-Summary about Golang Project</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/" class="archive-article-date">
-  	<time datetime="2020-05-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="GCS-GCE-GKE"><a href="#GCS-GCE-GKE" class="headerlink" title="GCS, GCE, GKE"></a>GCS, GCE, GKE</h1><p>GCS：存储图片、视频。</p>
-<p>GCE：host Elasticsearch数据库。vs MySQL 可以在AWS上托管，RDS自动运行。 Elasticsearch Service可托管，分布式，收费高。</p>
-<p>GKE: 运行Go程序。同时管理多台机器。</p>
-<p>如何保证用户的请求平均落到每个机器上？Loadbalancing: </p>
-<p>How? 指标：</p>
-<p>[法1] 随机 hash, QPS based loadbalancing, request based loadbalancing.</p>
-<p>But 平均分，有的request要求做的事情多，有的要求少。请求量不能决定最终负载平均。</p>
-<p>评价：实现简单。</p>
-<p>[法2] 优化：utilization based loadbalancing。根据后台服务器虚拟机的资源使用率闲置状态，cpu使用，或内存使用，取决于谁比较吃紧。即loadbalancing时，除了需要在虚拟机返回给loadbalancer请求的结果之外，如果还能返回当前cpu使用量，内存使用率，判断忙闲。</p>
-<p>评价：精确度高。但对server要求高（普通：server根据请求返回结果。），并且在loadbalancing这层还需要实时track读取从后台返回的cpu和内存的状态。 GKE用。</p>
-<h1 id="备份更新，同步数据"><a href="#备份更新，同步数据" class="headerlink" title="备份更新，同步数据"></a>备份更新，同步数据</h1><p>用户更新一条数据，不需要等所有备份都同步完成之后再返回。</p>
-<p>设计数据库备份：把备份分成两种</p>
-<p>总共九个的话，</p>
-<ol>
-<li><p>Read-Write: 修改数据只在3个中的某一个接受，在3个备份间同步。</p>
-</li>
-<li><p>Read-Only: 后边6个等待慢慢同步。读请求，都可以，只不过读RO有可能不一致stale data, 不过如果不在乎数据实时性，读取速度快。</p>
-<p>所以，如果用户对于一致性要求不高，可通过RW写，RO读，读写分开。读请求&gt;&gt;写请求，增加更多RO copies。否则就读RW。把选择权给用户。leader (RW)，用户(RO)。</p>
-</li>
-</ol>
-<h1 id="CICD"><a href="#CICD" class="headerlink" title="CICD"></a>CICD</h1><p>circleCI: 重新build docker image.</p>
-<p>cd: 把docker image自动部署到GKE, GCE。</p>
-<h1 id="K-D-Search"><a href="#K-D-Search" class="headerlink" title="K-D Search"></a>K-D Search</h1><p>如果出了geo-location search,还需要user id search。</p>
-<p>[法1] posts [(), (), (), …] .</p>
-<p>把已经存好的数据copy出来，到另外一个array里面, [(user id, [post1, post 2….]), …  ]</p>
-<p>id name post [p1, p2, p3]  =&gt; 直接通过id找出post。</p>
-<p>牺牲空间，节省时间</p>
-<p>[法2] secondary index:</p>
-<p>data stored in database: eg all the posts [(post_id, p1), (post_id, p2), (post_id, p3), …]</p>
-<p>index: tree: tree基于某一个field index like location, tree node points to each post in the array.</p>
-<p>secondary index:  id tree, each nodes points to element.<br>So when searching, we could not only search based on loc index tree, but also id index tree. </p>
-<p>可能费时，因为找tree node慢。</p>
-<p>If only user user id to search, hashmap (单对单) is fast, but could not guarantee the sequence of all the elements. If searching user_id from 1-10 or user_age for certain range, hashmap does not work well. </p>
-<h1 id="Go-Authentication"><a href="#Go-Authentication" class="headerlink" title="Go Authentication"></a>Go Authentication</h1><ol>
-<li><p>Use JWT to Protect Post and Search Endpoints:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"started-service"</span>)</span><br><span class="line">    </span><br><span class="line">    jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options&#123;</span><br><span class="line">        ValidationKeyGetter: <span class="function"><span class="keyword">func</span><span class="params">(token *jwt.Token)</span> <span class="params">(<span class="keyword">interface</span>&#123;&#125;, error)</span></span> &#123;</span><br><span class="line">     	 <span class="keyword">return</span> []<span class="keyword">byte</span>(mySigningKey), <span class="literal">nil</span></span><br><span class="line">        &#125;,</span><br><span class="line">        SigningMethod: jwt.SigningMethodHS256,</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">   r := mux.NewRouter()</span><br><span class="line"></span><br><span class="line">   r.Handle(<span class="string">"/post"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerPost))).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">   r.Handle(<span class="string">"/search"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerSearch))).Methods(<span class="string">"GET"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">   r.Handle(<span class="string">"/cluster"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerCluster))).Methods(<span class="string">"GET"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">  <span class="comment">//如果有了jwtMiddleware之后，发post请求，即使method是post，如果没提供authentication/authorization的header(token是jwt用于判断有没有权利调用handler)，不能访问handler post. 对于用户而言。</span></span><br><span class="line">  <span class="comment">// authorization header/jwt token判断人有没有权限post数据，options判断前端程序有没有权利调用后台的post功能。程序而言。</span></span><br><span class="line">   r.Handle(<span class="string">"/signup"</span>, http.HandlerFunc(handlerSignup)).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">  <span class="comment">// signup请求进来，如果是post请求的话，可以call handlerSignup.</span></span><br><span class="line">   r.Handle(<span class="string">"/login"</span>, http.HandlerFunc(handlerLogin)).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line"></span><br><span class="line">   log.Fatal(http.ListenAndServe(<span class="string">":8080"</span>, r))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="2">
-<li><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handlerPost</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">    <span class="comment">// Parse from body of request to get a json object.</span></span><br><span class="line">    fmt.Println(<span class="string">"Received one post request"</span>)</span><br><span class="line"></span><br><span class="line">    w.Header().Set(<span class="string">"Content-Type"</span>, <span class="string">"application/json"</span>)</span><br><span class="line">    w.Header().Set(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)</span><br><span class="line">    w.Header().Set(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,Authorization"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> r.Method == <span class="string">"OPTIONS"</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    user := r.Context().Value(<span class="string">"user"</span>)</span><br><span class="line">    claims := user.(*jwt.Token).Claims</span><br><span class="line">    username := claims.(jwt.MapClaims)[<span class="string">"username"</span>]</span><br><span class="line"></span><br><span class="line">    lat, _ := strconv.ParseFloat(r.FormValue(<span class="string">"lat"</span>), <span class="number">64</span>)</span><br><span class="line">    lon, _ := strconv.ParseFloat(r.FormValue(<span class="string">"lon"</span>), <span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">    p := &amp;Post&#123;</span><br><span class="line">        User:    username.(<span class="keyword">string</span>),</span><br><span class="line">      <span class="comment">// vs: User: r.FormValue("user"), 发请求之外除了提供token，还提供user，额外信息，没必要，token已经含有user信息，通过token得到即可。</span></span><br><span class="line">      <span class="comment">//并且，token里的user一定是当前用户自己，如果r.FormValue这么写的话，request可以用另一个人的名字,like 'Richard' to post in the name although the username received from token is 'Vincent'。以Vincent的身份登录，以Richard的身份post data。从数据库的角度，存的是里Richard存的，因为username没有存到数据库里。</span></span><br><span class="line">        Message: r.FormValue(<span class="string">"message"</span>),</span><br><span class="line">        Location: Location&#123;</span><br><span class="line">            Lat: lat,</span><br><span class="line">            Lon: lon,</span><br><span class="line">        &#125;,</span><br><span class="line">        Face: <span class="number">0.0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h1 id="Video-Making-Tools"><a href="#Video-Making-Tools" class="headerlink" title="Video Making Tools"></a>Video Making Tools</h1><p>Photoshop, Filmora, Screen Recording</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-2020-05-27-Visual-Studio,-User-Experience" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1069,30 +1039,74 @@
 
 
   
-    <article id="post-2020-05-26-JavaScript-Q-&amp;-A-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-2020-05-27-Self-Summary-about-Golang-Project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">JavaScript Q &amp; A 2</a>
+      <a class="article-title" href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/">Self-Summary about Golang Project</a>
     </h1>
   
 
         
-        <a href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/" class="archive-article-date">
-  	<time datetime="2020-05-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
+        <a href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/" class="archive-article-date">
+  	<time datetime="2020-05-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JavaScript is the popular programming language of the web. The high-level, interpreted programming language follows a multi-paradigm approach. As such, it has several traits of <a href="https://hackr.io/blog/functional-programming-concepts-advantages-disadvantages-applications" target="_blank" rel="noopener">functional programming</a>.</p>
-<p>If you take a look at the <a href="https://insights.stackoverflow.com/survey/2019" target="_blank" rel="noopener">StackOverflow Developer Survey 2019</a>, you will find that JavaScript tops the list of the most preferred programming language for the 6th consecutive year.</p>
-<p>Almost 70% of all the respondents of the Stackoverflow survey state that they have been using JS for their day-to-day development chores. Hence, following a career path in JavaScript development is lucrative.</p>
-        
+        <h1 id="GCS-GCE-GKE"><a href="#GCS-GCE-GKE" class="headerlink" title="GCS, GCE, GKE"></a>GCS, GCE, GKE</h1><p>GCS：存储图片、视频。</p>
+<p>GCE：host Elasticsearch数据库。vs MySQL 可以在AWS上托管，RDS自动运行。 Elasticsearch Service可托管，分布式，收费高。</p>
+<p>GKE: 运行Go程序。同时管理多台机器。</p>
+<p>如何保证用户的请求平均落到每个机器上？Loadbalancing: </p>
+<p>How? 指标：</p>
+<p>[法1] 随机 hash, QPS based loadbalancing, request based loadbalancing.</p>
+<p>But 平均分，有的request要求做的事情多，有的要求少。请求量不能决定最终负载平均。</p>
+<p>评价：实现简单。</p>
+<p>[法2] 优化：utilization based loadbalancing。根据后台服务器虚拟机的资源使用率闲置状态，cpu使用，或内存使用，取决于谁比较吃紧。即loadbalancing时，除了需要在虚拟机返回给loadbalancer请求的结果之外，如果还能返回当前cpu使用量，内存使用率，判断忙闲。</p>
+<p>评价：精确度高。但对server要求高（普通：server根据请求返回结果。），并且在loadbalancing这层还需要实时track读取从后台返回的cpu和内存的状态。 GKE用。</p>
+<h1 id="备份更新，同步数据"><a href="#备份更新，同步数据" class="headerlink" title="备份更新，同步数据"></a>备份更新，同步数据</h1><p>用户更新一条数据，不需要等所有备份都同步完成之后再返回。</p>
+<p>设计数据库备份：把备份分成两种</p>
+<p>总共九个的话，</p>
+<ol>
+<li><p>Read-Write: 修改数据只在3个中的某一个接受，在3个备份间同步。</p>
+</li>
+<li><p>Read-Only: 后边6个等待慢慢同步。读请求，都可以，只不过读RO有可能不一致stale data, 不过如果不在乎数据实时性，读取速度快。</p>
+<p>所以，如果用户对于一致性要求不高，可通过RW写，RO读，读写分开。读请求&gt;&gt;写请求，增加更多RO copies。否则就读RW。把选择权给用户。leader (RW)，用户(RO)。</p>
+</li>
+</ol>
+<h1 id="CICD"><a href="#CICD" class="headerlink" title="CICD"></a>CICD</h1><p>circleCI: 重新build docker image.</p>
+<p>cd: 把docker image自动部署到GKE, GCE。</p>
+<h1 id="K-D-Search"><a href="#K-D-Search" class="headerlink" title="K-D Search"></a>K-D Search</h1><p>如果出了geo-location search,还需要user id search。</p>
+<p>[法1] posts [(), (), (), …] .</p>
+<p>把已经存好的数据copy出来，到另外一个array里面, [(user id, [post1, post 2….]), …  ]</p>
+<p>id name post [p1, p2, p3]  =&gt; 直接通过id找出post。</p>
+<p>牺牲空间，节省时间</p>
+<p>[法2] secondary index:</p>
+<p>data stored in database: eg all the posts [(post_id, p1), (post_id, p2), (post_id, p3), …]</p>
+<p>index: tree: tree基于某一个field index like location, tree node points to each post in the array.</p>
+<p>secondary index:  id tree, each nodes points to element.<br>So when searching, we could not only search based on loc index tree, but also id index tree. </p>
+<p>可能费时，因为找tree node慢。</p>
+<p>If only user user id to search, hashmap (单对单) is fast, but could not guarantee the sequence of all the elements. If searching user_id from 1-10 or user_age for certain range, hashmap does not work well. </p>
+<h1 id="Go-Authentication"><a href="#Go-Authentication" class="headerlink" title="Go Authentication"></a>Go Authentication</h1><ol>
+<li><p>Use JWT to Protect Post and Search Endpoints:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"started-service"</span>)</span><br><span class="line">    </span><br><span class="line">    jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options&#123;</span><br><span class="line">        ValidationKeyGetter: <span class="function"><span class="keyword">func</span><span class="params">(token *jwt.Token)</span> <span class="params">(<span class="keyword">interface</span>&#123;&#125;, error)</span></span> &#123;</span><br><span class="line">     	 <span class="keyword">return</span> []<span class="keyword">byte</span>(mySigningKey), <span class="literal">nil</span></span><br><span class="line">        &#125;,</span><br><span class="line">        SigningMethod: jwt.SigningMethodHS256,</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">   r := mux.NewRouter()</span><br><span class="line"></span><br><span class="line">   r.Handle(<span class="string">"/post"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerPost))).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">   r.Handle(<span class="string">"/search"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerSearch))).Methods(<span class="string">"GET"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">   r.Handle(<span class="string">"/cluster"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerCluster))).Methods(<span class="string">"GET"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">  <span class="comment">//如果有了jwtMiddleware之后，发post请求，即使method是post，如果没提供authentication/authorization的header(token是jwt用于判断有没有权利调用handler)，不能访问handler post. 对于用户而言。</span></span><br><span class="line">  <span class="comment">// authorization header/jwt token判断人有没有权限post数据，options判断前端程序有没有权利调用后台的post功能。程序而言。</span></span><br><span class="line">   r.Handle(<span class="string">"/signup"</span>, http.HandlerFunc(handlerSignup)).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">  <span class="comment">// signup请求进来，如果是post请求的话，可以call handlerSignup.</span></span><br><span class="line">   r.Handle(<span class="string">"/login"</span>, http.HandlerFunc(handlerLogin)).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line"></span><br><span class="line">   log.Fatal(http.ListenAndServe(<span class="string">":8080"</span>, r))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handlerPost</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">    <span class="comment">// Parse from body of request to get a json object.</span></span><br><span class="line">    fmt.Println(<span class="string">"Received one post request"</span>)</span><br><span class="line"></span><br><span class="line">    w.Header().Set(<span class="string">"Content-Type"</span>, <span class="string">"application/json"</span>)</span><br><span class="line">    w.Header().Set(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)</span><br><span class="line">    w.Header().Set(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,Authorization"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> r.Method == <span class="string">"OPTIONS"</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    user := r.Context().Value(<span class="string">"user"</span>)</span><br><span class="line">    claims := user.(*jwt.Token).Claims</span><br><span class="line">    username := claims.(jwt.MapClaims)[<span class="string">"username"</span>]</span><br><span class="line"></span><br><span class="line">    lat, _ := strconv.ParseFloat(r.FormValue(<span class="string">"lat"</span>), <span class="number">64</span>)</span><br><span class="line">    lon, _ := strconv.ParseFloat(r.FormValue(<span class="string">"lon"</span>), <span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">    p := &amp;Post&#123;</span><br><span class="line">        User:    username.(<span class="keyword">string</span>),</span><br><span class="line">      <span class="comment">// vs: User: r.FormValue("user"), 发请求之外除了提供token，还提供user，额外信息，没必要，token已经含有user信息，通过token得到即可。</span></span><br><span class="line">      <span class="comment">//并且，token里的user一定是当前用户自己，如果r.FormValue这么写的话，request可以用另一个人的名字,like 'Richard' to post in the name although the username received from token is 'Vincent'。以Vincent的身份登录，以Richard的身份post data。从数据库的角度，存的是里Richard存的，因为username没有存到数据库里。</span></span><br><span class="line">        Message: r.FormValue(<span class="string">"message"</span>),</span><br><span class="line">        Location: Location&#123;</span><br><span class="line">            Lat: lat,</span><br><span class="line">            Lon: lon,</span><br><span class="line">        &#125;,</span><br><span class="line">        Face: <span class="number">0.0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="Video-Making-Tools"><a href="#Video-Making-Tools" class="headerlink" title="Video Making Tools"></a>Video Making Tools</h1><p>Photoshop, Filmora, Screen Recording</p>
+
       
 
       
@@ -1105,7 +1119,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
         		</li>
       		
 		</ul>
@@ -1115,7 +1129,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">Show All >></a>
+          <a class="article-more-a" href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/">Show All >></a>
         </p>
       
 
@@ -1273,11 +1287,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1293,7 +1307,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1301,7 +1315,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1309,15 +1323,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1325,11 +1335,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1337,7 +1347,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1349,19 +1359,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1377,23 +1387,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1405,15 +1403,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1437,11 +1443,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1453,15 +1463,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1477,15 +1491,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1493,7 +1499,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1501,7 +1507,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1509,7 +1527,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
               <li class="article-tag-list-item">

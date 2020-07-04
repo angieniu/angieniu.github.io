@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 82</a>
+<a>Total Number of Articles: 83</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,92 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-03-Map-Implementation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/03/2020-07-03-Map-Implementation/">Map Implementation</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/03/2020-07-03-Map-Implementation/" class="archive-article-date">
+  	<time datetime="2020-07-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="http://blog.gainlo.co/wp-content/uploads/2016/08/navigation-1048294_640.jpg" alt="navigation-1048294_640"></p>
+<h1 id="Uber-Interview-Questions-–-Map-Implementation"><a href="#Uber-Interview-Questions-–-Map-Implementation" class="headerlink" title="Uber Interview Questions – Map Implementation"></a>Uber Interview Questions – Map Implementation</h1><p>In this week’s coding interview question post, I’m going to analyze one of the best questions I’ve seen in recent interviews. As many people ask for the pseudo code in order to help them understand the algorithm, I will also include that in the post as well.</p>
+<p>It’s worth to emphasize again that what’s truly important is not the final code/solution, it’s all about the analysis process and I’m going to teach you exactly how to come up with the right idea.</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p><em>Implement data structure “Map” storing pairs of integers (key, value) and define following member functions in O(1) runtime: void insert(key, value), void delete(key), int get(key), int getRandomKey().</em></p>
+<p>We select this question for mainly two reasons:</p>
+<ul>
+<li>The question was asked by Uber last month and got a lot of discussions.</li>
+<li>It’s a great question to test your <strong>understanding</strong> of basic data structures. Memorizing data structure definition won’t work. It’s all about UNDERSTANDING.</li>
+</ul>
+<h2 id="Analysis-I"><a href="#Analysis-I" class="headerlink" title="Analysis I"></a>Analysis I</h2><p>First and foremost, think about the question by yourself. It’s a great opportunity to test if you have a clear understanding of basic data structure.</p>
+<p>Here we go.</p>
+<p>There are many ways to implement a map, for instance, C++ std library is using <a href="https://en.wikipedia.org/wiki/Red–black_tree" target="_blank" rel="noopener">red-black tree</a> as the underlying system. However, to make operations of O(1) time complexity, hash should be the No.1 thing in your mind and I hope it won’t take you more than a second to come up with this.</p>
+<p>With a hashmap, we can easily achieve O(1) time complexity for <em>Insert, Get</em> and D<em>elete</em>, however, what makes the question interesting is <em>GetRandomKey</em> function. As you can see, a hashmap won’t allow you to get all the keys instantly and you need O(n) time to get a random key.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Map, Hashmap,</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/03/2020-07-03-Map-Implementation/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1030,106 +1116,6 @@
 
 
   
-    <article id="post-2020-06-23-How-Are-Function-Components-Different-from-Classes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/23/2020-06-23-How-Are-Function-Components-Different-from-Classes/">How Are Function Components Different from Classes?</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/23/2020-06-23-How-Are-Function-Components-Different-from-Classes/" class="archive-article-date">
-  	<time datetime="2020-06-23T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>How do React function components differ from React classes?</p>
-<p>For a while, the canonical answer has been that classes provide access to more features (like state). With <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank" rel="noopener">Hooks</a>, that’s not true anymore.</p>
-<p>Maybe you’ve heard one of them is better for performance. Which one? Many of such benchmarks are <a href="https://medium.com/@dan_abramov/this-benchmark-is-indeed-flawed-c3d6b5b6f97f?source=your_stories_page---------------------------" target="_blank" rel="noopener">flawed</a> so I’d be careful <a href="https://github.com/ryardley/hooks-perf-issues/pull/2" target="_blank" rel="noopener">drawing conclusions</a> from them. Performance primarily depends on what the code is doing rather than whether you chose a function or a class. In our observation, the performance differences are negligible, though optimization strategies are a bit <a href="https://reactjs.org/docs/hooks-faq.html#are-hooks-slow-because-of-creating-functions-in-render" target="_blank" rel="noopener">different</a>.</p>
-<p>In either case we <a href="https://reactjs.org/docs/hooks-faq.html#should-i-use-hooks-classes-or-a-mix-of-both" target="_blank" rel="noopener">don’t recommend</a> rewriting your existing components unless you have other reasons and don’t mind being an early adopter. Hooks are still new (like React was in 2014), and some “best practices” haven’t yet found their way into the tutorials.</p>
-<p>So where does that leave us? Are there any fundamental differences between React functions and classes at all? Of course, there are — in the mental model. <strong>In this post, I will look at the biggest difference between them.</strong> It existed ever since function components were <a href="https://reactjs.org/blog/2015/09/10/react-v0.14-rc1.html#stateless-function-components" target="_blank" rel="noopener">introduced</a> in 2015 but it’s often overlooked:</p>
-<blockquote>
-<p><strong>Function components capture the rendered values.</strong></p>
-</blockquote>
-<p>Let’s unpack what this means.</p>
-<hr>
-<p><strong>Note: this post isn’t a value judgement of either classes or functions. I’m only describing the difference between these two programming models in React. For questions about adopting functions more widely, refer to the <a href="https://reactjs.org/docs/hooks-faq.html#adoption-strategy" target="_blank" rel="noopener">Hooks FAQ</a>.</strong></p>
-<hr>
-<p>Consider this component:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ProfilePage</span>(<span class="params">props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> showMessage = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'Followed '</span> + props.user);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> handleClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setTimeout(showMessage, <span class="number">3000</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;button onClick=&#123;handleClick&#125;&gt;Follow&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>It shows a button that simulates a network request with <code>setTimeout</code> and then shows a confirmation alert. For example, if <code>props.user</code> is <code>&#39;Dan&#39;</code>, it will show <code>&#39;Followed Dan&#39;</code> after three seconds. Simple enough.</p>
-<p><em>(Note it doesn’t matter whether I use arrows or function declarations in the above example. <code>function handleClick()</code> would work exactly the same way.)</em></p>
-<p>How do we write it as a class? A naïve translation might look like this:</p>
-<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProfilePage</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  showMessage = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    alert(<span class="string">'Followed '</span> + <span class="keyword">this</span>.props.user);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  handleClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    setTimeout(<span class="keyword">this</span>.showMessage, <span class="number">3000</span>);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClick&#125;</span>&gt;</span>Follow<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>It is common to think these two snippets of code are equivalent. People often freely refactor between these patterns without noticing their implications:</p>
-<p><img src="https://overreacted.io/1d3c7a341ee3fcadc79df00e7d872e4b/wtf.gif" alt="Spot the difference between two versions"></p>
-<p><strong>However, these two snippets of code are subtly different.</strong> Take a good look at them. Do you see the difference yet? Personally, it took me a while to see this.</p>
-<p><strong>There are spoilers ahead so here’s a <a href="https://codesandbox.io/s/pjqnl16lm7" target="_blank" rel="noopener">live demo</a> if you wanna figure it out on your own.</strong> The rest of this article explains the difference and why it matters.</p>
-<hr>
-<p>Before we continue, I’d like to emphasize that the difference I’m describing has nothing to do with React Hooks per se. Examples above don’t even use Hooks!</p>
-<p>It’s all about the difference between functions and classes in React. If you plan to use functions more often in a React app, you might want to understand it.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">React, Function Components, Class Component</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/23/2020-06-23-How-Are-Function-Components-Different-from-Classes/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1258,11 +1244,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1278,7 +1264,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,7 +1272,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1294,15 +1280,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1310,11 +1292,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1322,7 +1304,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1334,19 +1316,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1362,23 +1344,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1390,15 +1360,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1422,11 +1400,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1438,15 +1420,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1462,15 +1448,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,7 +1456,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1486,7 +1464,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1494,7 +1484,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
               <li class="article-tag-list-item">

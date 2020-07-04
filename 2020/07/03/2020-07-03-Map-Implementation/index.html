@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Yanjie&#39;s Blog</title>
+  <title>Map Implementation | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/page/5/index.html">
+  <meta name="description" content="Uber Interview Questions – Map ImplementationIn this week’s coding interview question post, I’m going to analyze one of the best questions I’ve seen in recent interviews. As many people ask for the p">
+<meta name="keywords" content="Map, Hashmap,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Map Implementation">
+<meta property="og:url" content="http://yoursite.com/2020/07/03/2020-07-03-Map-Implementation/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="Uber Interview Questions – Map ImplementationIn this week’s coding interview question post, I’m going to analyze one of the best questions I’ve seen in recent interviews. As many people ask for the p">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://blog.gainlo.co/wp-content/uploads/2016/08/navigation-1048294_640.jpg">
+<meta property="og:image" content="https://lh3.googleusercontent.com/VQjGVdbD7ND06h2bNbp0AtCLc4HsSXKbt8s3Ldb_0JZCw56NfHjNWPdrUqpqi9Vv0tCP1ItXchrNgHxqkVT25Iqz6KxS8WUBfN8bWOvK8SuvlQFQWFw8Ar8IWAhUm3aedFhci_7CilpJydnC3_r7PETCzyk3NPnYvflXgUDHEFbD5RY_GBdCuuFf1r2UHNzO1CCqf38IQytB5fwOdnuDLgYBS7MVr9rkKVWouqKW7-8tOtKInL8gf5RBGTPuxo-XO4ZGURv79czV7naDWR0h8v00R11YevRPbFqMkeBMq1tyExRo7LKfY0ldVRg3-RDr6clA8ClF9IRufVkKvjh30IFZypgz6zQYGw2UfWguA-31dXXQx6bgaZotdorMHQ0kTmDkQIpftdg0lDRx3Feo8XLSWsLiaytweZ120UxfydFAwMY4hwdvRsmiEDMd42gk4frznbsw4NzeExa1xBt9ZpKXAijc0xGnw5__xQoljVbZ0AsN_S1Xy4TXHhlNVMf8faWmEiY29fN9QHmsat-d07vHsC-WHPHKxNQ57_Lsft710YqpDczpWVOueiXYSO8jQ29RS1AHwcfqx2GenN1uatFbTWMa-dI=s986-no">
+<meta property="og:updated_time" content="2020-07-02T08:38:56.188Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Map Implementation">
+<meta name="twitter:description" content="Uber Interview Questions – Map ImplementationIn this week’s coding interview question post, I’m going to analyze one of the best questions I’ve seen in recent interviews. As many people ask for the p">
+<meta name="twitter:image" content="http://blog.gainlo.co/wp-content/uploads/2016/08/navigation-1048294_640.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,558 +150,83 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2020-05-26-JavaScript-Q-&amp;-A-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-2020-07-03-Map-Implementation" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">JavaScript Q &amp; A 2</a>
+    <h1 class="article-title" itemprop="name">
+      Map Implementation
     </h1>
   
 
         
-        <a href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/" class="archive-article-date">
-  	<time datetime="2020-05-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
+        <a href="/2020/07/03/2020-07-03-Map-Implementation/" class="archive-article-date">
+  	<time datetime="2020-07-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JavaScript is the popular programming language of the web. The high-level, interpreted programming language follows a multi-paradigm approach. As such, it has several traits of <a href="https://hackr.io/blog/functional-programming-concepts-advantages-disadvantages-applications" target="_blank" rel="noopener">functional programming</a>.</p>
-<p>If you take a look at the <a href="https://insights.stackoverflow.com/survey/2019" target="_blank" rel="noopener">StackOverflow Developer Survey 2019</a>, you will find that JavaScript tops the list of the most preferred programming language for the 6th consecutive year.</p>
-<p>Almost 70% of all the respondents of the Stackoverflow survey state that they have been using JS for their day-to-day development chores. Hence, following a career path in JavaScript development is lucrative.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-26-JavaScript-Q-&amp;-A" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/25/2020-05-26-JavaScript-Q-&-A/">JavaScript Q &amp; A 1</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/25/2020-05-26-JavaScript-Q-&-A/" class="archive-article-date">
-  	<time datetime="2020-05-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>1. What is JavaScript?</strong></p>
-<p>JavaScript is a client-side as well as server side scripting language that can be inserted into HTML pages and is understood by web browsers. JavaScript is also an Object based Programming language</p>
-<p><strong>2. Enumerate the differences between Java and JavaScript?</strong></p>
-<p>Java is a complete programming language. In contrast, JavaScript is a coded program that can be introduced to HTML pages. These two languages are not at all inter-dependent and are designed for the different intent. Java is an object - oriented programming (OOPS) or structured programming language like C++ or C whereas JavaScript is a client-side scripting language.</p>
-<p><strong>3. What are JavaScript Data Types?</strong></p>
-<p>Following are the JavaScript Data types:</p>
+        <p><img src="http://blog.gainlo.co/wp-content/uploads/2016/08/navigation-1048294_640.jpg" alt="navigation-1048294_640"></p>
+<h1 id="Uber-Interview-Questions-–-Map-Implementation"><a href="#Uber-Interview-Questions-–-Map-Implementation" class="headerlink" title="Uber Interview Questions – Map Implementation"></a>Uber Interview Questions – Map Implementation</h1><p>In this week’s coding interview question post, I’m going to analyze one of the best questions I’ve seen in recent interviews. As many people ask for the pseudo code in order to help them understand the algorithm, I will also include that in the post as well.</p>
+<p>It’s worth to emphasize again that what’s truly important is not the final code/solution, it’s all about the analysis process and I’m going to teach you exactly how to come up with the right idea.</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p><em>Implement data structure “Map” storing pairs of integers (key, value) and define following member functions in O(1) runtime: void insert(key, value), void delete(key), int get(key), int getRandomKey().</em></p>
+<p>We select this question for mainly two reasons:</p>
 <ul>
-<li>Number</li>
-<li>String</li>
-<li>Boolean</li>
-<li>Object</li>
-<li>Undefined</li>
+<li>The question was asked by Uber last month and got a lot of discussions.</li>
+<li>It’s a great question to test your <strong>understanding</strong> of basic data structures. Memorizing data structure definition won’t work. It’s all about UNDERSTANDING.</li>
 </ul>
-<p><strong>4. What is the use of isNaN function?</strong></p>
-<p>isNan function returns true if the argument is not a number otherwise it is false.</p>
-<p><strong>5. Between JavaScript and an ASP script, which is faster?</strong></p>
-<p>JavaScript is faster. JavaScript is a client-side language and thus it does not need the assistance of the web server to execute. On the other hand, ASP is a server-side language and hence is always slower than JavaScript. Javascript now is also a server side language (nodejs).</p>
-        
-      
+<h2 id="Analysis-I"><a href="#Analysis-I" class="headerlink" title="Analysis I"></a>Analysis I</h2><p>First and foremost, think about the question by yourself. It’s a great opportunity to test if you have a clear understanding of basic data structure.</p>
+<p>Here we go.</p>
+<p>There are many ways to implement a map, for instance, C++ std library is using <a href="https://en.wikipedia.org/wiki/Red–black_tree" target="_blank" rel="noopener">red-black tree</a> as the underlying system. However, to make operations of O(1) time complexity, hash should be the No.1 thing in your mind and I hope it won’t take you more than a second to come up with this.</p>
+<p>With a hashmap, we can easily achieve O(1) time complexity for <em>Insert, Get</em> and D<em>elete</em>, however, what makes the question interesting is <em>GetRandomKey</em> function. As you can see, a hashmap won’t allow you to get all the keys instantly and you need O(n) time to get a random key.</p>
+ <a id="more"></a>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/25/2020-05-26-JavaScript-Q-&-A/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-24-What-is-CICD-Continuous-integration-and-continuous-delivery-explained" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/24/2020-05-24-What-is-CICD-Continuous-integration-and-continuous-delivery-explained/">What is CI/CD? Continuous integration and continuous delivery explained</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/24/2020-05-24-What-is-CICD-Continuous-integration-and-continuous-delivery-explained/" class="archive-article-date">
-  	<time datetime="2020-05-24T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="The-CI-CD-pipeline-is-one-of-the-best-practices-for-devops-teams-to-implement-for-delivering-code-changes-more-frequently-and-reliably"><a href="#The-CI-CD-pipeline-is-one-of-the-best-practices-for-devops-teams-to-implement-for-delivering-code-changes-more-frequently-and-reliably" class="headerlink" title="The CI/CD pipeline is one of the best practices for devops teams to implement, for delivering code changes more frequently and reliably"></a>The CI/CD pipeline is one of the best practices for devops teams to implement, for delivering code changes more frequently and reliably</h3><p>Continuous integration (CI) and continuous delivery (CD) embody a culture, set of operating principles, and collection of practices that enable application development teams to deliver code changes more frequently and reliably. The implementation is also known as the <em>CI/CD</em> pipeline. </p>
-<p>CI/CD is <a href="https://www.infoworld.com/article/3268053/devops-best-practices-the-5-methods-you-should-adopt.html" target="_blank" rel="noopener">one of the best practices for devops teams to implement</a>. It is also an <a href="https://www.infoworld.com/article/3237508/what-is-agile-methodology-modern-software-development-explained.html" target="_blank" rel="noopener">agile methodology</a> best practice, as it enables software development teams to focus on meeting business requirements, code quality, and security because deployment steps are automated.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/24/2020-05-24-What-is-CICD-Continuous-integration-and-continuous-delivery-explained/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-23-React" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/23/2020-05-23-React/">React</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/23/2020-05-23-React/" class="archive-article-date">
-  	<time datetime="2020-05-23T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>It has been such a wonderful week! Busy but full of achivements! Special thanks to Xiaowen and Simon. They supported me intellectually and emotionally! I really appreciate it! 🤗</p>
-<p>React is the thing I start to learn more this week. Helpful materials as below. </p>
-<p>React is an indispensable part of the present-day JavaScript frontend web development scenario. For those looking to work with JS on the frontend, having adequacy in React is a must.</p>
-<p>React stood among the <a href="https://hackr.io/blog/best-javascript-frameworks" target="_blank" rel="noopener">leading JavaScript frameworks</a> and probably will continue to do so in 20. Though regarded as a front-end framework, React is actually a front-end library.</p>
-<p>In fact, the whole idea of React as a web development framework is so good that it finished charting as one of the leading web development frameworks in 2020.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">React.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/23/2020-05-23-React/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-22-Create-a-Stored-Procedure" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/">Create a Stored Procedure</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/" class="archive-article-date">
-  	<time datetime="2020-05-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>APPLIES TO:</strong> <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">SQL Server <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Azure SQL Database <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Azure Synapse Analytics (SQL Data Warehouse) <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Parallel Data Warehouse</p>
-<p>This topic describes how to create a Transact-SQL stored procedure by using SQL Server Management Studio and by using the Transact-SQL CREATE PROCEDURE statement.</p>
-<h2 id><a href="#" class="headerlink" title></a></h2><ul>
-<li><strong>Before you begin:</strong> <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#Permissions" target="_blank" rel="noopener">Permissions</a></li>
-<li><strong>To create a procedure, using:</strong> <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#SSMSProcedure" target="_blank" rel="noopener">SQL Server Management Studio</a>, <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#TsqlProcedure" target="_blank" rel="noopener">Transact-SQL</a></li>
-</ul>
-<h2 id="Permissions"><a href="#Permissions" class="headerlink" title="Permissions"></a>Permissions</h2><p>Requires CREATE PROCEDURE permission in the database and ALTER permission on the schema in which the procedure is being created.</p>
-<h2 id="How-to-Create-a-Stored-Procedure"><a href="#How-to-Create-a-Stored-Procedure" class="headerlink" title="How to Create a Stored Procedure"></a>How to Create a Stored Procedure</h2><p>You can use one of the following:</p>
+<h2 id="Analysis-II"><a href="#Analysis-II" class="headerlink" title="Analysis II"></a>Analysis II</h2><p>Many people are stuck here. However, there are a couple of ways to think about this problem.</p>
+<p>First and foremost, since the problem we have is <em>GetRandomKey</em> is of O(n) time complexity instead of O(1), a good technique is the time and space tradeoff. Specifically, if we want to make algorithm faster, we can try using more memory. This gives us some rough ideas like using another data structure (maybe tree, queue, linked list, array etc) to store all the keys separately, or when inserting a pair, we can store some additional data with the pair.</p>
+<p>Secondly, when getting a random key, the most straightforward approach is to have a random number and somehow we map this number to the corresponding key. To make it O(1) time complexity, most likely we’ve got to do the random sampling of an array.</p>
+<p>Things become much clearer. The right approach seems to be when inserting a new pair, we store the new key in a separate array. And when we call <em>GetRandomKey</em>, we can easily to the random sampling of the array in O(1) time complexity. However, a new problem pops up – <em>Delete</em> operation becomes O(n) since you need to delete key from the array as well when removing a pair.</p>
+<h2 id="Analysis-III"><a href="#Analysis-III" class="headerlink" title="Analysis III"></a>Analysis III</h2><p>If you want to achieve O(1) deletion, another option is to use a linked list to store all the keys, however, this won’t give you O(1) for <em>GetRandomKey</em>.</p>
+<p>There’s a trick here. In essence, you need O(n) time for array deletion is because you are keeping its origin order. But this is totally unnecessary in the current problem. Suppose you have [1, 4, 2, 5, 9] in the array and you delete 2. Instead of move 5 and 9 to the left, you can just switch 2 with 9 and reduce the length by 1. So the deletion can be done in O(1) time complexity, although we lose the order.</p>
+<p>In addition, in order to find the deleted key in array instantly, we also need to store the index in the map as well. Take the same array as well, when inserting 4 with value 10, we need to store &lt;4, (10, 1)&gt; in the map where 1 is the index of the key in the array.</p>
+<p>Here is the <strong>pseudo code</strong> (I ignored all the checks like checking if key exists in the map).<br><img src="https://lh3.googleusercontent.com/VQjGVdbD7ND06h2bNbp0AtCLc4HsSXKbt8s3Ldb_0JZCw56NfHjNWPdrUqpqi9Vv0tCP1ItXchrNgHxqkVT25Iqz6KxS8WUBfN8bWOvK8SuvlQFQWFw8Ar8IWAhUm3aedFhci_7CilpJydnC3_r7PETCzyk3NPnYvflXgUDHEFbD5RY_GBdCuuFf1r2UHNzO1CCqf38IQytB5fwOdnuDLgYBS7MVr9rkKVWouqKW7-8tOtKInL8gf5RBGTPuxo-XO4ZGURv79czV7naDWR0h8v00R11YevRPbFqMkeBMq1tyExRo7LKfY0ldVRg3-RDr6clA8ClF9IRufVkKvjh30IFZypgz6zQYGw2UfWguA-31dXXQx6bgaZotdorMHQ0kTmDkQIpftdg0lDRx3Feo8XLSWsLiaytweZ120UxfydFAwMY4hwdvRsmiEDMd42gk4frznbsw4NzeExa1xBt9ZpKXAijc0xGnw5__xQoljVbZ0AsN_S1Xy4TXHhlNVMf8faWmEiY29fN9QHmsat-d07vHsC-WHPHKxNQ57_Lsft710YqpDczpWVOueiXYSO8jQ29RS1AHwcfqx2GenN1uatFbTWMa-dI=s986-no" alt="img"></p>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>There’s no need to summarize any takeaways from this question since the whole analysis process is worth reading twice.</p>
+<p>In fact, I’ve gone through exactly the same thinking process when solving this problem. I thought about all the data structures I’ve mentioned like linked list, tree etc..</p>
+<p>There are a couple questions that are solved in similar ways:</p>
 <ul>
-<li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#SSMSProcedure" target="_blank" rel="noopener">SQL Server Management Studio</a></li>
-<li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#TsqlProcedure" target="_blank" rel="noopener">Transact-SQL</a></li>
+<li>How to design and implement LRU cache</li>
+<li>How to shuffle an array (this uses exactly the same technique in <em>GetRandomKey</em>)</li>
 </ul>
-<h3 id="Using-SQL-Server-Management-Studio"><a href="#Using-SQL-Server-Management-Studio" class="headerlink" title="Using SQL Server Management Studio"></a>Using SQL Server Management Studio</h3><p><strong>To create a procedure in Object Explorer</strong></p>
-<ol>
-<li><p>In <strong>Object Explorer</strong>, connect to an instance of Database Engine and then expand that instance.</p>
-</li>
-<li><p>Expand <strong>Databases</strong>, expand the <strong>AdventureWorks2012</strong> database, and then expand <strong>Programmability</strong>.</p>
-</li>
-<li><p>Right-click <strong>Stored Procedures</strong>, and then click <strong>New Stored Procedure</strong>.</p>
-</li>
-<li><p>On the <strong>Query</strong> menu, click <strong>Specify Values for Template Parameters</strong>.</p>
-</li>
-<li><p>In the <strong>Specify Values for Template Parameters</strong> dialog box, enter the following values for the parameters shown.</p>
-<table>
-<thead>
-<tr>
-<th align="left">Parameter</th>
-<th align="left">Value</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Author</td>
-<td align="left"><em>Your name</em></td>
-</tr>
-<tr>
-<td align="left">Create Date</td>
-<td align="left"><em>Today’s date</em></td>
-</tr>
-<tr>
-<td align="left">Description</td>
-<td align="left">Returns employee data.</td>
-</tr>
-<tr>
-<td align="left">Procedure_name</td>
-<td align="left">HumanResources.uspGetEmployeesTest</td>
-</tr>
-<tr>
-<td align="left">@Param1</td>
-<td align="left">@LastName</td>
-</tr>
-<tr>
-<td align="left">@Datatype_For_Param1</td>
-<td align="left"><strong>nvarchar</strong>(50)</td>
-</tr>
-<tr>
-<td align="left">Default_Value_For_Param1</td>
-<td align="left">NULL</td>
-</tr>
-<tr>
-<td align="left">@Param2</td>
-<td align="left">@FirstName</td>
-</tr>
-<tr>
-<td align="left">@Datatype_For_Param2</td>
-<td align="left"><strong>nvarchar</strong>(50)</td>
-</tr>
-<tr>
-<td align="left">Default_Value_For_Param2</td>
-<td align="left">NULL</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>Click <strong>OK</strong>.</p>
-</li>
-<li><p>In the <strong>Query Editor</strong>, replace the SELECT statement with the following statement:</p>
-<p>SQLCopy</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> FirstName, LastName, Department  </span><br><span class="line"><span class="keyword">FROM</span> HumanResources.vEmployeeDepartmentHistory  </span><br><span class="line"><span class="keyword">WHERE</span> FirstName = @FirstName <span class="keyword">AND</span> LastName = @LastName  </span><br><span class="line">    <span class="keyword">AND</span> EndDate <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>To test the syntax, on the <strong>Query</strong> menu, click <strong>Parse</strong>. If an error message is returned, compare the statements with the information above and correct as needed.</p>
-</li>
-<li><p>To create the procedure, from the <strong>Query</strong> menu, click <strong>Execute</strong>. The procedure is created as an object in the database.</p>
-</li>
-<li><p>To see the procedure listed in Object Explorer, right-click <strong>Stored Procedures</strong> and select <strong>Refresh</strong>.</p>
-</li>
-<li><p>To run the procedure, in Object Explorer, right-click the stored procedure name <strong>HumanResources.uspGetEmployeesTest</strong> and select <strong>Execute Stored Procedure</strong>.</p>
-</li>
-<li><p>In the <strong>Execute Procedure</strong> window, enter Margheim as the value for the parameter @LastName and enter the value Diane as the value for the parameter @FirstName.</p>
-<p>Warning</p>
-</li>
-</ol>
-<p>Validate all user input. Do not concatenate user input before you validate it. Never execute a command constructed from unvalidated user input.</p>
-<h3 id="Using-Transact-SQL"><a href="#Using-Transact-SQL" class="headerlink" title="Using Transact-SQL"></a>Using Transact-SQL</h3><p><strong>To create a procedure in Query Editor</strong></p>
-<ol>
-<li><p>In <strong>Object Explorer</strong>, connect to an instance of Database Engine.</p>
-</li>
-<li><p>From the <strong>File</strong> menu, click <strong>New Query</strong>.</p>
-</li>
-<li><p>Copy and paste the following example into the query window and click <strong>Execute</strong>. This example creates the same stored procedure as above using a different procedure name.</p>
-<p>Copy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">USE AdventureWorks2012;  </span><br><span class="line">GO  </span><br><span class="line">CREATE PROCEDURE HumanResources.uspGetEmployeesTest2   </span><br><span class="line">    @LastName nvarchar(50),   </span><br><span class="line">    @FirstName nvarchar(50)   </span><br><span class="line">AS   </span><br><span class="line"></span><br><span class="line">    SET NOCOUNT ON;  </span><br><span class="line">    SELECT FirstName, LastName, Department  </span><br><span class="line">    FROM HumanResources.vEmployeeDepartmentHistory  </span><br><span class="line">    WHERE FirstName = @FirstName AND LastName = @LastName  </span><br><span class="line">    AND EndDate IS NULL;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>To run the procedure, copy and paste the following example into a new query window and click <strong>Execute</strong>. Notice that different methods of specifying the parameter values are shown.</p>
-<p>Copy</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXECUTE HumanResources.uspGetEmployeesTest2 N&apos;Ackerman&apos;, N&apos;Pilar&apos;;  </span><br><span class="line">-- Or  </span><br><span class="line">EXEC HumanResources.uspGetEmployeesTest2 @LastName = N&apos;Ackerman&apos;, @FirstName = N&apos;Pilar&apos;;  </span><br><span class="line">GO  </span><br><span class="line">-- Or  </span><br><span class="line">EXECUTE HumanResources.uspGetEmployeesTest2 @FirstName = N&apos;Pilar&apos;, @LastName = N&apos;Ackerman&apos;;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="See-Also"><a href="#See-Also" class="headerlink" title="See Also"></a>See Also</h2><p><a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/create-procedure-transact-sql?view=sql-server-ver15" target="_blank" rel="noopener">CREATE PROCEDURE (Transact-SQL)</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQL, Stored Procedure</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-21-Deep-and-Shallow-Copy-in-JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/">Deep and Shallow Copy in JavaScript</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/" class="archive-article-date">
-  	<time datetime="2020-05-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Often, to create an exact copy of an object in JavaScript, we need to create a new Object from existing objects. There are various methods to achieve this. This article is focused on <em>the different ways in which an object can be cloned/copied</em>. But before we dig deep into the details, we need to first understand the concept of deep and shallow copying of objects.</p>
+<p>By the way, if you want to have more guidance from experienced interviewers, you can check [Gainlo](<a href="http://www.gainlo.co/?utm_source=blog&amp;utm_medium=Uber" target="_blank" rel="noopener">http://www.gainlo.co/?utm_source=blog&amp;utm_medium=Uber</a> Interview Question - Map Implementation&amp;utm_campaign=Uber Interview Question - Map Implementation) that allows you to have mock interview with engineers from Google, Facebook etc..</p>
 <hr>
-<h1 id="Understanding-Deep-and-Shallow-Copy"><a href="#Understanding-Deep-and-Shallow-Copy" class="headerlink" title="Understanding Deep and Shallow Copy"></a>Understanding Deep and Shallow Copy</h1><p><img src="https://miro.medium.com/max/60/1*600VH4fZWf3oJB2EaZAPjg.png?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/808/1*600VH4fZWf3oJB2EaZAPjg.png" alt="img"></p>
-<p>Let’s look into the details of the shallow and deep copy. As the image above shows, a shallow copy has common data shared between the copy and the original, whereas the deep copy of an object, does not have any data shared.</p>
-<p>In the object below, we have a few properties which represent value types (name, age, designation) and other properties that represent a complex object (address). Properties containing complex objects are referred to as “reference variable”</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var userName = &#123;</span><br><span class="line">  name: &quot;Mayank Gupta&quot;,</span><br><span class="line">  age: 30,</span><br><span class="line">  designation: &quot;Developer&quot;,</span><br><span class="line">  address: &#123;</span><br><span class="line">    street: &quot;Rohini&quot;,</span><br><span class="line">    city: &quot;Delhi&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://blog.gainlo.co/index.php/2016/08/14/uber-interview-question-map-implementation/" target="_blank" rel="noopener">http://blog.gainlo.co/index.php/2016/08/14/uber-interview-question-map-implementation/</a></p>
 
-<hr>
-<h1 id="Shallow-Copying-Objects"><a href="#Shallow-Copying-Objects" class="headerlink" title="Shallow Copying Objects"></a>Shallow Copying Objects</h1><p>An Object can be considered as <strong>Shallow Copied</strong> when a separate copy of top-level value type properties is assigned to the new Object and the properties that represent an object are copied by reference to the destination folder.</p>
-<p>Summary for Shallow Copy:</p>
-<ol>
-<li>Destination object contains a separate copy of name, age, and designation.</li>
-<li>Reference of Complex Object (“address”) is copied to Destination Object</li>
-</ol>
-<p>In the case of Shallow Copy, the separate copy of the reference variable is not created. The memory reference of the complex Object in Source Object is copied to the Destination Object.</p>
-<hr>
-<h1 id="Disadvantages-of-Shallow-Copy"><a href="#Disadvantages-of-Shallow-Copy" class="headerlink" title="Disadvantages of Shallow Copy"></a>Disadvantages of Shallow Copy</h1><p>The problem with shallow copy is that, if the user makes changes to the complex object (update street property of address object) of the source object (userName), it is also reflected in the Destination Object, since it points to the same memory address.</p>
-<p><em>Changes to the reference objects in source object are also reflected in the Destination Object.</em></p>
-<hr>
-<h1 id="Deep-Copy-of-Object"><a href="#Deep-Copy-of-Object" class="headerlink" title="Deep Copy of Object"></a>Deep Copy of Object</h1><p>The object is said to be deep copied when <em>each property to the object points to separate copy, even if the property points to an object</em> (reference values). A separate copy of the reference object is created for the destination object. In case of deep copy, source object reference properties and destination object reference properties are pointing to different memory locations.</p>
-<p>A summary of deep copy:</p>
-<ul>
-<li>The destination object contains a separate copy of name, age, and designation. Separate instances of value types.</li>
-<li>Separate Reference for Complex Objects (“address”) is created</li>
-</ul>
-<p><em>“Address” property of Source and destination object point to different memory locations.</em> If the user updates the address property in the source object, the updates are not reflected in the destination object.</p>
-        
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -704,7 +237,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Shallow Copy, Deep Copy, JavaScript</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Map, Hashmap,</a>
         		</li>
       		
 		</ul>
@@ -713,16 +246,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/21/2020-05-21-Deep-and-Shallow-Copy-in-JavaScript/">Show All >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/03/2020-07-03-Map-Implementation/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Event-based Communication between Microservices (integration events), Event Bus Implementation(s)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -737,361 +329,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-20-Preflight-Request" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/20/2020-05-20-Preflight-Request/">Preflight Request</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/20/2020-05-20-Preflight-Request/" class="archive-article-date">
-  	<time datetime="2020-05-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>A CORS preflight request is a <a href="https://developer.mozilla.org/en-US/docs/Glossary/CORS" target="_blank" rel="noopener">CORS</a> request that checks to see if the <a href="https://developer.mozilla.org/en-US/docs/Glossary/CORS" target="_blank" rel="noopener">CORS</a> protocol is understood and a server is aware using specific methods and headers.</p>
-<p>It is an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/OPTIONS" target="_blank" rel="noopener"><code>OPTIONS</code></a> request, using three HTTP request headers: <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Method" target="_blank" rel="noopener"><code>Access-Control-Request-Method</code></a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Request-Headers" target="_blank" rel="noopener"><code>Access-Control-Request-Headers</code></a>, and the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Origin" target="_blank" rel="noopener"><code>Origin</code></a> header.</p>
-<p>A preflight request is automatically issued by a browser and in normal cases, front-end developers don’t need to craft such requests themselves. It appears when request is qualified as <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Preflighted_requests" target="_blank" rel="noopener">“to be preflighted”</a> and ommited for <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Simple_requests" target="_blank" rel="noopener">simple requests</a>.</p>
-<p>For example, a client might be asking a server if it would allow a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE" target="_blank" rel="noopener"><code>DELETE</code></a> request, before sending a <code>DELETE</code> request, by using a preflight request:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">OPTIONS /resource/foo </span><br><span class="line">Access-Control-Request-Method: DELETE </span><br><span class="line">Access-Control-Request-Headers: origin, x-requested-with</span><br><span class="line">Origin: https://foo.bar.org</span><br></pre></td></tr></table></figure>
-
-<p>If the server allows it, then it will respond to the preflight request with an <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Methods" target="_blank" rel="noopener"><code>Access-Control-Allow-Methods</code></a> response header, which lists <code>DELETE</code>:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 204 No Content</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Access-Control-Allow-Origin: https://foo.bar.org</span><br><span class="line">Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE</span><br><span class="line">Access-Control-Max-Age: 86400</span><br></pre></td></tr></table></figure>
-
-<p>The preflight response can be optionally cached for the requests created in the same url using <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Max-Age" target="_blank" rel="noopener">Access-Control-Max-Age</a> header like in the above example.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Options, CORS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/20/2020-05-20-Preflight-Request/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Uber-Interview-Questions-–-Map-Implementation"><span class="toc-number">1.</span> <span class="toc-text">Uber Interview Questions – Map Implementation</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">1.1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Question"><span class="toc-number">1.2.</span> <span class="toc-text">Question</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analysis-I"><span class="toc-number">1.3.</span> <span class="toc-text">Analysis I</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analysis-II"><span class="toc-number">1.4.</span> <span class="toc-text">Analysis II</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Analysis-III"><span class="toc-number">1.5.</span> <span class="toc-text">Analysis III</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#-1"><span class="toc-number">1.6.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.7.</span> <span class="toc-text">Summary</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.7.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-2020-05-19-Difference-Between-Client-and-Server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/">Difference Between Client and Server</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/" class="archive-article-date">
-  	<time datetime="2020-05-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>The <strong>main difference</strong> between client and server is that <strong>a client is a machine or a program that requests for services through the web while a server is a machine or a program that provides services to the clients according to the client’s requests.</strong></p>
-<p>[World Wide Web](<a href="https://pediaa.com/what-is-the-difference-between-internet-and-world-wide-web/#World" target="_blank" rel="noopener">https://pediaa.com/what-is-the-difference-between-internet-and-world-wide-web/#World</a> Wide Web) (WWW) allows computers and other devices to communicate with each other. The devices in the network require obtaining various services including data and resources. The WWW works according to the client-server model. The devices or programs that require services are called the clients, and the devices that provide services to the clients are called servers. The clients initiate communication sessions with the servers. The servers wait for incoming requests and respond to them.</p>
-<h3 id="Key-Areas-Covered"><a href="#Key-Areas-Covered" class="headerlink" title="Key Areas Covered"></a>Key Areas Covered</h3><p><strong>1. <a href="https://pediaa.com/difference-between-client-and-server/#Client" target="_blank" rel="noopener">What is a Client</a></strong><br>   <em>– Definition, Functionality</em><br><strong>2. <a href="https://pediaa.com/difference-between-client-and-server/#Server" target="_blank" rel="noopener">What is a Server</a></strong><br>   <em>– Definition, Functionality</em><br><strong>3. [What is the Difference Between Client and Server](<a href="https://pediaa.com/difference-between-client-and-server/#Client" target="_blank" rel="noopener">https://pediaa.com/difference-between-client-and-server/#Client</a> vs Server - Comparison of Key Differences)</strong><br>   <em>– Comparison of Key Differences</em></p>
-<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><p><em>Client, Server</em></p>
-<p><em><img src="https://pediaa.com/wp-content/uploads/2018/09/Difference-Between-Client-and-Server-Comparison-Summary.jpg" alt="Difference Between Client and Server- Comparison Summary"></em></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Client, Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/">The 6 Most Common Types of Logic in Large Applications with Examples</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/" class="archive-article-date">
-  	<time datetime="2020-05-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I am thinking about my Park and Ride project through a system level. Notes for learning: This article is about the Clean Architecture, why we should separate the concerns of large applications into layers, the 6 most common types of application logic, and which layer they belong to.</p>
-<p><a href="https://khalilstemmler.com/articles/categories/software-design" target="_blank" rel="noopener">Software Design</a></p>
-<p><img src="https://khalilstemmler.com/img/blog/software-architecture-design/logic-types.png" alt="img"></p>
-<p>This topic is taken from Solid Book - The Software Architecture &amp; Design Handbook w/ TypeScript + Node.js. <a href="https://solidbook.io/" target="_blank" rel="noopener">Check it out</a> if you like this post.</p>
-<p>How many times have you been working on an application, and in the middle of writing some logic, asked yourself:</p>
-<blockquote>
-<p>“Is this the right place to put this logic?”</p>
-</blockquote>
-<p>There’s a lot that goes into figuring out where something belongs.</p>
-<p>First, you have to understand the domain that you’re working in. That’s how you figure out the <a href="https://khalilstemmler.com/articles/domain-driven-design-intro/" target="_blank" rel="noopener">subdomains</a> in your app.</p>
-<p>Then, for each subdomain, you have to identify all the <a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/application-layer-use-cases/" target="_blank" rel="noopener">use cases</a> and which <strong>actors</strong> are allowed to execute them.</p>
-<p>This is <a href="https://khalilstemmler.com/wiki/conways-law/" target="_blank" rel="noopener">Conway’s Law</a> <strong>in action</strong>.</p>
-<p>What I’ve found to be the most challenging part, especially for developers new to <a href="https://khalilstemmler.com/articles/categories/enterprise-node-type-script/" target="_blank" rel="noopener">enterprise application development</a> that have <a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/when-crud-mvc-isnt-enough/" target="_blank" rel="noopener">moved well-past simple CRUD MVC apps</a>, is implementing a <strong>layered architecture</strong> to separate the concerns of app development.</p>
-<p>The challenge seems to be understanding <em>which layer</em> exactly to place logic.</p>
-<p>In this article, we’ll learn about the following:</p>
-<ul>
-<li><p>Clean Architecture, and why we should separate the concerns of large applications into layers.</p>
-</li>
-<li><p>The 6 most common types of application logic and which layer they belong to.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-17-Manager-Toolbox-Decomposition 2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/17/2020-05-17-Manager-Toolbox-Decomposition 2/">Manager Toolbox Decomposition</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/17/2020-05-17-Manager-Toolbox-Decomposition 2/" class="archive-article-date">
-  	<time datetime="2020-05-17T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>During our meeting, John shared with me his article. Save it here and would keep learning how to lead myself, lead a project, and lead a project.</p>
-<p>Decomposition is a simple tool to keep you and your team from forgetting things. I feel every IT manager should have a basic understanding of decomposition.</p>
-<p>The term is primarily used in project management: a “Work Breakdown Structure” (WBS) is a decomposition of a project into work packages. But, the concept of decomposition can be applied widely, to things like</p>
-<ul>
-<li>Risk breakdown structures,</li>
-<li>Requirements breakdown structures,</li>
-<li>Service level requirements,</li>
-<li>Future-state planning, and</li>
-<li>Professional development plans.</li>
-</ul>
-<p>People often try to do “bottom-up” planning: we need to do thing #1, and thing #2, and thing #3. But it’s easy to miss stuff if you stick to bottom-up planning. Decomposition is a form of top-down planning.</p>
-<p><a href="http://www.heitmanagement.com/wp-content/uploads/2013/06/top-level-decomposition.png" target="_blank" rel="noopener"><img src="http://www.heitmanagement.com/wp-content/uploads/2013/06/top-level-decomposition-300x136.png" alt="One box that says &quot;BIG THING&quot; inside."></a>The top level of a decomposition is the thing to be decomposed.</p>
-<p>A decomposition is much like a document outline. You’re taking a big idea and breaking it into units.</p>
-<p>However, in a decomposition you guarantee that each level sums to the one above it. You guarantee that you’re not leaving anything out.</p>
-<p>Decomposition starts with the top: what’s the big idea, goal, or thing that we want to break down?</p>
-<p>You then take your top-level item (say, a project) and divide it into smaller and smaller units, all the while guaranteeing that each sub-level is a 100% representation of the previous level:</p>
-<p><a href="http://www.heitmanagement.com/wp-content/uploads/2013/06/second-level-decomposition.png" target="_blank" rel="noopener"><img src="http://www.heitmanagement.com/wp-content/uploads/2013/06/second-level-decomposition.png" alt="Top box &quot;BIG THING&quot; with four boxes labeled &quot;PART #1&quot;, &quot;PART #2&quot;, &quot;PART #3&quot;, &quot;PART #4&quot; and a note saying that the &quot;PART&quot; boxes equate to 100% of the &quot;BIG THING&quot; box."></a>When you decompose something, the components you list must equate to 100% of what is decomposed. In other words, you’re guaranteeing you haven’t left something out.</p>
-<p><a href="http://www.heitmanagement.com/wp-content/uploads/2013/06/third-level-decomposition.png" target="_blank" rel="noopener"><img src="http://www.heitmanagement.com/wp-content/uploads/2013/06/third-level-decomposition.png" alt="&quot;PART #3&quot; box has three boxes pointing to it: &quot;SUB-PART #3A&quot;, &quot;SUB-PART #3B&quot;, and &quot;SUB-PART #3C&quot;. It is noted that these sub-parts are 100% of &quot;PART #3&quot;."></a>And so on and so on: components are broken down into smaller and smaller units. Each time, the smaller units sum to the big unit.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Management, PM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/17/2020-05-17-Manager-Toolbox-Decomposition 2/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1117,8 +380,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
