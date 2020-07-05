@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 83</a>
+<a>Total Number of Articles: 85</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,178 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/">What are HashMaps— You Might be Asked These in an Interview — Examples in Java</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/" class="archive-article-date">
+  	<time datetime="2020-07-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://miro.medium.com/max/1923/1*mWZUJP_0lKFDACHxfPQCCw.jpeg" alt="img"></p>
+<p>Let’s quickly go over what a <code>HashMap</code> is.</p>
+<p>Simply speaking it is a <code>Collection</code> object which uses <code>Key</code> and <code>Value</code> pairs, where both parameters are objects declared on creation. Each <code>Key</code> maps to a corresponding <code>Value</code>. E.g. the <code>key</code> “foo” maps the <code>value</code> “bar”.</p>
+<p>It is declared as <code>HashMap&lt;Key, Value&gt;</code>.</p>
+<p>Consider you’re making a <code>HashMap</code> of players on a football team, and each of them is identified by a unique number. We would create this map by using an Integer as the <code>Key</code>, and a <code>String</code> of the player’s name as the <code>Value</code>.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, Integer&gt; playerMap = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();<span class="comment">// Put players into our HashMap where they can be found with an int</span></span><br><span class="line">playerMap.put(<span class="number">23</span>, <span class="string">"David Beckham"</span>);</span><br><span class="line">playerMap.put(<span class="number">7</span>, <span class="string">"Cristiano Ronaldo"</span>);</span><br><span class="line">playerMap.put(<span class="number">10</span>, <span class="string">"Lionel Mess"</span>);</span><br><span class="line">playerMap.put(<span class="number">31</span>, <span class="string">"Neymar"</span>);<span class="comment">// Return a specific player</span></span><br><span class="line">System.out.print(playerMap.get(<span class="number">23</span>)); <span class="comment">// "David Beckham"</span></span><br></pre></td></tr></table></figure>
+
+<p>As a note, a <code>HashMap</code> does not make any guarantees of order or sorting. When you add a <code>Key</code> to your <code>HashMap</code>, there is no reason it will be returned to you at the same location or even at a constant speed. As well, <code>HashMaps</code> are not thread safe so if you’re working in a multi-threaded environment consider using a different data object. But we’ll get to that later.</p>
+<p><img src="https://miro.medium.com/max/60/1*dhQS6xzZP9tD5K49qwnlWA.jpeg?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/896/1*dhQS6xzZP9tD5K49qwnlWA.jpeg" alt="img"></p>
+<p>Another example: Linking Keys (Subway Stations) to Values (Travel Time)</p>
+<p>Previously in versions of Java &lt; 8, finding values of large <code>HashMaps</code> with the .<code>get()</code> method would have a worse case complexity of <code>O(n)</code>. However, since Java 8 it is now <code>O(log N)</code>. So there has been a substantial performance improvement, which make this data structure quite attractive to use.</p>
+<p><strong>Creating Different Types of HashMap</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// You'll need to import a HashMap for this to work in your</span></span><br><span class="line"><span class="comment">// Java project</span></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap; <span class="comment">// Let's create a bunch of HashMaps// Creating vanilla HashMap</span></span><br><span class="line">HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">         </span><br><span class="line"><span class="comment">// Creating HashMap with a capacity ... in this case 100</span></span><br><span class="line">Integer capacity = <span class="number">100</span>;   </span><br><span class="line">HashMap&lt;String, Integer&gt; map_2 = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;(capacity);</span><br><span class="line">         </span><br><span class="line"><span class="comment">// Creating HashMap with capacity and load factor</span></span><br><span class="line">Integer capacity = <span class="number">100</span>;</span><br><span class="line">Double loadFactor = .<span class="number">5</span>       </span><br><span class="line">HashMap&lt;String, Integer&gt; map3 = <span class="keyword">new</span> HashMap&lt;String, Integer (capacity, loadFactor);</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">HashMap</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-04-Transitioning-from-React-Web-to-React-Native-Development" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/04/2020-07-04-Transitioning-from-React-Web-to-React-Native-Development/">Transitioning from React Web to React Native Development</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/04/2020-07-04-Transitioning-from-React-Web-to-React-Native-Development/" class="archive-article-date">
+  	<time datetime="2020-07-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://hackernoon.com/hn-images/1*ghfEivqtCdLAFXbgBDEoyw.png" alt="img"></p>
+<p>In the past few months I’ve been doing work with <a href="https://hackernoon.com/tagged/react" target="_blank" rel="noopener">React</a> Native, which is a change of pace from the React web apps I was more familiar with developing. Now that i’ve gained experience with React Native, I’m going to explain a bit how React Native differs from React for the web, and what to expect when developing with React Native.</p>
+<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>Let’s first briefly talk about React. React is a JavaScript library used for building user interfaces. It was initially released by <a href="https://hackernoon.com/tagged/facebook" target="_blank" rel="noopener">Facebook</a> in 2013. React uses a concept of a Virtual DOM to represent how your UI should look like while the state of your application changes.</p>
+<p><img src="https://hackernoon.com/hn-images/1*AHE0q2FKAGyosXYsalw_Lw.png" alt="img"></p>
+<p>Code screenshot of a React component’s render method</p>
+<p><img src="https://hackernoon.com/hn-images/1*2uxMazccV10IabaCXH8G-Q.png" alt="img"></p>
+<p>Check out this sick React web app I built</p>
+<h3 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h3><p>React Native is a mobile framework used to build out mobile apps with JavaScript. It, unsurprisingly, uses the React library to construct the UI components as well as define an application’s business logic. It was initially released, again by Facebook, in 2015. One novel feature React Native development provides that standard native development doesn’t is its live reload feature that can quickly re-compile and serve a bundled javascript file after making changes in the code. This feature has been available on the web for some time, but in the mobile development sphere, it was a new concept.</p>
+<p><img src="https://hackernoon.com/hn-images/1*eNm5UV3oGLswYoJjmp-Ncg.png" alt="img"></p>
+<p>Code screenshot of a React Native component’s render method</p>
+<p><img src="https://hackernoon.com/hn-images/1*JRPzPK5yYgWHsM3nGUm6Uw.png" alt="img"></p>
+<p>Check out this sick React Native app I built</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">React Web, React Native</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/04/2020-07-04-Transitioning-from-React-Web-to-React-Native-Development/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-03-Map-Implementation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -923,199 +1095,6 @@
 
 
   
-    <article id="post-2020-06-25-Uncontrolled-Components" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/25/2020-06-25-Uncontrolled-Components/">Uncontrolled Components</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/25/2020-06-25-Uncontrolled-Components/" class="archive-article-date">
-  	<time datetime="2020-06-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Uncontrolled-Components"><a href="#Uncontrolled-Components" class="headerlink" title="Uncontrolled Components"></a>Uncontrolled Components</h1><p>In most cases, we recommend using <a href="https://reactjs.org/docs/forms.html#controlled-components" target="_blank" rel="noopener">controlled components</a> to implement forms. In a controlled component, form data is handled by a React component. The alternative is uncontrolled components, where form data is handled by the DOM itself.</p>
-<p>To write an uncontrolled component, instead of writing an event handler for every state update, you can <a href="https://reactjs.org/docs/refs-and-the-dom.html" target="_blank" rel="noopener">use a ref</a> to get form values from the DOM.</p>
-<p>For example, this code accepts a single name in an uncontrolled component:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NameForm</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.handleSubmit = <span class="keyword">this</span>.handleSubmit.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.input = React.createRef();  &#125;</span><br><span class="line"></span><br><span class="line">  handleSubmit(event) &#123;</span><br><span class="line">    alert(<span class="string">'A name was submitted: '</span> + <span class="keyword">this</span>.input.current.value);    event.preventDefault();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">          Name:</span><br><span class="line">          &lt;input type=<span class="string">"text"</span> ref=&#123;<span class="keyword">this</span>.input&#125; /&gt;        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input type="submit" value="Submit" /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>Since an uncontrolled component keeps the source of truth in the DOM, it is sometimes easier to integrate React and non-React code when using uncontrolled components. It can also be slightly less code if you want to be quick and dirty. Otherwise, you should usually use controlled components.</p>
-<p>If it’s still not clear which type of component you should use for a particular situation, you might find <a href="https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/" target="_blank" rel="noopener">this article on controlled versus uncontrolled inputs</a> to be helpful.</p>
-<h3 id="Default-Values"><a href="#Default-Values" class="headerlink" title="Default Values"></a>Default Values</h3><p>In the React rendering lifecycle, the <code>value</code> attribute on form elements will override the value in the DOM. With an uncontrolled component, you often want React to specify the initial value, but leave subsequent updates uncontrolled. To handle this case, you can specify a <code>defaultValue</code> attribute instead of <code>value</code>.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">      &lt;label&gt;</span><br><span class="line">        Name:</span><br><span class="line">        &lt;input</span><br><span class="line">          defaultValue=<span class="string">"Bob"</span>          type=<span class="string">"text"</span></span><br><span class="line">          ref=&#123;<span class="keyword">this</span>.input&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">      &lt;input type="submit" value="Submit" /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>Likewise, <code>&lt;input type=&quot;checkbox&quot;&gt;</code> and <code>&lt;input type=&quot;radio&quot;&gt;</code> support <code>defaultChecked</code>, and <code>&lt;select&gt;</code> and <code>&lt;textarea&gt;</code> supports <code>defaultValue</code>.</p>
-<h2 id="The-file-input-Tag"><a href="#The-file-input-Tag" class="headerlink" title="The file input Tag"></a>The file input Tag</h2><p>In HTML, an <code>&lt;input type=&quot;file&quot;&gt;</code> lets the user choose one or more files from their device storage to be uploaded to a server or manipulated by JavaScript via the <a href="https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications" target="_blank" rel="noopener">File API</a>.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">"file"</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<p>In React, an <code>&lt;input type=&quot;file&quot; /&gt;</code> is always an uncontrolled component because its value can only be set by a user, and not programmatically.</p>
-<p>You should use the File API to interact with the files. The following example shows how to create a <a href="https://reactjs.org/docs/refs-and-the-dom.html" target="_blank" rel="noopener">ref to the DOM node</a> to access file(s) in a submit handler:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FileInput</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">    <span class="keyword">this</span>.handleSubmit = <span class="keyword">this</span>.handleSubmit.bind(<span class="keyword">this</span>);</span><br><span class="line">    <span class="keyword">this</span>.fileInput = React.createRef();  &#125;</span><br><span class="line">  handleSubmit(event) &#123;</span><br><span class="line">    event.preventDefault();</span><br><span class="line">    alert(</span><br><span class="line">      <span class="string">`Selected file - <span class="subst">$&#123;<span class="keyword">this</span>.fileInput.current.files[<span class="number">0</span>].name&#125;</span>`</span>    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">        &lt;label&gt;</span><br><span class="line">          Upload file:</span><br><span class="line">          &lt;input type=<span class="string">"file"</span> ref=&#123;<span class="keyword">this</span>.fileInput&#125; /&gt;        &lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;br /</span>&gt;</span><br><span class="line">        &lt;button type=<span class="string">"submit"</span>&gt;Submit&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>form&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;FileInput /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://reactjs.org/docs/uncontrolled-components.html" target="_blank" rel="noopener">https://reactjs.org/docs/uncontrolled-components.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React, Uncontrolled Components</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/25/2020-06-25-Uncontrolled-Components/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-23-前端开发工程师必备的-Nginx-知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/24/2020-06-23-前端开发工程师必备的-Nginx-知识/">前端开发工程师必备的 Nginx 知识</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/24/2020-06-23-前端开发工程师必备的-Nginx-知识/" class="archive-article-date">
-  	<time datetime="2020-06-24T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="nginx在应用程序中的作用"><a href="#nginx在应用程序中的作用" class="headerlink" title="nginx在应用程序中的作用"></a>nginx在应用程序中的作用</h2><ul>
-<li>解决跨域</li>
-<li>请求过滤</li>
-<li>配置gzip</li>
-<li>负载均衡</li>
-<li>静态资源服务器</li>
-</ul>
-<blockquote>
-<p>nginx是一个高性能的HTTP和反向代理服务器，也是一个通用的TCP/UDP代理服务器，最初由俄罗斯人Igor Sysoev编写。</p>
-</blockquote>
-<p>nginx现在几乎是众多大型网站的必用技术，大多数情况下，我们不需要亲自去配置它，但是了解它在应用程序中所担任的角色，以及如何解决这些问题是非常必要的。</p>
-<p>下面我将从nginx在企业中的真实应用来解释nginx在应用程序中起到的作用。</p>
-<p>为了便于理解，首先先来了解一下一些基础知识，<code>nginx是一个高性能的反向代理服务器</code>那么什么是反向代理呢？</p>
-<h2 id="正向代理与反向代理"><a href="#正向代理与反向代理" class="headerlink" title="正向代理与反向代理"></a>正向代理与反向代理</h2><p>代理是在服务器和客户端之间假设的一层服务器，代理将接收客户端的请求并将它转发给服务器，然后将服务端的响应转发给客户端。</p>
-<p>不管是正向代理还是反向代理，实现的都是上面的功能。</p>
-<p><img src="https://pic3.zhimg.com/80/v2-00451a322567691c73d81cb669731f56_720w.png" alt="img"></p>
-<h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h3><blockquote>
-<p><strong>正向代理</strong>，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。</p>
-</blockquote>
-<p><strong>正向代理</strong>是为我们服务的，即为客户端服务的，客户端可以根据正向代理访问到它本身无法访问到的服务器资源。</p>
-<p><strong>正向代理</strong>对我们是透明的，对服务端是非透明的，即服务端并不知道自己收到的是来自代理的访问还是来自真实客户端的访问。</p>
-<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><blockquote>
-<p><strong>反向代理</strong>（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。</p>
-</blockquote>
-<p><strong>反向代理</strong>是为服务端服务的，反向代理可以帮助服务器接收来自客户端的请求，帮助服务器做请求转发，负载均衡等。</p>
-<p><strong>反向代理</strong>对服务端是透明的，对我们是非透明的，即我们并不知道自己访问的是代理服务器，而服务器知道反向代理在为他服务。</p>
-<p><img src="https://pic2.zhimg.com/80/v2-1fc2fa64ea5ccc33a2dda880eacbc67d_720w.png" alt="img"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/24/2020-06-23-前端开发工程师必备的-Nginx-知识/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1220,11 +1199,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1244,7 +1223,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1256,7 +1235,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1264,7 +1243,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,11 +1251,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1288,11 +1271,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1312,6 +1295,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
               </li>
              
@@ -1324,7 +1311,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1332,7 +1323,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1344,7 +1335,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1352,11 +1343,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,11 +1355,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1377,6 +1372,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1400,15 +1399,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1420,7 +1415,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1429,10 +1424,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1445,6 +1436,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1472,19 +1467,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
