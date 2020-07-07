@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 85</a>
+<a>Total Number of Articles: 86</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,86 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-16-Higher-Order-Components" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/16/2020-06-16-Higher-Order-Components/">Higher-Order Components</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/16/2020-06-16-Higher-Order-Components/" class="archive-article-date">
+  	<time datetime="2020-06-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API, per se. They are a pattern that emerges from React’s compositional nature.</p>
+<p>Concretely, <strong>a higher-order component is a function that takes a component and returns a new component.</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const EnhancedComponent = higherOrderComponent(WrappedComponent);</span><br></pre></td></tr></table></figure>
+
+<p>Whereas a component transforms props into UI, a higher-order component transforms a component into another component.</p>
+<p>HOCs are common in third-party React libraries, such as Redux’s <a href="https://github.com/reduxjs/react-redux/blob/master/docs/api/connect.md#connect" target="_blank" rel="noopener"><code>connect</code></a> and Relay’s <a href="http://facebook.github.io/relay/docs/en/fragment-container.html" target="_blank" rel="noopener"><code>createFragmentContainer</code></a>.</p>
+<p>In this document, we’ll discuss why higher-order components are useful, and how to write your own.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Higher-Order Component, Higher-Order Function</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/16/2020-06-16-Higher-Order-Components/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-15-星空🌃,相遇🌈,感恩-世间美好-与你环环相扣" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -637,6 +717,88 @@
 
 
   
+    <article id="post-2020-06-09-Yarn-vs-NPM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/09/2020-06-09-Yarn-vs-NPM/">Yarn vs NPM</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/09/2020-06-09-Yarn-vs-NPM/" class="archive-article-date">
+  	<time datetime="2020-06-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Yarn is a new JavaScript package manager built by Facebook, Google, Exponent and Tilde. As can be read in the <a href="https://code.facebook.com/posts/1840075619545360" target="_blank" rel="noopener">official announcement</a>, its purpose is to solve a handful of problems that these teams faced with npm, namely:</p>
+<ul>
+<li>installing packages wasn’t fast/consistent enough, and</li>
+<li>there were security concerns, as npm allows packages to run code on installation.</li>
+</ul>
+<p>But, don’t be alarmed! This is not an attempt to replace npm completely. Yarn is only a new CLI client that fetches modules from the npm registry. Nothing about the registry itself will change — you’ll still be able to fetch and publish packages as normal.</p>
+<p>Should everyone jump aboard the Yarn hype train now? Chances are you never encountered these problems with npm. In this article, we’re going to compare npm and Yarn, so you can decide which is best for you.</p>
+<p><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/10/1476870188yarn.jpg" alt="Yarn logo"></p>
+<h2 id="Yarn-vs-npm-Functional-Differences"><a href="#Yarn-vs-npm-Functional-Differences" class="headerlink" title="Yarn vs npm: Functional Differences"></a>Yarn vs npm: Functional Differences</h2><p>At a first glance Yarn and npm appear similar. As we peek under the hood though, we realize what makes Yarn different.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yarn, npm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/09/2020-06-09-Yarn-vs-NPM/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020-06-09-Git-Debug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -732,88 +894,6 @@
 
 
   
-    <article id="post-2020-06-09-Yarn-vs-NPM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/2020-06-09-Yarn-vs-NPM/">Yarn vs NPM</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/09/2020-06-09-Yarn-vs-NPM/" class="archive-article-date">
-  	<time datetime="2020-06-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Yarn is a new JavaScript package manager built by Facebook, Google, Exponent and Tilde. As can be read in the <a href="https://code.facebook.com/posts/1840075619545360" target="_blank" rel="noopener">official announcement</a>, its purpose is to solve a handful of problems that these teams faced with npm, namely:</p>
-<ul>
-<li>installing packages wasn’t fast/consistent enough, and</li>
-<li>there were security concerns, as npm allows packages to run code on installation.</li>
-</ul>
-<p>But, don’t be alarmed! This is not an attempt to replace npm completely. Yarn is only a new CLI client that fetches modules from the npm registry. Nothing about the registry itself will change — you’ll still be able to fetch and publish packages as normal.</p>
-<p>Should everyone jump aboard the Yarn hype train now? Chances are you never encountered these problems with npm. In this article, we’re going to compare npm and Yarn, so you can decide which is best for you.</p>
-<p><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/10/1476870188yarn.jpg" alt="Yarn logo"></p>
-<h2 id="Yarn-vs-npm-Functional-Differences"><a href="#Yarn-vs-npm-Functional-Differences" class="headerlink" title="Yarn vs npm: Functional Differences"></a>Yarn vs npm: Functional Differences</h2><p>At a first glance Yarn and npm appear similar. As we peek under the hood though, we realize what makes Yarn different.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yarn, npm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/09/2020-06-09-Yarn-vs-NPM/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-2020-06-08-Git" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -868,87 +948,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/06/08/2020-06-08-Git/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-07-Node.js-Express-FrameWork-Tutorial" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/07/2020-06-07-Node.js-Express-FrameWork-Tutorial/">Node.js Express FrameWork Tutorial</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/07/2020-06-07-Node.js-Express-FrameWork-Tutorial/" class="archive-article-date">
-  	<time datetime="2020-06-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>In this tutorial, we will study the Express framework. This framework is built in such a way that it acts as a minimal and flexible Node.js web application framework, providing a robust set of features for building single and multipage, and hybrid web application.</p>
-<p>In this tutorial, you will learn-</p>
-<ul>
-<li><a href="https://www.guru99.com/node-js-express.html#1" target="_blank" rel="noopener">What is Express.js?</a></li>
-<li><a href="https://www.guru99.com/node-js-express.html#2" target="_blank" rel="noopener">Installing and using Express</a></li>
-<li><a href="https://www.guru99.com/node-js-express.html#3" target="_blank" rel="noopener">What are Routes?</a></li>
-<li><a href="https://www.guru99.com/node-js-express.html#4" target="_blank" rel="noopener">Sample Web server using express.js</a></li>
-</ul>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Node.js, Express FrameWork</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/07/2020-06-07-Node.js-Express-FrameWork-Tutorial/">Show All >></a>
         </p>
       
 
@@ -1082,11 +1081,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1114,11 +1113,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1126,11 +1125,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1142,11 +1141,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1166,11 +1165,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1186,15 +1185,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1202,7 +1193,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,15 +1209,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1230,11 +1221,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1242,11 +1237,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1259,6 +1254,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1298,11 +1297,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1323,6 +1322,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
