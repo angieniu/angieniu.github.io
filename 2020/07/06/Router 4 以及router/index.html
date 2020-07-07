@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>React Notes | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Router 4: 以及router  url/Login url/home 1) 本质 url - ui(Component)对应 2) Browser Router包裹 App 3) 使用:  设置 key-value ​         url - ui ​      &amp;lt;Link to: ‘url’&amp;gt; -&amp;gt; to location  ​      &amp;lt;Route  p">
+  <meta name="description" content="Router 4 以及Routerurl/Login url/home 1) 本质 url - ui(Component)对应 2) Browser Router包裹 App 3) 使用:  设置 key-value ​         url - ui ​      &amp;lt;Link to: ‘url’&amp;gt; -&amp;gt; to location  ​      &amp;lt;Route  path:">
 <meta name="keywords" content="React, Router">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Notes">
 <meta property="og:url" content="http://yoursite.com/2020/07/06/Router 4 以及router/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="Router 4: 以及router  url/Login url/home 1) 本质 url - ui(Component)对应 2) Browser Router包裹 App 3) 使用:  设置 key-value ​         url - ui ​      &amp;lt;Link to: ‘url’&amp;gt; -&amp;gt; to location  ​      &amp;lt;Route  p">
+<meta property="og:description" content="Router 4 以及Routerurl/Login url/home 1) 本质 url - ui(Component)对应 2) Browser Router包裹 App 3) 使用:  设置 key-value ​         url - ui ​      &amp;lt;Link to: ‘url’&amp;gt; -&amp;gt; to location  ​      &amp;lt;Route  path:">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-07-07T04:34:26.347Z">
+<meta property="og:updated_time" content="2020-07-07T04:42:08.773Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Notes">
-<meta name="twitter:description" content="Router 4: 以及router  url/Login url/home 1) 本质 url - ui(Component)对应 2) Browser Router包裹 App 3) 使用:  设置 key-value ​         url - ui ​      &amp;lt;Link to: ‘url’&amp;gt; -&amp;gt; to location  ​      &amp;lt;Route  p">
+<meta name="twitter:description" content="Router 4 以及Routerurl/Login url/home 1) 本质 url - ui(Component)对应 2) Browser Router包裹 App 3) 使用:  设置 key-value ​         url - ui ​      &amp;lt;Link to: ‘url’&amp;gt; -&amp;gt; to location  ​      &amp;lt;Route  path:">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -63,7 +63,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 86</a>
+<a>Total Number of Articles: 87</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -167,10 +167,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>Router 4: 以及router</li>
-</ol>
-<p>url/Login</p>
+        <h2 id="Router-4-以及Router"><a href="#Router-4-以及Router" class="headerlink" title="Router 4 以及Router"></a>Router 4 以及Router</h2><p>url/Login</p>
 <p>url/home</p>
 <p>1) 本质 url - ui(Component)对应</p>
 <p>2) Browser Router包裹 App</p>
@@ -179,60 +176,30 @@
 <p>​         url - ui</p>
 <p>​      &lt;Link to: ‘url’&gt; -&gt; to location </p>
 <p>​      &lt;Route  path: ‘/‘ , component直接跟组件名不能传值或者通过需要传值的话用render实现路由 diff &gt;-&gt; what to see 路由组件</p>
-<ol start="2">
-<li><p>路由切换:</p>
-<p>[Method1]</p>
+<h2 id="路由切换"><a href="#路由切换" class="headerlink" title="路由切换:"></a>路由切换:</h2><p>[Method1]</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Login.js</span></span><br><span class="line">&lt;link to=<span class="string">"/register"</span>&gt;register now!&lt;<span class="regexp">/link&gt;</span></span><br></pre></td></tr></table></figure>
 
+<p>[Method2]history    this.props.history.push或者this.props.replay</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Register.js</span></span><br><span class="line"><span class="keyword">this</span>.props.history.push(<span class="string">'./login'</span>)</span><br></pre></td></tr></table></figure>
 
-
-</li>
-</ol>
-<p>   [Method2]history    this.props.history.push或者this.props.replay</p>
-   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Register.js</span></span><br><span class="line"><span class="keyword">this</span>.props.history.push(<span class="string">'./login'</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p>   vs redirect: 重定向</p>
-<p>   一个url: localhost3000/login</p>
-<p>   ​                                      /register</p>
-<p>   ​                                     /home</p>
-<p>   ​                                    /               redirect到任何的 比如login页面</p>
-<ol start="3">
-<li><p>ant deisng: form component:</p>
-<p>1) hoc -&gt; 通过form.create把form对象传给form组件</p>
+<p>vs redirect: 重定向</p>
+<p>一个url: localhost3000/login</p>
+<p>​                                      /register</p>
+<p>​                                     /home</p>
+<p>​                                    /               redirect到任何的 比如login页面</p>
+<h2 id="Ant-Deisng-Form-Component"><a href="#Ant-Deisng-Form-Component" class="headerlink" title="Ant Deisng: Form Component"></a>Ant Deisng: Form Component</h2><p>1) hoc -&gt; 通过form.create把form对象传给form组件</p>
 <p>2) 设计表单验证: 前端 -&gt; 时间两次验证 1）每次输入完 2) submit</p>
 <p>​                      后端</p>
 <p>3) 设计表单数据收集: form下面的方法</p>
-</li>
-</ol>
-<ol start="4">
-<li>radio group: controlled component. value onchange.</li>
-</ol>
-<ol start="5">
-<li><p>module: 点击button，弹出对话框。使用了react方法获取map组件, react ref, ref三种用法</p>
+<h2 id="Radio-Group"><a href="#Radio-Group" class="headerlink" title="Radio Group"></a>Radio Group</h2><p>controlled component. value onchange.</p>
+<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p>点击button，弹出对话框。使用了react方法获取map组件, react ref, ref三种用法</p>
 <p>1) <c ref> this.refs 不用了</c></p>
 <p>2) createRef =&gt; myref   this.myref.current</p>
 <p>3) ref:{call back} 获取ref对象</p>
-</li>
-</ol>
-<ol start="6">
-<li>Googlemap: hoc 2次: GoogleMap 和ScriptJS</li>
-</ol>
-<ol start="7">
-<li>React-Gallery</li>
-</ol>
-<ol start="8">
-<li><p>Local Storage的使用:</p>
-<p>setItem to store data 存</p>
+<h2 id="Google-Map"><a href="#Google-Map" class="headerlink" title="Google Map"></a>Google Map</h2><p>hoc 2次: GoogleMap 和ScriptJS</p>
+<h2 id="React-Gallery"><a href="#React-Gallery" class="headerlink" title="React-Gallery"></a>React-Gallery</h2><h2 id="Local-Storage的使用"><a href="#Local-Storage的使用" class="headerlink" title="Local Storage的使用"></a>Local Storage的使用</h2><p>setItem to store data 存</p>
 <p>getItem 取data</p>
-</li>
-</ol>
-<ol start="9">
-<li>react hooks： useState, useEffect, useContext, reducer, callback, memo</li>
-</ol>
+<h2 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h2><p>useState, useEffect, useContext, reducer, callback, memo</p>
 <ol start="10">
 <li><p>function component: 可以使用state 在react 16开始</p>
 <p>所以function component + hooks写法简洁</p>
@@ -252,19 +219,11 @@
 <ol start="13">
 <li>CSS 需要掌握的: 两栏三栏，position, absolute, display, flex, relative, absolute, display block, inline block.</li>
 </ol>
-<ol start="15">
-<li><p>路由: </p>
-<p>1) 路由组件</p>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>1) 路由组件</p>
 <p>2) 非路由组件：嵌套在路由组件中</p>
-</li>
-</ol>
-<ol start="16">
-<li><p>网页转换成手机端</p>
-<p>react to react native</p>
+<h2 id="网页转换成手机端"><a href="#网页转换成手机端" class="headerlink" title="网页转换成手机端"></a>网页转换成手机端</h2><p>react to react native</p>
 <p>or media queries programmatically in react 稍微复杂</p>
 <p>or ant design: layout 可以实现 responsive development 使用不多</p>
-</li>
-</ol>
 
       
 
@@ -369,6 +328,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2020/07/06/2020-07-06-Level-up-your-React-architecture-with-MVVM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Level up your React architecture with MVVM
+        
+      </div>
+    </a>
+  
   
     <a href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">What are HashMaps— You Might be Asked These in an Interview — Examples in Java</div>
@@ -398,7 +366,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Router-4-以及Router"><span class="toc-number">1.</span> <span class="toc-text">Router 4 以及Router</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由切换"><span class="toc-number">2.</span> <span class="toc-text">路由切换:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ant-Deisng-Form-Component"><span class="toc-number">3.</span> <span class="toc-text">Ant Deisng: Form Component</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Radio-Group"><span class="toc-number">4.</span> <span class="toc-text">Radio Group</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Module"><span class="toc-number">5.</span> <span class="toc-text">Module</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Map"><span class="toc-number">6.</span> <span class="toc-text">Google Map</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React-Gallery"><span class="toc-number">7.</span> <span class="toc-text">React-Gallery</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Local-Storage的使用"><span class="toc-number">8.</span> <span class="toc-text">Local Storage的使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#React-Hooks"><span class="toc-number">9.</span> <span class="toc-text">React Hooks</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由"><span class="toc-number">10.</span> <span class="toc-text">路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网页转换成手机端"><span class="toc-number">11.</span> <span class="toc-text">网页转换成手机端</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -541,19 +509,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -565,11 +533,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,15 +549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -597,15 +561,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,6 +589,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
@@ -633,15 +605,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -653,15 +617,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,7 +625,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -681,6 +645,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
@@ -689,19 +657,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -717,11 +689,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -745,11 +717,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -757,11 +729,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -777,11 +749,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -789,11 +761,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -6,15 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020/4 | Yanjie&#39;s Blog</title>
+  <title>Level up your React architecture with MVVM | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Yanjie&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2020/04/index.html">
+  <meta name="description" content="Have you ever opened a project and left traumatised because you saw an incomprehensible and unmaintainable JavaScript code that you don’t want to touch even with an isolated rod? Because if you touch">
+<meta name="keywords" content="React, MVVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Level up your React architecture with MVVM">
+<meta property="og:url" content="http://yoursite.com/2020/07/06/2020-07-06-Level-up-your-React-architecture-with-MVVM/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
+<meta property="og:description" content="Have you ever opened a project and left traumatised because you saw an incomprehensible and unmaintainable JavaScript code that you don’t want to touch even with an isolated rod? Because if you touch">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*bK0LyLEHirleo1xcPDUq-w.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/1101/1*bK0LyLEHirleo1xcPDUq-w.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*1WK3joCf1hCErXg56HoOmg.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/1101/1*1WK3joCf1hCErXg56HoOmg.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*TpWqvbJ4zXThSJkHxevpJw.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/1101/1*TpWqvbJ4zXThSJkHxevpJw.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*ed1xx72Ly_8d2-tqv2--7Q.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/1101/1*ed1xx72Ly_8d2-tqv2--7Q.png">
+<meta property="og:image" content="https://miro.medium.com/max/60/1*WGAS9nZIJztLK7NW6PNuQA.png?q=20">
+<meta property="og:image" content="https://miro.medium.com/max/1101/1*WGAS9nZIJztLK7NW6PNuQA.png">
+<meta property="og:updated_time" content="2020-07-07T06:24:48.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yanjie&#39;s Blog">
+<meta name="twitter:title" content="Level up your React architecture with MVVM">
+<meta name="twitter:description" content="Have you ever opened a project and left traumatised because you saw an incomprehensible and unmaintainable JavaScript code that you don’t want to touch even with an isolated rod? Because if you touch">
+<meta name="twitter:image" content="https://miro.medium.com/max/60/1*bK0LyLEHirleo1xcPDUq-w.png?q=20">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -142,394 +158,235 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-2020-07-06-Level-up-your-React-architecture-with-MVVM" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Level up your React architecture with MVVM
+    </h1>
+  
+
+        
+        <a href="/2020/07/06/2020-07-06-Level-up-your-React-architecture-with-MVVM/" class="archive-article-date">
+  	<time datetime="2020-07-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Have you ever opened a project and left traumatised because you saw an incomprehensible and unmaintainable <em>JavaScript</em> code that you don’t want to touch even with an isolated rod? Because if you touch it, everything could crash just like one big Jenga block.</p>
+<p><em>JavaScript</em> is easy to pick up and start with coding but it is even easier to do it in a wrong way. For small projects, low quality code will not present high risk for a company but if a project gets bigger you will end up with a <a href="https://en.wikipedia.org/wiki/Technical_debt" target="_blank" rel="noopener">technical debt</a> that will wade every deadline and eventually swallow you up. No one would ever want to touch this kind of code. Therefore, in this article we’ll see <strong>how you can apply *Model-View-ViewModel (MVVM)* architectural pattern into a *React* project and significantly improve the code quality.</strong></p>
+<blockquote>
+<p>By definition, an <a href="http://pubs.opengroup.org/architecture/togaf8-doc/arch/chap28.html" target="_blank" rel="noopener">Architecture Pattern</a> provides a set of predefined subsystems, specifies their responsibilities, and includes rules and guidelines for organising the relationship between them.</p>
+</blockquote>
+<p>Many architectural patterns are trying to solve the same challenges as <em>MVVM</em> — make your code loosely coupled, maintainable and easy to test.</p>
+<p>Someone could ask: “<em>If I already know how to use</em> <a href="https://facebook.github.io/flux/" target="_blank" rel="noopener"><em>Flux</em></a> <em>and</em> <a href="https://redux.js.org/" target="_blank" rel="noopener"><em>Redux</em></a><em>, why should I bother myself learning MVVM or any other architectural pattern?”<br>—</em> and the answer is: you don’t have to! If, for example, <em>Redux</em> is ideal fit for your project and your team, stick with it. On the other hand, how could you be 100% sure that <em>Redux</em> is truly ideal for your project if you don’t know any other pattern? You’ll force <em>Redux</em> into every project even though there might be a better option. Only sane decision here is to learn new architectural pattern. Let’s start with the <em>MVVM</em>.</p>
+<p>The best way to get to know patterns is to get your hands dirty and try them out. We’ll create Pokédex demo application powered with <em>React</em> and <em>MobX</em> (complete code in this <a href="https://github.com/davinci2015/react-mvvm-pokemon" target="_blank" rel="noopener">repo</a>)<em>.</em> <a href="https://mobx.js.org/index.html" target="_blank" rel="noopener"><em>MobX</em></a> is a library for simple and scalable state management. It’s serving the same purpose as <em>Redux,</em> but unlike <em>Redux</em> it doesn’t give us guidelines how we should architect our application. <em>MobX</em> gives us observable capabilities (<a href="https://en.wikipedia.org/wiki/Observer_pattern" target="_blank" rel="noopener">observer pattern</a>) and a way to inject dependencies into our components. It goes with <em>MVVM</em> just as bread goes with the butter.</p>
+<h1 id="Dive-into-MVVM"><a href="#Dive-into-MVVM" class="headerlink" title="Dive into MVVM"></a>Dive into MVVM</h1><p><em>MVVM</em> has four main blocks:</p>
+<ul>
+<li><em>The View —</em> UI layer that users interact with,</li>
+<li><em>The ViewController —*has access to the *ViewModel</em> and handles user input,</li>
+<li><em>The ViewModel —</em> has access to the <em>Model</em> and handles business logic,</li>
+<li><em>The Model —</em> application data source</li>
+</ul>
+<p>Keep reading to find out how those components in <em>MVVM</em> is related to each other and what are their responsibilities.</p>
+<p><img src="https://miro.medium.com/max/60/1*bK0LyLEHirleo1xcPDUq-w.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1101/1*bK0LyLEHirleo1xcPDUq-w.png" alt="img"></p>
+<p>MVVM diagram</p>
+<a id="more"></a>
+
+<h2 id="View"><a href="#View" class="headerlink" title="View"></a>View</h2><p>With <em>React</em> we’re building user interfaces and this is what most of us are already familiar with. The <em>View</em> is the only touching point for a user with your application. A user will interact with your <em>View</em> that will trigger <em>ViewController</em> methods depending on events such as mouse movements, key presses etc. The <em>View</em> is not only used for a user input but also for displaying output — results of some actions.<br>The <em>View</em> is a dumb, presentational <code>React.Component</code> which means that it should be used only for displaying data and triggering events passed from the <em>ViewController</em>. This way, we’re keeping our components reusable and easy to test. With the help of <em>MobX,</em> we’ll turn <code>React.Component</code>into reactive component that will observe any changes and automatically update itself accordingly.</p>
+<p><img src="https://miro.medium.com/max/60/1*1WK3joCf1hCErXg56HoOmg.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1101/1*1WK3joCf1hCErXg56HoOmg.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br><span class="line">import PokemonList from &apos;./UI/PokemonList&apos;</span><br><span class="line">import PokemonForm from &apos;./UI/PokemonForm&apos;</span><br><span class="line"></span><br><span class="line">class PokemonView extends React.Component &#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        const &#123;</span><br><span class="line">            pokemons,</span><br><span class="line">            pokemonImage,</span><br><span class="line">            pokemonName,</span><br><span class="line">            randomizePokemon,</span><br><span class="line">            setPokemonName,</span><br><span class="line">            addPokemon,</span><br><span class="line">            removePokemon,</span><br><span class="line">            shouldDisableSubmit</span><br><span class="line">        &#125; = this.props</span><br><span class="line"></span><br><span class="line">        return (</span><br><span class="line">            &lt;React.Fragment&gt;</span><br><span class="line">                &lt;PokemonForm</span><br><span class="line">                    image=&#123;pokemonImage&#125;</span><br><span class="line">                    onInputChange=&#123;setPokemonName&#125;</span><br><span class="line">                    inputValue=&#123;pokemonName&#125;</span><br><span class="line">                    randomize=&#123;randomizePokemon&#125;</span><br><span class="line">                    onSubmit=&#123;addPokemon&#125;</span><br><span class="line">                    shouldDisableSubmit=&#123;shouldDisableSubmit&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">                &lt;PokemonList</span><br><span class="line">                    removePokemon=&#123;removePokemon&#125;</span><br><span class="line">                    pokemons=&#123;pokemons&#125;</span><br><span class="line">                /&gt;</span><br><span class="line">            &lt;/React.Fragment&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default PokemonView</span><br></pre></td></tr></table></figure>
+
+<p><em>Note:</em> <em>PokemonList</em> component is decorated with <code>@observer</code> <a href="https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841" target="_blank" rel="noopener">decorator</a> instead of using regular function <code>observer(class PokemonList {...})</code><br>Decorators are not supported by default so if you want to use them you’ll need <a href="http://babeljs.io/docs/en/babel-plugin-transform-decorators" target="_blank" rel="noopener">babel plugin</a>.</p>
+<h2 id="ViewController"><a href="#ViewController" class="headerlink" title="ViewController"></a>ViewController</h2><p>The <em>ViewController</em> is a brain for the <em>View —</em> it has all <em>View</em> related logic and owns a reference to the <em>ViewModel.</em> The <em>View</em> is not aware of the <em>ViewModel</em> and it is relying on the <em>ViewController</em> to pass all necessary data and events<em>.<br>*Relation between the *ViewController</em> and the <em>ViewModel</em> is <em>one-to-many</em> — one <em>ViewController</em> can have references to different <em>ViewModels.</em><br>Handling user input shouldn’t be left to the <em>ViewModel</em> but rather handled in the <em>ViewController</em> that will pass clean and prepared data to the <em>ViewModel</em>.</p>
+<p><img src="https://miro.medium.com/max/60/1*TpWqvbJ4zXThSJkHxevpJw.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1101/1*TpWqvbJ4zXThSJkHxevpJw.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br><span class="line">import PokemonView from &apos;./PokemonView&apos;</span><br><span class="line"></span><br><span class="line">class PokemonController extends React.Component &#123;</span><br><span class="line">    state = &#123;</span><br><span class="line">        pokemonImage: &apos;1.gif&apos;,</span><br><span class="line">        pokemonName: &apos;&apos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    setRandomPokemonImage = () =&gt; &#123;</span><br><span class="line">        const rand = Math.ceil(Math.random() * 10)</span><br><span class="line">        this.setState(&#123; pokemonImage: `$&#123;rand&#125;.gif` &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    setPokemonName = (e) =&gt; &#123;</span><br><span class="line">        this.setState(&#123; pokemonName: e.target.value &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    clearPokemonName() &#123;</span><br><span class="line">        this.setState(&#123; pokemonName: &apos;&apos; &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    savePokemon = () =&gt; &#123;</span><br><span class="line">        this.props.viewModel.addPokemon(&#123;</span><br><span class="line">            image: this.state.pokemonImage,</span><br><span class="line">            name: this.state.pokemonName</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    addPokemon = () =&gt; &#123;</span><br><span class="line">        this.savePokemon()</span><br><span class="line">        this.clearPokemonName()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    removePokemon = (pokemon) =&gt; &#123;</span><br><span class="line">        this.props.viewModel.removePokemon(pokemon)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        const &#123; viewModel &#125; = this.props</span><br><span class="line"></span><br><span class="line">        return (</span><br><span class="line">            &lt;PokemonView</span><br><span class="line">                pokemons=&#123;viewModel.getPokemons()&#125;</span><br><span class="line">                pokemonImage=&#123;this.state.pokemonImage&#125;</span><br><span class="line">                randomizePokemon=&#123;this.setRandomPokemonImage&#125;</span><br><span class="line">                setPokemonName=&#123;this.setPokemonName&#125;</span><br><span class="line">                addPokemon=&#123;this.addPokemon&#125;</span><br><span class="line">                removePokemon=&#123;this.removePokemon&#125;</span><br><span class="line">                pokemonName=&#123;this.state.pokemonName&#125;</span><br><span class="line">                shouldDisableSubmit=&#123;!this.state.pokemonName&#125;</span><br><span class="line">            /&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default PokemonController</span><br></pre></td></tr></table></figure>
+
+<h2 id="ViewModel"><a href="#ViewModel" class="headerlink" title="ViewModel"></a><em>ViewModel</em></h2><p>The <em>ViewModel</em> is a producer who doesn’t care who consumes data; it can be <em>React</em> component, <a href="https://vuejs.org/" target="_blank" rel="noopener"><em>Vue</em></a> component, aeroplane or even a cow, it simply doesn’t care. Because the <em>ViewModel</em> is just a regular <em>JavaScript</em> class it can be easily reused anywhere with <em>UI</em> tailored differently<em>.</em> Every dependency needed by the <em>ViewModel</em> will be injected through the <em>constructor</em>, thus making it easy to test. The <em>ViewModel</em> is interacting directly with the <em>Model</em> and whenever the <em>ViewModel</em> updates it, all changes will be automatically reflected back to the <em>View</em>.</p>
+<p><img src="https://miro.medium.com/max/60/1*ed1xx72Ly_8d2-tqv2--7Q.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1101/1*ed1xx72Ly_8d2-tqv2--7Q.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class PokemonViewModel &#123;</span><br><span class="line">    constructor(pokemonStore) &#123;</span><br><span class="line">        this.store = pokemonStore</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getPokemons() &#123;</span><br><span class="line">        return this.store.getPokemons()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    addPokemon(pokemon) &#123;</span><br><span class="line">        this.store.addPokemon(pokemon)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    removePokemon(pokemon) &#123;</span><br><span class="line">        this.store.removePokemon(pokemon)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default PokemonViewModel</span><br></pre></td></tr></table></figure>
+
+<h2 id="Model"><a href="#Model" class="headerlink" title="Model"></a><em>Model</em></h2><p>The <em>Model</em> is acting as a data source ie. global store for the application. It composes all data from the network layer, databases, services and serve them in a easy way. It shouldn’t have any other logic except one that actually updates a model and doesn’t have any side effects.</p>
+<p><img src="https://miro.medium.com/max/60/1*WGAS9nZIJztLK7NW6PNuQA.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1101/1*WGAS9nZIJztLK7NW6PNuQA.png" alt="img"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import &#123; observable, action &#125; from &apos;mobx&apos;</span><br><span class="line">import uuid from &apos;uuid/v4&apos;</span><br><span class="line"></span><br><span class="line">class PokemonModel &#123;</span><br><span class="line">    @observable pokemons = []</span><br><span class="line"></span><br><span class="line">    @action addPokemon(pokemon) &#123;</span><br><span class="line">        this.pokemons.push(&#123;</span><br><span class="line">            id: uuid(),</span><br><span class="line">            ...pokemon</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @action removePokemon(pokemon) &#123;</span><br><span class="line">        this.pokemons.remove(pokemon)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @action clearAll() &#123;</span><br><span class="line">        this.pokemons.clear()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    getPokemons() &#123;</span><br><span class="line">        return this.pokemons</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default PokemonModel</span><br></pre></td></tr></table></figure>
+
+<p><em>Note:</em> in the code snippet above, we’re using <code>@observable</code> decorator on every property that will be observed by the <em>View.</em> Any piece of code in the <em>Model</em> that updates some observable value should be decorated with <code>@action</code> decorator.</p>
+<h2 id="Provider"><a href="#Provider" class="headerlink" title="Provider"></a>Provider</h2><p>One component that is not part of the <em>MVVM</em> but we’ll use it to glue everything together is called <em>Provider</em>. This component will instantiate <em>ViewModel</em> and provide all needed dependency to it. Furthermore, instance of the <em>ViewModel</em> is passed through props to the <em>ViewController</em> component.<br><em>Provider</em> should be clean, without any logic as its purpose is just to wire up everything.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import React from &apos;react&apos;</span><br><span class="line">import &#123; inject &#125; from &apos;mobx-react&apos;</span><br><span class="line">import PokemonController from &apos;./PokemonController&apos;</span><br><span class="line">import PokemonViewModel from &apos;./PokemonViewModel&apos;</span><br><span class="line">import RootStore from &apos;../../models/RootStore&apos;</span><br><span class="line"></span><br><span class="line">@inject(RootStore.type.POKEMON_MODEL)</span><br><span class="line">class PokemonProvider extends React.Component &#123;</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props)</span><br><span class="line">        const pokemonModel = props[RootStore.type.POKEMON_MODEL]</span><br><span class="line">        this.viewModel = new PokemonViewModel(pokemonModel)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        return (</span><br><span class="line">            &lt;PokemonController viewModel=&#123;this.viewModel&#125;/&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default PokemonProvider</span><br></pre></td></tr></table></figure>
+
+<p><em>Note:</em> in the code snippet above, <code>@inject</code> decorator is used to inject all needed dependencies into Provider props.</p>
+<h1 id="Recap"><a href="#Recap" class="headerlink" title="Recap"></a>Recap</h1><p>If you‘re not familiar with your toolbox then you might have a problem; as you will probably try to solve every task with the same tool. A sledgehammer is a good option for cracking nuts but maybe its not the best one — different tasks require different set of tools! You don’t have to be the master of them all but you need to know what you have in your toolbox so you can choose more wisely. Maybe your current architecture is like a plastic sledgehammer for cracking nuts but <em>MVVM</em> could be a real nutcracker. With <em>MVVM</em> you can achieve a clean separation of concerns and testing will become like a summer breeze.</p>
+<p>Clone this <a href="https://github.com/davinci2015/react-mvvm-pokemon" target="_blank" rel="noopener">Github repo</a> if you want to play with <em>Pokedéx</em> application and check these articles if you want to learn more about <em>MVVM</em> and architecture in general:</p>
+<ul>
+<li><a href="https://towardsdatascience.com/10-common-software-architectural-patterns-in-a-nutshell-a0b47a1e9013" target="_blank" rel="noopener">10 Common Software Architectural Patterns in a nutshell</a></li>
+<li><a href="https://www.raywenderlich.com/34-design-patterns-by-tutorials-mvvm" target="_blank" rel="noopener">Design Pattern by Tutorials: MVVM</a></li>
+<li><a href="https://android.jlelse.eu/why-to-choose-mvvm-over-mvp-android-architecture-33c0f2de5516" target="_blank" rel="noopener">Why to choose MVVM over MVP</a></li>
+<li><a href="https://blog.gisspan.com/2017/02/Redux-Vs-MVC,-Why-and-How.html" target="_blank" rel="noopener">Redux vs. MVC, Why and How</a></li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.cobeisfresh.com/level-up-your-react-architecture-with-mvvm-a471979e3f21" target="_blank" rel="noopener">https://medium.cobeisfresh.com/level-up-your-react-architecture-with-mvvm-a471979e3f21</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>Thank you for your candy!😃<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/Real-time streaming in Power BI/" class="archive-article-date">
-  	<time datetime="2020-04-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/Real-time streaming in Power BI/">Real-time Streaming in Power BI</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-time Streaming Data, Power BI</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, MVVM</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/06/2020-07-06-Level-up-your-React-architecture-with-MVVM/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/29/Data Sampling and Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/06/Router 4 以及router/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React Notes</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/29/Data Sampling and Randomization/">Data Sampling and Randomization</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Sampling, Randomization</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Dive-into-MVVM"><span class="toc-number">1.</span> <span class="toc-text">Dive into MVVM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#View"><span class="toc-number">1.1.</span> <span class="toc-text">View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewController"><span class="toc-number">1.2.</span> <span class="toc-text">ViewController</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewModel"><span class="toc-number">1.3.</span> <span class="toc-text">ViewModel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Model"><span class="toc-number">1.4.</span> <span class="toc-text">Model</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Provider"><span class="toc-number">1.5.</span> <span class="toc-text">Provider</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Recap"><span class="toc-number">2.</span> <span class="toc-text">Recap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">2.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/" class="archive-article-date">
-  	<time datetime="2020-04-29T05:55:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/28/System-Design-Case-Study-URL-Shortened-Service-Like/">System Design Case Study: URL Shortened Service &amp; Like</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">System Design, URL Shortened Service, Like Functionality</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/27/Thoughts on Seattle Park and Ride Project/" class="archive-article-date">
-  	<time datetime="2020-04-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/27/Thoughts on Seattle Park and Ride Project/">Thoughts on Seattle Park and Ride Project</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Park and Ride, Seattle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/Responsive Development/" class="archive-article-date">
-  	<time datetime="2020-04-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/Responsive Development/">Responsive Development</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Responsive Development</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/25/May The Distance Bring Us Even Closer!/" class="archive-article-date">
-  	<time datetime="2020-04-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/25/May The Distance Bring Us Even Closer!/">May The Distance Bring Us Even Closer!</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Ramdan</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/生活小记/" class="archive-article-date">
-  	<time datetime="2020-04-24T08:29:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/生活小记/">生活小记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/23/Create-A-Google-Map-In-A-Website/" class="archive-article-date">
-  	<time datetime="2020-04-24T06:22:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/Create-A-Google-Map-In-A-Website/">Create A Google Map In A Website</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Google Map API</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/" class="archive-article-date">
-  	<time datetime="2020-04-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/22/Principles-For-Lifelong-Meaningful-Relationships/">Principles For Lifelong MEaningful Relationships</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Principles</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/21/System Design Notes/" class="archive-article-date">
-  	<time datetime="2020-04-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/21/System Design Notes/">System Design Notes</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">System Design</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/04/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/04/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -556,8 +413,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
