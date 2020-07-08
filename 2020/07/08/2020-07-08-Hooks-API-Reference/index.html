@@ -6,37 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Flex 1. 左右布局/左中右布局2.水平居中3.垂直居中 | Yanjie&#39;s Blog</title>
+  <title>Hooks API Reference | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="使用flex布局：1234&amp;lt;div class=&quot;box&quot;&amp;gt;     &amp;lt;section class=&quot;inner&quot;&amp;gt;&amp;lt;/section&amp;gt;&amp;lt;/div&amp;gt;css  12345678910111213.box &amp;#123;        display: flex;        justify-content: center; /* 水平居中 */">
-<meta name="keywords" content="CSS, Flex">
+  <meta name="description" content="Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class. This page describes the APIs for the built-in Hooks in React. If you’re new to Hooks, y">
+<meta name="keywords" content="React, Hooks">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Flex 1. 左右布局&#x2F;左中右布局2.水平居中3.垂直居中">
-<meta property="og:url" content="http://yoursite.com/2020/06/19/2020-06-19-Flex-1.-左右布局左中右布局2.水平居中3.垂直居中/index.html">
+<meta property="og:title" content="Hooks API Reference">
+<meta property="og:url" content="http://yoursite.com/2020/07/08/2020-07-08-Hooks-API-Reference/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="使用flex布局：1234&amp;lt;div class=&quot;box&quot;&amp;gt;     &amp;lt;section class=&quot;inner&quot;&amp;gt;&amp;lt;/section&amp;gt;&amp;lt;/div&amp;gt;css  12345678910111213.box &amp;#123;        display: flex;        justify-content: center; /* 水平居中 */">
+<meta property="og:description" content="Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class. This page describes the APIs for the built-in Hooks in React. If you’re new to Hooks, y">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071001.gif">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071002.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071003.jpg">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071006.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071007.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071008.jpg">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071009.jpg">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071011.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071012.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg">
-<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071016.png">
-<meta property="og:updated_time" content="2020-06-19T22:10:03.332Z">
+<meta property="og:updated_time" content="2020-07-08T20:09:32.129Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flex 1. 左右布局&#x2F;左中右布局2.水平居中3.垂直居中">
-<meta name="twitter:description" content="使用flex布局：1234&amp;lt;div class=&quot;box&quot;&amp;gt;     &amp;lt;section class=&quot;inner&quot;&amp;gt;&amp;lt;/section&amp;gt;&amp;lt;/div&amp;gt;css  12345678910111213.box &amp;#123;        display: flex;        justify-content: center; /* 水平居中 */">
-<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071001.gif">
+<meta name="twitter:title" content="Hooks API Reference">
+<meta name="twitter:description" content="Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class. This page describes the APIs for the built-in Hooks in React. If you’re new to Hooks, y">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -164,222 +147,215 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2020-06-19-Flex-1.-左右布局左中右布局2.水平居中3.垂直居中" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2020-07-08-Hooks-API-Reference" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Flex 1. 左右布局/左中右布局2.水平居中3.垂直居中
+      Hooks API Reference
     </h1>
   
 
         
-        <a href="/2020/06/19/2020-06-19-Flex-1.-左右布局左中右布局2.水平居中3.垂直居中/" class="archive-article-date">
-  	<time datetime="2020-06-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-19</time>
+        <a href="/2020/07/08/2020-07-08-Hooks-API-Reference/" class="archive-article-date">
+  	<time datetime="2020-07-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="使用flex布局："><a href="#使用flex布局：" class="headerlink" title="使用flex布局："></a>使用flex布局：</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"box"</span>&gt;</span><br><span class="line">     &lt;section <span class="class"><span class="keyword">class</span></span>=<span class="string">"inner"</span>&gt;&lt;<span class="regexp">/section&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">css</span><br></pre></td></tr></table></figure>
+        <p><em>Hooks</em> are a new addition in React 16.8. They let you use state and other React features without writing a class.</p>
+<p>This page describes the APIs for the built-in Hooks in React.</p>
+<p>If you’re new to Hooks, you might want to check out <a href="https://reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener">the overview</a> first. You may also find useful information in the <a href="https://reactjs.org/docs/hooks-faq.html" target="_blank" rel="noopener">frequently asked questions</a> section.</p>
+<ul>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#basic-hooks" target="_blank" rel="noopener">Basic Hooks</a><ul>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#usestate" target="_blank" rel="noopener"><code>useState</code></a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#useeffect" target="_blank" rel="noopener"><code>useEffect</code></a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#usecontext" target="_blank" rel="noopener"><code>useContext</code></a></li>
+</ul>
+</li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#additional-hooks" target="_blank" rel="noopener">Additional Hooks</a><ul>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#usereducer" target="_blank" rel="noopener"><code>useReducer</code></a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#usecallback" target="_blank" rel="noopener"><code>useCallback</code></a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#usememo" target="_blank" rel="noopener"><code>useMemo</code></a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#useref" target="_blank" rel="noopener"><code>useRef</code></a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#useimperativehandle" target="_blank" rel="noopener"><code>useImperativeHandle</code></a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#uselayouteffect" target="_blank" rel="noopener"><code>useLayoutEffect</code></a></li>
+<li><a href="https://reactjs.org/docs/hooks-reference.html#usedebugvalue" target="_blank" rel="noopener"><code>useDebugValue</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="Basic-Hooks"><a href="#Basic-Hooks" class="headerlink" title="Basic Hooks"></a>Basic Hooks</h2><h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a><code>useState</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = useState(initialState);</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">display</span>: flex;</span><br><span class="line">        <span class="attribute">justify-content</span>: center; <span class="comment">/* 水平居中 */</span></span><br><span class="line">        <span class="attribute">align-items</span>: center;     <span class="comment">/* 垂直居中 */</span></span><br><span class="line">        <span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">600px</span>;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.inner</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: red;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>Returns a stateful value, and a function to update it.</p>
+<p>During the initial render, the returned state (<code>state</code>) is the same as the value passed as the first argument (<code>initialState</code>).</p>
+<p>The <code>setState</code> function is used to update the state. It accepts a new state value and enqueues a re-render of the component.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setState(newState);</span><br></pre></td></tr></table></figure>
 
-<h3 id="Guide"><a href="#Guide" class="headerlink" title="Guide"></a>Guide</h3><p>网页布局（layout）是 CSS 的一个重点应用。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071001.gif" alt="img"></p>
-<p>布局的传统解决方案，基于<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box_model" target="_blank" rel="noopener">盒状模型</a>，依赖 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a> 属性 + <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank" rel="noopener"><code>position</code></a>属性 + <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" target="_blank" rel="noopener"><code>float</code></a>属性。它对于那些特殊布局非常不方便，比如，<a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="noopener">垂直居中</a>就不容易实现。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071002.png" alt="img"></p>
-<p>2009年，W3C 提出了一种新的方案—-Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071003.jpg" alt="img"></p>
-<p>Flex 布局将成为未来布局的首选方案。本文介绍它的语法，<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">下一篇文章</a>给出常见布局的 Flex 写法。网友 <a href="http://vgee.cn/" target="_blank" rel="noopener">JailBreak</a> 为本文的所有示例制作了 <a href="http://static.vgee.cn/static/index.html" target="_blank" rel="noopener">Demo</a>，也可以参考。</p>
-<p>以下内容主要参考了下面两篇文章：<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">A Complete Guide to Flexbox</a> 和 <a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties" target="_blank" rel="noopener">A Visual Guide to CSS3 Flexbox Properties</a>。</p>
-<h2 id="一、Flex-布局是什么？"><a href="#一、Flex-布局是什么？" class="headerlink" title="一、Flex 布局是什么？"></a>一、Flex 布局是什么？</h2><p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
-<p>任何一个容器都可以指定为 Flex 布局。</p>
+<p>During subsequent re-renders, the first value returned by <code>useState</code> will always be the most recent state after applying updates.</p>
 <blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span>&#123;</span><br><span class="line">&gt;   display: flex;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>Note</p>
+<p>React guarantees that <code>setState</code> function identity is stable and won’t change on re-renders. This is why it’s safe to omit from the <code>useEffect</code> or <code>useCallback</code> dependency list.</p>
 </blockquote>
-<p>行内元素也可以使用 Flex 布局。</p>
+<h4 id="Functional-updates"><a href="#Functional-updates" class="headerlink" title="Functional updates"></a>Functional updates</h4><p>If the new state is computed using the previous state, you can pass a function to <code>setState</code>. The function will receive the previous value, and return an updated value. Here’s an example of a counter component that uses both forms of <code>setState</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params">&#123;initialCount&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(initialCount);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;count&#125;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(initialCount)&#125;&gt;Reset&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount - 1)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(<span class="function"><span class="params">prevCount</span> =&gt;</span> prevCount + <span class="number">1</span>)&#125;&gt;+&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The ”+” and ”-” buttons use the functional form, because the updated value is based on the previous value. But the “Reset” button uses the normal form, because it always sets the count back to the initial value.</p>
+<p>If your update function returns the exact same value as the current state, the subsequent rerender will be skipped completely.</p>
 <blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span>&#123;</span><br><span class="line">&gt;   display: inline-flex;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>Note</p>
+<p>Unlike the <code>setState</code> method found in class components, <code>useState</code> does not automatically merge update objects. You can replicate this behavior by combining the function updater form with object spread syntax:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; setState(<span class="function"><span class="params">prevState</span> =&gt;</span> &#123;</span><br><span class="line">&gt;   <span class="comment">// Object.assign would also work</span></span><br><span class="line">&gt;   <span class="keyword">return</span> &#123;...prevState, ...updatedValues&#125;;</span><br><span class="line">&gt; &#125;);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
-<p>Webkit 内核的浏览器，必须加上<code>-webkit</code>前缀。</p>
 <blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span>&#123;</span><br><span class="line">&gt;   display: -webkit-flex; /* Safari */</span><br><span class="line">&gt;   <span class="selector-tag">display</span>: <span class="selector-tag">flex</span>;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>Another option is <code>useReducer</code>, which is more suited for managing state objects that contain multiple sub-values.</p>
 </blockquote>
-<p>注意，设为 Flex 布局以后，子元素的<code>float</code>、<code>clear</code>和<code>vertical-align</code>属性将失效。</p>
+<h4 id="Lazy-initial-state"><a href="#Lazy-initial-state" class="headerlink" title="Lazy initial state"></a>Lazy initial state</h4><p>The <code>initialState</code> argument is the state used during the initial render. In subsequent renders, it is disregarded. If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = useState(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> initialState = someExpensiveComputation(props);</span><br><span class="line">  <span class="keyword">return</span> initialState;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="Bailing-out-of-a-state-update"><a href="#Bailing-out-of-a-state-update" class="headerlink" title="Bailing out of a state update"></a>Bailing out of a state update</h4><p>If you update a State Hook to the same value as the current state, React will bail out without rendering the children or firing effects. (React uses the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description" target="_blank" rel="noopener"><code>Object.is</code> comparison algorithm</a>.)</p>
+<p>Note that React may still need to render that specific component again before bailing out. That shouldn’t be a concern because React won’t unnecessarily go “deeper” into the tree. If you’re doing expensive calculations while rendering, you can optimize them with <code>useMemo</code>.</p>
+<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a><code>useEffect</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useEffect(didUpdate);</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
 
-<h2 id="二、基本概念"><a href="#二、基本概念" class="headerlink" title="二、基本概念"></a>二、基本概念</h2><p>采用 Flex 布局的元素，称为 Flex 容器（flex container），简称”容器”。它的所有子元素自动成为容器成员，称为 Flex 项目（flex item），简称”项目”。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png" alt="img"></p>
-<p>容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<code>main start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross end</code>。</p>
-<p>项目默认沿主轴排列。单个项目占据的主轴空间叫做<code>main size</code>，占据的交叉轴空间叫做<code>cross size</code>。</p>
-<h2 id="三、容器的属性"><a href="#三、容器的属性" class="headerlink" title="三、容器的属性"></a>三、容器的属性</h2><p>以下6个属性设置在容器上。</p>
-<blockquote>
-<ul>
-<li>flex-direction</li>
-<li>flex-wrap</li>
-<li>flex-flow</li>
-<li>justify-content</li>
-<li>align-items</li>
-<li>align-content</li>
-</ul>
-</blockquote>
-<h3 id="3-1-flex-direction属性"><a href="#3-1-flex-direction属性" class="headerlink" title="3.1 flex-direction属性"></a>3.1 flex-direction属性</h3><p><code>flex-direction</code>属性决定主轴的方向（即项目的排列方向）。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span> &#123;</span><br><span class="line">&gt;   flex-direction: row | row-reverse | column | column-reverse;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071005.png" alt="img"></p>
-<p>它可能有4个值。</p>
-<blockquote>
-<ul>
-<li><code>row</code>（默认值）：主轴为水平方向，起点在左端。</li>
-<li><code>row-reverse</code>：主轴为水平方向，起点在右端。</li>
-<li><code>column</code>：主轴为垂直方向，起点在上沿。</li>
-<li><code>column-reverse</code>：主轴为垂直方向，起点在下沿。</li>
-</ul>
-</blockquote>
-<h3 id="3-2-flex-wrap属性"><a href="#3-2-flex-wrap属性" class="headerlink" title="3.2 flex-wrap属性"></a>3.2 flex-wrap属性</h3><p>默认情况下，项目都排在一条线（又称”轴线”）上。<code>flex-wrap</code>属性定义，如果一条轴线排不下，如何换行。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071006.png" alt="img"></p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span>&#123;</span><br><span class="line">&gt;   flex-wrap: nowrap | wrap | wrap-reverse;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>它可能取三个值。</p>
-<p>（1）<code>nowrap</code>（默认）：不换行。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071007.png" alt="img"></p>
-<p>（2）<code>wrap</code>：换行，第一行在上方。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071008.jpg" alt="img"></p>
-<p>（3）<code>wrap-reverse</code>：换行，第一行在下方。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071009.jpg" alt="img"></p>
-<h3 id="3-3-flex-flow"><a href="#3-3-flex-flow" class="headerlink" title="3.3 flex-flow"></a>3.3 flex-flow</h3><p><code>flex-flow</code>属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row nowrap</code>。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span> &#123;</span><br><span class="line">&gt;   flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="3-4-justify-content属性"><a href="#3-4-justify-content属性" class="headerlink" title="3.4 justify-content属性"></a>3.4 justify-content属性</h3><p><code>justify-content</code>属性定义了项目在主轴上的对齐方式。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span> &#123;</span><br><span class="line">&gt;   justify-content: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071010.png" alt="img"></p>
-<p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</p>
-<blockquote>
-<ul>
-<li><code>flex-start</code>（默认值）：左对齐</li>
-<li><code>flex-end</code>：右对齐</li>
-<li><code>center</code>： 居中</li>
-<li><code>space-between</code>：两端对齐，项目之间的间隔都相等。</li>
-<li><code>space-around</code>：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
-</ul>
-</blockquote>
-<h3 id="3-5-align-items属性"><a href="#3-5-align-items属性" class="headerlink" title="3.5 align-items属性"></a>3.5 align-items属性</h3><p><code>align-items</code>属性定义项目在交叉轴上如何对齐。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span> &#123;</span><br><span class="line">&gt;   align-items: flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071011.png" alt="img"></p>
-<p>它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。</p>
-<blockquote>
-<ul>
-<li><code>flex-start</code>：交叉轴的起点对齐。</li>
-<li><code>flex-end</code>：交叉轴的终点对齐。</li>
-<li><code>center</code>：交叉轴的中点对齐。</li>
-<li><code>baseline</code>: 项目的第一行文字的基线对齐。</li>
-<li><code>stretch</code>（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
-</ul>
-</blockquote>
-<h3 id="3-6-align-content属性"><a href="#3-6-align-content属性" class="headerlink" title="3.6 align-content属性"></a>3.6 align-content属性</h3><p><code>align-content</code>属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span> &#123;</span><br><span class="line">&gt;   align-content: flex-start | flex-end | center | space-between | space-around | stretch;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071012.png" alt="img"></p>
-<p>该属性可能取6个值。</p>
-<blockquote>
-<ul>
-<li><code>flex-start</code>：与交叉轴的起点对齐。</li>
-<li><code>flex-end</code>：与交叉轴的终点对齐。</li>
-<li><code>center</code>：与交叉轴的中点对齐。</li>
-<li><code>space-between</code>：与交叉轴两端对齐，轴线之间的间隔平均分布。</li>
-<li><code>space-around</code>：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。</li>
-<li><code>stretch</code>（默认值）：轴线占满整个交叉轴。</li>
-</ul>
-</blockquote>
-<h3 id="四、项目的属性"><a href="#四、项目的属性" class="headerlink" title="四、项目的属性"></a>四、项目的属性</h3><p>以下6个属性设置在项目上。</p>
-<blockquote>
-<ul>
-<li><code>order</code></li>
-<li><code>flex-grow</code></li>
-<li><code>flex-shrink</code></li>
-<li><code>flex-basis</code></li>
-<li><code>flex</code></li>
-<li><code>align-self</code></li>
-</ul>
-</blockquote>
-<h3 id="4-1-order属性"><a href="#4-1-order属性" class="headerlink" title="4.1 order属性"></a>4.1 order属性</h3><p><code>order</code>属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.item</span> &#123;</span><br><span class="line">&gt;   order: &lt;integer&gt;;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071013.png" alt="img"></p>
-<h3 id="4-2-flex-grow属性"><a href="#4-2-flex-grow属性" class="headerlink" title="4.2 flex-grow属性"></a>4.2 flex-grow属性</h3><p><code>flex-grow</code>属性定义项目的放大比例，默认为<code>0</code>，即如果存在剩余空间，也不放大。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.item</span> &#123;</span><br><span class="line">&gt;   flex-grow: &lt;number&gt;; /* default 0 */</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071014.png" alt="img"></p>
-<p>如果所有项目的<code>flex-grow</code>属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的<code>flex-grow</code>属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。</p>
-<h3 id="4-3-flex-shrink属性"><a href="#4-3-flex-shrink属性" class="headerlink" title="4.3 flex-shrink属性"></a>4.3 flex-shrink属性</h3><p><code>flex-shrink</code>属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.item</span> &#123;</span><br><span class="line">&gt;   flex-shrink: &lt;number&gt;; /* default 1 */</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071015.jpg" alt="img"></p>
-<p>如果所有项目的<code>flex-shrink</code>属性都为1，当空间不足时，都将等比例缩小。如果一个项目的<code>flex-shrink</code>属性为0，其他项目都为1，则空间不足时，前者不缩小。</p>
-<p>负值对该属性无效。</p>
-<h3 id="4-4-flex-basis属性"><a href="#4-4-flex-basis属性" class="headerlink" title="4.4 flex-basis属性"></a>4.4 flex-basis属性</h3><p><code>flex-basis</code>属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为<code>auto</code>，即项目的本来大小。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.item</span> &#123;</span><br><span class="line">&gt;   flex-basis: &lt;length&gt; | auto; /* default auto */</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>它可以设为跟<code>width</code>或<code>height</code>属性一样的值（比如350px），则项目将占据固定空间。</p>
-<h3 id="4-5-flex属性"><a href="#4-5-flex属性" class="headerlink" title="4.5 flex属性"></a>4.5 flex属性</h3><p><code>flex</code>属性是<code>flex-grow</code>, <code>flex-shrink</code> 和 <code>flex-basis</code>的简写，默认值为<code>0 1 auto</code>。后两个属性可选。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.item</span> &#123;</span><br><span class="line">&gt;   flex: none | [ &lt;'flex-grow'&gt; &lt;'flex-shrink'&gt;? || &lt;'flex-basis'&gt; ]</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>该属性有两个快捷值：<code>auto</code> (<code>1 1 auto</code>) 和 none (<code>0 0 auto</code>)。</p>
-<p>建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。</p>
-<h3 id="4-6-align-self属性"><a href="#4-6-align-self属性" class="headerlink" title="4.6 align-self属性"></a>4.6 align-self属性</h3><p><code>align-self</code>属性允许单个项目有与其他项目不一样的对齐方式，可覆盖<code>align-items</code>属性。默认值为<code>auto</code>，表示继承父元素的<code>align-items</code>属性，如果没有父元素，则等同于<code>stretch</code>。</p>
-<blockquote>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.item</span> &#123;</span><br><span class="line">&gt;   align-self: auto | flex-start | flex-end | center | baseline | stretch;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071016.png" alt="img"></p>
-<p>该属性可能取6个值，除了auto，其他都与align-items属性完全一致。</p>
-<h3 id="Other-Examples"><a href="#Other-Examples" class="headerlink" title="Other Examples"></a>Other Examples</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    .test &#123;</span><br><span class="line">        display: flex;</span><br><span class="line">        align-items: center;</span><br><span class="line">        justify-content: center;</span><br><span class="line">        flex-direction: column;</span><br><span class="line">        height: <span class="number">400</span>px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"test"</span>&gt;</span><br><span class="line">    &lt;p&gt;dddd&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">    &lt;p&gt;kkkkkk&lt;/</span>p&gt;</span><br><span class="line">    &lt;h3&gt;llllll&lt;<span class="regexp">/h3&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br></pre></td></tr></table></figure>
+<p>Accepts a function that contains imperative, possibly effectful code.</p>
+<p>Mutations, subscriptions, timers, logging, and other side effects are not allowed inside the main body of a function component (referred to as React’s <em>render phase</em>). Doing so will lead to confusing bugs and inconsistencies in the UI.</p>
+<p>Instead, use <code>useEffect</code>. The function passed to <code>useEffect</code> will run after the render is committed to the screen. Think of effects as an escape hatch from React’s purely functional world into the imperative world.</p>
+<p>By default, effects run after every completed render, but you can choose to fire them <a href="https://reactjs.org/docs/hooks-reference.html#conditionally-firing-an-effect" target="_blank" rel="noopener">only when certain values have changed</a>.</p>
+<h4 id="Cleaning-up-an-effect"><a href="#Cleaning-up-an-effect" class="headerlink" title="Cleaning up an effect"></a>Cleaning up an effect</h4><p>Often, effects create resources that need to be cleaned up before the component leaves the screen, such as a subscription or timer ID. To do this, the function passed to <code>useEffect</code> may return a clean-up function. For example, to create a subscription:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> subscription = props.source.subscribe();</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Clean up the subscription</span></span><br><span class="line">    subscription.unsubscribe();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 
-<p>flex-direction属性决定主轴的方向（即<strong>项目的排列方向</strong>）。<br> 默认是row，表示items水平排列</p>
-<p>因此要使项目垂直排列需设置flex-direction: column;<br> 此时justify-content: center;表示垂直方向上的居中<br> align-items: center;表示水平方向上的居中</p>
-<p><strong>垂直方向上的居中父元素需要有高度</strong></p>
-<h2 id="flex常见属性"><a href="#flex常见属性" class="headerlink" title="flex常见属性"></a>flex常见属性</h2><h2 id="1-justify-content"><a href="#1-justify-content" class="headerlink" title="1.justify-content"></a>1.justify-content</h2><p>justify-content属性定义了项目在主轴上的对齐方式。</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">  <span class="attribute">justify-content</span>: flex-start | flex-end | center | space-between | space-around;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The clean-up function runs before the component is removed from the UI to prevent memory leaks. Additionally, if a component renders multiple times (as they typically do), the <strong>previous effect is cleaned up before executing the next effect</strong>. In our example, this means a new subscription is created on every update. To avoid firing an effect on every update, refer to the next section.</p>
+<h4 id="Timing-of-effects"><a href="#Timing-of-effects" class="headerlink" title="Timing of effects"></a>Timing of effects</h4><p>Unlike <code>componentDidMount</code> and <code>componentDidUpdate</code>, the function passed to <code>useEffect</code> fires <strong>after</strong> layout and paint, during a deferred event. This makes it suitable for the many common side effects, like setting up subscriptions and event handlers, because most types of work shouldn’t block the browser from updating the screen.</p>
+<p>However, not all effects can be deferred. For example, a DOM mutation that is visible to the user must fire synchronously before the next paint so that the user does not perceive a visual inconsistency. (The distinction is conceptually similar to passive versus active event listeners.) For these types of effects, React provides one additional Hook called <a href="https://reactjs.org/docs/hooks-reference.html#uselayouteffect" target="_blank" rel="noopener"><code>useLayoutEffect</code></a>. It has the same signature as <code>useEffect</code>, and only differs in when it is fired.</p>
+<p>Although <code>useEffect</code> is deferred until after the browser has painted, it’s guaranteed to fire before any new renders. React will always flush a previous render’s effects before starting a new update.</p>
+<h4 id="Conditionally-firing-an-effect"><a href="#Conditionally-firing-an-effect" class="headerlink" title="Conditionally firing an effect"></a>Conditionally firing an effect</h4><p>The default behavior for effects is to fire the effect after every completed render. That way an effect is always recreated if one of its dependencies changes.</p>
+<p>However, this may be overkill in some cases, like the subscription example from the previous section. We don’t need to create a new subscription on every update, only if the <code>source</code> prop has changed.</p>
+<p>To implement this, pass a second argument to <code>useEffect</code> that is the array of values that the effect depends on. Our updated example now looks like this:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">useEffect(</span><br><span class="line">  () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> subscription = props.source.subscribe();</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      subscription.unsubscribe();</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  [props.source],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>它可能取5个值，具体对齐方式与轴的方向有关。下面假设主轴为从左到右。</p>
-<ul>
-<li>flex-start（默认值）：左对齐</li>
-<li>flex-end：右对齐</li>
-<li>center： 居中</li>
-<li>space-between：两端对齐，项目之间的间隔都相等。</li>
-<li>space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。</li>
-</ul>
-<h2 id="2-align-items"><a href="#2-align-items" class="headerlink" title="2.align-items"></a>2.align-items</h2><p>align-items属性定义了项目在交叉轴上的对齐方式。</p>
+<p>Now the subscription will only be recreated when <code>props.source</code> changes.</p>
 <blockquote>
-<p>注意：<br> <strong>使用flex会使子元素的float 、 clear 和 vertical-align 属性失效。</strong>因此，使用了flex布局，就不要用浮动</p>
+<p>Note</p>
+<p>If you use this optimization, make sure the array includes <strong>all values from the component scope (such as props and state) that change over time and that are used by the effect</strong>. Otherwise, your code will reference stale values from previous renders. Learn more about <a href="https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies" target="_blank" rel="noopener">how to deal with functions</a> and what to do when the <a href="https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often" target="_blank" rel="noopener">array values change too often</a>.</p>
+<p>If you want to run an effect and clean it up only once (on mount and unmount), you can pass an empty array (<code>[]</code>) as a second argument. This tells React that your effect doesn’t depend on <em>any</em> values from props or state, so it never needs to re-run. This isn’t handled as a special case — it follows directly from how the dependencies array always works.</p>
+<p>If you pass an empty array (<code>[]</code>), the props and state inside the effect will always have their initial values. While passing <code>[]</code> as the second argument is closer to the familiar <code>componentDidMount</code> and <code>componentWillUnmount</code> mental model, there are usually <a href="https://reactjs.org/docs/hooks-faq.html#is-it-safe-to-omit-functions-from-the-list-of-dependencies" target="_blank" rel="noopener">better</a> <a href="https://reactjs.org/docs/hooks-faq.html#what-can-i-do-if-my-effect-dependencies-change-too-often" target="_blank" rel="noopener">solutions</a> to avoid re-running effects too often. Also, don’t forget that React defers running <code>useEffect</code> until after the browser has painted, so doing extra work is less of a problem.</p>
+<p>We recommend using the <a href="https://github.com/facebook/react/issues/14920" target="_blank" rel="noopener"><code>exhaustive-deps</code></a> rule as part of our <a href="https://www.npmjs.com/package/eslint-plugin-react-hooks#installation" target="_blank" rel="noopener"><code>eslint-plugin-react-hooks</code></a> package. It warns when dependencies are specified incorrectly and suggests a fix.</p>
 </blockquote>
-<h2 id="常见布局"><a href="#常见布局" class="headerlink" title="常见布局"></a>常见布局</h2><h3 id="1-元素a在最左，元素b在最右"><a href="#1-元素a在最左，元素b在最右" class="headerlink" title="1.元素a在最左，元素b在最右"></a>1.元素a在最左，元素b在最右</h3><p>想要实现float布局能实现的样式，例如元素a在最左，元素b在最右<br> 可以</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">display: flex;</span><br><span class="line">justify-content: space-between;</span><br></pre></td></tr></table></figure>
+<p>The array of dependencies is not passed as arguments to the effect function. Conceptually, though, that’s what they represent: every value referenced inside the effect function should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.</p>
+<h3 id="useContext"><a href="#useContext" class="headerlink" title="useContext"></a><code>useContext</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> value = useContext(MyContext);</span><br></pre></td></tr></table></figure>
 
-<h3 id="2-元素均分一行"><a href="#2-元素均分一行" class="headerlink" title="2.元素均分一行"></a>2.元素均分一行</h3><p>实现元素均分一行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">display: flex;</span><br><span class="line">justify-content: space-between;</span><br></pre></td></tr></table></figure>
+<p>Accepts a context object (the value returned from <code>React.createContext</code>) and returns the current context value for that context. The current context value is determined by the <code>value</code> prop of the nearest <code>&lt;MyContext.Provider&gt;</code> above the calling component in the tree.</p>
+<p>When the nearest <code>&lt;MyContext.Provider&gt;</code> above the component updates, this Hook will trigger a rerender with the latest context <code>value</code> passed to that <code>MyContext</code> provider. Even if an ancestor uses <a href="https://reactjs.org/docs/react-api.html#reactmemo" target="_blank" rel="noopener"><code>React.memo</code></a> or <a href="https://reactjs.org/docs/react-component.html#shouldcomponentupdate" target="_blank" rel="noopener"><code>shouldComponentUpdate</code></a>, a rerender will still happen starting at the component itself using <code>useContext</code>.</p>
+<p>Don’t forget that the argument to <code>useContext</code> must be the <em>context object itself</em>:</p>
+<ul>
+<li><strong>Correct:</strong> <code>useContext(MyContext)</code></li>
+<li><strong>Incorrect:</strong> <code>useContext(MyContext.Consumer)</code></li>
+<li><strong>Incorrect:</strong> <code>useContext(MyContext.Provider)</code></li>
+</ul>
+<p>A component calling <code>useContext</code> will always re-render when the context value changes. If re-rendering the component is expensive, you can <a href="https://github.com/facebook/react/issues/15156#issuecomment-474590693" target="_blank" rel="noopener">optimize it by using memoization</a>.</p>
+<blockquote>
+<p>Tip</p>
+<p>If you’re familiar with the context API before Hooks, <code>useContext(MyContext)</code> is equivalent to <code>static contextType = MyContext</code> in a class, or to <code>&lt;MyContext.Consumer&gt;</code>.</p>
+<p><code>useContext(MyContext)</code> only lets you <em>read</em> the context and subscribe to its changes. You still need a <code>&lt;MyContext.Provider&gt;</code> above in the tree to <em>provide</em> the value for this context.</p>
+</blockquote>
+<p><strong>Putting it together with Context.Provider</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> themes = &#123;</span><br><span class="line">  light: &#123;</span><br><span class="line">    foreground: <span class="string">"#000000"</span>,</span><br><span class="line">    background: <span class="string">"#eeeeee"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  dark: &#123;</span><br><span class="line">    foreground: <span class="string">"#ffffff"</span>,</span><br><span class="line">    background: <span class="string">"#222222"</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ThemeContext = React.createContext(themes.light);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;ThemeContext.Provider value=&#123;themes.dark&#125;&gt;</span><br><span class="line">      &lt;Toolbar /&gt;</span><br><span class="line">    &lt;<span class="regexp">/ThemeContext.Provider&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function Toolbar(props) &#123;</span></span><br><span class="line"><span class="regexp">  return (</span></span><br><span class="line"><span class="regexp">    &lt;div&gt;</span></span><br><span class="line"><span class="regexp">      &lt;ThemedButton /</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">function ThemedButton() &#123;</span></span><br><span class="line"><span class="regexp">  const theme = useContext(ThemeContext);  return (    &lt;button style=&#123;&#123; background: theme.background, color: theme.foreground &#125;&#125;&gt;      I am styled by theme context!    &lt;/</span>button&gt;  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>使用space-between、space-around看具体场景</p>
-<h3 id="3-元素a在中间，元素b在最右"><a href="#3-元素a在中间，元素b在最右" class="headerlink" title="3.元素a在中间，元素b在最右"></a>3.元素a在中间，元素b在最右</h3><p>这种情况不太推荐用flex布局，如果非要用flex：<br> 在最左侧加一个区块，形成结构 与箭头<strong>等宽</strong>块—标题—-箭头， 这样可以解决问题，有点不太优雅。</p>
-<p>推荐使用：<br> 采用绝对定位：箭头使用绝对定位，标题水平居中即可（text-align:center）</p>
+<p>This example is modified for hooks from a previous example in the <a href="https://reactjs.org/docs/context.html" target="_blank" rel="noopener">Context Advanced Guide</a>, where you can find more information about when and how to use Context.</p>
+<h2 id="Additional-Hooks"><a href="#Additional-Hooks" class="headerlink" title="Additional Hooks"></a>Additional Hooks</h2><p>The following Hooks are either variants of the basic ones from the previous section, or only needed for specific edge cases. Don’t stress about learning them up front.</p>
+<h3 id="useReducer"><a href="#useReducer" class="headerlink" title="useReducer"></a><code>useReducer</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialArg, init);</span><br></pre></td></tr></table></figure>
+
+<p>An alternative to <a href="https://reactjs.org/docs/hooks-reference.html#usestate" target="_blank" rel="noopener"><code>useState</code></a>. Accepts a reducer of type <code>(state, action) =&gt; newState</code>, and returns the current state paired with a <code>dispatch</code> method. (If you’re familiar with Redux, you already know how this works.)</p>
+<p><code>useReducer</code> is usually preferable to <code>useState</code> when you have complex state logic that involves multiple sub-values or when the next state depends on the previous one. <code>useReducer</code> also lets you optimize performance for components that trigger deep updates because <a href="https://reactjs.org/docs/hooks-faq.html#how-to-avoid-passing-callbacks-down" target="_blank" rel="noopener">you can pass <code>dispatch</code> down instead of callbacks</a>.</p>
+<p>Here’s the counter example from the <a href="https://reactjs.org/docs/hooks-reference.html#usestate" target="_blank" rel="noopener"><code>useState</code></a> section, rewritten to use a reducer:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> initialState = &#123;<span class="attr">count</span>: <span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'increment'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'decrement'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count - <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialState);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;state.count&#125;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; dispatch(&#123;<span class="attr">type</span>: <span class="string">'decrement'</span>&#125;)&#125;&gt;-&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; dispatch(&#123;type: 'increment'&#125;)&#125;&gt;+&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note</p>
+<p>React guarantees that <code>dispatch</code> function identity is stable and won’t change on re-renders. This is why it’s safe to omit from the <code>useEffect</code> or <code>useCallback</code> dependency list.</p>
+</blockquote>
+<h4 id="Specifying-the-initial-state"><a href="#Specifying-the-initial-state" class="headerlink" title="Specifying the initial state"></a>Specifying the initial state</h4><p>There are two different ways to initialize <code>useReducer</code> state. You may choose either one depending on the use case. The simplest way is to pass the initial state as a second argument:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, dispatch] = useReducer(</span><br><span class="line">  reducer,</span><br><span class="line">  &#123;<span class="attr">count</span>: initialCount&#125;  );</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Note</p>
+<p>React doesn’t use the <code>state = initialState</code> argument convention popularized by Redux. The initial value sometimes needs to depend on props and so is specified from the Hook call instead. If you feel strongly about this, you can call <code>useReducer(reducer, undefined, reducer)</code> to emulate the Redux behavior, but it’s not encouraged.</p>
+</blockquote>
+<h4 id="Lazy-initialization"><a href="#Lazy-initialization" class="headerlink" title="Lazy initialization"></a>Lazy initialization</h4><p>You can also create the initial state lazily. To do this, you can pass an <code>init</code> function as the third argument. The initial state will be set to <code>init(initialArg)</code>.</p>
+<p>It lets you extract the logic for calculating the initial state outside the reducer. This is also handy for resetting the state later in response to an action:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">initialCount</span>) </span>&#123;  <span class="keyword">return</span> &#123;<span class="attr">count</span>: initialCount&#125;;&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span>(<span class="params">state, action</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">switch</span> (action.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'increment'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'decrement'</span>:</span><br><span class="line">      <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count - <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'reset'</span>:      <span class="keyword">return</span> init(action.payload);    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params">&#123;initialCount&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [state, dispatch] = useReducer(reducer, initialCount, init);  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;state.count&#125;</span><br><span class="line">      &lt;button</span><br><span class="line">        onClick=&#123;() =&gt; dispatch(&#123;<span class="attr">type</span>: <span class="string">'reset'</span>, <span class="attr">payload</span>: initialCount&#125;)&#125;&gt;        Reset</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; dispatch(&#123;type: 'decrement'&#125;)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; dispatch(&#123;<span class="attr">type</span>: <span class="string">'increment'</span>&#125;)&#125;&gt;+&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="Bailing-out-of-a-dispatch"><a href="#Bailing-out-of-a-dispatch" class="headerlink" title="Bailing out of a dispatch"></a>Bailing out of a dispatch</h4><p>If you return the same value from a Reducer Hook as the current state, React will bail out without rendering the children or firing effects. (React uses the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description" target="_blank" rel="noopener"><code>Object.is</code> comparison algorithm</a>.)</p>
+<p>Note that React may still need to render that specific component again before bailing out. That shouldn’t be a concern because React won’t unnecessarily go “deeper” into the tree. If you’re doing expensive calculations while rendering, you can optimize them with <code>useMemo</code>.</p>
+<h3 id="useCallback"><a href="#useCallback" class="headerlink" title="useCallback"></a><code>useCallback</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> memoizedCallback = useCallback(</span><br><span class="line">  () =&gt; &#123;</span><br><span class="line">    doSomething(a, b);</span><br><span class="line">  &#125;,</span><br><span class="line">  [a, b],</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>Returns a <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank" rel="noopener">memoized</a> callback.</p>
+<p>Pass an inline callback and an array of dependencies. <code>useCallback</code> will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. <code>shouldComponentUpdate</code>).</p>
+<p><code>useCallback(fn, deps)</code> is equivalent to <code>useMemo(() =&gt; fn, deps)</code>.</p>
+<blockquote>
+<p>Note</p>
+<p>The array of dependencies is not passed as arguments to the callback. Conceptually, though, that’s what they represent: every value referenced inside the callback should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.</p>
+<p>We recommend using the <a href="https://github.com/facebook/react/issues/14920" target="_blank" rel="noopener"><code>exhaustive-deps</code></a> rule as part of our <a href="https://www.npmjs.com/package/eslint-plugin-react-hooks#installation" target="_blank" rel="noopener"><code>eslint-plugin-react-hooks</code></a> package. It warns when dependencies are specified incorrectly and suggests a fix.</p>
+</blockquote>
+<h3 id="useMemo"><a href="#useMemo" class="headerlink" title="useMemo"></a><code>useMemo</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> memoizedValue = useMemo(<span class="function"><span class="params">()</span> =&gt;</span> computeExpensiveValue(a, b), [a, b]);</span><br></pre></td></tr></table></figure>
+
+<p>Returns a <a href="https://en.wikipedia.org/wiki/Memoization" target="_blank" rel="noopener">memoized</a> value.</p>
+<p>Pass a “create” function and an array of dependencies. <code>useMemo</code> will only recompute the memoized value when one of the dependencies has changed. This optimization helps to avoid expensive calculations on every render.</p>
+<p>Remember that the function passed to <code>useMemo</code> runs during rendering. Don’t do anything there that you wouldn’t normally do while rendering. For example, side effects belong in <code>useEffect</code>, not <code>useMemo</code>.</p>
+<p>If no array is provided, a new value will be computed on every render.</p>
+<p><strong>You may rely on <code>useMemo</code> as a performance optimization, not as a semantic guarantee.</strong> In the future, React may choose to “forget” some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. Write your code so that it still works without <code>useMemo</code> — and then add it to optimize performance.</p>
+<blockquote>
+<p>Note</p>
+<p>The array of dependencies is not passed as arguments to the function. Conceptually, though, that’s what they represent: every value referenced inside the function should also appear in the dependencies array. In the future, a sufficiently advanced compiler could create this array automatically.</p>
+<p>We recommend using the <a href="https://github.com/facebook/react/issues/14920" target="_blank" rel="noopener"><code>exhaustive-deps</code></a> rule as part of our <a href="https://www.npmjs.com/package/eslint-plugin-react-hooks#installation" target="_blank" rel="noopener"><code>eslint-plugin-react-hooks</code></a> package. It warns when dependencies are specified incorrectly and suggests a fix.</p>
+</blockquote>
+<h3 id="useRef"><a href="#useRef" class="headerlink" title="useRef"></a><code>useRef</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> refContainer = useRef(initialValue);</span><br></pre></td></tr></table></figure>
+
+<p><code>useRef</code> returns a mutable ref object whose <code>.current</code> property is initialized to the passed argument (<code>initialValue</code>). The returned object will persist for the full lifetime of the component.</p>
+<p>A common use case is to access a child imperatively:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">TextInputWithFocusButton</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> inputEl = useRef(<span class="literal">null</span>);</span><br><span class="line">  <span class="keyword">const</span> onButtonClick = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// `current` points to the mounted text input element</span></span><br><span class="line">    inputEl.current.focus();</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;input ref=&#123;inputEl&#125; type=<span class="string">"text"</span> /&gt;</span><br><span class="line">      &lt;button onClick=&#123;onButtonClick&#125;&gt;Focus the input&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Essentially, <code>useRef</code> is like a “box” that can hold a mutable value in its <code>.current</code> property.</p>
+<p>You might be familiar with refs primarily as a way to <a href="https://reactjs.org/docs/refs-and-the-dom.html" target="_blank" rel="noopener">access the DOM</a>. If you pass a ref object to React with <code>&lt;div ref={myRef} /&gt;</code>, React will set its <code>.current</code> property to the corresponding DOM node whenever that node changes.</p>
+<p>However, <code>useRef()</code> is useful for more than the <code>ref</code> attribute. It’s <a href="https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables" target="_blank" rel="noopener">handy for keeping any mutable value around</a> similar to how you’d use instance fields in classes.</p>
+<p>This works because <code>useRef()</code> creates a plain JavaScript object. The only difference between <code>useRef()</code> and creating a <code>{current: ...}</code> object yourself is that <code>useRef</code> will give you the same ref object on every render.</p>
+<p>Keep in mind that <code>useRef</code> <em>doesn’t</em> notify you when its content changes. Mutating the <code>.current</code> property doesn’t cause a re-render. If you want to run some code when React attaches or detaches a ref to a DOM node, you may want to use a <a href="https://reactjs.org/docs/hooks-faq.html#how-can-i-measure-a-dom-node" target="_blank" rel="noopener">callback ref</a> instead.</p>
+<h3 id="useImperativeHandle"><a href="#useImperativeHandle" class="headerlink" title="useImperativeHandle"></a><code>useImperativeHandle</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useImperativeHandle(ref, createHandle, [deps])</span><br></pre></td></tr></table></figure>
+
+<p><code>useImperativeHandle</code> customizes the instance value that is exposed to parent components when using <code>ref</code>. As always, imperative code using refs should be avoided in most cases. <code>useImperativeHandle</code> should be used with <a href="https://reactjs.org/docs/react-api.html#reactforwardref" target="_blank" rel="noopener"><code>forwardRef</code></a>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FancyInput</span>(<span class="params">props, ref</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> inputRef = useRef();</span><br><span class="line">  useImperativeHandle(ref, () =&gt; (&#123;</span><br><span class="line">    focus: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      inputRef.current.focus();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;));</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;</span> <span class="attr">...</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">FancyInput = forwardRef(FancyInput);</span><br></pre></td></tr></table></figure>
+
+<p>In this example, a parent component that renders <code>&lt;FancyInput ref={inputRef} /&gt;</code> would be able to call <code>inputRef.current.focus()</code>.</p>
+<h3 id="useLayoutEffect"><a href="#useLayoutEffect" class="headerlink" title="useLayoutEffect"></a><code>useLayoutEffect</code></h3><p>The signature is identical to <code>useEffect</code>, but it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render. Updates scheduled inside <code>useLayoutEffect</code> will be flushed synchronously, before the browser has a chance to paint.</p>
+<p>Prefer the standard <code>useEffect</code> when possible to avoid blocking visual updates.</p>
+<blockquote>
+<p>Tip</p>
+<p>If you’re migrating code from a class component, note <code>useLayoutEffect</code> fires in the same phase as <code>componentDidMount</code> and <code>componentDidUpdate</code>. However, <strong>we recommend starting with <code>useEffect</code> first</strong> and only trying <code>useLayoutEffect</code> if that causes a problem.</p>
+<p>If you use server rendering, keep in mind that <em>neither</em> <code>useLayoutEffect</code> nor <code>useEffect</code> can run until the JavaScript is downloaded. This is why React warns when a server-rendered component contains <code>useLayoutEffect</code>. To fix this, either move that logic to <code>useEffect</code> (if it isn’t necessary for the first render), or delay showing that component until after the client renders (if the HTML looks broken until <code>useLayoutEffect</code> runs).</p>
+<p>To exclude a component that needs layout effects from the server-rendered HTML, render it conditionally with <code>showChild &amp;&amp; &lt;Child /&gt;</code> and defer showing it with <code>useEffect(() =&gt; { setShowChild(true); }, [])</code>. This way, the UI doesn’t appear broken before hydration.</p>
+</blockquote>
+<h3 id="useDebugValue"><a href="#useDebugValue" class="headerlink" title="useDebugValue"></a><code>useDebugValue</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useDebugValue(value)</span><br></pre></td></tr></table></figure>
+
+<p><code>useDebugValue</code> can be used to display a label for custom hooks in React DevTools.</p>
+<p>For example, consider the <code>useFriendStatus</code> custom Hook described in <a href="https://reactjs.org/docs/hooks-custom.html" target="_blank" rel="noopener">“Building Your Own Hooks”</a>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useFriendStatus</span>(<span class="params">friendID</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [isOnline, setIsOnline] = useState(<span class="literal">null</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Show a label in DevTools next to this Hook  // e.g. "FriendStatus: Online"  useDebugValue(isOnline ? 'Online' : 'Offline');</span></span><br><span class="line">  <span class="keyword">return</span> isOnline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tip</p>
+<p>We don’t recommend adding debug values to every custom Hook. It’s most valuable for custom Hooks that are part of shared libraries.</p>
+</blockquote>
+<h4 id="Defer-formatting-debug-values"><a href="#Defer-formatting-debug-values" class="headerlink" title="Defer formatting debug values"></a>Defer formatting debug values</h4><p>In some cases formatting a value for display might be an expensive operation. It’s also unnecessary unless a Hook is actually inspected.</p>
+<p>For this reason <code>useDebugValue</code> accepts a formatting function as an optional second parameter. This function is only called if the Hooks are inspected. It receives the debug value as a parameter and should return a formatted display value.</p>
+<p>For example a custom Hook that returned a <code>Date</code> value could avoid calling the <code>toDateString</code> function unnecessarily by passing the following formatter:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useDebugValue(date, date =&gt; date.toDateString());</span><br></pre></td></tr></table></figure>
+
 <hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h3><p><a href="https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html" target="_blank" rel="noopener">https://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://reactjs.org/docs/hooks-reference.html" target="_blank" rel="noopener">https://reactjs.org/docs/hooks-reference.html</a></p>
 
       
 
@@ -414,7 +390,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CSS, Flex</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Hooks</a>
         		</li>
       		
 		</ul>
@@ -470,7 +446,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/19/2020-06-19-Flex-1.-左右布局左中右布局2.水平居中3.垂直居中/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/08/2020-07-08-Hooks-API-Reference/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -484,18 +460,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/06/20/2020-06-20-React-Handling-Events/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          React Handling Events
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">React Object, Element, Component, Instance, Property Spread Notation Notes</div>
+    <a href="/2020/07/07/2020-07-06-Level-up-your-React-architecture-with-MVVM/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Level up your React architecture with MVVM</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -522,7 +489,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用flex布局："><span class="toc-number">1.</span> <span class="toc-text">使用flex布局：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Guide"><span class="toc-number">1.1.</span> <span class="toc-text">Guide</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Flex-布局是什么？"><span class="toc-number">2.</span> <span class="toc-text">一、Flex 布局是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、基本概念"><span class="toc-number">3.</span> <span class="toc-text">二、基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、容器的属性"><span class="toc-number">4.</span> <span class="toc-text">三、容器的属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-flex-direction属性"><span class="toc-number">4.1.</span> <span class="toc-text">3.1 flex-direction属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-flex-wrap属性"><span class="toc-number">4.2.</span> <span class="toc-text">3.2 flex-wrap属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-flex-flow"><span class="toc-number">4.3.</span> <span class="toc-text">3.3 flex-flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-justify-content属性"><span class="toc-number">4.4.</span> <span class="toc-text">3.4 justify-content属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-align-items属性"><span class="toc-number">4.5.</span> <span class="toc-text">3.5 align-items属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-6-align-content属性"><span class="toc-number">4.6.</span> <span class="toc-text">3.6 align-content属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、项目的属性"><span class="toc-number">4.7.</span> <span class="toc-text">四、项目的属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-order属性"><span class="toc-number">4.8.</span> <span class="toc-text">4.1 order属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-flex-grow属性"><span class="toc-number">4.9.</span> <span class="toc-text">4.2 flex-grow属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-flex-shrink属性"><span class="toc-number">4.10.</span> <span class="toc-text">4.3 flex-shrink属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-flex-basis属性"><span class="toc-number">4.11.</span> <span class="toc-text">4.4 flex-basis属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-flex属性"><span class="toc-number">4.12.</span> <span class="toc-text">4.5 flex属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-align-self属性"><span class="toc-number">4.13.</span> <span class="toc-text">4.6 align-self属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Other-Examples"><span class="toc-number">4.14.</span> <span class="toc-text">Other Examples</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#flex常见属性"><span class="toc-number">5.</span> <span class="toc-text">flex常见属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-justify-content"><span class="toc-number">6.</span> <span class="toc-text">1.justify-content</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-align-items"><span class="toc-number">7.</span> <span class="toc-text">2.align-items</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见布局"><span class="toc-number">8.</span> <span class="toc-text">常见布局</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-元素a在最左，元素b在最右"><span class="toc-number">8.1.</span> <span class="toc-text">1.元素a在最左，元素b在最右</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-元素均分一行"><span class="toc-number">8.2.</span> <span class="toc-text">2.元素均分一行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-元素a在中间，元素b在最右"><span class="toc-number">8.3.</span> <span class="toc-text">3.元素a在中间，元素b在最右</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">8.4.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic-Hooks"><span class="toc-number">1.</span> <span class="toc-text">Basic Hooks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#useState"><span class="toc-number">1.1.</span> <span class="toc-text">useState</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Functional-updates"><span class="toc-number">1.1.1.</span> <span class="toc-text">Functional updates</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lazy-initial-state"><span class="toc-number">1.1.2.</span> <span class="toc-text">Lazy initial state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bailing-out-of-a-state-update"><span class="toc-number">1.1.3.</span> <span class="toc-text">Bailing out of a state update</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useEffect"><span class="toc-number">1.2.</span> <span class="toc-text">useEffect</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Cleaning-up-an-effect"><span class="toc-number">1.2.1.</span> <span class="toc-text">Cleaning up an effect</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Timing-of-effects"><span class="toc-number">1.2.2.</span> <span class="toc-text">Timing of effects</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Conditionally-firing-an-effect"><span class="toc-number">1.2.3.</span> <span class="toc-text">Conditionally firing an effect</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useContext"><span class="toc-number">1.3.</span> <span class="toc-text">useContext</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Additional-Hooks"><span class="toc-number">2.</span> <span class="toc-text">Additional Hooks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#useReducer"><span class="toc-number">2.1.</span> <span class="toc-text">useReducer</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Specifying-the-initial-state"><span class="toc-number">2.1.1.</span> <span class="toc-text">Specifying the initial state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Lazy-initialization"><span class="toc-number">2.1.2.</span> <span class="toc-text">Lazy initialization</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Bailing-out-of-a-dispatch"><span class="toc-number">2.1.3.</span> <span class="toc-text">Bailing out of a dispatch</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useCallback"><span class="toc-number">2.2.</span> <span class="toc-text">useCallback</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useMemo"><span class="toc-number">2.3.</span> <span class="toc-text">useMemo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useRef"><span class="toc-number">2.4.</span> <span class="toc-text">useRef</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useImperativeHandle"><span class="toc-number">2.5.</span> <span class="toc-text">useImperativeHandle</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useLayoutEffect"><span class="toc-number">2.6.</span> <span class="toc-text">useLayoutEffect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#useDebugValue"><span class="toc-number">2.7.</span> <span class="toc-text">useDebugValue</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Defer-formatting-debug-values"><span class="toc-number">2.7.1.</span> <span class="toc-text">Defer formatting debug values</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">2.8.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
