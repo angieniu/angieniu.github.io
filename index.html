@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 90</a>
+<a>Total Number of Articles: 91</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -144,6 +144,126 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2020-07-11-GET-VS-POST" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/2020-07-11-GET-VS-POST/">GET VS POST</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/11/2020-07-11-GET-VS-POST/" class="archive-article-date">
+  	<time datetime="2020-07-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最直观的<strong>区别</strong>就是<strong>GET</strong>把参数包含在URL中，<strong>POST</strong>通过request body传递参数。 … <strong>GET</strong>请求在URL中传送的参数是有长度限制的，而<strong>POST</strong>么有。 对参数的数据类型，<strong>GET</strong>只接受ASCII字符，而<strong>POST</strong>没有限制。 <strong>GET</strong>比<strong>POST</strong>更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</p>
+<h1 id="post-相比get-有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？"><a href="#post-相比get-有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？" class="headerlink" title="post 相比get 有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？"></a>post 相比get 有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？</h1><p>既然get请求有这么多缺点为什么不抛弃它，反而大量使用呢？ 是因为get更节省资源吗？</p>
+<p>答：<br>下面是一个浏览器从业人员的看法</p>
+<p>事实上GET 和 POST 在实践上面有非常大的区别，这两种方法在语义上面并非能互相取代。</p>
+<p><strong>POST 是否比 GET 安全</strong></p>
+<p>是的， POST要比GET安全一点点，注意，是一点点。。。</p>
+<p>说这两者都是明文传送当然是没有错的了，但是这里有一个细节，就是GET的URL会被放在浏览器历史和WEB 服务器日志里面。</p>
+<p>POST 发完基本就木有了。。</p>
+<p>所以如果你把关键数据放在GET里面，被人偷窥了浏览器，或者WEB服务器被入侵日志被人倒去了，基本泄露可能性100%。而POST来说，日志没有记录，只要数据库服务器不被入侵，基本还是安全的。</p>
+<p>当然如果被抓了包，这一切都没有什么卵用，所以，HTTPS该用还是得用。</p>
+<p><strong>GET 相对 POST 的优势是什么</strong></p>
+<p>最大的优势是， GET 的URL可以人肉手输啊。。。你在地址栏打个POST给我看看。本质上面， GET 的所有信息都在URL， 所以很方便的记录下来重复使用。</p>
+<h3 id="所以如果你希望"><a href="#所以如果你希望" class="headerlink" title="所以如果你希望"></a>所以如果你希望</h3><p>－ 请求中的URL可以被手动输入<br>－ 请求中的URL可以被存在书签里，或者历史里，或者快速拨号里面，或者分享给别人。<br>－ 请求中的URL是可以被搜索引擎收录的。<br>－ 带云压缩的浏览器，比如Opera mini/Turbo 2, 只有GET才能在服务器端被预取的。<br>－ 请求中的URL可以被缓存。</p>
+<p>请使用GET. </p>
+<p>大家有没有注意到，其实这里面很多方面的要求是和网站的运营相关的，而不是技术相关的。任何的技术行为中，其实多多少少都能看到商业的影子。</p>
+<p>反之，就用POST. 特别是有一些东西你是不想让人家可以在浏览器地址栏里面可以输入的。比如，如果你设计一个blog系统, 设计这样一个URL来删掉所有帖子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://myblog.com/?action=delete_all</span><br></pre></td></tr></table></figure>
+
+<p>我只能说很快你就知道什么叫不作死就不会死这个道理了，搜索引擎的爬虫分分钟教你做人。</p>
+<h3 id="另外一个准则是，可以重复的交互，比如取个数据，跳个页面，-用GET"><a href="#另外一个准则是，可以重复的交互，比如取个数据，跳个页面，-用GET" class="headerlink" title="另外一个准则是，可以重复的交互，比如取个数据，跳个页面， 用GET."></a>另外一个准则是，可以重复的交互，比如取个数据，跳个页面， 用GET.</h3><h3 id="不可以重复的操作，-比如创建一个条目-修改一条记录，-用POST-因为POST不能被缓存，所以浏览器不会多次提交。"><a href="#不可以重复的操作，-比如创建一个条目-修改一条记录，-用POST-因为POST不能被缓存，所以浏览器不会多次提交。" class="headerlink" title="不可以重复的操作， 比如创建一个条目/修改一条记录， 用POST, 因为POST不能被缓存，所以浏览器不会多次提交。"></a>不可以重复的操作， 比如创建一个条目/修改一条记录， 用POST, 因为POST不能被缓存，所以浏览器不会多次提交。</h3><p>WEB API 的设计相对于网页来说更加复杂，同时也有GET/POST的问题，目前主流接受的方法是RESTful, 参见这里</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Representational_state_transfer%23cite_note-4" target="_blank" rel="noopener">Representational state transfer</a></p>
+<p>这个是趋势：</p>
+<p><img src="https://pic1.zhimg.com/50/55e77732c3e371893e82e0a213e65e18_hd.jpg?source=1940ef5c" alt="img">)<img src="https://pic1.zhimg.com/80/55e77732c3e371893e82e0a213e65e18_720w.jpg?source=1940ef5c" alt="img"></p>
+<p>同时对于何时用GET, W3C 也有一篇文章专门解释：<br><a href="https://link.zhihu.com/?target=http%3A//www.w3.org/2001/tag/doc/whenToUseGet.html" target="_blank" rel="noopener">http://www.w3.org/2001/tag/doc/whenToUseGet.html</a></p>
+<p>摘一点出来：</p>
+<blockquote>
+<p>1.3 Quick Checklist for Choosing HTTP GET or POST</p>
+<ul>
+<li>Use GET if:<ul>
+<li>The interaction is more like a question (i.e., it is a safe operation such as a query, read operation, or lookup).</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>and</p>
+<blockquote>
+<ul>
+<li>Use POST if:<ul>
+<li>The interaction is more like an order, or</li>
+<li>The interaction changes the state of the resource in a way that the user would perceive (e.g., a subscription to a service), or o The user be held accountable for the results of the interaction.</li>
+</ul>
+</li>
+</ul>
+<p>However, before the final decision to use HTTP GET or POST, please also consider considerations for sensitive data and practical considerations.</p>
+</blockquote>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.zhihu.com/question/31640769/answer/52824098" target="_blank" rel="noopener">https://www.zhihu.com/question/31640769/answer/52824098</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">GET, POST</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/11/2020-07-11-GET-VS-POST/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020-07-10-SQL-与-NoSQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -206,48 +326,7 @@
 <p>面向文档的数据库：MongoDB、CouchDB</p>
 <p>面向列的数据库：Cassandra、HBase</p>
 <p>主要代表：MongoDB，Redis，CouchDB</p>
-<p><strong>2.2 非关系型数据库分类</strong></p>
-<p>由于非关系型数据库本身天然的多样性，以及出现的时间较短，相比关系型数据库，非关系型数据库非常多，并且大部分都是开源的。</p>
-<p>非关系型数据库严格上不是一种数据库，应该是一种数据结构化存储方法的集合。依据结构化方法以及应用场合的不同，主要分为以下几类：</p>
-<ul>
-<li><strong>面向高性能并发读写的 key-value 数据库</strong>：key-value数据库的主要特点即使具有极高的并发读写性能，Redis，Tokyo Cabinet，Flare 就是这类的代表</li>
-<li><strong>面向海量数据访问的面向文档数据库</strong>：这类数据库的特点是，可以在海量的数据中快速的查询数据，典型代表为 MongoDB 以及 CouchDB</li>
-<li><strong>面向可扩展性的分布式数据库</strong>：这类数据库想解决的问题就是传统数据库存在可扩展性上的缺陷，这类数据库可以适应数据量的增加以及数据结构的变化</li>
-</ul>
-<p><strong>2.3 非关系型数据库优点</strong></p>
-<p>非关系型数据库的出现，多是源于关系型数据库的性能不足，故非关系型数据库的优点也很明显：</p>
-<ul>
-<li><strong>读写性能</strong>：无需经过 SQL 层的解析，读写性能很高。主要例子有Redis，由于其逻辑简单，而且纯内存操作，使得其性能非常出色，单节点每秒可以处理超过10万次读写操作；</li>
-<li><strong>简单的扩展</strong>：基于键值对，数据没有耦合性，容易扩展。典型例子是 Cassandra，由于其架构是类似于经典的 P2P，所以能通过轻松地添加新的节点来扩展这个集群；</li>
-<li><strong>存储格式多</strong>：支持key-value形式、文档形式、图片形式，而关系型数据库则只支持基础类型；</li>
-<li><strong>低廉的成本</strong>：这是大多数分布式数据库共有的特点，因为主要都是开源软件，没有昂贵的License成本；</li>
-</ul>
-<p><strong>2.4 非关系型数据库缺点</strong></p>
-<ul>
-<li><strong>不提供对 SQL 的支持</strong>：如果不支持 SQL 这样的工业标准，将会对用户产生一定的学习和应用迁移成本</li>
-<li><strong>支持的特性不够丰富</strong>：现有产品所提供的功能都比较有限，大多数 NoSQL 数据库都不支持事务，也不像 MS SQL Server 和 Oracle 那样能提供各种附加功能，比如 BI 和报表等</li>
-<li><strong>现有产品的不够成熟</strong>：大多数产品都还处于初创期，和关系型数据库几十年的完善不可同日而语</li>
-</ul>
-<h2 id="3-关系型数据库与-NoSQL"><a href="#3-关系型数据库与-NoSQL" class="headerlink" title="3. 关系型数据库与 NoSQL"></a><strong>3. 关系型数据库与 NoSQL</strong></h2><p><strong>3.1 NoSQL 使用场景</strong></p>
-<p>并不是任何场景，NoSQL 都要优于关系型数据库。NoSQL 使用场景常见如下：</p>
-<p><strong>数据库表 schema 经常变化</strong><br>比如在线商城，维护产品的属性经常要增加字段，这就意味着 ORMapping 层的代码和配置要改，如果该表的数据量过百万，新增字段会带来额外开销（重建索引等）。</p>
-<p><strong>数据库表字段是复杂数据类型</strong><br>对于复杂数据类型，比如 SQL Sever 提供了可扩展性的支持，像 xml 类型的字段。DB 层对 xml 字段很难建高效索引，应用层又要做从字符流到 dom 的解析转换。NoSQL 以 json 方式存储，提供了原生态的支持，在效率方便远远高于传统关系型数据库。</p>
-<p><strong>高并发数据库请求</strong><br>此类应用常见于 web2.0 的网站，很多应用对于数据一致性要求很低，而关系型数据库的事务以及大表 JOIN 反而成了”性能杀手”。</p>
-<p><strong>海量数据的分布式存储</strong><br>海量数据的存储如果选用大型商用数据，如 Oracle，那么整个解决方案的成本是非常高的，要花很多钱在软硬件上。NoSQL 分布式存储，可以部署在廉价的硬件上，是一个性价比非常高的解决方案。</p>
-<p><strong>3.2 NoSQL 和关系数据库结合</strong></p>
-<p><strong>一般把 NoSQL 和关系数据库进行结合使用，各取所长，需要使用关系特性的时候我们使用关系数据库，需要使用 NoSQL 特性的时候我们使用 NoSQL 数据库，各得其所</strong>。NoSQL 数据库是关系数据库在某些方面（性能，扩展）的一个弥补。</p>
-<p>举个简单的例子吧，比如用户评论的存储，评论大概有主键 id、评论的对象 aid、评论内容 content、用户 uid 等字段。我们能确定的是评论内容 content 肯定不会在数据库中用 where content=’’ 查询，评论内容也是一个大文本字段。那么我们可以把主键 id、评论对象 aid、用户 id 存储在数据库，评论内容存储在 NoSQL，这样数据库就节省了存储 content 占用的磁盘空间，从而节省大量 IO，对 content 也更容易做 Cache。</p>
-<p>另外，<strong>可使用 NoSQL 作为缓存服务器</strong>。MySQL + Memcached 的架构中，Memcached 这类内存缓存服务器缓存的数据大小受限于内存大小，如果用 NoSQL 来代替 Memcached 来缓存数据库的话，就可以不再受限于内存大小。虽然可能有少量的磁盘IO读写，可能比 Memcached 慢一点，但是完全可以用来缓存数据库的查询操作。</p>
-<p><strong><em>4. 参考\</em></strong></p>
-<ul>
-<li>维基百科-SQL</li>
-<li>维基百科-NoSQL</li>
-<li>为什么使用 NoSQL：NoSQL 与 SQL 的区别</li>
-<li>关系型数据库和非关系型数据库的特性以及各自的优缺点</li>
-<li>关系型数据库和非关系型数据库区别、oracle与mysql的区别</li>
-</ul>
-<p><strong>结束语：</strong>本节主要针对关系型数据库和非关系型数据库的特性和区别，由于在数据库相关的经验还有些缺乏，对于数据库的理解，还有后台存储的设计，以及在不同场景下的方案使用，或许还差的有些远呢。</p>
-
+        
       
 
       
@@ -346,77 +425,6 @@
 
 <p>4.Now you can open the example in your favorite browser:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open index.html</span><br></pre></td></tr></table></figure>
-
-<h1 id="The-Magic-of-React-Based-Multi-Step-Forms"><a href="#The-Magic-of-React-Based-Multi-Step-Forms" class="headerlink" title="The Magic of React-Based Multi-Step Forms"></a>The Magic of React-Based Multi-Step Forms</h1><p>One way to deal with long, complex forms is to break them up into multiple steps. You know, answer one set of questions, move on to another, then maybe another, and so on and so forth. We often refer to these as <strong>multi-step forms</strong> (for obvious reasons), but others also take to calling it a “wizard” form.</p>
-<p>Multi-step forms can be a great idea! By only showing a few inputs on a screen at a time, the form may feel more digestible and prevent users from feeling overwhelmed by a sea of form fields. Although I haven’t looked it up, I’m willing to say no one enjoys completing a ginormous form — that’s where multiple steps can come in handy.</p>
-<p>The problem is that multi-step forms — while reducing perceived complexity on the front end — can feel complex and overwhelming to develop. But, I’m here to tell you that it’s not only achievable, but relatively straightforward using React as the base. So, that’s what we’re going to build together today!</p>
-<p>Here’s the final product:</p>
-<iframe name="cp_embed_1" src="https://codepen.io/nathansebhastian/embed/RvrOYq?height=400&amp;theme-id=1&amp;default-tab=result&amp;user=nathansebhastian&amp;slug-hash=RvrOYq&amp;pen-title=React%20Simple%20Wizard%20Form&amp;name=cp_embed_1" scrolling="no" frameborder="0" height="400" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="React Simple Wizard Form" class="cp_embed_iframe " loading="lazy" id="cp_embed_RvrOYq" style="box-sizing: border-box; max-width: 100%; display: block; width: 865.406px; overflow: hidden; height: 400px;"></iframe>
-
-<h3 id="Let’s-build-it"><a href="#Let’s-build-it" class="headerlink" title="Let’s build it!"></a>Let’s build it!</h3><p>The <em>easiest</em> way to create a multi-step form is to create a <strong>container</strong> form element that contains all the steps inside of it as components. Here’s a visual showing that container (<code>&lt;MasterForm/&gt;</code>), the components inside of it (<code>&lt;Step1/&gt;</code>, <code>&lt;Step2/&gt;</code>, <code>&lt;Step3/&gt;</code>) and the way states and props are passed between them.</p>
-<p><img src="https://css-tricks.com/wp-content/uploads/2019/02/s_928F086AF51E6BC538E744D4E288F252AAB1221B8149F993539DEB98BAE8AAC5_1549525905755_new-wizard-graph-ok.png" alt="A diagram showing the master form component above three rectangles representing the three steps of the form, from left to right. Between the master form and the steps is a constructor, setState, and render."><code>&lt;MasterForm/&gt;</code> serves as the container while three child components inside of it act as each step of the form.</p>
-<p>Although it seems to be more complex than a regular form, a multi-step form still uses the same principles as a React form:</p>
-<ul>
-<li><strong>State</strong> is used for storing data and user inputs.</li>
-<li><strong>Component</strong> is used for writing methods and the interface.</li>
-<li><strong>Props</strong> are used for passing data and function into elements.</li>
-</ul>
-<p>Instead of having <em>one</em> form component, we will have one <em>parent</em> component and three <em>child</em> components. In the diagram above, <code>&lt;MasterForm/&gt;</code> will send data and functions to the child components via props, and in turn, the child components will trigger a <code>handleChange()</code> function to set values in the state of <code>&lt;MasterForm/&gt;</code>. It’s one big happy family over here!</p>
-<p>We’ll need a function to move the form from one step to another as well, and we’ll get to that a little later.</p>
-<p>The step child (get it?) components will receive props from the <code>&lt;MasterForm/&gt;</code> parent component for <code>value</code> and <code>onChange</code> props.</p>
-<ul>
-<li><code>&lt;Step1/&gt;</code> component will render an email address input</li>
-<li><code>&lt;Step2/&gt;</code> will render a username input</li>
-<li><code>&lt;Step3/&gt;</code> will render a password input and a submit button</li>
-</ul>
-<p><code>&lt;MasterForm/&gt;</code> will supply both data and function into child components, and child components will pass user inputs back to the parent using its <code>props</code>.</p>
-<h3 id="Creating-the-step-child-components"><a href="#Creating-the-step-child-components" class="headerlink" title="Creating the step (child) components"></a>Creating the step (child) components</h3><p>First, we’ll create the form’s child components. We’re keeping things pretty barebones for this example by only using one input per step, but each step could really be as complex as we’d like. Since the child components look almost similar between one another, I’m just gonna show one of them here. But be sure to take a look at <a href="https://codepen.io/nathansebhastian/pen/RvrOYq" target="_blank" rel="noopener">the demo</a> for the full code.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Step1</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.props.currentStep !== <span class="number">1</span>) &#123; <span class="comment">// Prop: The current step</span></span><br><span class="line">      <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// The markup for the Step 1 UI</span></span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">      &lt;div className=<span class="string">"form-group"</span>&gt;</span><br><span class="line">        &lt;label htmlFor=<span class="string">"email"</span>&gt;Email address&lt;<span class="regexp">/label&gt;</span></span><br><span class="line"><span class="regexp">        &lt;input</span></span><br><span class="line"><span class="regexp">          className="form-control"</span></span><br><span class="line"><span class="regexp">          id="email"</span></span><br><span class="line"><span class="regexp">          name="email"</span></span><br><span class="line"><span class="regexp">          type="text"</span></span><br><span class="line"><span class="regexp">          placeholder="Enter email"</span></span><br><span class="line"><span class="regexp">          value=&#123;this.props.email&#125; /</span><span class="regexp">/ Prop: The email input data</span></span><br><span class="line"><span class="regexp">          onChange=&#123;this.props.handleChange&#125; /</span><span class="regexp">/ Prop: Puts data into state</span></span><br><span class="line"><span class="regexp">        /</span>&gt;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>Now we can put this child component into the form’s <code>render()</code> function and pass in the necessary props. Just like in <a href="https://reactjs.org/docs/forms.html" target="_blank" rel="noopener">React’s form documentation</a>, we can still use <code>handleChange()</code> to put the user’s submitted data into state with <code>setState()</code>. A <code>handleSubmit()</code> function will run on form submit.</p>
-<h3 id="Next-up-the-parent-component"><a href="#Next-up-the-parent-component" class="headerlink" title="Next up, the parent component"></a>Next up, the parent component</h3><p>Let’s make the parent component — which we’re all aware by now, we’re calling <code>&lt;MasterForm/&gt;</code> — and initialize its state and methods.</p>
-<p>We’re using a <code>currentStep</code> state that will be initialized with a default value of 1, indicating the first step (<code>&lt;Step1/&gt;</code>) of the form. We’ll update the state as the form progresses to indicate the current step.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MasterForm</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="comment">// Set the initial input values</span></span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      currentStep: <span class="number">1</span>, <span class="comment">// Default is Step 1</span></span><br><span class="line">      email: <span class="string">''</span>,</span><br><span class="line">      username: <span class="string">''</span>,</span><br><span class="line">      password: <span class="string">''</span>, </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Bind the submission to handleChange() </span></span><br><span class="line">    <span class="keyword">this</span>.handleChange = <span class="keyword">this</span>.handleChange.bind(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Use the submitted data to set the state</span></span><br><span class="line">  handleChange(event) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;name, value&#125; = event.target</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      [name]: value</span><br><span class="line">    &#125;)    </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Trigger an alert on form submission</span></span><br><span class="line">  handleSubmit = <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">    event.preventDefault()</span><br><span class="line">    <span class="keyword">const</span> &#123; email, username, password &#125; = <span class="keyword">this</span>.state</span><br><span class="line">    alert(<span class="string">`Your registration detail: \n </span></span><br><span class="line"><span class="string">      Email: <span class="subst">$&#123;email&#125;</span> \n </span></span><br><span class="line"><span class="string">      Username: <span class="subst">$&#123;username&#125;</span> \n</span></span><br><span class="line"><span class="string">      Password: <span class="subst">$&#123;password&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Render UI will go here...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>OK, that’s the baseline functionality we’re looking for. Next, we want to create the shell UI for the actual form add call the child components in it, including the required state props that will be passed from <code>&lt;MasterForm/&gt;</code> via <code>handleChange()</code>.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">render() &#123;    </span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">  &lt;React.Fragment&gt;</span><br><span class="line">  &lt;h1&gt;A Wizard Form!&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p&gt;Step &#123;this.state.currentStep&#125; &lt;/</span>p&gt; </span><br><span class="line">    </span><br><span class="line">  &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// Render the form steps and pass in the required props</span></span><br><span class="line">    &lt;Step1 </span><br><span class="line">      currentStep=&#123;<span class="keyword">this</span>.state.currentStep&#125; </span><br><span class="line">      handleChange=&#123;<span class="keyword">this</span>.handleChange&#125;</span><br><span class="line">      email=&#123;<span class="keyword">this</span>.state.email&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;Step2 </span><br><span class="line">      currentStep=&#123;<span class="keyword">this</span>.state.currentStep&#125; </span><br><span class="line">      handleChange=&#123;<span class="keyword">this</span>.handleChange&#125;</span><br><span class="line">      username=&#123;<span class="keyword">this</span>.state.username&#125;</span><br><span class="line">    /&gt;</span><br><span class="line">    &lt;Step3 </span><br><span class="line">      currentStep=&#123;<span class="keyword">this</span>.state.currentStep&#125; </span><br><span class="line">      handleChange=&#123;<span class="keyword">this</span>.handleChange&#125;</span><br><span class="line">      password=&#123;<span class="keyword">this</span>.state.password&#125;</span><br><span class="line">    /&gt;       </span><br><span class="line"></span><br><span class="line">  &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>React.Fragment&gt;</span><br><span class="line">)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="One-step-at-a-time"><a href="#One-step-at-a-time" class="headerlink" title="One step at a time"></a>One step at a time</h3><p>So far, we’ve allowed users to fill the form fields, but we’ve provided no actual way to proceed to the next step or head back to the previous one. That calls for next and previous functions that check if the current step has a previous or next step; and if it does, push the <code>currentStep</code> prop up or down accordingly.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MasterForm</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="comment">// Bind new functions for next and previous</span></span><br><span class="line">    <span class="keyword">this</span>._next = <span class="keyword">this</span>._next.bind(<span class="keyword">this</span>)</span><br><span class="line">    <span class="keyword">this</span>._prev = <span class="keyword">this</span>._prev.bind(<span class="keyword">this</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Test current step with ternary</span></span><br><span class="line">  <span class="comment">// _next and _previous functions will be called on button click</span></span><br><span class="line">  _next() &#123;</span><br><span class="line">    <span class="keyword">let</span> currentStep = <span class="keyword">this</span>.state.currentStep</span><br><span class="line">    <span class="comment">// If the current step is 1 or 2, then add one on "next" button click</span></span><br><span class="line">    currentStep = currentStep &gt;= <span class="number">2</span>? <span class="number">3</span>: currentStep + <span class="number">1</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      currentStep: currentStep</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">    </span><br><span class="line">  _prev() &#123;</span><br><span class="line">    <span class="keyword">let</span> currentStep = <span class="keyword">this</span>.state.currentStep</span><br><span class="line">    <span class="comment">// If the current step is 2 or 3, then subtract one on "previous" button click</span></span><br><span class="line">    currentStep = currentStep &lt;= <span class="number">1</span>? <span class="number">1</span>: currentStep - <span class="number">1</span></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;</span><br><span class="line">      currentStep: currentStep</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>We’ll use a <code>get</code> function that will check whether the current step is 1 or 3. This is because we have three-step form. Of course, we can change these checks as more steps are added to the form. We also want to display the next and previous buttons only if there actually are next and previous steps to navigate to, respectively.</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// The "next" and "previous" button functions</span></span><br><span class="line"><span class="keyword">get</span> previousButton()&#123;</span><br><span class="line">  <span class="keyword">let</span> currentStep = <span class="keyword">this</span>.state.currentStep;</span><br><span class="line">  <span class="comment">// If the current step is not 1, then render the "previous" button</span></span><br><span class="line">  <span class="keyword">if</span>(currentStep !==<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;button </span><br><span class="line">        className=<span class="string">"btn btn-secondary"</span> </span><br><span class="line">        type=<span class="string">"button"</span> onClick=&#123;<span class="keyword">this</span>._prev&#125;&gt;</span><br><span class="line">      Previous</span><br><span class="line">      &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ ...else return nothing</span></span><br><span class="line"><span class="regexp">  return null;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">get nextButton()&#123;</span></span><br><span class="line"><span class="regexp">  let currentStep = this.state.currentStep;</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ If the current step is not 3, then render the "next" button</span></span><br><span class="line"><span class="regexp">  if(currentStep &lt;3)&#123;</span></span><br><span class="line"><span class="regexp">    return (</span></span><br><span class="line"><span class="regexp">      &lt;button </span></span><br><span class="line"><span class="regexp">        className="btn btn-primary float-right" </span></span><br><span class="line"><span class="regexp">        type="button" onClick=&#123;this._next&#125;&gt;</span></span><br><span class="line"><span class="regexp">      Next</span></span><br><span class="line"><span class="regexp">      &lt;/</span>button&gt;        </span><br><span class="line">    )</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// ...else render nothing</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>All that’s left is to render those buttons:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Render "next" and "previous" buttons</span></span><br><span class="line">render()&#123;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">    &lt;form onSubmit=&#123;<span class="keyword">this</span>.handleSubmit&#125;&gt;</span><br><span class="line">      &#123;<span class="comment">/* </span></span><br><span class="line"><span class="comment">        ... other codes</span></span><br><span class="line"><span class="comment">      */</span>&#125;</span><br><span class="line">      </span><br><span class="line">      &#123;<span class="keyword">this</span>.previousButton&#125;</span><br><span class="line">      &#123;<span class="keyword">this</span>.nextButton&#125;</span><br><span class="line">      </span><br><span class="line">    &lt;<span class="regexp">/form&gt;</span></span><br><span class="line"><span class="regexp">  )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Congrats-you’re-a-form-wizard-🧙"><a href="#Congrats-you’re-a-form-wizard-🧙" class="headerlink" title="Congrats, you’re a form wizard! 🧙"></a>Congrats, you’re a form wizard! 🧙</h3><p>That was the last step in this multi-step tutorial on multi-step forms. Whoa, how meta! While we didn’t go deep into styling, hopefully this gives you a solid overview of how to go about making complex forms less… complex!</p>
-<p>Here’s that final demo again so you can see all the code in it’s full and glorious context:</p>
-<iframe name="cp_embed_2" src="https://codepen.io/nathansebhastian/embed/RvrOYq?height=400&amp;theme-id=1&amp;default-tab=result&amp;user=nathansebhastian&amp;slug-hash=RvrOYq&amp;pen-title=React%20Simple%20Wizard%20Form&amp;name=cp_embed_2" scrolling="no" frameborder="0" height="400" allowtransparency="true" allowfullscreen="true" allowpaymentrequest="true" title="React Simple Wizard Form" class="cp_embed_iframe " loading="lazy" id="cp_embed_RvrOYq" style="box-sizing: border-box; max-width: 100%; display: block; width: 865.406px; overflow: hidden; height: 400px;"></iframe>
-
-
-
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://css-tricks.com/the-magic-of-react-based-multi-step-forms/" target="_blank" rel="noopener">https://css-tricks.com/the-magic-of-react-based-multi-step-forms/</a></p>
-<h1 id="How-To-Create-Multistep-Forms-With-React-and-Semantic-UI"><a href="#How-To-Create-Multistep-Forms-With-React-and-Semantic-UI" class="headerlink" title="How To Create Multistep Forms With React and Semantic UI"></a>How To Create Multistep Forms With React and Semantic UI</h1><h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>Forms are the standard method used to collect user inputs on web applications. However, sometimes we may be collecting large amounts that may result in a large form with several fields. This can be a pain not just for the user but for the developer as well since they will have to fit these fields into the form in a way that still looks appealing to the user.</p>
-<p>The solution is to break the form into several sections collecting a certain type of information at each point. React makes this simple to implement. We can do this by breaking down the sections (steps) into individual React components that collect certain inputs. We can then choose which components are rendered at each step by manipulating state. In this tutorial you will see how to do this as well as sharing functionality across components using an example of a registration form.</p>
-<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><p>You’ll start the project by using <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">create-react-app</a> which wil take care of configuring the React development environment as well as provide some boilerplate to get us started. To install <code>create-react-app</code> run the following script in your terminal:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g create-react-app</span><br></pre></td></tr></table></figure>
-
-<p>Now that we have create-react-app installed. The next step is to initialize our application. To do this run:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create-react-app multistep-form</span><br></pre></td></tr></table></figure>
-
-<p>This will create a sample React application with the development environment fully configured. The folder structure will look like this</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">|---public</span><br><span class="line">|------favicon.ico</span><br><span class="line">|------index.html</span><br><span class="line">|------manifest.json</span><br><span class="line">|---src</span><br><span class="line">|------app.css</span><br><span class="line">|------app.js</span><br><span class="line">|------app.test.js</span><br><span class="line">|------index.css</span><br><span class="line">|------index.js <span class="comment">#</span></span><br><span class="line">|------logo.svg</span><br><span class="line">|------registerServiceWorker.js</span><br><span class="line">|---.gitignore</span><br><span class="line">|---package.json</span><br><span class="line">|---README.md</span><br><span class="line">|---yarn.lock</span><br></pre></td></tr></table></figure>
-
-<p>We’ll also be using <a href="https://yarnpkg.com/en/" target="_blank" rel="noopener">yarn</a> as our default package manager. Yarn is a great alternative to npm as it locks down dependency versions — a feature that was added to recent versions of npm. Yarn is also the default package manager for <code>create-react-app</code>. If you don’t have yarn yet, you can find the installation instructions <a href="https://yarnpkg.com/en/docs/install" target="_blank" rel="noopener">here</a>.</p>
-<p>For styling we shall use Semantic UI which is a UI framework easily pluggable into React applications using <a href="http://react.semantic-ui.com/" target="_blank" rel="noopener">Semantic UI React</a>. Semantic UI React provides several prebuilt components that we can use to speed up our development process. The framework also supports responsiveness which makes it great for building cross-platform websites. To install it run:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add semantic-ui-react</span><br></pre></td></tr></table></figure>
-
-<p>To add the custom semantic UI CSS, add the following to the <code>head</code> section of the <code>index.html</code> file.</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// index.html</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.12/semantic.min.css"</span>&gt;</span><span class="tag">&lt;/<span class="name">link</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Now you’re ready to proceed.</p>
         
       
 
@@ -1160,127 +1168,9 @@
 
 
   
-    <article id="post-2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/">Map libraries comparison Leaflet vs Mapbox GL vs OpenLayers – trends and statistics</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/" class="archive-article-date">
-  	<time datetime="2020-07-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/map-libraries.png" alt="map-libraries"></p>
-<p>When you need to add a map to your application, the first question that pop-ups in your head is “Which map library to use?”. If you start to google, you’ll find out soon that at the moment the Leaflet, Mapbox GL, OpenLayers are the most popular libraries for displaying interactive maps on a web page.</p>
-<p>In this article, we want to compare the libraries and check actual trends and statistics. So you can choose the most promising option for you.</p>
-<p>We used <a href="https://www.npmtrends.com/" target="_blank" rel="noopener">NPM Trends</a> and <a href="https://trends.google.com/" target="_blank" rel="noopener">Google Trends</a> to get the data and create beautiful visualizations.</p>
-<h2 id="Leaflet-vs-Mapbox-GL-vs-OpenLayers"><a href="#Leaflet-vs-Mapbox-GL-vs-OpenLayers" class="headerlink" title="Leaflet vs Mapbox GL vs OpenLayers"></a>Leaflet vs Mapbox GL vs OpenLayers</h2><table>
-<thead>
-<tr>
-<th align="left"><a href="https://leafletjs.com/" target="_blank" rel="noopener">LEAFLET</a></th>
-<th align="left"><a href="https://docs.mapbox.com/mapbox-gl-js/" target="_blank" rel="noopener">MAPBOX GL</a></th>
-<th align="left"><a href="https://openlayers.org/" target="_blank" rel="noopener">OPENLAYERS</a></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">The open-source JS library for interactive maps. A simple interface, great documentation, and a huge community allow you to get results and solve your tasks quickly. Unfortunately, not developed actively any longer.</td>
-<td align="left">Powerful and effective SDK for web maps developed by Mapbox. As Leaflet library creators developed Mapbox GL now, you can see some similarities between 2 libraries. However, Mapbox GL gives you more opportunities, data visualization options and opens the vector maps world for you.</td>
-<td align="left">Familiar with GIS technologies? Then OpenLayers can be the perfect option for you! The OpenLayers is not only about displaying maps, but also visualizing and analyzing geographical data. It could be a bit more complicated at the beginning but allows you to create more powerful solutions.</td>
-</tr>
-<tr>
-<td align="left"><strong>Vector maps support</strong> The core functionality of Leaflet doesn’t have vector tiles support. Nevertheless, you can visualize vector tiles by using external plugins. For example, <a href="https://www.npmjs.com/package/mapbox-gl-leaflet" target="_blank" rel="noopener">Mapbox GL Leaflet</a>.</td>
-<td align="left"><strong>Vector maps support</strong> Mapbox is a pioneer in vector maps technologies. The Mapbox Style Specification for vector maps, which is very popular now and used by Geoapify as well, is natively supported by Mapbox GL.</td>
-<td align="left"><strong>Vector maps support</strong> OpenLayers has native support for vector maps but the <a href="https://npmjs.com/package/ol-mapbox-style" target="_blank" rel="noopener">ol-mapbox-style</a> plugin is required to create a map with Mapbox Style Specification.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-mapbox/mapbox" target="_blank" rel="noopener">JSFiddle code sample</a></td>
-<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-leaflet/leaflet" target="_blank" rel="noopener">JSFiddle code sample</a></td>
-<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-openlayers/openlayers" target="_blank" rel="noopener">JSFiddle code sample</a></td>
-</tr>
-</tbody></table>
-<h2 id="NPM-trends-for-the-map-libraries"><a href="#NPM-trends-for-the-map-libraries" class="headerlink" title="NPM trends for the map libraries"></a>NPM trends for the map libraries</h2><p>The number of downloads for npm packages gives a great indication of how popular each library is. Here is npm trends statistics for the last 12 month:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/npm-trends.png" alt="npm trends: Leaflet, Mapbox GL, Openlayers"></p>
-<p>And the charts look really interesting! After absolute leadership Leaflet losing to Mapbox GL in February 2020. In comparison with other map libraries, OpenLayers looks stable. And if we check the statistics for OpenLayers only, we can prove that:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/openlayers-npm-trends.png" alt="npm trends: OpenLayers"></p>
-<p>Statistics from GitHub show us how many times a library was “stared”:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/stats.png" alt="GitHub statistics: Leaflet, Mapbox GL, Openlayers"></p>
-<p>And here we see that Leaflet is 5 times more popular at the moment than Mapbox GL, and 4 times more popular than OpenLayers.</p>
-<h2 id="Google-Trends-for-the-map-libraries"><a href="#Google-Trends-for-the-map-libraries" class="headerlink" title="Google Trends for the map libraries"></a>Google Trends for the map libraries</h2><p>Google search keywords trends are another good measure of popularity. However, here we’ve faced with a problem. While “Leaflet” and “OpenLayers” are unique names, “Mapbox GL” is often googled as “Mapbox”. So we decided to add both “Mapbox GL” and “Mapbox” to give you an overview:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/google-trends.png" alt="img"></p>
-<p>The chart shows that interest in each library more or less stays on the same level. In other hands, [statistics by regions](<a href="https://trends.google.com/trends/explore?q=leaflet,mapbox,mapbox" target="_blank" rel="noopener">https://trends.google.com/trends/explore?q=leaflet,mapbox,mapbox</a> GL,openlayers) provide some interesting results as well:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/regions4.gif" alt="Map libraries comparison by region"></p>
-<p>Leaflet leads the keywords list in almost all countries. However, Mapbox/Mapbox GL is popular in China, the United States, Belorus, and Canada. And OpenLayers is in request in South Korea, Croatia, and Finland.</p>
-<h2 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>It’s always a matter of taste when you are trying to choose the best from the good ones. Nevertheless, we hope that the numbers and charts we gave you in this article will help you to make the right decision.</p>
-<h2 id="Leaflet-Mapbox-GL-and-OpenLayers-code-samples"><a href="#Leaflet-Mapbox-GL-and-OpenLayers-code-samples" class="headerlink" title="Leaflet, Mapbox GL, and OpenLayers code samples"></a>Leaflet, Mapbox GL, and OpenLayers code samples</h2><p>We’ve created <a href="https://apidocs.geoapify.com/samples/maps/js-mapbox/mapbox" target="_blank" rel="noopener">code samples</a> to help you develop a custom map for your website. Visit the <a href="https://apidocs.geoapify.com/" target="_blank" rel="noopener">Geoapify Documentation page</a> to learn how to add a map to your React-, Angular-, or Vue-webapp.</p>
-<p>Geoapify offers map tiles that can be used with all the libraries. We provide vector and raster maps of different styles and colors. Learn more about<a href="https://www.geoapify.com/api/map-tiles/" target="_blank" rel="noopener"> Geoapify Map Tiles</a>.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.geoapify.com/map-libraries-comparison-leaflet-vs-mapbox-gl-vs-openlayers-trends-and-statistics/" target="_blank" rel="noopener">https://www.geoapify.com/map-libraries-comparison-leaflet-vs-mapbox-gl-vs-openlayers-trends-and-statistics/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1382,11 +1272,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1398,15 +1284,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,11 +1308,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1434,19 +1328,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1454,7 +1340,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1462,15 +1348,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1482,11 +1376,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
+                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1502,23 +1396,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,15 +1412,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1550,7 +1436,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,23 +1444,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1586,11 +1472,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1598,7 +1488,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1610,11 +1500,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1622,11 +1512,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1638,15 +1528,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1655,10 +1553,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
