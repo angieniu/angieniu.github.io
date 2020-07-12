@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://miro.medium.com/max/766/1*QI4KWqA_bWLTB7_hgiPxpA.png">
 <meta property="og:image" content="https://miro.medium.com/max/60/1*4AcHRoYTPT_Kv8zhQCErjA.png?q=20">
 <meta property="og:image" content="https://miro.medium.com/max/805/1*4AcHRoYTPT_Kv8zhQCErjA.png">
-<meta property="og:updated_time" content="2020-07-12T03:26:45.555Z">
+<meta property="og:updated_time" content="2020-07-12T03:57:03.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="业界GraphQL vs REST">
 <meta name="twitter:description" content="https://graphql.org/ REST has been adopted by many developers and is widely regarded as the traditional way to send data over HTTP. GraphQL, on the other hand, is typically presented as a revolutionar">
@@ -187,8 +187,6 @@
 <p>The core idea of REST is that everything is a resource that’s identified by a URL. In its simplest form, you would retrieve a resource by putting through a GET request to the resource’s URL and get a JSON response (or something similar depending on the API).</p>
 <p>It might look something like this:</p>
 <p><strong>GET /movies/1</strong></p>
-<iframe src="https://medium.com/media/f4b38c5736b7f9b697d3ce2ccc581d7b" allowfullscreen frameborder="0" height="263" width="680" title="GET /movies/1" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 263px;"></iframe>
-
 <p>It’s important to note that with REST, the type (or shape) of the resource and the way you fetch that particular resource are coupled. So, you might refer to the snippet above as the <em>movie endpoint</em>.</p>
 <h2 id="Benefits-of-REST"><a href="#Benefits-of-REST" class="headerlink" title="Benefits of REST"></a>Benefits of REST</h2><p>One of the key advantages of REST is that <strong>REST is scalable</strong>. The architecture decouples client and server which allows developers to scale products and applications indefinitely without much difficulty.</p>
 <p>In addition to this, <strong>REST APIs offer a great deal of flexibility</strong>. Practically speaking, since data isn’t tied to resources or methods, REST is able to handle different types of calls and return different data formats. This allows developers to build APIs that meet the user’s specific needs while being mindful of the needs of a diverse user base.</p>
@@ -202,8 +200,6 @@
 <h1 id="GraphQL-What-It-Is-Benefits-and-Limitations"><a href="#GraphQL-What-It-Is-Benefits-and-Limitations" class="headerlink" title="GraphQL: What It Is, Benefits, and Limitations"></a>GraphQL: What It Is, Benefits, and Limitations</h1><p><a href="https://blog.back4app.com/2019/08/08/what-is-graphql/" target="_blank" rel="noopener">GraphQL</a> is an API design architecture that takes a different, more flexible approach. The key difference between GraphQL vs REST is that GraphQL doesn’t deal with dedicated resources. Instead, everything is regarded as a graph implying it’s connected.</p>
 <p>What this means in practical terms is that you can tailor your request to match your exact requirements using the GraphQL query language. In addition to this, it lets you combine different entities into a single query.</p>
 <p>A GraphQL query for a movie listings app might look something like this:</p>
-<iframe src="https://medium.com/media/2e78e899b9d3172be4e8cba0b74d057e" allowfullscreen frameborder="0" height="307" width="680" title="GraphQL Query" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 307px;"></iframe>
-
 <a id="more"></a>
 
 <h2 id="Benefits-of-GraphQL"><a href="#Benefits-of-GraphQL" class="headerlink" title="Benefits of GraphQL"></a>Benefits of GraphQL</h2><p>Every time you modify your application’s UI, there’s a pretty good chance that your data requirements will also change i.e. you’ll either need to fetch more data or less data than before. GraphQL <strong>makes rapid product iterations on the front-end possible</strong> as it allows developers to make changes on the client-side without messing around with the server.</p>
@@ -214,34 +210,19 @@
 <h1 id="GraphQL-vs-REST"><a href="#GraphQL-vs-REST" class="headerlink" title="GraphQL vs REST"></a>GraphQL vs REST</h1><p>Let’s step through a practical example to compare GraphQL vs REST and see the similarities and differences of both API design architectures.</p>
 <h2 id="Practical-Example-of-GraphQL-vs-REST"><a href="#Practical-Example-of-GraphQL-vs-REST" class="headerlink" title="Practical Example of GraphQL vs REST"></a>Practical Example of GraphQL vs REST</h2><p>Let’s say you have an online store and you’d like to showcase your latest products in a product catalog on your website. The first step would be to fetch the products:</p>
 <p><strong>GET /api/products</strong></p>
-<iframe src="https://medium.com/media/71f7f54ddb15892039c730d045a133cd" allowfullscreen frameborder="0" height="285" width="680" title="GET /api/products" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 285px;"></iframe>
-
 <p>Now let’s say later down the line you wanted to display the product’s delivery options and expected delivery time in the product catalog. You’d have three options, each with their own problems:</p>
 <p><strong>Option #1: Fetch the product SKUs from another resource</strong></p>
 <p><strong>GET /api/products/:id</strong></p>
-<iframe src="https://medium.com/media/54182416c9128edd366e0c695cba9762" allowfullscreen frameborder="0" height="241" width="680" title="GET /api/products/:id" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 241px;"></iframe>
-
 <p><strong>Problem:</strong> Following this approach, you’ll run into an under-fetching scenario. To display the delivery information, you’d now have to run two server requests instead of a single one. And if your requirements change in the future, performance would take a hit.</p>
 <p><strong>GraphQL Solution:</strong> With GraphQL, you would only run a single query instead of making multiple round trips. Here’s how:</p>
-<iframe src="https://medium.com/media/34ccb180c305a50ad8762ee235494d33" allowfullscreen frameborder="0" height="285" width="680" title="graphql-product-delivery" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 285px;"></iframe>
-
 <p><strong>Option #2: Modify the existing resource to also return product SKUs</strong></p>
 <p><strong>GET /api/products</strong></p>
-<iframe src="https://medium.com/media/9802f222f1fe3ee8fb7f240a4a300eb3" allowfullscreen frameborder="0" height="351" width="680" title="GET /api/products-2" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 351px;"></iframe>
-
 <p><strong>Problem:</strong> At first glance, this might seem like a neat solution. However, if you’re displaying product listings elsewhere on your online store — such as in widgets — then you’d be over-fetching data.</p>
 <p><strong>GraphQL Solution:</strong> With GraphQL, clients are able to fetch only the data they need, nothing more. So, a simple …</p>
-<iframe src="https://medium.com/media/02109b2e600d6accdbd16e0d84d17ef6" allowfullscreen frameborder="0" height="197" width="680" title="graphq-query-2" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 197px;"></iframe>
-
 <p>… the query would prevent over-fetching.</p>
 <p><strong>Option #3: Create a new resource that returns the original product details along with the product SKUs</strong></p>
 <p><strong>GET /api/productsWithDeliveryDetails</strong></p>
-<iframe src="https://medium.com/media/e510fbb8b8f2cc75c60d1aa992c2aff5" allowfullscreen frameborder="0" height="395" width="680" title="GET /api/productsWithDeliveryDetails" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 395px;"></iframe>
-
-<p><strong>Problem:</strong> The main problem with this approach is that you’d have to define a new endpoint for each view you need to display on the front-end. This slows down front-end development and makes it difficult to update the UI.</p>
 <p><strong>GraphQL Solution:</strong> With GraphQL, clients are able to fetch exactly what they need so going back and making front-end updates won’t be a problem. In fact, all you’d have to do is add a new field to the query.</p>
-<iframe src="https://medium.com/media/c6dc7ab0cb976f96207cc4bb11e3e660" allowfullscreen frameborder="0" height="285" width="680" title="GraphQL-Products-Query" class="s t u fs ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 285px;"></iframe>
-
 <h1 id="Similarities-and-Differences"><a href="#Similarities-and-Differences" class="headerlink" title="Similarities and Differences"></a>Similarities and Differences</h1><p>GraphQL and REST are similar in a few ways. More specifically:</p>
 <ul>
 <li>Both are based on the concept of a resource and can specify IDs for resources.</li>
@@ -594,19 +575,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -622,15 +603,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,10 +659,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
@@ -690,11 +667,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -706,11 +683,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -719,6 +696,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,15 +715,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,7 +731,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -770,11 +747,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -802,11 +783,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -814,11 +795,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
