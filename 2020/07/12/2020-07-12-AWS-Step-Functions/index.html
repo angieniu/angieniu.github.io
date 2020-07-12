@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/Step%20Functions/workflow.183110b44a1b1981ae30e563ab2733073a3139da.png">
 <meta property="og:image" content="https://d1.awsstatic.com/Digital%20Marketing/sitemerch/banners/Site-Merch-AWS-Step-Function-Lambda_MidPageBanner.7da7231e62b8fa541cf17998100aefe96de2c474.png">
 <meta property="og:image" content="https://d1.awsstatic.com/product-marketing/Step%20Functions/sfn_how-it-works.f795601e8338db32506b9abb01e71704f483fc81.png">
-<meta property="og:updated_time" content="2020-07-12T03:15:15.247Z">
+<meta property="og:updated_time" content="2020-07-12T03:22:50.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS Step Functions Build distributed applications using visual workflows">
 <meta name="twitter:description" content="在做无人机项目的时候，如果考虑到place order之后，可能出现实际的order fulfillment的问题，也就是model 复杂状态的function。 挑战：实际中调配机器，查看机器availability等等。 解决方案： AWS Step Function:AWS Step Functions lets you coordinate multiple AWS services in">
@@ -67,7 +67,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 93</a>
+<a>Total Number of Articles: 94</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -192,11 +192,7 @@
 <h3 id="Application-orchestration"><a href="#Application-orchestration" class="headerlink" title="Application orchestration"></a>Application orchestration</h3><p>Use Step Functions to combine multiple AWS Lambda functions into responsive serverless applications and microservices, without having to write code for workflow logic, parallel processes, error handling, timeouts or retries. You can also orchestrate data and services that run on Amazon EC2 instances, containers, or on-premises servers.</p>
 <h4 id="See-more-use-cases-»"><a href="#See-more-use-cases-»" class="headerlink" title="See more use cases »"></a><a href="https://aws.amazon.com/step-functions/use-cases/" target="_blank" rel="noopener">See more use cases »</a></h4><hr>
 <h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://aws.amazon.com/step-functions/" target="_blank" rel="noopener">https://aws.amazon.com/step-functions/</a></p>
-<p>company economy, easy to implement, scalability, performance</p>
-<h1 id="State-Machine-Structure"><a href="#State-Machine-Structure" class="headerlink" title="State Machine Structure"></a>State Machine Structure</h1><p><a href="https://docs.aws.amazon.com/step-functions/latest/dg/step-functions-dg.pdf#amazon-states-language-state-machine-structure" target="_blank" rel="noopener">PDF</a></p>
-<p><a href="https://www.amazon.com/dp/B078XBSLY5" target="_blank" rel="noopener">Kindle</a></p>
-<p><a href="https://docs.aws.amazon.com/step-functions/latest/dg/recent-updates.rss" target="_blank" rel="noopener">RSS</a></p>
-<p>State machines are defined using JSON text that represents a structure containing the following fields.</p>
+<h1 id="State-Machine-Structure"><a href="#State-Machine-Structure" class="headerlink" title="State Machine Structure"></a>State Machine Structure</h1><p>State machines are defined using JSON text that represents a structure containing the following fields.</p>
 <ul>
 <li><p><strong><code>Comment</code> (Optional)</strong></p>
 <p>A human-readable description of the state machine.</p>
@@ -229,6 +225,8 @@
 <li>Any state for which the <code>End</code> field is <code>true</code> is considered an <code>end</code> (or <code>terminal</code>) state. Depending on your state machine logic—for example, if your state machine has multiple branches of execution—you might have more than one <code>end</code> state.</li>
 <li>If your state machine consists of only one state, it can be both the <code>start</code> state and the <code>end</code> state.</li>
 </ul>
+<hr>
+<h3 id="Reference-1"><a href="#Reference-1" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-state-machine-structure.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-state-machine-structure.html</a></p>
 
       
 
@@ -371,7 +369,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AWS-Step-Function"><span class="toc-number">1.</span> <span class="toc-text">AWS Step Function:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Benefits"><span class="toc-number">1.1.</span> <span class="toc-text">Benefits</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Build-and-update-apps-quickly"><span class="toc-number">1.1.1.</span> <span class="toc-text">Build and update apps quickly</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Improve-resiliency"><span class="toc-number">1.1.2.</span> <span class="toc-text">Improve resiliency</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-less-code"><span class="toc-number">1.1.3.</span> <span class="toc-text">Write less code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-it-works"><span class="toc-number">1.2.</span> <span class="toc-text">How it works</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-cases"><span class="toc-number">1.3.</span> <span class="toc-text">Use cases</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-processing"><span class="toc-number">1.3.1.</span> <span class="toc-text">Data processing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Automate-tasks"><span class="toc-number">1.3.2.</span> <span class="toc-text">Automate tasks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modernize-a-monolith"><span class="toc-number">1.3.3.</span> <span class="toc-text">Modernize a monolith</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Application-orchestration"><span class="toc-number">1.3.4.</span> <span class="toc-text">Application orchestration</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#See-more-use-cases-»"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">See more use cases »</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.5.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#State-Machine-Structure"><span class="toc-number">2.</span> <span class="toc-text">State Machine Structure</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AWS-Step-Function"><span class="toc-number">1.</span> <span class="toc-text">AWS Step Function:</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Benefits"><span class="toc-number">1.1.</span> <span class="toc-text">Benefits</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Build-and-update-apps-quickly"><span class="toc-number">1.1.1.</span> <span class="toc-text">Build and update apps quickly</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Improve-resiliency"><span class="toc-number">1.1.2.</span> <span class="toc-text">Improve resiliency</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Write-less-code"><span class="toc-number">1.1.3.</span> <span class="toc-text">Write less code</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-it-works"><span class="toc-number">1.2.</span> <span class="toc-text">How it works</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Use-cases"><span class="toc-number">1.3.</span> <span class="toc-text">Use cases</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Data-processing"><span class="toc-number">1.3.1.</span> <span class="toc-text">Data processing</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Automate-tasks"><span class="toc-number">1.3.2.</span> <span class="toc-text">Automate tasks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Modernize-a-monolith"><span class="toc-number">1.3.3.</span> <span class="toc-text">Modernize a monolith</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Application-orchestration"><span class="toc-number">1.3.4.</span> <span class="toc-text">Application orchestration</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#See-more-use-cases-»"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">See more use cases »</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.3.5.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#State-Machine-Structure"><span class="toc-number">2.</span> <span class="toc-text">State Machine Structure</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-1"><span class="toc-number">2.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -530,19 +528,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,11 +624,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,10 +641,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -670,11 +668,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -686,6 +684,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
@@ -694,19 +696,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -734,11 +736,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -754,11 +756,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
