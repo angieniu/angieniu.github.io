@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 94</a>
+<a>Total Number of Articles: 95</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,164 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-15-Data-Structure-&amp;-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/">Data Structure &amp; Algorithm Notes, Sorting, Hash Table, Arrays.sort</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/" class="archive-article-date">
+  	<time datetime="2020-07-15T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="HashMap、HashTable、HashSet、concurrentHashMap-线程安全，区别，实现原理"><a href="#HashMap、HashTable、HashSet、concurrentHashMap-线程安全，区别，实现原理" class="headerlink" title="HashMap、HashTable、HashSet、concurrentHashMap 线程安全，区别，实现原理"></a>HashMap、HashTable、HashSet、concurrentHashMap 线程安全，区别，实现原理</h1><h2 id="区别："><a href="#区别：" class="headerlink" title="区别："></a><strong>区别：</strong></h2><p><strong>HashMap和Hashtable的区别：</strong></p>
+<p>HashMap和Hashtable都实现了Map接口，但决定用哪一个之前先要弄清楚它们之间的分别。主要的区别有：线程安全性，同步(synchronization)，以及速度。</p>
+<ul>
+<li>HashMap几乎可以等价于Hashtable，除了HashMap是非synchronized的，并可以接受null(HashMap可以接受为null的键值(key)和值(value)，而Hashtable则不行)。</li>
+<li>HashMap是非synchronized，而Hashtable是synchronized，这意味着Hashtable是线程安全的，多个线程可以共享一个Hashtable；而如果没有正确的同步的话，多个线程是不能共享HashMap的。Java 5提供了ConcurrentHashMap，它是HashTable的替代，比HashTable的扩展性更好。</li>
+<li>另一个区别是HashMap的迭代器(Iterator)是fail-fast迭代器，而Hashtable的enumerator迭代器不是fail-fast的。所以当有其它线程改变了HashMap的结构（增加或者移除元素），将会抛出ConcurrentModificationException，但迭代器本身的remove()方法移除元素则不会抛出ConcurrentModificationException异常。但这并不是一个一定发生的行为，要看JVM。这条同样也是Enumeration和Iterator的区别。</li>
+<li>由于Hashtable是线程安全的也是synchronized，所以在单线程环境下它比HashMap要慢。如果你不需要同步，只需要单一线程，那么使用HashMap性能要好过Hashtable。</li>
+<li>HashMap不能保证随着时间的推移Map中的元素次序是不变的。</li>
+</ul>
+<p><strong>要注意的一些重要术语：</strong></p>
+<p>1) sychronized意味着在一次仅有一个线程能够更改Hashtable。就是说任何线程要更新Hashtable时要首先获得同步锁，其它线程要等到同步锁被释放之后才能再次获得同步锁更新Hashtable。</p>
+<p>2) Fail-safe和iterator迭代器相关。如果某个集合对象创建了Iterator或者ListIterator，然后其它的线程试图“结构上”更改集合对象，将会抛出ConcurrentModificationException异常。但其它线程可以通过set()方法更改集合对象是允许的，因为这并没有从“结构上”更改集合。但是假如已经从结构上进行了更改，再调用set()方法，将会抛出IllegalArgumentException异常。</p>
+<p>3) 结构上的更改指的是删除或者插入一个元素，这样会影响到map的结构。</p>
+<p><strong>我们能否让HashMap同步？</strong></p>
+<p>HashMap可以通过下面的语句进行同步：<br>Map m = Collections.synchronizeMap(hashMap);</p>
+<p><strong>结论</strong></p>
+<p>Hashtable和HashMap有几个主要的不同：线程安全以及速度。仅在你需要完全的线程安全的时候使用Hashtable，而如果你使用Java 5或以上的话，请使用ConcurrentHashMap吧。</p>
+<p><strong>HashMap和HashSet的区别</strong></p>
+<p>HashMap和HashSet都是collection框架的一部分，它们让我们能够使用对象的集合。collection框架有自己的接口和实现，主要分为Set接口，List接口和Queue接口。它们有各自的特点，Set的集合里不允许对象有重复的值，List允许有重复，它对集合中的对象进行索引，Queue的工作原理是FCFS算法(First Come, First Serve)。</p>
+<p><strong>HashSet</strong>：</p>
+<p>HashSet实现了Set接口，它不允许集合中出现重复元素。当我们提到HashSet时，第一件事就是在将对象存储在</p>
+<p>HashSet之前，要确保重写hashCode（）方法和equals（）方法，这样才能比较对象的值是否相等，确保集合中没有</p>
+<p>储存相同的对象。如果不重写上述两个方法，那么将使用下面方法默认实现：</p>
+<p>　public boolean add(Object obj)方法用在Set添加元素时，如果元素值重复时返回 “false”，如果添加成功则返回”true”</p>
+<p><strong>HashMap</strong>：</p>
+<p>HashMap实现了Map接口，Map接口对键值对进行映射。Map中不允许出现重复的键（Key）。Map接口有两个基本的实现</p>
+<p>TreeMap和HashMap。TreeMap保存了对象的排列次序，而HashMap不能。HashMap可以有空的键值对（Key（null）-Value（null））</p>
+<p>HashMap是非线程安全的（非Synchronize），要想实现线程安全，那么需要调用collections类的静态方法synchronizeMap（）实现。</p>
+<p>public Object put(Object Key,Object value)方法用来将元素添加到map中。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-df5974a2a1b0f38c11cd0db4d06f6c96_720w.jpg" alt="img"></p>
+<hr>
+<h2 id="线程安全："><a href="#线程安全：" class="headerlink" title="线程安全："></a><strong>线程安全：</strong></h2><p>线程安全类</p>
+<p>在集合框架中，有些类是线程安全的，这些都是jdk1.1中的出现的。在jdk1.2之后，就出现许许多多非线程安全的类。 下面是这些线程安全的同步的类：</p>
+<ul>
+<li>vector：就比arraylist多了个同步化机制（线程安全），因为效率较低，现在已经不太建议使用。在web应用中，特别是前台页面，往往效率（页面响应速度）是优先考虑的。</li>
+<li>statck：堆栈类，先进后出</li>
+<li>hashtable：就比hashmap多了个线程安全</li>
+<li>enumeration：枚举，相当于迭代器</li>
+</ul>
+<p>除了这些之外，其他的都是非线程安全的类和接口。</p>
+<p>线程安全的类其方法是同步的，每次只能一个访问。是重量级对象，效率较低。</p>
+<p>对于集合类：</p>
+<ul>
+<li>HashMap 线程不安全</li>
+<li>HashTable 线程安全 (所有的方法都加了sychronized实现)</li>
+<li>concurrentHashMap 线程安全(使用ReenTrantLock(可重入锁) 锁分离技术，分段锁技术实现)</li>
+</ul>
+<p>最开始JDK 推出了 HashTable,每个方法都是sychronized， 保证了线程的安全，但是 效率低下。</p>
+<p>从JDK1.2起，就有了HashMap，正如前一篇文章所说，HashMap不是线程安全的，因此多线程操作时需要格外小心。<br>在JDK1.5中，伟大的Doug Lea给我们带来了concurrent包，从此Map也有安全的了。</p>
+<p>在ConcurrentHashMap没有出现以前，jdk使用hashtable来实现线程安全，但是hashtable是将整个hash表锁住，所以效率很低下。</p>
+<p>ConcurrentHashMap将数据分别放到多个Segment中，默认16个，每一个Segment中又包含了多个HashEntry列表数组，</p>
+<p>对于一个key，需要经过三次hash操作，才能最终定位这个元素的位置，这三次hash分别为：</p>
+<ol>
+<li>对于一个key，先进行一次hash操作，得到hash值h1，也即h1 = hash1(key)；</li>
+<li>将得到的h1的高几位进行第二次hash，得到hash值h2，也即h2 = hash2(h1高几位)，通过h2能够确定该元素的放在哪个Segment；</li>
+<li>将得到的h1进行第三次hash，得到hash值h3，也即h3 = hash3(h1)，通过h3能够确定该元素放置在哪个HashEntry。</li>
+</ol>
+<p>每一个Segment都拥有一个锁，当进行写操作时，只需要锁定一个Segment，而其它Segment中的数据是可以访问的。</p>
+<p><strong>ConcurrentHashMap线程安全实现原理</strong></p>
+<p>ConcurrentHashMap是Java 5中支持高并发、高吞吐量的线程安全HashMap实现。ConcurrentHashMap对K/V的读写都是加锁的，是一个可重入锁(ReenTrantLock)，当然这是一个Segment(片段锁)，只会锁定某一个K/V,基于CAS调度，也就是与CPU的直接打交道的,使用的是NonfairSync，所以能保证最大的吞吐量。ConcurrentHashMap内部使用段(Segment)来表示这些不同的部分，每个段其实就是一个小的hash table，它们有自己的锁。只要多个修改操作发生在不同的段上，它们就可以并发进行。有些方法需要跨段，比如size()和containsValue()，它们可能需要锁定整个表而而不仅仅是某个段，这需要按顺序锁定所有段，操作完毕后，又按顺序释放所有段的锁。这里“按顺序”是很重要的，否则极有可能出现死锁，在ConcurrentHashMap内部，段数组是final的，并且其成员变量实际上也是final的，但是，仅仅是将数组声明为final的并不保证数组成员也是final的，这需要实现上的保证。这可以确保不会出现死锁，因为获得锁的顺序是固定的。</p>
+<p><strong>实现原理</strong></p>
+<p><strong>锁分离 (Lock Stripping)</strong></p>
+<p>ConcurrentHashMap允许多个修改操作并发进行，其关键在于使用了锁分离技术。它使用了多个锁来控制对hash表的不同部分进行的修改。ConcurrentHashMap内部使用段(Segment)来表示这些不同的部分，每个段其实就是一个小的hash table，它们有自己的锁。只要多个修改操作发生在不同的段上，它们就可以并发进行。</p>
+<p>ConcurrentHashMap具体是怎么实现线程安全的呢，肯定不可能是每个方法加synchronized，那样就变成了HashTable。</p>
+<p>从ConcurrentHashMap代码中可以看出，它引入了一个“分段锁”的概念，具体可以理解为把一个大的Map拆分成N个小的HashTable，根据key.hashCode()来决定把key放到哪个HashTable中。</p>
+<p>在ConcurrentHashMap中，就是把Map分成了N个Segment，put和get的时候，都是现根据key.hashCode()算出放到哪个Segment中：</p>
+<p>ConcurrentHashMap和Hashtable主要区别就是围绕着锁的粒度以及如何锁,可以简单理解成把一个大的HashTable分解成多个，形成了锁分离。如图:</p>
+<p><img src="https://pic4.zhimg.com/80/v2-ca7e4f12ba4714dba370a5a7d2c40f6d_720w.jpg" alt="img"></p>
+<p>而Hashtable的实现方式是—锁整个hash表</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://zhuanlan.zhihu.com/p/34793183" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/34793183</a></p>
+<h1 id="Sorting"><a href="#Sorting" class="headerlink" title="Sorting"></a>Sorting</h1><p>![Screen Shot 2020-07-14 at 12.16.41 PM](/Users/Angie/Desktop/Screen Shot 2020-07-14 at 12.16.41 PM.png)</p>
+<p>备注：rr为排序数字的范围，dd是数字总位数，kk是数字总个数</p>
+<p>上面的表格总结了讲到的排序算法的时间和空间复杂度以及稳定性等，在实际应用中会有各种排序算法变形的问题，都可以通过优化排序算法来达到优化算法的目的。</p>
+<p>如果对时间复杂度要求比较高并且键的分布范围比较广，可以使用归并排序、快速排序和堆排序。</p>
+<p>如果不能使用额外的空间，那么快速排序和堆排序都是不错的选择。</p>
+<p>如果规定了排序的键的范围，可以优先考虑使用桶排序。</p>
+<p>如果不想写太多的代码同时时间复杂度没有太高的要求，可以考虑冒泡排序、选择排序和插入排序。</p>
+<p>如果排序的过程中没有复杂的额外操作，直接使用编程语言内置的排序算法就行了。</p>
+<hr>
+<h3 id="Reference-1"><a href="#Reference-1" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://leetcode-cn.com/problems/sort-an-array/solution/shi-er-chong-pai-xu-suan-fa-bao-ni-man-yi-dai-gift/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/sort-an-array/solution/shi-er-chong-pai-xu-suan-fa-bao-ni-man-yi-dai-gift/</a></p>
+<h1 id="Java-Arrays-sort"><a href="#Java-Arrays-sort" class="headerlink" title="Java Arrays.sort"></a>Java Arrays.sort</h1><p>Java 6’s <code>Arrays.sort</code> method uses Quicksort for arrays of primitives and merge sort for arrays of objects. I believe that most of time Quicksort is faster than merge sort and costs less memory. My experiments support that, although both algorithms are O(n log(n)). So why are different algorithms used for different types?</p>
+<p>The most likely reason: quicksort is not <em>stable</em>, i.e. equal entries can change their relative position during the sort; among other things, this means that if you sort an already sorted array, it may not stay unchanged.</p>
+<p>Since primitive types have no identity (there is no way to distinguish two ints with the same value), this does not matter for them. But for reference types, it could cause problems for some applications. Therefore, a stable merge sort is used for those.</p>
+<p>OTOH, a reason not to use the (guaranteed n*log(n)) stable merge sort for primitive types might be that it requires making a clone of the array. For reference types, where the referred objects usually take up far more memory than the array of references, this generally does not matter. But for primitive types, cloning the array outright doubles the memory usage.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Sorting, Hash Table</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-14-Design-a-Parking-Lot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1161,93 +1319,6 @@
 
 
   
-    <article id="post-2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/">What are HashMaps— You Might be Asked These in an Interview — Examples in Java</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/" class="archive-article-date">
-  	<time datetime="2020-07-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://miro.medium.com/max/1923/1*mWZUJP_0lKFDACHxfPQCCw.jpeg" alt="img"></p>
-<p>Let’s quickly go over what a <code>HashMap</code> is.</p>
-<p>Simply speaking it is a <code>Collection</code> object which uses <code>Key</code> and <code>Value</code> pairs, where both parameters are objects declared on creation. Each <code>Key</code> maps to a corresponding <code>Value</code>. E.g. the <code>key</code> “foo” maps the <code>value</code> “bar”.</p>
-<p>It is declared as <code>HashMap&lt;Key, Value&gt;</code>.</p>
-<p>Consider you’re making a <code>HashMap</code> of players on a football team, and each of them is identified by a unique number. We would create this map by using an Integer as the <code>Key</code>, and a <code>String</code> of the player’s name as the <code>Value</code>.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, Integer&gt; playerMap = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();<span class="comment">// Put players into our HashMap where they can be found with an int</span></span><br><span class="line">playerMap.put(<span class="number">23</span>, <span class="string">"David Beckham"</span>);</span><br><span class="line">playerMap.put(<span class="number">7</span>, <span class="string">"Cristiano Ronaldo"</span>);</span><br><span class="line">playerMap.put(<span class="number">10</span>, <span class="string">"Lionel Mess"</span>);</span><br><span class="line">playerMap.put(<span class="number">31</span>, <span class="string">"Neymar"</span>);<span class="comment">// Return a specific player</span></span><br><span class="line">System.out.print(playerMap.get(<span class="number">23</span>)); <span class="comment">// "David Beckham"</span></span><br></pre></td></tr></table></figure>
-
-<p>As a note, a <code>HashMap</code> does not make any guarantees of order or sorting. When you add a <code>Key</code> to your <code>HashMap</code>, there is no reason it will be returned to you at the same location or even at a constant speed. As well, <code>HashMaps</code> are not thread safe so if you’re working in a multi-threaded environment consider using a different data object. But we’ll get to that later.</p>
-<p><img src="https://miro.medium.com/max/60/1*dhQS6xzZP9tD5K49qwnlWA.jpeg?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/896/1*dhQS6xzZP9tD5K49qwnlWA.jpeg" alt="img"></p>
-<p>Another example: Linking Keys (Subway Stations) to Values (Travel Time)</p>
-<p>Previously in versions of Java &lt; 8, finding values of large <code>HashMaps</code> with the .<code>get()</code> method would have a worse case complexity of <code>O(n)</code>. However, since Java 8 it is now <code>O(log N)</code>. So there has been a substantial performance improvement, which make this data structure quite attractive to use.</p>
-<p><strong>Creating Different Types of HashMap</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// You'll need to import a HashMap for this to work in your</span></span><br><span class="line"><span class="comment">// Java project</span></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap; <span class="comment">// Let's create a bunch of HashMaps// Creating vanilla HashMap</span></span><br><span class="line">HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">         </span><br><span class="line"><span class="comment">// Creating HashMap with a capacity ... in this case 100</span></span><br><span class="line">Integer capacity = <span class="number">100</span>;   </span><br><span class="line">HashMap&lt;String, Integer&gt; map_2 = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;(capacity);</span><br><span class="line">         </span><br><span class="line"><span class="comment">// Creating HashMap with capacity and load factor</span></span><br><span class="line">Integer capacity = <span class="number">100</span>;</span><br><span class="line">Double loadFactor = .<span class="number">5</span>       </span><br><span class="line">HashMap&lt;String, Integer&gt; map3 = <span class="keyword">new</span> HashMap&lt;String, Integer (capacity, loadFactor);</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">HashMap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1384,15 +1455,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1400,11 +1467,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1420,15 +1491,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1440,11 +1507,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1460,11 +1531,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1472,7 +1547,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1484,15 +1559,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1504,15 +1571,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1528,7 +1599,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1536,7 +1607,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1544,7 +1615,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1556,6 +1627,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
@@ -1564,15 +1643,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1612,11 +1687,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1624,19 +1699,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
