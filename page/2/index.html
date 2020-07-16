@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 95</a>
+<a>Total Number of Articles: 96</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,136 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Router 4 以及router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/06/Router 4 以及router/">React Notes</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/06/Router 4 以及router/" class="archive-article-date">
+  	<time datetime="2020-07-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Router-4-以及Router"><a href="#Router-4-以及Router" class="headerlink" title="Router 4 以及Router"></a>Router 4 以及Router</h2><p>url/Login</p>
+<p>url/home</p>
+<p>1) 本质 url - ui(Component)对应</p>
+<p>2) Browser Router包裹 App</p>
+<p>3) 使用: </p>
+<p>设置 key-value</p>
+<p>​         url - ui</p>
+<p>​      &lt;Link to: ‘url’&gt; -&gt; to location </p>
+<p>​      &lt;Route  path: ‘/‘ , component直接跟组件名不能传值或者通过需要传值的话用render实现路由 diff &gt;-&gt; what to see 路由组件</p>
+<h2 id="路由切换"><a href="#路由切换" class="headerlink" title="路由切换:"></a>路由切换:</h2><p>[Method1]</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Login.js</span></span><br><span class="line">&lt;link to=<span class="string">"/register"</span>&gt;register now!&lt;<span class="regexp">/link&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>[Method2]history    this.props.history.push或者this.props.replay</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Register.js</span></span><br><span class="line"><span class="keyword">this</span>.props.history.push(<span class="string">'./login'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>vs redirect: 重定向</p>
+<p>一个url: localhost3000/login</p>
+<p>​                                      /register</p>
+<p>​                                     /home</p>
+<p>​                                    /               redirect到任何的 比如login页面</p>
+<h2 id="Ant-Deisng-Form-Component"><a href="#Ant-Deisng-Form-Component" class="headerlink" title="Ant Deisng: Form Component"></a>Ant Deisng: Form Component</h2><p>1) hoc -&gt; 通过form.create把form对象传给form组件</p>
+<p>2) 设计表单验证: 前端 -&gt; 时间两次验证 1）每次输入完 2) submit</p>
+<p>​                      后端</p>
+<p>3) 设计表单数据收集: form下面的方法</p>
+<h2 id="Radio-Group"><a href="#Radio-Group" class="headerlink" title="Radio Group"></a>Radio Group</h2><p>controlled component. value onchange.</p>
+<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p>点击button，弹出对话框。使用了react方法获取map组件, react ref, ref三种用法</p>
+<p>1) <c ref> this.refs 不用了</c></p>
+<p>2) createRef =&gt; myref   this.myref.current</p>
+<p>3) ref:{call back} 获取ref对象</p>
+<h2 id="Google-Map"><a href="#Google-Map" class="headerlink" title="Google Map"></a>Google Map</h2><p>hoc 2次: GoogleMap 和ScriptJS</p>
+<h2 id="React-Gallery"><a href="#React-Gallery" class="headerlink" title="React-Gallery"></a>React-Gallery</h2><h2 id="Local-Storage的使用"><a href="#Local-Storage的使用" class="headerlink" title="Local Storage的使用"></a>Local Storage的使用</h2><p>setItem to store data 存</p>
+<p>getItem 取data</p>
+<h2 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h2><p>useState, useEffect, useContext, reducer, callback, memo</p>
+<ol start="10">
+<li><p>function component: 可以使用state 在react 16开始</p>
+<p>所以function component + hooks写法简洁</p>
+<p>class component 相对比较长一些</p>
+</li>
+</ol>
+<ol start="11">
+<li><p>用browser发送request：bom下的ajax http request。需要自己写node server作为中间server。node.js express库. 前端很少直接拿数据，通过noder server。</p>
+<p>把react 和node放在一个package folder下面，分别run, run两个server.</p>
+<p>vs</p>
+<p>用postman发送request</p>
+</li>
+</ol>
+<ol start="12">
+<li>webpack 打包 配置处理js jsx共融，在package.json. 自己做webpack</li>
+</ol>
+<ol start="13">
+<li>CSS 需要掌握的: 两栏三栏，position, absolute, display, flex, relative, absolute, display block, inline block.</li>
+</ol>
+<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>1) 路由组件</p>
+<p>2) 非路由组件：嵌套在路由组件中</p>
+<h2 id="网页转换成手机端"><a href="#网页转换成手机端" class="headerlink" title="网页转换成手机端"></a>网页转换成手机端</h2><p>react to react native</p>
+<p>or media queries programmatically in react 稍微复杂</p>
+<p>or ant design: layout 可以实现 responsive development 使用不多</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">React, Router</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/06/Router 4 以及router/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -993,108 +1123,6 @@
 
 
   
-    <article id="post-2020-06-26-Clean-Architecture-with-Java-11" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/26/2020-06-26-Clean-Architecture-with-Java-11/">Clean Architecture with Java 11</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/26/2020-06-26-Clean-Architecture-with-Java-11/" class="archive-article-date">
-  	<time datetime="2020-06-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Software architecture has been one of the most important topics in the last couple years when it comes to software engineering. <a href="https://en.wikipedia.org/wiki/Robert_C._Martin" target="_blank" rel="noopener">Robert C. Martin</a> (aka Uncle Bob) deeply developed his vision of a clean architecture in <a href="https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164/ref=sr_1_1?ie=UTF8&qid=1529335011&sr=8-1&keywords=clean+architecture" target="_blank" rel="noopener">his book</a>, that I highly recommend. But when it comes to implementation, things get difficult and many questions appear. Where do I start? How do I structure my project? How do I apply Uncle Bob’s principles to the technology I want to use? I will try to answer those questions from the point of view of a Java web developer that would like to use Java 11 and Jigsaw modules from Java 9. This will give you a more concrete vision of Uncle Bob’s clean architecture.</p>
-<h1 id="Clean-architecture"><a href="#Clean-architecture" class="headerlink" title="Clean architecture"></a>Clean architecture</h1><p>Before diving into the implementation, let’s have a look at the architecture:</p>
-<p><img src="https://miro.medium.com/max/60/1*HwV1WkWjf9mnECGcB94lpA.png?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/733/1*HwV1WkWjf9mnECGcB94lpA.png" alt="img"></p>
-<ul>
-<li><strong>Entities:</strong> These are the business objects of your application. These should not be affected by any change external to them, and these should be the most stable code within your application. These can be POJOs, objects with methods, or even data structures.</li>
-<li><strong>Use Cases:</strong> Implement and encapsulate all of the business rules.</li>
-<li><strong>Interface Adapters:</strong> Convert and present data to the use case and entity layers.</li>
-<li><strong>Frameworks and Drivers:</strong> Contain any frameworks or tools you need to run your application.</li>
-</ul>
-<p>The key concepts here are:</p>
-<ul>
-<li>Any layer can only reference a layer below it and know nothing about what’s going on above.</li>
-<li>The use cases and entities are the heart of your application and should have a minimal set of external library dependencies.</li>
-</ul>
-<h1 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h1><h1 id="Setup-of-the-project"><a href="#Setup-of-the-project" class="headerlink" title="Setup of the project"></a>Setup of the project</h1><p>We are going to use Gradle multi-project and <a href="http://openjdk.java.net/projects/jigsaw/" target="_blank" rel="noopener">Java Jigsaw</a> modules to enforce the dependencies between the different layers.</p>
-<p>The application we are going to build is very simple and the architecture will probably appear overkill for such a project, but this is the best way to understand how this all works.</p>
-<p>The features of the application will be:</p>
-<ul>
-<li>Create a user.</li>
-<li>Find a user.</li>
-<li>List all users.</li>
-<li>Login a user with their password.</li>
-</ul>
-<p>To do so, we will start with the inner layers (entities/use cases), then the interface adapters layer, and we will finish with the outer layer. We will also demonstrate the flexibility of the architecture by changing the implementation details and switching between frameworks.</p>
-<p>Here is a view of the project:</p>
-<p><img src="https://miro.medium.com/max/60/1*hkoxy-ajOU4jXtVn_FO5zw.png?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/386/1*hkoxy-ajOU4jXtVn_FO5zw.png" alt="img"></p>
-<p>Let’s dive into the implementation.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Java11, Clean Software Architecture, Jigsaw</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/26/2020-06-26-Clean-Architecture-with-Java-11/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1195,11 +1223,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1231,15 +1259,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1259,11 +1287,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1271,7 +1299,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1287,15 +1315,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1323,11 +1351,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1343,11 +1371,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1395,7 +1423,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1403,7 +1431,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1419,6 +1451,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
@@ -1427,19 +1463,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1499,11 +1531,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
