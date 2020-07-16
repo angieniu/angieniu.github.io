@@ -8,20 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Time Complexity, HashMap, ArrayList | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="12345678        访问	查找	插入	删除数组	O（1）	O（n）	O（n）	O（n）有序数组	O（1）	O（logn）	O（n）	O（n）链表	O（n）	O（n）	O（1）	O（1）有序链表	O（n）	O（n）	O（n）	O（n）二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）哈希表	---	O（1）	O（1）	O（1）   HashMap Time Co">
+  <meta name="description" content="12345678        访问	查找	插入	删除数组	O（1）	O（n）	O（n）	O（n）有序数组	O（1）	O（logn）	O（n）	O（n）链表	O（n）	O（n）	O（1）	O（1）有序链表	O（n）	O（n）	O（n）	O（n）二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）哈希表	---	O（1）	O（1）	O（1）  Common Data Stru">
 <meta name="keywords" content="Data Structure">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Time Complexity, HashMap, ArrayList">
 <meta property="og:url" content="http://yoursite.com/2020/07/16/2020-07-16-Time-Complexity,-HashMap,-ArrayList/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="12345678        访问	查找	插入	删除数组	O（1）	O（n）	O（n）	O（n）有序数组	O（1）	O（logn）	O（n）	O（n）链表	O（n）	O（n）	O（1）	O（1）有序链表	O（n）	O（n）	O（n）	O（n）二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）哈希表	---	O（1）	O（1）	O（1）   HashMap Time Co">
+<meta property="og:description" content="12345678        访问	查找	插入	删除数组	O（1）	O（n）	O（n）	O（n）有序数组	O（1）	O（logn）	O（n）	O（n）链表	O（n）	O（n）	O（1）	O（1）有序链表	O（n）	O（n）	O（n）	O（n）二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）哈希表	---	O（1）	O（1）	O（1）  Common Data Stru">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://img-blog.csdn.net/20181015150829578?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pzNzQyOTQ2NTMw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
-<meta property="og:updated_time" content="2020-07-16T20:11:40.145Z">
+<meta property="og:updated_time" content="2020-07-16T21:02:48.904Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Time Complexity, HashMap, ArrayList">
-<meta name="twitter:description" content="12345678        访问	查找	插入	删除数组	O（1）	O（n）	O（n）	O（n）有序数组	O（1）	O（logn）	O（n）	O（n）链表	O（n）	O（n）	O（1）	O（1）有序链表	O（n）	O（n）	O（n）	O（n）二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）哈希表	---	O（1）	O（1）	O（1）   HashMap Time Co">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20181015150829578?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pzNzQyOTQ2NTMw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70">
+<meta name="twitter:description" content="12345678        访问	查找	插入	删除数组	O（1）	O（n）	O（n）	O（n）有序数组	O（1）	O（logn）	O（n）	O（n）链表	O（n）	O（n）	O（1）	O（1）有序链表	O（n）	O（n）	O（n）	O（n）二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）哈希表	---	O（1）	O（1）	O（1）  Common Data Stru">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -171,7 +169,214 @@
       
         <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">        访问	查找	插入	删除</span></span><br><span class="line"></span><br><span class="line">数组	O（1）	O（n）	O（n）	O（n）</span><br><span class="line">有序数组	O（1）	O（logn）	O（n）	O（n）</span><br><span class="line">链表	O（n）	O（n）	O（1）	O（1）</span><br><span class="line">有序链表	O（n）	O（n）	O（n）	O（n）</span><br><span class="line">二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）</span><br><span class="line">哈希表	---	O（1）	O（1）	O（1）</span><br></pre></td></tr></table></figure>
 
-<p><img src="https://img-blog.csdn.net/20181015150829578?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3pzNzQyOTQ2NTMw/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"></p>
+<h2 id="Common-Data-Structure-Operations"><a href="#Common-Data-Structure-Operations" class="headerlink" title="Common Data Structure Operations"></a>Common Data Structure Operations</h2><table>
+<thead>
+<tr>
+<th align="left">Data Structure</th>
+<th align="left">Time Complexity</th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left">Space Complexity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"></td>
+<td align="left">Average</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Worst</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Worst</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Access</td>
+<td align="left">Search</td>
+<td align="left">Insertion</td>
+<td align="left">Deletion</td>
+<td align="left">Access</td>
+<td align="left">Search</td>
+<td align="left">Insertion</td>
+<td align="left">Deletion</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Array_data_structure" target="_blank" rel="noopener">Array</a></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)" target="_blank" rel="noopener">Stack</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Queue_(abstract_data_type)" target="_blank" rel="noopener">Queue</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists" target="_blank" rel="noopener">Singly-Linked List</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Doubly_linked_list" target="_blank" rel="noopener">Doubly-Linked List</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Skip_list" target="_blank" rel="noopener">Skip List</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n log(n))</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="noopener">Hash Table</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="noopener">Binary Search Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Cartesian_tree" target="_blank" rel="noopener">Cartesian Tree</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/B_tree" target="_blank" rel="noopener">B-Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Red-black_tree" target="_blank" rel="noopener">Red-Black Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Splay_tree" target="_blank" rel="noopener">Splay Tree</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/AVL_tree" target="_blank" rel="noopener">AVL Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/K-d_tree" target="_blank" rel="noopener">KD Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+</tbody></table>
 <h1 id="HashMap-Time-Complexity"><a href="#HashMap-Time-Complexity" class="headerlink" title="HashMap Time Complexity"></a>HashMap Time Complexity</h1><p>get()方法最好情况O(1)，最差情况O(N)，平均O(1)</p>
 <p>put()方法最好情况O(1)，最差情况比较复杂，其中底层实现还涉及到map扩容</p>
 <p>最优情况，hash不碰撞，O(1)，典型情况，近似是O(1)，因为几乎没有碰撞，最坏情况，O(N)，也就是所有的hash都一样，那么退化为线性查找</p>
@@ -356,7 +561,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap-Time-Complexity"><span class="toc-number">1.</span> <span class="toc-text">HashMap Time Complexity</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList"><span class="toc-number">2.</span> <span class="toc-text">ArrayList</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList用法详解"><span class="toc-number">3.</span> <span class="toc-text">ArrayList用法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-1"><span class="toc-number">3.0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Common-Data-Structure-Operations"><span class="toc-number">1.</span> <span class="toc-text">Common Data Structure Operations</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HashMap-Time-Complexity"><span class="toc-number"></span> <span class="toc-text">HashMap Time Complexity</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList"><span class="toc-number"></span> <span class="toc-text">ArrayList</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ArrayList用法详解"><span class="toc-number"></span> <span class="toc-text">ArrayList用法详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference-1"><span class="toc-number">0.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -471,19 +676,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,7 +688,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -499,7 +696,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,15 +712,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -523,11 +724,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,7 +736,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -547,7 +756,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -555,11 +764,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,10 +784,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
               </li>
              
@@ -591,15 +796,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,11 +824,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -627,11 +836,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -639,11 +848,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -651,19 +860,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,15 +896,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -711,14 +920,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
@@ -727,15 +928,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -779,11 +984,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">

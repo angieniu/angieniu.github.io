@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5661762059763712.png">
 <meta property="og:image" content="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/6245805994278912.png">
 <meta property="og:image" content="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5679720049934336.png">
-<meta property="og:updated_time" content="2020-07-16T20:52:06.033Z">
+<meta property="og:updated_time" content="2020-07-16T20:59:12.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design a Parking Lot">
 <meta name="twitter:description" content="Design a Parking LotLet’s make an object-oriented design for a multi-floor parking lot. A parking lot or car park is a dedicated cleared area that is intended for parking vehicles. In most countries w">
@@ -210,7 +210,7 @@
 <li><strong>Cash payment:</strong> To pay the parking ticket through cash.</li>
 <li><strong>Add/Modify parking rate:</strong> To allow admin to add or modify the hourly parking rate.</li>
 </ul>
-<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5676455606353920.png" alt="widget"></p>
+<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5676455606353920.png" alt="img"></p>
 <p>Use case diagram</p>
 <a id="more"></a>
 
@@ -230,11 +230,11 @@
 <li><strong>CustomerInfoPortal:</strong> This class will encapsulate the info portal that customers use to pay for the parking ticket. Once paid, the info portal will update the ticket to keep track of the payment.</li>
 <li><strong>ElectricPanel:</strong> Customers will use the electric panels to pay and charge their electric vehicles.</li>
 </ul>
-<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5661762059763712.png" alt="widget"></p>
+<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5661762059763712.png" alt="img"></p>
 <p>Class diagram</p>
-<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/6245805994278912.png" alt="widget"></p>
+<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/6245805994278912.png" alt="img"></p>
 <h3 id="Activity-diagrams"><a href="#Activity-diagrams" class="headerlink" title="Activity diagrams#"></a>Activity diagrams<a href="https://www.educative.io/courses/grokking-the-object-oriented-design-interview/gxM3gRxmr8Z#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5pxactivity-diagramsdiv" target="_blank" rel="noopener">#</a></h3><p><strong>Customer paying for parking ticket:</strong> Any customer can perform this activity. Here are the set of steps:</p>
-<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5679720049934336.png" alt="widget"></p>
+<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5679720049934336.png" alt="img"></p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code#"></a>Code<a href="https://www.educative.io/courses/grokking-the-object-oriented-design-interview/gxM3gRxmr8Z#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5pxcodediv" target="_blank" rel="noopener">#</a></h3><p>Following is the skeleton code for our parking lot system:</p>
 <p><strong>Enums and Constants:</strong> Here are the required enums, data types, and constants:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> VehicleType &#123;</span><br><span class="line">  CAR, TRUCK, ELECTRIC, VAN, MOTORBIKE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ParkingSpotType &#123;</span><br><span class="line">  HANDICAPPED, COMPACT, LARGE, MOTORBIKE, ELECTRIC</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> AccountStatus &#123;</span><br><span class="line">  ACTIVE, BLOCKED, BANNED, COMPROMISED, ARCHIVED, UNKNOWN</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ParkingTicketStatus &#123;</span><br><span class="line">  ACTIVE, PAID, LOST</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Address</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String streetAddress;</span><br><span class="line">  <span class="keyword">private</span> String city;</span><br><span class="line">  <span class="keyword">private</span> String state;</span><br><span class="line">  <span class="keyword">private</span> String zipCode;</span><br><span class="line">  <span class="keyword">private</span> String country;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> String name;</span><br><span class="line">  <span class="keyword">private</span> Address address;</span><br><span class="line">  <span class="keyword">private</span> String email;</span><br><span class="line">  <span class="keyword">private</span> String phone;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -517,19 +517,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -537,7 +529,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -545,7 +537,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -553,15 +553,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -569,11 +565,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -581,7 +577,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,7 +597,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,11 +605,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -621,10 +625,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
               </li>
              
@@ -637,15 +637,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -661,11 +665,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -673,11 +677,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -685,11 +689,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,19 +701,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,15 +737,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -757,14 +761,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
@@ -773,15 +769,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -825,11 +825,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
