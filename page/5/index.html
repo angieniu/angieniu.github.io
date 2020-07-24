@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 100</a>
+<a>Total Number of Articles: 103</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,268 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-13-Android-Architecture-Patterns-Part-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/">Android Architecture Patterns Part 3 Model-View-ViewModel</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/" class="archive-article-date">
+  	<time datetime="2020-06-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>After four different designs in the first six months of the development of the upday app, we learned one important lesson: we need an architecture pattern that allows fast reaction to design changes! The solution we chose in the end was Model-View-ViewModel. Discover with me what MVVM is; how we are applying it at upday and what makes it so perfect for us.</p>
+<h1 id="The-Model-View-ViewModel-Pattern"><a href="#The-Model-View-ViewModel-Pattern" class="headerlink" title="The Model-View-ViewModel Pattern"></a>The Model-View-ViewModel Pattern</h1><p>The main players in the MVVM pattern are:</p>
+<ul>
+<li>The <em>View</em> — that informs the ViewModel about the user’s actions</li>
+<li>The <em>ViewModel</em> — exposes streams of data relevant to the View</li>
+<li>The <em>DataModel</em> — abstracts the data source. The ViewModel works with the DataModel to get and save the data.</li>
+</ul>
+<p>At a first glance, MVVM seems very similar to the <a href="https://upday.github.io/blog/model-view-presenter/" target="_blank" rel="noopener">Model-View-Presenter pattern</a>, because both of them do a great job in abstracting the view’s state and behavior. The Presentation Model abstracts a View independent from a specific user-interface platform, whereas the MVVM pattern was created to simplify the <strong>event driven</strong> programming of user interfaces.</p>
+<p>If the MVP pattern meant that the Presenter was telling the View directly what to display, in MVVM, <strong>ViewModel exposes streams of events</strong> to which the Views can bind to. Like this, the ViewModel does not need to hold a reference to the View anymore, like the Presenter is. This also means that all the interfaces that the MVP pattern requires, are now dropped.</p>
+<p>The Views also notify the ViewModel about different actions. Thus, the MVVM pattern supports two-way data binding between the View and ViewModel and there is a many-to-one relationship between View and ViewModel. View has a reference to ViewModel but <strong>ViewModel has no information about the View</strong>. The consumer of the data should know about the producer, but the producer — the ViewModel — doesn’t know, and doesn’t care, who consumes the data.</p>
+<p><img src="https://miro.medium.com/max/60/0*5mD214cjNXU-V6lf.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1400/0*5mD214cjNXU-V6lf.png" alt="img"></p>
+<p>Model-View-ViewModel class structure</p>
+<h1 id="Model-View-ViewModel-at-upday"><a href="#Model-View-ViewModel-at-upday" class="headerlink" title="Model-View-ViewModel at upday"></a>Model-View-ViewModel at upday</h1><p>A quick look at the Android posts on the upday blog will instantly reveal what our favorite library is: RxJava. So it’s no wonder, because RxJava is the backbone of upday’s code! The event driven part required by MVVM is done using RxJava’s <code>Observable</code>s. Here’s how we apply MVVM in the Android app at upday, with the help of RxJava:</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MVVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/13/2020-06-13-Android-Architecture-Patterns-Part-3/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/">Android Architecture Patterns Part 2 Model-View-Presenter</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/" class="archive-article-date">
+  	<time datetime="2020-06-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It’s about time we developers start thinking about how we can apply good architecture patterns in our Android apps. To help with this, Google offers <a href="https://github.com/googlesamples/android-architecture" target="_blank" rel="noopener">Android Architecture Blueprints</a>, where <a href="https://github.com/erikhellman" target="_blank" rel="noopener">Erik Hellman</a> and I worked together on the <a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/" target="_blank" rel="noopener">MVP &amp; RxJava</a> sample. Let’s have a look at how we applied it and the pros and cons of this approach.</p>
+<p><a href="https://github.com/googlesamples/android-architecture/tree/todo-mvp-rxjava/" target="_blank" rel="noopener">googlesamples/android-architectureandroid-architecture - A collection of samples to discuss and showcase different architectural tools and patterns for…github.com</a></p>
+<h1 id="The-Model-View-Presenter-Pattern"><a href="#The-Model-View-Presenter-Pattern" class="headerlink" title="The Model-View-Presenter Pattern"></a>The Model-View-Presenter Pattern</h1><p>Here are the roles of every component:</p>
+<ul>
+<li><strong>Model</strong> — the data layer. Responsible for handling the business logic and communication with the network and database layers.</li>
+<li><strong>View</strong> — the UI layer. Displays the data and notifies the Presenter about user actions.</li>
+<li><strong>Presenter</strong> — retrieves the data from the Model, applies the UI logic and manages the state of the View, decides what to display and reacts to user input notifications from the View.</li>
+</ul>
+<p>Since the View and the Presenter work closely together, they need to have a reference to one another. To make the Presenter unit testable with JUnit, the View is abstracted and an interface for it used. The relationship between the Presenter and its corresponding View is defined in a <code>Contract</code> interface class, making the code more readable and the connection between the two easier to understand.</p>
+<p><img src="https://miro.medium.com/max/60/0*VOr9hgXEmoTxyoyz.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/2000/0*VOr9hgXEmoTxyoyz.png" alt="img"></p>
+<p>Model-View-Presenter class structure</p>
+<h1 id="The-Model-View-Presenter-Pattern-amp-RxJava-in-Android-Architecture-Blueprints"><a href="#The-Model-View-Presenter-Pattern-amp-RxJava-in-Android-Architecture-Blueprints" class="headerlink" title="The Model-View-Presenter Pattern &amp; RxJava in Android Architecture Blueprints"></a>The Model-View-Presenter Pattern &amp; RxJava in Android Architecture Blueprints</h1><p>The blueprint sample is a <a href="https://github.com/googlesamples/android-architecture/wiki/To-do-app-specification" target="_blank" rel="noopener">”To Do” application</a>. It lets a user create, read, update and delete “To Do” tasks, as well as apply filters to the displayed list of tasks. RxJava is used to move off the main thread and be able to handle asynchronous operations.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android, MVP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/12/2020-06-12-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/11/2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/">How to create an Android project with the MVVM architectural pattern [Part 1].</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/11/2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/" class="archive-article-date">
+  	<time datetime="2020-06-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://miro.medium.com/max/1534/1*tSHvX51lF0BwYFbmFaobpg.png" alt="img"></p>
+<p>After a long time, I just started to write something related to Android development that will help for the new beginners. If you are an experienced Android developer you already know what I am going to talk about. But this is for you if you have some basic experience in Android development. So if we are going to start a Mobile application project we always care about the architecture of the application.</p>
+<p>Why we need proper architecture?<br>With the use of architecture, we can easily maintain our code in the future as well as we can easily write unit testing for it. <a href="https://en.wikipedia.org/wiki/Model–view–presenter" target="_blank" rel="noopener"><strong>MVP</strong></a> and <a href="https://en.wikipedia.org/wiki/Model–view–viewmodel" target="_blank" rel="noopener"><strong>MVVM</strong></a> are the most popular architectural patterns among android developers.I’m not going to discuss the difference between those architectural patterns because both patterns we can use in different scenarios. After joining <a href="https://global.rakuten.com/corp/about/company/" target="_blank" rel="noopener">Rakuten</a> I got a chance to worked with high scale Android project. So I felt how much it make easy to develop if we select proper architecture. Let’s start to talk about MVVM.</p>
+<p>In the part 1 section, I will describe MVVM shortly and folder structure about the project.</p>
+<p>For this project, we are using a few popular libraries. I hope that readers will familiar with those. I will explain the use of these libraries in the next sections. Here is the list of libraries<br>•Rx Java<br>•Dagger2<br>•Retrofit</p>
+<p>Here you can see how was my current project folder structure looks like.</p>
+<p><img src="https://miro.medium.com/max/46/1*pydTWaXUUGSaemUrvITWJA.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/504/1*pydTWaXUUGSaemUrvITWJA.png" alt="img"></p>
+<p>When we are talking about MVVM pattern we need to talk about Model, ViewModel, and View. Each section has different duties to perform. Above picture, you can clearly see that the folder structure divided into those sections. Apart from that folder called “di” can be seen. That section was allocated for dependency injection. So we are using Dagger 2 library for this. We can discuss more details about this section in the next tutorial.</p>
+<p>Below you can see a short description for View, ViewModel, and Model.No need to worry if you can not get full idea about that. We can discuss it with a code example in the next tutorial.</p>
+<p><strong>View</strong> — What the user sees, the UI, it also can hold events. It is bound to a View Model through data binding.</p>
+<p><strong>ViewModel</strong> — Can have states &amp; detect changes. It is a data representation of the actual raw data in the model. It is not the UI (View) it is not the data (Model), it is the ‘In Between’ link.only the View Model does so it can write back changes to the Model if required.</p>
+<p><strong>Model</strong> — The Model is the stored raw data, it gives the View Model the data so it can manipulate it but it’s not the actual data so the logic is performed in the View Model first before anything committal to the data comes this way.</p>
+<p>In the next tutorial, I will explain how to implement MVVM along with other libraries to fulfill our requirement. Please read more about MVVM and try to create a small project. Thank you for reading this.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/@rajithaperera_81165/how-to-create-an-android-project-with-the-mvvm-architectural-pattern-part-1-ac7029653056" target="_blank" rel="noopener">https://medium.com/@rajithaperera_81165/how-to-create-an-android-project-with-the-mvvm-architectural-pattern-part-1-ac7029653056</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Android, MVVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/11/2020-06-11-How-to-create-an-Android-project-with-the-MVVM-architectural-pattern-[Part-1]/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-10-Add-Firebase-to-JavaScript-Project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -732,253 +994,9 @@
 
 
   
-    <article id="post-2020-06-04-React-Lifecycle-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">React Lifecycle Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/" class="archive-article-date">
-  	<time datetime="2020-06-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="React关注数据，view会因此变化"><a href="#React关注数据，view会因此变化" class="headerlink" title="React关注数据，view会因此变化"></a>React关注数据，view会因此变化</h3><p>Data model: 从这个需求中，得看出:</p>
-<p>1.list: task []</p>
-<p>2.done, undone =&gt;  array sublist stored. task [] -&gt;[done]</p>
-<p>​                                                                                 \ [undone]</p>
-<p>3.增删查改操作</p>
-<h3 id="React-Lifecycle"><a href="#React-Lifecycle" class="headerlink" title="React Lifecycle"></a>React Lifecycle</h3><p>Mounting的render实现了上树到真实的dom。</p>
-<p>Mounting的componentDidMount: 一般用于从server拿数据，constructor里面和render里面 (render里面reset数据会死循环)都不会去拿数据，一般componentDidMount里面有reset。作用：1.更新组件私有数据 2.对真实dom进行操作</p>
-<h3 id="Parent-Child"><a href="#Parent-Child" class="headerlink" title="Parent - Child"></a>Parent - Child</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">APP</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span>  // <span class="title">parent</span> <span class="title">component</span></span></span><br><span class="line"><span class="class"></span>&#123; <span class="keyword">constructor</span>()&#123;</span><br><span class="line">	<span class="keyword">super</span>();</span><br><span class="line">	<span class="keyword">this</span>.state = &#123;</span><br><span class="line">		todos: [</span><br><span class="line">		 &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">title</span>: <span class="string">"task1"</span>, <span class="attr">done</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">		 ... </span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	render()&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1&gt;ToDo App&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">		&lt;HD addTodo=&#123;this.addItem&#125; /</span>&gt;</span><br><span class="line">		&lt;BD todoList=&#123;<span class="keyword">this</span>.state.todos&#125; /&gt;</span><br><span class="line">		&lt;FT /&gt;</span><br><span class="line">		&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	addItem = (item) =&gt; &#123; /</span><span class="regexp">/ parent 拿到子组件传回来的，进行状态更新</span></span><br><span class="line"><span class="regexp">		console.log(item);</span></span><br><span class="line"><span class="regexp">		this.setState(&#123; </span></span><br><span class="line"><span class="regexp">			todos: [</span></span><br><span class="line"><span class="regexp">				...this.state.todos,</span></span><br><span class="line"><span class="regexp">				&#123;</span></span><br><span class="line"><span class="regexp">					id: Math.floor(Math.random() * 100),</span></span><br><span class="line"><span class="regexp">					title: item,</span></span><br><span class="line"><span class="regexp">					done: false</span></span><br><span class="line"><span class="regexp">				&#125;</span></span><br><span class="line"><span class="regexp">			]</span></span><br><span class="line"><span class="regexp">		&#125;)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">class HD extends React.Component&#123;</span></span><br><span class="line"><span class="regexp">	constructor()&#123;</span></span><br><span class="line"><span class="regexp">	super();</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/ define</span></span><br><span class="line"><span class="regexp">	this.input = React.createRef();</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	render()&#123;</span></span><br><span class="line"><span class="regexp">	return(</span></span><br><span class="line"><span class="regexp">	&lt;div&gt;</span></span><br><span class="line"><span class="regexp">	&lt;input type="text" ref=&#123;this.input&#125; /</span>&gt;</span><br><span class="line">	&lt;button onClick=&#123;() =&gt; &#123;<span class="comment">//get ref</span></span><br><span class="line">	<span class="keyword">const</span> val = <span class="keyword">this</span>.input.current.value</span><br><span class="line">	<span class="comment">//use cb 调用par ent组件传给子组件的函数 , cb否则是自动点击</span></span><br><span class="line">	<span class="keyword">this</span>.props.addToDo(val)</span><br><span class="line">	<span class="keyword">this</span>.input.current.value = <span class="string">''</span>; <span class="comment">//清空已经键入的数据</span></span><br><span class="line">	&#125;&#125;</span><br><span class="line">	&gt;add <span class="keyword">new</span> task&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">	)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="setSet-Two-Methods"><a href="#setSet-Two-Methods" class="headerlink" title="setSet Two Methods"></a>setSet Two Methods</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//法1：不需要更新之后，再做另外操作，</span></span><br><span class="line">addItem = <span class="function">(<span class="params">item</span>) =&gt;</span> &#123; <span class="comment">// parent 拿到子组件传回来的，进行状态更新</span></span><br><span class="line">		<span class="built_in">console</span>.log(item);</span><br><span class="line">		<span class="keyword">this</span>.setState(&#123;  <span class="comment">//setState 异步</span></span><br><span class="line">			todos: [</span><br><span class="line">				...this.state.todos,</span><br><span class="line">				&#123;</span><br><span class="line">					id: <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100</span>),</span><br><span class="line">					title: item,</span><br><span class="line">					done: <span class="literal">false</span></span><br><span class="line">				&#125;</span><br><span class="line">			]</span><br><span class="line">		&#125;)</span><br><span class="line">	也可以&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//法2： this.setState(preState =&#123;&#125;) //传入回调函数. 需要等更新之后，再做另外操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">preState</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">todos: <span class="keyword">this</span>.state.todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id? &#123;...item, <span class="attr">done</span>: states&#125;: item)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于this.setState(preState =&gt; (&#123; todos: preState.todos.map(item =&gt; </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// item.id === id? &#123;...item, done: states&#125;: item), ()=&gt;&#123;&#125;) 多用于逻辑结构复</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//杂，希望setState之后再执行下面的函数()=&gt; &#123;&#125;用preState. 传两个回调函数。</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vs</span><br><span class="line"></span><br><span class="line">updateItem = <span class="function">(<span class="params">id, status</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line"></span><br><span class="line">​	todos: <span class="keyword">this</span>.state.todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id? &#123;...item, <span class="attr">done</span>: states&#125;: item)</span><br><span class="line"></span><br><span class="line">&#125;)&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="onClick-this绑定"><a href="#onClick-this绑定" class="headerlink" title="onClick, this绑定"></a>onClick, this绑定</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>()&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.state = &#123;</span><br><span class="line">			isShow: <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>);<span class="comment">//this永远指向Parent</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	&lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is Parent<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">	&lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt; show/hide &lt;<span class="regexp">/button&gt; /</span><span class="regexp">/ 点击事件有可能改变this指向，所以绑定函数在constructor里面</span></span><br><span class="line"><span class="regexp">	&lt;hr /</span>&gt;</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">this</span>.state.isShow ? <span class="xml"><span class="tag">&lt;<span class="name">Child</span> /&gt;</span></span>: <span class="literal">null</span></span><br><span class="line">	&#125;</span><br><span class="line">	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">handleClick()&#123;</span></span><br><span class="line"><span class="regexp">	this.setState(&#123;</span></span><br><span class="line"><span class="regexp">		isShow: !this.state.isShow</span></span><br><span class="line"><span class="regexp">	&#125;)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">VS &lt;button onClick = &#123;</span></span><br><span class="line"><span class="regexp">  () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    this.setState(&#123;</span></span><br><span class="line"><span class="regexp">      isShow: !this.state.isShow</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="JSON-JS"><a href="#JSON-JS" class="headerlink" title="JSON, JS"></a>JSON, JS</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">json: &#123;<span class="string">"key"</span> : <span class="string">'Joe'</span>&#125; <span class="comment">//.json file</span></span><br><span class="line">js: &#123;<span class="attr">key</span> : <span class="string">'Joe'</span>&#125; <span class="comment">// js file</span></span><br><span class="line">    &#123;<span class="string">"key"</span> : <span class="string">'Joe'</span>&#125;</span><br><span class="line">    &#123;<span class="string">"first-name"</span>: <span class="string">'Joe'</span>&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>前后端通信</p>
-<p>react有axios</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Lifecycle</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/">How Does the Frontend Communicate with the Backend?</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/" class="archive-article-date">
-  	<time datetime="2020-06-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>How to connect the frontend and the backend?</p>
-<p>How do they communicate?</p>
-</blockquote>
-<p>There are many different ways how to structure a web application. The frontend can take different forms, and it can be daunting to understand how to connect the two.</p>
-<p>This article is an overview of what goes on between the backend and the frontend of a web application - how the two communicate.</p>
-<p>Let’s start with fundamentals.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Frontend - Backend Communication</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/03/2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-02-糖糖-🍬🍬" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/02/2020-06-02-糖糖-🍬🍬/">糖糖 🍬🍬</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/02/2020-06-02-糖糖-🍬🍬/" class="archive-article-date">
-  	<time datetime="2020-06-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天得知糖糖走了，本来能量满满的我，忽然间有点儿感伤。</p>
-<p>初识糖糖时，觉得他嗓音有种别样的沙哑与磁性，当时就觉得他应该是教了太多课了。</p>
-<p>之后，我总能从他身上发现点点滴滴令人感动的细节。</p>
-<p>为了答疑，凌晨1点多可能才下课，之后才来个夜宵，备课或者回答学生零零散散的问题还可能拖到更晚。糖糖说，他前几天凌晨5点才睡觉，心疼。</p>
-<p>每每这个时候，我会在想糖糖的另一半一定也很心疼糖糖。</p>
-<p>生活中的糖糖，早上7点多会开始准备忙着送孩子。褪去老师的外衣，一个尽职尽责的爸爸形象跃然纸上。</p>
-<p>糖糖是我最喜欢的老师之一。并不是因为他知识上能够驾驭各种题目，因为一定有不少人能做到这一点。但是他每一次讲题，我都能感受到他是真正的热爱传授知识，想尽各种办法给学生讲懂，愿意倾听，也会积极回应。这些，不是每一个会做题的人能做到的，或有耐心愿意去做的。</p>
-<p>正是因为他是这么好的一个老师，所以他不教课了，也为他感到开心。他可以有更多时间去休息休息，享受生活，陪伴家人，做做自己的研究。</p>
-<p>昔日有幸，聆听教诲，感恩！</p>
-<p>他日有缘，江湖相见，期盼！</p>
-<p>我会让这一天早点儿到来的！ 🤗</p>
-<p>Cultivate more self-compassion;<br>Keep in mind to take more care of the people we love, those who love us, and ourselves! That’s what I have learned through Tangtang’s decision-making. Good luck with your new journey!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/02/2020-06-02-糖糖-🍬🍬/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
@@ -1080,19 +1098,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1100,7 +1106,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1108,11 +1122,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1140,11 +1158,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1156,11 +1174,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1168,11 +1186,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1184,11 +1206,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1200,7 +1222,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1208,15 +1230,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1228,15 +1242,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1244,11 +1258,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1256,35 +1266,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1292,27 +1278,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1320,11 +1290,71 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,11 +1394,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1380,7 +1410,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1388,11 +1418,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
