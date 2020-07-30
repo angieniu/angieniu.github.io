@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 106</a>
+<a>Total Number of Articles: 109</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,326 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-19-0-1背包问题的动态规划算法-knapsack-problem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/">0-1背包问题的动态规划算法 knapsack problem</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/" class="archive-article-date">
+  	<time datetime="2020-07-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：给定n个物品， 每个物品体积为<img src="https://www.zhihu.com/equation?tex=v_%7Bi%7D+" alt="[公式]">)，价值为<img src="https://www.zhihu.com/equation?tex=w_%7Bi%7D" alt="[公式]">)；m个背包，每个背包的容量为<img src="https://www.zhihu.com/equation?tex=c_%7Bi%7D+" alt="[公式]">，每个物品只能取一次，求能获得的最大价值。</p>
+<p>Silvano Martello and Paolo Toth发了一系列的文章都是关于多背包问题的。他们还出了本书叫《KNAPSACK PROBLEMS Algorithms and Computer Implementations》里面的第六章就是讲0-1多背包问题。0、多背包问题根据物品数和背包数的比值分为两个大类：n/m值大，即物品多背包少；n/m值小，即物品少背包多。这本书主要是讲第一种多背包问题。1、首先对0-1规划问题都会需要求松弛和上界。多背包问题有三种松弛方法：Surrogate relaxation, Lagrangian relaxation and Worst-case performance of the upper bounds.2、对背包问题，总可以用贪婪算法得到一个可行解。但是该解不一定是全局最优的。只能作为一个比较基准。3、为了得到全局最优，解背包问题都会想到用动态规划。但是对多背包问题而言，考虑到动态规划需要的计算时间和存储空间，这种方法是不实用的。所以我们想到用分支定界的方法来减少计算量。4、针对多背包问题分支定界在以下两大类之下又有很多小的细分Branch-and-bound algorithmsBound-and-bound algorithms5、但是上面的计算量仍然很大，所以Ingargiola and Korsh（1975）又提出通过物品间的支配关系来简化计算，即规约算法（Reduction algorithms）。但是这种方法只适用于物品n较少或问题非常难的情况。6、Approximate algorithms是通过对贪婪的改进，即正序放和倒序放后交叉互换物品的方式，来得到更优的解。最后对这些方法的效率，这章的计算实验部分列出了一些表格。可以参考看看。<img src="https://pic4.zhimg.com/50/v2-aa1a7c02377c41cd931df41982971be5_hd.jpg?source=1940ef5c" alt="img">)<img src="https://pic4.zhimg.com/80/v2-aa1a7c02377c41cd931df41982971be5_720w.jpg?source=1940ef5c" alt="img">通过表格可以看到Bound-and-bond算法表现还是挺好的<del>最近刚好在看这个。希望能对你有所帮助。也希望过几天我的实验结果能好好跑出来啊</del>阿门啊。</p>
+<p>0-1 多背包问题是一个很经典的问题 目前启发式算法和精确型算法都有很多了<br>只要在谷歌学术搜索一下 Multiple Knapsack Problem 你会看到很多<br>精确型比如：<br>–branch and bound<br>-dynamic program<br>-————————————–<br>启发式比如：<br>-genetic algorithm<br>-tabu search<br>-hybird algorithm<br>这些算法都能用于求解。</p>
+<hr>
+<h2 id="首先得知道什么是0-1背包问题（knapsack-problem）"><a href="#首先得知道什么是0-1背包问题（knapsack-problem）" class="headerlink" title="首先得知道什么是0-1背包问题（knapsack problem）"></a>首先得知道什么是0-1背包问题（knapsack problem）</h2><p>◆ 贼，夜入豪宅，可偷之物甚多，而负重能力有限，偷哪些才更加不枉此行？</p>
+<p>◆ 抽象的话，就是：</p>
+<p>给定一组多个（<img src="https://www.zhihu.com/equation?tex=n" alt="[公式]">)）物品，每种物品都有自己的重量（<img src="https://www.zhihu.com/equation?tex=w_i" alt="[公式]">)）和价值（<img src="https://www.zhihu.com/equation?tex=v_i" alt="[公式]">)），在限定的总重量/总容量（<img src="https://www.zhihu.com/equation?tex=C" alt="[公式]">）内，选择其中若干个（也即每种物品可以选0个或1个），设计选择方案使得物品的总价值最高。</p>
+<p>◆ ◆ 更加抽象的话：</p>
+<p>给定正整数<img src="https://www.zhihu.com/equation?tex=%5C%7B%28w_i%2Cv_i%29%5C%7D_%7B1%5Cleq+i%5Cleq+n%7D" alt="[公式]">)、给定正整数<img src="https://www.zhihu.com/equation?tex=C" alt="[公式]">，求解0-1规划问题：</p>
+<p><img src="https://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D" alt="[公式]"> ， s.t. <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iw_i%7D%5Cleq+C" alt="[公式]"> ， <img src="https://www.zhihu.com/equation?tex=x_i%5Cin%5C%7B0%2C1%5C%7D" alt="[公式]"> 。</p>
+<p>◆ 示例应用：处理器能力有限时间受限，任务很多，如何选择使得总效用最大？</p>
+<p>◆ 数值例子：如下图。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-85236598e4e35b7efa3ea3f69a5ca8ec_720w.jpg" alt="img"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">knapsack problem, algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-18-Route-Inspection-Problem-图论算法—邮递员投递问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/18/2020-07-18-Route-Inspection-Problem-图论算法—邮递员投递问题/">Route Inspection Problem 图论算法—邮递员投递问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/18/2020-07-18-Route-Inspection-Problem-图论算法—邮递员投递问题/" class="archive-article-date">
+  	<time datetime="2020-07-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="中国邮递员问题"><a href="#中国邮递员问题" class="headerlink" title="中国邮递员问题"></a>中国邮递员问题</h2><h3 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1. 问题描述"></a>1. 问题描述</h3><blockquote>
+<p>中国邮递员问题是邮递员在某一地区的信件投递路程问题。邮递员每天从邮局出发，走遍该地区所有街道再返回邮局，问题是他应如何安排送信的路线可以使所走的总路程最短。</p>
+</blockquote>
+<p>题目描述<br>著名图论问题之一。邮递员从邮局出发送信，要求对辖区内每条街，都至少通过一次，再回邮局。在此条件下，怎样选择一条最短路线？此问题由中国数学家管梅谷于1960年首先研究并给出算法，故名。<br>中国邮递员问题——可以叙述为在一个有奇点的图中，通过增加一些重复边，使新图不含奇点，并且重复边的总权为最小问题！</p>
+<p>快递员从V1出发给V2、V3、V4、V5、<br>V6、V7、V8、V9派发快递，求派完所有回到原出发点的最短路径？如下图所示</p>
+<p><img src="https://img-blog.csdn.net/20161021220925675" alt="这里写图片描述"></p>
+<p>题目分析<br>在分析这道题目之前，我们在想这样的一个问题<br>图1和图2当中哪一个图满足从<br>图中任何一点出发，途径每条边最终还能回到原点？<br>图1无奇点不需要走重复边；<br>图2有奇点需要走重复边。</p>
+<p><img src="https://img-blog.csdn.net/20161021221603217" alt="这里写图片描述"></p>
+<p>从上面的结果可以让我们得到一些灵感。</p>
+<p>那么一个图应该满足什么条件才能达到上面要求呢？</p>
+<p>满足各个结点的度为偶数！在一个多重边的连通图中，从某个顶点出发，经过不同的线路，又回到原出发点，这样的线路必是欧拉图。</p>
+<p>定理1：连通的多重图G是欧拉图，当且仅当G中无奇点。<br>欧拉圈：若存在一个简单圈，过每边一次，且仅一次，则称为欧拉圈。</p>
+<p>1、化奇图为偶图，结果如下：</p>
+<p><img src="https://img-blog.csdn.net/20161021222058255" alt="这里写图片描述"></p>
+<p>注意：不是将跨越的奇点连接起来！<br>2、但是上面这样的连接结果是最优方案？如果不是最优方案，那么什么样的指标才算是最优的方案？应该如果去找到这样的最优方案？<br>最后对化奇图为偶图进行下面两个约束条件调优：<br>A、在最优方案中，图的每一边最多有一条重复边<br>B、最优方案中，图中的每一个圈（环）重复边的总权值不大于该圈总权值的一半</p>
+<p>下面图是经过A约束条件的调优结果：</p>
+<p><img src="https://img-blog.csdn.net/20161021222411072" alt="这里写图片描述"></p>
+<p>B约束条件调优算法执行的步骤：<br>1、找出图中的一个圈，既一条不存在重复路径的回路<br>2、计算圈中的重复边的总和D，计算圈的所有边的总和S<br>3、如果D&gt;S/2，则把这个圈的重复边全部变成单边，单边全部变成重复边<br>4、重复以上的1,2,3直到不存在D &gt; S/2的情况</p>
+<p>最优在A的调优结果基础上面，B调优结果如下：</p>
+<p><img src="https://img-blog.csdn.net/20161021222549933" alt="这里写图片描述"></p>
+<p>圈（v2,v3,v4,v9,v2）的总长度为24，但圈上重复边总权为14，大于该圈总长度的一半，因此可以做一次调整，以[v2,v9]，[v9,v4]上的重复边代[v2,v3]，[v3,v4]上的重复边，使重复边总长度下降为17。</p>
+<p>但是上面的图还存在可以调优的情况：<br>圈（v1,v2, v9, v6,v7, v8,v1）的总长度为24，但圈上重复边总权为13，大于该圈总长度的一半，因此可以做一次调整，使重复边总长度下降为15。结果如下图</p>
+<p><img src="https://img-blog.csdn.net/20161021222811311" alt="这里写图片描述"></p>
+<p>最终结果<br>最优方案：v1-v2-v9-v8-v1-v8-v7-v6-v5-v4-v9-v6-v9-v4-v3-v2-v1（任意一个欧拉圈即可）</p>
+<p><img src="https://img-blog.csdn.net/20161021222811311" alt="这里写图片描述"></p>
+<hr>
+<p><img src="https://pic1.zhimg.com/80/v2-b81e77eca9f2c1e5355a2b1ca16de305_720w.jpg" alt="img">第1页</p>
+<p><img src="https://pic2.zhimg.com/80/v2-ee2dad05affd672eb0ec0929fa55b9e7_720w.jpg" alt="img">第2页</p>
+<p><img src="https://picb.zhimg.com/80/v2-dd2b920978f6912765d128e28b39f1c2_720w.jpg" alt="img">第3页</p>
+<p><img src="https://pic4.zhimg.com/80/v2-46ca41520da94afc1c7506e52e3aca92_720w.jpg" alt="img">第4页</p>
+<p><img src="https://pic1.zhimg.com/80/v2-ffdab3728032611fb9fdbe6db8cdf95d_720w.jpg" alt="img">第5页</p>
+<p><img src="https://pic3.zhimg.com/80/v2-27b13f9803404cbc81247a8aa93668e8_720w.jpg" alt="img">第6页</p>
+<p><img src="https://pic1.zhimg.com/80/v2-0cb56c556c116b7fe18e95c237c104c3_720w.jpg" alt="img">第7页</p>
+<p><img src="https://pic3.zhimg.com/80/v2-fcec71ebc8a532c6a32cd8371cf3686e_720w.jpg" alt="img">第8页</p>
+<p><img src="https://pic3.zhimg.com/80/v2-b2c6906c975adcb4169493e54dde5a99_720w.jpg" alt="img">第9页</p>
+<p><img src="https://pic3.zhimg.com/80/v2-787526a73fb34da4c752402da2d52393_720w.jpg" alt="img">第10页</p>
+<p><img src="https://pic2.zhimg.com/80/v2-0fb8d63a3532e3433dd8cba16f8585fd_720w.jpg" alt="img">第11页</p>
+<p><img src="https://pic1.zhimg.com/80/v2-ac4f042565f2f0f136e6f0786df608ec_720w.jpg" alt="img"></p>
+<h3 id="2-问题解决"><a href="#2-问题解决" class="headerlink" title="2. 问题解决"></a>2. 问题解决</h3><ol>
+<li><p>图本身就是一个欧拉回路图，那么直接走一个欧拉回路就访问了所有路径并回到了起点</p>
+<p>（欧拉回路图的前提条件是每个点的度数都是偶数）</p>
+</li>
+<li><p>图不是一个欧拉回路图，需要对某些边重复走多次回到起点，等价于添加了一些已经存在的重边，构建了欧拉回路。</p>
+<p>不是欧拉回路需要通过增加一些边使得图变成一个欧拉回路，并能保证问题的最优解，添加的边权值和一定是尽可能短的。</p>
+<ul>
+<li>计算度数为奇数的点</li>
+<li>算出所有点之间的最短路径</li>
+<li>奇度数的点一定为偶数，点与点之间构建二分图，权值为两点之间的最短路，找到一个最小权值匹配集</li>
+<li>对于匹配集，找到每一个匹配集两点之间形成的最短路径，那么这条最短路径就需要加入到额外的边中，且一定能保证这条路径上除了这两个匹配的奇度数点度数加了1变成了偶数，其他所有中间点都是加了2，不影奇偶性。</li>
+<li>所有边都添加好后，就是一个欧拉回路了，计算从起点开始的欧拉回路路径</li>
+</ul>
+</li>
+</ol>
+<h3 id="3-相关算法"><a href="#3-相关算法" class="headerlink" title="3.相关算法"></a>3.相关算法</h3><ul>
+<li><p>Fleury算法：求解欧拉回路路径，可以写成非常简洁的形式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">dfs(source , euler_path);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u , <span class="built_in">vector</span>&lt;pii&gt; &amp;euler_path)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; i&lt;edges[u].<span class="built_in">size</span>() ; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edges[u][i];</span><br><span class="line">        <span class="keyword">if</span>(<span class="number">0</span> &lt; euler_edge_degree[u][v])&#123;</span><br><span class="line">            <span class="comment">//                cout&lt;&lt;"here debug: "&lt;&lt;u&lt;&lt;" -- "&lt;&lt;v&lt;&lt;endl;</span></span><br><span class="line">            euler_edge_degree[u][v] -- ;</span><br><span class="line">            euler_edge_degree[v][u] -- ;</span><br><span class="line">            dfs(v , euler_path);</span><br><span class="line">            euler_path.push_back(make_pair(u, v));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Floyd计算最短路算法</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">floyd</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span> ; i&lt;n ; i++)</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span> ; j&lt;n ; j++)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span> ; k&lt;n ; k++)</span><br><span class="line">                    min_dis[i][j] = <span class="built_in">min</span>(min_dis[i][j] , min_dis[i][k]+min_dis[k][j]);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Route Inspection Problem, Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/18/2020-07-18-Route-Inspection-Problem-图论算法—邮递员投递问题/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-17-Heroku-Deployment-Heroku-with-Nodejs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/17/2020-07-17-Heroku-Deployment-Heroku-with-Nodejs/">Heroku Deployment Heroku with Node.js</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/17/2020-07-17-Heroku-Deployment-Heroku-with-Nodejs/" class="archive-article-date">
+  	<time datetime="2020-07-17T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Deploying-Node-js-Apps-on-Heroku"><a href="#Deploying-Node-js-Apps-on-Heroku" class="headerlink" title="Deploying Node.js Apps on Heroku"></a>Deploying Node.js Apps on Heroku</h1><h2 id="Table-of-Contents"><a href="#Table-of-Contents" class="headerlink" title="Table of Contents"></a>Table of Contents</h2><ul>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#prerequisites" target="_blank" rel="noopener">Prerequisites</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#overview" target="_blank" rel="noopener">Overview</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#declare-app-dependencies" target="_blank" rel="noopener">Declare app dependencies</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#specify-the-version-of-node" target="_blank" rel="noopener">Specify the version of node</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#specifying-a-start-script" target="_blank" rel="noopener">Specifying a start script</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#build-your-app-and-run-it-locally" target="_blank" rel="noopener">Build your app and run it locally</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#how-to-keep-build-artifacts-out-of-git" target="_blank" rel="noopener">How to keep build artifacts out of git</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#deploy-your-application-to-heroku" target="_blank" rel="noopener">Deploy your application to Heroku</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#advanced-http-features" target="_blank" rel="noopener">Advanced HTTP features</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#provision-a-database" target="_blank" rel="noopener">Provision a database</a></li>
+<li><a href="https://devcenter.heroku.com/articles/deploying-nodejs#next-steps" target="_blank" rel="noopener">Next steps</a></li>
+</ul>
+<p>This article describes how to take an existing Node.js app and deploy it to Heroku.</p>
+<p>If you are new to Heroku, you might want to start with the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" target="_blank" rel="noopener">Getting Started with Node.js on Heroku</a> tutorial.</p>
+<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a><a href="https://devcenter.heroku.com/articles/deploying-nodejs#prerequisites" target="_blank" rel="noopener">Prerequisites</a></h2><p>The best practices in this article assume that you have:</p>
+<ul>
+<li><a href="http://nodejs.org/" target="_blank" rel="noopener">Node.js</a> and npm installed.</li>
+<li>an existing Node.js app.</li>
+<li>a free <a href="https://signup.heroku.com/signup/dc" target="_blank" rel="noopener">Heroku account</a>.</li>
+<li>the <a href="https://cli.heroku.com/" target="_blank" rel="noopener">Heroku CLI</a>.</li>
+</ul>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a><a href="https://devcenter.heroku.com/articles/deploying-nodejs#overview" target="_blank" rel="noopener">Overview</a></h2><p>The details of Heroku’s Node.js Support are described in the <a href="https://devcenter.heroku.com/articles/nodejs-support" target="_blank" rel="noopener">Heroku Node.js Support</a> article.</p>
+<p>Heroku Node.js support will only be applied when the application has a <code>package.json</code> file in the root directory.</p>
+<h2 id="Declare-app-dependencies"><a href="#Declare-app-dependencies" class="headerlink" title="Declare app dependencies"></a><a href="https://devcenter.heroku.com/articles/deploying-nodejs#declare-app-dependencies" target="_blank" rel="noopener">Declare app dependencies</a></h2><p>The <code>package.json</code> file defines the dependencies that should be installed with your application. To create a <code>package.json</code> file for your app, run the command <code>npm init</code> in the root directory of your app. It will walk you through creating a <code>package.json</code> file. You can skip any of the prompts by leaving them blank.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ cd node-example</span><br><span class="line">$ npm init</span><br><span class="line">...</span><br><span class="line">name: (node-example)</span><br><span class="line">version: (1.0.0)</span><br><span class="line">description: This example is so cool.</span><br><span class="line">entry point: (web.js)</span><br><span class="line">test command:</span><br><span class="line">git repository:</span><br><span class="line">keywords: example heroku</span><br><span class="line">author: jane-doe</span><br><span class="line">license: (ISC) MIT</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>The generated <code>package.json</code> file looks like this:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"node-example"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">"This example is so cool."</span>,</span><br><span class="line">  <span class="attr">"main"</span>: <span class="string">"web.js"</span>,</span><br><span class="line">  <span class="attr">"scripts"</span>: &#123;</span><br><span class="line">    <span class="attr">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"keywords"</span>: [</span><br><span class="line">    <span class="string">"example"</span>,</span><br><span class="line">    <span class="string">"heroku"</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="attr">"author"</span>: <span class="string">"jane-doe"</span>,</span><br><span class="line">  <span class="attr">"license"</span>: <span class="string">"MIT"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Heroku, Devployment</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/17/2020-07-17-Heroku-Deployment-Heroku-with-Nodejs/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-16-Time-Complexity,-HashMap,-ArrayList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1104,322 +1424,6 @@
 
 
   
-    <article id="post-2020-07-09-React-Based-Multi-Step-Forms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/">React-Based Multi-Step Forms</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/" class="archive-article-date">
-  	<time datetime="2020-07-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Rect-multistep"><a href="#Rect-multistep" class="headerlink" title="Rect-multistep"></a>Rect-multistep</h1><p><a href="https://github.com/srdjan/react-multistep" target="_blank" rel="noopener">https://github.com/srdjan/react-multistep</a></p>
-<h2 id="Responsive-React-multistep-form-component"><a href="#Responsive-React-multistep-form-component" class="headerlink" title="Responsive React multistep form component"></a>Responsive React multistep form component</h2><p><a href="https://raw.githubusercontent.com/srdjan/react-multistep/master/assets/react-multistep.png" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/srdjan/react-multistep/master/assets/react-multistep.png" alt="img"></a></p>
-<h4 id="Try-it-here"><a href="#Try-it-here" class="headerlink" title="Try it here"></a>Try it <a href="http://srdjan.github.io/react-multistep/" target="_blank" rel="noopener">here</a></h4><h1 id><a href="#" class="headerlink" title></a></h1><p><a href="https://nodei.co/npm/react-multistep/" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/c7c0c36813351d63002b8cb1bb874a8ed6b54212/68747470733a2f2f6e6f6465692e636f2f6e706d2f72656163742d6d756c7469737465702e706e673f646f776e6c6f6164733d747275652673746172733d74727565" alt="NPM"></a></p>
-<h4 id="React-16-13-1"><a href="#React-16-13-1" class="headerlink" title="React 16.13.1"></a>React 16.13.1</h4><h4 id="List-of-forks"><a href="#List-of-forks" class="headerlink" title="List of forks"></a><a href="https://github.com/srdjan/react-multistep/network/members/" target="_blank" rel="noopener">List of forks</a></h4><h1 id="-1"><a href="#-1" class="headerlink" title></a></h1><h4 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h4><p>To use this module in your app run:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-multistep</span><br></pre></td></tr></table></figure>
-
-<p>next, import it inside of your app:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const MultiStep = import from <span class="string">'react-multistep'</span></span><br></pre></td></tr></table></figure>
-
-<p>Component has only one Prop, ‘showNavigation’, which controls if the navigation buttons should be visable:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prop=showNavigation </span><br><span class="line"><span class="built_in">type</span>: boolean (default = <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-
-<p>It takes an array of objects representing individual steps:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const steps = [</span><br><span class="line">              &#123;name: <span class="string">'StepOne'</span>, component: &lt;StepOne/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepTwo'</span>, component: &lt;StepTwo/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepThree'</span>, component: &lt;StepThree/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepFour'</span>, component: &lt;StepFour/&gt;&#125;</span><br><span class="line">            ];</span><br><span class="line">&lt;Multistep showNavigation=&#123;<span class="literal">true</span>&#125; steps=&#123;steps&#125;/&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="If-you-want-to-explore-try-the-included-example…"><a href="#If-you-want-to-explore-try-the-included-example…" class="headerlink" title="If you want to explore try the included example…"></a>If you want to explore try the included example…</h4><p>1.Start by cloning the repo locally:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//--step 1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/srdjan/react-multistep.git   //<span class="built_in">clone</span> the repo</span><br><span class="line"><span class="built_in">cd</span> react-multistep                                        //navigate to the project folder</span><br></pre></td></tr></table></figure>
-
-<p>2.Next, install dependencies and build the component:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run build // (or, `npm run build:prod` <span class="keyword">for</span> optimized build)</span><br></pre></td></tr></table></figure>
-
-<p>3.On a succesful build, navigate to the example folder and try it:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ../example</span><br><span class="line">npm install</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
-
-<p>4.Now you can open the example in your favorite browser:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open index.html</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Multistep Form</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-08-Hooks-API-Reference" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/08/2020-07-08-Hooks-API-Reference/">Hooks API Reference</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/08/2020-07-08-Hooks-API-Reference/" class="archive-article-date">
-  	<time datetime="2020-07-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><em>Hooks</em> are a new addition in React 16.8. They let you use state and other React features without writing a class.</p>
-<p>This page describes the APIs for the built-in Hooks in React.</p>
-<p>If you’re new to Hooks, you might want to check out <a href="https://reactjs.org/docs/hooks-overview.html" target="_blank" rel="noopener">the overview</a> first. You may also find useful information in the <a href="https://reactjs.org/docs/hooks-faq.html" target="_blank" rel="noopener">frequently asked questions</a> section.</p>
-<ul>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#basic-hooks" target="_blank" rel="noopener">Basic Hooks</a><ul>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#usestate" target="_blank" rel="noopener"><code>useState</code></a></li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#useeffect" target="_blank" rel="noopener"><code>useEffect</code></a></li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#usecontext" target="_blank" rel="noopener"><code>useContext</code></a></li>
-</ul>
-</li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#additional-hooks" target="_blank" rel="noopener">Additional Hooks</a><ul>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#usereducer" target="_blank" rel="noopener"><code>useReducer</code></a></li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#usecallback" target="_blank" rel="noopener"><code>useCallback</code></a></li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#usememo" target="_blank" rel="noopener"><code>useMemo</code></a></li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#useref" target="_blank" rel="noopener"><code>useRef</code></a></li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#useimperativehandle" target="_blank" rel="noopener"><code>useImperativeHandle</code></a></li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#uselayouteffect" target="_blank" rel="noopener"><code>useLayoutEffect</code></a></li>
-<li><a href="https://reactjs.org/docs/hooks-reference.html#usedebugvalue" target="_blank" rel="noopener"><code>useDebugValue</code></a></li>
-</ul>
-</li>
-</ul>
-<h2 id="Basic-Hooks"><a href="#Basic-Hooks" class="headerlink" title="Basic Hooks"></a>Basic Hooks</h2><h3 id="useState"><a href="#useState" class="headerlink" title="useState"></a><code>useState</code></h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = useState(initialState);</span><br></pre></td></tr></table></figure>
-
-<p>Returns a stateful value, and a function to update it.</p>
-<p>During the initial render, the returned state (<code>state</code>) is the same as the value passed as the first argument (<code>initialState</code>).</p>
-<p>The <code>setState</code> function is used to update the state. It accepts a new state value and enqueues a re-render of the component.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setState(newState);</span><br></pre></td></tr></table></figure>
-
-<p>During subsequent re-renders, the first value returned by <code>useState</code> will always be the most recent state after applying updates.</p>
-<blockquote>
-<p>Note</p>
-<p>React guarantees that <code>setState</code> function identity is stable and won’t change on re-renders. This is why it’s safe to omit from the <code>useEffect</code> or <code>useCallback</code> dependency list.</p>
-</blockquote>
-<h4 id="Functional-updates"><a href="#Functional-updates" class="headerlink" title="Functional updates"></a>Functional updates</h4><p>If the new state is computed using the previous state, you can pass a function to <code>setState</code>. The function will receive the previous value, and return an updated value. Here’s an example of a counter component that uses both forms of <code>setState</code>:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params">&#123;initialCount&#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(initialCount);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      Count: &#123;count&#125;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(initialCount)&#125;&gt;Reset&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; setCount(prevCount =&gt; prevCount - 1)&#125;&gt;-&lt;/</span>button&gt;</span><br><span class="line">      &lt;button onClick=&#123;() =&gt; setCount(<span class="function"><span class="params">prevCount</span> =&gt;</span> prevCount + <span class="number">1</span>)&#125;&gt;+&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The ”+” and ”-” buttons use the functional form, because the updated value is based on the previous value. But the “Reset” button uses the normal form, because it always sets the count back to the initial value.</p>
-<p>If your update function returns the exact same value as the current state, the subsequent rerender will be skipped completely.</p>
-<blockquote>
-<p>Note</p>
-<p>Unlike the <code>setState</code> method found in class components, <code>useState</code> does not automatically merge update objects. You can replicate this behavior by combining the function updater form with object spread syntax:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; setState(<span class="function"><span class="params">prevState</span> =&gt;</span> &#123;</span><br><span class="line">&gt;   <span class="comment">// Object.assign would also work</span></span><br><span class="line">&gt;   <span class="keyword">return</span> &#123;...prevState, ...updatedValues&#125;;</span><br><span class="line">&gt; &#125;);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<blockquote>
-<p>Another option is <code>useReducer</code>, which is more suited for managing state objects that contain multiple sub-values.</p>
-</blockquote>
-<h4 id="Lazy-initial-state"><a href="#Lazy-initial-state" class="headerlink" title="Lazy initial state"></a>Lazy initial state</h4><p>The <code>initialState</code> argument is the state used during the initial render. In subsequent renders, it is disregarded. If the initial state is the result of an expensive computation, you may provide a function instead, which will be executed only on the initial render:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> [state, setState] = useState(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> initialState = someExpensiveComputation(props);</span><br><span class="line">  <span class="keyword">return</span> initialState;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
-<h4 id="Bailing-out-of-a-state-update"><a href="#Bailing-out-of-a-state-update" class="headerlink" title="Bailing out of a state update"></a>Bailing out of a state update</h4><p>If you update a State Hook to the same value as the current state, React will bail out without rendering the children or firing effects. (React uses the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description" target="_blank" rel="noopener"><code>Object.is</code> comparison algorithm</a>.)</p>
-<p>Note that React may still need to render that specific component again before bailing out. That shouldn’t be a concern because React won’t unnecessarily go “deeper” into the tree. If you’re doing expensive calculations while rendering, you can optimize them with <code>useMemo</code>.</p>
-<h3 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a><code>useEffect</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useEffect(didUpdate);</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Hooks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/08/2020-07-08-Hooks-API-Reference/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-06-Level-up-your-React-architecture-with-MVVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/07/2020-07-06-Level-up-your-React-architecture-with-MVVM/">Level up your React architecture with MVVM</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/07/2020-07-06-Level-up-your-React-architecture-with-MVVM/" class="archive-article-date">
-  	<time datetime="2020-07-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Have you ever opened a project and left traumatised because you saw an incomprehensible and unmaintainable <em>JavaScript</em> code that you don’t want to touch even with an isolated rod? Because if you touch it, everything could crash just like one big Jenga block.</p>
-<p><em>JavaScript</em> is easy to pick up and start with coding but it is even easier to do it in a wrong way. For small projects, low quality code will not present high risk for a company but if a project gets bigger you will end up with a <a href="https://en.wikipedia.org/wiki/Technical_debt" target="_blank" rel="noopener">technical debt</a> that will wade every deadline and eventually swallow you up. No one would ever want to touch this kind of code. Therefore, in this article we’ll see <strong>how you can apply *Model-View-ViewModel (MVVM)* architectural pattern into a *React* project and significantly improve the code quality.</strong></p>
-<blockquote>
-<p>By definition, an <a href="http://pubs.opengroup.org/architecture/togaf8-doc/arch/chap28.html" target="_blank" rel="noopener">Architecture Pattern</a> provides a set of predefined subsystems, specifies their responsibilities, and includes rules and guidelines for organising the relationship between them.</p>
-</blockquote>
-<p>Many architectural patterns are trying to solve the same challenges as <em>MVVM</em> — make your code loosely coupled, maintainable and easy to test.</p>
-<p>Someone could ask: “<em>If I already know how to use</em> <a href="https://facebook.github.io/flux/" target="_blank" rel="noopener"><em>Flux</em></a> <em>and</em> <a href="https://redux.js.org/" target="_blank" rel="noopener"><em>Redux</em></a><em>, why should I bother myself learning MVVM or any other architectural pattern?”<br>—</em> and the answer is: you don’t have to! If, for example, <em>Redux</em> is ideal fit for your project and your team, stick with it. On the other hand, how could you be 100% sure that <em>Redux</em> is truly ideal for your project if you don’t know any other pattern? You’ll force <em>Redux</em> into every project even though there might be a better option. Only sane decision here is to learn new architectural pattern. Let’s start with the <em>MVVM</em>.</p>
-<p>The best way to get to know patterns is to get your hands dirty and try them out. We’ll create Pokédex demo application powered with <em>React</em> and <em>MobX</em> (complete code in this <a href="https://github.com/davinci2015/react-mvvm-pokemon" target="_blank" rel="noopener">repo</a>)<em>.</em> <a href="https://mobx.js.org/index.html" target="_blank" rel="noopener"><em>MobX</em></a> is a library for simple and scalable state management. It’s serving the same purpose as <em>Redux,</em> but unlike <em>Redux</em> it doesn’t give us guidelines how we should architect our application. <em>MobX</em> gives us observable capabilities (<a href="https://en.wikipedia.org/wiki/Observer_pattern" target="_blank" rel="noopener">observer pattern</a>) and a way to inject dependencies into our components. It goes with <em>MVVM</em> just as bread goes with the butter.</p>
-<h1 id="Dive-into-MVVM"><a href="#Dive-into-MVVM" class="headerlink" title="Dive into MVVM"></a>Dive into MVVM</h1><p><em>MVVM</em> has four main blocks:</p>
-<ul>
-<li><em>The View —</em> UI layer that users interact with,</li>
-<li><em>The ViewController —*has access to the *ViewModel</em> and handles user input,</li>
-<li><em>The ViewModel —</em> has access to the <em>Model</em> and handles business logic,</li>
-<li><em>The Model —</em> application data source</li>
-</ul>
-<p>Keep reading to find out how those components in <em>MVVM</em> is related to each other and what are their responsibilities.</p>
-<p><img src="https://miro.medium.com/max/60/1*bK0LyLEHirleo1xcPDUq-w.png?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/1101/1*bK0LyLEHirleo1xcPDUq-w.png" alt="img"></p>
-<p>MVVM diagram</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, MVVM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/07/2020-07-06-Level-up-your-React-architecture-with-MVVM/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1532,11 +1536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1580,19 +1584,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1600,15 +1596,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1624,6 +1624,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
@@ -1632,15 +1636,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1648,11 +1648,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1672,10 +1676,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
@@ -1688,11 +1688,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1704,7 +1704,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1712,7 +1712,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1720,7 +1720,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1732,15 +1744,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1748,7 +1752,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1760,15 +1764,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1796,10 +1812,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
@@ -1820,7 +1832,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1832,15 +1844,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1856,11 +1868,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1869,6 +1881,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
