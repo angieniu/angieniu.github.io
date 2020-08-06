@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 114</a>
+<a>Total Number of Articles: 116</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,395 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-16-Time-Complexity,-HashMap,-ArrayList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/16/2020-07-16-Time-Complexity,-HashMap,-ArrayList/">Time Complexity, HashMap, ArrayList</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/16/2020-07-16-Time-Complexity,-HashMap,-ArrayList/" class="archive-article-date">
+  	<time datetime="2020-07-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">        访问	查找	插入	删除</span></span><br><span class="line"></span><br><span class="line">数组	O（1）	O（n）	O（n）	O（n）</span><br><span class="line">有序数组	O（1）	O（logn）	O（n）	O（n）</span><br><span class="line">链表	O（n）	O（n）	O（1）	O（1）</span><br><span class="line">有序链表	O（n）	O（n）	O（n）	O（n）</span><br><span class="line">二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）</span><br><span class="line">哈希表	---	O（1）	O（1）	O（1）</span><br></pre></td></tr></table></figure>
+
+<h2 id="Common-Data-Structure-Operations"><a href="#Common-Data-Structure-Operations" class="headerlink" title="Common Data Structure Operations"></a>Common Data Structure Operations</h2><table>
+<thead>
+<tr>
+<th align="left">Data Structure</th>
+<th align="left">Time Complexity</th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left">Space Complexity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"></td>
+<td align="left">Average</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Worst</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Worst</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Access</td>
+<td align="left">Search</td>
+<td align="left">Insertion</td>
+<td align="left">Deletion</td>
+<td align="left">Access</td>
+<td align="left">Search</td>
+<td align="left">Insertion</td>
+<td align="left">Deletion</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Array_data_structure" target="_blank" rel="noopener">Array</a></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)" target="_blank" rel="noopener">Stack</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Queue_(abstract_data_type)" target="_blank" rel="noopener">Queue</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists" target="_blank" rel="noopener">Singly-Linked List</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Doubly_linked_list" target="_blank" rel="noopener">Doubly-Linked List</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Skip_list" target="_blank" rel="noopener">Skip List</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n log(n))</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="noopener">Hash Table</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="noopener">Binary Search Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Cartesian_tree" target="_blank" rel="noopener">Cartesian Tree</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/B_tree" target="_blank" rel="noopener">B-Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Red-black_tree" target="_blank" rel="noopener">Red-Black Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Splay_tree" target="_blank" rel="noopener">Splay Tree</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/AVL_tree" target="_blank" rel="noopener">AVL Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/K-d_tree" target="_blank" rel="noopener">KD Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+</tbody></table>
+<h1 id="HashMap-Time-Complexity"><a href="#HashMap-Time-Complexity" class="headerlink" title="HashMap Time Complexity"></a>HashMap Time Complexity</h1><p>get()方法最好情况O(1)，最差情况O(N)，平均O(1)</p>
+<p>put()方法最好情况O(1)，最差情况比较复杂，其中底层实现还涉及到map扩容</p>
+<p>最优情况，hash不碰撞，O(1)，典型情况，近似是O(1)，因为几乎没有碰撞，最坏情况，O(N)，也就是所有的hash都一样，那么退化为线性查找</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/16/2020-07-16-Time-Complexity,-HashMap,-ArrayList/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-15-Data-Structure-&amp;-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/">Data Structure &amp; Algorithm Notes, Sorting, Hash Table, Arrays.sort</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/" class="archive-article-date">
+  	<time datetime="2020-07-15T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="HashMap、HashTable、HashSet、concurrentHashMap-线程安全，区别，实现原理"><a href="#HashMap、HashTable、HashSet、concurrentHashMap-线程安全，区别，实现原理" class="headerlink" title="HashMap、HashTable、HashSet、concurrentHashMap 线程安全，区别，实现原理"></a>HashMap、HashTable、HashSet、concurrentHashMap 线程安全，区别，实现原理</h1><h2 id="区别："><a href="#区别：" class="headerlink" title="区别："></a><strong>区别：</strong></h2><p><strong>HashMap和Hashtable的区别：</strong></p>
+<p>HashMap和Hashtable都实现了Map接口，但决定用哪一个之前先要弄清楚它们之间的分别。主要的区别有：线程安全性，同步(synchronization)，以及速度。</p>
+<ul>
+<li>HashMap几乎可以等价于Hashtable，除了HashMap是非synchronized的，并可以接受null(HashMap可以接受为null的键值(key)和值(value)，而Hashtable则不行)。</li>
+<li>HashMap是非synchronized，而Hashtable是synchronized，这意味着Hashtable是线程安全的，多个线程可以共享一个Hashtable；而如果没有正确的同步的话，多个线程是不能共享HashMap的。Java 5提供了ConcurrentHashMap，它是HashTable的替代，比HashTable的扩展性更好。</li>
+<li>另一个区别是HashMap的迭代器(Iterator)是fail-fast迭代器，而Hashtable的enumerator迭代器不是fail-fast的。所以当有其它线程改变了HashMap的结构（增加或者移除元素），将会抛出ConcurrentModificationException，但迭代器本身的remove()方法移除元素则不会抛出ConcurrentModificationException异常。但这并不是一个一定发生的行为，要看JVM。这条同样也是Enumeration和Iterator的区别。</li>
+<li>由于Hashtable是线程安全的也是synchronized，所以在单线程环境下它比HashMap要慢。如果你不需要同步，只需要单一线程，那么使用HashMap性能要好过Hashtable。</li>
+<li>HashMap不能保证随着时间的推移Map中的元素次序是不变的。</li>
+</ul>
+<p><strong>要注意的一些重要术语：</strong></p>
+<p>1) sychronized意味着在一次仅有一个线程能够更改Hashtable。就是说任何线程要更新Hashtable时要首先获得同步锁，其它线程要等到同步锁被释放之后才能再次获得同步锁更新Hashtable。</p>
+<p>2) Fail-safe和iterator迭代器相关。如果某个集合对象创建了Iterator或者ListIterator，然后其它的线程试图“结构上”更改集合对象，将会抛出ConcurrentModificationException异常。但其它线程可以通过set()方法更改集合对象是允许的，因为这并没有从“结构上”更改集合。但是假如已经从结构上进行了更改，再调用set()方法，将会抛出IllegalArgumentException异常。</p>
+<p>3) 结构上的更改指的是删除或者插入一个元素，这样会影响到map的结构。</p>
+<p><strong>我们能否让HashMap同步？</strong></p>
+<p>HashMap可以通过下面的语句进行同步：<br>Map m = Collections.synchronizeMap(hashMap);</p>
+<p><strong>结论</strong></p>
+<p>Hashtable和HashMap有几个主要的不同：线程安全以及速度。仅在你需要完全的线程安全的时候使用Hashtable，而如果你使用Java 5或以上的话，请使用ConcurrentHashMap吧。</p>
+<p><strong>HashMap和HashSet的区别</strong></p>
+<p>HashMap和HashSet都是collection框架的一部分，它们让我们能够使用对象的集合。collection框架有自己的接口和实现，主要分为Set接口，List接口和Queue接口。它们有各自的特点，Set的集合里不允许对象有重复的值，List允许有重复，它对集合中的对象进行索引，Queue的工作原理是FCFS算法(First Come, First Serve)。</p>
+<p><strong>HashSet</strong>：</p>
+<p>HashSet实现了Set接口，它不允许集合中出现重复元素。当我们提到HashSet时，第一件事就是在将对象存储在</p>
+<p>HashSet之前，要确保重写hashCode（）方法和equals（）方法，这样才能比较对象的值是否相等，确保集合中没有</p>
+<p>储存相同的对象。如果不重写上述两个方法，那么将使用下面方法默认实现：</p>
+<p>　public boolean add(Object obj)方法用在Set添加元素时，如果元素值重复时返回 “false”，如果添加成功则返回”true”</p>
+<p><strong>HashMap</strong>：</p>
+<p>HashMap实现了Map接口，Map接口对键值对进行映射。Map中不允许出现重复的键（Key）。Map接口有两个基本的实现</p>
+<p>TreeMap和HashMap。TreeMap保存了对象的排列次序，而HashMap不能。HashMap可以有空的键值对（Key（null）-Value（null））</p>
+<p>HashMap是非线程安全的（非Synchronize），要想实现线程安全，那么需要调用collections类的静态方法synchronizeMap（）实现。</p>
+<p>public Object put(Object Key,Object value)方法用来将元素添加到map中。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-df5974a2a1b0f38c11cd0db4d06f6c96_720w.jpg" alt="img"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Sorting, Hash Table</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-14-Design-a-Parking-Lot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1031,223 +1420,6 @@
 
 
   
-    <article id="post-Router 4 以及router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/Router 4 以及router/">React Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/06/Router 4 以及router/" class="archive-article-date">
-  	<time datetime="2020-07-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Router-4-以及Router"><a href="#Router-4-以及Router" class="headerlink" title="Router 4 以及Router"></a>Router 4 以及Router</h2><p>url/Login</p>
-<p>url/home</p>
-<p>1) 本质 url - ui(Component)对应</p>
-<p>2) Browser Router包裹 App</p>
-<p>3) 使用: </p>
-<p>设置 key-value</p>
-<p>​         url - ui</p>
-<p>​      &lt;Link to: ‘url’&gt; -&gt; to location </p>
-<p>​      &lt;Route  path: ‘/‘ , component直接跟组件名不能传值或者通过需要传值的话用render实现路由 diff &gt;-&gt; what to see 路由组件</p>
-<h2 id="路由切换"><a href="#路由切换" class="headerlink" title="路由切换:"></a>路由切换:</h2><p>[Method1]</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Login.js</span></span><br><span class="line">&lt;link to=<span class="string">"/register"</span>&gt;register now!&lt;<span class="regexp">/link&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>[Method2]history    this.props.history.push或者this.props.replay</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Register.js</span></span><br><span class="line"><span class="keyword">this</span>.props.history.push(<span class="string">'./login'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>vs redirect: 重定向</p>
-<p>一个url: localhost3000/login</p>
-<p>​                                      /register</p>
-<p>​                                     /home</p>
-<p>​                                    /               redirect到任何的 比如login页面</p>
-<h2 id="Ant-Deisng-Form-Component"><a href="#Ant-Deisng-Form-Component" class="headerlink" title="Ant Deisng: Form Component"></a>Ant Deisng: Form Component</h2><p>1) hoc -&gt; 通过form.create把form对象传给form组件</p>
-<p>2) 设计表单验证: 前端 -&gt; 时间两次验证 1）每次输入完 2) submit</p>
-<p>​                      后端</p>
-<p>3) 设计表单数据收集: form下面的方法</p>
-<h2 id="Radio-Group"><a href="#Radio-Group" class="headerlink" title="Radio Group"></a>Radio Group</h2><p>controlled component. value onchange.</p>
-<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p>点击button，弹出对话框。使用了react方法获取map组件, react ref, ref三种用法</p>
-<p>1) <c ref> this.refs 不用了</c></p>
-<p>2) createRef =&gt; myref   this.myref.current</p>
-<p>3) ref:{call back} 获取ref对象</p>
-<h2 id="Google-Map"><a href="#Google-Map" class="headerlink" title="Google Map"></a>Google Map</h2><p>hoc 2次: GoogleMap 和ScriptJS</p>
-<h2 id="React-Gallery"><a href="#React-Gallery" class="headerlink" title="React-Gallery"></a>React-Gallery</h2><h2 id="Local-Storage的使用"><a href="#Local-Storage的使用" class="headerlink" title="Local Storage的使用"></a>Local Storage的使用</h2><p>setItem to store data 存</p>
-<p>getItem 取data</p>
-<h2 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h2><p>useState, useEffect, useContext, reducer, callback, memo</p>
-<ol start="10">
-<li><p>function component: 可以使用state 在react 16开始</p>
-<p>所以function component + hooks写法简洁</p>
-<p>class component 相对比较长一些</p>
-</li>
-</ol>
-<ol start="11">
-<li><p>用browser发送request：bom下的ajax http request。需要自己写node server作为中间server。node.js express库. 前端很少直接拿数据，通过noder server。</p>
-<p>把react 和node放在一个package folder下面，分别run, run两个server.</p>
-<p>vs</p>
-<p>用postman发送request</p>
-</li>
-</ol>
-<ol start="12">
-<li>webpack 打包 配置处理js jsx共融，在package.json. 自己做webpack</li>
-</ol>
-<ol start="13">
-<li>CSS 需要掌握的: 两栏三栏，position, absolute, display, flex, relative, absolute, display block, inline block.</li>
-</ol>
-<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>1) 路由组件</p>
-<p>2) 非路由组件：嵌套在路由组件中</p>
-<h2 id="网页转换成手机端"><a href="#网页转换成手机端" class="headerlink" title="网页转换成手机端"></a>网页转换成手机端</h2><p>react to react native</p>
-<p>or media queries programmatically in react 稍微复杂</p>
-<p>or ant design: layout 可以实现 responsive development 使用不多</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">React, Router</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/06/Router 4 以及router/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/">What are HashMaps— You Might be Asked These in an Interview — Examples in Java</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/" class="archive-article-date">
-  	<time datetime="2020-07-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://miro.medium.com/max/1923/1*mWZUJP_0lKFDACHxfPQCCw.jpeg" alt="img"></p>
-<p>Let’s quickly go over what a <code>HashMap</code> is.</p>
-<p>Simply speaking it is a <code>Collection</code> object which uses <code>Key</code> and <code>Value</code> pairs, where both parameters are objects declared on creation. Each <code>Key</code> maps to a corresponding <code>Value</code>. E.g. the <code>key</code> “foo” maps the <code>value</code> “bar”.</p>
-<p>It is declared as <code>HashMap&lt;Key, Value&gt;</code>.</p>
-<p>Consider you’re making a <code>HashMap</code> of players on a football team, and each of them is identified by a unique number. We would create this map by using an Integer as the <code>Key</code>, and a <code>String</code> of the player’s name as the <code>Value</code>.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, Integer&gt; playerMap = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();<span class="comment">// Put players into our HashMap where they can be found with an int</span></span><br><span class="line">playerMap.put(<span class="number">23</span>, <span class="string">"David Beckham"</span>);</span><br><span class="line">playerMap.put(<span class="number">7</span>, <span class="string">"Cristiano Ronaldo"</span>);</span><br><span class="line">playerMap.put(<span class="number">10</span>, <span class="string">"Lionel Mess"</span>);</span><br><span class="line">playerMap.put(<span class="number">31</span>, <span class="string">"Neymar"</span>);<span class="comment">// Return a specific player</span></span><br><span class="line">System.out.print(playerMap.get(<span class="number">23</span>)); <span class="comment">// "David Beckham"</span></span><br></pre></td></tr></table></figure>
-
-<p>As a note, a <code>HashMap</code> does not make any guarantees of order or sorting. When you add a <code>Key</code> to your <code>HashMap</code>, there is no reason it will be returned to you at the same location or even at a constant speed. As well, <code>HashMaps</code> are not thread safe so if you’re working in a multi-threaded environment consider using a different data object. But we’ll get to that later.</p>
-<p><img src="https://miro.medium.com/max/60/1*dhQS6xzZP9tD5K49qwnlWA.jpeg?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/896/1*dhQS6xzZP9tD5K49qwnlWA.jpeg" alt="img"></p>
-<p>Another example: Linking Keys (Subway Stations) to Values (Travel Time)</p>
-<p>Previously in versions of Java &lt; 8, finding values of large <code>HashMaps</code> with the .<code>get()</code> method would have a worse case complexity of <code>O(n)</code>. However, since Java 8 it is now <code>O(log N)</code>. So there has been a substantial performance improvement, which make this data structure quite attractive to use.</p>
-<p><strong>Creating Different Types of HashMap</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// You'll need to import a HashMap for this to work in your</span></span><br><span class="line"><span class="comment">// Java project</span></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap; <span class="comment">// Let's create a bunch of HashMaps// Creating vanilla HashMap</span></span><br><span class="line">HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">         </span><br><span class="line"><span class="comment">// Creating HashMap with a capacity ... in this case 100</span></span><br><span class="line">Integer capacity = <span class="number">100</span>;   </span><br><span class="line">HashMap&lt;String, Integer&gt; map_2 = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;(capacity);</span><br><span class="line">         </span><br><span class="line"><span class="comment">// Creating HashMap with capacity and load factor</span></span><br><span class="line">Integer capacity = <span class="number">100</span>;</span><br><span class="line">Double loadFactor = .<span class="number">5</span>       </span><br><span class="line">HashMap&lt;String, Integer&gt; map3 = <span class="keyword">new</span> HashMap&lt;String, Integer (capacity, loadFactor);</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">HashMap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1364,10 +1536,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
@@ -1376,11 +1544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
+                <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1388,7 +1556,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1400,15 +1576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1416,15 +1588,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1433,6 +1597,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1464,55 +1632,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1524,11 +1652,51 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1536,15 +1704,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1556,7 +1728,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1564,11 +1736,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1580,11 +1748,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1592,11 +1760,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Song</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1608,19 +1780,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1628,11 +1788,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1640,7 +1812,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1648,15 +1820,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1668,19 +1844,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1688,11 +1856,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1704,15 +1880,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1721,10 +1901,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
