@@ -6,25 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>The 6 Most Common Types of Logic in Large Applications with Examples | Yanjie&#39;s Blog</title>
+  <title>Online Algorithm VS Offline Algorithm | Yanjie&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="I am thinking about my Park and Ride project through a system level. Notes for learning: This article is about the Clean Architecture, why we should separate the concerns of large applications into la">
-<meta name="keywords" content="Information Architecture, Application Logic, Architecture, Clean Architecture">
+  <meta name="description" content="The Wikipedia page is quite clear:  In computer science, an online algorithm is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algor">
+<meta name="keywords" content="Algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="The 6 Most Common Types of Logic in Large Applications with Examples">
-<meta property="og:url" content="http://yoursite.com/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/index.html">
+<meta property="og:title" content="Online Algorithm VS Offline Algorithm">
+<meta property="og:url" content="http://yoursite.com/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/index.html">
 <meta property="og:site_name" content="Yanjie&#39;s Blog">
-<meta property="og:description" content="I am thinking about my Park and Ride project through a system level. Notes for learning: This article is about the Clean Architecture, why we should separate the concerns of large applications into la">
+<meta property="og:description" content="The Wikipedia page is quite clear:  In computer science, an online algorithm is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algor">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://khalilstemmler.com/img/blog/software-architecture-design/logic-types.png">
-<meta property="og:image" content="https://khalilstemmler.com/img/blog/clean-architecture/group.svg">
-<meta property="og:image" content="https://khalilstemmler.com/img/blog/software-architecture-design/app-logic-layers.svg">
-<meta property="og:image" content="https://khalilstemmler.com/img/resources/solid-book/book-logo.png">
-<meta property="og:updated_time" content="2020-05-19T07:40:05.954Z">
+<meta property="og:image" content="https://i.stack.imgur.com/U2ffu.jpg">
+<meta property="og:image" content="https://i.stack.imgur.com/FyC1X.jpg">
+<meta property="og:updated_time" content="2020-08-07T06:55:58.022Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The 6 Most Common Types of Logic in Large Applications with Examples">
-<meta name="twitter:description" content="I am thinking about my Park and Ride project through a system level. Notes for learning: This article is about the Clean Architecture, why we should separate the concerns of large applications into la">
-<meta name="twitter:image" content="https://khalilstemmler.com/img/blog/software-architecture-design/logic-types.png">
+<meta name="twitter:title" content="Online Algorithm VS Offline Algorithm">
+<meta name="twitter:description" content="The Wikipedia page is quite clear:  In computer science, an online algorithm is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algor">
+<meta name="twitter:image" content="https://i.stack.imgur.com/U2ffu.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Yanjie&#39;s Blog" type="application/atom+xml">
   
@@ -152,178 +150,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2020-08-06-Online-Algorithm-VS-Offline-Algorithm" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      The 6 Most Common Types of Logic in Large Applications with Examples
+      Online Algorithm VS Offline Algorithm
     </h1>
   
 
         
-        <a href="/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/" class="archive-article-date">
-  	<time datetime="2020-05-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
+        <a href="/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/" class="archive-article-date">
+  	<time datetime="2020-08-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>I am thinking about my Park and Ride project through a system level. Notes for learning: This article is about the Clean Architecture, why we should separate the concerns of large applications into layers, the 6 most common types of application logic, and which layer they belong to.</p>
-<p><a href="https://khalilstemmler.com/articles/categories/software-design" target="_blank" rel="noopener">Software Design</a></p>
-<p><img src="https://khalilstemmler.com/img/blog/software-architecture-design/logic-types.png" alt="img"></p>
-<p>This topic is taken from Solid Book - The Software Architecture &amp; Design Handbook w/ TypeScript + Node.js. <a href="https://solidbook.io/" target="_blank" rel="noopener">Check it out</a> if you like this post.</p>
-<p>How many times have you been working on an application, and in the middle of writing some logic, asked yourself:</p>
+        <p>The Wikipedia page is quite clear:</p>
 <blockquote>
-<p>“Is this the right place to put this logic?”</p>
+<p>In computer science, an online algorithm is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algorithm, without having the entire input available from the start. In contrast, an offline algorithm is given the whole problem data from the beginning and is required to output an answer which solves the problem at hand. (For example, selection sort requires that the entire list be given before it can sort it, while insertion sort doesn’t.)</p>
 </blockquote>
-<p>There’s a lot that goes into figuring out where something belongs.</p>
-<p>First, you have to understand the domain that you’re working in. That’s how you figure out the <a href="https://khalilstemmler.com/articles/domain-driven-design-intro/" target="_blank" rel="noopener">subdomains</a> in your app.</p>
-<p>Then, for each subdomain, you have to identify all the <a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/application-layer-use-cases/" target="_blank" rel="noopener">use cases</a> and which <strong>actors</strong> are allowed to execute them.</p>
-<p>This is <a href="https://khalilstemmler.com/wiki/conways-law/" target="_blank" rel="noopener">Conway’s Law</a> <strong>in action</strong>.</p>
-<p>What I’ve found to be the most challenging part, especially for developers new to <a href="https://khalilstemmler.com/articles/categories/enterprise-node-type-script/" target="_blank" rel="noopener">enterprise application development</a> that have <a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/when-crud-mvc-isnt-enough/" target="_blank" rel="noopener">moved well-past simple CRUD MVC apps</a>, is implementing a <strong>layered architecture</strong> to separate the concerns of app development.</p>
-<p>The challenge seems to be understanding <em>which layer</em> exactly to place logic.</p>
-<p>In this article, we’ll learn about the following:</p>
-<ul>
-<li><p>Clean Architecture, and why we should separate the concerns of large applications into layers.</p>
-</li>
-<li><p>The 6 most common types of application logic and which layer they belong to.</p>
-<a id="more"></a>
-
-</li>
-</ul>
-<h2 id="The-Clean-Architecture-Layered-Architecture"><a href="#The-Clean-Architecture-Layered-Architecture" class="headerlink" title="The Clean Architecture / Layered Architecture"></a>The Clean Architecture / Layered Architecture</h2><p>Robert Martin wrote about <em>Clean Architecture</em> in his book of the same name. Although a bit of a challenging read (took me 2 really good reads), it’s amazing. It teaches you about how to organize and group code into components, and then how to organize an application that connects those components to things like databases, APIs, web servers and other external things that we need to power applications.</p>
-<p>A really simplified version of what the clean architecture might look like:</p>
-<p><img src="https://khalilstemmler.com/img/blog/clean-architecture/group.svg" alt="Simplified Clean Architecture"></p>
-<h3 id="Domain-Layer"><a href="#Domain-Layer" class="headerlink" title="Domain Layer"></a>Domain Layer</h3><p>In one layer (domain) we have all of the important stuff: the entities, business logic, rules and events. This is the irreplaceable stuff in our software that we can’t just swap out for another library or framework. It’s also the stuff that’s much less likely to need to change because it represents <em>what our business does</em>.</p>
-<p>For example, if we’re an app that sells books, we sell books. If we’re an app that finds parking spots, the domain layer contains the <em>core logic</em> to find parking spots.</p>
-<p>Because we’re unlikely to change the core essense of what our business does, the domain layer is the most <a href="https://khalilstemmler.com/wiki/stable-dependency-principle/" target="_blank" rel="noopener">stable layer</a>.</p>
-<p>The domain layer assumes a kind of <strong>higher-level policy</strong> that everything else relies on.</p>
-<h3 id="Infra-everything-else-layer"><a href="#Infra-everything-else-layer" class="headerlink" title="Infra (everything-else) layer"></a>Infra (everything-else) layer</h3><p>The other layer (infra) contains everything that actually spins up the code in the domain layer to execute.</p>
-<h2 id="Clean-architecture-expanded"><a href="#Clean-architecture-expanded" class="headerlink" title="Clean architecture expanded"></a>Clean architecture expanded</h2><p>We can <strong>generally</strong> express the clean architecture as <em>domain</em> and <em>infrastructure</em>.</p>
-<p>Stuff that’s specific to our business is <strong>domain</strong>, and the adapter-stuff that just hooks into the technologies that enable us to run a web app (database, web servers, controllers, caches, etc) is the <strong>infrastructure</strong>.</p>
-<p>But the devil is in the details.</p>
-<p>If we wipe our glasses off, a more detailed view of the clean architecture would look like this.</p>
-<p><img src="https://khalilstemmler.com/img/blog/software-architecture-design/app-logic-layers.svg" alt="img"></p>
+<p>Let me expand on the above:</p>
+<p>An offline algorithm requires all information BEFORE the algorithm starts. In the Wikipedia example, <a href="http://en.wikipedia.org/wiki/Selection_sort" target="_blank" rel="noopener">selection sort</a> is <em>offline</em> because step 1 is <code>Find the minimum value in the list</code>. To do this, you need to have the entire list available - otherwise, <strong>how could you possibly know what the minimum value is?</strong> You cannot.</p>
+<p>Insertion sort, by contrast, is <em>online</em> because it does not need to know anything about what values it will sort and the information is requested WHILE the algorithm is running. Simply put, it can grab new values at every iteration.</p>
+<h2 id="Still-not-clear"><a href="#Still-not-clear" class="headerlink" title="Still not clear?"></a>Still not clear?</h2><p>Think of the following examples (for four year olds!). David is asking you to solve two problems.</p>
+<p>In the first problem, he says:</p>
+<blockquote>
+<p>“I’m, going to give you two balls of different masses and you need to drop them at the same time from a tower.. just to make sure Galileo was right. You can’t use a watch, we’ll just eyeball it.”</p>
+</blockquote>
+<p><img src="https://i.stack.imgur.com/U2ffu.jpg" alt="enter image description here"></p>
+<p>If I gave you only one ball, you’d probably look at me and wonder what you’re supposed to be doing. After all, the instructions were pretty clear. You need both balls at the beginning of the problem. This is an <strong>offline</strong> algorithm.</p>
+<p>For the second problem, David says</p>
+<blockquote>
+<p>“Okay, that went pretty well, but now I need you to go ahead and kick a couple of balls across a field.”</p>
+</blockquote>
+<p><img src="https://i.stack.imgur.com/FyC1X.jpg" alt="enter image description here"></p>
+<p>I go ahead and give you the first ball. You kick it. Then I give you the second ball and you kick that. I could also give you a third and fourth ball (without you even knowing that I was going to give them to you). This is an example of an <strong>online</strong> algorithm. As a matter of fact, you could be kicking balls all day.</p>
 <hr>
-<p>For <a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/when-crud-mvc-isnt-enough/" target="_blank" rel="noopener">trivially small applications</a>, this might seem like overkill. But for applications that are expected to live a long life, be maintained by larger teams, and make / save a company money, it’s vital to figure out how to separate the concerns and where to put logic.</p>
-<p>Failure to address that complexity and solve it with a better architecture can turn a project <em>legacy-mode</em>, real quick.</p>
-<p>Without further ado, here are the 6 most common types of application logic that find their way into large applications.</p>
-<h2 id="1-Presentation-Logic"><a href="#1-Presentation-Logic" class="headerlink" title="1. Presentation Logic"></a>1. Presentation Logic</h2><blockquote>
-<p>Logic that’s concerned with how we present something to the user.</p>
-</blockquote>
-<p>Most apps used by consumers have front-ends. This type of logic is entirely concerned with <em>how we present something to the user</em>.</p>
-<p>It’s the HTML, CSS and JavaScript that we write that turns a blank page into a well-designed, living, breathing front-end application.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.container</span><br><span class="line">  background: white;</span><br><span class="line">  color: blue;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Dumb-UIs-should-contain-no-business-rules"><a href="#Dumb-UIs-should-contain-no-business-rules" class="headerlink" title="Dumb UIs should contain no business rules"></a>Dumb UIs should contain no business rules</h3><p>There’s a principle called <strong>Dumb UI</strong>.</p>
-<p>The idea is to keep the UI logic divorced from any <strong>domain-layer</strong> logic, because the domain-layer logic acts as dependency to <em>everything else</em> in the architecture.</p>
-<p>The front-end is <strong>volatile</strong>. That means it’s constantly requiring changes. Due to that, it wouldn’t be a good idea to locate logic (domain logic, specifically) that was important to other components in the architecture, because that would have the potential to consistently break the app.</p>
-<p><strong>Stable Dependency Principle</strong>: If you’re interested in this phenomenon of what makes a dependency stable and what makes it unstable, check <a href="https://khalilstemmler.com/wiki/stable-dependency-principle/" target="_blank" rel="noopener">this</a> out.</p>
-<h3 id="Smart-and-dumb-components"><a href="#Smart-and-dumb-components" class="headerlink" title="Smart and dumb components"></a>Smart and dumb components</h3><p>Modern front-end JavaScript frameworks like React and Angular have popularized <strong>smart (container) components</strong> and <strong>dumb (functional) components</strong>.</p>
-<p>There may be a good separation of concerns between those two, where <strong>smart</strong> components hold the state and methods that manipulate the state, leaving <strong>dumb components</strong> to simply project the view, but front-end is still primarily <strong>presentation</strong> logic and should contain little to no other types of logic (besides some validation logic).</p>
-<p>To the backend, front-end is an <strong>infrastructural</strong> concern that we provide data access / adapters to through RESTful APIs and the like.</p>
-<h2 id="2-Data-Access-Adapter-Logic"><a href="#2-Data-Access-Adapter-Logic" class="headerlink" title="2. Data Access / Adapter Logic"></a>2. Data Access / Adapter Logic</h2><blockquote>
-<p>Logic concerned with how we enable access to infrastructure layer concern like caches, databases, front-ends, etc.</p>
-</blockquote>
-<p>We can’t get very far with just a plain ol’ JavaScript/TypeScript objects that represent our domain layer.</p>
-<p>We need to hook this thing up to the internet and enable a front-end to connect to it! Which web server do we want to use? Express.js? Hapi?</p>
-<p>We also need to figure out how we’ll persist our domain objects. Want to use a SQL database? NoSQL?</p>
-<p>What about caching?</p>
-<p>Oh, and how do make use of cool external services like Stripe for billing or Pusher for real-time chat? We need to write adapters for those so that our inner layers can use them.</p>
-<p>That’s right. This layer is all about defining the <strong>adapters</strong> to the outside world. Simplify usage for the inner layers by encapsulating the complexity of <a href="https://khalilstemmler.com/articles/typescript-domain-driven-design/repository-dto-mapper/" target="_blank" rel="noopener">persisting an aggregate to a database</a> by creating a <strong>Repository</strong> class to do that.</p>
-<p>Here are several common things to do at this layer:</p>
-<ul>
-<li><strong>RESTful APIs</strong>: Define a RESTful API with Express.js and create controllers to accept requests.</li>
-<li><strong>Production middleware</strong>:Write Express.js controller middleware to protect your API from things like DDos and brute force login attempts.</li>
-<li><strong>Database Access</strong>: Create repositories that contain methods that perform CRUD on a database. Use either an ORM like Sequelize and TypeORM or raw queries to do this.</li>
-<li><strong>Billing Integrations</strong>: Create an adapter to a payment processor like Stripe or Paypal so that it can be used by inner layers.</li>
-</ul>
-<h2 id="3-Application-Logic-Use-Cases"><a href="#3-Application-Logic-Use-Cases" class="headerlink" title="3. Application Logic / Use Cases"></a>3. Application Logic / Use Cases</h2><blockquote>
-<p>Logic that defines the actual features of our app</p>
-</blockquote>
-<p><a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/application-layer-use-cases/" target="_blank" rel="noopener">Use cases</a> are the features of our app.</p>
-<p>Once all the use-cases of our application have been identified and then developed, we are <em>objectively</em> done.</p>
-<p><strong>Done</strong>: “Done” is a word that I don’t throw around often. It has different meanings to everyone. However, we can get closer to a shared understanding of <em>done</em> if we: figure out the use cases, and figure out who or what should be able to execute those use cases (actors or agents- because robots/servers are actors too). Once that happens, I’m more confident about saying we’re <em>done</em>.</p>
-<h3 id="CQS-CQRS"><a href="#CQS-CQRS" class="headerlink" title="CQS / CQRS"></a>CQS / CQRS</h3><p>Use Cases are either <code>COMMANDS</code> or <code>QUERIES</code> if we’re following the <a href="https://khalilstemmler.com/articles/oop-design-principles/command-query-segregation/" target="_blank" rel="noopener">Command-Query Segregation</a> principle.</p>
-<h3 id="Use-Cases-are-application-specific"><a href="#Use-Cases-are-application-specific" class="headerlink" title="Use Cases are application specific"></a>Use Cases are application specific</h3><p>Your company might have several applications within it.</p>
-<p>Take Google for example. Google has <strong>Google Drive</strong>, <strong>Google Docs</strong>, <strong>Google Maps</strong>, etc.</p>
-<p>Each of these applications has their own set of use cases, like this:</p>
-<p><strong>Google Drive</strong></p>
-<ul>
-<li><code>shareFolder(folderId: FolderId, users: UserCollection)</code>: Shares a folder with other users in the Google enterprise.</li>
-<li><code>createFolder(parentFolderId: FolderId, name: string)</code>: Creates a folder.</li>
-<li><code>createDocument(parentFolderId: FolderId)</code>: Creates a Google Docs document.</li>
-</ul>
-<p><strong>Google Docs</strong></p>
-<ul>
-<li><code>shareDocument(users: UserCollection, visibility: VisibilityType)</code>: Shares a document with several users.</li>
-<li><code>deleteDocument(documentId: DocumentId)</code>: Deletes a document.</li>
-</ul>
-<p><strong>Google Maps</strong></p>
-<ul>
-<li><code>getTripRoutes (start: Location, end: Location, time?: Date)</code>: Gets all routes for a trip.</li>
-<li><code>startTrip (start: Location, end: Location)</code>: Starts a trip now.</li>
-</ul>
-<p>A more common and simple example is deploying an <strong>Admin</strong> panel. You might need a separate dashboard from your main app in order to do a couple of admin-y things.</p>
-<p><img src="https://khalilstemmler.com/img/resources/solid-book/book-logo.png" alt="img"></p>
-<p>I usually plan and build software around use cases because it makes the code a lot easier to reason about, and improves how rapidly you can complete projects.</p>
-<p>I have a <a href="https://khalilstemmler.com/resources/names-construct-structure/" target="_blank" rel="noopener">free ebook</a> called “Name, Construct &amp; Structure” where you can learn more about this approach to designing readable codebases.</p>
-<p>If you’re more into the nitty-gritty of how to actually learn to code using Use-Case Driven Development, first <a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/application-layer-use-cases/" target="_blank" rel="noopener">read this article on Use Cases</a> (it’s my favourite article).</p>
-<p>If you want more, check out my book on <a href="https://solidbook.io/" target="_blank" rel="noopener">software design and architecture</a> where I walk you through the process of Use-Case Driven Development.</p>
-<h2 id="4-Domain-Service-logic"><a href="#4-Domain-Service-logic" class="headerlink" title="4. Domain Service logic"></a>4. Domain Service logic</h2><blockquote>
-<p>Core business logic that doesn’t quite fit within the confines of a single entity.</p>
-</blockquote>
-<p>Now we’re in the <strong>domain layer</strong>. And <a href="https://khalilstemmler.com/articles/domain-driven-design-intro/" target="_blank" rel="noopener">Domain-Driven Design</a> is the best way to approach creating a rich domain model.</p>
-<p>In DDD, we always try to locate domain logic closest to the <a href="https://khalilstemmler.com/articles/typescript-domain-driven-design/entities/" target="_blank" rel="noopener">entity</a> it pertains to.</p>
-<p>There comes situations where that logic spills into perhaps two or more entities, and it doesn’t quite seem to make sense to locate that logic in one or the other.</p>
-<p>We use domain services to ensure that we don’t lose that <strong>business rule</strong> within one specific application’s <strong>use case</strong>, but instead keep it within the domain layer so that it can be used by every application that relies on it.</p>
-<h2 id="5-Validation-logic"><a href="#5-Validation-logic" class="headerlink" title="5. Validation logic"></a>5. Validation logic</h2><blockquote>
-<p>Logic that dictates what it means for a domain object to be valid.</p>
-</blockquote>
-<p>Validation logic is another <strong>domain layer</strong> concern, not an infrastructure one.</p>
-<p>Let’s say that we wanted to create a <code>User</code> entity. And <code>User</code> contained a property called <code>email:string</code>.</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> UserProps &#123;</span><br><span class="line">  userEmail: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> User <span class="keyword">extends</span> Entity&lt;UserProps&gt; &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">constructor</span> (<span class="params">props: UserProps, id?: UniqueEntityId</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props, id)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> create (props: UserProps, id?: UniqueEntityId): Result&lt;User&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> propsResult = Guard.againstNullOrUndefined(props.userEmail);</span><br><span class="line">    <span class="keyword">if</span> (!propsResult.succeeded) &#123;</span><br><span class="line">      <span class="keyword">return</span> Result.fail&lt;User&gt;(propsResult.error);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> Result.ok&lt;User&gt;(<span class="keyword">new</span> User(props, id))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>What’s stopping someone from creating a <code>User</code> with an invalid <code>userEmail:string</code>?</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> userOrError: Result&lt;User&gt; = User.create(&#123; userEmail: <span class="string">'diddle'</span> &#125;);</span><br><span class="line">userOrError.isSuccess <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<p>That’s what we use <a href="https://khalilstemmler.com/articles/typescript-value-object/" target="_blank" rel="noopener">Value Objects</a> for. We can encapsulate the validation rule with a <strong>Value Object</strong> for <code>userEmail</code>.</p>
-<p>If we change the type of <code>userEmail</code> to be strictly-typed instead of <em>string-ly</em> typed like this:</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> UserProps &#123;</span><br><span class="line">  userEmail: UserEmail;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>And then create a <code>UserEmail</code> value object…</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; TextUtil &#125; <span class="keyword">from</span> <span class="string">'../utils'</span></span><br><span class="line"><span class="keyword">import</span> &#123; Result, Guard &#125; <span class="keyword">from</span> <span class="string">'../../core'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> UserEmailProps &#123;</span><br><span class="line">  email: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">class</span> UserEmail <span class="keyword">extends</span> ValueObject&lt;UserEmailProps&gt; &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Private constructor. No one can say "new UserEmail('diddle')"</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">constructor</span> (<span class="params">props: UserEmailProps</span>) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Factory method, can do UserEmail.create() </span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> create (props: UserEmailProps): Result&lt;UserEmail&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (Guard.againstNullOrUndefined(props.email) || </span><br><span class="line">      !TextUtil.isValidEmail(props.email)) &#123;</span><br><span class="line">        <span class="keyword">return</span> Result.fail&lt;UserEmail&gt;(<span class="string">"Email not provided or not valid."</span>);</span><br><span class="line">    &#125;  <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> Result.ok&lt;UserEmail&gt;(<span class="keyword">new</span> UserEmail(props));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Now, there’s no way to create an invalid <code>User</code>.</p>
-<h2 id="6-Core-business-logic-entity-logic"><a href="#6-Core-business-logic-entity-logic" class="headerlink" title="6. Core business logic / entity logic"></a>6. Core business logic / entity logic</h2><blockquote>
-<p>Logic that belongs to a single entity.</p>
-</blockquote>
-<p>The most important is where the family jewels of the application are: the entity.</p>
-<p>And if the entity has a reference to other related entities, the <a href="https://khalilstemmler.com/articles/typescript-domain-driven-design/aggregate-design-persistence/" target="_blank" rel="noopener">aggregate root</a>.</p>
-<p>Core business logic that lives here are:</p>
-<ul>
-<li>Initial / default values</li>
-<li>Protecting <a href="https://khalilstemmler.com/wiki/invariant/" target="_blank" rel="noopener">class invariants</a> (what changes are allowed, and <em>when</em>)</li>
-<li>Creating <strong>Domain Events</strong> for changes, creations, deletions, and anything else relevant to the business. It’s through domain events that complex business logic can be chained.</li>
-</ul>
-<h2 id="Some-principles-to-follow"><a href="#Some-principles-to-follow" class="headerlink" title="Some principles to follow"></a>Some principles to follow</h2><h3 id="Never-over-engineer"><a href="#Never-over-engineer" class="headerlink" title="Never over-engineer"></a>Never over-engineer</h3><p>You should know when you need to use a layered architecture. Typically, it makes most sense when your application <strong>has a lot of business rules</strong>. In that case, it’s a good idea to implement a layered architecture in order to keep the concerns of <strong>persistence logic</strong> (for example), separate from <strong>validation logic</strong> and the <strong>core business rules</strong> of the Domain Layer.</p>
-<hr>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>In this article, we covered the 6 main types of logic in large application development.</p>
-<p>Here they are in summary:</p>
-<ul>
-<li><strong>Presentation Logic</strong>: Logic that’s concerned with how we present something to the user.</li>
-<li><strong>Data Access / Adapter Logic</strong>: Logic concerned with how we enable access to infrastructure layer concern like caches, databases, front-ends, etc.</li>
-<li><strong>Application Logic / Use Cases</strong>: Logic that defines the actual features of our app</li>
-<li><strong>Domain Service logic</strong>: Core business that doesn’t quite fit within the confines of a single entity.</li>
-<li><strong>Validation logic</strong>: Logic that dictates what it means for a domain object to be valid.</li>
-<li><strong>Core business logic / entity logic</strong>: Logic that belongs to a single entity.</li>
-</ul>
-<hr>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://khalilstemmler.com/articles/software-design-architecture/organizing-app-logic/" target="_blank" rel="noopener">https://khalilstemmler.com/articles/software-design-architecture/organizing-app-logic/</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[<a href="https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In%20computer%20science%2C%20an%20online,input%20available%20from%20the%20start.&amp;text=An%20offline%20algorithm%20requires%20all%20information%20BEFORE%20the%20algorithm%20starts.]" target="_blank" rel="noopener">https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In%20computer%20science%2C%20an%20online,input%20available%20from%20the%20start.&amp;text=An%20offline%20algorithm%20requires%20all%20information%20BEFORE%20the%20algorithm%20starts.]</a>(<a href="https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In" target="_blank" rel="noopener">https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In</a> computer science%2C an online,input available from the start.&amp;text=An offline algorithm requires all information BEFORE the algorithm starts.)</p>
 
       
 
@@ -358,7 +226,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
         		</li>
       		
 		</ul>
@@ -414,7 +282,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -428,18 +296,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Difference Between Client and Server
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/17/2020-05-17-Manager-Toolbox-Decomposition 2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Manager Toolbox Decomposition</div>
+    <a href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Priority Queue/Heap 小结</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -466,7 +325,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#The-Clean-Architecture-Layered-Architecture"><span class="toc-number">1.</span> <span class="toc-text">The Clean Architecture / Layered Architecture</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Domain-Layer"><span class="toc-number">1.1.</span> <span class="toc-text">Domain Layer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Infra-everything-else-layer"><span class="toc-number">1.2.</span> <span class="toc-text">Infra (everything-else) layer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Clean-architecture-expanded"><span class="toc-number">2.</span> <span class="toc-text">Clean architecture expanded</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Presentation-Logic"><span class="toc-number">3.</span> <span class="toc-text">1. Presentation Logic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dumb-UIs-should-contain-no-business-rules"><span class="toc-number">3.1.</span> <span class="toc-text">Dumb UIs should contain no business rules</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Smart-and-dumb-components"><span class="toc-number">3.2.</span> <span class="toc-text">Smart and dumb components</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Data-Access-Adapter-Logic"><span class="toc-number">4.</span> <span class="toc-text">2. Data Access / Adapter Logic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Application-Logic-Use-Cases"><span class="toc-number">5.</span> <span class="toc-text">3. Application Logic / Use Cases</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CQS-CQRS"><span class="toc-number">5.1.</span> <span class="toc-text">CQS / CQRS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-Cases-are-application-specific"><span class="toc-number">5.2.</span> <span class="toc-text">Use Cases are application specific</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Domain-Service-logic"><span class="toc-number">6.</span> <span class="toc-text">4. Domain Service logic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Validation-logic"><span class="toc-number">7.</span> <span class="toc-text">5. Validation logic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-Core-business-logic-entity-logic"><span class="toc-number">8.</span> <span class="toc-text">6. Core business logic / entity logic</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Some-principles-to-follow"><span class="toc-number">9.</span> <span class="toc-text">Some principles to follow</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Never-over-engineer"><span class="toc-number">9.1.</span> <span class="toc-text">Never over-engineer</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusion"><span class="toc-number">10.</span> <span class="toc-text">Conclusion</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Reference"><span class="toc-number">10.0.1.</span> <span class="toc-text">Reference:</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Still-not-clear"><span class="toc-number">1.</span> <span class="toc-text">Still not clear?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reference"><span class="toc-number">1.1.</span> <span class="toc-text">Reference</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

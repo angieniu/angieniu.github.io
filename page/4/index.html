@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 116</a>
+<a>Total Number of Articles: 117</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,98 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-06-Level-up-your-React-architecture-with-MVVM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/07/2020-07-06-Level-up-your-React-architecture-with-MVVM/">Level up your React architecture with MVVM</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/07/2020-07-06-Level-up-your-React-architecture-with-MVVM/" class="archive-article-date">
+  	<time datetime="2020-07-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Have you ever opened a project and left traumatised because you saw an incomprehensible and unmaintainable <em>JavaScript</em> code that you don’t want to touch even with an isolated rod? Because if you touch it, everything could crash just like one big Jenga block.</p>
+<p><em>JavaScript</em> is easy to pick up and start with coding but it is even easier to do it in a wrong way. For small projects, low quality code will not present high risk for a company but if a project gets bigger you will end up with a <a href="https://en.wikipedia.org/wiki/Technical_debt" target="_blank" rel="noopener">technical debt</a> that will wade every deadline and eventually swallow you up. No one would ever want to touch this kind of code. Therefore, in this article we’ll see <strong>how you can apply *Model-View-ViewModel (MVVM)* architectural pattern into a *React* project and significantly improve the code quality.</strong></p>
+<blockquote>
+<p>By definition, an <a href="http://pubs.opengroup.org/architecture/togaf8-doc/arch/chap28.html" target="_blank" rel="noopener">Architecture Pattern</a> provides a set of predefined subsystems, specifies their responsibilities, and includes rules and guidelines for organising the relationship between them.</p>
+</blockquote>
+<p>Many architectural patterns are trying to solve the same challenges as <em>MVVM</em> — make your code loosely coupled, maintainable and easy to test.</p>
+<p>Someone could ask: “<em>If I already know how to use</em> <a href="https://facebook.github.io/flux/" target="_blank" rel="noopener"><em>Flux</em></a> <em>and</em> <a href="https://redux.js.org/" target="_blank" rel="noopener"><em>Redux</em></a><em>, why should I bother myself learning MVVM or any other architectural pattern?”<br>—</em> and the answer is: you don’t have to! If, for example, <em>Redux</em> is ideal fit for your project and your team, stick with it. On the other hand, how could you be 100% sure that <em>Redux</em> is truly ideal for your project if you don’t know any other pattern? You’ll force <em>Redux</em> into every project even though there might be a better option. Only sane decision here is to learn new architectural pattern. Let’s start with the <em>MVVM</em>.</p>
+<p>The best way to get to know patterns is to get your hands dirty and try them out. We’ll create Pokédex demo application powered with <em>React</em> and <em>MobX</em> (complete code in this <a href="https://github.com/davinci2015/react-mvvm-pokemon" target="_blank" rel="noopener">repo</a>)<em>.</em> <a href="https://mobx.js.org/index.html" target="_blank" rel="noopener"><em>MobX</em></a> is a library for simple and scalable state management. It’s serving the same purpose as <em>Redux,</em> but unlike <em>Redux</em> it doesn’t give us guidelines how we should architect our application. <em>MobX</em> gives us observable capabilities (<a href="https://en.wikipedia.org/wiki/Observer_pattern" target="_blank" rel="noopener">observer pattern</a>) and a way to inject dependencies into our components. It goes with <em>MVVM</em> just as bread goes with the butter.</p>
+<h1 id="Dive-into-MVVM"><a href="#Dive-into-MVVM" class="headerlink" title="Dive into MVVM"></a>Dive into MVVM</h1><p><em>MVVM</em> has four main blocks:</p>
+<ul>
+<li><em>The View —</em> UI layer that users interact with,</li>
+<li><em>The ViewController —*has access to the *ViewModel</em> and handles user input,</li>
+<li><em>The ViewModel —</em> has access to the <em>Model</em> and handles business logic,</li>
+<li><em>The Model —</em> application data source</li>
+</ul>
+<p>Keep reading to find out how those components in <em>MVVM</em> is related to each other and what are their responsibilities.</p>
+<p><img src="https://miro.medium.com/max/60/1*bK0LyLEHirleo1xcPDUq-w.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1101/1*bK0LyLEHirleo1xcPDUq-w.png" alt="img"></p>
+<p>MVVM diagram</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, MVVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/07/2020-07-06-Level-up-your-React-architecture-with-MVVM/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Router 4 以及router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1021,108 +1113,6 @@
 
 
   
-    <article id="post-2020-06-27-Android-Weather-App" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/27/2020-06-27-Android-Weather-App/">Android Weather App</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/27/2020-06-27-Android-Weather-App/" class="archive-article-date">
-  	<time datetime="2020-06-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="UI-Main-Thread-amp-Multi-Threading"><a href="#UI-Main-Thread-amp-Multi-Threading" class="headerlink" title="UI/Main Thread &amp; Multi Threading"></a>UI/Main Thread &amp; Multi Threading</h1><p>event looper handled.</p>
-<ol>
-<li>UI Thread, Main Thread: updates, click or scroll, infinient loop, read to-do tasks, put to message queue, task too many, UI lag. message queue: every event, small and short, UI 执行快。main thread - &gt; message queue</li>
-<li>heavylifting Thread 1: disk io 文件读写 执行完了告诉message queue执行完了，执行过程不再queue里面</li>
-<li>Thread 2: network request, download 执行完了告诉message queue执行完了，执行过程不再queue里面</li>
-</ol>
-<p>AsyncTask 起始和结束的时候，会有event post到message queue里面，onprogress也会post event。heavylifting report back to ui.</p>
-<h1 id="Room"><a href="#Room" class="headerlink" title="Room"></a>Room</h1><p>app 很多时候都适合backend连的多，local database用处不是很大，client-heavy会用local database。</p>
-<p>Room: object relation mapping, ORM solution. define newsresponse, 自己对应到table里面，objectsaved， 传上去了。</p>
-<p>DAO: database object.</p>
-<h1 id="Other-Android-Components"><a href="#Other-Android-Components" class="headerlink" title="Other Android Components"></a>Other Android Components</h1><h2 id="ContentProvider-用得少了"><a href="#ContentProvider-用得少了" class="headerlink" title="ContentProvider(用得少了):"></a>ContentProvider(用得少了):</h2><p>contact list, music library: music playback app, no need to store all music in app. could use market media ContentProvider to fetch all music of user in the phone. </p>
-<h2 id="BroadcastReceiver："><a href="#BroadcastReceiver：" class="headerlink" title="BroadcastReceiver："></a>BroadcastReceiver：</h2><p>wallpaper app, charging, heavy operation, 3d wallpaper, render fast, download new dynamic pictures, listen BroadcastReceiver component. When user is charging, the system would send a broadcast, all apps can listen. charging event can let wallpaper app do heavy operation.</p>
-<p>also, network change, wifi or network.</p>
-<p>但被滥用。</p>
-<h1 id="Navigation-Graph"><a href="#Navigation-Graph" class="headerlink" title="Navigation Graph"></a>Navigation Graph</h1><p>vs deep link简单</p>
-<h1 id="Experience"><a href="#Experience" class="headerlink" title="Experience"></a>Experience</h1><p>安卓 clean v (ios ye), focus one</p>
-<p>android: full-stack: restful api, http post, http get, scalability, network info</p>
-<p>有react native, flutter, 但一开始native足矣。</p>
-<p>mobile 算法 sim</p>
-<p>mobile稀缺。</p>
-<p>web engineer更稀缺，framework evolve快。</p>
-<p>backend 多。</p>
-<h1 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h1><p>UI: material.io</p>
-<p>CS 193p: ios</p>
-<h1 id="Android-Weather-App"><a href="#Android-Weather-App" class="headerlink" title="Android Weather App"></a>Android Weather App</h1><h2 id="Step-1-Create-a-basic-android-application"><a href="#Step-1-Create-a-basic-android-application" class="headerlink" title="Step 1: Create a basic android application"></a>Step 1: Create a basic android application</h2><p>The application is a basic weather app which displays basic weather information depending on the users location.</p>
-<h2 id="Step-2-Create-a-welcome-slider"><a href="#Step-2-Create-a-welcome-slider" class="headerlink" title="Step 2: Create a welcome slider"></a>Step 2: Create a welcome slider</h2><p>You can create any custom welcome slider that you like. I have chosen <a href="https://github.com/TangoAgency/material-intro-screen" target="_blank" rel="noopener">Material Intro Slider</a> for this project. In my custom welcome slider i just ask the users name and user the greet the user later on. In the second custom slider greet the user depending on the time of the day and similarly display an image or AM/PM accordingly.</p>
-<p><img src="https://miro.medium.com/max/38/1*SJ8SZszDbRllgxZKwScM6w.jpeg?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/1600/1*SJ8SZszDbRllgxZKwScM6w.jpeg" alt="img"></p>
-<h2 id="Step-3-Create-the-basic-Main-Page-UI"><a href="#Step-3-Create-the-basic-Main-Page-UI" class="headerlink" title="Step 3: Create the basic Main Page UI"></a>Step 3: Create the basic Main Page UI</h2><p>I have created a basic UI that look like cards and each card displays current location weather information.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/27/2020-06-27-Android-Weather-App/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1227,15 +1217,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1255,15 +1241,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,6 +1262,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1287,11 +1281,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1303,23 +1305,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1328,6 +1318,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1347,6 +1341,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
@@ -1355,7 +1353,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1367,11 +1365,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,19 +1373,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1403,7 +1389,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1411,7 +1397,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1423,15 +1409,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1439,7 +1417,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1451,15 +1437,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1467,7 +1445,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1475,11 +1457,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1491,15 +1485,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1507,7 +1497,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1515,15 +1505,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1559,11 +1549,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1583,11 +1573,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1595,11 +1585,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
