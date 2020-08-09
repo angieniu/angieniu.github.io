@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 117</a>
+<a>Total Number of Articles: 120</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,308 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-20-React-Handling-Events" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/20/2020-06-20-React-Handling-Events/">React Handling Events</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/20/2020-06-20-React-Handling-Events/" class="archive-article-date">
+  	<time datetime="2020-06-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Handling-Events"><a href="#Handling-Events" class="headerlink" title="Handling Events"></a>Handling Events</h1><p>Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:</p>
+<ul>
+<li>React events are named using camelCase, rather than lowercase.</li>
+<li>With JSX you pass a function as the event handler, rather than a string.</li>
+</ul>
+<p>For example, the HTML:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=<span class="string">"activateLasers()"</span>&gt;</span><br><span class="line">  Activate Lasers</span><br><span class="line">&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>is slightly different in React:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;activateLasers&#125;&gt;  Activate Lasers</span><br><span class="line">&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Another difference is that you cannot return <code>false</code> to prevent default behavior in React. You must call <code>preventDefault</code> explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"#"</span> onclick=<span class="string">"console.log('The link was clicked.'); return false"</span>&gt;</span><br><span class="line">  Click me</span><br><span class="line">&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>In React, this could instead be:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ActionLink</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">e</span>) </span>&#123;    e.preventDefault();    <span class="built_in">console</span>.log(<span class="string">'The link was clicked.'</span>);  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> onClick=&#123;handleClick&#125;&gt;      Click me</span><br><span class="line">    &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="e-合成事件-Synthetic-Event"><a href="#e-合成事件-Synthetic-Event" class="headerlink" title="e 合成事件 Synthetic Event"></a>e 合成事件 Synthetic Event</h3><p>Here, <code>e</code> is a synthetic event. React defines these synthetic events according to the <a href="https://www.w3.org/TR/DOM-Level-3-Events/" target="_blank" rel="noopener">W3C spec</a>, so you don’t need to worry about cross-browser compatibility. See the <a href="https://reactjs.org/docs/events.html" target="_blank" rel="noopener"><code>SyntheticEvent</code></a> reference guide to learn more.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Handling Events</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/20/2020-06-20-React-Handling-Events/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-06-19-Flex-1.-左右布局左中右布局2.水平居中3.垂直居中" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/19/2020-06-19-Flex-1.-左右布局左中右布局2.水平居中3.垂直居中/">Flex 1. 左右布局/左中右布局2.水平居中3.垂直居中</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/19/2020-06-19-Flex-1.-左右布局左中右布局2.水平居中3.垂直居中/" class="archive-article-date">
+  	<time datetime="2020-06-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用flex布局："><a href="#使用flex布局：" class="headerlink" title="使用flex布局："></a>使用flex布局：</h2><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"box"</span>&gt;</span><br><span class="line">     &lt;section <span class="class"><span class="keyword">class</span></span>=<span class="string">"inner"</span>&gt;&lt;<span class="regexp">/section&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>div&gt;</span><br><span class="line">css</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">        <span class="attribute">display</span>: flex;</span><br><span class="line">        <span class="attribute">justify-content</span>: center; <span class="comment">/* 水平居中 */</span></span><br><span class="line">        <span class="attribute">align-items</span>: center;     <span class="comment">/* 垂直居中 */</span></span><br><span class="line">        <span class="attribute">width</span>: <span class="number">1000px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">600px</span>;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid red;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.inner</span> &#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">        <span class="attribute">background-color</span>: red;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Guide"><a href="#Guide" class="headerlink" title="Guide"></a>Guide</h3><p>网页布局（layout）是 CSS 的一个重点应用。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071001.gif" alt="img"></p>
+<p>布局的传统解决方案，基于<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box_model" target="_blank" rel="noopener">盒状模型</a>，依赖 <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display" target="_blank" rel="noopener"><code>display</code></a> 属性 + <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position" target="_blank" rel="noopener"><code>position</code></a>属性 + <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float" target="_blank" rel="noopener"><code>float</code></a>属性。它对于那些特殊布局非常不方便，比如，<a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="noopener">垂直居中</a>就不容易实现。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071002.png" alt="img"></p>
+<p>2009年，W3C 提出了一种新的方案—-Flex 布局，可以简便、完整、响应式地实现各种页面布局。目前，它已经得到了所有浏览器的支持，这意味着，现在就能很安全地使用这项功能。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071003.jpg" alt="img"></p>
+<p>Flex 布局将成为未来布局的首选方案。本文介绍它的语法，<a href="http://www.ruanyifeng.com/blog/2015/07/flex-examples.html" target="_blank" rel="noopener">下一篇文章</a>给出常见布局的 Flex 写法。网友 <a href="http://vgee.cn/" target="_blank" rel="noopener">JailBreak</a> 为本文的所有示例制作了 <a href="http://static.vgee.cn/static/index.html" target="_blank" rel="noopener">Demo</a>，也可以参考。</p>
+<p>以下内容主要参考了下面两篇文章：<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">A Complete Guide to Flexbox</a> 和 <a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties" target="_blank" rel="noopener">A Visual Guide to CSS3 Flexbox Properties</a>。</p>
+<h2 id="一、Flex-布局是什么？"><a href="#一、Flex-布局是什么？" class="headerlink" title="一、Flex 布局是什么？"></a>一、Flex 布局是什么？</h2><p>Flex 是 Flexible Box 的缩写，意为”弹性布局”，用来为盒状模型提供最大的灵活性。</p>
+<p>任何一个容器都可以指定为 Flex 布局。</p>
+<blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span>&#123;</span><br><span class="line">&gt;   display: flex;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>行内元素也可以使用 Flex 布局。</p>
+<blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span>&#123;</span><br><span class="line">&gt;   display: inline-flex;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>Webkit 内核的浏览器，必须加上<code>-webkit</code>前缀。</p>
+<blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="selector-class">.box</span>&#123;</span><br><span class="line">&gt;   display: -webkit-flex; /* Safari */</span><br><span class="line">&gt;   <span class="selector-tag">display</span>: <span class="selector-tag">flex</span>;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>注意，设为 Flex 布局以后，子元素的<code>float</code>、<code>clear</code>和<code>vertical-align</code>属性将失效。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">CSS, Flex</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/19/2020-06-19-Flex-1.-左右布局左中右布局2.水平居中3.垂直居中/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/">React Object, Element, Component, Instance, Property Spread Notation Notes</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/" class="archive-article-date">
+  	<time datetime="2020-06-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。</p>
+<p>上面代码中，大括号就定义了一个对象，它被赋值给变量o。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  p: <span class="string">'Hello World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这个对象内部包含一个键值对（又称为“成员”），p是“键名”（成员的名称），字符串Hello World是“键值”（成员的值）。</p>
+<p>键名与键值之间用冒号分隔。如果对象内部包含多个键值对，每个键值对之间用逗号分隔。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  p1: <span class="string">'Hello'</span>,</span><br><span class="line">  p2: <span class="string">'World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，对象o包含两个键值对，又称为包含两个属性p1和p2。</p>
+<h5 id="生成对象的三种方法："><a href="#生成对象的三种方法：" class="headerlink" title="生成对象的三种方法："></a>生成对象的三种方法：</h5><ul>
+<li>直接使用大括号生成（{}）</li>
+<li>用new命令生成一个Object对象的实例</li>
+<li>使用Object.create方法生成。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">var</span> o3 = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype);</span><br></pre></td></tr></table></figure>
+
+<p>上面三行语句是等价的,一般来说:</p>
+<p>第一种采用大括号的写法比较简洁，<br>第二种采用构造函数的写法清晰地表示了意图，<br>第三种写法一般用在需要对象继承的场合</p>
+<h3 id="Component-VS-Instance"><a href="#Component-VS-Instance" class="headerlink" title="Component VS Instance"></a>Component VS Instance</h3><p>通过创建一个类<code>class</code>来声明一个按钮组件(<code>Button component</code>)。应用程序运行的时候，在屏幕上你可能有这个组件(<code>component</code>)的好多个实例(<code>instance</code>),每个实例都有自己的属性和仅仅属于自己的状态。</p>
+<h3 id="Element-Elements-Describe-the-Tree"><a href="#Element-Elements-Describe-the-Tree" class="headerlink" title="Element: Elements Describe the Tree"></a>Element: Elements Describe the Tree</h3><p>元素是构成 React 应用的最小砖块。</p>
+<p>元素描述了你在屏幕上想看到的内容。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;h1&gt;Hello, world&lt;/h1&gt;;</span><br></pre></td></tr></table></figure>
+
+<p>与浏览器的 DOM 元素不同，React 元素是创建开销极小的普通对象。React DOM 会负责更新 DOM 来与 React 元素保持一致。</p>
+<p>在React中，这是元素<code>element</code>帮助我们的地方。<strong>一个元素是一个普通对象，他描述一个组件实例和它所要求的属性，或者一个DOM节点和它所要求的属性</strong>。它仅仅包含以下有关信息 :</p>
+<ul>
+<li>组件类型 (比如，这是一个按钮 <code>Button</code>)</li>
+<li>属性 (比如，它的颜色 <code>color</code>)</li>
+<li>它所包含的若干个子元素</li>
+</ul>
+<p>一个元素并不是一个的实例。相反，它是一种告诉React你想在屏幕上看到什么的手段。元素上的任何方法你都不能调用。它只是一个不可变的描述性对象，仅有两个字段(field):<code>type(string|ReactClass)</code> 和 <code>props : Object</code> 。</p>
+<h4 id="Case-1-DOM元素DOM-Elements"><a href="#Case-1-DOM元素DOM-Elements" class="headerlink" title="Case 1: DOM元素DOM Elements"></a>Case 1: DOM元素DOM Elements</h4><p>当一个元素类型<code>type</code>是字符串(<code>string</code>)时，该元素表示一个DOM节点,其类型字符串是该DOM节点的标签名称,另外一个属性<code>props</code>对应地表示DOM节点属性。这是React要往屏幕上渲染的内容。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: <span class="string">'button'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    className: <span class="string">'button button-blue'</span>,</span><br><span class="line">    children: &#123;</span><br><span class="line">      type: <span class="string">'b'</span>,</span><br><span class="line">      props: &#123;</span><br><span class="line">        children: <span class="string">'OK!'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>该元素只是以一种普通对象的形式描述了如下HTML片段 :</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">'button button-blue'</span>&gt;</span><br><span class="line">  &lt;b&gt;</span><br><span class="line">    OK!</span><br><span class="line">  &lt;<span class="regexp">/b&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>父子节点都是描述，而不是真正的实例。当你创建它们时，他们不指向屏幕上的任何东西。你可以创建它们然后把它们丢掉，这都没太大关系。</p>
+<p>React元素很容易遍历，不需要分析，而且他们显然比真正的DOM元素更轻量级，因为他们只是普通的对象(object)！</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-17-Best-Practices-With-React-Hooks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -729,265 +1031,6 @@
 
 
   
-    <article id="post-2020-06-10-Add-Firebase-to-JavaScript-Project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/10/2020-06-10-Add-Firebase-to-JavaScript-Project/">Add Firebase to JavaScript Project</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/10/2020-06-10-Add-Firebase-to-JavaScript-Project/" class="archive-article-date">
-  	<time datetime="2020-06-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Follow this guide to use the Firebase JavaScript SDK in your web app or as a client for end-user access, for example, in a Node.js desktop or IoT application.</p>
-<h2 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h2><ul>
-<li>Install your preferred editor or IDE.</li>
-<li><a href="https://console.firebase.google.com/" target="_blank" rel="noopener">Sign into Firebase</a> using your Google account.</li>
-</ul>
-<p>If you don’t already have a JavaScript project and just want to try out a Firebase product, you can download one of our <a href="https://firebase.google.com/docs/samples" target="_blank" rel="noopener">quickstart samples</a>.</p>
-<h2 id="Step-1-Create-a-Firebase-project"><a href="#Step-1-Create-a-Firebase-project" class="headerlink" title="Step 1: Create a Firebase project"></a><strong>Step 1</strong>: Create a Firebase project</h2><p>Before you can add Firebase to your JavaScript app, you need to create a Firebase project to connect to your app.</p>
-<p><strong>Note:</strong> If you already have a Firebase-registered mobile app and it shares Firebase resources with your JavaScript app, skip this step and configure your JavaScript app to use the same project as your mobile app.</p>
-<p>Visit <a href="https://firebase.google.com/docs/projects/learn-more" target="_blank" rel="noopener">Understand Firebase Projects</a> to learn more about Firebase projects and best practices for adding apps to projects.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Firebase, JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/10/2020-06-10-Add-Firebase-to-JavaScript-Project/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-09-Yarn-vs-NPM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/2020-06-09-Yarn-vs-NPM/">Yarn vs NPM</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/09/2020-06-09-Yarn-vs-NPM/" class="archive-article-date">
-  	<time datetime="2020-06-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Yarn is a new JavaScript package manager built by Facebook, Google, Exponent and Tilde. As can be read in the <a href="https://code.facebook.com/posts/1840075619545360" target="_blank" rel="noopener">official announcement</a>, its purpose is to solve a handful of problems that these teams faced with npm, namely:</p>
-<ul>
-<li>installing packages wasn’t fast/consistent enough, and</li>
-<li>there were security concerns, as npm allows packages to run code on installation.</li>
-</ul>
-<p>But, don’t be alarmed! This is not an attempt to replace npm completely. Yarn is only a new CLI client that fetches modules from the npm registry. Nothing about the registry itself will change — you’ll still be able to fetch and publish packages as normal.</p>
-<p>Should everyone jump aboard the Yarn hype train now? Chances are you never encountered these problems with npm. In this article, we’re going to compare npm and Yarn, so you can decide which is best for you.</p>
-<p><img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2016/10/1476870188yarn.jpg" alt="Yarn logo"></p>
-<h2 id="Yarn-vs-npm-Functional-Differences"><a href="#Yarn-vs-npm-Functional-Differences" class="headerlink" title="Yarn vs npm: Functional Differences"></a>Yarn vs npm: Functional Differences</h2><p>At a first glance Yarn and npm appear similar. As we peek under the hood though, we realize what makes Yarn different.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">yarn, npm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/09/2020-06-09-Yarn-vs-NPM/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-09-Git-Debug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/2020-06-09-Git-Debug/">Git Debug</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/09/2020-06-09-Git-Debug/" class="archive-article-date">
-  	<time datetime="2020-06-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Today, when I tried to commit my code to github, I realized the code pushed to github includes some other folders. </p>
-<p>My analysis: The git repository was mixed with other folders.</p>
-<p>Solution:</p>
-<p>Step 1. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
-
-<p>to check hidden files in the local folder to check whether .git directory is inside. If .git directory is inside, that means the git repository is linked to the folder correctly. In my case, .git was not there.</p>
-<p>Step 2. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
-
-<p>add .git folder to the local folder.</p>
-<p>Step 3. </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"..."</span></span><br><span class="line">git remote add origin + remote repository URL</span><br></pre></td></tr></table></figure>
-
-<p>Step 4.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
-
-<p>Step 5.</p>
-<p>Also, because previously .git folder might exist in the parent/grandparent folder to cause the issue. Let’s remove the .git folder in other unecessary folders.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf .git</span><br></pre></td></tr></table></figure>
-
-<p>We are all set! Thanks to Simon! ^_^</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/09/2020-06-09-Git-Debug/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1092,11 +1135,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1116,7 +1163,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1128,7 +1175,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1136,15 +1183,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1156,7 +1199,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1164,15 +1207,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1180,7 +1219,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1188,7 +1227,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1196,15 +1239,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
+                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,19 +1259,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1240,7 +1279,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1248,7 +1287,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1256,11 +1295,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1268,7 +1303,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1276,11 +1315,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1288,7 +1323,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1296,11 +1331,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1320,7 +1367,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1332,19 +1379,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1356,6 +1399,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
@@ -1364,7 +1411,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1372,7 +1427,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1381,10 +1436,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1404,11 +1455,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1420,11 +1471,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1432,11 +1483,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1448,11 +1499,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1460,11 +1511,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
