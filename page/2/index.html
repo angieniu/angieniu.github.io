@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 121</a>
+<a>Total Number of Articles: 123</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,287 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/">Designing a URL Shortening service like TinyURL</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/" class="archive-article-date">
+  	<time datetime="2020-08-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Let’s design a URL shortening service like TinyURL. This service will provide short aliases redirecting to long URLs. </p>
+<p>Similar services: bit.ly, goo.gl, qlink.me, etc. </p>
+<p>Difficulty Level: Easy</p>
+<details open class="styles__PageTOCStyled-sc-1u9xzlw-0 fIhOon" style="box-sizing: border-box; display: block; background: rgb(245, 245, 245); border-radius: 4px; min-width: 280px;"><summary role="button" tabindex="0" class="styles__HeadingWrap-sc-1u9xzlw-1 bJONCf" style="box-sizing: border-box; display: block; cursor: pointer; outline-style: none; padding: 4px 4px 4px 16px; border: 1px solid rgb(229, 229, 229); border-top-left-radius: 4px; border-top-right-radius: 4px;"><div class="styles__HeadingWrapInner-sc-1u9xzlw-2 lazzRz" style="box-sizing: border-box; display: flex; -webkit-box-align: center; align-items: center;"><h6 class="MuiTypography-root jss189 jss242 jss180  MuiTypography-h6" style="box-sizing: border-box; color: inherit; font-family: &quot;Nunito Sans&quot;, Verdana, Helvetica, sans-serif; font-weight: 700; line-height: 1.5; margin: 0px; font-size: 1.6rem; letter-spacing: 0.5px;">We'll cover the following</h6><button class="MuiButtonBase-root MuiIconButton-root jss249 jss250 jss243 jss244 jss246" tabindex="0" type="button" style="box-sizing: border-box; color: rgba(0, 0, 0, 0.54); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 1.5rem; line-height: inherit; font-family: inherit; margin: 0px 0px 0px auto; overflow: visible; text-transform: none; appearance: none; cursor: pointer; border: 1px solid transparent; display: inline-flex; outline: 0px; padding: 9px; position: relative; align-items: center; user-select: none; border-radius: 2px; vertical-align: middle; justify-content: center; text-decoration: none; background-color: transparent; -webkit-tap-highlight-color: transparent; flex: 0 0 auto; text-align: center; transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"><span class="MuiIconButton-label" style="box-sizing: border-box; width: 24px; display: flex; align-items: inherit; justify-content: inherit;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></span><span class="MuiTouchRipple-root" style="box-sizing: border-box; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 0; overflow: hidden; position: absolute; border-radius: inherit; pointer-events: none;"></span></button></div></summary><div class="MuiBox-root jss251" style="box-sizing: border-box; padding: 16px;"><div class="markdown-container-div Markdown__MarkdownContainerDiv-sc-1j2yuel-5 jeFsGl" height="auto" style="box-sizing: border-box; height: auto; width: 411.188px;"><div class="markdownViewer Markdown__Viewer-sc-1j2yuel-1 cEcngF" role="none" style="box-sizing: border-box; color: rgb(61, 61, 78); line-height: 1.7; outline: none; font-size: 18px; overflow-wrap: break-word; font-family: &quot;Nunito Sans&quot;;"><ul data-id="5bf0f1b7b439409ac11ec194510492d5" style="box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px1-why-do-we-need-url-shorteningdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">1. Why do we need URL shortening?</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px2-requirements-and-goals-of-the-systemdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">2. Requirements and Goals of the System</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px3-capacity-estimation-and-constraintsdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">3. Capacity Estimation and Constraints</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px4-system-apisdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">4. System APIs</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px5-database-designdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">5. Database Design</a><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#database-schema" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">Database Schema:</a></li></ul></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px6-basic-system-design-and-algorithmdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">6. Basic System Design and Algorithm</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#a-encoding-actual-url" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">a. Encoding actual URL</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#b-generating-keys-offline" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">b. Generating keys offline</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px7-data-partitioning-and-replicationdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">7. Data Partitioning and Replication</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px8-cachediv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">8. Cache</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px9-load-balancer-lbdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">9. Load Balancer (LB)</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px10-purging-or-db-cleanupdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">10. Purging or DB cleanup</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px11-telemetrydiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">11. Telemetry</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px12-security-and-permissionsdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">12. Security and Permissions</a></li></ul></li></ul></li></ul></div></div></div></details>
+
+<h3 id="1-Why-do-we-need-URL-shortening"><a href="#1-Why-do-we-need-URL-shortening" class="headerlink" title="1. Why do we need URL shortening?#"></a>1. Why do we need URL shortening?<a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px1-why-do-we-need-url-shorteningdiv" target="_blank" rel="noopener">#</a></h3><p>URL shortening is used to create shorter aliases for long URLs. We call these shortened aliases “short links.” Users are redirected to the original URL when they hit these short links. Short links save a lot of space when displayed, printed, messaged, or tweeted. Additionally, users are less likely to mistype shorter URLs.</p>
+<p>For example, if we shorten this page through TinyURL:</p>
+<blockquote>
+<p><a href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904/" target="_blank" rel="noopener">https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904/</a></p>
+</blockquote>
+<p>We would get:</p>
+<blockquote>
+<p><a href="http://tinyurl.com/jlg8zpc" target="_blank" rel="noopener">http://tinyurl.com/jlg8zpc</a></p>
+</blockquote>
+<p>The shortened URL is nearly one-third the size of the actual URL.</p>
+<p>URL shortening is used for optimizing links across devices, tracking individual links to analyze audience and campaign performance, and hiding affiliated original URLs.</p>
+<p>If you haven’t used <a href="http://tinyurl.com/" target="_blank" rel="noopener">tinyurl.com</a> before, please try creating a new shortened URL and spend some time going through the various options their service offers. This will help you a lot in understanding this chapter.</p>
+<h3 id="2-Requirements-and-Goals-of-the-System"><a href="#2-Requirements-and-Goals-of-the-System" class="headerlink" title="2. Requirements and Goals of the System#"></a>2. Requirements and Goals of the System<a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px2-requirements-and-goals-of-the-systemdiv" target="_blank" rel="noopener">#</a></h3><p>💡   <strong>You should always clarify requirements at the beginning of the interview. Be sure to ask questions to find the exact scope of the system that the interviewer has in mind.</strong></p>
+<p>Our URL shortening system should meet the following requirements:</p>
+<p><strong>Functional Requirements:</strong></p>
+<ol>
+<li>Given a URL, our service should generate a shorter and unique alias of it. This is called a short link. This link should be short enough to be easily copied and pasted into applications.</li>
+<li>When users access a short link, our service should redirect them to the original link.</li>
+<li>Users should optionally be able to pick a custom short link for their URL.</li>
+<li>Links will expire after a standard default timespan. Users should be able to specify the expiration time.</li>
+</ol>
+<p><strong>Non-Functional Requirements:</strong></p>
+<ol>
+<li>The system should be highly available. This is required because, if our service is down, all the URL redirections will start failing.</li>
+<li>URL redirection should happen in real-time with minimal latency.</li>
+<li>Shortened links should not be guessable (not predictable).</li>
+</ol>
+<p><strong>Extended Requirements:</strong></p>
+<ol>
+<li>Analytics; e.g., how many times a redirection happened?</li>
+<li>Our service should also be accessible through REST APIs by other services.</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">System Design, URL Shortening service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-30-React-Countdown-Clock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/01/2020-07-30-React-Countdown-Clock/">React Countdown Clock</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/01/2020-07-30-React-Countdown-Clock/" class="archive-article-date">
+  	<time datetime="2020-08-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="React-Countdown-Clock"><a href="#React-Countdown-Clock" class="headerlink" title="React Countdown Clock"></a>React Countdown Clock</h1><p>A HTML 5 canvas countdown clock as a React component.</p>
+<p><a href="https://camo.githubusercontent.com/bf209fec65fdf5428ca43d935e40dfd0b7bbf9c2/687474703a2f2f70756768707567682e6769746875622e696f2f72656163742d636f756e74646f776e2d636c6f636b2f616e696d617465642e676966" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/bf209fec65fdf5428ca43d935e40dfd0b7bbf9c2/687474703a2f2f70756768707567682e6769746875622e696f2f72656163742d636f756e74646f776e2d636c6f636b2f616e696d617465642e676966" alt="Screenshot"></a></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="http://pughpugh.github.io/react-countdown-clock" target="_blank" rel="noopener">pughpugh.github.io/react-countdown-clock</a></p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-countdown-clock</span><br></pre></td></tr></table></figure>
+
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ReactCountdownClock seconds=&#123;60&#125;</span><br><span class="line">                     color=&quot;#000&quot;</span><br><span class="line">                     alpha=&#123;0.9&#125;</span><br><span class="line">                     size=&#123;300&#125;</span><br><span class="line">                     onComplete=&#123;myCallback&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><table>
+<thead>
+<tr>
+<th>prop</th>
+<th>type</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>seconds</td>
+<td>integer</td>
+<td>60</td>
+<td>Seconds to countdown</td>
+</tr>
+<tr>
+<td>color</td>
+<td>string</td>
+<td>#000</td>
+<td>Colour of counter</td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>float</td>
+<td>1.0</td>
+<td>Alpha transparency of counter</td>
+</tr>
+<tr>
+<td>size</td>
+<td>integer</td>
+<td>300</td>
+<td>Width &amp; height of canvas element</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>integer</td>
+<td></td>
+<td>Weight of circle, in pixels</td>
+</tr>
+<tr>
+<td>fontSize</td>
+<td>integer/string</td>
+<td>auto</td>
+<td>px size of font. <code>auto</code> for dynamic sizing.</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>Arial</td>
+<td>Font of counter</td>
+</tr>
+<tr>
+<td>timeFormat</td>
+<td>string</td>
+<td>seconds</td>
+<td>Counter style; <code>seconds</code> or <code>hms</code></td>
+</tr>
+<tr>
+<td>showMilliseconds</td>
+<td>boolean</td>
+<td>true</td>
+<td>Show milliseconds for last 10 seconds</td>
+</tr>
+<tr>
+<td>onComplete</td>
+<td>func</td>
+<td></td>
+<td>Callback when time completes</td>
+</tr>
+<tr>
+<td>paused</td>
+<td>boolean</td>
+<td>false</td>
+<td>Pause countdown of the timer</td>
+</tr>
+<tr>
+<td>pausedText</td>
+<td>string</td>
+<td></td>
+<td>Text to display when paused, defaults to the current time</td>
+</tr>
+</tbody></table>
+<h2 id="Bugs-amp-Contributions"><a href="#Bugs-amp-Contributions" class="headerlink" title="Bugs &amp; Contributions"></a>Bugs &amp; Contributions</h2><p>Bugs, features and pull requests always welcome.</p>
+<p><a href="https://github.com/pughpugh/react-countdown-clock/issues" target="_blank" rel="noopener">github.com/pughpugh/react-countdown-clock/issues</a></p>
+<p>Also, it’s always just nice to hear how people are using it. Feel free to get in touch.</p>
+<ul>
+<li>Email: <a href="mailto:hugh@hcgallagher.co.uk" target="_blank" rel="noopener">hugh@hcgallagher.co.uk</a></li>
+<li>Web: <a href="http://www.hughgallagher.co.uk/" target="_blank" rel="noopener">www.hughgallagher.co.uk</a></li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://github.com/pughpugh/react-countdown-clock" target="_blank" rel="noopener">react-countdown-clock</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Clock</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/01/2020-07-30-React-Countdown-Clock/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-31-Web-Development-检查工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -884,180 +1165,6 @@
 
 
   
-    <article id="post-2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/">Alphabet is partnering with FedEx and Walgreens to bring drone delivery to the US</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/" class="archive-article-date">
-  	<time datetime="2020-07-23T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://cms.qz.com/wp-content/uploads/2019/09/Wing_9-19_Partner-Announcement_FedEx-hero-image-e1568910517306.png?w=410&h=230&strip=all&quality=75" alt="The Wing drone delivering a FedEx package."></p>
-<p>​                                        Wing’s drone in action.</p>
-<p>Google sister company Wing announced today that it would be partnering with FedEx and the drugstore chain Walgreens to bring autonomous drone deliveries to the US in October.</p>
-<p>The pilot program will be launched in Christiansburg, Virginia, one of the two areas in the state that Wing has been testing its drone technology for years. In April, Wing was certified by the US Federal Aviation Administration (FAA) to become what it says was <a href="https://qz.com/1602663/alphabets-wing-delivery-drones-get-faa-approval/" target="_blank" rel="noopener">the first company</a> in the country to be able to offer autonomous drone deliveries. Wing has completed over 80,000 test flights and thousands of deliveries at its facilities in Australia and the US.</p>
-<p>People expecting packages from FedEx will be able to choose to get their deliveries made via drone, assuming that they live in certain areas that Wing has designated it can safely deliver parcels in. Similarly, Walgreens customers will be able to order products, such as non-prescription medicine, and have them delivered by drone. Walgreens said in a release that 78% of the US population lives within 5 miles of one of its stores. Wing said that its drones can currently make a round-trip flight of about 6 miles (9.7 km), traveling about 60 miles per hour (97 km per hour), and can carry around 3 lbs (1.4 kg) of payload. The company also said that it would be offering deliveries from a local Virginia retailer, Sugar Magnolia. Wing won’t be charging for the delivery service itself during the trial.</p>
-<p><img src="https://cms.qz.com/wp-content/uploads/2019/09/Wing_9-19_Partner-Announcement_FedEx-co-branded-package-e1568910592814.png?w=450&h=333&crop=1&strip=all&quality=75" alt="img"></p>
-<p>WING</p>
-<p>The FedEx package holder, designed with Wing.</p>
-<p>Wing said on a call with journalists that it will soon be reaching out to members of the Christiansburg community to let them know if they will be able to accept deliveries. Wing’s drones don’t actually land on the ground when they make deliveries; instead, they hover about 23 ft (7 m) off the ground, lowering their packages down through a winch cable system. If anything happens to snag the cable as it’s delivering a package, the drone can sense the tension in the cord and release it, hopefully flying away without incident. It still requires what it calls safe delivery zones, like a backyard or a front pathway outside a house, to be able to make a delivery.</p>
-<p>Drone deliveries have long been a subject of research, conjuring up images of a customer sitting on their couch, tapping a few buttons, and having a new outfit or dinner delivered to their door in a matter of minutes. Wing, first as part of Google’s X “moonshot factory,” has been trying to turn this fantasy into a reality since 2012, and Amazon has been quite public with its desire to do similarly <a href="https://qz.com/561581/amazon-wants-to-use-its-new-drones-to-deliver-your-packages-as-long-as-you-have-a-big-lawn/" target="_blank" rel="noopener">since 2013</a>.</p>
-<p>But even with relaxed regulations <a href="https://qz.com/1274105/the-us-government-has-approved-the-first-statewide-tests-for-autonomous-drone-deliveries/" target="_blank" rel="noopener">under the Trump administration</a> spurring myriad autonomous drone test programs launched across the US, regular drone deliveries still remain a pipe dream. Wing’s new service, launching in a very small area that its team knows well, requires a large space of land to drop a package safely to customers. Unless you happen to have a yard, it doesn’t seem likely that current technology is going to be able to provide a solution to make what the industry calls “last-mile” deliveries to end consumers a reality.</p>
-<p>For some types of deliveries, however, autonomous drone deliveries could be life-changing. The work that <a href="https://qz.com/africa/1604374/ziplines-drone-delivery-launches-in-ghana-with-vaccines/" target="_blank" rel="noopener">Zipline is doing in Africa</a>, for example, sending critical medical supplies to remote clinics, has proved invaluable. Drones can reach places that most other methods of delivery can’t easily, and it’s easy to see why Google would choose a location near the difficult-to-cover Appalachian Mountains.</p>
-<p>But for now, while the company says it’s the largest pilot program launched under the new Trump administration regulations, Wing’s work remains a relatively small trial in a specific part of the country. If the test goes well, Wing said it would like to offer deliveries across the US in the future.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[<a href="https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing%20said%20that%20its%20drones,(1.4%20kg)%20of%20payload.]" target="_blank" rel="noopener">https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing%20said%20that%20its%20drones,(1.4%20kg)%20of%20payload.]</a>(<a href="https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing" target="_blank" rel="noopener">https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing</a> said that its drones,(1.4 kg) of payload.)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Drone Delivery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-22-More-efficient-SQL-with-query-planning-and-optimization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/">More efficient SQL with query planning and optimization</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/" class="archive-article-date">
-  	<time datetime="2020-07-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Now that you’ve learned many ways of selecting data and are starting to do <code>SELECT</code>s across multiple tables, it’s a good time to talk about the efficiency of your SQL queries - how quickly do they execute, and could they execute faster?</p>
-<p>SQL is a declarative language - each query declares <em>what</em> we want the SQL engine to do, but it doesn’t say <em>how</em>.  As it turns out, the <em>how</em> – the “plan” – is what affects the efficiency of the queries, however, so it’s pretty important.</p>
-<h3 id="Why-do-SQL-queries-need-a-plan"><a href="#Why-do-SQL-queries-need-a-plan" class="headerlink" title="Why do SQL queries need a plan?"></a>Why do SQL queries need a plan?</h3><p>For example, let’s say we had this simple query:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM books WHERE author = &quot;J K Rowling&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>For this query, these are 2 different ways that SQL could find the results:</p>
-<ul>
-<li><strong>Do a “full table scan”:</strong> look at every single row in the table, return the matching rows.</li>
-<li><strong>Create an “index”:</strong> Make a copy of the table sorted by author, then do a binary search to find the row where the author is “J K Rowling”, find the matching IDs, then do a binary search on the original table that returns the rows that match the ID.</li>
-</ul>
-<p>Which one is faster? It depends on the data, and on how often the query will be executed. If the table is only 10 rows long, then a full table scan only requires looking at 10 rows, and the first plan would work out well.</p>
-<p>If the table was 10 million rows long, then that full table scan would require looking at 10 million rows. It would be faster to do a binary search on a sorted table - we only need 23 lookups to find a value in 10 million rows. However, creating the sorted table would take a while (~230 million operations, depending on our engine). If we were executing that query many times (more than 23 times) or if we already had that table created, then that second plan would be better.</p>
-<p>How does a SQL engine decide which plan to pick? That’s an important step that we haven’t talked about yet, because we’ve been focused on the syntax of our queries, not their implementation. As you get into more advanced SQL usage on big databases, the planning step is increasingly important.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1190,19 +1297,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,11 +1321,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1234,11 +1341,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1250,11 +1357,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,11 +1393,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1310,15 +1417,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1334,11 +1441,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1354,11 +1461,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1386,19 +1493,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1434,11 +1541,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1450,7 +1557,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1458,7 +1573,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1514,11 +1629,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
+                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1531,10 +1646,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
