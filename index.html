@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 125</a>
+<a>Total Number of Articles: 128</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,258 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-17-Swapping-Primitives-and-Objects-in-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/17/2020-08-17-Swapping-Primitives-and-Objects-in-Java/">Swapping Primitives and Objects in Java</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/17/2020-08-17-Swapping-Primitives-and-Objects-in-Java/" class="archive-article-date">
+  	<time datetime="2020-08-17T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Reference:</p>
+<p><a href="https://www.techiedelight.com/swapping-primitives-objects-java/" target="_blank" rel="noopener">https://www.techiedelight.com/swapping-primitives-objects-java/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/17/2020-08-17-Swapping-Primitives-and-Objects-in-Java/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-16-Tarjan算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/16/2020-08-16-Tarjan算法/">Tarjan算法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/16/2020-08-16-Tarjan算法/" class="archive-article-date">
+  	<time datetime="2020-08-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>桥两边的点至少有一个割点，桥两边的点不一定都是割点。</p>
+<p>看成一个树</p>
+<p>​        A</p>
+<p>​        /\</p>
+<p>​    C – B</p>
+<pre><code>\</code></pre><p>​            D</p>
+<p>​            /\</p>
+<p>​        G    E</p>
+<p>​         \   /</p>
+<p>​            F</p>
+<p>环 访问回到自己才算触底</p>
+<h2 id="tarjan算法"><a href="#tarjan算法" class="headerlink" title="tarjan算法"></a>tarjan算法</h2><p>tarjan算法的基础就是深度优先搜索-DFS。tarjan算法需要两个数组进行辅佐，即low数组和dfn数组。dfn数组记录搜索到该点时的时间（可以理解为该点被搜索的序号），low数组是一个标记数组，表示该点或者以这个点为根的子树能够追溯到最早的栈中节点的次序。可以环连接到的节点。</p>
+<p><strong>求无向图的割点与割边</strong></p>
+<p>割点：在无向图中，如果将一个点以及所有连接该点的边都去掉，图就不再连通，那么这个点就叫做这个图的一个割点。<br>割边：在无向图中，如果将一条边去掉，图就不再连通则称这条边为图的一个割边。</p>
+<p>求割点：如果一个点（u）所连接的几个节点（v）的low值大或等于此节点（u）的dfn值时说明之后的节点（v）无法连接到比此点（u）更早的点上，则说明这个节点（u）是一个割点。<strong>PS：根节点需特判，当根节点在dfs树有两个或更多个子树时则说明根节点是割点</strong></p>
+<p>求割边：与割点类似，如果一个点（u）的dfn值小于（<strong>不能等于，否则不一定</strong>）和它连接的一个节点（v）的low值，则说明这条边（uv）为图的一个割边。说明之后的节点（v）无法连接到比此点（u）更早的点上，则说明这个边uv是割边。</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.cnblogs.com/tgycoder/p/5048898.html" target="_blank" rel="noopener">https://www.cnblogs.com/tgycoder/p/5048898.html</a></p>
+<p><a href="https://www.cnblogs.com/Menteur-Hxy/p/9248051.html" target="_blank" rel="noopener">https://www.cnblogs.com/Menteur-Hxy/p/9248051.html</a></p>
+<p><a href="http://blog.miskcoo.com/2016/07/tarjan-algorithm-strongly-connected-components" target="_blank" rel="noopener">http://blog.miskcoo.com/2016/07/tarjan-algorithm-strongly-connected-components</a></p>
+<p><a href="https://www.jianshu.com/p/346e01244080" target="_blank" rel="noopener">https://www.jianshu.com/p/346e01244080</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/16/2020-08-16-Tarjan算法/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-15-Server-Side-Architecture.-Front-End-Servers-And-Client-Side-Random-Load-Balancing" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/15/2020-08-15-Server-Side-Architecture.-Front-End-Servers-And-Client-Side-Random-Load-Balancing/">Server-Side Architecture. Front-End Servers And Client-Side Random Load Balancing</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/15/2020-08-15-Server-Side-Architecture.-Front-End-Servers-And-Client-Side-Random-Load-Balancing/" class="archive-article-date">
+  	<time datetime="2020-08-15T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Chapter by chapter <a href="https://www.linkedin.com/in/signatchenko" target="_blank" rel="noopener">Sergey Ignatchenko</a> is putting together a wonderful book on the <a href="http://ithare.com/contents-of-development-and-deployment-of-massively-multiplayer-games-from-social-games-to-mmofps-with-stock-exchanges-in-between/" target="_blank" rel="noopener">Development and Deployment of Massively Multiplayer Games</a>, though it has much broader applicability than games. Here’s a <a href="http://ithare.com/chapter-vib-server-side-architecture-front-end-servers-and-client-side-random-load-balancing/" target="_blank" rel="noopener">recent chapter</a> from his book.</p>
+<h3 id="Enter-Front-End-Servers"><a href="#Enter-Front-End-Servers" class="headerlink" title="Enter Front-End Servers"></a>Enter Front-End Servers</h3><p>[Enter Juliet]<br>Hamlet:<br>Thou art as sweet as the sum of the sum of Romeo and his horse and his black cat! Speak thy mind!<br>[Exit Juliet]</p>
+<p>— a sample program in <a href="https://en.wikipedia.org/wiki/Shakespeare_Programming_Language" target="_blank" rel="noopener">Shakespeare Programming Language</a> —</p>
+<p><a href="http://ithare.com/wp-content/uploads/BB_part071_BookChapter006b_v2.png" target="_blank" rel="noopener"><img src="http://ithare.com/wp-content/uploads/BB_part071_BookChapter006b_v2.png" alt="Front-End Servers as an Offensive Line"></a></p>
+<p>Our Classical Deployment Architecture (especially if you do use FSMs) is not bad, and it will work, but there is still quite a bit of room for improvement for most of the games out there. More specifically, we can add another row of servers in front of the Game Servers, as shown on Fig VI.8:</p>
+<p><a href="http://ithare.com/wp-content/uploads/Fig-VIv2-8.png" target="_blank" rel="noopener"><img src="http://ithare.com/wp-content/uploads/Fig-VIv2-8.png" alt="Fig. VI.8. Classical Deployment Architecture with Front-End Servers"></a></p>
+<p>As you see, compared to the Classical Deployment Architecture (see Fig VI.4 above) we’ve just added a row of Front-End Servers in front of our Game Servers. These additional Front-End Servers are intended to deal with all the communication stuff when it comes from the clients. All those pesky “whether the player is connected or not” questions (including keep-alive handing where applicable, see Chapter [[TODO]] for details on keep-alives), all that client-to-server encryption (if applicable), with all those keys etc., all those rather more-or-less strange reliable-UDP protocols (again, if applicable), and of course, routing messages between the clients and different Game Servers – all the communication with clients is handled here.</p>
+<p><img src="http://ithare.com/wp-content/uploads/BB_emotion_0008.png" alt="Hare pointing out:">“In addition, usually these Front-End servers store a copy of relevant Game Worlds when it is necessary, and are acting as “concentrators” for the game world updates</p>
+<p> In addition, usually these Front-End servers store a copy of relevant Game Worlds when it is necessary, and are acting as “concentrators” for the game world updates; i.e. even if a Game Server has 100’000 people watching some game (like final of some tournament or something), it will need to send updates only to a few Front-End servers, and Front-End servers will take care of data distribution to all the 100’000 people. This ability comes really handy when you have some kind of Big Final game, with thousands of people willing to watch it (and you don’t really need to make it a video broadcast, which is not-so-convenient for existing players and damn expensive, but you can do it right within your client). More on it below, and implementation of this “concentrator” paradigm is discussed in more detail in Chapter [[TODO]].</p>
+<p>We’ll discuss the implementation of our Front-End servers a bit later, but for now let’s note that most importantly,</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Architecture</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/15/2020-08-15-Server-Side-Architecture.-Front-End-Servers-And-Client-Side-Random-Load-Balancing/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-08-14-杨牧《有人问我公理和正义的问题》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -822,362 +1074,6 @@
 
 
   
-    <article id="post-2020-08-07-AWS-Lambda" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/2020-08-07-AWS-Lambda/">AWS Lambda</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/07/2020-08-07-AWS-Lambda/" class="archive-article-date">
-  	<time datetime="2020-08-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="AWS-Lambda"><a href="#AWS-Lambda" class="headerlink" title="AWS Lambda"></a>AWS Lambda</h1><h3 id="Run-code-without-thinking-about-servers-Pay-only-for-the-compute-time-you-consume"><a href="#Run-code-without-thinking-about-servers-Pay-only-for-the-compute-time-you-consume" class="headerlink" title="Run code without thinking about servers. Pay only for the compute time you consume."></a>Run code without thinking about servers. Pay only for the compute time you consume.</h3><p><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1" target="_blank" rel="noopener">Get started with AWS Lambda</a></p>
-<p>AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume.</p>
-<p>With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app.</p>
-<iframe id="lb-video-0_Youtube_api" class="vjs-tech" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen="1" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/eOBq__h4OJ4?controls=0&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;loop=0&amp;fs=0&amp;hl=en&amp;enablejsapi=1&amp;origin=https%3A%2F%2Faws.amazon.com&amp;widgetid=1" style="box-sizing: inherit; width: 379.984px; height: 213.734px; position: absolute; top: 0px; left: 0px; opacity: 1; transition: all 0.2s ease-in-out 0s;"></iframe>
-
-
-
-<p>Getting started with AWS Lambda (3:00)</p>
-<h2 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits"></a>Benefits</h2><h3 id="No-servers-to-manage"><a href="#No-servers-to-manage" class="headerlink" title="No servers to manage"></a>No servers to manage</h3><p>AWS Lambda automatically runs your code without requiring you to provision or manage servers. Just write the code and upload it to Lambda.</p>
-<h3 id="Continuous-scaling"><a href="#Continuous-scaling" class="headerlink" title="Continuous scaling"></a>Continuous scaling</h3><p>AWS Lambda automatically scales your application by running code in response to each trigger. Your code runs in parallel and processes each trigger individually, scaling precisely with the size of the workload.</p>
-<h3 id="Subsecond-metering"><a href="#Subsecond-metering" class="headerlink" title="Subsecond metering"></a>Subsecond metering</h3><p>With AWS Lambda, you are charged for every 100ms your code executes and the number of times your code is triggered. You pay only for the compute time you consume. </p>
-<h3 id="Consistent-performance"><a href="#Consistent-performance" class="headerlink" title="Consistent performance"></a>Consistent performance</h3><p>With AWS Lambda, you can optimize your code execution time by choosing the right memory size for your function. You can also enable Provisioned Concurrency to keep your functions initialized and hyper-ready to respond within double digit milliseconds.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h2><p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-HowItWorks.68a0bcacfcf46fccf04b97f16b686ea44494303f.png" alt="How AWS Lambda Works"></p>
-<h2 id="Use-cases"><a href="#Use-cases" class="headerlink" title="Use cases"></a>Use cases</h2><p>What can you build with AWS Lambda? Learn more about the use cases below:</p>
-<h3 id="Data-processing"><a href="#Data-processing" class="headerlink" title="Data processing"></a>Data processing</h3><p>You can use AWS Lambda to execute code in response to triggers such as changes in data, shifts in system state, or actions by users. Lambda can be directly triggered by AWS services such as S3, DynamoDB, Kinesis, SNS, and CloudWatch, can connect to existing EFS file systems, or it can be orchestrated into workflows by <a href="https://aws.amazon.com/step-functions/" target="_blank" rel="noopener">AWS Step Functions</a>. This allows you to build a variety of real-time <a href="https://aws.amazon.com/serverless/" target="_blank" rel="noopener">serverless</a> data processing systems.</p>
-<h4 id="Real-time-file-processing"><a href="#Real-time-file-processing" class="headerlink" title="Real-time file processing"></a>Real-time file processing</h4><p>You can use Amazon S3 to trigger AWS Lambda to process data immediately after an upload. You can also connect to an existing Amazon EFS file system directly, which enables massively parallel shared access for large scale file processing. For example, you can use Lambda to thumbnail images, transcode videos, index files, process logs, validate content, and aggregate and filter data in real-time.</p>
-<p><strong>Reference Architecture: <a href="https://github.com/awslabs/lambda-refarch-fileprocessing" target="_blank" rel="noopener">Sample Code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-RealTimeFileProcessing.a59577de4b6471674a540b878b0b684e0249a18c.png" alt="AWS Lambda File Processing"></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/The_Seattle_Times_logo2.c63276a283e30ef713cb467d25b8584ae966cc6d.png" alt="The_Seattle_Times_logo2"></p>
-<p>The Seattle Times uses AWS Lambda to resize images for viewing on different devices such as desktop computers, tablets, and smartphones. <a href="https://aws.amazon.com/solutions/case-studies/the-seattle-times/?e=a" target="_blank" rel="noopener">Read the case study »</a></p>
-<h4 id="Real-time-stream-processing"><a href="#Real-time-stream-processing" class="headerlink" title="Real-time stream processing"></a>Real-time stream processing</h4><p>You can use AWS Lambda and Amazon Kinesis to process real-time streaming data for application activity tracking, transaction order processing, click stream analysis, data cleansing, metrics generation, log filtering, indexing, social media analysis, and IoT device data telemetry and metering.</p>
-<p><strong>Reference Architecture: <a href="https://github.com/awslabs/lambda-refarch-streamprocessing" target="_blank" rel="noopener">Sample code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-RealTimeStreamProcessing.d79d55b5f3a5d6b58142a6c0fc8a29eadc81c02b.png" alt="AWS Lambda Stream Processing"></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/localytics-logo2.697e59b1da265d9b36213f149173f6d94bee0308.png" alt="localytics-logo2"></p>
-<p>Localytics processes billions of data points in real-time, and uses Lambda to process historical and live data stored in S3 or streamed from Kinesis. <a href="https://aws.amazon.com/solutions/case-studies/localytics/?e=a" target="_blank" rel="noopener">Read the case study »</a></p>
-<h4 id="Machine-learning"><a href="#Machine-learning" class="headerlink" title="Machine learning"></a>Machine learning</h4><p>You can use AWS Lambda to preprocess data before feeding it to your machine learning model. With Lambda access to EFS, you can also serve your model for prediction at scale without having to provision or manage any infrastructure.</p>
-<p><img src="https://d1.awsstatic.com/logos/customers/aible-logo-S.720e1fda08194466e7a289f2a134d87b8d2df256.png" alt="Aible"></p>
-<blockquote>
-<p>“At Aible we focus on delivering the most powerful AI technologies at the lowest possible operating cost. As such, we use AWS Lambda and Serverless for machine learning training and predictions. With Serverless, we can run a wide variety of machine learning workloads more cost effectively while benefiting from burst compute resources needed for rapid iteration and scaling to create AI for optimal business impact.”</p>
-</blockquote>
-<p><strong>Rod Butters, CTO – Aible</strong></p>
-<hr>
-<h3 id="Backends"><a href="#Backends" class="headerlink" title="Backends"></a>Backends</h3><p>You can build <a href="https://aws.amazon.com/serverless/" target="_blank" rel="noopener">serverless</a> backends using AWS Lambda to handle web, mobile, Internet of Things (IoT), and 3rd party API requests. Take advantage of Lambda’s consistent performance controls, such as multiple memory configurations and Provisioned Concurrency, for building latency-sensitive applications at any scale.</p>
-<h4 id="Web-applications"><a href="#Web-applications" class="headerlink" title="Web applications"></a>Web applications</h4><p>By combining AWS Lambda with other AWS services, developers can build powerful web applications that automatically scale up and down and run in a highly available configuration across multiple data centers – with zero administrative effort required for scalability, back-ups or multi-data center redundancy.</p>
-<p><strong>Reference Architecture: <a href="https://github.com/awslabs/lambda-refarch-webapp/" target="_blank" rel="noopener">Sample code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-WebApplications%202.c7f8cf38e12cb1daae9965ca048e10d676094dc1.png" alt="AWS Lambda Web Backend"></p>
-<h4 id="IoT-backends"><a href="#IoT-backends" class="headerlink" title="IoT backends"></a>IoT backends</h4><p>You can build serverless backends using AWS Lambda to handle web, mobile, Internet of Things (IoT), and 3rd party API requests.</p>
-<p><strong>Reference Architecture:</strong> <strong><a href="https://github.com/awslabs/lambda-refarch-iotbackend" target="_blank" rel="noopener">Sample code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-IoTBackends.3440c7f50a9b73e6a084a242d44009dc0fbe5fab.png" alt="AWS Lambda IoT Backend"></p>
-<h4 id="Mobile-backends"><a href="#Mobile-backends" class="headerlink" title="Mobile backends"></a>Mobile backends</h4><p>AWS Lambda makes it easy to create rich, personalized app experiences. You can build backends using AWS Lambda and Amazon API Gateway to authenticate and process API requests. Use AWS Amplify to easily integrate your backend with your iOS, Android, Web, and React Native frontends.</p>
-<p><strong>Reference Architecture: <a href="https://github.com/awslabs/lambda-refarch-mobilebackend/" target="_blank" rel="noopener">Sample code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-MobileBackends_option2.00f6421e67e8d6bdbc59f3a2db6fa7d7f8508073.png" alt="AWS Lambda Mobile Backend"></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/Bustle_logo2.a1e0abadd7f494743b4bd436961a1a73eeb2b36a.png" alt="Bustle_logo2"></p>
-<p>Bustle runs a serverless backend for its Bustle iOS app and websites using AWS Lambda and Amazon API Gateway. Serverless architectures allow Bustle to never have to deal with infrastructure management, so every engineer can focus on building out new features and innovating. <a href="https://aws.amazon.com/solutions/case-studies/bustle/?e=a" target="_blank" rel="noopener">Read the case study »</a></p>
-<h2 id="Case-studies"><a href="#Case-studies" class="headerlink" title="Case studies"></a>Case studies</h2><p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/Coca%20Cola.cb487713224b8643a56acbc1984c7ed236e05aee.png" alt="Coca Cola"></p>
-<p>The Coca-Cola Company, an American multinational beverage corporation, used AWS Lambda and AWS Step Functions to build a cost-effective serverless solution.</p>
-<p><a href="https://aws.amazon.com/blogs/aws/things-go-better-with-step-functions/?e=a" target="_blank" rel="noopener">Read the blog »</a></p>
-<p><img src="https://d1.awsstatic.com/serverless/Lambda%20Resources%20images/iRobot.b8d2faafc3b461d34876d01d0538f9ed9c470f35.png" alt="iRobot"></p>
-<p>iRobot, a leading global consumer robot company, is building the next generation of connected devices for the smart home using a serverless architecture.</p>
-<p><a href="https://aws.amazon.com/solutions/case-studies/irobot/?e=a" target="_blank" rel="noopener">Read more »</a></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/Benchling.8aa1b65535b507e9f8fb2e1c454e99440e18018b.png" alt="Benchling"></p>
-<p>Benchling, a life science software company, created a technique that researchers use to modify parts of a genome with extreme precision using serverless architecture.</p>
-<p><a href="https://aws.amazon.com/solutions/case-studies/benchling/?e=a" target="_blank" rel="noopener">Read more »</a></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/Thomson%20Reuters-logo2.4c7fc66a866ec97f741eac7a5184964f72231640.png" alt="Thomson Reuters-logo2"></p>
-<p>Thomson Reuters uses AWS Lambda to process up to 4,000 events per second for its usage analytics service, and it took five months to deploy into production.</p>
-<p><a href="https://aws.amazon.com/solutions/case-studies/thomson-reuters/?e=a" target="_blank" rel="noopener">Read more »</a></p>
-<p><a href="https://aws.amazon.com/lambda/resources/?e=a#Customer_case_studies" target="_blank" rel="noopener">See more case studies »</a></p>
-<h2 id="Get-started-with-AWS-Lambda"><a href="#Get-started-with-AWS-Lambda" class="headerlink" title="Get started with AWS Lambda"></a>Get started with AWS Lambda</h2><p><img src="https://d1.awsstatic.com/webteam/product-pages/Next-Steps-Icon_Create-account.7db16d9004bbb22184c5b490bb7daa28f580e3bf.png" alt="Next-Steps-Icon_Create-account"></p>
-<p><strong>Sign up for an AWS account</strong></p>
-<p>Instantly get access to the <a href="https://aws.amazon.com/free/" target="_blank" rel="noopener">AWS Free Tier</a>.</p>
-<p><img src="https://d1.awsstatic.com/webteam/product-pages/Next-Steps-Icon_Tutorial.aa70b53bd4bd0f01a111e6217d619475d8149b74.png" alt="Next-Steps-Icon_Tutorial"></p>
-<p>*<em>Learn with step-by-step tutorials<br>*</em></p>
-<p>Explore and learn with <a href="https://aws.amazon.com/lambda/resources/#Workshops_.26_Tutorials" target="_blank" rel="noopener">simple tutorials</a>.</p>
-<p><img src="https://d1.awsstatic.com/webteam/product-pages/Next-Steps-Icon_Login.d0f14024c9cca3e808b28f13ad5de7fc3be0dfc1.png" alt="Next-Steps-Icon_Login"></p>
-<p><strong>Start building with AWS Lambda</strong></p>
-<p>Visit the <a href="https://console.aws.amazon.com/lambda/home?region=us-east-1" target="_blank" rel="noopener">AWS Management Console.</a></p>
-<p>AWS Lambda is a compute service that lets you run code without provisioning or managing servers. AWS Lambda executes your code only when needed and scales automatically, from a few requests per day to thousands per second. You pay only for the compute time you consume - there is no charge when your code is not running. With AWS Lambda, you can run code for virtually any type of application or backend service - all with zero administration. AWS Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, code monitoring and logging. All you need to do is supply your code in one of the <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html" target="_blank" rel="noopener">languages that AWS Lambda supports</a>.</p>
-<p>You can use AWS Lambda to run your code in response to events, such as changes to data in an Amazon S3 bucket or an Amazon DynamoDB table; to run your code in response to HTTP requests using Amazon API Gateway; or invoke your code using API calls made using AWS SDKs. With these capabilities, you can use Lambda to easily build data processing triggers for AWS services like Amazon S3 and Amazon DynamoDB, process streaming data stored in Kinesis, or create your own back end that operates at AWS scale, performance, and security.</p>
-<p>You can also build serverless applications composed of functions that are triggered by events and automatically deploy them using CodePipeline and AWS CodeBuild. For more information, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/deploying-lambda-apps.html" target="_blank" rel="noopener">AWS Lambda applications</a>.</p>
-<h2 id="When-should-I-use-AWS-Lambda"><a href="#When-should-I-use-AWS-Lambda" class="headerlink" title="When should I use AWS Lambda?"></a>When should I use AWS Lambda?</h2><p>AWS Lambda is an ideal compute platform for many application scenarios, provided that you can write your application code in languages supported by AWS Lambda, and run within the AWS Lambda standard runtime environment and resources provided by Lambda.</p>
-<p>When using AWS Lambda, you are responsible only for your code. AWS Lambda manages the compute fleet that offers a balance of memory, CPU, network, and other resources. This is in exchange for flexibility, which means you cannot log in to compute instances, or customize the operating system on provided runtimes. These constraints enable AWS Lambda to perform operational and administrative activities on your behalf, including provisioning capacity, monitoring fleet health, applying security patches, deploying your code, and monitoring and logging your Lambda functions.</p>
-<p>If you need to manage your own compute resources, Amazon Web Services also offers other compute services to meet your needs.</p>
-<ul>
-<li>Amazon Elastic Compute Cloud (Amazon EC2) service offers flexibility and a wide range of EC2 instance types to choose from. It gives you the option to customize operating systems, network and security settings, and the entire software stack, but you are responsible for provisioning capacity, monitoring fleet health and performance, and using Availability Zones for fault tolerance.</li>
-<li>Elastic Beanstalk offers an easy-to-use service for deploying and scaling applications onto Amazon EC2 in which you retain ownership and full control over the underlying EC2 instances.</li>
-</ul>
-<p>Lambda is a highly available service. For more information, see the <a href="https://aws.amazon.com/lambda/sla/" target="_blank" rel="noopener">AWS Lambda service level agreement</a>.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://aws.amazon.com/lambda/?nc1=h_ls" target="_blank" rel="noopener">https://aws.amazon.com/lambda/?nc1=h_ls</a></p>
-<p><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/lambda/latest/dg/welcome.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AWS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/07/2020-08-07-AWS-Lambda/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-06-Online-Algorithm-VS-Offline-Algorithm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/">Online Algorithm VS Offline Algorithm</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/" class="archive-article-date">
-  	<time datetime="2020-08-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>离线算法途中拿出来的结果就是最终结果的一部分，而在线算法可能到了最后一步才能得到需要的结果，而过程中产生中间结果都是为最后结果的输出而服务的。</p>
-<p>The Wikipedia page is quite clear:</p>
-<blockquote>
-<p>In computer science, an online algorithm is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algorithm, without having the entire input available from the start. In contrast, an offline algorithm is given the whole problem data from the beginning and is required to output an answer which solves the problem at hand. (For example, selection sort requires that the entire list be given before it can sort it, while insertion sort doesn’t.)</p>
-</blockquote>
-<p>Let me expand on the above:</p>
-<p>An offline algorithm requires all information BEFORE the algorithm starts. In the Wikipedia example, <a href="http://en.wikipedia.org/wiki/Selection_sort" target="_blank" rel="noopener">selection sort</a> is <em>offline</em> because step 1 is <code>Find the minimum value in the list</code>. To do this, you need to have the entire list available - otherwise, <strong>how could you possibly know what the minimum value is?</strong> You cannot.</p>
-<p>Insertion sort, by contrast, is <em>online</em> because it does not need to know anything about what values it will sort and the information is requested WHILE the algorithm is running. Simply put, it can grab new values at every iteration.</p>
-<h2 id="Still-not-clear"><a href="#Still-not-clear" class="headerlink" title="Still not clear?"></a>Still not clear?</h2><p>Think of the following examples (for four year olds!). David is asking you to solve two problems.</p>
-<p>In the first problem, he says:</p>
-<blockquote>
-<p>“I’m, going to give you two balls of different masses and you need to drop them at the same time from a tower.. just to make sure Galileo was right. You can’t use a watch, we’ll just eyeball it.”</p>
-</blockquote>
-<p><img src="https://i.stack.imgur.com/U2ffu.jpg" alt="enter image description here"></p>
-<p>If I gave you only one ball, you’d probably look at me and wonder what you’re supposed to be doing. After all, the instructions were pretty clear. You need both balls at the beginning of the problem. This is an <strong>offline</strong> algorithm.</p>
-<p>For the second problem, David says</p>
-<blockquote>
-<p>“Okay, that went pretty well, but now I need you to go ahead and kick a couple of balls across a field.”</p>
-</blockquote>
-<p><img src="https://i.stack.imgur.com/FyC1X.jpg" alt="enter image description here"></p>
-<p>I go ahead and give you the first ball. You kick it. Then I give you the second ball and you kick that. I could also give you a third and fourth ball (without you even knowing that I was going to give them to you). This is an example of an <strong>online</strong> algorithm. As a matter of fact, you could be kicking balls all day.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[<a href="https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In%20computer%20science%2C%20an%20online,input%20available%20from%20the%20start.&amp;text=An%20offline%20algorithm%20requires%20all%20information%20BEFORE%20the%20algorithm%20starts.]" target="_blank" rel="noopener">https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In%20computer%20science%2C%20an%20online,input%20available%20from%20the%20start.&amp;text=An%20offline%20algorithm%20requires%20all%20information%20BEFORE%20the%20algorithm%20starts.]</a>(<a href="https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In" target="_blank" rel="noopener">https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In</a> computer science%2C an online,input available from the start.&amp;text=An offline algorithm requires all information BEFORE the algorithm starts.)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-05-Priority-QueueHeap-小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/">Priority Queue/Heap 小结</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/" class="archive-article-date">
-  	<time datetime="2020-08-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>PQ又叫”堆”(heap), 但是可能优先队列这个名字更容易记忆它的用途: pq是一种队列, 不过不是先进先出(FIFO), 而是每次出队的元素永远是优先级最高的.</p>
-<h1 id="logical-structure-of-PQ"><a href="#logical-structure-of-PQ" class="headerlink" title="logical structure of PQ"></a>logical structure of PQ</h1><p>个人感觉”堆”这个名字大概源于PQ的(逻辑上的)形状吧: PQ是一种树(tree), 准确的说, 是一种二叉树(binary tree), 说得再准确一点, 它是一种<strong>完全二叉树(complete binary tree)</strong>: 没错, PQ是一种满足某些条件的完全二叉树.</p>
-<p>所谓的”完全二叉树”, 要满足:</p>
-<blockquote>
-<ul>
-<li>除了最后一层, 所有层都排满(没有非空节点)</li>
-<li>最后一层的所有非空节点都排在左边</li>
-</ul>
-</blockquote>
-<p>一张图可以直观说明, 完全二叉树其实就是长得像这样:<br><img src="https://x-wei.github.io/images/heap-summary/pasted_image.png" alt="img"></p>
-<p>一个完全二叉树能被成为PQ的话, 要满足的条件就是:</p>
-<blockquote>
-<p>对于任何一个节点, 它的优先级都大于左右子节点的优先级.</p>
-</blockquote>
-<p>比如下图(圆圈里数字代表优先级):<br><img src="https://x-wei.github.io/images/heap-summary/pasted_image001.png" alt="img"></p>
-<p>这样看上去的话, 确实像是”一堆”东西的形状(码的还挺整齐的), 而且我们知道在这一堆节点里, 优先级最高的就是最顶上的那个节点了.</p>
-<p>我很喜欢这个比喻: 一个heap就像是一个<em>公司的hirachy结构:</em> 子节点就是下属, 父节点就是上司, 每一个上司的能力都比他的下属强(优先级比子节点搞). 能力最强(优先级最高)的人在最上面.</p>
-<h1 id="array-representation-of-PQ"><a href="#array-representation-of-PQ" class="headerlink" title="array representation of PQ"></a>array representation of PQ</h1><p>对于一个完全二叉树, 没有必要用常规的树结构(使用指针)来表示, 因为如果从上到下走过每层(每层内从左到右)给所有节点编号(根节点的编号为1)的话, 完全二叉树有以下性质:</p>
-<blockquote>
-<ul>
-<li><code>father(i) = i/2</code> 其中father(i)表示编号为i的节点的父节点的下标</li>
-<li><code>leftchild(i) = i*2, rightchild(i) = i*2+1</code></li>
-</ul>
-</blockquote>
-<p>既然用数组表示的时候, 任何节点的父亲节点和左右子节点都可以轻松得到, 就没有必要使用指针了. 所以只需要一个数组即可表示PQ ! 比如一个int的PQ在内部只要表示为: <code>int pq[]</code>.</p>
-<p>另外注意, 上面的公式成立的前提是数组下标从1开始, 实现的时候我们把数组的第0个元素空出来即可.</p>
-<p>不难看出一个PQ有以下性质:</p>
-<blockquote>
-<ul>
-<li>高度为lgN</li>
-<li>第k层有 2^k 个节点 (root是第0层)</li>
-<li>最后一层的节点对应的下标&gt;=N/2</li>
-</ul>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1278,10 +1174,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -1295,6 +1187,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1314,10 +1210,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
@@ -1326,15 +1218,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1350,15 +1246,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1366,7 +1254,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1374,7 +1262,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1398,14 +1294,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
@@ -1414,7 +1302,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1426,7 +1322,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1434,7 +1330,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1450,11 +1346,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,19 +1374,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1506,11 +1402,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1518,7 +1410,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,11 +1426,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1542,7 +1442,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1551,10 +1451,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1570,11 +1466,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1586,11 +1486,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1606,6 +1506,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
@@ -1614,7 +1518,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1622,19 +1526,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1654,11 +1554,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">

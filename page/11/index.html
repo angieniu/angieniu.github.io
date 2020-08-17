@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 125</a>
+<a>Total Number of Articles: 128</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,354 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-RESTful, Sessions, Cookies" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/11/RESTful, Sessions, Cookies/">RESTful, Sessions, Cookies</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/11/RESTful, Sessions, Cookies/" class="archive-article-date">
+  	<time datetime="2020-05-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Notes on RESTful API (stateless) VS Session:   (<strong>^▽^</strong>)</p>
+<h2 id="Stateless-applications"><a href="#Stateless-applications" class="headerlink" title="Stateless applications"></a>Stateless applications</h2><ul>
+<li>Web application servers are generally “stateless”:<ul>
+<li>Each HTTP request is independent; server can’t tell if 2 requests came from the same browser or user.</li>
+<li>Web server applications maintain no information in memory from request to request (only information on disk survives from one request to another).</li>
+</ul>
+</li>
+<li>Statelessness not always convenient for application developers: need to tie together a series of requests from the same user.</li>
+</ul>
+<h2 id="Browser-cookies"><a href="#Browser-cookies" class="headerlink" title="Browser cookies"></a>Browser cookies</h2><ul>
+<li>Cookie basics:<ul>
+<li>The first time a browser connects with a particular server, there are no cookies.</li>
+<li>When the server responds it includes a Set-Cookie: header that defines a cookie.</li>
+<li>Each cookie is just a name-value pair.</li>
+<li>In the future whenever the browser connects with the same server, it includes a Cookie: header containing the name and value, which the server can use to connect related requests.</li>
+</ul>
+</li>
+<li>What’s in a cookie?<ul>
+<li>Name and data.<ul>
+<li>Data size limited by browsers (typically &lt; 4 KB).</li>
+<li>A server can define multiple cookies with different names, but browsers limit the number of cookies per server (around 50).</li>
+</ul>
+</li>
+<li>Domain for this cookie: server, port (optional), URL prefix (optional). The cookie is only included in requests matching its domain.</li>
+<li>Expiration date: browser can delete old cookies.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Sessions"><a href="#Sessions" class="headerlink" title="Sessions"></a>Sessions</h2><ul>
+<li>Cookies are used by the server to implement</li>
+</ul>
+<p>  sessions</p>
+<p>  :</p>
+<ul>
+<li>A pool of data related to an active connection (one browser instance).</li>
+</ul>
+<ul>
+<li>Typically the cookie for an application contains an identifier for a session.</li>
+</ul>
+<ul>
+<li><p>Web frameworks like Rails do most of the work of managing sessions and cookies:</p>
+<ul>
+<li>Rails provides</li>
+</ul>
+</li>
+</ul>
+<pre><code>session
+
+, a hash-like object in which you can store anything you like
+
+- Data will be available in all future requests from the same browser.</code></pre><ul>
+<li><p>Rails automatically checks for a session cookie at the start of each request:</p>
+<ul>
+<li>Cookie exists? use it to find session data</li>
+<li>No cookie? Create new session, new cookie</li>
+</ul>
+</li>
+<li><p>End of each request: save session data where it can be found by future requests.</p>
+</li>
+</ul>
+<ul>
+<li><p>Managing session state:</p>
+<ul>
+<li>Approach #1: just keep state in main memory</li>
+<li>Approach #2: store session state in files on disk</li>
+<li>Approach #3: store session state in a database</li>
+<li>Most frameworks allow you to control session storage:<ul>
+<li>Provide an object that saves and restores session data.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Server must eventually delete stale session data.</p>
+</li>
+</ul>
+<ul>
+<li>Sessions have numerous security issues, which we will discuss later.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">RESTful, session, cookies</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/11/RESTful, Sessions, Cookies/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Go Language" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/10/Go Language/">Go Language</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/10/Go Language/" class="archive-article-date">
+  	<time datetime="2020-05-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Notes about Go Language:</p>
+<p>Language Comparision: </p>
+<ol>
+<li>Language Abstract Model</li>
+<li>Type conversion.</li>
+</ol>
+<p>Efficiency: C++, C, Rust: Complile lanugage, cpu directly recognize before running. machine code, binary 0 1. windows .exe, linux.</p>
+<p>(efficiency)</p>
+<p>Java: compiler JVM (compiling from programming language to machine language) (compiling byte code, the middle layer), JIT (just in time, parse byte code in advance, precompile machine code before running for certain repetitive parts). </p>
+<p>GC+VM (write once run everywhere)+ java web service commercizlization (tomcat, j2ee enterprise architect)</p>
+<p>Script language: Fast to development: Ruby, Python, Perl: high-level, fast, fun for humans, lower, inefficient for computers. no jvm, jit engine, optimization worse. language dynamic.</p>
+<p>Type System:</p>
+<p>Static type: variable type, static. Java, C++ define integer i, in the scope the type could not be changed; but Python and Ruby could.  </p>
+<p>Dynamic type: Python, Ruby.</p>
+<p>Weak type: variable, whether it would be implied transferred. Java C++ Perl. easy for text processing.  but when the project is big, hard without type check. </p>
+<p>Strong type: String + integer, in python, run, different type, bind to a variable.</p>
+<p>Go: efficient and fast to implement, balance. </p>
+<ol>
+<li>complie language. garbage collector, allocate and assign resources, (java). collect, slow. </li>
+<li>concurrency, cloud computing.</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GoLang</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/10/Go Language/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-How to Connect to Database in Javascript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/09/How to Connect to Database in Javascript/">How to Connect to Database in JavaScript</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/09/How to Connect to Database in Javascript/" class="archive-article-date">
+  	<time datetime="2020-05-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Yesterday was super happy day to meet many friends! Such a great reunion online during the pandemic period.</p>
+<p>Also, I have fetched data from external api to javascript file and render map successfully. I will work on building database. Good guidance to start with.</p>
+<h2 id="INTRODUCTION-DATABASE-TROUBLE"><a href="#INTRODUCTION-DATABASE-TROUBLE" class="headerlink" title="INTRODUCTION DATABASE TROUBLE"></a>INTRODUCTION DATABASE TROUBLE</h2><p>Welcome to a tutorial on how to connect to a database in Javascript. Yes, it is totally possible to connect to a database with modern Javascript these days. But it is a different process depending on where you are applying it to:</p>
+<ul>
+<li>When used on a web page (client-side Javascript), we usually make an AJAX call to a server-side script first. That in turn, will make a connection to the database.</li>
+<li>Javascript can also directly access a server-side database, but provided that it has an open HTTP API. This is a security risk though, and it should never be considered.</li>
+<li>Alternatively, there is the web storage API that allows Javascript to save some data on the client computer.</li>
+<li>Finally, with NodeJS (server-side Javascript), we can easily connect to a database with the correct module installed.</li>
+</ul>
+<p>So just how exactly do we connect to the database in the above cases? Let us walk through some examples, and read on to find out!</p>
+<p>ⓘ I have included a zip file with all the example source code at the start of this tutorial, so you don’t have to copy-paste everything… Or if you just want to dive straight in.</p>
+<h2 id="NAVIGATION-TABLE-OF-CONTENTS"><a href="#NAVIGATION-TABLE-OF-CONTENTS" class="headerlink" title="NAVIGATION TABLE OF CONTENTS"></a>NAVIGATION TABLE OF CONTENTS</h2><table>
+<thead>
+<tr>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-download" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-download.svg" alt="img"></a><strong>Extra</strong> Source Code Download</th>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-basics" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-gear.svg" alt="img"></a><strong>Section A</strong> The Basics</th>
+<th><a href="https://code-boxx.com/connect-database-javascript/#sec-ajax" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-refresh-ccw.svg" alt="img"></a><strong>Section B</strong> AJAX Database</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-local" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-nodes.svg" alt="img"></a><strong>Section C</strong> Local Storage</td>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-node" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-code.svg" alt="img"></a><strong>Section D</strong> NodeJS Database</td>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-extra" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-plus-square.svg" alt="img"></a><strong>Extra</strong> Useful Bits &amp; Links</td>
+</tr>
+<tr>
+<td><a href="https://code-boxx.com/connect-database-javascript/#sec-end" target="_blank" rel="noopener"><img src="https://code-boxx.com/wp-content/uploads/2019/08/ico-thumbs-up.svg" alt="img"></a><strong>Closing</strong> What’s Next?</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Database, Javascript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/09/How to Connect to Database in Javascript/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Ingestion and processing of real-time automotive IoT data  " class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -752,253 +1100,6 @@
 
 
   
-    <article id="post-Spring Boot &amp; Autoconfigurations In-Depth" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Spring Boot &amp; Autoconfigurations In-Depth</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/" class="archive-article-date">
-  	<time datetime="2020-05-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>This guide would provide an in-depth understanding of what Spring Boot is, how its AutoConfigurations work and what the difference with the Spring Framework is.</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It looks like everyone and their grandma are using <a href="https://spring.io/projects/spring-boot" target="_blank" rel="noopener">Spring Boot</a> to build projects. But very few can answer the question: “What is Spring Boot?”</p>
-<p><strong>The short answer</strong>:</p>
-<p>Spring Boot’s website offers the following answer: “Spring Boot takes an opinionated view of the Spring platform and third-party libraries so you can get started with minimum fuss.”</p>
-<p>Wow, that doesn’t help at all, does it?</p>
-<p><strong>Luckily, there’s also a long answer</strong>:</p>
-<p>The remainder of this article.</p>
-<h3 id="A-quick-caveat"><a href="#A-quick-caveat" class="headerlink" title="A quick caveat"></a>A quick caveat</h3><p>I can give you a 99,99% guarantee, that you’d rather want to read the <a href="https://www.marcobehler.com/guides/spring-framework" target="_blank" rel="noopener">What is Spring Framework?</a> article first, if…:</p>
-<ul>
-<li>…you are completely new to Spring Boot (or Java).</li>
-<li>…you think “Spring Framework, Spring Web MVC and Spring Boot are all the same”.</li>
-<li>…you think “Cut all this other crap, I just want to learn about Spring Boot!”.</li>
-<li>(Especially if you think “cut all this other crap”).</li>
-</ul>
-<p>Take the time to finish the previous article first, then come back here.</p>
-<p>Furthermore, if you are looking for some simple copy &amp; paste Spring Boot REST/microservice tutorials, I would advise you to go to <a href="https://spring.io/guides" target="_blank" rel="noopener">https://spring.io/guides</a>, instead.</p>
-<h3 id="This-article’s-goals"><a href="#This-article’s-goals" class="headerlink" title="This article’s goals"></a>This article’s goals</h3><ul>
-<li>To give you an in-depth understanding of Spring Boot and its AutoConfigurations.</li>
-<li>To show you how Spring Boot <em>automagically</em> boots up a Tomcat server whenever you run a main() method.</li>
-<li>To show you how Spring Boot’s properties magic works. You specify a couple of properties and suddenly have working database access.</li>
-</ul>
-<p>Let’s start.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/01/Spring Boot & Autoconfigurations In-Depth/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Real-time streaming in Power BI" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/30/Real-time streaming in Power BI/">Real-time Streaming in Power BI</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/30/Real-time streaming in Power BI/" class="archive-article-date">
-  	<time datetime="2020-04-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>With Power BI real-time streaming, you can stream data and update dashboards in real-time. Any visual or dashboard that can be created in Power BI can also be created to display and update real-time data and visuals. The devices and sources of streaming data can be factory sensors, social media sources, service usage metrics, and anything else from which time-sensitive data can be collected or transmitted.</p>
-<p><img src="https://docs.microsoft.com/en-us/power-bi/media/service-real-time-streaming/real-time-streaming-10.png" alt="Screenshot showing the results of real-time environmental sensors."></p>
-<p>This article shows you how to set up real-time streaming dataset in Power BI. But before we get to that, it’s important to understand the types of real-time datasets that are designed to display in tiles (and dashboards), and how those datasets differ.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Real-time Streaming Data, Power BI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/30/Real-time streaming in Power BI/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Data Sampling and Randomization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/Data Sampling and Randomization/">Data Sampling and Randomization</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/29/Data Sampling and Randomization/" class="archive-article-date">
-  	<time datetime="2020-04-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Data Sampling Notes:</p>
-<p>Take-away: EG + Formula =&gt; Show thinking style</p>
-<h2 id="Reservoir-Sampling"><a href="#Reservoir-Sampling" class="headerlink" title="Reservoir Sampling"></a>Reservoir Sampling</h2><p>Q: Sampling for an unlimited data flow and to return one random number among all numbers read so far, the probability of returning any element read so far is 1/n.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Data Sampling, Randomization</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/29/Data Sampling and Randomization/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/10/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/12/">Next &raquo;</a>
@@ -1099,10 +1200,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
@@ -1116,6 +1213,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1135,10 +1236,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
@@ -1147,15 +1244,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1171,15 +1272,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1187,7 +1280,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1195,7 +1288,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,14 +1320,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
@@ -1235,7 +1328,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1247,7 +1348,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1255,7 +1356,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1271,11 +1372,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1299,19 +1400,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1327,11 +1428,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1339,7 +1436,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1351,11 +1452,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1363,7 +1468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1372,10 +1477,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1391,11 +1492,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1407,11 +1512,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1427,6 +1532,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
@@ -1435,7 +1544,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1443,19 +1552,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1475,11 +1580,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
