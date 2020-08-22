@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 128</a>
+<a>Total Number of Articles: 136</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,861 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-05-Priority-QueueHeap-小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/">Priority Queue/Heap 小结</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/" class="archive-article-date">
+  	<time datetime="2020-08-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>PQ又叫”堆”(heap), 但是可能优先队列这个名字更容易记忆它的用途: pq是一种队列, 不过不是先进先出(FIFO), 而是每次出队的元素永远是优先级最高的.</p>
+<h1 id="logical-structure-of-PQ"><a href="#logical-structure-of-PQ" class="headerlink" title="logical structure of PQ"></a>logical structure of PQ</h1><p>个人感觉”堆”这个名字大概源于PQ的(逻辑上的)形状吧: PQ是一种树(tree), 准确的说, 是一种二叉树(binary tree), 说得再准确一点, 它是一种<strong>完全二叉树(complete binary tree)</strong>: 没错, PQ是一种满足某些条件的完全二叉树.</p>
+<p>所谓的”完全二叉树”, 要满足:</p>
+<blockquote>
+<ul>
+<li>除了最后一层, 所有层都排满(没有非空节点)</li>
+<li>最后一层的所有非空节点都排在左边</li>
+</ul>
+</blockquote>
+<p>一张图可以直观说明, 完全二叉树其实就是长得像这样:<br><img src="https://x-wei.github.io/images/heap-summary/pasted_image.png" alt="img"></p>
+<p>一个完全二叉树能被成为PQ的话, 要满足的条件就是:</p>
+<blockquote>
+<p>对于任何一个节点, 它的优先级都大于左右子节点的优先级.</p>
+</blockquote>
+<p>比如下图(圆圈里数字代表优先级):<br><img src="https://x-wei.github.io/images/heap-summary/pasted_image001.png" alt="img"></p>
+<p>这样看上去的话, 确实像是”一堆”东西的形状(码的还挺整齐的), 而且我们知道在这一堆节点里, 优先级最高的就是最顶上的那个节点了.</p>
+<p>我很喜欢这个比喻: 一个heap就像是一个<em>公司的hirachy结构:</em> 子节点就是下属, 父节点就是上司, 每一个上司的能力都比他的下属强(优先级比子节点搞). 能力最强(优先级最高)的人在最上面.</p>
+<h1 id="array-representation-of-PQ"><a href="#array-representation-of-PQ" class="headerlink" title="array representation of PQ"></a>array representation of PQ</h1><p>对于一个完全二叉树, 没有必要用常规的树结构(使用指针)来表示, 因为如果从上到下走过每层(每层内从左到右)给所有节点编号(根节点的编号为1)的话, 完全二叉树有以下性质:</p>
+<blockquote>
+<ul>
+<li><code>father(i) = i/2</code> 其中father(i)表示编号为i的节点的父节点的下标</li>
+<li><code>leftchild(i) = i*2, rightchild(i) = i*2+1</code></li>
+</ul>
+</blockquote>
+<p>既然用数组表示的时候, 任何节点的父亲节点和左右子节点都可以轻松得到, 就没有必要使用指针了. 所以只需要一个数组即可表示PQ ! 比如一个int的PQ在内部只要表示为: <code>int pq[]</code>.</p>
+<p>另外注意, 上面的公式成立的前提是数组下标从1开始, 实现的时候我们把数组的第0个元素空出来即可.</p>
+<p>不难看出一个PQ有以下性质:</p>
+<blockquote>
+<ul>
+<li>高度为lgN</li>
+<li>第k层有 2^k 个节点 (root是第0层)</li>
+<li>最后一层的节点对应的下标&gt;=N/2</li>
+</ul>
+</blockquote>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-心灵，人性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/04/心灵，人性/">被淹没和被拯救的</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/04/心灵，人性/" class="archive-article-date">
+  	<time datetime="2020-08-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>被淹没和被拯救的</p>
+<p>I sommersi e i salvati</p>
+<p>意大利 普利莫.莱维 Primo Levi</p>
+<p>心灵，人性</p>
+<p>被解放的： 一脸茫然，爬</p>
+<p>解放的苏联士兵：茫然</p>
+<p>German philosophist: 阿多诺 “奥斯维辛之后，写诗是残忍的”</p>
+<p>– 犹太人毁灭价值观的残忍空白，</p>
+<p>意大利 普利莫.莱维 Primo Levi</p>
+<p>化学家 – 写作</p>
+<p>清洗拯救自己的罪恶感羞耻</p>
+<p>被害者: 耻辱感，不是人的阶段，本能，活下去的问题，而没有了伦理道德观念, 丧失，动物性，羞耻。并且，自私延伸到最亲近的人，自责。</p>
+<p>迟到的羞耻，平民的道德标准。</p>
+<p>更应该活下来的人。</p>
+<p>集中营的世界：灰色地带，好人显得不一定那么好的世界。</p>
+<p>最能把他们击倒的是，难友 内心荒凉，无形的集中营，认为同病相连的人出卖的人，首先折磨的人。</p>
+<p>集中营世界：工作使人自由</p>
+<p>认真做工作，不像人了，提醒是人的东西被剥夺，唯一能让自己觉得尊严体面人，干好工作，though没有报酬，痛苦，不能得回生命。</p>
+<p>卡波，政治犯等管理其他囚犯，犹太人，小秘，残暴。</p>
+<p>特遣队，毒气室按钮，也是犹太人，也得死。</p>
+<p>逃亡？反抗？自杀？无处可去。其他人，面对犹太人仇恨恐慌害怕。</p>
+<p>没有身体的力气、精神的意志、人的尊严，想着活好今天，一点点希望，求生本能。哪里有压迫哪里就有服从，哪里的压迫越强烈，服从就越厉害。</p>
+<p>人类历史上，造反革命，不是最受压迫所率领，手上镣铐比较轻的人，甘地，早期领导人，智力、意志、体力反抗，而不是奴隶。</p>
+<p>为什么不自杀？不是人了，只有人类会自杀，动物不会。</p>
+<p>努力打破自己沉重的枷锁，思索不现实的形象，奴隶的枷锁由其他人打破的。浮华辞藻的革命。</p>
+<p>罗马古道，Via Appia Antica, 奴隶，历史文明野蛮。</p>
+<p>文明的意义没有？文字，心灵，被剥夺，没感觉，熟悉又陌生的语言。</p>
+<p>文明却也有。记住那几行诗，是使人跟已被磨灭的过去重新联系的桥梁，黑暗世界仍看到微弱光线回影的可能。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/04/心灵，人性/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-03-What-The-Ban-Will-Mean-For-TikTok-In-The-US" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/03/2020-08-03-What-The-Ban-Will-Mean-For-TikTok-In-The-US/">What The Ban Will Mean For TikTok In The US</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/03/2020-08-03-What-The-Ban-Will-Mean-For-TikTok-In-The-US/" class="archive-article-date">
+  	<time datetime="2020-08-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="From-Trump-wanting-to-ban-it-and-Microsoft-looking-to-buy-here-is-a-summary"><a href="#From-Trump-wanting-to-ban-it-and-Microsoft-looking-to-buy-here-is-a-summary" class="headerlink" title="From Trump wanting to ban it and Microsoft looking to buy, here is a summary"></a>From Trump wanting to ban it and Microsoft looking to buy, here is a summary</h2><p><img src="https://miro.medium.com/max/6000/0*Oq-qklB4ra79l6_S" alt="Image for post"></p>
+<p>Photo by <a href="https://unsplash.com/@konkarampelas?utm_source=medium&utm_medium=referral" target="_blank" rel="noopener">Kon Karampelas</a> on <a href="https://unsplash.com/?utm_source=medium&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></p>
+<p>Tiktok has become an international success since its release in September 2016. Taking on social media giants like Facebook and Snapchat, it has not only been able to capture a younger audience but also billions of users across the world.</p>
+<p>Owned by the Chinese company, Bytedance, TikTok was originally going to be another app called Musical.ly before being rebranded.</p>
+<p>2020 was looking like a good year for TikTok with massive growth in numbers due to COVID-19.</p>
+<p>With the recent controversy and now Trump’s ruling to ban TikTok, let’s take a closer look at what’s happening from the start.</p>
+<h1 id="Why-The-Ban-In-The-First-Place"><a href="#Why-The-Ban-In-The-First-Place" class="headerlink" title="Why The Ban In The First Place?"></a>Why The Ban In The First Place?</h1><p>If you haven’t kept up to date with TikTok’s recent events on why Trump wants to ban it in the first place, it all started when someone reverse engineered the application.</p>
+<p>Reddit user ‘<a href="https://www.reddit.com/user/bangorlol/" target="_blank" rel="noopener"><strong>Bangorlol’</strong></a> reversed engineered the app and found that the platform was allegedly stealing users’ data.</p>
+<blockquote>
+<p>“If there is an API (Application Programming Interface) to get information on you, your contacts, or your device … well, they’re using it.” — Bangorlol</p>
+</blockquote>
+<p>Essentially the application was more of a data collection service disguised as a social media platform. This means they’re tracking all kinds of data from CPU type, memory usage, and even all the applications that users have downloaded.</p>
+<p>Bangorlol also stated that TikTok had placed measures to help prevent reverse engineering and debugging.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TikTok</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/03/2020-08-03-What-The-Ban-Will-Mean-For-TikTok-In-The-US/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/">Designing a URL Shortening service like TinyURL</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/" class="archive-article-date">
+  	<time datetime="2020-08-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Let’s design a URL shortening service like TinyURL. This service will provide short aliases redirecting to long URLs. </p>
+<p>Similar services: bit.ly, goo.gl, qlink.me, etc. </p>
+<p>Difficulty Level: Easy</p>
+<details open class="styles__PageTOCStyled-sc-1u9xzlw-0 fIhOon" style="box-sizing: border-box; display: block; background: rgb(245, 245, 245); border-radius: 4px; min-width: 280px;"><summary role="button" tabindex="0" class="styles__HeadingWrap-sc-1u9xzlw-1 bJONCf" style="box-sizing: border-box; display: block; cursor: pointer; outline-style: none; padding: 4px 4px 4px 16px; border: 1px solid rgb(229, 229, 229); border-top-left-radius: 4px; border-top-right-radius: 4px;"><div class="styles__HeadingWrapInner-sc-1u9xzlw-2 lazzRz" style="box-sizing: border-box; display: flex; -webkit-box-align: center; align-items: center;"><h6 class="MuiTypography-root jss189 jss242 jss180  MuiTypography-h6" style="box-sizing: border-box; color: inherit; font-family: &quot;Nunito Sans&quot;, Verdana, Helvetica, sans-serif; font-weight: 700; line-height: 1.5; margin: 0px; font-size: 1.6rem; letter-spacing: 0.5px;">We'll cover the following</h6><button class="MuiButtonBase-root MuiIconButton-root jss249 jss250 jss243 jss244 jss246" tabindex="0" type="button" style="box-sizing: border-box; color: rgba(0, 0, 0, 0.54); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 1.5rem; line-height: inherit; font-family: inherit; margin: 0px 0px 0px auto; overflow: visible; text-transform: none; appearance: none; cursor: pointer; border: 1px solid transparent; display: inline-flex; outline: 0px; padding: 9px; position: relative; align-items: center; user-select: none; border-radius: 2px; vertical-align: middle; justify-content: center; text-decoration: none; background-color: transparent; -webkit-tap-highlight-color: transparent; flex: 0 0 auto; text-align: center; transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"><span class="MuiIconButton-label" style="box-sizing: border-box; width: 24px; display: flex; align-items: inherit; justify-content: inherit;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></span><span class="MuiTouchRipple-root" style="box-sizing: border-box; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 0; overflow: hidden; position: absolute; border-radius: inherit; pointer-events: none;"></span></button></div></summary><div class="MuiBox-root jss251" style="box-sizing: border-box; padding: 16px;"><div class="markdown-container-div Markdown__MarkdownContainerDiv-sc-1j2yuel-5 jeFsGl" height="auto" style="box-sizing: border-box; height: auto; width: 411.188px;"><div class="markdownViewer Markdown__Viewer-sc-1j2yuel-1 cEcngF" role="none" style="box-sizing: border-box; color: rgb(61, 61, 78); line-height: 1.7; outline: none; font-size: 18px; overflow-wrap: break-word; font-family: &quot;Nunito Sans&quot;;"><ul data-id="5bf0f1b7b439409ac11ec194510492d5" style="box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px1-why-do-we-need-url-shorteningdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">1. Why do we need URL shortening?</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px2-requirements-and-goals-of-the-systemdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">2. Requirements and Goals of the System</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px3-capacity-estimation-and-constraintsdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">3. Capacity Estimation and Constraints</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px4-system-apisdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">4. System APIs</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px5-database-designdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">5. Database Design</a><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#database-schema" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">Database Schema:</a></li></ul></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px6-basic-system-design-and-algorithmdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">6. Basic System Design and Algorithm</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#a-encoding-actual-url" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">a. Encoding actual URL</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#b-generating-keys-offline" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">b. Generating keys offline</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px7-data-partitioning-and-replicationdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">7. Data Partitioning and Replication</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px8-cachediv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">8. Cache</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px9-load-balancer-lbdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">9. Load Balancer (LB)</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px10-purging-or-db-cleanupdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">10. Purging or DB cleanup</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px11-telemetrydiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">11. Telemetry</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px12-security-and-permissionsdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">12. Security and Permissions</a></li></ul></li></ul></li></ul></div></div></div></details>
+
+<h3 id="1-Why-do-we-need-URL-shortening"><a href="#1-Why-do-we-need-URL-shortening" class="headerlink" title="1. Why do we need URL shortening?#"></a>1. Why do we need URL shortening?<a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px1-why-do-we-need-url-shorteningdiv" target="_blank" rel="noopener">#</a></h3><p>URL shortening is used to create shorter aliases for long URLs. We call these shortened aliases “short links.” Users are redirected to the original URL when they hit these short links. Short links save a lot of space when displayed, printed, messaged, or tweeted. Additionally, users are less likely to mistype shorter URLs.</p>
+<p>For example, if we shorten this page through TinyURL:</p>
+<blockquote>
+<p><a href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904/" target="_blank" rel="noopener">https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904/</a></p>
+</blockquote>
+<p>We would get:</p>
+<blockquote>
+<p><a href="http://tinyurl.com/jlg8zpc" target="_blank" rel="noopener">http://tinyurl.com/jlg8zpc</a></p>
+</blockquote>
+<p>The shortened URL is nearly one-third the size of the actual URL.</p>
+<p>URL shortening is used for optimizing links across devices, tracking individual links to analyze audience and campaign performance, and hiding affiliated original URLs.</p>
+<p>If you haven’t used <a href="http://tinyurl.com/" target="_blank" rel="noopener">tinyurl.com</a> before, please try creating a new shortened URL and spend some time going through the various options their service offers. This will help you a lot in understanding this chapter.</p>
+<h3 id="2-Requirements-and-Goals-of-the-System"><a href="#2-Requirements-and-Goals-of-the-System" class="headerlink" title="2. Requirements and Goals of the System#"></a>2. Requirements and Goals of the System<a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px2-requirements-and-goals-of-the-systemdiv" target="_blank" rel="noopener">#</a></h3><p>💡   <strong>You should always clarify requirements at the beginning of the interview. Be sure to ask questions to find the exact scope of the system that the interviewer has in mind.</strong></p>
+<p>Our URL shortening system should meet the following requirements:</p>
+<p><strong>Functional Requirements:</strong></p>
+<ol>
+<li>Given a URL, our service should generate a shorter and unique alias of it. This is called a short link. This link should be short enough to be easily copied and pasted into applications.</li>
+<li>When users access a short link, our service should redirect them to the original link.</li>
+<li>Users should optionally be able to pick a custom short link for their URL.</li>
+<li>Links will expire after a standard default timespan. Users should be able to specify the expiration time.</li>
+</ol>
+<p><strong>Non-Functional Requirements:</strong></p>
+<ol>
+<li>The system should be highly available. This is required because, if our service is down, all the URL redirections will start failing.</li>
+<li>URL redirection should happen in real-time with minimal latency.</li>
+<li>Shortened links should not be guessable (not predictable).</li>
+</ol>
+<p><strong>Extended Requirements:</strong></p>
+<ol>
+<li>Analytics; e.g., how many times a redirection happened?</li>
+<li>Our service should also be accessible through REST APIs by other services.</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">System Design, URL Shortening service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-30-React-Countdown-Clock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/01/2020-07-30-React-Countdown-Clock/">React Countdown Clock</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/01/2020-07-30-React-Countdown-Clock/" class="archive-article-date">
+  	<time datetime="2020-08-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="React-Countdown-Clock"><a href="#React-Countdown-Clock" class="headerlink" title="React Countdown Clock"></a>React Countdown Clock</h1><p>A HTML 5 canvas countdown clock as a React component.</p>
+<p><a href="https://camo.githubusercontent.com/bf209fec65fdf5428ca43d935e40dfd0b7bbf9c2/687474703a2f2f70756768707567682e6769746875622e696f2f72656163742d636f756e74646f776e2d636c6f636b2f616e696d617465642e676966" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/bf209fec65fdf5428ca43d935e40dfd0b7bbf9c2/687474703a2f2f70756768707567682e6769746875622e696f2f72656163742d636f756e74646f776e2d636c6f636b2f616e696d617465642e676966" alt="Screenshot"></a></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="http://pughpugh.github.io/react-countdown-clock" target="_blank" rel="noopener">pughpugh.github.io/react-countdown-clock</a></p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-countdown-clock</span><br></pre></td></tr></table></figure>
+
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ReactCountdownClock seconds=&#123;60&#125;</span><br><span class="line">                     color=&quot;#000&quot;</span><br><span class="line">                     alpha=&#123;0.9&#125;</span><br><span class="line">                     size=&#123;300&#125;</span><br><span class="line">                     onComplete=&#123;myCallback&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><table>
+<thead>
+<tr>
+<th>prop</th>
+<th>type</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>seconds</td>
+<td>integer</td>
+<td>60</td>
+<td>Seconds to countdown</td>
+</tr>
+<tr>
+<td>color</td>
+<td>string</td>
+<td>#000</td>
+<td>Colour of counter</td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>float</td>
+<td>1.0</td>
+<td>Alpha transparency of counter</td>
+</tr>
+<tr>
+<td>size</td>
+<td>integer</td>
+<td>300</td>
+<td>Width &amp; height of canvas element</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>integer</td>
+<td></td>
+<td>Weight of circle, in pixels</td>
+</tr>
+<tr>
+<td>fontSize</td>
+<td>integer/string</td>
+<td>auto</td>
+<td>px size of font. <code>auto</code> for dynamic sizing.</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>Arial</td>
+<td>Font of counter</td>
+</tr>
+<tr>
+<td>timeFormat</td>
+<td>string</td>
+<td>seconds</td>
+<td>Counter style; <code>seconds</code> or <code>hms</code></td>
+</tr>
+<tr>
+<td>showMilliseconds</td>
+<td>boolean</td>
+<td>true</td>
+<td>Show milliseconds for last 10 seconds</td>
+</tr>
+<tr>
+<td>onComplete</td>
+<td>func</td>
+<td></td>
+<td>Callback when time completes</td>
+</tr>
+<tr>
+<td>paused</td>
+<td>boolean</td>
+<td>false</td>
+<td>Pause countdown of the timer</td>
+</tr>
+<tr>
+<td>pausedText</td>
+<td>string</td>
+<td></td>
+<td>Text to display when paused, defaults to the current time</td>
+</tr>
+</tbody></table>
+<h2 id="Bugs-amp-Contributions"><a href="#Bugs-amp-Contributions" class="headerlink" title="Bugs &amp; Contributions"></a>Bugs &amp; Contributions</h2><p>Bugs, features and pull requests always welcome.</p>
+<p><a href="https://github.com/pughpugh/react-countdown-clock/issues" target="_blank" rel="noopener">github.com/pughpugh/react-countdown-clock/issues</a></p>
+<p>Also, it’s always just nice to hear how people are using it. Feel free to get in touch.</p>
+<ul>
+<li>Email: <a href="mailto:hugh@hcgallagher.co.uk" target="_blank" rel="noopener">hugh@hcgallagher.co.uk</a></li>
+<li>Web: <a href="http://www.hughgallagher.co.uk/" target="_blank" rel="noopener">www.hughgallagher.co.uk</a></li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://github.com/pughpugh/react-countdown-clock" target="_blank" rel="noopener">react-countdown-clock</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Clock</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/01/2020-07-30-React-Countdown-Clock/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-31-Web-Development-检查工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/31/2020-07-31-Web-Development-检查工具/">Web Development 检查工具</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/31/2020-07-31-Web-Development-检查工具/" class="archive-article-date">
+  	<time datetime="2020-07-31T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>Valid HTML as checked by <a href="https://validator.w3.org/" target="_blank" rel="noopener">https://validator.w3.org/ (Links to an external site.)
+ </a></p>
+</li>
+<li><p>Pass the accessibility automated checker (<a href="https://www.deque.com/axe/" target="_blank" rel="noopener">aXe browser extension</a></p>
+<p><a href="https://www.deque.com/axe/" target="_blank" rel="noopener"> (Links to an external site.)</a></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Web Development</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/31/2020-07-31-Web-Development-检查工具/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-30-美团外卖骑手背后的AI技术" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/30/2020-07-30-美团外卖骑手背后的AI技术/">美团外卖骑手背后的AI技术</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/30/2020-07-30-美团外卖骑手背后的AI技术/" class="archive-article-date">
+  	<time datetime="2020-07-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>随着数字化时代的到来，外卖市场近年来发展非常迅猛。对外卖物流系统而言，配送效率和用户体验至关重要。而实际配送过程是由配送员（骑手）最终完成的，因此，想要真正提升配送效率，不但要在智能调度系统（订单指派、路径规划、ETA）上下功夫，还要不断提升配送员的“附加”能力，让他们越送越“熟”，越送越“顺”，越送越“快”。以此为出发点，美团点评研发团队设计了骑手智能助手，全面提升骑手的各方面能力。</p>
+<p>在 1月份的AICon全球人工智能与机器学习技术大会上，美团点评配送人工智能方向负责人何仁清分享了《美团骑手智能助手的技术与实践》。讲解如何在使用环境复杂、用户群体多元化的情况下，以智能耳机和语音交互为载体，并通过大数据挖掘、机器学习、自然语言处理等技术，让智能助手具备复杂场景精准识别、服务智能推送，智能引导、全语音操作等能力。最终在智能、安全、便捷、精准等多个维度上，全面提升骑手配送能力，从而提升整个配送效率和用户体验。以下系演讲内容整理：</p>
+<h2 id="AI技术对同城配送的业务价值"><a href="#AI技术对同城配送的业务价值" class="headerlink" title="AI技术对同城配送的业务价值"></a>AI技术对同城配送的业务价值</h2><p>总体而言，物流业务是一个比较传统的行业，但是随着整个电商、移动互联网和移动支付的兴起，近些年整个物流行业实现了持续和高速的发展。</p>
+<p><img src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018a/b423f9e3.jpg" alt="物流行业"></p>
+<p>物流行业</p>
+<p>上图系中国物流与采购联合会在 2016年发布的一个报告，调研数据表明，全国物流件数环比增长超过 50%，达到 300多亿件。</p>
+<p>同时整个物流的费用占比也很高，从图中可以看到，物流成本已经占据 GDP的 15%。而在欧美国家以及日本，这个比例大概只有 8%～9%左右，所以中国的物流行业还有很大的优化空间。这也是很多公司大力投入去做物流行业的一个很重要的原因：行业正处于高速发展阶段，而且体验、效率和成本方面都有巨大的优化空间，大有可为。</p>
+<p>下图主要介绍了美团外卖现在的发展情况：</p>
+<p><img src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018a/656f86fb.jpg" alt="02美团外卖发展情况"></p>
+<p>02美团外卖发展情况</p>
+<p>美团外卖从2013年启动，目前大概能够服务 2.5亿用户，已经覆盖1300多个城市，能够为 200多万商户提供服务，日峰值订单超过 1800万。美团外卖智能配送调度系统每天匹配50多万外卖小哥，基于海量数据和人工智能算法，确保平均配送时长不超过 28分钟。这也是目前世界上规模最大、复杂度最高的多人、多点实时智能配送调度系统。</p>
+<p>我们对美团配送的定位是：<strong>做成最大的即时配送平台</strong>。</p>
+<p><img src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018a/ffacce64.jpg" alt="03美团配送定位"></p>
+<p>03美团配送定位</p>
+<p>相比传统物流，即时配送包括以下几个优势：</p>
+<ul>
+<li>第一点，非常快。从商家发单，比如说一个外卖订单，从下单到用户收到，平均要在 30分钟内能完成，最慢的也应该在一小时左右。快，是最重要的一个特点，快，也能够使整个服务的要求和服务质量得到巨大提升。</li>
+<li>第二点，能够直接联系用户和商户。之前的物流基本是从商家接单，要经过很多环节，包括仓储、运输调度、人员配送等等，最后再送到用户，中间几经转手，甚至由不同的公司配送，或者有不同的加盟商。但是即时配送直接将用户和商户联系起来，进而直接影响目标人群，这是很大的一项价值。</li>
+<li>第三点，能够承担多种配送场景，不仅仅可以送外卖，还可以送商超、生鲜等等，基本上所有的同城快件，都可以纳入其配送服务范围。</li>
+</ul>
+<p>总体来说，配送是一个非常复杂的业务，为了能够便于大家理解，我把这个业务模型进一些抽象和简化，可以用下面这张图来进行说明。</p>
+<p><img src="https://awps-assets.meituan.net/mit-x/blog-images-bundle-2018a/efdbc7de.jpg" alt="04配送ai问题"></p>
+<p>04配送ai问题</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Delivery, AI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/30/2020-07-30-美团外卖骑手背后的AI技术/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-29-Google-Maps-DirectionsRenderer-with-ReactJs" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/29/2020-07-29-Google-Maps-DirectionsRenderer-with-ReactJs/">Google Maps DirectionsRenderer with ReactJs</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/29/2020-07-29-Google-Maps-DirectionsRenderer-with-ReactJs/" class="archive-article-date">
+  	<time datetime="2020-07-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today I want to share how to use DirectionsRenderer for google maps using reactJs(version 16.5.0).</p>
+<p>I have created an application using the <a href="https://github.com/facebook/create-react-app" target="_blank" rel="noopener">create-react-app</a> command.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">create-react-app react-google-maps-demo</span><br><span class="line">cd react-google-maps-demo</span><br></pre></td></tr></table></figure>
+
+<p>You have App.js.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import React, &#123; Component &#125; from “react”;</span><br><span class="line">class App extends Component &#123;</span><br><span class="line">render() &#123;</span><br><span class="line"> // return &lt;div&gt;App.js&lt;/div&gt;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">export default App;</span><br></pre></td></tr></table></figure>
+
+<p>I used an npm library for react-maps ‘<a href="https://www.npmjs.com/package/google-maps-react" target="_blank" rel="noopener">google-maps-react</a>’.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-google-maps --save</span><br></pre></td></tr></table></figure>
+
+<p>Run an application to test if application display on <a href="http://localhost:3000/" target="_blank" rel="noopener">http://localhost:3000/</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+
+<p>now, create a file called <a href="https://github.com/tarangJs/react-google-maps-demo/blob/master/src/components/Directions/DirectionsIndex.js" target="_blank" rel="noopener"><strong>DirectionsIndex.js</strong></a> under src/components/Directions and add content from <a href="https://github.com/tarangJs/react-google-maps-demo/blob/master/src/components/Directions/DirectionsIndex.js" target="_blank" rel="noopener">here</a>.</p>
+<p>now create a file called <a href="https://github.com/tarangJs/react-google-maps-demo/blob/master/src/components/Directions/DirectionRenderComponent.js" target="_blank" rel="noopener"><strong>DirectionRenderComponent.js</strong></a> under src/components/Directions and add content from <a href="https://github.com/tarangJs/react-google-maps-demo/blob/master/src/components/Directions/DirectionRenderComponent.js" target="_blank" rel="noopener">here</a>.</p>
+<p>create <a href="https://github.com/tarangJs/react-google-maps-demo/tree/master/src/utility" target="_blank" rel="noopener"><strong>utility</strong></a> folder under the src folder.please check this <a href="https://github.com/tarangJs/react-google-maps-demo/tree/master/src/utility" target="_blank" rel="noopener"><strong>Utility</strong></a><strong>.</strong></p>
+<p>you need to change the api key in /utility/constants.js file.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const key = “your_key”; </span><br><span class="line">export const G_API_URL = `https://maps.googleapis.com/maps/api/js?key=$&#123;key&#125;&amp;&amp;v=3.exp&amp;libraries=geometry,drawing,places`;</span><br></pre></td></tr></table></figure>
+
+<p>That’s it. You can now able to see maps with routes on application.</p>
+<p>I have added one file called <a href="https://github.com/tarangJs/react-google-maps-demo/blob/master/src/components/Directions/DirectionRenderComponentPromise.js" target="_blank" rel="noopener"><strong>DirectionRenderComponentPromise.js</strong></a> (click <a href="https://github.com/tarangJs/react-google-maps-demo/blob/master/src/components/Directions/DirectionRenderComponentPromise.js" target="_blank" rel="noopener">here</a> to go to that file),which is nothing but async Version of <a href="https://github.com/tarangJs/react-google-maps-demo/blob/master/src/components/Directions/DirectionRenderComponent.js" target="_blank" rel="noopener"><strong>DirectionRenderComponent.js</strong></a><strong>.</strong>(click <a href="https://github.com/tarangJs/react-google-maps-demo/blob/master/src/components/Directions/DirectionRenderComponent.js" target="_blank" rel="noopener">here</a> to go to that file).</p>
+<p><img src="https://miro.medium.com/max/58/1*Kd2Wqg15LAFELiTNLAofwg.jpeg?q=20" alt="Image for post"></p>
+<p><img src="https://miro.medium.com/max/500/1*Kd2Wqg15LAFELiTNLAofwg.jpeg" alt="Image for post"></p>
+<p>Draw path between two location</p>
+<p>I have changed current-location based on way-points, which I got when first request made. One can also change implementation by getting current location from server(websocket,api,mqqt etc.).</p>
+<p><img src="https://miro.medium.com/max/60/1*-vTISm7g6g7sWTWcTsESfw.png?q=20" alt="Image for post"></p>
+<p><img src="https://miro.medium.com/max/588/1*-vTISm7g6g7sWTWcTsESfw.png" alt="Image for post"></p>
+<p>if current location change it will again draw path between those two location including current-location.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/@tarangsachdev/google-maps-directionsrenderer-with-reactjs-8074a4d0173e" target="_blank" rel="noopener">https://medium.com/@tarangsachdev/google-maps-directionsrenderer-with-reactjs-8074a4d0173e</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Google Maps, Direction, Reactjs, JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/29/2020-07-29-Google-Maps-DirectionsRenderer-with-ReactJs/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-28-Learn-When-to-Use-Section,-Article,-Nav-&amp;-Aside-in-HTML5-Websites" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -345,704 +1200,9 @@
 
 
   
-    <article id="post-2020-07-26-此刻是谁又在唱思念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/26/2020-07-26-此刻是谁又在唱思念/">此刻是谁又在唱思念</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/26/2020-07-26-此刻是谁又在唱思念/" class="archive-article-date">
-  	<time datetime="2020-07-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>15 Years ago,</p>
-<p>15 Years after …</p>
-<h1 id="夜曲-Nocturne"><a href="#夜曲-Nocturne" class="headerlink" title="夜曲 Nocturne"></a>夜曲 Nocturne</h1><p><a href="http://www.youtube.com/watch?v=6Q0Pd53mojY" target="_blank" rel="noopener"><img src="http://img.youtube.com/vi/6Q0Pd53mojY/0.jpg" alt></a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Song</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/26/2020-07-26-此刻是谁又在唱思念/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-此刻是谁又在唱思念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/25/此刻是谁又在唱思念/">读书篇 The Great Gatsby</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/25/此刻是谁又在唱思念/" class="archive-article-date">
-  	<time datetime="2020-07-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>The Great Gatsby by F. Scott Fitzgerald</p>
-<p>It is a 1925 novel written by American author F. Scott Fitzgerald that follows a cast of characters living in the fictional towns of West Egg and East Egg on prosperous Long Island in New York in the summer of 1922.</p>
-<p>It’s about 1920s, as Jazz Age, when ad was rising after WWI. The war shakened toward money,  war shakened values, kill common people. </p>
-<p>经济大萧条，华尔街大崩盘之前，美国楼市股市拼命向上升，发财，股票，道德沦亡。</p>
-<p>Jazz Music: 美国自己的声音。高雅音乐，艺术，vs大众流行音乐。省界文化版图。自己，古典音乐，室内乐，弦乐 VS Jazz Music, 建筑艺术装饰艺术 Art Deco 上海外滩和平饭店。摩天大楼20s美国纽约，天际线改变。</p>
-<p>20s-30s, 帝国大厦，洛克菲勒大楼，高度。</p>
-<p>纽约Jazz Age 最重要的象征，city as美国梦的最顶峰的标志。</p>
-<p>美国文学的声音，20s 世界文学转折，现代主义星期，重镇欧洲，尤利西斯、荒原欧洲流行，美国文学传统。Fitz，太太，海明威，一战后美国失落的一代，欧战战场打完不愿意回家游荡在欧洲住在巴黎，欧洲最先锋前卫的艺术家一起，激发，康拉德 小说家，精简地选择。年代社会，不要长篇大论。字无法从书掉出来。精致，不求全，而是求每个片段高度浓缩，把前后数年的时间压缩在一瞬间交给读者。</p>
-<p>为了赎罪，名声畅销小说家，为钱写作。</p>
-<p>自传，中产阶级，文学才华，英俊，Princeton University, 为了泽尔塔，名门望族后代。灯红酒绿的生活。写作负担生活，迎合市场，泽尔达精神病，作者穷，否则作品诞生，没人买，解决不了经济问题。</p>
-<p>It get popular during WWII. For people during that time, the book dipicts people’s dream and it’s about the prediction of the future. People got involved in the conversation between the past and the current.</p>
-<p>traditional value, county rich, people dram being rich, everything could do. American dream. physical dream, 价值真空梦，</p>
-<p>一战后，ad，购物消费赚钱物件上升炒股炒房地产，目标象征着前奏。一战后，传统价值观社会最基本的信念全被动摇了，一场战争死人，平民百姓，社会世界人类。</p>
-<p>二战士兵，上一次世界大战之后的场面，预见等待战后回到美国going to past world, 人欲横流，社会价值观崩溃，国家有钱，强大，做梦，有钱，人发财，大城市找到地位致富成名，美国梦，物质世界的梦，价值真空的梦。</p>
-<p>Self-made man</p>
-<p>惊觉：梦 –&gt; 梦醒 幻灭消逝</p>
-<p>垃圾堆 VS Manhattan: </p>
-<p>隐喻：1.贫富差距, </p>
-<p>​           2. Modern cultualization: 光鲜亮丽 vs 人心虚无空洞</p>
-<p>​              1920s society, like &lt;&lt;荒原&gt;&gt;</p>
-<p>直译的魅力：</p>
-<p>汉化 VS 不同语言构筑的不同世界，观感。</p>
-<p>丰满的世界认知，开放与包容的胸怀。看见另一种可能</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/25/此刻是谁又在唱思念/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-The Old Patagonian Express 老巴塔哥尼亚快车" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/24/The Old Patagonian Express 老巴塔哥尼亚快车/">读书篇 The Old Patagonian Express</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/24/The Old Patagonian Express 老巴塔哥尼亚快车/" class="archive-article-date">
-  	<time datetime="2020-07-24T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>The Old Patagonian Express: 老巴塔哥尼亚快车 (1979)</p>
-<p>Paul Theroux (USA) 毒舌作家</p>
-<p>旅行文学</p>
-<p>无聊的模板</p>
-<p>火车旅行过程描述</p>
-<p>去的人</p>
-<p>中南美国家：军事独裁和民主国家</p>
-<p>旅行是什么，为什么旅行</p>
-<p>不只是度假，而可能是辛苦地发现真相，知识，是沮丧的代名词。</p>
-<p>寂寞与渴望孤独</p>
-<p>游客 观光客</p>
-<p>背包客，流浪，驴友 旅人</p>
-<p>两者之间</p>
-<p>旅行：从普通人的生活中体会</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/24/The Old Patagonian Express 老巴塔哥尼亚快车/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/">Alphabet is partnering with FedEx and Walgreens to bring drone delivery to the US</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/" class="archive-article-date">
-  	<time datetime="2020-07-23T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://cms.qz.com/wp-content/uploads/2019/09/Wing_9-19_Partner-Announcement_FedEx-hero-image-e1568910517306.png?w=410&h=230&strip=all&quality=75" alt="The Wing drone delivering a FedEx package."></p>
-<p>​                                        Wing’s drone in action.</p>
-<p>Google sister company Wing announced today that it would be partnering with FedEx and the drugstore chain Walgreens to bring autonomous drone deliveries to the US in October.</p>
-<p>The pilot program will be launched in Christiansburg, Virginia, one of the two areas in the state that Wing has been testing its drone technology for years. In April, Wing was certified by the US Federal Aviation Administration (FAA) to become what it says was <a href="https://qz.com/1602663/alphabets-wing-delivery-drones-get-faa-approval/" target="_blank" rel="noopener">the first company</a> in the country to be able to offer autonomous drone deliveries. Wing has completed over 80,000 test flights and thousands of deliveries at its facilities in Australia and the US.</p>
-<p>People expecting packages from FedEx will be able to choose to get their deliveries made via drone, assuming that they live in certain areas that Wing has designated it can safely deliver parcels in. Similarly, Walgreens customers will be able to order products, such as non-prescription medicine, and have them delivered by drone. Walgreens said in a release that 78% of the US population lives within 5 miles of one of its stores. Wing said that its drones can currently make a round-trip flight of about 6 miles (9.7 km), traveling about 60 miles per hour (97 km per hour), and can carry around 3 lbs (1.4 kg) of payload. The company also said that it would be offering deliveries from a local Virginia retailer, Sugar Magnolia. Wing won’t be charging for the delivery service itself during the trial.</p>
-<p><img src="https://cms.qz.com/wp-content/uploads/2019/09/Wing_9-19_Partner-Announcement_FedEx-co-branded-package-e1568910592814.png?w=450&h=333&crop=1&strip=all&quality=75" alt="img"></p>
-<p>WING</p>
-<p>The FedEx package holder, designed with Wing.</p>
-<p>Wing said on a call with journalists that it will soon be reaching out to members of the Christiansburg community to let them know if they will be able to accept deliveries. Wing’s drones don’t actually land on the ground when they make deliveries; instead, they hover about 23 ft (7 m) off the ground, lowering their packages down through a winch cable system. If anything happens to snag the cable as it’s delivering a package, the drone can sense the tension in the cord and release it, hopefully flying away without incident. It still requires what it calls safe delivery zones, like a backyard or a front pathway outside a house, to be able to make a delivery.</p>
-<p>Drone deliveries have long been a subject of research, conjuring up images of a customer sitting on their couch, tapping a few buttons, and having a new outfit or dinner delivered to their door in a matter of minutes. Wing, first as part of Google’s X “moonshot factory,” has been trying to turn this fantasy into a reality since 2012, and Amazon has been quite public with its desire to do similarly <a href="https://qz.com/561581/amazon-wants-to-use-its-new-drones-to-deliver-your-packages-as-long-as-you-have-a-big-lawn/" target="_blank" rel="noopener">since 2013</a>.</p>
-<p>But even with relaxed regulations <a href="https://qz.com/1274105/the-us-government-has-approved-the-first-statewide-tests-for-autonomous-drone-deliveries/" target="_blank" rel="noopener">under the Trump administration</a> spurring myriad autonomous drone test programs launched across the US, regular drone deliveries still remain a pipe dream. Wing’s new service, launching in a very small area that its team knows well, requires a large space of land to drop a package safely to customers. Unless you happen to have a yard, it doesn’t seem likely that current technology is going to be able to provide a solution to make what the industry calls “last-mile” deliveries to end consumers a reality.</p>
-<p>For some types of deliveries, however, autonomous drone deliveries could be life-changing. The work that <a href="https://qz.com/africa/1604374/ziplines-drone-delivery-launches-in-ghana-with-vaccines/" target="_blank" rel="noopener">Zipline is doing in Africa</a>, for example, sending critical medical supplies to remote clinics, has proved invaluable. Drones can reach places that most other methods of delivery can’t easily, and it’s easy to see why Google would choose a location near the difficult-to-cover Appalachian Mountains.</p>
-<p>But for now, while the company says it’s the largest pilot program launched under the new Trump administration regulations, Wing’s work remains a relatively small trial in a specific part of the country. If the test goes well, Wing said it would like to offer deliveries across the US in the future.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[<a href="https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing%20said%20that%20its%20drones,(1.4%20kg)%20of%20payload.]" target="_blank" rel="noopener">https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing%20said%20that%20its%20drones,(1.4%20kg)%20of%20payload.]</a>(<a href="https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing" target="_blank" rel="noopener">https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing</a> said that its drones,(1.4 kg) of payload.)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Drone Delivery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-22-More-efficient-SQL-with-query-planning-and-optimization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/">More efficient SQL with query planning and optimization</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/" class="archive-article-date">
-  	<time datetime="2020-07-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Now that you’ve learned many ways of selecting data and are starting to do <code>SELECT</code>s across multiple tables, it’s a good time to talk about the efficiency of your SQL queries - how quickly do they execute, and could they execute faster?</p>
-<p>SQL is a declarative language - each query declares <em>what</em> we want the SQL engine to do, but it doesn’t say <em>how</em>.  As it turns out, the <em>how</em> – the “plan” – is what affects the efficiency of the queries, however, so it’s pretty important.</p>
-<h3 id="Why-do-SQL-queries-need-a-plan"><a href="#Why-do-SQL-queries-need-a-plan" class="headerlink" title="Why do SQL queries need a plan?"></a>Why do SQL queries need a plan?</h3><p>For example, let’s say we had this simple query:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM books WHERE author = &quot;J K Rowling&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>For this query, these are 2 different ways that SQL could find the results:</p>
-<ul>
-<li><strong>Do a “full table scan”:</strong> look at every single row in the table, return the matching rows.</li>
-<li><strong>Create an “index”:</strong> Make a copy of the table sorted by author, then do a binary search to find the row where the author is “J K Rowling”, find the matching IDs, then do a binary search on the original table that returns the rows that match the ID.</li>
-</ul>
-<p>Which one is faster? It depends on the data, and on how often the query will be executed. If the table is only 10 rows long, then a full table scan only requires looking at 10 rows, and the first plan would work out well.</p>
-<p>If the table was 10 million rows long, then that full table scan would require looking at 10 million rows. It would be faster to do a binary search on a sorted table - we only need 23 lookups to find a value in 10 million rows. However, creating the sorted table would take a while (~230 million operations, depending on our engine). If we were executing that query many times (more than 23 times) or if we already had that table created, then that second plan would be better.</p>
-<p>How does a SQL engine decide which plan to pick? That’s an important step that we haven’t talked about yet, because we’ve been focused on the syntax of our queries, not their implementation. As you get into more advanced SQL usage on big databases, the planning step is increasingly important.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-21-Indexing,-SQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/21/2020-07-21-Indexing,-SQL/">Indexing, SQL</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/21/2020-07-21-Indexing,-SQL/" class="archive-article-date">
-  	<time datetime="2020-07-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Indexing"><a href="#Indexing" class="headerlink" title="Indexing"></a>Indexing</h1><h2 id="What-is-Indexing"><a href="#What-is-Indexing" class="headerlink" title="What is Indexing?"></a><strong>What is Indexing?</strong></h2><p>Indexing makes columns faster to query by creating pointers to where data is stored within a database.</p>
-<p>Imagine you want to find a piece of information that is within a large database. To get this information out of the database the computer will look through every row until it finds it. If the data you are looking for is towards the very end, this query would take a long time to run.</p>
-<p><em>Visualization for finding the last entry</em>:</p>
-<p><img src="https://dataschool.com/assets/images/sql-optimization/how_to_index/BasicSearchGif.gif" alt="Gif of a basic table scan"></p>
-<p>If the table was ordered alphabetically, searching for a name could happen a lot faster because we could skip looking for the data in certain rows. If we wanted to search for “Zack” and we know the data is in alphabetical order we could jump down to halfway through the data to see if Zack comes before or after that row. We could then half the remaining rows and make the same comparison.</p>
-<p><img src="https://dataschool.com/assets/images/sql-optimization/how_to_index/BinarySearchGif.gif" alt="Gif of an index scan"></p>
-<p>This took 3 comparisons to find the right answer instead of 8 in the unindexed data.</p>
-<p>Indexes allow us to create sorted lists without having to create all new sorted tables, which would take up a lot of storage space.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Indexing, SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/21/2020-07-21-Indexing,-SQL/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-20-Google-Geocoding-API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/20/2020-07-20-Google-Geocoding-API/">Google Geocoding API</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/20/2020-07-20-Google-Geocoding-API/" class="archive-article-date">
-  	<time datetime="2020-07-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://developers.google.com/maps/documentation/geocoding/start" target="_blank" rel="noopener">https://developers.google.com/maps/documentation/geocoding/start</a></p>
-<h2 id="Java-Client-for-Google-Maps-Services"><a href="#Java-Client-for-Google-Maps-Services" class="headerlink" title="Java Client for Google Maps Services"></a>Java Client for Google Maps Services</h2><p><a href="https://developers.google.com/maps/web-services/client-library" target="_blank" rel="noopener">developers.google.com/maps/web-services/client-library</a></p>
-<h3 id="Java-client-library-for-Google-Maps-API-Web-Services"><a href="#Java-client-library-for-Google-Maps-API-Web-Services" class="headerlink" title="Java client library for Google Maps API Web Services"></a>Java client library for Google Maps API Web Services</h3><p>Want to geocode something? Looking for directions? Maybe matrices of directions? This library brings the Google Maps API Web Services to your Java application.</p>
-<h3 id="How-Google-uses-Java-Client-for-Google-Maps-Services"><a href="#How-Google-uses-Java-Client-for-Google-Maps-Services" class="headerlink" title="How Google uses Java Client for Google Maps Services"></a>How Google uses Java Client for Google Maps Services</h3><p>Supporting third party developers who use Google Maps Web Service APIs.</p>
-<h3 id="Source-Code"><a href="#Source-Code" class="headerlink" title="Source Code"></a>Source Code</h3><table>
-<thead>
-<tr>
-<th align="left">Repo</th>
-<th align="left">License</th>
-<th align="left"></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="https://github.com/googlemaps/google-maps-services-java" target="_blank" rel="noopener">google-maps-services-java</a></td>
-<td align="left">Apache 2.0</td>
-<td align="left">1322 Stars</td>
-<td>820 Forks</td>
-</tr>
-</tbody></table>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://opensource.google/projects/google-maps-services-java" target="_blank" rel="noopener">https://opensource.google/projects/google-maps-services-java</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Google, Geocoding</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/20/2020-07-20-Google-Geocoding-API/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-19-0-1背包问题的动态规划算法-knapsack-problem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/">0-1背包问题的动态规划算法 knapsack problem</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/" class="archive-article-date">
-  	<time datetime="2020-07-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>问题描述：给定n个物品， 每个物品体积为<img src="https://www.zhihu.com/equation?tex=v_%7Bi%7D+" alt="[公式]">)，价值为<img src="https://www.zhihu.com/equation?tex=w_%7Bi%7D" alt="[公式]">)；m个背包，每个背包的容量为<img src="https://www.zhihu.com/equation?tex=c_%7Bi%7D+" alt="[公式]">，每个物品只能取一次，求能获得的最大价值。</p>
-<p>Silvano Martello and Paolo Toth发了一系列的文章都是关于多背包问题的。他们还出了本书叫《KNAPSACK PROBLEMS Algorithms and Computer Implementations》里面的第六章就是讲0-1多背包问题。0、多背包问题根据物品数和背包数的比值分为两个大类：n/m值大，即物品多背包少；n/m值小，即物品少背包多。这本书主要是讲第一种多背包问题。1、首先对0-1规划问题都会需要求松弛和上界。多背包问题有三种松弛方法：Surrogate relaxation, Lagrangian relaxation and Worst-case performance of the upper bounds.2、对背包问题，总可以用贪婪算法得到一个可行解。但是该解不一定是全局最优的。只能作为一个比较基准。3、为了得到全局最优，解背包问题都会想到用动态规划。但是对多背包问题而言，考虑到动态规划需要的计算时间和存储空间，这种方法是不实用的。所以我们想到用分支定界的方法来减少计算量。4、针对多背包问题分支定界在以下两大类之下又有很多小的细分Branch-and-bound algorithmsBound-and-bound algorithms5、但是上面的计算量仍然很大，所以Ingargiola and Korsh（1975）又提出通过物品间的支配关系来简化计算，即规约算法（Reduction algorithms）。但是这种方法只适用于物品n较少或问题非常难的情况。6、Approximate algorithms是通过对贪婪的改进，即正序放和倒序放后交叉互换物品的方式，来得到更优的解。最后对这些方法的效率，这章的计算实验部分列出了一些表格。可以参考看看。<img src="https://pic4.zhimg.com/50/v2-aa1a7c02377c41cd931df41982971be5_hd.jpg?source=1940ef5c" alt="img">)<img src="https://pic4.zhimg.com/80/v2-aa1a7c02377c41cd931df41982971be5_720w.jpg?source=1940ef5c" alt="img">通过表格可以看到Bound-and-bond算法表现还是挺好的<del>最近刚好在看这个。希望能对你有所帮助。也希望过几天我的实验结果能好好跑出来啊</del>阿门啊。</p>
-<p>0-1 多背包问题是一个很经典的问题 目前启发式算法和精确型算法都有很多了<br>只要在谷歌学术搜索一下 Multiple Knapsack Problem 你会看到很多<br>精确型比如：<br>–branch and bound<br>-dynamic program<br>-————————————–<br>启发式比如：<br>-genetic algorithm<br>-tabu search<br>-hybird algorithm<br>这些算法都能用于求解。</p>
-<hr>
-<h2 id="首先得知道什么是0-1背包问题（knapsack-problem）"><a href="#首先得知道什么是0-1背包问题（knapsack-problem）" class="headerlink" title="首先得知道什么是0-1背包问题（knapsack problem）"></a>首先得知道什么是0-1背包问题（knapsack problem）</h2><p>◆ 贼，夜入豪宅，可偷之物甚多，而负重能力有限，偷哪些才更加不枉此行？</p>
-<p>◆ 抽象的话，就是：</p>
-<p>给定一组多个（<img src="https://www.zhihu.com/equation?tex=n" alt="[公式]">)）物品，每种物品都有自己的重量（<img src="https://www.zhihu.com/equation?tex=w_i" alt="[公式]">)）和价值（<img src="https://www.zhihu.com/equation?tex=v_i" alt="[公式]">)），在限定的总重量/总容量（<img src="https://www.zhihu.com/equation?tex=C" alt="[公式]">）内，选择其中若干个（也即每种物品可以选0个或1个），设计选择方案使得物品的总价值最高。</p>
-<p>◆ ◆ 更加抽象的话：</p>
-<p>给定正整数<img src="https://www.zhihu.com/equation?tex=%5C%7B%28w_i%2Cv_i%29%5C%7D_%7B1%5Cleq+i%5Cleq+n%7D" alt="[公式]">)、给定正整数<img src="https://www.zhihu.com/equation?tex=C" alt="[公式]">，求解0-1规划问题：</p>
-<p><img src="https://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D" alt="[公式]"> ， s.t. <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iw_i%7D%5Cleq+C" alt="[公式]"> ， <img src="https://www.zhihu.com/equation?tex=x_i%5Cin%5C%7B0%2C1%5C%7D" alt="[公式]"> 。</p>
-<p>◆ 示例应用：处理器能力有限时间受限，任务很多，如何选择使得总效用最大？</p>
-<p>◆ 数值例子：如下图。</p>
-<p><img src="https://pic2.zhimg.com/80/v2-85236598e4e35b7efa3ea3f69a5ca8ec_720w.jpg" alt="img"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">knapsack problem, algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1148,7 +1308,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1156,15 +1316,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1180,11 +1340,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1192,19 +1352,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,15 +1376,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1232,7 +1384,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1240,7 +1392,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1260,11 +1420,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,11 +1432,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1284,11 +1444,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1296,11 +1456,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1308,15 +1464,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1340,7 +1500,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1348,7 +1508,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1368,6 +1528,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
@@ -1376,11 +1544,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1388,15 +1552,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1408,6 +1564,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
@@ -1416,11 +1576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1432,7 +1592,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1440,7 +1600,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1452,11 +1628,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1472,15 +1648,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1496,19 +1672,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1520,11 +1696,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1532,11 +1708,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

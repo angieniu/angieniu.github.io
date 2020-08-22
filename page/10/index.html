@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 128</a>
+<a>Total Number of Articles: 136</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,795 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-05-28-SQL-with-Tableau" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/28/2020-05-28-SQL-with-Tableau/">SQL with Tableau</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/28/2020-05-28-SQL-with-Tableau/" class="archive-article-date">
+  	<time datetime="2020-05-28T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In this tutorial, we will learn how to connect Tableau to a Microsoft SQL Server database and then analyze the data to get insights.</p>
+<p>Data is an integral part of the lives of Data Scientists. Right from the sales and Profit of a company, to passengers in an airport, everything constitutes data. Now, all this data is recorded and most of the times stored in files called databases and an essential task of a Data Scientist is to be able to access data from databases and then analyze them. Most of the ETL tools that tend to help in the cleaning part are actually running SQL commands under the hood. So having some knowledge of SQL can be quite a valuable resource for a Tableau user.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL, Relational Database, Tableau</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/28/2020-05-28-SQL-with-Tableau/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-05-27-Self-Summary-about-Golang-Project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/">Self-Summary about Golang Project</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/" class="archive-article-date">
+  	<time datetime="2020-05-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="GCS-GCE-GKE"><a href="#GCS-GCE-GKE" class="headerlink" title="GCS, GCE, GKE"></a>GCS, GCE, GKE</h1><p>GCS：存储图片、视频。</p>
+<p>GCE：host Elasticsearch数据库。vs MySQL 可以在AWS上托管，RDS自动运行。 Elasticsearch Service可托管，分布式，收费高。</p>
+<p>GKE: 运行Go程序。同时管理多台机器。</p>
+<p>如何保证用户的请求平均落到每个机器上？Loadbalancing: </p>
+<p>How? 指标：</p>
+<p>[法1] 随机 hash, QPS based loadbalancing, request based loadbalancing.</p>
+<p>But 平均分，有的request要求做的事情多，有的要求少。请求量不能决定最终负载平均。</p>
+<p>评价：实现简单。</p>
+<p>[法2] 优化：utilization based loadbalancing。根据后台服务器虚拟机的资源使用率闲置状态，cpu使用，或内存使用，取决于谁比较吃紧。即loadbalancing时，除了需要在虚拟机返回给loadbalancer请求的结果之外，如果还能返回当前cpu使用量，内存使用率，判断忙闲。</p>
+<p>评价：精确度高。但对server要求高（普通：server根据请求返回结果。），并且在loadbalancing这层还需要实时track读取从后台返回的cpu和内存的状态。 GKE用。</p>
+<h1 id="备份更新，同步数据"><a href="#备份更新，同步数据" class="headerlink" title="备份更新，同步数据"></a>备份更新，同步数据</h1><p>用户更新一条数据，不需要等所有备份都同步完成之后再返回。</p>
+<p>设计数据库备份：把备份分成两种</p>
+<p>总共九个的话，</p>
+<ol>
+<li><p>Read-Write: 修改数据只在3个中的某一个接受，在3个备份间同步。</p>
+</li>
+<li><p>Read-Only: 后边6个等待慢慢同步。读请求，都可以，只不过读RO有可能不一致stale data, 不过如果不在乎数据实时性，读取速度快。</p>
+<p>所以，如果用户对于一致性要求不高，可通过RW写，RO读，读写分开。读请求&gt;&gt;写请求，增加更多RO copies。否则就读RW。把选择权给用户。leader (RW)，用户(RO)。</p>
+</li>
+</ol>
+<h1 id="CICD"><a href="#CICD" class="headerlink" title="CICD"></a>CICD</h1><p>circleCI: 重新build docker image.</p>
+<p>cd: 把docker image自动部署到GKE, GCE。</p>
+<h1 id="K-D-Search"><a href="#K-D-Search" class="headerlink" title="K-D Search"></a>K-D Search</h1><p>如果出了geo-location search,还需要user id search。</p>
+<p>[法1] posts [(), (), (), …] .</p>
+<p>把已经存好的数据copy出来，到另外一个array里面, [(user id, [post1, post 2….]), …  ]</p>
+<p>id name post [p1, p2, p3]  =&gt; 直接通过id找出post。</p>
+<p>牺牲空间，节省时间</p>
+<p>[法2] secondary index:</p>
+<p>data stored in database: eg all the posts [(post_id, p1), (post_id, p2), (post_id, p3), …]</p>
+<p>index: tree: tree基于某一个field index like location, tree node points to each post in the array.</p>
+<p>secondary index:  id tree, each nodes points to element.<br>So when searching, we could not only search based on loc index tree, but also id index tree. </p>
+<p>可能费时，因为找tree node慢。</p>
+<p>If only user user id to search, hashmap (单对单) is fast, but could not guarantee the sequence of all the elements. If searching user_id from 1-10 or user_age for certain range, hashmap does not work well. </p>
+<h1 id="Go-Authentication"><a href="#Go-Authentication" class="headerlink" title="Go Authentication"></a>Go Authentication</h1><ol>
+<li><p>Use JWT to Protect Post and Search Endpoints:</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    fmt.Println(<span class="string">"started-service"</span>)</span><br><span class="line">    </span><br><span class="line">    jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options&#123;</span><br><span class="line">        ValidationKeyGetter: <span class="function"><span class="keyword">func</span><span class="params">(token *jwt.Token)</span> <span class="params">(<span class="keyword">interface</span>&#123;&#125;, error)</span></span> &#123;</span><br><span class="line">     	 <span class="keyword">return</span> []<span class="keyword">byte</span>(mySigningKey), <span class="literal">nil</span></span><br><span class="line">        &#125;,</span><br><span class="line">        SigningMethod: jwt.SigningMethodHS256,</span><br><span class="line">   &#125;)</span><br><span class="line"></span><br><span class="line">   r := mux.NewRouter()</span><br><span class="line"></span><br><span class="line">   r.Handle(<span class="string">"/post"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerPost))).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">   r.Handle(<span class="string">"/search"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerSearch))).Methods(<span class="string">"GET"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">   r.Handle(<span class="string">"/cluster"</span>, jwtMiddleware.Handler(http.HandlerFunc(handlerCluster))).Methods(<span class="string">"GET"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">  <span class="comment">//如果有了jwtMiddleware之后，发post请求，即使method是post，如果没提供authentication/authorization的header(token是jwt用于判断有没有权利调用handler)，不能访问handler post. 对于用户而言。</span></span><br><span class="line">  <span class="comment">// authorization header/jwt token判断人有没有权限post数据，options判断前端程序有没有权利调用后台的post功能。程序而言。</span></span><br><span class="line">   r.Handle(<span class="string">"/signup"</span>, http.HandlerFunc(handlerSignup)).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line">  <span class="comment">// signup请求进来，如果是post请求的话，可以call handlerSignup.</span></span><br><span class="line">   r.Handle(<span class="string">"/login"</span>, http.HandlerFunc(handlerLogin)).Methods(<span class="string">"POST"</span>, <span class="string">"OPTIONS"</span>)</span><br><span class="line"></span><br><span class="line">   log.Fatal(http.ListenAndServe(<span class="string">":8080"</span>, r))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handlerPost</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span> &#123;</span><br><span class="line">    <span class="comment">// Parse from body of request to get a json object.</span></span><br><span class="line">    fmt.Println(<span class="string">"Received one post request"</span>)</span><br><span class="line"></span><br><span class="line">    w.Header().Set(<span class="string">"Content-Type"</span>, <span class="string">"application/json"</span>)</span><br><span class="line">    w.Header().Set(<span class="string">"Access-Control-Allow-Origin"</span>, <span class="string">"*"</span>)</span><br><span class="line">    w.Header().Set(<span class="string">"Access-Control-Allow-Headers"</span>, <span class="string">"Content-Type,Authorization"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> r.Method == <span class="string">"OPTIONS"</span> &#123;</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    user := r.Context().Value(<span class="string">"user"</span>)</span><br><span class="line">    claims := user.(*jwt.Token).Claims</span><br><span class="line">    username := claims.(jwt.MapClaims)[<span class="string">"username"</span>]</span><br><span class="line"></span><br><span class="line">    lat, _ := strconv.ParseFloat(r.FormValue(<span class="string">"lat"</span>), <span class="number">64</span>)</span><br><span class="line">    lon, _ := strconv.ParseFloat(r.FormValue(<span class="string">"lon"</span>), <span class="number">64</span>)</span><br><span class="line"></span><br><span class="line">    p := &amp;Post&#123;</span><br><span class="line">        User:    username.(<span class="keyword">string</span>),</span><br><span class="line">      <span class="comment">// vs: User: r.FormValue("user"), 发请求之外除了提供token，还提供user，额外信息，没必要，token已经含有user信息，通过token得到即可。</span></span><br><span class="line">      <span class="comment">//并且，token里的user一定是当前用户自己，如果r.FormValue这么写的话，request可以用另一个人的名字,like 'Richard' to post in the name although the username received from token is 'Vincent'。以Vincent的身份登录，以Richard的身份post data。从数据库的角度，存的是里Richard存的，因为username没有存到数据库里。</span></span><br><span class="line">        Message: r.FormValue(<span class="string">"message"</span>),</span><br><span class="line">        Location: Location&#123;</span><br><span class="line">            Lat: lat,</span><br><span class="line">            Lon: lon,</span><br><span class="line">        &#125;,</span><br><span class="line">        Face: <span class="number">0.0</span>,</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h1 id="Video-Making-Tools"><a href="#Video-Making-Tools" class="headerlink" title="Video Making Tools"></a>Video Making Tools</h1><p>Photoshop, Filmora, Screen Recording</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/27/2020-05-27-Self-Summary-about-Golang-Project/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-05-27-Visual-Studio,-User-Experience" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/27/2020-05-27-Visual-Studio,-User-Experience/">Visual Studio, User Experience</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/27/2020-05-27-Visual-Studio,-User-Experience/" class="archive-article-date">
+  	<time datetime="2020-05-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Docker-Strengthens-Ties-with-Azure-Cloud-VS-Code"><a href="#Docker-Strengthens-Ties-with-Azure-Cloud-VS-Code" class="headerlink" title="Docker Strengthens Ties with Azure Cloud, VS Code"></a>Docker Strengthens Ties with Azure Cloud, VS Code</h2><p>Container kingpin Docker announced extended collaboration with Microsoft’s Azure cloud computing platform and Microsoft’s open source, cross-platform Visual Studio Code editor.</p>
+<p>The company said the collaboration enables developers to use native Docker commands to run applications in <a href="https://azure.microsoft.com/en-us/services/container-instances/" target="_blank" rel="noopener">Azure Container Instances</a> for a seamless experience when building cloud-native applications. Azure Container Instances help developers: run containers on the Azure cloud without the need to manage servers; provide containers-on-demand; and secure applications with hypervisor isolation. They can be used to build: elastic bursting with Azure Kubernetes Service (AKS); event-driven applications with Azure Logic Apps; and data processing jobs.</p>
+<p>Meanwhile, a <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener">Docker Desktop</a> and VS Code offering (in beta) helps developers containerize applications on local machines. It comes in “edge” and “stable” downloads for Windows and macOS that helps developers build Kubernetes-ready applications on the desktop and containerize and share applications across any combination of clouds, languages and frameworks. Helping to do that are application templates and an app designer. Specifically the beta solution includes:</p>
+<ul>
+<li><a href="https://www.docker.com/products/docker-app" target="_blank" rel="noopener">Docker App</a>: a way to define, package, execute, and manage distributed applications and coupled services as a single, immutable object.</li>
+<li><a href="https://www.docker.com/products/developer-tools" target="_blank" rel="noopener">Docker Developer Tools</a>: Used to securely build, test, and share cloud-ready modern applications from the desktop.</li>
+<li><a href="https://www.docker.com/products/kubernetes" target="_blank" rel="noopener">Kubernetes</a>: The leading container orchestration solution.</li>
+<li>The ability to use <a href="https://hub.docker.com/search/?q=&type=image&certification_status=certified" target="_blank" rel="noopener">certified images and templates</a> and a variety of languages and tools.</li>
+</ul>
+<p><a href="https://visualstudiomagazine.com/articles/2020/05/27/~/media/ECG/visualstudiomagazine/Images/2020/05/docker_desktop.asxh" target="_blank" rel="noopener"><img src="https://visualstudiomagazine.com/articles/2020/05/27/~/media/ECG/visualstudiomagazine/Images/2020/05/docker_desktop_s.asxh" alt="Docker Desktop"></a><strong>[Click on image for larger view.]</strong>Docker Desktop <em>(source: Docker).</em></p>
+<p>With the goal of simplifying code to cloud application development for developers and development teams, Docker said the deeper collaboration “will allow developers to quickly start new language-specific projects (Node.js, Python, .NET Core/C#), leverage new functionality around the <a href="https://github.com/compose-spec" target="_blank" rel="noopener">Compose Specification</a> (a developer-focused spec for defining cloud and platform agnostic container-based applications) and streamline how they switch from local development to a serverless cloud container service while remaining in the Docker CLI user interface or from within VS Code.”</p>
+<p>The Docker/Microsoft collaboration aims to simplify the often complicated landscape of container development, in which developers face a wide range of complex tooling and duplicative commands and tasks used to go from local machines to cloud-native development. “Together, Docker and Microsoft aim to solve these problems with an easy, friction-free developer experience from local VS Code and Docker Desktop development to remote deployment in ACI,” a May 27 news release states.</p>
+<p>Specific productivity benefits are said to help developers:</p>
+<ul>
+<li>Easily log into Azure directly from the Docker CLI</li>
+<li>Trigger an ACI cloud container service environment to be set up automatically with easy to use defaults and no infrastructure overhead</li>
+<li>Switch from a local context to a cloud context to quickly and easily run applications</li>
+<li>Simplifies single container and multi-container application development via the Compose specification allowing a developer to invoke fully Docker compatible commands seamlessly for the first time natively within a cloud container service</li>
+<li>Provides developer teams the ability to share their work through Docker Hub by sharing their persistent collaborative cloud development environments where they can do remote pair programming and real-time collaborative troubleshooting</li>
+</ul>
+<p>Developers can sign up for the Docker Desktop and VS Code beta <a href="https://goto.docker.com/Docker-Desktop-and-VS-Code-Beta.html" target="_blank" rel="noopener">here</a>.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">visual studio, user experience</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/27/2020-05-27-Visual-Studio,-User-Experience/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-05-26-JavaScript-Q-&amp;-A-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">JavaScript Q &amp; A 2</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/" class="archive-article-date">
+  	<time datetime="2020-05-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JavaScript is the popular programming language of the web. The high-level, interpreted programming language follows a multi-paradigm approach. As such, it has several traits of <a href="https://hackr.io/blog/functional-programming-concepts-advantages-disadvantages-applications" target="_blank" rel="noopener">functional programming</a>.</p>
+<p>If you take a look at the <a href="https://insights.stackoverflow.com/survey/2019" target="_blank" rel="noopener">StackOverflow Developer Survey 2019</a>, you will find that JavaScript tops the list of the most preferred programming language for the 6th consecutive year.</p>
+<p>Almost 70% of all the respondents of the Stackoverflow survey state that they have been using JS for their day-to-day development chores. Hence, following a career path in JavaScript development is lucrative.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-05-26-JavaScript-Q-&amp;-A" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/25/2020-05-26-JavaScript-Q-&-A/">JavaScript Q &amp; A 1</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/25/2020-05-26-JavaScript-Q-&-A/" class="archive-article-date">
+  	<time datetime="2020-05-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>1. What is JavaScript?</strong></p>
+<p>JavaScript is a client-side as well as server side scripting language that can be inserted into HTML pages and is understood by web browsers. JavaScript is also an Object based Programming language</p>
+<p><strong>2. Enumerate the differences between Java and JavaScript?</strong></p>
+<p>Java is a complete programming language. In contrast, JavaScript is a coded program that can be introduced to HTML pages. These two languages are not at all inter-dependent and are designed for the different intent. Java is an object - oriented programming (OOPS) or structured programming language like C++ or C whereas JavaScript is a client-side scripting language.</p>
+<p><strong>3. What are JavaScript Data Types?</strong></p>
+<p>Following are the JavaScript Data types:</p>
+<ul>
+<li>Number</li>
+<li>String</li>
+<li>Boolean</li>
+<li>Object</li>
+<li>Undefined</li>
+</ul>
+<p><strong>4. What is the use of isNaN function?</strong></p>
+<p>isNan function returns true if the argument is not a number otherwise it is false.</p>
+<p><strong>5. Between JavaScript and an ASP script, which is faster?</strong></p>
+<p>JavaScript is faster. JavaScript is a client-side language and thus it does not need the assistance of the web server to execute. On the other hand, ASP is a server-side language and hence is always slower than JavaScript. Javascript now is also a server side language (nodejs).</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/25/2020-05-26-JavaScript-Q-&-A/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-05-24-What-is-CICD-Continuous-integration-and-continuous-delivery-explained" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/24/2020-05-24-What-is-CICD-Continuous-integration-and-continuous-delivery-explained/">What is CI/CD? Continuous integration and continuous delivery explained</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/24/2020-05-24-What-is-CICD-Continuous-integration-and-continuous-delivery-explained/" class="archive-article-date">
+  	<time datetime="2020-05-24T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="The-CI-CD-pipeline-is-one-of-the-best-practices-for-devops-teams-to-implement-for-delivering-code-changes-more-frequently-and-reliably"><a href="#The-CI-CD-pipeline-is-one-of-the-best-practices-for-devops-teams-to-implement-for-delivering-code-changes-more-frequently-and-reliably" class="headerlink" title="The CI/CD pipeline is one of the best practices for devops teams to implement, for delivering code changes more frequently and reliably"></a>The CI/CD pipeline is one of the best practices for devops teams to implement, for delivering code changes more frequently and reliably</h3><p>Continuous integration (CI) and continuous delivery (CD) embody a culture, set of operating principles, and collection of practices that enable application development teams to deliver code changes more frequently and reliably. The implementation is also known as the <em>CI/CD</em> pipeline. </p>
+<p>CI/CD is <a href="https://www.infoworld.com/article/3268053/devops-best-practices-the-5-methods-you-should-adopt.html" target="_blank" rel="noopener">one of the best practices for devops teams to implement</a>. It is also an <a href="https://www.infoworld.com/article/3237508/what-is-agile-methodology-modern-software-development-explained.html" target="_blank" rel="noopener">agile methodology</a> best practice, as it enables software development teams to focus on meeting business requirements, code quality, and security because deployment steps are automated.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/24/2020-05-24-What-is-CICD-Continuous-integration-and-continuous-delivery-explained/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-05-23-React" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/23/2020-05-23-React/">React</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/23/2020-05-23-React/" class="archive-article-date">
+  	<time datetime="2020-05-23T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>It has been such a wonderful week! Busy but full of achivements! Special thanks to Xiaowen and Simon. They supported me intellectually and emotionally! I really appreciate it! 🤗</p>
+<p>React is the thing I start to learn more this week. Helpful materials as below. </p>
+<p>React is an indispensable part of the present-day JavaScript frontend web development scenario. For those looking to work with JS on the frontend, having adequacy in React is a must.</p>
+<p>React stood among the <a href="https://hackr.io/blog/best-javascript-frameworks" target="_blank" rel="noopener">leading JavaScript frameworks</a> and probably will continue to do so in 20. Though regarded as a front-end framework, React is actually a front-end library.</p>
+<p>In fact, the whole idea of React as a web development framework is so good that it finished charting as one of the leading web development frameworks in 2020.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">React.js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/23/2020-05-23-React/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-05-22-Create-a-Stored-Procedure" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/">Create a Stored Procedure</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/" class="archive-article-date">
+  	<time datetime="2020-05-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>APPLIES TO:</strong> <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">SQL Server <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Azure SQL Database <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Azure Synapse Analytics (SQL Data Warehouse) <img src="https://docs.microsoft.com/en-us/sql/includes/media/yes-icon.png?view=sql-server-ver15" alt="Yes">Parallel Data Warehouse</p>
+<p>This topic describes how to create a Transact-SQL stored procedure by using SQL Server Management Studio and by using the Transact-SQL CREATE PROCEDURE statement.</p>
+<h2 id><a href="#" class="headerlink" title></a></h2><ul>
+<li><strong>Before you begin:</strong> <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#Permissions" target="_blank" rel="noopener">Permissions</a></li>
+<li><strong>To create a procedure, using:</strong> <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#SSMSProcedure" target="_blank" rel="noopener">SQL Server Management Studio</a>, <a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#TsqlProcedure" target="_blank" rel="noopener">Transact-SQL</a></li>
+</ul>
+<h2 id="Permissions"><a href="#Permissions" class="headerlink" title="Permissions"></a>Permissions</h2><p>Requires CREATE PROCEDURE permission in the database and ALTER permission on the schema in which the procedure is being created.</p>
+<h2 id="How-to-Create-a-Stored-Procedure"><a href="#How-to-Create-a-Stored-Procedure" class="headerlink" title="How to Create a Stored Procedure"></a>How to Create a Stored Procedure</h2><p>You can use one of the following:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#SSMSProcedure" target="_blank" rel="noopener">SQL Server Management Studio</a></li>
+<li><a href="https://docs.microsoft.com/en-us/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver15#TsqlProcedure" target="_blank" rel="noopener">Transact-SQL</a></li>
+</ul>
+<h3 id="Using-SQL-Server-Management-Studio"><a href="#Using-SQL-Server-Management-Studio" class="headerlink" title="Using SQL Server Management Studio"></a>Using SQL Server Management Studio</h3><p><strong>To create a procedure in Object Explorer</strong></p>
+<ol>
+<li><p>In <strong>Object Explorer</strong>, connect to an instance of Database Engine and then expand that instance.</p>
+</li>
+<li><p>Expand <strong>Databases</strong>, expand the <strong>AdventureWorks2012</strong> database, and then expand <strong>Programmability</strong>.</p>
+</li>
+<li><p>Right-click <strong>Stored Procedures</strong>, and then click <strong>New Stored Procedure</strong>.</p>
+</li>
+<li><p>On the <strong>Query</strong> menu, click <strong>Specify Values for Template Parameters</strong>.</p>
+</li>
+<li><p>In the <strong>Specify Values for Template Parameters</strong> dialog box, enter the following values for the parameters shown.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Parameter</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Author</td>
+<td align="left"><em>Your name</em></td>
+</tr>
+<tr>
+<td align="left">Create Date</td>
+<td align="left"><em>Today’s date</em></td>
+</tr>
+<tr>
+<td align="left">Description</td>
+<td align="left">Returns employee data.</td>
+</tr>
+<tr>
+<td align="left">Procedure_name</td>
+<td align="left">HumanResources.uspGetEmployeesTest</td>
+</tr>
+<tr>
+<td align="left">@Param1</td>
+<td align="left">@LastName</td>
+</tr>
+<tr>
+<td align="left">@Datatype_For_Param1</td>
+<td align="left"><strong>nvarchar</strong>(50)</td>
+</tr>
+<tr>
+<td align="left">Default_Value_For_Param1</td>
+<td align="left">NULL</td>
+</tr>
+<tr>
+<td align="left">@Param2</td>
+<td align="left">@FirstName</td>
+</tr>
+<tr>
+<td align="left">@Datatype_For_Param2</td>
+<td align="left"><strong>nvarchar</strong>(50)</td>
+</tr>
+<tr>
+<td align="left">Default_Value_For_Param2</td>
+<td align="left">NULL</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>Click <strong>OK</strong>.</p>
+</li>
+<li><p>In the <strong>Query Editor</strong>, replace the SELECT statement with the following statement:</p>
+<p>SQLCopy</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> FirstName, LastName, Department  </span><br><span class="line"><span class="keyword">FROM</span> HumanResources.vEmployeeDepartmentHistory  </span><br><span class="line"><span class="keyword">WHERE</span> FirstName = @FirstName <span class="keyword">AND</span> LastName = @LastName  </span><br><span class="line">    <span class="keyword">AND</span> EndDate <span class="keyword">IS</span> <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To test the syntax, on the <strong>Query</strong> menu, click <strong>Parse</strong>. If an error message is returned, compare the statements with the information above and correct as needed.</p>
+</li>
+<li><p>To create the procedure, from the <strong>Query</strong> menu, click <strong>Execute</strong>. The procedure is created as an object in the database.</p>
+</li>
+<li><p>To see the procedure listed in Object Explorer, right-click <strong>Stored Procedures</strong> and select <strong>Refresh</strong>.</p>
+</li>
+<li><p>To run the procedure, in Object Explorer, right-click the stored procedure name <strong>HumanResources.uspGetEmployeesTest</strong> and select <strong>Execute Stored Procedure</strong>.</p>
+</li>
+<li><p>In the <strong>Execute Procedure</strong> window, enter Margheim as the value for the parameter @LastName and enter the value Diane as the value for the parameter @FirstName.</p>
+<p>Warning</p>
+</li>
+</ol>
+<p>Validate all user input. Do not concatenate user input before you validate it. Never execute a command constructed from unvalidated user input.</p>
+<h3 id="Using-Transact-SQL"><a href="#Using-Transact-SQL" class="headerlink" title="Using Transact-SQL"></a>Using Transact-SQL</h3><p><strong>To create a procedure in Query Editor</strong></p>
+<ol>
+<li><p>In <strong>Object Explorer</strong>, connect to an instance of Database Engine.</p>
+</li>
+<li><p>From the <strong>File</strong> menu, click <strong>New Query</strong>.</p>
+</li>
+<li><p>Copy and paste the following example into the query window and click <strong>Execute</strong>. This example creates the same stored procedure as above using a different procedure name.</p>
+<p>Copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">USE AdventureWorks2012;  </span><br><span class="line">GO  </span><br><span class="line">CREATE PROCEDURE HumanResources.uspGetEmployeesTest2   </span><br><span class="line">    @LastName nvarchar(50),   </span><br><span class="line">    @FirstName nvarchar(50)   </span><br><span class="line">AS   </span><br><span class="line"></span><br><span class="line">    SET NOCOUNT ON;  </span><br><span class="line">    SELECT FirstName, LastName, Department  </span><br><span class="line">    FROM HumanResources.vEmployeeDepartmentHistory  </span><br><span class="line">    WHERE FirstName = @FirstName AND LastName = @LastName  </span><br><span class="line">    AND EndDate IS NULL;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>To run the procedure, copy and paste the following example into a new query window and click <strong>Execute</strong>. Notice that different methods of specifying the parameter values are shown.</p>
+<p>Copy</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">EXECUTE HumanResources.uspGetEmployeesTest2 N&apos;Ackerman&apos;, N&apos;Pilar&apos;;  </span><br><span class="line">-- Or  </span><br><span class="line">EXEC HumanResources.uspGetEmployeesTest2 @LastName = N&apos;Ackerman&apos;, @FirstName = N&apos;Pilar&apos;;  </span><br><span class="line">GO  </span><br><span class="line">-- Or  </span><br><span class="line">EXECUTE HumanResources.uspGetEmployeesTest2 @FirstName = N&apos;Pilar&apos;, @LastName = N&apos;Ackerman&apos;;  </span><br><span class="line">GO</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h2 id="-1"><a href="#-1" class="headerlink" title></a></h2><h2 id="See-Also"><a href="#See-Also" class="headerlink" title="See Also"></a>See Also</h2><p><a href="https://docs.microsoft.com/en-us/sql/t-sql/statements/create-procedure-transact-sql?view=sql-server-ver15" target="_blank" rel="noopener">CREATE PROCEDURE (Transact-SQL)</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SQL, Stored Procedure</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/22/2020-05-22-Create-a-Stored-Procedure/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-05-21-Deep-and-Shallow-Copy-in-JavaScript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -327,665 +1116,9 @@
 
 
   
-    <article id="post-2020-05-19-Difference-Between-Client-and-Server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/">Difference Between Client and Server</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/" class="archive-article-date">
-  	<time datetime="2020-05-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>The <strong>main difference</strong> between client and server is that <strong>a client is a machine or a program that requests for services through the web while a server is a machine or a program that provides services to the clients according to the client’s requests.</strong></p>
-<p>[World Wide Web](<a href="https://pediaa.com/what-is-the-difference-between-internet-and-world-wide-web/#World" target="_blank" rel="noopener">https://pediaa.com/what-is-the-difference-between-internet-and-world-wide-web/#World</a> Wide Web) (WWW) allows computers and other devices to communicate with each other. The devices in the network require obtaining various services including data and resources. The WWW works according to the client-server model. The devices or programs that require services are called the clients, and the devices that provide services to the clients are called servers. The clients initiate communication sessions with the servers. The servers wait for incoming requests and respond to them.</p>
-<h3 id="Key-Areas-Covered"><a href="#Key-Areas-Covered" class="headerlink" title="Key Areas Covered"></a>Key Areas Covered</h3><p><strong>1. <a href="https://pediaa.com/difference-between-client-and-server/#Client" target="_blank" rel="noopener">What is a Client</a></strong><br>   <em>– Definition, Functionality</em><br><strong>2. <a href="https://pediaa.com/difference-between-client-and-server/#Server" target="_blank" rel="noopener">What is a Server</a></strong><br>   <em>– Definition, Functionality</em><br><strong>3. [What is the Difference Between Client and Server](<a href="https://pediaa.com/difference-between-client-and-server/#Client" target="_blank" rel="noopener">https://pediaa.com/difference-between-client-and-server/#Client</a> vs Server - Comparison of Key Differences)</strong><br>   <em>– Comparison of Key Differences</em></p>
-<h3 id="Key-Terms"><a href="#Key-Terms" class="headerlink" title="Key Terms"></a>Key Terms</h3><p><em>Client, Server</em></p>
-<p><em><img src="https://pediaa.com/wp-content/uploads/2018/09/Difference-Between-Client-and-Server-Comparison-Summary.jpg" alt="Difference Between Client and Server- Comparison Summary"></em></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Client, Server</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/19/2020-05-19-Difference-Between-Client-and-Server/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/">The 6 Most Common Types of Logic in Large Applications with Examples</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/" class="archive-article-date">
-  	<time datetime="2020-05-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I am thinking about my Park and Ride project through a system level. Notes for learning: This article is about the Clean Architecture, why we should separate the concerns of large applications into layers, the 6 most common types of application logic, and which layer they belong to.</p>
-<p><a href="https://khalilstemmler.com/articles/categories/software-design" target="_blank" rel="noopener">Software Design</a></p>
-<p><img src="https://khalilstemmler.com/img/blog/software-architecture-design/logic-types.png" alt="img"></p>
-<p>This topic is taken from Solid Book - The Software Architecture &amp; Design Handbook w/ TypeScript + Node.js. <a href="https://solidbook.io/" target="_blank" rel="noopener">Check it out</a> if you like this post.</p>
-<p>How many times have you been working on an application, and in the middle of writing some logic, asked yourself:</p>
-<blockquote>
-<p>“Is this the right place to put this logic?”</p>
-</blockquote>
-<p>There’s a lot that goes into figuring out where something belongs.</p>
-<p>First, you have to understand the domain that you’re working in. That’s how you figure out the <a href="https://khalilstemmler.com/articles/domain-driven-design-intro/" target="_blank" rel="noopener">subdomains</a> in your app.</p>
-<p>Then, for each subdomain, you have to identify all the <a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/application-layer-use-cases/" target="_blank" rel="noopener">use cases</a> and which <strong>actors</strong> are allowed to execute them.</p>
-<p>This is <a href="https://khalilstemmler.com/wiki/conways-law/" target="_blank" rel="noopener">Conway’s Law</a> <strong>in action</strong>.</p>
-<p>What I’ve found to be the most challenging part, especially for developers new to <a href="https://khalilstemmler.com/articles/categories/enterprise-node-type-script/" target="_blank" rel="noopener">enterprise application development</a> that have <a href="https://khalilstemmler.com/articles/enterprise-typescript-nodejs/when-crud-mvc-isnt-enough/" target="_blank" rel="noopener">moved well-past simple CRUD MVC apps</a>, is implementing a <strong>layered architecture</strong> to separate the concerns of app development.</p>
-<p>The challenge seems to be understanding <em>which layer</em> exactly to place logic.</p>
-<p>In this article, we’ll learn about the following:</p>
-<ul>
-<li><p>Clean Architecture, and why we should separate the concerns of large applications into layers.</p>
-</li>
-<li><p>The 6 most common types of application logic and which layer they belong to.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/18/2020-05-18-The-6-Most-Common-Types-of-Logic-in-Large-Applications-with-Examples/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-17-Manager-Toolbox-Decomposition 2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/17/2020-05-17-Manager-Toolbox-Decomposition 2/">Manager Toolbox Decomposition</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/17/2020-05-17-Manager-Toolbox-Decomposition 2/" class="archive-article-date">
-  	<time datetime="2020-05-17T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>During our meeting, John shared with me his article. Save it here and would keep learning how to lead myself, lead a project, and lead a project.</p>
-<p>Decomposition is a simple tool to keep you and your team from forgetting things. I feel every IT manager should have a basic understanding of decomposition.</p>
-<p>The term is primarily used in project management: a “Work Breakdown Structure” (WBS) is a decomposition of a project into work packages. But, the concept of decomposition can be applied widely, to things like</p>
-<ul>
-<li>Risk breakdown structures,</li>
-<li>Requirements breakdown structures,</li>
-<li>Service level requirements,</li>
-<li>Future-state planning, and</li>
-<li>Professional development plans.</li>
-</ul>
-<p>People often try to do “bottom-up” planning: we need to do thing #1, and thing #2, and thing #3. But it’s easy to miss stuff if you stick to bottom-up planning. Decomposition is a form of top-down planning.</p>
-<p><a href="http://www.heitmanagement.com/wp-content/uploads/2013/06/top-level-decomposition.png" target="_blank" rel="noopener"><img src="http://www.heitmanagement.com/wp-content/uploads/2013/06/top-level-decomposition-300x136.png" alt="One box that says &quot;BIG THING&quot; inside."></a>The top level of a decomposition is the thing to be decomposed.</p>
-<p>A decomposition is much like a document outline. You’re taking a big idea and breaking it into units.</p>
-<p>However, in a decomposition you guarantee that each level sums to the one above it. You guarantee that you’re not leaving anything out.</p>
-<p>Decomposition starts with the top: what’s the big idea, goal, or thing that we want to break down?</p>
-<p>You then take your top-level item (say, a project) and divide it into smaller and smaller units, all the while guaranteeing that each sub-level is a 100% representation of the previous level:</p>
-<p><a href="http://www.heitmanagement.com/wp-content/uploads/2013/06/second-level-decomposition.png" target="_blank" rel="noopener"><img src="http://www.heitmanagement.com/wp-content/uploads/2013/06/second-level-decomposition.png" alt="Top box &quot;BIG THING&quot; with four boxes labeled &quot;PART #1&quot;, &quot;PART #2&quot;, &quot;PART #3&quot;, &quot;PART #4&quot; and a note saying that the &quot;PART&quot; boxes equate to 100% of the &quot;BIG THING&quot; box."></a>When you decompose something, the components you list must equate to 100% of what is decomposed. In other words, you’re guaranteeing you haven’t left something out.</p>
-<p><a href="http://www.heitmanagement.com/wp-content/uploads/2013/06/third-level-decomposition.png" target="_blank" rel="noopener"><img src="http://www.heitmanagement.com/wp-content/uploads/2013/06/third-level-decomposition.png" alt="&quot;PART #3&quot; box has three boxes pointing to it: &quot;SUB-PART #3A&quot;, &quot;SUB-PART #3B&quot;, and &quot;SUB-PART #3C&quot;. It is noted that these sub-parts are 100% of &quot;PART #3&quot;."></a>And so on and so on: components are broken down into smaller and smaller units. Each time, the smaller units sum to the big unit.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Management, PM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/17/2020-05-17-Manager-Toolbox-Decomposition 2/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-16-Ajax-poll-request-every-10-seconds" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/16/2020-05-16-Ajax-poll-request-every-10-seconds/">Ajax poll request every 10 seconds</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/16/2020-05-16-Ajax-poll-request-every-10-seconds/" class="archive-article-date">
-  	<time datetime="2020-05-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>I am working on improving my web application and thinking about how to fetch data and show real-time streaming data in my app. One method as below to try:</p>
-<p>This is a short tutorial on how to send an <a href="http://thisinterestsme.com/simple-ajax-request-example-jquery-php/" target="_blank" rel="noopener">Ajax request</a> every 10 seconds – something that is often referred to as polling. Obviously, if needs be, you can change the code to send a request every 60 seconds instead. In this article, I will be using the JavaScript library JQuery.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JavaScript, refresh page, Ajax, SetInterval</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/16/2020-05-16-Ajax-poll-request-every-10-seconds/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-15-IoT-What-is-a-Gateway" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/2020-05-15-IoT-What-is-a-Gateway/">IoT What is a Gateway?</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/15/2020-05-15-IoT-What-is-a-Gateway/" class="archive-article-date">
-  	<time datetime="2020-05-15T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>We are at the stage of connecting sensors and gateways. Helpful knowledge  as below:</p>
-<h2 id="Gateways-can-be-an-essential-component-of-an-IoT-system-Find-out-what-they-are-and-why-they’re-useful"><a href="#Gateways-can-be-an-essential-component-of-an-IoT-system-Find-out-what-they-are-and-why-they’re-useful" class="headerlink" title="Gateways can be an essential component of an IoT system. Find out what they are and why they’re useful."></a>Gateways can be an essential component of an IoT system. Find out what they are and why they’re useful.</h2><p>As I explored in a <a href="https://www.iotforall.com/iot-explained-how-does-an-iot-system-actually-work/" target="_blank" rel="noopener">previous #askIoT post</a>, nearly every IoT system needs some way to connect sensors/devices to the cloud so that data can be sent back-and-forth between them. IoT gateways can be essential in making this connection possible, but what is a gateway?</p>
-<p><strong>Gateways act as bridges between sensors/devices and the cloud</strong>. Many sensors/devices will “talk” to a gateway and the gateway will then take all that information and “talk” to the cloud (<a href="https://www.iotforall.com/what-is-the-cloud/" target="_blank" rel="noopener"><em>what’s the cloud?</em></a>).</p>
-<p><img src="https://miro.medium.com/freeze/max/60/1*rxeWx82D_59kCXcfnJHYlQ.gif?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/1693/1*rxeWx82D_59kCXcfnJHYlQ.gif" alt="img"></p>
-<p>Gateways act as the bridge between sensors/devices and the cloud.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">IoT, Gateway, Sensor</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/2020-05-15-IoT-What-is-a-Gateway/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-05-13-Mongo-DB-Node.JS-Driver-documentation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/14/2020-05-13-Mongo-DB-Node.JS-Driver-documentation/">Mongo DB Node.JS Driver documentation</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/14/2020-05-13-Mongo-DB-Node.JS-Driver-documentation/" class="archive-article-date">
-  	<time datetime="2020-05-14T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Such a wonderful day to move on to the next step of web development! I am going to build Mongo DB database. Notes are below:</p>
-<p>Mongo DB has rapidly grown to become a popular database for web applications and is a perfect fit for Node.JS applications, letting you write Javascript for the client, backend and database layer. Its schemaless nature is a better match to our constantly evolving data structures in web applications, and the integrated support for location queries is a bonus that’s hard to ignore. Throw in Replica Sets for scaling, and we’re looking at really nice platform to grow your storage needs now and in the future.</p>
-<p>Now to shamelessly plug my driver. It can be downloaded via npm, or fetched from the github repository. To install via npm, do the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mongodb</span><br></pre></td></tr></table></figure>
-
-<p>or go fetch it from github at <a href="https://github.com/mongodb/node-mongodb-native" target="_blank" rel="noopener">https://github.com/mongodb/node-mongodb-native</a></p>
-<p>Once this business is taken care of, let’s move through the types available for the driver and then how to connect to your Mongo DB instance before facing the usage of some CRUD operations.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Mongo DB, Node.JS, Database</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/14/2020-05-13-Mongo-DB-Node.JS-Driver-documentation/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-What’s The Difference Between Cache And Cookies" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/13/What’s The Difference Between Cache And Cookies/">What&#39;s The Difference Between Cache and Cokies</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/13/What’s The Difference Between Cache And Cookies/" class="archive-article-date">
-  	<time datetime="2020-05-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Cache and cookies are two different forms of temporary storage kept on client’s machine to improve the users experience and performance of web pages. Although both of them stores data on client’s machine but they serve different purposes. Before we go and clear out the difference between Cache and Cookies, first let’s have a look what are ‘Caches’ and ‘Cookies’.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Cache, Cookie</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/13/What’s The Difference Between Cache And Cookies/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-HTTP Requests" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/HTTP Requests/">HTTP Requests</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/12/HTTP Requests/" class="archive-article-date">
-  	<time datetime="2020-05-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>HTTP messages are how data is exchanged between a server and a client. There are two types of messages: <em>requests</em> sent by the client to trigger an action on the server, and <em>responses</em>, the answer from the server.</p>
-<p>HTTP messages are composed of textual information encoded in ASCII, and span over multiple lines. In HTTP/1.1, and earlier versions of the protocol, these messages were openly sent across the connection. In HTTP/2, the once human-readable message is now divided up into HTTP frames, providing optimization and performance improvements.</p>
-<p>Web developers, or webmasters, rarely craft these textual HTTP messages themselves: software, a Web browser, proxy, or Web server, perform this action. They provide HTTP messages through config files (for proxies or servers), APIs (for browsers), or other interfaces.</p>
-<p><img src="https://mdn.mozillademos.org/files/13825/HTTPMsg2.png" alt="From a user-, script-, or server- generated event, an HTTP/1.x msg is generated, and if HTTP/2 is in use, it is binary framed into an HTTP/2 stream, then sent."></p>
-<p>The HTTP/2 binary framing mechanism has been designed to not require any alteration of the APIs or config files applied: it is broadly transparent to the user.</p>
-<p>HTTP requests, and responses, share similar structure and are composed of:</p>
-<ol>
-<li>A <em>start-line</em> describing the requests to be implemented, or its status of whether successful or a failure. This start-line is always a single line.</li>
-<li>An optional set of <em>HTTP headers</em> specifying the request, or describing the body included in the message.</li>
-<li>A blank line indicating all meta-information for the request has been sent.</li>
-<li>An optional <em>body</em> containing data associated with the request (like content of an HTML form), or the document associated with a response. The presence of the body and its size is specified by the start-line and HTTP headers.</li>
-</ol>
-<p>The start-line and HTTP headers of the HTTP message are collectively known as the <em>head</em> of the requests, whereas its payload is known as the <em>body</em>.</p>
-<p><img src="https://mdn.mozillademos.org/files/13827/HTTPMsgStructure2.png" alt="Requests and responses share a common structure in HTTP"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/12/HTTP Requests/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
     </nav>
   
 
@@ -1091,7 +1224,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1099,15 +1232,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1123,11 +1256,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1135,19 +1268,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1159,15 +1292,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1175,7 +1300,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1183,7 +1308,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1203,11 +1336,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1215,11 +1348,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1227,11 +1360,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1239,11 +1372,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1251,15 +1380,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1283,7 +1416,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1291,7 +1424,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1311,6 +1444,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
@@ -1319,11 +1460,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1331,15 +1468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1351,6 +1480,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
@@ -1359,11 +1492,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1375,7 +1508,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1383,7 +1516,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1395,11 +1544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1415,15 +1564,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1439,19 +1588,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1463,11 +1612,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1475,11 +1624,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">

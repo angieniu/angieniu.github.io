@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 128</a>
+<a>Total Number of Articles: 136</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,1065 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-16-Time-Complexity,-HashMap,-ArrayList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/16/2020-07-16-Time-Complexity,-HashMap,-ArrayList/">Time Complexity, HashMap, ArrayList</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/16/2020-07-16-Time-Complexity,-HashMap,-ArrayList/" class="archive-article-date">
+  	<time datetime="2020-07-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">        访问	查找	插入	删除</span></span><br><span class="line"></span><br><span class="line">数组	O（1）	O（n）	O（n）	O（n）</span><br><span class="line">有序数组	O（1）	O（logn）	O（n）	O（n）</span><br><span class="line">链表	O（n）	O（n）	O（1）	O（1）</span><br><span class="line">有序链表	O（n）	O（n）	O（n）	O（n）</span><br><span class="line">二叉树查找树	O（logn）	O（logn）	O（logn）	O（logn）</span><br><span class="line">哈希表	---	O（1）	O（1）	O（1）</span><br></pre></td></tr></table></figure>
+
+<h2 id="Common-Data-Structure-Operations"><a href="#Common-Data-Structure-Operations" class="headerlink" title="Common Data Structure Operations"></a>Common Data Structure Operations</h2><table>
+<thead>
+<tr>
+<th align="left">Data Structure</th>
+<th align="left">Time Complexity</th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left"></th>
+<th align="left">Space Complexity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"></td>
+<td align="left">Average</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Worst</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">Worst</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Access</td>
+<td align="left">Search</td>
+<td align="left">Insertion</td>
+<td align="left">Deletion</td>
+<td align="left">Access</td>
+<td align="left">Search</td>
+<td align="left">Insertion</td>
+<td align="left">Deletion</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Array_data_structure" target="_blank" rel="noopener">Array</a></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)" target="_blank" rel="noopener">Stack</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Queue_(abstract_data_type)" target="_blank" rel="noopener">Queue</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Singly_linked_list#Singly_linked_lists" target="_blank" rel="noopener">Singly-Linked List</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Doubly_linked_list" target="_blank" rel="noopener">Doubly-Linked List</a></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(n)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(1)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Skip_list" target="_blank" rel="noopener">Skip List</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n log(n))</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Hash_table" target="_blank" rel="noopener">Hash Table</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>Θ(1)</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Binary_search_tree" target="_blank" rel="noopener">Binary Search Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Cartesian_tree" target="_blank" rel="noopener">Cartesian Tree</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/B_tree" target="_blank" rel="noopener">B-Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/Red-black_tree" target="_blank" rel="noopener">Red-Black Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="https://en.wikipedia.org/wiki/Splay_tree" target="_blank" rel="noopener">Splay Tree</a></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>N/A</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/AVL_tree" target="_blank" rel="noopener">AVL Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+<tr>
+<td align="left"><a href="http://en.wikipedia.org/wiki/K-d_tree" target="_blank" rel="noopener">KD Tree</a></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>Θ(log(n))</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+<td align="left"><code>O(n)</code></td>
+</tr>
+</tbody></table>
+<h1 id="HashMap-Time-Complexity"><a href="#HashMap-Time-Complexity" class="headerlink" title="HashMap Time Complexity"></a>HashMap Time Complexity</h1><p>get()方法最好情况O(1)，最差情况O(N)，平均O(1)</p>
+<p>put()方法最好情况O(1)，最差情况比较复杂，其中底层实现还涉及到map扩容</p>
+<p>最优情况，hash不碰撞，O(1)，典型情况，近似是O(1)，因为几乎没有碰撞，最坏情况，O(N)，也就是所有的hash都一样，那么退化为线性查找</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/16/2020-07-16-Time-Complexity,-HashMap,-ArrayList/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-15-Data-Structure-&amp;-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/">Data Structure &amp; Algorithm Notes, Sorting, Hash Table, Arrays.sort</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/" class="archive-article-date">
+  	<time datetime="2020-07-15T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="HashMap、HashTable、HashSet、concurrentHashMap-线程安全，区别，实现原理"><a href="#HashMap、HashTable、HashSet、concurrentHashMap-线程安全，区别，实现原理" class="headerlink" title="HashMap、HashTable、HashSet、concurrentHashMap 线程安全，区别，实现原理"></a>HashMap、HashTable、HashSet、concurrentHashMap 线程安全，区别，实现原理</h1><h2 id="区别："><a href="#区别：" class="headerlink" title="区别："></a><strong>区别：</strong></h2><p><strong>HashMap和Hashtable的区别：</strong></p>
+<p>HashMap和Hashtable都实现了Map接口，但决定用哪一个之前先要弄清楚它们之间的分别。主要的区别有：线程安全性，同步(synchronization)，以及速度。</p>
+<ul>
+<li>HashMap几乎可以等价于Hashtable，除了HashMap是非synchronized的，并可以接受null(HashMap可以接受为null的键值(key)和值(value)，而Hashtable则不行)。</li>
+<li>HashMap是非synchronized，而Hashtable是synchronized，这意味着Hashtable是线程安全的，多个线程可以共享一个Hashtable；而如果没有正确的同步的话，多个线程是不能共享HashMap的。Java 5提供了ConcurrentHashMap，它是HashTable的替代，比HashTable的扩展性更好。</li>
+<li>另一个区别是HashMap的迭代器(Iterator)是fail-fast迭代器，而Hashtable的enumerator迭代器不是fail-fast的。所以当有其它线程改变了HashMap的结构（增加或者移除元素），将会抛出ConcurrentModificationException，但迭代器本身的remove()方法移除元素则不会抛出ConcurrentModificationException异常。但这并不是一个一定发生的行为，要看JVM。这条同样也是Enumeration和Iterator的区别。</li>
+<li>由于Hashtable是线程安全的也是synchronized，所以在单线程环境下它比HashMap要慢。如果你不需要同步，只需要单一线程，那么使用HashMap性能要好过Hashtable。</li>
+<li>HashMap不能保证随着时间的推移Map中的元素次序是不变的。</li>
+</ul>
+<p><strong>要注意的一些重要术语：</strong></p>
+<p>1) sychronized意味着在一次仅有一个线程能够更改Hashtable。就是说任何线程要更新Hashtable时要首先获得同步锁，其它线程要等到同步锁被释放之后才能再次获得同步锁更新Hashtable。</p>
+<p>2) Fail-safe和iterator迭代器相关。如果某个集合对象创建了Iterator或者ListIterator，然后其它的线程试图“结构上”更改集合对象，将会抛出ConcurrentModificationException异常。但其它线程可以通过set()方法更改集合对象是允许的，因为这并没有从“结构上”更改集合。但是假如已经从结构上进行了更改，再调用set()方法，将会抛出IllegalArgumentException异常。</p>
+<p>3) 结构上的更改指的是删除或者插入一个元素，这样会影响到map的结构。</p>
+<p><strong>我们能否让HashMap同步？</strong></p>
+<p>HashMap可以通过下面的语句进行同步：<br>Map m = Collections.synchronizeMap(hashMap);</p>
+<p><strong>结论</strong></p>
+<p>Hashtable和HashMap有几个主要的不同：线程安全以及速度。仅在你需要完全的线程安全的时候使用Hashtable，而如果你使用Java 5或以上的话，请使用ConcurrentHashMap吧。</p>
+<p><strong>HashMap和HashSet的区别</strong></p>
+<p>HashMap和HashSet都是collection框架的一部分，它们让我们能够使用对象的集合。collection框架有自己的接口和实现，主要分为Set接口，List接口和Queue接口。它们有各自的特点，Set的集合里不允许对象有重复的值，List允许有重复，它对集合中的对象进行索引，Queue的工作原理是FCFS算法(First Come, First Serve)。</p>
+<p><strong>HashSet</strong>：</p>
+<p>HashSet实现了Set接口，它不允许集合中出现重复元素。当我们提到HashSet时，第一件事就是在将对象存储在</p>
+<p>HashSet之前，要确保重写hashCode（）方法和equals（）方法，这样才能比较对象的值是否相等，确保集合中没有</p>
+<p>储存相同的对象。如果不重写上述两个方法，那么将使用下面方法默认实现：</p>
+<p>　public boolean add(Object obj)方法用在Set添加元素时，如果元素值重复时返回 “false”，如果添加成功则返回”true”</p>
+<p><strong>HashMap</strong>：</p>
+<p>HashMap实现了Map接口，Map接口对键值对进行映射。Map中不允许出现重复的键（Key）。Map接口有两个基本的实现</p>
+<p>TreeMap和HashMap。TreeMap保存了对象的排列次序，而HashMap不能。HashMap可以有空的键值对（Key（null）-Value（null））</p>
+<p>HashMap是非线程安全的（非Synchronize），要想实现线程安全，那么需要调用collections类的静态方法synchronizeMap（）实现。</p>
+<p>public Object put(Object Key,Object value)方法用来将元素添加到map中。</p>
+<p><img src="https://pic4.zhimg.com/80/v2-df5974a2a1b0f38c11cd0db4d06f6c96_720w.jpg" alt="img"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Sorting, Hash Table</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/15/2020-07-15-Data-Structure-&-Algorithm-Notes,-Sorting,-Hash-Table,-Arrays.sort/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-14-Design-a-Parking-Lot" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/14/2020-07-14-Design-a-Parking-Lot/">Design a Parking Lot</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/14/2020-07-14-Design-a-Parking-Lot/" class="archive-article-date">
+  	<time datetime="2020-07-14T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Design-a-Parking-Lot"><a href="#Design-a-Parking-Lot" class="headerlink" title="Design a Parking Lot"></a>Design a Parking Lot</h1><p>Let’s make an object-oriented design for a multi-floor parking lot.</p>
+<p>A parking lot or car park is a dedicated cleared area that is intended for parking vehicles. In most countries where cars are a major mode of transportation, parking lots are a feature of every city and suburban area. Shopping malls, sports stadiums, megachurches, and similar venues often feature parking lots over large areas.</p>
+<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5757793965441024.png" alt="img"> </p>
+<p>Parking Lot</p>
+<h3 id="System-Requirements"><a href="#System-Requirements" class="headerlink" title="System Requirements#"></a>System Requirements<a href="https://www.educative.io/courses/grokking-the-object-oriented-design-interview/gxM3gRxmr8Z#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5pxsystem-requirementsdiv" target="_blank" rel="noopener">#</a></h3><p>We will focus on the following set of requirements while designing the parking lot:</p>
+<ol>
+<li>The parking lot should have multiple floors where customers can park their cars.</li>
+<li>The parking lot should have multiple entry and exit points.</li>
+<li>Customers can collect a parking ticket from the entry points and can pay the parking fee at the exit points on their way out.</li>
+<li>Customers can pay the tickets at the automated exit panel or to the parking attendant.</li>
+<li>Customers can pay via both cash and credit cards.</li>
+<li>Customers should also be able to pay the parking fee at the customer’s info portal on each floor. If the customer has paid at the info portal, they don’t have to pay at the exit.</li>
+<li>The system should not allow more vehicles than the maximum capacity of the parking lot. If the parking is full, the system should be able to show a message at the entrance panel and on the parking display board on the ground floor.</li>
+<li>Each parking floor will have many parking spots. The system should support multiple types of parking spots such as Compact, Large, Handicapped, Motorcycle, etc.</li>
+<li>The Parking lot should have some parking spots specified for electric cars. These spots should have an electric panel through which customers can pay and charge their vehicles.</li>
+<li>The system should support parking for different types of vehicles like car, truck, van, motorcycle, etc.</li>
+<li>Each parking floor should have a display board showing any free parking spot for each spot type.</li>
+<li>The system should support a per-hour parking fee model. For example, customers have to pay $4 for the first hour, $3.5 for the second and third hours, and $2.5 for all the remaining hours.</li>
+</ol>
+<h3 id="Use-case-diagram"><a href="#Use-case-diagram" class="headerlink" title="Use case diagram#"></a>Use case diagram<a href="https://www.educative.io/courses/grokking-the-object-oriented-design-interview/gxM3gRxmr8Z#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5pxuse-case-diagramdiv" target="_blank" rel="noopener">#</a></h3><p>Here are the main Actors in our system:</p>
+<ul>
+<li><strong>Admin:</strong> Mainly responsible for adding and modifying parking floors, parking spots, entrance, and exit panels, adding/removing parking attendants, etc.</li>
+<li><strong>Customer:</strong> All customers can get a parking ticket and pay for it.</li>
+<li><strong>Parking attendant:</strong> Parking attendants can do all the activities on the customer’s behalf, and can take cash for ticket payment.</li>
+<li><strong>System:</strong> To display messages on different info panels, as well as assigning and removing a vehicle from a parking spot.</li>
+</ul>
+<p>Here are the top use cases for Parking Lot:</p>
+<ul>
+<li><strong>Add/Remove/Edit parking floor:</strong> To add, remove or modify a parking floor from the system. Each floor can have its own display board to show free parking spots.</li>
+<li><strong>Add/Remove/Edit parking spot:</strong> To add, remove or modify a parking spot on a parking floor.</li>
+<li><strong>Add/Remove a parking attendant:</strong> To add or remove a parking attendant from the system.</li>
+<li><strong>Take ticket:</strong> To provide customers with a new parking ticket when entering the parking lot.</li>
+<li><strong>Scan ticket:</strong> To scan a ticket to find out the total charge.</li>
+<li><strong>Credit card payment:</strong> To pay the ticket fee with credit card.</li>
+<li><strong>Cash payment:</strong> To pay the parking ticket through cash.</li>
+<li><strong>Add/Modify parking rate:</strong> To allow admin to add or modify the hourly parking rate.</li>
+</ul>
+<p><img src="https://www.educative.io/api/collection/5668639101419520/5692201761767424/page/5770234338213888/image/5676455606353920.png" alt="img"></p>
+<p>Use case diagram</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">OODesign</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/14/2020-07-14-Design-a-Parking-Lot/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-13-业界GraphQL-vs-REST" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/13/2020-07-13-业界GraphQL-vs-REST/">业界GraphQL vs REST</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/13/2020-07-13-业界GraphQL-vs-REST/" class="archive-article-date">
+  	<time datetime="2020-07-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://graphql.org/" target="_blank" rel="noopener">https://graphql.org/</a></p>
+<p>REST has been adopted by many developers and is widely regarded as the traditional way to send data over HTTP. GraphQL, on the other hand, is typically presented as a revolutionary technology to replace legacy REST APIs.</p>
+<p>The question is: <em>How do both API design architectures stack up against each other?</em></p>
+<p>In this article, we’ll dig deeper to learn about the similarities and differences between GraphQL vs REST and walk through some practical examples to help you better understand both technologies.</p>
+<h1 id="REST-What-It-Is-Benefits-and-Limitations"><a href="#REST-What-It-Is-Benefits-and-Limitations" class="headerlink" title="REST: What It Is, Benefits, and Limitations"></a>REST: What It Is, Benefits, and Limitations</h1><p>REST is an API design architecture that’s used to implement web services. RESTful web services allow systems to access and manipulate the textual representations of web resources using a predefined set of stateless operations (including GET, POST, PUT, and DELETE).</p>
+<p>What’s more, is that the implementation of the client and server is often done independently. This means that client-side code can be changed without affecting how the server operates and vice versa. In this way, they’re kept modular and separate.</p>
+<p>The core idea of REST is that everything is a resource that’s identified by a URL. In its simplest form, you would retrieve a resource by putting through a GET request to the resource’s URL and get a JSON response (or something similar depending on the API).</p>
+<p>It might look something like this:</p>
+<p><strong>GET /movies/1</strong></p>
+<p>It’s important to note that with REST, the type (or shape) of the resource and the way you fetch that particular resource are coupled. So, you might refer to the snippet above as the <em>movie endpoint</em>.</p>
+<h2 id="Benefits-of-REST"><a href="#Benefits-of-REST" class="headerlink" title="Benefits of REST"></a>Benefits of REST</h2><p>One of the key advantages of REST is that <strong>REST is scalable</strong>. The architecture decouples client and server which allows developers to scale products and applications indefinitely without much difficulty.</p>
+<p>In addition to this, <strong>REST APIs offer a great deal of flexibility</strong>. Practically speaking, since data isn’t tied to resources or methods, REST is able to handle different types of calls and return different data formats. This allows developers to build APIs that meet the user’s specific needs while being mindful of the needs of a diverse user base.</p>
+<h2 id="Limitations-of-REST"><a href="#Limitations-of-REST" class="headerlink" title="Limitations of REST"></a>Limitations of REST</h2><p>Most web and mobile applications developed today require large sets of data that typically combine related resources. The problem is that accessing all of that data to get everything you need using a REST-based API <strong>requires multiple round trips</strong>. For example, if you wanted to retrieve data from two different endpoints, you’d have to send two separate requests to the REST API.</p>
+<p>Another common problem developers face with REST is <strong>over- and under-fetching</strong>. This is because clients can only request data by hitting endpoints that return fixed data structures. Due to this, they aren’t able to get exactly what they need and run into either an over-fetch or an under-fetch scenario.</p>
+<ul>
+<li><strong>Over-fetching</strong> is when the client downloads more information than what the application actually needs.</li>
+<li><strong>Under-fetching</strong> is when the endpoint doesn’t provide all of the required information so the client has to make multiple requests to get everything the application needs.</li>
+</ul>
+<p>For example, let’s say you’re working on a screen for an app that needs to display a list of users with their names and birthdays. The app would hit the /members endpoint and, in turn, receive a JSON data structure with the user data. However, the data structure would contain more information about the users than what’s required by the app. For example, it might return the user’s name, birthday, email address, and phone number.</p>
+<h1 id="GraphQL-What-It-Is-Benefits-and-Limitations"><a href="#GraphQL-What-It-Is-Benefits-and-Limitations" class="headerlink" title="GraphQL: What It Is, Benefits, and Limitations"></a>GraphQL: What It Is, Benefits, and Limitations</h1><p><a href="https://blog.back4app.com/2019/08/08/what-is-graphql/" target="_blank" rel="noopener">GraphQL</a> is an API design architecture that takes a different, more flexible approach. The key difference between GraphQL vs REST is that GraphQL doesn’t deal with dedicated resources. Instead, everything is regarded as a graph implying it’s connected.</p>
+<p>What this means in practical terms is that you can tailor your request to match your exact requirements using the GraphQL query language. In addition to this, it lets you combine different entities into a single query.</p>
+<p>A GraphQL query for a movie listings app might look something like this:</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">GraphQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/13/2020-07-13-业界GraphQL-vs-REST/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-12-AWS-Step-Functions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/12/2020-07-12-AWS-Step-Functions/">AWS Step Functions Build distributed applications using visual workflows</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/12/2020-07-12-AWS-Step-Functions/" class="archive-article-date">
+  	<time datetime="2020-07-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在做无人机项目的时候，如果考虑到place order之后，可能出现实际的order fulfillment的问题，也就是model 复杂状态的function。</p>
+<p>挑战：实际中调配机器，查看机器availability等等。</p>
+<p>解决方案：</p>
+<h1 id="AWS-Step-Function"><a href="#AWS-Step-Function" class="headerlink" title="AWS Step Function:"></a>AWS Step Function:</h1><p>AWS Step Functions lets you coordinate multiple AWS services into serverless workflows so you can build and update apps quickly. Using Step Functions, you can design and run workflows that stitch together services, such as AWS Lambda, AWS Fargate, and Amazon SageMaker, into feature-rich applications. Workflows are made up of a series of steps, with the output of one step acting as input into the next. Application development is simpler and more intuitive using Step Functions, because it translates your workflow into a state machine diagram that is easy to understand, easy to explain to others, and easy to change. Step Functions automatically triggers and tracks each step, and retries when there are errors, so your application executes in order and as expected. With Step Functions, you can craft long-running workflows such as machine learning model training, report generation, and IT automation. You can also build high volume, short duration workflows such as IoT data ingestion, and streaming data processing.</p>
+<p>Create a Workflow in 10 Minutes</p>
+<hr>
+<p>Want to learn how to create a serverless workflow with AWS Step Functions and AWS Lambda? <a href="https://aws.amazon.com/getting-started/tutorials/create-a-serverless-workflow-step-functions-lambda/?&trk=el_a131L000005uqknQAA&trkCampaign=pac_q2-04-2019_stepfunctions_tutorial_offering_link_1&sc_channel=el&sc_campaign=pac_q2-04-2019_stepfunctions_tutorial&sc_outcome=PaaS_Digital_Marketing&sc_geo=mult" target="_blank" rel="noopener">Learn more</a>. </p>
+<p><img src="https://d1.awsstatic.com/product-marketing/Step%20Functions/workflow.183110b44a1b1981ae30e563ab2733073a3139da.png" alt="Serverless workflow"></p>
+<hr>
+<p><strong><a href="https://aws.amazon.com/getting-started/tutorials/create-a-serverless-workflow-step-functions-lambda/?&trk=el_a131L000005unTnQAI&trkCampaign=pac_q2-04-2019_stepfunctions_tutorial_offering_link_2&sc_channel=el&sc_campaign=pac_q2-04-2019_stepfunctions_tutorial&sc_outcome=PaaS_Digital_Marketing&sc_geo=mult" target="_blank" rel="noopener">Get started»</a></strong></p>
+<h2 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits"></a>Benefits</h2><h3 id="Build-and-update-apps-quickly"><a href="#Build-and-update-apps-quickly" class="headerlink" title="Build and update apps quickly"></a>Build and update apps quickly</h3><p>AWS Step Functions lets you build visual workflows that enable fast translation of business requirements into technical requirements. You can build applications in a matter of minutes, and when needs change, you can swap or reorganize components without customizing any code.</p>
+<h3 id="Improve-resiliency"><a href="#Improve-resiliency" class="headerlink" title="Improve resiliency"></a>Improve resiliency</h3><p>AWS Step Functions manages state, checkpoints and restarts for you to make sure that your application executes in order and as expected. Built-in try/catch, retry and rollback capabilities deal with errors and exceptions automatically. </p>
+<h3 id="Write-less-code"><a href="#Write-less-code" class="headerlink" title="Write less code"></a>Write less code</h3><p>AWS Step Functions manages the logic of your application for you, and implements basic primitives such as branching, parallel execution, and timeouts. This removes extra code that may be repeated in your microservices and functions.</p>
+<p><a href="https://aws.amazon.com/blogs/compute/simplifying-application-orchestration-with-aws-step-functions-and-aws-sam/?sc_icampaign=step-functions-aws-sam&sc_ichannel=ha&sc_icontent=awssm-4927&sc_iplace=banner&trk=ha_awssm-4927" target="_blank" rel="noopener"><img src="https://d1.awsstatic.com/Digital%20Marketing/sitemerch/banners/Site-Merch-AWS-Step-Function-Lambda_MidPageBanner.7da7231e62b8fa541cf17998100aefe96de2c474.png" alt=" ">Application Orchestration Just Got EasierYou can now apply AWS SAM templates to AWS Step Functions workflows to simplify application orchestration.Read the blog </a></p>
+<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h2><p><img src="https://d1.awsstatic.com/product-marketing/Step%20Functions/sfn_how-it-works.f795601e8338db32506b9abb01e71704f483fc81.png" alt="AWS Step Functions How it works"></p>
+<h2 id="Use-cases"><a href="#Use-cases" class="headerlink" title="Use cases"></a>Use cases</h2><h3 id="Data-processing"><a href="#Data-processing" class="headerlink" title="Data processing"></a>Data processing</h3><p>Step Functions can help ensure that long-running, multiple ETL jobs execute in order and complete successfully, instead of manually orchestrating those jobs or maintaining a separate application. You can also use Step Functions to standardize a machine learning training workflow to improve the accuracy of machine learning models.</p>
+<h3 id="Automate-tasks"><a href="#Automate-tasks" class="headerlink" title="Automate tasks"></a>Automate tasks</h3><p>Step Functions provides auditable automation of routine deployments, upgrades, installations, and migrations. You can use Step Functions to easily automate recurring tasks such as patch management, infrastructure selection, and data synchronization, and Step Functions will automatically scale, respond to timeouts, and retry failed tasks.</p>
+<h3 id="Modernize-a-monolith"><a href="#Modernize-a-monolith" class="headerlink" title="Modernize a monolith"></a>Modernize a monolith</h3><p>By using Step Functions to carve off a few tasks from the rest of your codebase, you can tackle the transformation of monolithic applications into microservices as a series of small steps. This allows you to untangle business-critical code safely and at your own pace, without disrupting operations and while you continue to deliver new features.</p>
+<h3 id="Application-orchestration"><a href="#Application-orchestration" class="headerlink" title="Application orchestration"></a>Application orchestration</h3><p>Use Step Functions to combine multiple AWS Lambda functions into responsive serverless applications and microservices, without having to write code for workflow logic, parallel processes, error handling, timeouts or retries. You can also orchestrate data and services that run on Amazon EC2 instances, containers, or on-premises servers.</p>
+<h4 id="See-more-use-cases-»"><a href="#See-more-use-cases-»" class="headerlink" title="See more use cases »"></a><a href="https://aws.amazon.com/step-functions/use-cases/" target="_blank" rel="noopener">See more use cases »</a></h4><hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://aws.amazon.com/step-functions/" target="_blank" rel="noopener">https://aws.amazon.com/step-functions/</a></p>
+<h1 id="State-Machine-Structure"><a href="#State-Machine-Structure" class="headerlink" title="State Machine Structure"></a>State Machine Structure</h1><p>State machines are defined using JSON text that represents a structure containing the following fields.</p>
+<ul>
+<li><p><strong><code>Comment</code> (Optional)</strong></p>
+<p>A human-readable description of the state machine.</p>
+</li>
+<li><p><strong><code>StartAt</code> (Required)</strong></p>
+<p>A string that must exactly match (is case sensitive) the name of one of the state objects.</p>
+</li>
+<li><p><strong><code>TimeoutSeconds</code> (Optional)</strong></p>
+<p>The maximum number of seconds an execution of the state machine can run. If it runs longer than the specified time, the execution fails with a <code>States.Timeout</code> <a href="https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html#error-handling-error-representation" target="_blank" rel="noopener">Error Name</a>.</p>
+</li>
+<li><p><strong><code>Version</code> (Optional)</strong></p>
+<p>The version of the Amazon States Language used in the state machine (default is “1.0”).</p>
+</li>
+<li><p><strong><code>States</code> (Required)</strong></p>
+<p>An object containing a comma-delimited set of states.</p>
+</li>
+</ul>
+<p>The <code>States</code> field contains <a href="https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html" target="_blank" rel="noopener">States</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;State1&quot; : &#123;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &quot;State2&quot; : &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>A state machine is defined by the states it contains and the relationships between them.</p>
+<p>The following is an example.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;Comment&quot;: &quot;A Hello World example of the Amazon States Language using a Pass state&quot;,</span><br><span class="line">  &quot;StartAt&quot;: &quot;HelloWorld&quot;,</span><br><span class="line">  &quot;States&quot;: &#123;</span><br><span class="line">    &quot;HelloWorld&quot;: &#123;</span><br><span class="line">      &quot;Type&quot;: &quot;Pass&quot;,</span><br><span class="line">      &quot;Result&quot;: &quot;Hello World!&quot;,</span><br><span class="line">      &quot;End&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>When an execution of this state machine is launched, the system begins with the state referenced in the <code>StartAt</code> field (<code>&quot;HelloWorld&quot;</code>). If this state has an <code>&quot;End&quot;: true</code> field, the execution stops and returns a result. Otherwise, the system looks for a <code>&quot;Next&quot;:</code> field and continues with that state next. This process repeats until the system reaches a terminal state (a state with <code>&quot;Type&quot;: &quot;Succeed&quot;</code>, <code>&quot;Type&quot;: &quot;Fail&quot;</code>, or <code>&quot;End&quot;: true</code>), or a runtime error occurs.</p>
+<p>The following rules apply to states within a state machine:</p>
+<ul>
+<li>States can occur in any order within the enclosing block, but the order in which they’re listed doesn’t affect the order in which they’re run. The contents of the states determines this order.</li>
+<li>Within a state machine, there can be only one state that’s designated as the <code>start</code> state, designated by the value of the <code>StartAt</code> field in the top-level structure. This state is the one that is executed first when the execution starts.</li>
+<li>Any state for which the <code>End</code> field is <code>true</code> is considered an <code>end</code> (or <code>terminal</code>) state. Depending on your state machine logic—for example, if your state machine has multiple branches of execution—you might have more than one <code>end</code> state.</li>
+<li>If your state machine consists of only one state, it can be both the <code>start</code> state and the <code>end</code> state.</li>
+</ul>
+<hr>
+<h3 id="Reference-1"><a href="#Reference-1" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-state-machine-structure.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-state-machine-structure.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/12/2020-07-12-AWS-Step-Functions/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-11-GET-VS-POST" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/11/2020-07-11-GET-VS-POST/">GET VS POST</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/11/2020-07-11-GET-VS-POST/" class="archive-article-date">
+  	<time datetime="2020-07-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最直观的<strong>区别</strong>就是<strong>GET</strong>把参数包含在URL中，<strong>POST</strong>通过request body传递参数。 … <strong>GET</strong>请求在URL中传送的参数是有长度限制的，而<strong>POST</strong>么有。 对参数的数据类型，<strong>GET</strong>只接受ASCII字符，而<strong>POST</strong>没有限制。 <strong>GET</strong>比<strong>POST</strong>更不安全，因为参数直接暴露在URL上，所以不能用来传递敏感信息。</p>
+<h1 id="post-相比get-有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？"><a href="#post-相比get-有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？" class="headerlink" title="post 相比get 有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？"></a>post 相比get 有很多优点，为什么现在的HTTP通信中大多数请求还是使用get？</h1><p>既然get请求有这么多缺点为什么不抛弃它，反而大量使用呢？ 是因为get更节省资源吗？</p>
+<p>答：<br>下面是一个浏览器从业人员的看法</p>
+<p>事实上GET 和 POST 在实践上面有非常大的区别，这两种方法在语义上面并非能互相取代。</p>
+<p><strong>POST 是否比 GET 安全</strong></p>
+<p>是的， POST要比GET安全一点点，注意，是一点点。。。</p>
+<p>说这两者都是明文传送当然是没有错的了，但是这里有一个细节，就是GET的URL会被放在浏览器历史和WEB 服务器日志里面。</p>
+<p>POST 发完基本就木有了。。</p>
+<p>所以如果你把关键数据放在GET里面，被人偷窥了浏览器，或者WEB服务器被入侵日志被人倒去了，基本泄露可能性100%。而POST来说，日志没有记录，只要数据库服务器不被入侵，基本还是安全的。</p>
+<p>当然如果被抓了包，这一切都没有什么卵用，所以，HTTPS该用还是得用。</p>
+<p><strong>GET 相对 POST 的优势是什么</strong></p>
+<p>最大的优势是， GET 的URL可以人肉手输啊。。。你在地址栏打个POST给我看看。本质上面， GET 的所有信息都在URL， 所以很方便的记录下来重复使用。</p>
+<h3 id="所以如果你希望"><a href="#所以如果你希望" class="headerlink" title="所以如果你希望"></a>所以如果你希望</h3><p>－ 请求中的URL可以被手动输入<br>－ 请求中的URL可以被存在书签里，或者历史里，或者快速拨号里面，或者分享给别人。<br>－ 请求中的URL是可以被搜索引擎收录的。<br>－ 带云压缩的浏览器，比如Opera mini/Turbo 2, 只有GET才能在服务器端被预取的。<br>－ 请求中的URL可以被缓存。</p>
+<p>请使用GET. </p>
+<p>大家有没有注意到，其实这里面很多方面的要求是和网站的运营相关的，而不是技术相关的。任何的技术行为中，其实多多少少都能看到商业的影子。</p>
+<p>反之，就用POST. 特别是有一些东西你是不想让人家可以在浏览器地址栏里面可以输入的。比如，如果你设计一个blog系统, 设计这样一个URL来删掉所有帖子。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://myblog.com/?action=delete_all</span><br></pre></td></tr></table></figure>
+
+<p>我只能说很快你就知道什么叫不作死就不会死这个道理了，搜索引擎的爬虫分分钟教你做人。</p>
+<h3 id="另外一个准则是，可以重复的交互，比如取个数据，跳个页面，-用GET"><a href="#另外一个准则是，可以重复的交互，比如取个数据，跳个页面，-用GET" class="headerlink" title="另外一个准则是，可以重复的交互，比如取个数据，跳个页面， 用GET."></a>另外一个准则是，可以重复的交互，比如取个数据，跳个页面， 用GET.</h3><h3 id="不可以重复的操作，-比如创建一个条目-修改一条记录，-用POST-因为POST不能被缓存，所以浏览器不会多次提交。"><a href="#不可以重复的操作，-比如创建一个条目-修改一条记录，-用POST-因为POST不能被缓存，所以浏览器不会多次提交。" class="headerlink" title="不可以重复的操作， 比如创建一个条目/修改一条记录， 用POST, 因为POST不能被缓存，所以浏览器不会多次提交。"></a>不可以重复的操作， 比如创建一个条目/修改一条记录， 用POST, 因为POST不能被缓存，所以浏览器不会多次提交。</h3><p>WEB API 的设计相对于网页来说更加复杂，同时也有GET/POST的问题，目前主流接受的方法是RESTful, 参见这里</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//en.wikipedia.org/wiki/Representational_state_transfer%23cite_note-4" target="_blank" rel="noopener">Representational state transfer</a></p>
+<p>这个是趋势：</p>
+<p><img src="https://pic1.zhimg.com/50/55e77732c3e371893e82e0a213e65e18_hd.jpg?source=1940ef5c" alt="img">)<img src="https://pic1.zhimg.com/80/55e77732c3e371893e82e0a213e65e18_720w.jpg?source=1940ef5c" alt="img"></p>
+<p>同时对于何时用GET, W3C 也有一篇文章专门解释：<br><a href="https://link.zhihu.com/?target=http%3A//www.w3.org/2001/tag/doc/whenToUseGet.html" target="_blank" rel="noopener">http://www.w3.org/2001/tag/doc/whenToUseGet.html</a></p>
+<p>摘一点出来：</p>
+<blockquote>
+<p>1.3 Quick Checklist for Choosing HTTP GET or POST</p>
+<ul>
+<li>Use GET if:<ul>
+<li>The interaction is more like a question (i.e., it is a safe operation such as a query, read operation, or lookup).</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>and</p>
+<blockquote>
+<ul>
+<li>Use POST if:<ul>
+<li>The interaction is more like an order, or</li>
+<li>The interaction changes the state of the resource in a way that the user would perceive (e.g., a subscription to a service), or o The user be held accountable for the results of the interaction.</li>
+</ul>
+</li>
+</ul>
+<p>However, before the final decision to use HTTP GET or POST, please also consider considerations for sensitive data and practical considerations.</p>
+</blockquote>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.zhihu.com/question/31640769/answer/52824098" target="_blank" rel="noopener">https://www.zhihu.com/question/31640769/answer/52824098</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">GET, POST</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/11/2020-07-11-GET-VS-POST/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-10-SQL-与-NoSQL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/10/2020-07-10-SQL-与-NoSQL/">SQL 与 NoSQL</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/10/2020-07-10-SQL-与-NoSQL/" class="archive-article-date">
+  	<time datetime="2020-07-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>上一节我们认识了数据库，了解了数据库事务是什么，索引是如何提升数据库性能的，现在我们来学习下大家常说的一些数据库，MySQL、mongoDB、kv等等这些又有什么区别。本文中，SQL 与 NoSQL 代表关系型数据库与非关系型数据库，当然，SQL ≠ 关系型数据库，这里用作简写。</p>
+</blockquote>
+<h2 id="1-关系型数据库"><a href="#1-关系型数据库" class="headerlink" title="1. 关系型数据库"></a>1. 关系型数据库</h2><p><strong>1.1什么是关系型数据库</strong></p>
+<p><strong>关系数据库（Relational database），是创建在关系模型基础上的数据库，借助于集合代数等数学概念和方法来处理数据库中的数据。</strong>现实世界中的各种实体以及实体之间的各种联系均用关系模型来表示。</p>
+<ul>
+<li><strong>数据库</strong>：包括一个或多个表</li>
+<li><strong>表（关系 Relation）</strong>：是以列和行的形式组织起来的数据的集合</li>
+<li><strong>列（属性 Attribute）</strong>：在数据库中经常被称为字段</li>
+<li><strong>行（值组 Tuple）</strong>：在数据库中经常被称为记录</li>
+</ul>
+<p>我们可以理解为：系型数据库，是指采用了关系模型来组织数据的数据库。</p>
+<p>例如，可能有一个有关作者信息的名为 authors 的表（关系 Relation）。每列（值组 Tuple）都包含特定类型的信息，如作者的姓氏。每行（属性 Attribute）都包含有关特定作者的所有信息：姓、名、住址等等。</p>
+<p><strong>在关系型数据库当中一个表就是一个关系，一个关系数据库可以包含多个表。</strong></p>
+<p>关系型数据库的主要代表：SQL Server，Oracle，MySQL，PostgreSQL。</p>
+<p><strong>1.2 关系型数据库优点</strong></p>
+<ul>
+<li><strong>事务一致性</strong>：通过事务处理保持数据的一致性</li>
+<li><strong>复杂查询</strong>：支持SQL，可以进行 JOIN 等复杂查询</li>
+<li><strong>容易理解</strong>：二维表结构是非常贴近逻辑世界的一个概念，关系模型相对网状、层次等其他模型来说更容易理解</li>
+<li><strong>使用方便</strong>：通用的 SQL 语言使得操作关系型数据库非常方便</li>
+<li><strong>易于维护</strong>：丰富的完整性(实体完整性、参照完整性和用户定义的完整性)大大减低了数据冗余和数据不一致的概率</li>
+</ul>
+<p><strong>1.3 关系型数据库缺点</strong></p>
+<ul>
+<li><strong>读写性能</strong>：在数据量达到一定规模时，由于关系型数据库的系统逻辑非常复杂，为了维护一致性，使得其非常容易发生死锁等的并发问题，所以导致其读写速度下滑非常严重</li>
+<li><strong>表结构更新</strong>：表结构可以在被定义之后更新，但是如果有比较大的结构变更的话就会变得比较复杂</li>
+<li><strong>高并发</strong>：网站的用户并发性非常高，往往达到每秒上万次读写请求，对于传统关系型数据库来说，硬盘I/O是一个很大的瓶颈</li>
+<li><strong>海量数据</strong>：对于关系型数据库来说，在一张包含海量数据的表中查询，效率是非常低的</li>
+</ul>
+<h2 id="2-非关系型数据库"><a href="#2-非关系型数据库" class="headerlink" title="2. 非关系型数据库"></a>2. 非关系型数据库</h2><p><strong>2.1 什么是非关系型数据库</strong></p>
+<p><strong>非关系型数据库（NoSQL）是对不同于传统的关系数据库的数据库管理系统的统称。</strong></p>
+<p>当代典型的关系数据库在一些数据敏感的应用中表现了糟糕的性能，例如为巨量文档创建索引、高流量网站的网页服务，以及发送流式媒体。关系型数据库的典型实现主要被调整用于执行规模小而读写频繁，或者大批量极少写访问的事务。</p>
+<p>NoSQL 的结构通常提供弱一致性的保证，如最终一致性，或交易仅限于单个的数据项。</p>
+<p>NoSQL 提出另一种理念，例如，以键值对存储，且结构不固定，每一个元组可以有不一样的字段，每个元组可以根据需要增加一些自己的键值对，这样就不会局限于固定的结构，可以减少一些时间和空间的开销。</p>
+<p>NoSQL 与 SQL 存在许多显著的不同点，其中最重要的是 NoSQL 不使用 SQL 作为查询语言。其数据存储可以不需要固定的表格模式，也经常会避免使用 SQL 的 JOIN 操作，一般有水平可扩展性的特征。</p>
+<p>非关系型数据库包括：</p>
+<p>临时性键值存储：memcached、Redis=</p>
+<p>永久性键值存储：ROMA、Redis</p>
+<p>面向文档的数据库：MongoDB、CouchDB</p>
+<p>面向列的数据库：Cassandra、HBase</p>
+<p>主要代表：MongoDB，Redis，CouchDB</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SQL, NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/10/2020-07-10-SQL-与-NoSQL/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-09-React-Based-Multi-Step-Forms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/">React-Based Multi-Step Forms</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/" class="archive-article-date">
+  	<time datetime="2020-07-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Rect-multistep"><a href="#Rect-multistep" class="headerlink" title="Rect-multistep"></a>Rect-multistep</h1><p><a href="https://github.com/srdjan/react-multistep" target="_blank" rel="noopener">https://github.com/srdjan/react-multistep</a></p>
+<h2 id="Responsive-React-multistep-form-component"><a href="#Responsive-React-multistep-form-component" class="headerlink" title="Responsive React multistep form component"></a>Responsive React multistep form component</h2><p><a href="https://raw.githubusercontent.com/srdjan/react-multistep/master/assets/react-multistep.png" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/srdjan/react-multistep/master/assets/react-multistep.png" alt="img"></a></p>
+<h4 id="Try-it-here"><a href="#Try-it-here" class="headerlink" title="Try it here"></a>Try it <a href="http://srdjan.github.io/react-multistep/" target="_blank" rel="noopener">here</a></h4><h1 id><a href="#" class="headerlink" title></a></h1><p><a href="https://nodei.co/npm/react-multistep/" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/c7c0c36813351d63002b8cb1bb874a8ed6b54212/68747470733a2f2f6e6f6465692e636f2f6e706d2f72656163742d6d756c7469737465702e706e673f646f776e6c6f6164733d747275652673746172733d74727565" alt="NPM"></a></p>
+<h4 id="React-16-13-1"><a href="#React-16-13-1" class="headerlink" title="React 16.13.1"></a>React 16.13.1</h4><h4 id="List-of-forks"><a href="#List-of-forks" class="headerlink" title="List of forks"></a><a href="https://github.com/srdjan/react-multistep/network/members/" target="_blank" rel="noopener">List of forks</a></h4><h1 id="-1"><a href="#-1" class="headerlink" title></a></h1><h4 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h4><p>To use this module in your app run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-multistep</span><br></pre></td></tr></table></figure>
+
+<p>next, import it inside of your app:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const MultiStep = import from <span class="string">'react-multistep'</span></span><br></pre></td></tr></table></figure>
+
+<p>Component has only one Prop, ‘showNavigation’, which controls if the navigation buttons should be visable:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prop=showNavigation </span><br><span class="line"><span class="built_in">type</span>: boolean (default = <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<p>It takes an array of objects representing individual steps:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const steps = [</span><br><span class="line">              &#123;name: <span class="string">'StepOne'</span>, component: &lt;StepOne/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepTwo'</span>, component: &lt;StepTwo/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepThree'</span>, component: &lt;StepThree/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepFour'</span>, component: &lt;StepFour/&gt;&#125;</span><br><span class="line">            ];</span><br><span class="line">&lt;Multistep showNavigation=&#123;<span class="literal">true</span>&#125; steps=&#123;steps&#125;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="If-you-want-to-explore-try-the-included-example…"><a href="#If-you-want-to-explore-try-the-included-example…" class="headerlink" title="If you want to explore try the included example…"></a>If you want to explore try the included example…</h4><p>1.Start by cloning the repo locally:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//--step 1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/srdjan/react-multistep.git   //<span class="built_in">clone</span> the repo</span><br><span class="line"><span class="built_in">cd</span> react-multistep                                        //navigate to the project folder</span><br></pre></td></tr></table></figure>
+
+<p>2.Next, install dependencies and build the component:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run build // (or, `npm run build:prod` <span class="keyword">for</span> optimized build)</span><br></pre></td></tr></table></figure>
+
+<p>3.On a succesful build, navigate to the example folder and try it:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ../example</span><br><span class="line">npm install</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<p>4.Now you can open the example in your favorite browser:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open index.html</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Multistep Form</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-08-Hooks-API-Reference" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -361,789 +1420,9 @@
 
 
   
-    <article id="post-Router 4 以及router" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/Router 4 以及router/">React Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/06/Router 4 以及router/" class="archive-article-date">
-  	<time datetime="2020-07-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Router-4-以及Router"><a href="#Router-4-以及Router" class="headerlink" title="Router 4 以及Router"></a>Router 4 以及Router</h2><p>url/Login</p>
-<p>url/home</p>
-<p>1) 本质 url - ui(Component)对应</p>
-<p>2) Browser Router包裹 App</p>
-<p>3) 使用: </p>
-<p>设置 key-value</p>
-<p>​         url - ui</p>
-<p>​      &lt;Link to: ‘url’&gt; -&gt; to location </p>
-<p>​      &lt;Route  path: ‘/‘ , component直接跟组件名不能传值或者通过需要传值的话用render实现路由 diff &gt;-&gt; what to see 路由组件</p>
-<h2 id="路由切换"><a href="#路由切换" class="headerlink" title="路由切换:"></a>路由切换:</h2><p>[Method1]</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Login.js</span></span><br><span class="line">&lt;link to=<span class="string">"/register"</span>&gt;register now!&lt;<span class="regexp">/link&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>[Method2]history    this.props.history.push或者this.props.replay</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Register.js</span></span><br><span class="line"><span class="keyword">this</span>.props.history.push(<span class="string">'./login'</span>)</span><br></pre></td></tr></table></figure>
-
-<p>vs redirect: 重定向</p>
-<p>一个url: localhost3000/login</p>
-<p>​                                      /register</p>
-<p>​                                     /home</p>
-<p>​                                    /               redirect到任何的 比如login页面</p>
-<h2 id="Ant-Deisng-Form-Component"><a href="#Ant-Deisng-Form-Component" class="headerlink" title="Ant Deisng: Form Component"></a>Ant Deisng: Form Component</h2><p>1) hoc -&gt; 通过form.create把form对象传给form组件</p>
-<p>2) 设计表单验证: 前端 -&gt; 时间两次验证 1）每次输入完 2) submit</p>
-<p>​                      后端</p>
-<p>3) 设计表单数据收集: form下面的方法</p>
-<h2 id="Radio-Group"><a href="#Radio-Group" class="headerlink" title="Radio Group"></a>Radio Group</h2><p>controlled component. value onchange.</p>
-<h2 id="Module"><a href="#Module" class="headerlink" title="Module"></a>Module</h2><p>点击button，弹出对话框。使用了react方法获取map组件, react ref, ref三种用法</p>
-<p>1) <c ref> this.refs 不用了</c></p>
-<p>2) createRef =&gt; myref   this.myref.current</p>
-<p>3) ref:{call back} 获取ref对象</p>
-<h2 id="Google-Map"><a href="#Google-Map" class="headerlink" title="Google Map"></a>Google Map</h2><p>hoc 2次: GoogleMap 和ScriptJS</p>
-<h2 id="React-Gallery"><a href="#React-Gallery" class="headerlink" title="React-Gallery"></a>React-Gallery</h2><h2 id="Local-Storage的使用"><a href="#Local-Storage的使用" class="headerlink" title="Local Storage的使用"></a>Local Storage的使用</h2><p>setItem to store data 存</p>
-<p>getItem 取data</p>
-<h2 id="React-Hooks"><a href="#React-Hooks" class="headerlink" title="React Hooks"></a>React Hooks</h2><p>useState, useEffect, useContext, reducer, callback, memo</p>
-<ol start="10">
-<li><p>function component: 可以使用state 在react 16开始</p>
-<p>所以function component + hooks写法简洁</p>
-<p>class component 相对比较长一些</p>
-</li>
-</ol>
-<ol start="11">
-<li><p>用browser发送request：bom下的ajax http request。需要自己写node server作为中间server。node.js express库. 前端很少直接拿数据，通过noder server。</p>
-<p>把react 和node放在一个package folder下面，分别run, run两个server.</p>
-<p>vs</p>
-<p>用postman发送request</p>
-</li>
-</ol>
-<ol start="12">
-<li>webpack 打包 配置处理js jsx共融，在package.json. 自己做webpack</li>
-</ol>
-<ol start="13">
-<li>CSS 需要掌握的: 两栏三栏，position, absolute, display, flex, relative, absolute, display block, inline block.</li>
-</ol>
-<h2 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h2><p>1) 路由组件</p>
-<p>2) 非路由组件：嵌套在路由组件中</p>
-<h2 id="网页转换成手机端"><a href="#网页转换成手机端" class="headerlink" title="网页转换成手机端"></a>网页转换成手机端</h2><p>react to react native</p>
-<p>or media queries programmatically in react 稍微复杂</p>
-<p>or ant design: layout 可以实现 responsive development 使用不多</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">React, Router</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/06/Router 4 以及router/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/">What are HashMaps— You Might be Asked These in an Interview — Examples in Java</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/" class="archive-article-date">
-  	<time datetime="2020-07-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://miro.medium.com/max/1923/1*mWZUJP_0lKFDACHxfPQCCw.jpeg" alt="img"></p>
-<p>Let’s quickly go over what a <code>HashMap</code> is.</p>
-<p>Simply speaking it is a <code>Collection</code> object which uses <code>Key</code> and <code>Value</code> pairs, where both parameters are objects declared on creation. Each <code>Key</code> maps to a corresponding <code>Value</code>. E.g. the <code>key</code> “foo” maps the <code>value</code> “bar”.</p>
-<p>It is declared as <code>HashMap&lt;Key, Value&gt;</code>.</p>
-<p>Consider you’re making a <code>HashMap</code> of players on a football team, and each of them is identified by a unique number. We would create this map by using an Integer as the <code>Key</code>, and a <code>String</code> of the player’s name as the <code>Value</code>.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, Integer&gt; playerMap = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();<span class="comment">// Put players into our HashMap where they can be found with an int</span></span><br><span class="line">playerMap.put(<span class="number">23</span>, <span class="string">"David Beckham"</span>);</span><br><span class="line">playerMap.put(<span class="number">7</span>, <span class="string">"Cristiano Ronaldo"</span>);</span><br><span class="line">playerMap.put(<span class="number">10</span>, <span class="string">"Lionel Mess"</span>);</span><br><span class="line">playerMap.put(<span class="number">31</span>, <span class="string">"Neymar"</span>);<span class="comment">// Return a specific player</span></span><br><span class="line">System.out.print(playerMap.get(<span class="number">23</span>)); <span class="comment">// "David Beckham"</span></span><br></pre></td></tr></table></figure>
-
-<p>As a note, a <code>HashMap</code> does not make any guarantees of order or sorting. When you add a <code>Key</code> to your <code>HashMap</code>, there is no reason it will be returned to you at the same location or even at a constant speed. As well, <code>HashMaps</code> are not thread safe so if you’re working in a multi-threaded environment consider using a different data object. But we’ll get to that later.</p>
-<p><img src="https://miro.medium.com/max/60/1*dhQS6xzZP9tD5K49qwnlWA.jpeg?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/896/1*dhQS6xzZP9tD5K49qwnlWA.jpeg" alt="img"></p>
-<p>Another example: Linking Keys (Subway Stations) to Values (Travel Time)</p>
-<p>Previously in versions of Java &lt; 8, finding values of large <code>HashMaps</code> with the .<code>get()</code> method would have a worse case complexity of <code>O(n)</code>. However, since Java 8 it is now <code>O(log N)</code>. So there has been a substantial performance improvement, which make this data structure quite attractive to use.</p>
-<p><strong>Creating Different Types of HashMap</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// You'll need to import a HashMap for this to work in your</span></span><br><span class="line"><span class="comment">// Java project</span></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap; <span class="comment">// Let's create a bunch of HashMaps// Creating vanilla HashMap</span></span><br><span class="line">HashMap&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">         </span><br><span class="line"><span class="comment">// Creating HashMap with a capacity ... in this case 100</span></span><br><span class="line">Integer capacity = <span class="number">100</span>;   </span><br><span class="line">HashMap&lt;String, Integer&gt; map_2 = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;(capacity);</span><br><span class="line">         </span><br><span class="line"><span class="comment">// Creating HashMap with capacity and load factor</span></span><br><span class="line">Integer capacity = <span class="number">100</span>;</span><br><span class="line">Double loadFactor = .<span class="number">5</span>       </span><br><span class="line">HashMap&lt;String, Integer&gt; map3 = <span class="keyword">new</span> HashMap&lt;String, Integer (capacity, loadFactor);</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">HashMap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/05/2020-07-05-What-are-HashMaps—-You-Might-be-Asked-These-in-an-Interview-—-Examples-in-Java/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-04-Transitioning-from-React-Web-to-React-Native-Development" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/04/2020-07-04-Transitioning-from-React-Web-to-React-Native-Development/">Transitioning from React Web to React Native Development</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/04/2020-07-04-Transitioning-from-React-Web-to-React-Native-Development/" class="archive-article-date">
-  	<time datetime="2020-07-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://hackernoon.com/hn-images/1*ghfEivqtCdLAFXbgBDEoyw.png" alt="img"></p>
-<p>In the past few months I’ve been doing work with <a href="https://hackernoon.com/tagged/react" target="_blank" rel="noopener">React</a> Native, which is a change of pace from the React web apps I was more familiar with developing. Now that i’ve gained experience with React Native, I’m going to explain a bit how React Native differs from React for the web, and what to expect when developing with React Native.</p>
-<h3 id="React"><a href="#React" class="headerlink" title="React"></a>React</h3><p>Let’s first briefly talk about React. React is a JavaScript library used for building user interfaces. It was initially released by <a href="https://hackernoon.com/tagged/facebook" target="_blank" rel="noopener">Facebook</a> in 2013. React uses a concept of a Virtual DOM to represent how your UI should look like while the state of your application changes.</p>
-<p><img src="https://hackernoon.com/hn-images/1*AHE0q2FKAGyosXYsalw_Lw.png" alt="img"></p>
-<p>Code screenshot of a React component’s render method</p>
-<p><img src="https://hackernoon.com/hn-images/1*2uxMazccV10IabaCXH8G-Q.png" alt="img"></p>
-<p>Check out this sick React web app I built</p>
-<h3 id="React-Native"><a href="#React-Native" class="headerlink" title="React Native"></a>React Native</h3><p>React Native is a mobile framework used to build out mobile apps with JavaScript. It, unsurprisingly, uses the React library to construct the UI components as well as define an application’s business logic. It was initially released, again by Facebook, in 2015. One novel feature React Native development provides that standard native development doesn’t is its live reload feature that can quickly re-compile and serve a bundled javascript file after making changes in the code. This feature has been available on the web for some time, but in the mobile development sphere, it was a new concept.</p>
-<p><img src="https://hackernoon.com/hn-images/1*eNm5UV3oGLswYoJjmp-Ncg.png" alt="img"></p>
-<p>Code screenshot of a React Native component’s render method</p>
-<p><img src="https://hackernoon.com/hn-images/1*JRPzPK5yYgWHsM3nGUm6Uw.png" alt="img"></p>
-<p>Check out this sick React Native app I built</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">React Web, React Native</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/04/2020-07-04-Transitioning-from-React-Web-to-React-Native-Development/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-03-Map-Implementation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/03/2020-07-03-Map-Implementation/">Map Implementation</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/03/2020-07-03-Map-Implementation/" class="archive-article-date">
-  	<time datetime="2020-07-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://blog.gainlo.co/wp-content/uploads/2016/08/navigation-1048294_640.jpg" alt="navigation-1048294_640"></p>
-<h1 id="Uber-Interview-Questions-–-Map-Implementation"><a href="#Uber-Interview-Questions-–-Map-Implementation" class="headerlink" title="Uber Interview Questions – Map Implementation"></a>Uber Interview Questions – Map Implementation</h1><p>In this week’s coding interview question post, I’m going to analyze one of the best questions I’ve seen in recent interviews. As many people ask for the pseudo code in order to help them understand the algorithm, I will also include that in the post as well.</p>
-<p>It’s worth to emphasize again that what’s truly important is not the final code/solution, it’s all about the analysis process and I’m going to teach you exactly how to come up with the right idea.</p>
-<h2 id><a href="#" class="headerlink" title></a></h2><h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><p><em>Implement data structure “Map” storing pairs of integers (key, value) and define following member functions in O(1) runtime: void insert(key, value), void delete(key), int get(key), int getRandomKey().</em></p>
-<p>We select this question for mainly two reasons:</p>
-<ul>
-<li>The question was asked by Uber last month and got a lot of discussions.</li>
-<li>It’s a great question to test your <strong>understanding</strong> of basic data structures. Memorizing data structure definition won’t work. It’s all about UNDERSTANDING.</li>
-</ul>
-<h2 id="Analysis-I"><a href="#Analysis-I" class="headerlink" title="Analysis I"></a>Analysis I</h2><p>First and foremost, think about the question by yourself. It’s a great opportunity to test if you have a clear understanding of basic data structure.</p>
-<p>Here we go.</p>
-<p>There are many ways to implement a map, for instance, C++ std library is using <a href="https://en.wikipedia.org/wiki/Red–black_tree" target="_blank" rel="noopener">red-black tree</a> as the underlying system. However, to make operations of O(1) time complexity, hash should be the No.1 thing in your mind and I hope it won’t take you more than a second to come up with this.</p>
-<p>With a hashmap, we can easily achieve O(1) time complexity for <em>Insert, Get</em> and D<em>elete</em>, however, what makes the question interesting is <em>GetRandomKey</em> function. As you can see, a hashmap won’t allow you to get all the keys instantly and you need O(n) time to get a random key.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Map, Hashmap,</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/03/2020-07-03-Map-Implementation/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/">Event-based Communication between Microservices (integration events), Event Bus Implementation(s)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/" class="archive-article-date">
-  	<time datetime="2020-07-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Event-Bus-Implementation-s"><a href="#Event-Bus-Implementation-s" class="headerlink" title="Event Bus Implementation(s)"></a>Event Bus Implementation(s)</h1><p>Event-driven architecture pattern is a distributed asynchronous architecture pattern to create highly scalable reactive applications. The pattern suits for every level application stack from small to complex ones. The main idea is delivering and processing events asynchronously.</p>
-<p>There are a couple of ways to implement event-driven pattern to your stack. One of them is using “<strong>Broker Topology</strong>”. In broker topology, you send events to a central broker and all subscribers of these broker receive and process events asynchronously.</p>
-<p><img src="https://miro.medium.com/max/60/1*afKDwjre2y0Aqw-VBy--mA.png?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/1234/1*afKDwjre2y0Aqw-VBy--mA.png" alt="img"></p>
-<p>Event Bus with multiple subscribers(green arrows) and notifiers(red arrows)</p>
-<p>In this story, I shared <em>four implementations</em> of event bus and with their <em>goods</em> and <em>drawbacks</em>. In all implementations, all event generators send events to the event bus. Event processors(subscribers) subscribe to the event bus. And subscribers can also create new events and pass it to the event bus.</p>
-<h1 id="i1-Notify-the-Event-to-All-Subscribers"><a href="#i1-Notify-the-Event-to-All-Subscribers" class="headerlink" title="i1) Notify the Event to All Subscribers"></a>i1) Notify the Event to All Subscribers</h1><p><img src="https://miro.medium.com/max/60/1*ICQkcUULUpt9EUYl_W9Omw.png?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/1426/1*ICQkcUULUpt9EUYl_W9Omw.png" alt="img"></p>
-<p>Event Bus sends all incoming events(red arrows) to all subscribers(blue boxes) without any touch</p>
-<h2 id="Actors"><a href="#Actors" class="headerlink" title="Actors"></a>Actors</h2><p>Event Bus, Subscribers (Event Processor), Event Creators</p>
-<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p>Whenever the event bus receives an event from event creators, it passes the event to all subscribers. Subscribers process the event data with their own logic. Subscribers can also create new events and pass it to the event bus too. Event bus does not care about if the receiver fails to receive the event message.</p>
-<h2 id="Functions-Needed"><a href="#Functions-Needed" class="headerlink" title="Functions Needed"></a>Functions Needed</h2><p><strong>Notify</strong>, <strong>subscribe</strong>, <strong>unsubscribe</strong>, <strong>subscribers</strong> are enough to implement such event bus.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Event-based Communication, Microservices, Event Bus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/">Map libraries comparison Leaflet vs Mapbox GL vs OpenLayers – trends and statistics</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/" class="archive-article-date">
-  	<time datetime="2020-07-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/map-libraries.png" alt="map-libraries"></p>
-<p>When you need to add a map to your application, the first question that pop-ups in your head is “Which map library to use?”. If you start to google, you’ll find out soon that at the moment the Leaflet, Mapbox GL, OpenLayers are the most popular libraries for displaying interactive maps on a web page.</p>
-<p>In this article, we want to compare the libraries and check actual trends and statistics. So you can choose the most promising option for you.</p>
-<p>We used <a href="https://www.npmtrends.com/" target="_blank" rel="noopener">NPM Trends</a> and <a href="https://trends.google.com/" target="_blank" rel="noopener">Google Trends</a> to get the data and create beautiful visualizations.</p>
-<h2 id="Leaflet-vs-Mapbox-GL-vs-OpenLayers"><a href="#Leaflet-vs-Mapbox-GL-vs-OpenLayers" class="headerlink" title="Leaflet vs Mapbox GL vs OpenLayers"></a>Leaflet vs Mapbox GL vs OpenLayers</h2><table>
-<thead>
-<tr>
-<th align="left"><a href="https://leafletjs.com/" target="_blank" rel="noopener">LEAFLET</a></th>
-<th align="left"><a href="https://docs.mapbox.com/mapbox-gl-js/" target="_blank" rel="noopener">MAPBOX GL</a></th>
-<th align="left"><a href="https://openlayers.org/" target="_blank" rel="noopener">OPENLAYERS</a></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">The open-source JS library for interactive maps. A simple interface, great documentation, and a huge community allow you to get results and solve your tasks quickly. Unfortunately, not developed actively any longer.</td>
-<td align="left">Powerful and effective SDK for web maps developed by Mapbox. As Leaflet library creators developed Mapbox GL now, you can see some similarities between 2 libraries. However, Mapbox GL gives you more opportunities, data visualization options and opens the vector maps world for you.</td>
-<td align="left">Familiar with GIS technologies? Then OpenLayers can be the perfect option for you! The OpenLayers is not only about displaying maps, but also visualizing and analyzing geographical data. It could be a bit more complicated at the beginning but allows you to create more powerful solutions.</td>
-</tr>
-<tr>
-<td align="left"><strong>Vector maps support</strong> The core functionality of Leaflet doesn’t have vector tiles support. Nevertheless, you can visualize vector tiles by using external plugins. For example, <a href="https://www.npmjs.com/package/mapbox-gl-leaflet" target="_blank" rel="noopener">Mapbox GL Leaflet</a>.</td>
-<td align="left"><strong>Vector maps support</strong> Mapbox is a pioneer in vector maps technologies. The Mapbox Style Specification for vector maps, which is very popular now and used by Geoapify as well, is natively supported by Mapbox GL.</td>
-<td align="left"><strong>Vector maps support</strong> OpenLayers has native support for vector maps but the <a href="https://npmjs.com/package/ol-mapbox-style" target="_blank" rel="noopener">ol-mapbox-style</a> plugin is required to create a map with Mapbox Style Specification.</td>
-</tr>
-<tr>
-<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-mapbox/mapbox" target="_blank" rel="noopener">JSFiddle code sample</a></td>
-<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-leaflet/leaflet" target="_blank" rel="noopener">JSFiddle code sample</a></td>
-<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-openlayers/openlayers" target="_blank" rel="noopener">JSFiddle code sample</a></td>
-</tr>
-</tbody></table>
-<h2 id="NPM-trends-for-the-map-libraries"><a href="#NPM-trends-for-the-map-libraries" class="headerlink" title="NPM trends for the map libraries"></a>NPM trends for the map libraries</h2><p>The number of downloads for npm packages gives a great indication of how popular each library is. Here is npm trends statistics for the last 12 month:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/npm-trends.png" alt="npm trends: Leaflet, Mapbox GL, Openlayers"></p>
-<p>And the charts look really interesting! After absolute leadership Leaflet losing to Mapbox GL in February 2020. In comparison with other map libraries, OpenLayers looks stable. And if we check the statistics for OpenLayers only, we can prove that:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/openlayers-npm-trends.png" alt="npm trends: OpenLayers"></p>
-<p>Statistics from GitHub show us how many times a library was “stared”:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/stats.png" alt="GitHub statistics: Leaflet, Mapbox GL, Openlayers"></p>
-<p>And here we see that Leaflet is 5 times more popular at the moment than Mapbox GL, and 4 times more popular than OpenLayers.</p>
-<h2 id="Google-Trends-for-the-map-libraries"><a href="#Google-Trends-for-the-map-libraries" class="headerlink" title="Google Trends for the map libraries"></a>Google Trends for the map libraries</h2><p>Google search keywords trends are another good measure of popularity. However, here we’ve faced with a problem. While “Leaflet” and “OpenLayers” are unique names, “Mapbox GL” is often googled as “Mapbox”. So we decided to add both “Mapbox GL” and “Mapbox” to give you an overview:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/google-trends.png" alt="img"></p>
-<p>The chart shows that interest in each library more or less stays on the same level. In other hands, [statistics by regions](<a href="https://trends.google.com/trends/explore?q=leaflet,mapbox,mapbox" target="_blank" rel="noopener">https://trends.google.com/trends/explore?q=leaflet,mapbox,mapbox</a> GL,openlayers) provide some interesting results as well:</p>
-<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/regions4.gif" alt="Map libraries comparison by region"></p>
-<p>Leaflet leads the keywords list in almost all countries. However, Mapbox/Mapbox GL is popular in China, the United States, Belorus, and Canada. And OpenLayers is in request in South Korea, Croatia, and Finland.</p>
-<h2 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>It’s always a matter of taste when you are trying to choose the best from the good ones. Nevertheless, we hope that the numbers and charts we gave you in this article will help you to make the right decision.</p>
-<h2 id="Leaflet-Mapbox-GL-and-OpenLayers-code-samples"><a href="#Leaflet-Mapbox-GL-and-OpenLayers-code-samples" class="headerlink" title="Leaflet, Mapbox GL, and OpenLayers code samples"></a>Leaflet, Mapbox GL, and OpenLayers code samples</h2><p>We’ve created <a href="https://apidocs.geoapify.com/samples/maps/js-mapbox/mapbox" target="_blank" rel="noopener">code samples</a> to help you develop a custom map for your website. Visit the <a href="https://apidocs.geoapify.com/" target="_blank" rel="noopener">Geoapify Documentation page</a> to learn how to add a map to your React-, Angular-, or Vue-webapp.</p>
-<p>Geoapify offers map tiles that can be used with all the libraries. We provide vector and raster maps of different styles and colors. Learn more about<a href="https://www.geoapify.com/api/map-tiles/" target="_blank" rel="noopener"> Geoapify Map Tiles</a>.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.geoapify.com/map-libraries-comparison-leaflet-vs-mapbox-gl-vs-openlayers-trends-and-statistics/" target="_blank" rel="noopener">https://www.geoapify.com/map-libraries-comparison-leaflet-vs-mapbox-gl-vs-openlayers-trends-and-statistics/</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-30-Difference-between-Unit-Testing-and-Integration-Testing" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/30/2020-06-30-Difference-between-Unit-Testing-and-Integration-Testing/">Difference between Unit Testing and Integration Testing?</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/30/2020-06-30-Difference-between-Unit-Testing-and-Integration-Testing/" class="archive-article-date">
-  	<time datetime="2020-06-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Normally a software application is developed by a team of many people. So while developing an application is divided into different modules and modules are divided to different developers of team. When a single developer write some code, let’s say a common function, and test that function then this type of testing is called <strong>Unit Testing</strong>. When all the different modules are developed and integrated then testing is required to check if the complete application is working properly or not after integrating different modules, This type of testing is called <strong>Integration Testing</strong>.</p>
-<h2 id="Difference-between-Unit-Testing-and-Integration-Testing"><a href="#Difference-between-Unit-Testing-and-Integration-Testing" class="headerlink" title="Difference between Unit Testing and Integration Testing:"></a>Difference between Unit Testing and Integration Testing:</h2><h2 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing"></a>Unit Testing</h2><ul>
-<li>Unit testing is a type of testing to check if the small piece of code or a single function is doing as per the expectation.</li>
-<li>It checks a single component/function of the application.</li>
-<li>Its scope is very limited.</li>
-<li>It should have no dependencies on code outside its definition.</li>
-<li>This is the first type of testing is to be carried out in the Software testing life cycle and generally executed by the developer.</li>
-<li>The goal of Unit testing is to test each unit separately and ensure that each unit is working as expected.</li>
-<li>Unit testing comes under the White box testing type.</li>
-</ul>
-<h2 id="Integration-Testing"><a href="#Integration-Testing" class="headerlink" title="Integration Testing"></a>Integration Testing</h2><ul>
-<li>Integration testing is a type of testing to check if different modules are working as expected after integrating each other.</li>
-<li>It checks the overall flow of the application. after the integration of different modules.</li>
-<li>Its scope is very wide</li>
-<li>This type of testing can have each every element in the software application</li>
-<li>This is performed after unit testing. Generally, the script is preferred to test the integration testing</li>
-<li>Integration testing is further divided into different types as follows:<br>Top-down Integration, Bottom-Up Integration, etc</li>
-<li>Integration testing is coming under both Black box and White box type of testing.</li>
-</ul>
-<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Unit Testing and Integration Testing both are equally important for testing an application. And it’s very important to create an application bug-free and work as expected.</p>
-<p><a href="https://jsonworld.com/demo/testing-nodejs-api-with-mocha-and-chai" target="_blank" rel="noopener">Click here</a> to read complete article with sample application for Integration Testing of Nodejs API.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/@pankaj.itdeveloper/difference-between-unit-testing-and-integration-testing-ac22dc2396b3" target="_blank" rel="noopener">https://medium.com/@pankaj.itdeveloper/difference-between-unit-testing-and-integration-testing-ac22dc2396b3</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Unit Testing, Integration Testing, Testing</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/30/2020-06-30-Difference-between-Unit-Testing-and-Integration-Testing/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-29-App-Architecture,-RecyclerView" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/29/2020-06-29-App-Architecture,-RecyclerView/">App Architecture, RecyclerView</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/29/2020-06-29-App-Architecture,-RecyclerView/" class="archive-article-date">
-  	<time datetime="2020-06-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Visualize-News-App-Workflow"><a href="#Visualize-News-App-Workflow" class="headerlink" title="Visualize News App Workflow"></a>Visualize News App Workflow</h1><p>single activity app, multiple fragments, organized by navigation graph. architecture MVVP, data gained by retrofit  and retrofit encapsulted in repository, local databased room to save user favorite, search result using recyclerview. </p>
-<h1 id="Create-a-List-with-RecyclerView"><a href="#Create-a-List-with-RecyclerView" class="headerlink" title="Create a List with RecyclerView"></a>Create a List with RecyclerView</h1><p>If your app needs to display a scrolling list of elements based on large data sets (or data that frequently changes), you should use <code>RecyclerView</code> as described on this page.</p>
-<p><strong>Tip:</strong> Start with some template code in Android Studio by clicking <strong>File &gt; New &gt; Fragment &gt; Fragment (List)</strong>. Then simply <a href="https://developer.android.com/training/basics/fragments/creating#AddInLayout" target="_blank" rel="noopener">add the fragment to your activity layout</a>.</p>
-<p><img src="https://developer.android.com/design/material/images/list_mail.png" alt="img"></p>
-<p><strong>Figure 1.</strong> A list using <code>RecyclerView</code></p>
-<p><img src="https://developer.android.com/design/material/images/card_travel.png" alt="img"></p>
-<p><strong>Figure 2.</strong> A list also using <code>CardView</code></p>
-<p>If you’d like to create a list with cards, as shown in figure 2, also use the <code>CardView</code> widget as described in <a href="https://developer.android.com/guide/topics/ui/layout/cardview" target="_blank" rel="noopener">Create a Card-based Layout</a>.</p>
-<p>If you’d like to see some sample code for <code>RecyclerView</code>, check out the RecyclerView Sample App <a href="https://github.com/android/views-widgets-samples/tree/master/RecyclerView" target="_blank" rel="noopener">Java</a> | <a href="https://github.com/android/views-widgets-samples/tree/master/RecyclerViewKotlin" target="_blank" rel="noopener">Kotlin</a>.</p>
-<h2 id="RecyclerView-overview"><a href="#RecyclerView-overview" class="headerlink" title="RecyclerView overview"></a>RecyclerView overview</h2><p>The <code>RecyclerView</code> widget is a more advanced and flexible version of <code>ListView</code>.</p>
-<p>In the <code>RecyclerView</code> model, several different components work together to display your data. The overall container for your user interface is a <code>RecyclerView</code> object that you add to your layout. The <code>RecyclerView</code> fills itself with views provided by a <em>layout manager</em> that you provide. You can use one of our standard layout managers (such as <code>LinearLayoutManager</code> or <code>GridLayoutManager</code>), or implement your own.</p>
-<p>The views in the list are represented by <em>view holder</em> objects. These objects are instances of a class you define by extending <code>RecyclerView.ViewHolder</code>. Each view holder is in charge of displaying a single item with a view. For example, if your list shows music collection, each view holder might represent a single album. The <code>RecyclerView</code> creates only as many view holders as are needed to display the on-screen portion of the dynamic content, plus a few extra. As the user scrolls through the list, the <code>RecyclerView</code> takes the off-screen views and rebinds them to the data which is scrolling onto the screen.</p>
-<p>The view holder objects are managed by an <em>adapter</em>, which you create by extending <code>RecyclerView.Adapter</code>. The adapter creates view holders as needed. The adapter also binds the view holders to their data. It does this by assigning the view holder to a position, and calling the adapter’s <code>onBindViewHolder()</code> method. That method uses the view holder’s position to determine what the contents should be, based on its list position.</p>
-<p>This <code>RecyclerView</code> model does a lot of optimization work so you don’t have to:</p>
-<ul>
-<li><p>When the list is first populated, it creates and binds some view holders on either side of the list. For example, if the view is displaying list positions 0 through 9, the <code>RecyclerView</code> creates and binds those view holders, and might also create and bind the view holder for position 10. That way, if the user scrolls the list, the next element is ready to display.</p>
-</li>
-<li><p>As the user scrolls the list, the <code>RecyclerView</code> creates new view holders as necessary. It also saves the view holders which have scrolled off-screen, so they can be reused. If the user switches the direction they were scrolling, the view holders which were scrolled off the screen can be brought right back. On the other hand, if the user keeps scrolling in the same direction, the view holders which have been off-screen the longest can be re-bound to new data. The view holder does not need to be created or have its view inflated; instead, the app just updates the view’s contents to match the new item it was bound to.</p>
-</li>
-<li><p>When the displayed items change, you can notify the adapter by calling an appropriate <code>RecyclerView.Adapter.notify…()</code> method. The adapter’s built-in code then rebinds just the affected items.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android, Architecture, RecyclerView</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/29/2020-06-29-App-Architecture,-RecyclerView/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
@@ -1249,7 +1528,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1257,15 +1536,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1281,11 +1560,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1293,19 +1572,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1317,15 +1596,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,7 +1604,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,7 +1612,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1361,11 +1640,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1373,11 +1652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1385,11 +1664,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1397,11 +1676,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1409,15 +1684,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1441,7 +1720,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1449,7 +1728,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1469,6 +1748,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
               </li>
              
@@ -1477,11 +1764,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1489,15 +1772,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1509,6 +1784,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
@@ -1517,11 +1796,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1533,7 +1812,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1541,7 +1820,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1553,11 +1848,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1573,15 +1868,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1597,19 +1892,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1621,11 +1916,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1633,11 +1928,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
+                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+                <a href="javascript:void(0)" class="js-tag color1">Typora, Coronavirus Tracking Device</a>
               </li>
              
               <li class="article-tag-list-item">
