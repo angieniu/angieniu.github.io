@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 138</a>
+<a>Total Number of Articles: 139</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,101 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-09-Git-Debug" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/09/2020-06-09-Git-Debug/">Git Debug</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/09/2020-06-09-Git-Debug/" class="archive-article-date">
+  	<time datetime="2020-06-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Today, when I tried to commit my code to github, I realized the code pushed to github includes some other folders. </p>
+<p>My analysis: The git repository was mixed with other folders.</p>
+<p>Solution:</p>
+<p>Step 1. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -a</span><br></pre></td></tr></table></figure>
+
+<p>to check hidden files in the local folder to check whether .git directory is inside. If .git directory is inside, that means the git repository is linked to the folder correctly. In my case, .git was not there.</p>
+<p>Step 2. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
+
+<p>add .git folder to the local folder.</p>
+<p>Step 3. </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">"..."</span></span><br><span class="line">git remote add origin + remote repository URL</span><br></pre></td></tr></table></figure>
+
+<p>Step 4.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+<p>Step 5.</p>
+<p>Also, because previously .git folder might exist in the parent/grandparent folder to cause the issue. Let’s remove the .git folder in other unecessary folders.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf .git</span><br></pre></td></tr></table></figure>
+
+<p>We are all set! Thanks to Simon! ^_^</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/09/2020-06-09-Git-Debug/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-09-Yarn-vs-NPM" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -944,194 +1039,6 @@
 
 
   
-    <article id="post-Function vs Class Defined Component" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/Function vs Class Defined Component/">REACT Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/31/Function vs Class Defined Component/" class="archive-article-date">
-  	<time datetime="2020-05-31T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Function-vs-Class-Defined-Component"><a href="#Function-vs-Class-Defined-Component" class="headerlink" title="Function vs Class Defined Component"></a>Function vs Class Defined Component</h3><p>function defined component:</p>
-<ol>
-<li>no state (state是component的私有属性)    </li>
-<li>no 生命周期函数   </li>
-<li>stateless componenet VS state component</li>
-<li>选择哪个看是否需要state</li>
-</ol>
-<h3 id="How-to-create-virtual-dom-in-REACT"><a href="#How-to-create-virtual-dom-in-REACT" class="headerlink" title="How to create virtual dom in REACT?"></a>How to create virtual dom in REACT?</h3><ol>
-<li>There is one method createElement.</li>
-</ol>
-<p>const ele1 = React.createElement(‘h1’, {className: ‘box’}, ‘hello react!’)</p>
-<p>ele1 is element, js 对象。</p>
-<p>渲染：ReactDOM.render(ele1, document.getElementById(‘app’)); // ele1 放虚拟元素，虚拟dom真实dom关联。</p>
-<p>这种方法: nested elements 繁琐，所以通过jsx实现create virtual dom.</p>
-<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX  {}"></a>JSX  {}</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ele1 = <span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">"box"</span>&gt;</span>Hello React! <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line">ReactDOM.render(ele1, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> res = arr.map(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">&#123;idex&#125;</span>&gt;</span>&#123;item&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>&#125;)</span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;res&#125; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>,</span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));</span><br><span class="line"></span><br><span class="line">&lt;div&gt; 根元素</span><br><span class="line">jsx on render&#123;res&#125; yes</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">10</span>；</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">"this is a str"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;<span class="string">"a"</span>: <span class="number">1</span>, <span class="string">"b"</span>: <span class="number">2</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> res = <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="xml">hello</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span></span><br><span class="line"><span class="xml">a</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        &#123;a&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        &#123;str&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        &#123;arr&#125;</span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">hr</span> /&gt;</span></span></span><br><span class="line"><span class="xml">        &#123;JSON.stringify(obj)&#125;</span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">      </span><br><span class="line"><span class="keyword">const</span> res = <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> hello <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">"1"</span>&gt;</span> first<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>, &lt;p key=<span class="string">"2"</span>&gt; second&lt;<span class="regexp">/p&gt;, &lt;p key="3"&gt; third&lt;/</span>p&gt;]</span><br><span class="line"></span><br><span class="line">ReactDOM.render(res, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)); <span class="comment">//res而不是&#123;res&#125;，因为&#123;&#125;是取值的意思，取值&#123;&#125;用在html里，这里是ReactDOM.render()，所以res应该是html结构&lt;div&gt;&lt;/div&gt;的东西。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr =[<span class="string">'apple'</span>, <span class="string">'pear'</span>, <span class="string">'berry'</span>];</span><br><span class="line"><span class="comment">// method1: forEach</span></span><br><span class="line"><span class="keyword">const</span> newArr =[];</span><br><span class="line">arr.forEach(<span class="function">(<span class="params">item, index</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item)；</span><br><span class="line">  <span class="keyword">const</span> temp = <span class="xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">key</span>=<span class="string">&#123;index&#125;</span>&gt;</span> &#123;item&#125; <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line">        newArr.push(temp);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">const</span> res = <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> &#123;newArr&#125; <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">      ReactDOM.render(res, documenet.getElementById(<span class="string">'app'</span>));</span><br><span class="line"><span class="comment">//3个平行的标签渲染需要div标签</span></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span> hello react<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">'app'</span>));</span><br></pre></td></tr></table></figure>
-
-<h3 id="React-Component"><a href="#React-Component" class="headerlink" title="React Component"></a>React Component</h3><p>Two ways to define react componentUse JavaScript function<br><strong>// use JavaScript function</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Hello</span>(<span class="params">props</span>) </span>&#123;  <span class="built_in">console</span>.log(props);  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">p</span>&gt;</span>hello react &#123;props.person.name&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span>&#125;</span><br><span class="line"><span class="keyword">const</span> person = &#123;  <span class="attr">name</span> : <span class="string">'Joe'</span>,  <span class="attr">age</span> : <span class="number">10</span>&#125;</span><br><span class="line">ReactDOM.render(  <span class="xml"><span class="tag">&lt;<span class="name">Hello</span> <span class="attr">person</span>=<span class="string">&#123;person&#125;/</span>&gt;</span></span>,  <span class="comment">//实例化component，用tag形式</span></span><br><span class="line">                <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
-
-<p><strong>// use ES6 class</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;  <span class="keyword">constructor</span>() &#123;    <span class="keyword">super</span>();  &#125;</span><br><span class="line">  render() &#123;    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello react, &#123;this.props.name&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>  &#125;&#125; <span class="comment">//和变量定义有关系，但和html结构没什么关系，因为即使在&lt;h1&gt; &lt;/h1&gt;这种html里面，也可以&#123;this.props.person.name&#125;</span></span><br><span class="line">ReactDOM.render(  <span class="xml"><span class="tag">&lt;<span class="name">Hello</span> <span class="attr">name</span>=<span class="string">&#123;</span>'<span class="attr">Lucy</span>'&#125;&gt;</span><span class="tag">&lt;/<span class="name">Hello</span>&gt;</span></span>,  <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>));</span><br></pre></td></tr></table></figure>
-
-<p>eg2:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line"><span class="comment">// (optional) </span></span><br><span class="line">  <span class="keyword">constructor</span>(props)&#123; <span class="comment">//通过props拿到数据</span></span><br><span class="line"><span class="keyword">super</span>(props);</span><br><span class="line"><span class="built_in">console</span>.log(props) <span class="comment">// props显示key value pair.</span></span><br><span class="line">&#125;</span><br><span class="line">render()&#123; <span class="comment">// return virtual element through render()</span></span><br><span class="line"><span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span> </span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>hello react! <span class="tag">&lt;/<span class="name">h1</span>&gt;</span> // 组件由虚拟元素组成</span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h2</span>&gt;</span> hello &#123;this.props.person.name&#125;<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  name: <span class="string">"Joe"</span>,</span><br><span class="line">  age: <span class="number">10</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">&lt;Hello data=&#123;<span class="number">10</span>&#125;, person=&#123;person&#125; /&gt;, <span class="comment">//组件需要进行外部数据传递，则通过props接收数据, key value pair. key: person. value： &#123;person&#125;是传入的数据。</span></span><br><span class="line">                <span class="comment">//用&#123;10&#125;因为是传参,key value pair. </span></span><br><span class="line"><span class="built_in">document</span>.getElementById(<span class="string">'app'</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件外部数据</span></span><br><span class="line"><span class="comment">// 1. 传入: data = &#123;person&#125;</span></span><br><span class="line"><span class="comment">// &lt;Hello key = value /&gt; eg: data = &#123;person&#125;</span></span><br><span class="line"><span class="comment">// 2. 使用 在组件函数中 通过props获取数据。</span></span><br></pre></td></tr></table></figure>
-
-<h3 id><a href="#" class="headerlink" title="{}"></a>{}</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line">&lt;div&gt;</span><br><span class="line">	&lt;h1&gt;Parent Component&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">	&lt;p&gt;My value is &#123;this.state.res&#125;&lt;/</span>p&gt;</span><br><span class="line">	&lt;h1&gt;<span class="number">10</span>&lt;<span class="regexp">/h1&gt; /</span><span class="regexp">/如果把10写在标签之间插入content里面，&#123;&#125;与否效果一样。</span></span><br><span class="line"><span class="regexp">	&lt;hr /</span>&gt;</span><br><span class="line">  &lt;Child data = &#123;tihs.state.res&#125; newdata = &#123;<span class="number">10</span>&#125;  changeValueFn=&#123;<span class="keyword">this</span>.getValue&#125; /&gt; <span class="comment">// &#123;&#125; 属性差值则必须有&#123;&#125;,key value pair， data是Child标签的属性。</span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&#123;&#123;</span><br><span class="line"><span class="string">"width"</span>: <span class="string">"200px"</span>,</span><br><span class="line"><span class="string">"backgroundColor"</span>: <span class="string">`rbg(<span class="subst">$&#123;<span class="keyword">this</span>.state.r&#125;</span>, <span class="subst">$&#123;<span class="keyword">this</span>.state.g&#125;</span>, <span class="subst">$&#123;<span class="keyword">this</span>.state.b&#125;</span>)`</span></span><br><span class="line">&#125;&#125;&gt;</span><br><span class="line">  &lt;p style=&#123;&#123;</span><br><span class="line">    <span class="string">'fontSize'</span>: <span class="keyword">this</span>.state.a</span><br><span class="line">  &#125;&#125;&gt; hello react &lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/外&#123;&#125; 插值， 内&#123;&#125; 定义的object，把object引用进来。  &#123;color: red, font-size: 666&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="This"><a href="#This" class="headerlink" title="This"></a>This</h3><p>this：访问类Class当中的东西，私有属性，变量、函数，就用this。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> t = <span class="number">10</span>; <span class="comment">//全局变量，在parent class里面可以直接用。 window.t 可以不写window，在render里面直接写t，但是一般不用全局变量。所以一般都用this.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>()&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.state =&#123;</span><br><span class="line">		res: <span class="number">10</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.a = <span class="number">10</span>; <span class="comment">//this //data type通过赋值决定。 //但这样子类通过this.props不能继承a,除非用this.a</span></span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> a = <span class="number">10</span>; <span class="comment">// var已经不能这么声明了，正确写法 a = 10; 也就是this.a = 10 (缩略成了 a = 10,不用再constructor里面写this.a = 10); </span></span><br><span class="line">	<span class="comment">// class 里面定义方法。</span></span><br><span class="line">	</span><br><span class="line">	render()&#123;</span><br><span class="line">		<span class="keyword">return</span> (</span><br><span class="line">		&lt;div&gt;</span><br><span class="line">			&lt;h1&gt;Parent Component&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">			&lt;p&gt;My value is &#123;this.state.res&#125;&lt;/</span>p&gt; </span><br><span class="line">			&lt;hr /&gt;</span><br><span class="line">			&lt;Child data=&#123;<span class="keyword">this</span>.state.res&#125;</span><br><span class="line">				changeValueFn=&#123;<span class="keyword">this</span>.getValue&#125;</span><br><span class="line">			/&gt;</span><br><span class="line">		&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">		)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	getValue = (item) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">	console.log(item)</span></span><br><span class="line"><span class="regexp">	this.setState(&#123;</span></span><br><span class="line"><span class="regexp">		res: item</span></span><br><span class="line"><span class="regexp">	&#125;)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">Class Child extend React.Component &#123;</span></span><br><span class="line"><span class="regexp">render()&#123;</span></span><br><span class="line"><span class="regexp">...</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="setState"><a href="#setState" class="headerlink" title="setState:"></a>setState:</h3><p>setState(): 异步操作, batch, queue.</p>
-<p>[Method 1] setState(object)   eg: this.setState({a: this.state.a + 10})</p>
-<p>[Method 2] setState(function)  eg: </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">preState</span>) =&gt;</span> &#123;<span class="keyword">return</span> &#123;<span class="attr">a</span>: preState.a + <span class="number">10</span>&#125;)&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>could use pre</p>
-<p>回调函数, 执行完操作之后，调用函数产生。</p>
-<p>如果对状态值实时性要求高，建议放到回调函数里面写。 </p>
-<p>注：当message不涉及preState.a,可以把a:preState.a + 10 和message: preState.message + “Hello”放到一起。如果两个之间有影响，分开写不同的setState，否则可以合起来。某一个属性依赖于前一个属性，实时更新的话，最好分开。 </p>
-<p>或者</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">change2()&#123;</span><br><span class="line">	<span class="keyword">this</span>.setState(<span class="function">(<span class="params">preState</span>) =&gt;</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">	a: preState.a + <span class="number">10</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;, () =&gt; &#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>.state.a)&#125;<span class="comment">//第二个回调函数一定是第一个回调函数执行完以后, 这个时候a是实时更新的。</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">this</span>.setState(</span><br><span class="line">(preState) = &gt; &#123;</span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line">message: <span class="string">`current a = <span class="subst">$&#123;preState.a&#125;</span>`</span>,</span><br><span class="line">&#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>.state);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Event-Handler"><a href="#Event-Handler" class="headerlink" title="Event Handler"></a>Event Handler</h3><h4 id="Method-1-onClick-箭头函数more-used"><a href="#Method-1-onClick-箭头函数more-used" class="headerlink" title="Method 1. onClick, 箭头函数more used."></a>Method 1. onClick, 箭头函数more used.</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick = &#123;</span><br><span class="line">() =&gt; &#123;<span class="keyword">this</span>.setState(&#123;<span class="attr">a</span>: <span class="keyword">this</span>.state.a + <span class="number">10</span>&#125;)</span><br><span class="line">      &#125;</span><br><span class="line">&#125;&gt; </span><br><span class="line"> <span class="comment">//回调函数中定义函数体，用箭头函数包一下的原因：避免deadloop, and not click and update.</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="Method-2-定义函数"><a href="#Method-2-定义函数" class="headerlink" title="Method 2. 定义函数"></a>Method 2. 定义函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;<span class="keyword">this</span>.changeHandler&#125;&gt;add me + <span class="number">10</span> &lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">changeHandler()&#123;</span></span><br><span class="line"><span class="regexp">console.log('clicked! -&gt;', this); /</span><span class="regexp">/ 当click时this指向了window</span></span><br><span class="line"><span class="regexp">this.setState(&#123; /</span><span class="regexp">/setState在React.Component. 父App1</span></span><br><span class="line"><span class="regexp">a: this.state.a + 10</span></span><br><span class="line"><span class="regexp">&#125;)</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/所以需要函数指针绑定 this永远绑定到component app1 instance.</span></span><br><span class="line"><span class="regexp">constructor()&#123;</span></span><br><span class="line"><span class="regexp">  this.changeHandler = this.changeHandler.bind(this);</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="React特点"><a href="#React特点" class="headerlink" title="React特点"></a>React特点</h3><p>Component   </p>
-<p>   /      \</p>
-<p>State  render</p>
-<p>Data   view</p>
-<p>when button =&gt; change data (state.a -&gt; setState -&gt; render), change view. 所以view变化的本质是data的变化。不用管view和data的关联，React自己handle了（调用render(),由 component生命周期决定，component自动更新）。React设计模型：MVVM, model, view, view, model (数据的变化会导致视图变化，视图变化本质是由数据变化带来的。)</p>
-<p>eg: </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=&#123;&#123;</span><br><span class="line">    <span class="string">'fontSize'</span>: <span class="keyword">this</span>.state.a</span><br><span class="line">  &#125;&#125;&gt; hello react &lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">? &#123;&#123;json object&#125;&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="Controlled-Components"><a href="#Controlled-Components" class="headerlink" title="Controlled Components"></a>Controlled Components</h3><p>value + onChange数据双向绑定two way binding，数据实时相等：</p>
-<p>cod: App3中定义三个状态state，把状态和input关联，value 是view是state，onChange是来改变状态的, 叠加使用，状态数据修改，onChange调用this.setState的变化会导致rerender = &gt; r, g, b又改变了。</p>
-<p>input, radio, checkbox,range, slider, toggle button.</p>
-<p>form不一定</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App2</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;</span><br><span class="line">      str: <span class="string">'hello'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line">  <span class="keyword">return</span>(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;&#123;<span class="keyword">this</span>.state.str&#125;&lt;<span class="regexp">/h1&gt; /</span><span class="regexp">/不能只有str, 因为str是state的一个属性， state是component的属性，这里的input的值需要和component的state绑定，这样每次执行setState都会自动调用render函数。 如果直接写str是无法将state和render进行连接。</span></span><br><span class="line"><span class="regexp">      &lt;input type = 'text'</span></span><br><span class="line"><span class="regexp">        value =&#123;this.state.str&#125; /</span><span class="regexp">/初始值设置</span></span><br><span class="line"><span class="regexp">        onChange=&#123;</span></span><br><span class="line"><span class="regexp">          (e) =&gt; &#123;</span></span><br><span class="line"><span class="regexp">            console.log(e.target.value)</span></span><br><span class="line"><span class="regexp">            this.setState(&#123;/</span><span class="regexp">/this指代是当前的component, 但是由于component是继承于react.component, 所以这个setState函数实际上是在react.component中定义的。</span></span><br><span class="line"><span class="regexp">              str: e.target.value /</span><span class="regexp">/setState里面str即可，这里的str是state的attr, 所以不需要指定this.state.</span></span><br><span class="line"><span class="regexp">            &#125;)</span></span><br><span class="line"><span class="regexp">          &#125;</span></span><br><span class="line"><span class="regexp">        &#125;&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Uncontrolled-Component"><a href="#Uncontrolled-Component" class="headerlink" title="Uncontrolled Component"></a>Uncontrolled Component</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/babel"</span>&gt; <span class="comment">//必须有babel</span></span><br><span class="line">  <span class="comment">// Uncontrolled Component</span></span><br><span class="line">  <span class="comment">// 2 method:</span></span><br><span class="line">  <span class="comment">// method1 (not recommended): using ref + this.refs</span></span><br><span class="line">  <span class="comment">//      step 1: define -&gt; ref</span></span><br><span class="line">  <span class="comment">// 			step2: use -&gt; this.refs</span></span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">		render()&#123;</span><br><span class="line">			<span class="keyword">return</span>(</span><br><span class="line">				&lt;div&gt; <span class="comment">//必须有div root，当然如果只有一个元素不用，不过一般有很多个。</span></span><br><span class="line">					&lt;h1&gt;Hello React&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">          &lt;hr /</span>&gt;</span><br><span class="line">          &lt;input type=<span class="string">"text"</span> ref=<span class="string">"myRef"</span> /&gt;</span><br><span class="line">          &lt;hr /&gt;</span><br><span class="line">          &lt;button onClick=&#123; () =&gt; &#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="keyword">this</span>.refs)</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.refs.myRef.value)</span><br><span class="line">              &#125;&#125;&gt;click me&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">				&lt;/</span>div&gt;</span><br><span class="line">			)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">  ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">App</span> /&gt;</span></span>, <span class="built_in">document</span>.getElementById(<span class="string">'box'</span>)) </span><br><span class="line">          <span class="comment">// virtual component, actual component</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;  </span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">    /</span><span class="regexp">/ method 2: recommended: using React.createRef() + this.*.current /</span><span class="regexp">/ * 是我们叫ref的name。</span></span><br><span class="line"><span class="regexp">  /</span><span class="regexp">/ step1: define </span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ step2: use -&gt; this.*.current</span></span><br><span class="line"><span class="regexp">  &lt;script type="text/</span>babel<span class="string">"&gt; //必须有babel</span></span><br><span class="line"><span class="string">	class App extends React.Component &#123;</span></span><br><span class="line"><span class="string">    constructor()&#123;</span></span><br><span class="line"><span class="string">      super();</span></span><br><span class="line"><span class="string">      //step1: define ref</span></span><br><span class="line"><span class="string">      this.myInput = React.createRef();</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">		render()&#123;</span></span><br><span class="line"><span class="string">			return(</span></span><br><span class="line"><span class="string">				&lt;div&gt; //必须有div</span></span><br><span class="line"><span class="string">					&lt;h1 ref="</span>myRef2<span class="string">"&gt;Hello React&lt;/h1&gt;</span></span><br><span class="line"><span class="string">          &lt;hr /&gt;</span></span><br><span class="line"><span class="string">          &lt;input type="</span>text<span class="string">" ref="</span>myRef<span class="string">" /&gt;</span></span><br><span class="line"><span class="string">          &lt;/hr&gt;</span></span><br><span class="line"><span class="string">          &lt;button onClick=&#123; () =&gt; &#123;</span></span><br><span class="line"><span class="string">                console.log(this.refs)</span></span><br><span class="line"><span class="string">            console.log(this.refs.myRef.value)</span></span><br><span class="line"><span class="string">              &#125;&#125;&gt;click me&lt;/button&gt;</span></span><br><span class="line"><span class="string">				&lt;hr /&gt;</span></span><br><span class="line"><span class="string">        &lt;hr /&gt;</span></span><br><span class="line"><span class="string">        &lt;input type="</span>text<span class="string">" ref=&#123;this.myInput&#125; /&gt;</span></span><br><span class="line"><span class="string">        &lt;button onClick=&#123;() =&gt; &#123;</span></span><br><span class="line"><span class="string">            console.log(this.myInput) // -&gt; object</span></span><br><span class="line"><span class="string">						console.log(this.myInput.current.value)</span></span><br><span class="line"><span class="string">          &#125;&#125;&gt;click me &lt;.button&gt;</span></span><br><span class="line"><span class="string">        &lt;/div&gt;</span></span><br><span class="line"><span class="string">			)</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	&#125;</span></span><br><span class="line"><span class="string">  ReactDOM.render(&lt;App /&gt;, document.getElementById('box')) </span></span><br><span class="line"><span class="string">          // virtual component, actual component</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>as a bridge, 连接两个函数，且作为bridge在两者之间进行数据传递。</p>
-<p>使用回调函数，拿到值。定义回调函数，返回值。使用时可以接收定义的返回值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a, cb</span>)</span>&#123; <span class="comment">//cb定义的时候，不需要（）</span></span><br><span class="line">a++;</span><br><span class="line">cb(a);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="组件开发"><a href="#组件开发" class="headerlink" title="组件开发"></a>组件开发</h3><p>Todo App -&gt; TodoBD -&gt; TodoItem      左边从上往下传data，右边从下往上传改的数据。</p>
-<p>如果用了Redux数据管理，就不会出现多层跨层传递。像database一样，去Redux取数据。</p>
-<p>React&lt;=2 层数据传递可以理解。&gt;2层则需要用Redux，否则是不好的设计。</p>
-<h3 id="Filter-amp-Map"><a href="#Filter-amp-Map" class="headerlink" title="Filter &amp; Map"></a>Filter &amp; Map</h3><p>filter用来删除，map主要进行元素遍历、改。</p>
-<h3 id="Hooks-（React）"><a href="#Hooks-（React）" class="headerlink" title="Hooks （React）"></a>Hooks （React）</h3><p>use context 全局数据 （redux数据管理）,所有child component都可以用。</p>
-<p><strong>React Hooks 的意思是，组件尽量写成纯函数，如果需要外部功能和副作用，就用钩子把外部代码”钩”进来。</strong> React Hooks 就是那些钩子。</p>
-<p>你需要什么功能，就使用什么钩子。React 默认提供了一些常用钩子，你也可以封装自己的钩子。</p>
-<p>所有的钩子都是为函数引入外部功能，所以 React 约定，钩子一律使用<code>use</code>前缀命名，便于识别。你要使用 xxx 功能，钩子就命名为 usexxx。</p>
-<p>下面介绍 React 默认提供的四个最常用的钩子。</p>
-<blockquote>
-<ul>
-<li>useState()</li>
-<li>useContext()</li>
-<li>useReducer()</li>
-<li>useEffect()</li>
-</ul>
-</blockquote>
-<p><a href="https://www.ruanyifeng.com/blog/2019/09/react-hooks.html" target="_blank" rel="noopener">https://www.ruanyifeng.com/blog/2019/09/react-hooks.html</a></p>
-<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>A. state:</p>
-<ol>
-<li>define: this.state = {}</li>
-<li>read: {this.state.x}</li>
-<li>update: 1) setState({}) 2) setState(() =&gt; {})</li>
-</ol>
-<p>setState -&gt; rerender</p>
-<p>B. Event Handling:</p>
-<ol>
-<li>() =&gt; {}. no need to consider this</li>
-<li>common function,  fn =&gt; fn.bind(this)</li>
-</ol>
-<p>C. Controlled Component: data two way binding 数据的双向绑定是我要实时拿到数据，是否显示到view只是双向绑定的一部分，可以显示也可以不显示，但强调的是实时性。data-&gt; view -&gt;实时性  A  - A  AB - AB</p>
-<p>input: value + onChange (函数拿数据). </p>
-<p>实时，controlled component，数据双向绑定。</p>
-<p>controlled component -&gt; value(checked) + onChange</p>
-<p>非实时性，数据单向绑定，data –render （渲染无所谓） –&gt; view    ABC全处理完 ABC</p>
-<p>input validation -&gt; uncontrolled component,不能敲一个字就检查一次吧，enter或focus移除再做检查</p>
-<p>D. uncontrolled components: </p>
-<p>Method 1. define ref 2. this.ref</p>
-<p>Method 2. React.createRef  2. use: this.*.current</p>
-<p>E. 数据通信</p>
-<p>1.父组件到子组件：1）在父组件中子组件标签上定义一组key ： value pair  2)在子组件中props读取, read only</p>
-<p>2.子-&gt;父：callback function: 1) parent component: in child component tag &lt;子 key: value pair 且 value是fn&gt; 2）parent component define fn body 箭头函数或者bind。3) child component:  call callback function  this.props.fn() 即callback function传递数据</p>
-<p>本质是父组件里的函数修改父组件里的state 父fn -&gt; 父state</p>
-<p>原因：react是单向数据流，只能读数据。改数据不能直接改。相当于有get函数，没有set函数。props单向只读，传的数据不能直接修改，如何修改？只能通过调用函数修改。</p>
-<p>3.兄弟-&gt;兄弟：lca 父组件， 父子关系，没有兄弟关系，公有数据放在parent component</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/31/Function vs Class Defined Component/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/10/">Next &raquo;</a>
@@ -1232,15 +1139,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1249,10 +1160,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1272,6 +1179,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
@@ -1280,15 +1191,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1304,6 +1211,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
@@ -1313,10 +1224,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1360,11 +1267,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1376,15 +1283,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1392,7 +1295,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1400,7 +1303,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1412,7 +1315,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,7 +1327,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1436,7 +1347,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1452,15 +1367,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1480,11 +1387,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1500,15 +1407,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1524,11 +1431,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1552,11 +1459,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color5">Life</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1600,11 +1511,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">

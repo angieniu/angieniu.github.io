@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 138</a>
+<a>Total Number of Articles: 139</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,92 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-19-0-1背包问题的动态规划算法-knapsack-problem" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/">0-1背包问题的动态规划算法 knapsack problem</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/" class="archive-article-date">
+  	<time datetime="2020-07-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>问题描述：给定n个物品， 每个物品体积为<img src="https://www.zhihu.com/equation?tex=v_%7Bi%7D+" alt="[公式]">)，价值为<img src="https://www.zhihu.com/equation?tex=w_%7Bi%7D" alt="[公式]">)；m个背包，每个背包的容量为<img src="https://www.zhihu.com/equation?tex=c_%7Bi%7D+" alt="[公式]">，每个物品只能取一次，求能获得的最大价值。</p>
+<p>Silvano Martello and Paolo Toth发了一系列的文章都是关于多背包问题的。他们还出了本书叫《KNAPSACK PROBLEMS Algorithms and Computer Implementations》里面的第六章就是讲0-1多背包问题。0、多背包问题根据物品数和背包数的比值分为两个大类：n/m值大，即物品多背包少；n/m值小，即物品少背包多。这本书主要是讲第一种多背包问题。1、首先对0-1规划问题都会需要求松弛和上界。多背包问题有三种松弛方法：Surrogate relaxation, Lagrangian relaxation and Worst-case performance of the upper bounds.2、对背包问题，总可以用贪婪算法得到一个可行解。但是该解不一定是全局最优的。只能作为一个比较基准。3、为了得到全局最优，解背包问题都会想到用动态规划。但是对多背包问题而言，考虑到动态规划需要的计算时间和存储空间，这种方法是不实用的。所以我们想到用分支定界的方法来减少计算量。4、针对多背包问题分支定界在以下两大类之下又有很多小的细分Branch-and-bound algorithmsBound-and-bound algorithms5、但是上面的计算量仍然很大，所以Ingargiola and Korsh（1975）又提出通过物品间的支配关系来简化计算，即规约算法（Reduction algorithms）。但是这种方法只适用于物品n较少或问题非常难的情况。6、Approximate algorithms是通过对贪婪的改进，即正序放和倒序放后交叉互换物品的方式，来得到更优的解。最后对这些方法的效率，这章的计算实验部分列出了一些表格。可以参考看看。<img src="https://pic4.zhimg.com/50/v2-aa1a7c02377c41cd931df41982971be5_hd.jpg?source=1940ef5c" alt="img">)<img src="https://pic4.zhimg.com/80/v2-aa1a7c02377c41cd931df41982971be5_720w.jpg?source=1940ef5c" alt="img">通过表格可以看到Bound-and-bond算法表现还是挺好的<del>最近刚好在看这个。希望能对你有所帮助。也希望过几天我的实验结果能好好跑出来啊</del>阿门啊。</p>
+<p>0-1 多背包问题是一个很经典的问题 目前启发式算法和精确型算法都有很多了<br>只要在谷歌学术搜索一下 Multiple Knapsack Problem 你会看到很多<br>精确型比如：<br>–branch and bound<br>-dynamic program<br>-————————————–<br>启发式比如：<br>-genetic algorithm<br>-tabu search<br>-hybird algorithm<br>这些算法都能用于求解。</p>
+<hr>
+<h2 id="首先得知道什么是0-1背包问题（knapsack-problem）"><a href="#首先得知道什么是0-1背包问题（knapsack-problem）" class="headerlink" title="首先得知道什么是0-1背包问题（knapsack problem）"></a>首先得知道什么是0-1背包问题（knapsack problem）</h2><p>◆ 贼，夜入豪宅，可偷之物甚多，而负重能力有限，偷哪些才更加不枉此行？</p>
+<p>◆ 抽象的话，就是：</p>
+<p>给定一组多个（<img src="https://www.zhihu.com/equation?tex=n" alt="[公式]">)）物品，每种物品都有自己的重量（<img src="https://www.zhihu.com/equation?tex=w_i" alt="[公式]">)）和价值（<img src="https://www.zhihu.com/equation?tex=v_i" alt="[公式]">)），在限定的总重量/总容量（<img src="https://www.zhihu.com/equation?tex=C" alt="[公式]">）内，选择其中若干个（也即每种物品可以选0个或1个），设计选择方案使得物品的总价值最高。</p>
+<p>◆ ◆ 更加抽象的话：</p>
+<p>给定正整数<img src="https://www.zhihu.com/equation?tex=%5C%7B%28w_i%2Cv_i%29%5C%7D_%7B1%5Cleq+i%5Cleq+n%7D" alt="[公式]">)、给定正整数<img src="https://www.zhihu.com/equation?tex=C" alt="[公式]">，求解0-1规划问题：</p>
+<p><img src="https://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D" alt="[公式]"> ， s.t. <img src="https://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iw_i%7D%5Cleq+C" alt="[公式]"> ， <img src="https://www.zhihu.com/equation?tex=x_i%5Cin%5C%7B0%2C1%5C%7D" alt="[公式]"> 。</p>
+<p>◆ 示例应用：处理器能力有限时间受限，任务很多，如何选择使得总效用最大？</p>
+<p>◆ 数值例子：如下图。</p>
+<p><img src="https://pic2.zhimg.com/80/v2-85236598e4e35b7efa3ea3f69a5ca8ec_720w.jpg" alt="img"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">knapsack problem, algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/19/2020-07-19-0-1背包问题的动态规划算法-knapsack-problem/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-18-Route-Inspection-Problem-图论算法—邮递员投递问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1338,105 +1424,6 @@
 
 
   
-    <article id="post-2020-07-09-React-Based-Multi-Step-Forms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/">React-Based Multi-Step Forms</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/" class="archive-article-date">
-  	<time datetime="2020-07-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Rect-multistep"><a href="#Rect-multistep" class="headerlink" title="Rect-multistep"></a>Rect-multistep</h1><p><a href="https://github.com/srdjan/react-multistep" target="_blank" rel="noopener">https://github.com/srdjan/react-multistep</a></p>
-<h2 id="Responsive-React-multistep-form-component"><a href="#Responsive-React-multistep-form-component" class="headerlink" title="Responsive React multistep form component"></a>Responsive React multistep form component</h2><p><a href="https://raw.githubusercontent.com/srdjan/react-multistep/master/assets/react-multistep.png" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/srdjan/react-multistep/master/assets/react-multistep.png" alt="img"></a></p>
-<h4 id="Try-it-here"><a href="#Try-it-here" class="headerlink" title="Try it here"></a>Try it <a href="http://srdjan.github.io/react-multistep/" target="_blank" rel="noopener">here</a></h4><h1 id><a href="#" class="headerlink" title></a></h1><p><a href="https://nodei.co/npm/react-multistep/" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/c7c0c36813351d63002b8cb1bb874a8ed6b54212/68747470733a2f2f6e6f6465692e636f2f6e706d2f72656163742d6d756c7469737465702e706e673f646f776e6c6f6164733d747275652673746172733d74727565" alt="NPM"></a></p>
-<h4 id="React-16-13-1"><a href="#React-16-13-1" class="headerlink" title="React 16.13.1"></a>React 16.13.1</h4><h4 id="List-of-forks"><a href="#List-of-forks" class="headerlink" title="List of forks"></a><a href="https://github.com/srdjan/react-multistep/network/members/" target="_blank" rel="noopener">List of forks</a></h4><h1 id="-1"><a href="#-1" class="headerlink" title></a></h1><h4 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h4><p>To use this module in your app run:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-multistep</span><br></pre></td></tr></table></figure>
-
-<p>next, import it inside of your app:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const MultiStep = import from <span class="string">'react-multistep'</span></span><br></pre></td></tr></table></figure>
-
-<p>Component has only one Prop, ‘showNavigation’, which controls if the navigation buttons should be visable:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prop=showNavigation </span><br><span class="line"><span class="built_in">type</span>: boolean (default = <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-
-<p>It takes an array of objects representing individual steps:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const steps = [</span><br><span class="line">              &#123;name: <span class="string">'StepOne'</span>, component: &lt;StepOne/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepTwo'</span>, component: &lt;StepTwo/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepThree'</span>, component: &lt;StepThree/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepFour'</span>, component: &lt;StepFour/&gt;&#125;</span><br><span class="line">            ];</span><br><span class="line">&lt;Multistep showNavigation=&#123;<span class="literal">true</span>&#125; steps=&#123;steps&#125;/&gt;</span><br></pre></td></tr></table></figure>
-
-<h4 id="If-you-want-to-explore-try-the-included-example…"><a href="#If-you-want-to-explore-try-the-included-example…" class="headerlink" title="If you want to explore try the included example…"></a>If you want to explore try the included example…</h4><p>1.Start by cloning the repo locally:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//--step 1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/srdjan/react-multistep.git   //<span class="built_in">clone</span> the repo</span><br><span class="line"><span class="built_in">cd</span> react-multistep                                        //navigate to the project folder</span><br></pre></td></tr></table></figure>
-
-<p>2.Next, install dependencies and build the component:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run build // (or, `npm run build:prod` <span class="keyword">for</span> optimized build)</span><br></pre></td></tr></table></figure>
-
-<p>3.On a succesful build, navigate to the example folder and try it:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ../example</span><br><span class="line">npm install</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
-
-<p>4.Now you can open the example in your favorite browser:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open index.html</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Multistep Form</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1537,15 +1524,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1554,10 +1545,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1577,6 +1564,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
@@ -1585,15 +1576,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1609,6 +1596,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
@@ -1618,10 +1609,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1665,11 +1652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1681,15 +1668,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1697,7 +1680,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1705,7 +1688,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1717,7 +1700,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1729,7 +1712,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1741,7 +1732,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1757,15 +1752,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1785,11 +1772,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1805,15 +1792,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1829,11 +1816,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1857,11 +1844,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color5">Life</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1905,11 +1896,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
