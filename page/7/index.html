@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 137</a>
+<a>Total Number of Articles: 138</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,103 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-28-Creating-your-first-app-with-Flickr-API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/28/2020-06-28-Creating-your-first-app-with-Flickr-API/">Retrieve a Gallery Using Flickr API &amp; Creating app with Flickr API</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/28/2020-06-28-Creating-your-first-app-with-Flickr-API/" class="archive-article-date">
+  	<time datetime="2020-06-28T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Retrieve-a-gallery-using-the-Flickr-API"><a href="#Retrieve-a-gallery-using-the-Flickr-API" class="headerlink" title="Retrieve a gallery using the Flickr API"></a>Retrieve a gallery using the Flickr API</h1><p>Use the Flickr API to get photo images from <a href="https://www.flickr.com/photos/flickr/galleries/72157647277042064/" target="_blank" rel="noopener">this Flickr gallery</a>.</p>
+<ul>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#flickr-overview" target="_blank" rel="noopener">Flickr Overview</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#1-get-an-api-key-to-make-requests" target="_blank" rel="noopener">1. Get an API key to make requests</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#2-determine-the-resource-and-endpoint-you-need" target="_blank" rel="noopener">2. Determine the resource and endpoint you need</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#3-construct-the-request" target="_blank" rel="noopener">3. Construct the request</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#4-analyze-the-response" target="_blank" rel="noopener">4. Analyze the response</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#5-pull-out-the-information-you-need" target="_blank" rel="noopener">5. Pull out the information you need</a></li>
+<li><a href="https://idratherbewriting.com/learnapidoc/docapis_flickr_example.html#final-result" target="_blank" rel="noopener">Final Result</a></li>
+</ul>
+<h2 id="Flickr-Overview"><a href="#Flickr-Overview" class="headerlink" title="Flickr Overview"></a>Flickr Overview</h2><p>In this Flickr API example, we want to get all the photos from a specific Flickr gallery called <a href="https://www.flickr.com/photos/flickr/galleries/72157647277042064/" target="_blank" rel="noopener">Color in Nature</a> and display them on a web page. Here’s the gallery we want:</p>
+<p><a href="https://www.flickr.com/photos/flickr/galleries/72157647277042064/" target="_blank" rel="noopener"><img src="https://idratherbewritingmedia.com/images/api/flickrgallery.png" alt="Flickr gallery"></a></p>
+<p>To achieve our goal, we’ll need to call several endpoints. Hopefully, this activity will demonstrate the shortcomings of just having reference documentation. When one endpoint requires another endpoint response as an input, you might have to communicate these workflows through tutorials.</p>
+<p><em>Sponsored message:</em></p>
+<p>Stoplight lets your team collaborate on the OpenAPI spec using visual modeling tools that everyone on the team can use. You can work together on the OpenAPI spec in a central online space or through local client apps that sync the information. <a href="https://stoplight.io/?utm_source=idratherbewriting" target="_blank" rel="noopener">Learn more at Stoplight</a>.</p>
+<h2 id="1-Get-an-API-key-to-make-requests"><a href="#1-Get-an-API-key-to-make-requests" class="headerlink" title="1. Get an API key to make requests"></a>1. Get an API key to make requests</h2><p>Before you can make a request with the Flickr API, you’ll need an API key, which you can read more about <a href="https://www.flickr.com/services/apps/create/" target="_blank" rel="noopener">here</a>. When you register an app, you’re given a key and secret.</p>
+<h2 id="2-Determine-the-resource-and-endpoint-you-need"><a href="#2-Determine-the-resource-and-endpoint-you-need" class="headerlink" title="2. Determine the resource and endpoint you need"></a>2. Determine the resource and endpoint you need</h2><p>From the list of <a href="https://www.flickr.com/services/api/" target="_blank" rel="noopener">Flickr’s API methods</a>, the <a href="https://www.flickr.com/services/api/flickr.galleries.getPhotos.html" target="_blank" rel="noopener">flickr.galleries.getPhotos</a> endpoint, which is listed under the galleries resource, is the one that will get photos from a gallery.</p>
+<p><a href="https://www.flickr.com/services/api/flickr.galleries.getPhotos.html" target="_blank" rel="noopener"><img src="https://idratherbewritingmedia.com/images/api/flickr_get_photos.png" alt="Flickr getPhotos endpoint"></a></p>
+<p>One of the arguments we need for the <code>getPhotos</code> endpoint is the <code>gallery_id</code>. Before we can get the <code>gallery_id</code>, however, we have to use another endpoint to retrieve it. <em>Somewhat unintuitively, the <code>gallery_id</code> is *not\</em> the ID that appears in the URL of the gallery.*</p>
+<p>Instead, we use the <a href="https://www.flickr.com/services/api/explore/flickr.urls.lookupGallery" target="_blank" rel="noopener"><code>flickr.urls.lookupGallery</code></a> endpoint listed in the URLs resource section to get the <code>gallery_id</code> from a gallery URL:</p>
+<p><a href="https://www.flickr.com/services/api/explore/flickr.urls.lookupGallery" target="_blank" rel="noopener"><img src="https://idratherbewritingmedia.com/images/api/flickr_gallery_id.png" alt="Flickr lookupGallery endpoint endpoint"></a></p>
+<p>The <code>gallery_id</code> for <a href="https://www.flickr.com/photos/flickr/galleries/72157647277042064/" target="_blank" rel="noopener">Color in Nature</a> is <code>66911286-72157647277042064</code>. We now have the arguments we need for the <a href="https://www.flickr.com/services/api/flickr.galleries.getPhotos.html" target="_blank" rel="noopener"><code>flickr.galleries.getPhotos</code></a> endpoint.</p>
+<p><em>Sponsored message:</em></p>
+<p>SwaggerHub brings together all the power of the open source Swagger tooling into one integrated platform for designing and documenting APIs with Swagger (OpenAPI). <a href="https://swagger.io/tools/swaggerhub/?utm_medium=display&utm_source=idratherbewriting&utm_campaign=irbwsponsor" target="_blank" rel="noopener">Get started for free</a>.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Android, Flickr API, Image Search</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/28/2020-06-28-Creating-your-first-app-with-Flickr-API/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-27-Android-Weather-App" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1067,118 +1164,6 @@
 
 
   
-    <article id="post-2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/">React Object, Element, Component, Instance, Property Spread Notation Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/" class="archive-article-date">
-  	<time datetime="2020-06-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h3><p>对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。</p>
-<p>上面代码中，大括号就定义了一个对象，它被赋值给变量o。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  p: <span class="string">'Hello World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>这个对象内部包含一个键值对（又称为“成员”），p是“键名”（成员的名称），字符串Hello World是“键值”（成员的值）。</p>
-<p>键名与键值之间用冒号分隔。如果对象内部包含多个键值对，每个键值对之间用逗号分隔。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  p1: <span class="string">'Hello'</span>,</span><br><span class="line">  p2: <span class="string">'World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，对象o包含两个键值对，又称为包含两个属性p1和p2。</p>
-<h5 id="生成对象的三种方法："><a href="#生成对象的三种方法：" class="headerlink" title="生成对象的三种方法："></a>生成对象的三种方法：</h5><ul>
-<li>直接使用大括号生成（{}）</li>
-<li>用new命令生成一个Object对象的实例</li>
-<li>使用Object.create方法生成。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"><span class="keyword">var</span> o3 = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype);</span><br></pre></td></tr></table></figure>
-
-<p>上面三行语句是等价的,一般来说:</p>
-<p>第一种采用大括号的写法比较简洁，<br>第二种采用构造函数的写法清晰地表示了意图，<br>第三种写法一般用在需要对象继承的场合</p>
-<h3 id="Component-VS-Instance"><a href="#Component-VS-Instance" class="headerlink" title="Component VS Instance"></a>Component VS Instance</h3><p>通过创建一个类<code>class</code>来声明一个按钮组件(<code>Button component</code>)。应用程序运行的时候，在屏幕上你可能有这个组件(<code>component</code>)的好多个实例(<code>instance</code>),每个实例都有自己的属性和仅仅属于自己的状态。</p>
-<h3 id="Element-Elements-Describe-the-Tree"><a href="#Element-Elements-Describe-the-Tree" class="headerlink" title="Element: Elements Describe the Tree"></a>Element: Elements Describe the Tree</h3><p>元素是构成 React 应用的最小砖块。</p>
-<p>元素描述了你在屏幕上想看到的内容。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const element = &lt;h1&gt;Hello, world&lt;/h1&gt;;</span><br></pre></td></tr></table></figure>
-
-<p>与浏览器的 DOM 元素不同，React 元素是创建开销极小的普通对象。React DOM 会负责更新 DOM 来与 React 元素保持一致。</p>
-<p>在React中，这是元素<code>element</code>帮助我们的地方。<strong>一个元素是一个普通对象，他描述一个组件实例和它所要求的属性，或者一个DOM节点和它所要求的属性</strong>。它仅仅包含以下有关信息 :</p>
-<ul>
-<li>组件类型 (比如，这是一个按钮 <code>Button</code>)</li>
-<li>属性 (比如，它的颜色 <code>color</code>)</li>
-<li>它所包含的若干个子元素</li>
-</ul>
-<p>一个元素并不是一个的实例。相反，它是一种告诉React你想在屏幕上看到什么的手段。元素上的任何方法你都不能调用。它只是一个不可变的描述性对象，仅有两个字段(field):<code>type(string|ReactClass)</code> 和 <code>props : Object</code> 。</p>
-<h4 id="Case-1-DOM元素DOM-Elements"><a href="#Case-1-DOM元素DOM-Elements" class="headerlink" title="Case 1: DOM元素DOM Elements"></a>Case 1: DOM元素DOM Elements</h4><p>当一个元素类型<code>type</code>是字符串(<code>string</code>)时，该元素表示一个DOM节点,其类型字符串是该DOM节点的标签名称,另外一个属性<code>props</code>对应地表示DOM节点属性。这是React要往屏幕上渲染的内容。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: <span class="string">'button'</span>,</span><br><span class="line">  props: &#123;</span><br><span class="line">    className: <span class="string">'button button-blue'</span>,</span><br><span class="line">    children: &#123;</span><br><span class="line">      type: <span class="string">'b'</span>,</span><br><span class="line">      props: &#123;</span><br><span class="line">        children: <span class="string">'OK!'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>该元素只是以一种普通对象的形式描述了如下HTML片段 :</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;button <span class="class"><span class="keyword">class</span></span>=<span class="string">'button button-blue'</span>&gt;</span><br><span class="line">  &lt;b&gt;</span><br><span class="line">    OK!</span><br><span class="line">  &lt;<span class="regexp">/b&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>button&gt;</span><br></pre></td></tr></table></figure>
-
-<p>父子节点都是描述，而不是真正的实例。当你创建它们时，他们不指向屏幕上的任何东西。你可以创建它们然后把它们丢掉，这都没太大关系。</p>
-<p>React元素很容易遍历，不需要分析，而且他们显然比真正的DOM元素更轻量级，因为他们只是普通的对象(object)！</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/2020-06-18-React-Object,-Element,-Component,-Instance,-Property-Spread-Notation-Notes/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
@@ -1279,6 +1264,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
@@ -1288,10 +1277,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1311,11 +1296,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1347,11 +1332,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,19 +1356,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1407,19 +1392,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1431,15 +1416,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1447,19 +1428,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1468,6 +1445,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1483,19 +1468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1507,7 +1484,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1527,19 +1512,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1551,11 +1536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1563,7 +1548,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
+                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1571,11 +1556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1591,7 +1576,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1603,7 +1588,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1627,15 +1612,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1643,11 +1624,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1675,15 +1660,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
