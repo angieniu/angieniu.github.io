@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 141</a>
+<a>Total Number of Articles: 142</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,104 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-11-哈希表总结及其高级话题讨论" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/11/2020-08-11-哈希表总结及其高级话题讨论/">哈希表总结及其高级话题讨论</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/11/2020-08-11-哈希表总结及其高级话题讨论/" class="archive-article-date">
+  	<time datetime="2020-08-11T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>哈希表（hash table）是一种快速查找场景下常用的数据结构，本文对其主要问题及其高级应对方法进行有限的总结和讨论：</p>
+<ol>
+<li>负载不够均衡，此时会有哈希冲突（collision）出现，导致哈希表性能下降</li>
+<li>负载高时，若不进行空间扩展则性能下降，若进行空间扩展，扩展行为的（瞬间）代价通常较高</li>
+</ol>
+<p><img src="https://pic4.zhimg.com/80/v2-0e9e6fdb2c2a7799585263d99a3bbc27_720w.jpg" alt="img"></p>
+<blockquote>
+<p><strong>由于这篇文章数学公式比较多，而且知乎的数学公式编辑难度简直突破天际，强烈建议去我的博客围观这篇文章（<a href="https://link.zhihu.com/?target=http%3A//hcoona.github.io/Data-Structure/hash-table-summary-and-advanced-topics/" target="_blank" rel="noopener">传送门在此</a>）。</strong></p>
+</blockquote>
+<p>先回顾一下哈希表的数学模型：</p>
+<ul>
+<li>所有数据所在的空间集合为 S</li>
+<li>通过哈希表存储的数据集合为 U</li>
+<li>所有哈希桶（bucket）的下标集合为 R</li>
+<li>通过某种方式将 S 中的元素映射到 R 集合，不妨记为函数 h</li>
+</ul>
+<p>一般 S 的大小远大于 R，但是通过哈希表存储的数据集合 U 与 R 的大小相差不会太悬殊。</p>
+<p>如果有 x∈S, y∈S 并且 x≠y∧h(x)=h(y)，则称 x 与 y 冲突（collision）。</p>
+<p>如果 h 可以将 U 单射（injective）到 R，则称此种情况为完美哈希（perfect hashing）。这意味着 U 的大小小于等于 R 的大小。特别的，当 U 的大小与 R 的大小相等时，称此种情况为最小完美哈希（minimal perfect hashing）。</p>
+<p>如果 U 预先给定，并且不再进行调整，则称此种情况为静态哈希表（static hash table），否则称为动态哈希表（dynamic hash table）。</p>
+<h2 id="哈希冲突"><a href="#哈希冲突" class="headerlink" title="哈希冲突"></a><strong>哈希冲突</strong></h2><p>哈希冲突的解决方案有两种：</p>
+<ol>
+<li>冲突避免</li>
+<li>冲突解决</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">hash table</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/11/2020-08-11-哈希表总结及其高级话题讨论/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-08-10-A-Interview" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1055,177 +1153,6 @@
 
 
   
-    <article id="post-2020-07-30-React-Countdown-Clock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/01/2020-07-30-React-Countdown-Clock/">React Countdown Clock</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/01/2020-07-30-React-Countdown-Clock/" class="archive-article-date">
-  	<time datetime="2020-08-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="React-Countdown-Clock"><a href="#React-Countdown-Clock" class="headerlink" title="React Countdown Clock"></a>React Countdown Clock</h1><p>A HTML 5 canvas countdown clock as a React component.</p>
-<p><a href="https://camo.githubusercontent.com/bf209fec65fdf5428ca43d935e40dfd0b7bbf9c2/687474703a2f2f70756768707567682e6769746875622e696f2f72656163742d636f756e74646f776e2d636c6f636b2f616e696d617465642e676966" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/bf209fec65fdf5428ca43d935e40dfd0b7bbf9c2/687474703a2f2f70756768707567682e6769746875622e696f2f72656163742d636f756e74646f776e2d636c6f636b2f616e696d617465642e676966" alt="Screenshot"></a></p>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="http://pughpugh.github.io/react-countdown-clock" target="_blank" rel="noopener">pughpugh.github.io/react-countdown-clock</a></p>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-countdown-clock</span><br></pre></td></tr></table></figure>
-
-<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ReactCountdownClock seconds=&#123;60&#125;</span><br><span class="line">                     color=&quot;#000&quot;</span><br><span class="line">                     alpha=&#123;0.9&#125;</span><br><span class="line">                     size=&#123;300&#125;</span><br><span class="line">                     onComplete=&#123;myCallback&#125; /&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><table>
-<thead>
-<tr>
-<th>prop</th>
-<th>type</th>
-<th>default</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>seconds</td>
-<td>integer</td>
-<td>60</td>
-<td>Seconds to countdown</td>
-</tr>
-<tr>
-<td>color</td>
-<td>string</td>
-<td>#000</td>
-<td>Colour of counter</td>
-</tr>
-<tr>
-<td>alpha</td>
-<td>float</td>
-<td>1.0</td>
-<td>Alpha transparency of counter</td>
-</tr>
-<tr>
-<td>size</td>
-<td>integer</td>
-<td>300</td>
-<td>Width &amp; height of canvas element</td>
-</tr>
-<tr>
-<td>weight</td>
-<td>integer</td>
-<td></td>
-<td>Weight of circle, in pixels</td>
-</tr>
-<tr>
-<td>fontSize</td>
-<td>integer/string</td>
-<td>auto</td>
-<td>px size of font. <code>auto</code> for dynamic sizing.</td>
-</tr>
-<tr>
-<td>font</td>
-<td>string</td>
-<td>Arial</td>
-<td>Font of counter</td>
-</tr>
-<tr>
-<td>timeFormat</td>
-<td>string</td>
-<td>seconds</td>
-<td>Counter style; <code>seconds</code> or <code>hms</code></td>
-</tr>
-<tr>
-<td>showMilliseconds</td>
-<td>boolean</td>
-<td>true</td>
-<td>Show milliseconds for last 10 seconds</td>
-</tr>
-<tr>
-<td>onComplete</td>
-<td>func</td>
-<td></td>
-<td>Callback when time completes</td>
-</tr>
-<tr>
-<td>paused</td>
-<td>boolean</td>
-<td>false</td>
-<td>Pause countdown of the timer</td>
-</tr>
-<tr>
-<td>pausedText</td>
-<td>string</td>
-<td></td>
-<td>Text to display when paused, defaults to the current time</td>
-</tr>
-</tbody></table>
-<h2 id="Bugs-amp-Contributions"><a href="#Bugs-amp-Contributions" class="headerlink" title="Bugs &amp; Contributions"></a>Bugs &amp; Contributions</h2><p>Bugs, features and pull requests always welcome.</p>
-<p><a href="https://github.com/pughpugh/react-countdown-clock/issues" target="_blank" rel="noopener">github.com/pughpugh/react-countdown-clock/issues</a></p>
-<p>Also, it’s always just nice to hear how people are using it. Feel free to get in touch.</p>
-<ul>
-<li>Email: <a href="mailto:hugh@hcgallagher.co.uk" target="_blank" rel="noopener">hugh@hcgallagher.co.uk</a></li>
-<li>Web: <a href="http://www.hughgallagher.co.uk/" target="_blank" rel="noopener">www.hughgallagher.co.uk</a></li>
-</ul>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://github.com/pughpugh/react-countdown-clock" target="_blank" rel="noopener">react-countdown-clock</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Clock</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/01/2020-07-30-React-Countdown-Clock/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1338,15 +1265,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1406,11 +1333,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1442,11 +1369,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1458,11 +1385,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1486,11 +1413,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1502,11 +1429,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1522,11 +1449,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1574,11 +1501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1598,11 +1525,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1614,19 +1541,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1638,6 +1561,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
               </li>
              
@@ -1646,11 +1573,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Life</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1678,19 +1609,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1702,6 +1629,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
@@ -1710,11 +1641,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1730,11 +1661,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
