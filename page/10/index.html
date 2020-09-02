@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 142</a>
+<a>Total Number of Articles: 143</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,96 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-06-04-React-Lifecycle-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">React Lifecycle Notes</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/" class="archive-article-date">
+  	<time datetime="2020-06-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="React关注数据，view会因此变化"><a href="#React关注数据，view会因此变化" class="headerlink" title="React关注数据，view会因此变化"></a>React关注数据，view会因此变化</h3><p>Data model: 从这个需求中，得看出:</p>
+<p>1.list: task []</p>
+<p>2.done, undone =&gt;  array sublist stored. task [] -&gt;[done]</p>
+<p>​                                                                                 \ [undone]</p>
+<p>3.增删查改操作</p>
+<h3 id="React-Lifecycle"><a href="#React-Lifecycle" class="headerlink" title="React Lifecycle"></a>React Lifecycle</h3><p>Mounting的render实现了上树到真实的dom。</p>
+<p>Mounting的componentDidMount: 一般用于从server拿数据，constructor里面和render里面 (render里面reset数据会死循环)都不会去拿数据，一般componentDidMount里面有reset。作用：1.更新组件私有数据 2.对真实dom进行操作</p>
+<h3 id="Parent-Child"><a href="#Parent-Child" class="headerlink" title="Parent - Child"></a>Parent - Child</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">APP</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span>  // <span class="title">parent</span> <span class="title">component</span></span></span><br><span class="line"><span class="class"></span>&#123; <span class="keyword">constructor</span>()&#123;</span><br><span class="line">	<span class="keyword">super</span>();</span><br><span class="line">	<span class="keyword">this</span>.state = &#123;</span><br><span class="line">		todos: [</span><br><span class="line">		 &#123;<span class="attr">id</span>: <span class="number">1</span>, <span class="attr">title</span>: <span class="string">"task1"</span>, <span class="attr">done</span>: <span class="literal">false</span>&#125;,</span><br><span class="line">		 ... </span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">	render()&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;h1&gt;ToDo App&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">		&lt;HD addTodo=&#123;this.addItem&#125; /</span>&gt;</span><br><span class="line">		&lt;BD todoList=&#123;<span class="keyword">this</span>.state.todos&#125; /&gt;</span><br><span class="line">		&lt;FT /&gt;</span><br><span class="line">		&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	addItem = (item) =&gt; &#123; /</span><span class="regexp">/ parent 拿到子组件传回来的，进行状态更新</span></span><br><span class="line"><span class="regexp">		console.log(item);</span></span><br><span class="line"><span class="regexp">		this.setState(&#123; </span></span><br><span class="line"><span class="regexp">			todos: [</span></span><br><span class="line"><span class="regexp">				...this.state.todos,</span></span><br><span class="line"><span class="regexp">				&#123;</span></span><br><span class="line"><span class="regexp">					id: Math.floor(Math.random() * 100),</span></span><br><span class="line"><span class="regexp">					title: item,</span></span><br><span class="line"><span class="regexp">					done: false</span></span><br><span class="line"><span class="regexp">				&#125;</span></span><br><span class="line"><span class="regexp">			]</span></span><br><span class="line"><span class="regexp">		&#125;)</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">class HD extends React.Component&#123;</span></span><br><span class="line"><span class="regexp">	constructor()&#123;</span></span><br><span class="line"><span class="regexp">	super();</span></span><br><span class="line"><span class="regexp">	/</span><span class="regexp">/ define</span></span><br><span class="line"><span class="regexp">	this.input = React.createRef();</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	</span></span><br><span class="line"><span class="regexp">	render()&#123;</span></span><br><span class="line"><span class="regexp">	return(</span></span><br><span class="line"><span class="regexp">	&lt;div&gt;</span></span><br><span class="line"><span class="regexp">	&lt;input type="text" ref=&#123;this.input&#125; /</span>&gt;</span><br><span class="line">	&lt;button onClick=&#123;() =&gt; &#123;<span class="comment">//get ref</span></span><br><span class="line">	<span class="keyword">const</span> val = <span class="keyword">this</span>.input.current.value</span><br><span class="line">	<span class="comment">//use cb 调用par ent组件传给子组件的函数 , cb否则是自动点击</span></span><br><span class="line">	<span class="keyword">this</span>.props.addToDo(val)</span><br><span class="line">	<span class="keyword">this</span>.input.current.value = <span class="string">''</span>; <span class="comment">//清空已经键入的数据</span></span><br><span class="line">	&#125;&#125;</span><br><span class="line">	&gt;add <span class="keyword">new</span> task&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">	)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="setSet-Two-Methods"><a href="#setSet-Two-Methods" class="headerlink" title="setSet Two Methods"></a>setSet Two Methods</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//法1：不需要更新之后，再做另外操作，</span></span><br><span class="line">addItem = <span class="function">(<span class="params">item</span>) =&gt;</span> &#123; <span class="comment">// parent 拿到子组件传回来的，进行状态更新</span></span><br><span class="line">		<span class="built_in">console</span>.log(item);</span><br><span class="line">		<span class="keyword">this</span>.setState(&#123;  <span class="comment">//setState 异步</span></span><br><span class="line">			todos: [</span><br><span class="line">				...this.state.todos,</span><br><span class="line">				&#123;</span><br><span class="line">					id: <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">100</span>),</span><br><span class="line">					title: item,</span><br><span class="line">					done: <span class="literal">false</span></span><br><span class="line">				&#125;</span><br><span class="line">			]</span><br><span class="line">		&#125;)</span><br><span class="line">	也可以&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//法2： this.setState(preState =&#123;&#125;) //传入回调函数. 需要等更新之后，再做另外操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">preState</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> &#123;</span><br><span class="line"></span><br><span class="line">todos: <span class="keyword">this</span>.state.todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id? &#123;...item, <span class="attr">done</span>: states&#125;: item)</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于this.setState(preState =&gt; (&#123; todos: preState.todos.map(item =&gt; </span></span><br><span class="line"></span><br><span class="line"><span class="comment">// item.id === id? &#123;...item, done: states&#125;: item), ()=&gt;&#123;&#125;) 多用于逻辑结构复</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//杂，希望setState之后再执行下面的函数()=&gt; &#123;&#125;用preState. 传两个回调函数。</span></span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">vs</span><br><span class="line"></span><br><span class="line">updateItem = <span class="function">(<span class="params">id, status</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">this</span>.setState(&#123;</span><br><span class="line"></span><br><span class="line">​	todos: <span class="keyword">this</span>.state.todos.map(<span class="function"><span class="params">item</span> =&gt;</span> item.id === id? &#123;...item, <span class="attr">done</span>: states&#125;: item)</span><br><span class="line"></span><br><span class="line">&#125;)&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="onClick-this绑定"><a href="#onClick-this绑定" class="headerlink" title="onClick, this绑定"></a>onClick, this绑定</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Parent</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span></span>&#123;</span><br><span class="line">	<span class="keyword">constructor</span>()&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">		<span class="keyword">this</span>.state = &#123;</span><br><span class="line">			isShow: <span class="literal">false</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">this</span>.handleClick = <span class="keyword">this</span>.handleClick.bind(<span class="keyword">this</span>);<span class="comment">//this永远指向Parent</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">render()&#123;</span><br><span class="line">	<span class="keyword">return</span> (</span><br><span class="line">	&lt;div&gt;<span class="xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>This is Parent<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">	&lt;button onClick=&#123;<span class="keyword">this</span>.handleClick&#125;&gt; show/hide &lt;<span class="regexp">/button&gt; /</span><span class="regexp">/ 点击事件有可能改变this指向，所以绑定函数在constructor里面</span></span><br><span class="line"><span class="regexp">	&lt;hr /</span>&gt;</span><br><span class="line">	&#123;</span><br><span class="line">	<span class="keyword">this</span>.state.isShow ? <span class="xml"><span class="tag">&lt;<span class="name">Child</span> /&gt;</span></span>: <span class="literal">null</span></span><br><span class="line">	&#125;</span><br><span class="line">	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">handleClick()&#123;</span></span><br><span class="line"><span class="regexp">	this.setState(&#123;</span></span><br><span class="line"><span class="regexp">		isShow: !this.state.isShow</span></span><br><span class="line"><span class="regexp">	&#125;)</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">VS &lt;button onClick = &#123;</span></span><br><span class="line"><span class="regexp">  () =&gt; &#123;</span></span><br><span class="line"><span class="regexp">    this.setState(&#123;</span></span><br><span class="line"><span class="regexp">      isShow: !this.state.isShow</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="JSON-JS"><a href="#JSON-JS" class="headerlink" title="JSON, JS"></a>JSON, JS</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">json: &#123;<span class="string">"key"</span> : <span class="string">'Joe'</span>&#125; <span class="comment">//.json file</span></span><br><span class="line">js: &#123;<span class="attr">key</span> : <span class="string">'Joe'</span>&#125; <span class="comment">// js file</span></span><br><span class="line">    &#123;<span class="string">"key"</span> : <span class="string">'Joe'</span>&#125;</span><br><span class="line">    &#123;<span class="string">"first-name"</span>: <span class="string">'Joe'</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="AJAX"><a href="#AJAX" class="headerlink" title="AJAX"></a>AJAX</h3><p>前后端通信</p>
+<p>react有axios</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Lifecycle</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/04/2020-06-04-React-Lifecycle-Notes/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-03-How-Does-the-Frontend-Communicate-with-the-Backend" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1069,82 +1159,6 @@
 
 
   
-    <article id="post-2020-05-26-JavaScript-Q-&amp;-A-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">JavaScript Q &amp; A 2</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/" class="archive-article-date">
-  	<time datetime="2020-05-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>JavaScript is the popular programming language of the web. The high-level, interpreted programming language follows a multi-paradigm approach. As such, it has several traits of <a href="https://hackr.io/blog/functional-programming-concepts-advantages-disadvantages-applications" target="_blank" rel="noopener">functional programming</a>.</p>
-<p>If you take a look at the <a href="https://insights.stackoverflow.com/survey/2019" target="_blank" rel="noopener">StackOverflow Developer Survey 2019</a>, you will find that JavaScript tops the list of the most preferred programming language for the 6th consecutive year.</p>
-<p>Almost 70% of all the respondents of the Stackoverflow survey state that they have been using JS for their day-to-day development chores. Hence, following a career path in JavaScript development is lucrative.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">JavaScript</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/26/2020-05-26-JavaScript-Q-&-A-2/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/11/">Next &raquo;</a>
@@ -1249,11 +1263,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1289,11 +1303,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1317,11 +1331,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,11 +1355,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1365,15 +1379,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1389,6 +1403,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
@@ -1397,23 +1419,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1429,7 +1439,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1437,7 +1447,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,10 +1464,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1473,11 +1487,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1505,11 +1519,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1517,15 +1531,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1537,11 +1551,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1549,19 +1563,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1581,6 +1595,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
@@ -1590,10 +1608,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1617,11 +1631,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
