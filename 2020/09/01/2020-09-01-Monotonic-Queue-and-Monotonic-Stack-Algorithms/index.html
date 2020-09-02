@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gic83q9izaj310f0izmy7.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gic7stci03j301o01dgld.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gic7sse2jgj30jh0fzt91.jpg">
-<meta property="og:updated_time" content="2020-09-02T05:06:50.534Z">
+<meta property="og:updated_time" content="2020-09-02T05:50:31.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Monotonic Queue and Monotonic Stack Algorithms">
 <meta name="twitter:description" content="Monotonic Queue SummaryThe following question can be solved by monotonic queue:  LC84. Largest Rectangle in Histogram LC239. Sliding Window Maximum LC739. Daily Temperatures LC862. Shortest Subarray w">
@@ -219,8 +219,6 @@
 <p>This article is about Monotonic Queue data structure as well as algorithmic problems, which can be solved using it, such as ‘Largest Rectangle Area’, ‘132 Pattern’ and others. You can find a list of other problems to practice this topic at <a href="https://medium.com/@gregsh9.5/monotonic-queue-notes-980a019d5793#6905" target="_blank" rel="noopener">the end of the page</a>.</p>
 <p>This article will be updated with more problem analyzes, meanwhile you can find full solutions to problems in the article in <a href="https://github.com/johnyleebrown/algorithms-posts/tree/master/monotonic-queue" target="_blank" rel="noopener">this repository</a>.</p>
 <h2 id="Definition"><a href="#Definition" class="headerlink" title="Definition"></a>Definition</h2><p>Monotonic Queue is a data structure that keeps it’s elements either entirely in non-increasing, or entirely in non-decreasing order. For some problems just a stack can be of use, although for a more standardized approach we can apply queue (or deque), and from this point forward I will be using the term Monotonic Queue (or MQ for short). Here are some commonly used operations:</p>
-<iframe src="https://medium.com/media/719c7e652c6e509df4b3d58761d6bc62" allowfullscreen frameborder="0" height="461" width="680" title class="s t u bw ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 461px;"></iframe>
-
 <p>Monotonic Queue interface</p>
 <p>MQ is mostly used as a dynamic programming optimization technique and for some problems where it is applicable we can reduce the reasoning to finding the nearest element. The advantage of MQ is linear time complexity.</p>
 <p>One way to think of how can the monotonic queue technique be applied is to imagine how you can benefit from using increasing or decreasing sequence and what could you calculate having that sequence.</p>
@@ -229,8 +227,6 @@
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gic7stci03j301o01dgld.jpg" alt="Image for post"></p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gic7sse2jgj30jh0fzt91.jpg" alt="Image for post"></p>
 <p>For each element from last to first we push elements to MQ. Before actually adding an element to the queue, we remove values which are smaller than the current value, this way we can keep a non-increasing sequence. Then we record the distance to the element at the end of the queue and then we finally add a new element.</p>
-<iframe src="https://medium.com/media/3ef4d3c9625963fed0c081f51e846c56" allowfullscreen frameborder="0" height="439" width="680" title class="s t u bw ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 439px;"></iframe>
-
 <p>Push method</p>
 <p>Here is the visual guide, you can see an input array on the left and a queue on the right:</p>
 <p>Check out the full solution to this problem <a href="https://gist.github.com/johnyleebrown/55ee191a3997907e0a034efa75e5e279" target="_blank" rel="noopener">right here</a>.</p>
@@ -240,8 +236,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i from 1 to n:</span><br><span class="line">    j = i-1</span><br><span class="line">    while A[j] &gt;= A[i]:</span><br><span class="line">        j = P[j]</span><br><span class="line">    P[i] = j</span><br></pre></td></tr></table></figure>
 
 <p>Here is the version of the problem using this algorithm (‘nearest’ array here is the analogy of ‘P’ array from the above):</p>
-<iframe src="https://medium.com/media/ecff21198088538626db6f4b04a0fb97" allowfullscreen frameborder="0" height="549" width="680" title class="s t u bw ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 548.984px;"></iframe>
-
 <p>Implementation using array</p>
 <p>Now, let’s continue with the queue..</p>
 <hr>
@@ -249,8 +243,6 @@
 <p>We can take a guess that the largest area would be one of those highlighted rectangles on slides. Also we can say that it will involve one or more full bar lengths. The largest area’s height will be the highest bar of the selected bars or the smaller bar that will cut along other bars that are bigger. We can cut along bigger bars with smaller bar and we can’t cut along smaller bars with the bigger one. Thus the width would be spanning between smaller bars - from the smaller bar on the left to the smaller bar on the right from the current bar.</p>
 <p>To solve this, MQ fits right in - we will be using two increasing MQs for that, one for left nearest values and one for right ones. Please check out the code:</p>
 <p>Also, here is an optimized version:</p>
-<iframe src="https://medium.com/media/d901278afc5dcd0a44c4fae7c9a3e3a1" allowfullscreen frameborder="0" height="1011" width="680" title class="s t u bw ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 1011px;"></iframe>
-
 <p>You can <a href="https://gist.github.com/johnyleebrown/eaacbd99864f9bb5113f9b99c7feee86" target="_blank" rel="noopener">apply the same idea</a> in the problems <a href="https://leetcode.com/problems/maximal-rectangle/" target="_blank" rel="noopener">Maximal Rectangle</a> and <a href="https://leetcode.com/problems/maximal-square/" target="_blank" rel="noopener">Maximal Square</a>.</p>
 <hr>
 <h2 id="132-Pattern"><a href="#132-Pattern" class="headerlink" title="132 Pattern"></a><a href="https://leetcode.com/problems/132-pattern/" target="_blank" rel="noopener">132 Pattern</a></h2><p>132 Pattern is another interesting problem, we will use essentially the same algorithm with slight modifications. In the task we need to figure out if we have a sequence <code>a*i*, a*j*, a*k*</code> in array such that <code>*i* &lt; *j* &lt; *k*</code> and <code>a*i* &lt; a*k* &lt; a*j*</code>.</p>
@@ -258,8 +250,6 @@
 <hr>
 <h2 id="Shortest-Subarray-with-Sum-at-Least-K"><a href="#Shortest-Subarray-with-Sum-at-Least-K" class="headerlink" title="Shortest Subarray with Sum at Least K"></a><a href="https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/" target="_blank" rel="noopener">Shortest Subarray with Sum at Least K</a></h2><p>Here sliding window algorithm alone will not work because of negative values (<a href="https://leetcode.com/problems/minimum-size-subarray-sum/" target="_blank" rel="noopener">similar problem where it works</a>). We will have to improve sliding window algorithm to use MQ.</p>
 <p>Let’s unravel the problem statement. We need to find the shortest subarray <code>min(r - l)</code> so <code>sumAt[r] — sumAt[l] ≥ K</code> (sumAt is a prefix sum array) or find the nearest <code>l</code> so that <code>sumAt[l] ≤ sumAt[r]-K</code>. Using increasing MQ will help us keep the elements of <code>sumAt</code> sorted, when keeping elements such as <code>sumAt[i]</code> where <code>sumAt[i] &gt; sumAt[j]</code> might block the movement of the left window pointer. So, keep increasing MQ, while changing the window(l, r).</p>
-<iframe src="https://medium.com/media/0b99c2e7db24a7386ce4b12db494e883" allowfullscreen frameborder="0" height="417" width="680" title class="s t u bw ai" scrolling="auto" style="box-sizing: inherit; position: absolute; top: 0px; left: 0px; width: 680px; height: 417px;"></iframe>
-
 <p>for each prefix sum at i push <code>new Item(pre[i], i) to MQ</code></p>
 <p>Check out the full solution to this problem <a href="https://gist.github.com/johnyleebrown/55ee191a3997907e0a034efa75e5e279" target="_blank" rel="noopener">right here</a>.</p>
 <hr>
@@ -541,11 +531,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
