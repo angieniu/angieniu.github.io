@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 143</a>
+<a>Total Number of Articles: 150</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,687 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-19-压缩算法-String-Encoding" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/">压缩算法 String Encoding</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/" class="archive-article-date">
+  	<time datetime="2020-08-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="认识压缩算法"><a href="#认识压缩算法" class="headerlink" title="认识压缩算法"></a>认识压缩算法</h2><p>我们想必都有过<code>压缩</code>和 <code>解压缩</code>文件的经历，当文件太大时，我们会使用文件压缩来降低文件的占用空间。比如微信上传文件的限制是100 MB，我这里有个文件夹无法上传，但是我解压完成后的文件一定会小于 100 MB，那么我的文件就可以上传了。</p>
+<p>此外，我们把相机拍完的照片保存到计算机上的时候，也会使用压缩算法进行文件压缩，文件压缩的格式一般是<code>JPEG</code>。</p>
+<p>那么什么是压缩算法呢？压缩算法又是怎么定义的呢？在认识算法之前我们需要先了解一下文件是如何存储的</p>
+<h3 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h3><p>文件是将数据存储在磁盘等存储媒介的一种形式。程序文件中最基本的存储数据单位是<code>字节</code>。文件的大小不管是 xxxKB、xxxMB等来表示，就是因为文件是以字节 <code>B = Byte</code> 为单位来存储的。</p>
+<p>文件就是字节数据的集合。用 1 字节（8 位）表示的字节数据有 256 种，用二进制表示的话就是 0000 0000 - 1111 1111 。如果文件中存储的数据是文字，那么该文件就是文本文件。如果是图形，那么该文件就是图像文件。在任何情况下，文件中的字节数都是<code>连续存储</code>的。</p>
+<p><img src="https://raw.githubusercontent.com/Joincxuan/Joincxuan.github.io/master/image/howComputerWork06/01.png" alt="img"></p>
+<h3 id="压缩算法的定义"><a href="#压缩算法的定义" class="headerlink" title="压缩算法的定义"></a>压缩算法的定义</h3><p>上面介绍了文件的集合体其实就是一堆字节数据的集合，那么我们就可以来给压缩算法下一个定义。</p>
+<p><code>压缩算法（compaction algorithm）</code>指的就是数据压缩的算法，主要包括压缩和还原（解压缩）的两个步骤。</p>
+<p>其实就是在不改变原有文件属性的前提下，降低文件字节空间和占用空间的一种算法。</p>
+<p>根据压缩算法的定义，我们可将其分成不同的类型：</p>
+<p><strong>有损和无损</strong></p>
+<p>无损压缩：能够<code>无失真地</code>从压缩后的数据重构，准确地还原原始数据。可用于对数据的准确性要求严格的场合，如可执行文件和普通文件的压缩、磁盘的压缩，也可用于多媒体数据的压缩。该方法的压缩比较小。如差分编码、RLE、Huffman编码、LZW编码、算术编码。</p>
+<p>有损压缩：有失真，<code>不能完全准确地</code>恢复原始数据，重构的数据只是原始数据的一个近似。可用于对数据的准确性要求不高的场合，如多媒体数据的压缩。该方法的压缩比较大。例如预测编码、音感编码、分形压缩、小波压缩、JPEG/MPEG。</p>
+<p><strong>对称性</strong></p>
+<p>如果编解码算法的复杂性和所需时间差不多，则为对称的编码方法，多数压缩算法都是对称的。但也有不对称的，一般是编码难而解码容易，如 Huffman 编码和分形编码。但用于密码学的编码方法则相反，是编码容易，而解码则非常难。</p>
+<p><strong>帧间与帧内</strong></p>
+<p>在视频编码中会同时用到帧内与帧间的编码方法，帧内编码是指在一帧图像内独立完成的编码方法，同静态图像的编码，如 JPEG；而帧间编码则需要参照前后帧才能进行编解码，并在编码过程中考虑对帧之间的时间冗余的压缩，如 MPEG。</p>
+<p><strong>实时性</strong></p>
+<p>在有些多媒体的应用场合，需要实时处理或传输数据（如现场的数字录音和录影、播放MP3/RM/VCD/DVD、视频/音频点播、网络现场直播、可视电话、视频会议），编解码一般要求延时 ≤50 ms。这就需要简单/快速/高效的算法和高速/复杂的CPU/DSP芯片。</p>
+<p><strong>分级处理</strong></p>
+<p>有些压缩算法可以同时处理不同分辨率、不同传输速率、不同质量水平的多媒体数据，如JPEG2000、MPEG-2/4。</p>
+<p>这些概念有些抽象，主要是为了让大家了解一下压缩算法的分类，下面我们就对具体的几种常用的压缩算法来分析一下它的特点和优劣</p>
+<h2 id="几种常用压缩算法的理解"><a href="#几种常用压缩算法的理解" class="headerlink" title="几种常用压缩算法的理解"></a>几种常用压缩算法的理解</h2><h3 id="RLE-算法的机制"><a href="#RLE-算法的机制" class="headerlink" title="RLE 算法的机制"></a>RLE 算法的机制</h3><p>接下来就让我们正式看一下文件的压缩机制。首先让我们来尝试对 <code>AAAAAABBCDDEEEEEF</code> 这 17 个半角字符的文件（文本文件）进行压缩。虽然这些文字没有什么实际意义，但是很适合用来描述 <code>RLE</code> 的压缩机制。</p>
+<p>由于半角字符（其实就是英文字符）是作为 1 个字节保存在文件中的，所以上述的文件的大小就是 17 字节。如图</p>
+<p><img src="https://raw.githubusercontent.com/Joincxuan/Joincxuan.github.io/master/image/howComputerWork06/02.png" alt="img"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-18-String,-StringBuffer,-StringBuilder-区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/18/2020-08-18-String,-StringBuffer,-StringBuilder-区别/">String, StringBuffer, StringBuilder 区别</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/18/2020-08-18-String,-StringBuffer,-StringBuilder-区别/" class="archive-article-date">
+  	<time datetime="2020-08-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>String</strong> is used for normal string based requirement, and when a String can suffice it.</p>
+<p><strong>String Builder</strong> is used whenever you want to manipulate and play with the string.</p>
+<p><strong>Character Array</strong> is used when you want to <strong>easily</strong> iterate over each and every character</p>
+<p><strong>ArrayList</strong> is a collection. Use it for holding object of a particular type.</p>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>String、StringBuilder、StringBuffer 本质都是利用 char 数组实现的。</p>
+<p>这三者的最大区别：</p>
+<ul>
+<li><code>String</code> 是<strong>字符串常量</strong></li>
+<li><code>StringBuilder</code> 是<strong>字符串变量(线程不安全)</strong></li>
+<li><code>StringBuffer</code> 是<strong>字符串变量(线程安全)</strong></li>
+</ul>
+<h1 id="性能差别"><a href="#性能差别" class="headerlink" title="性能差别"></a>性能差别</h1><p><code>String</code> 是不可变对象，在创建好 <code>String</code> 对象后，每次字符串内容的变化其实重新引用了另一个对象，在 jvm 中创建和销毁对象都是非常耗时的。</p>
+<p>所以，对于大量的字符串拼接，最好还是使用 <code>StringBuilder</code> 和 <code>StringBuffer</code>。</p>
+<p>当然字符串拼接也不是绝对的 <code>String</code> 就一定慢，<code>String</code> 的拼接是可能经过编译器优化的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String S1 = “This is only a” + “ simple” + “ test”;<span class="comment">//直接拼接现有字符串</span></span><br><span class="line">String S1 = “This is only a simple test”;<span class="comment">//编译器优化后</span></span><br><span class="line"><span class="comment">//这时确实比 StringBuffer 和 StringBuilder 快</span></span><br><span class="line">StringBuffer Sb = <span class="keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</span><br></pre></td></tr></table></figure>
+
+<p>但是对于不是字符串拼接的话，还是用 StringBuffer 和 StringBuilder 比较快。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 慢</span></span><br><span class="line">String S2 = “This is only a”;</span><br><span class="line">String S3 = “ simple”;</span><br><span class="line">String S4 = “ test”;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*这里其实 JVM 会规规矩矩的按照原来的方式去做：</span></span><br><span class="line"><span class="comment">*先创建一个 StringBuilder 对象，</span></span><br><span class="line"><span class="comment">*然后再进行调用它的 append 方法对 字符串进行拼接。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">String S1 = S2 + S3 + S4; </span><br><span class="line"></span><br><span class="line"><span class="comment">//快</span></span><br><span class="line">StringBuffer Sb = <span class="keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</span><br></pre></td></tr></table></figure>
+
+<p><code>StringBuilder</code> 和 <code>StringBuffer</code> 的使用大同小异，性能上由于 <code>StringBuffer</code> 大量的方法通过使用 <code>syschronized</code> 来保证线程安全的缘故，多了加锁、解锁的开销。</p>
+<p>所以，如果是单线程操作，那还是使用 <code>StringBuilder</code> 来获得更好的性能。</p>
+<h1 id="StringBuilder-和-StringBuffer-区别"><a href="#StringBuilder-和-StringBuffer-区别" class="headerlink" title="StringBuilder 和 StringBuffer 区别"></a><code>StringBuilder</code> 和 <code>StringBuffer</code> 区别</h1><p><img src="https://note.youdao.com/yws/api/personal/file/33CE1526261046DCBABA34EFFC6B2B85?method=download&shareKey=65398bdd4025b385fa36ce3e2bb00d60" alt="StringBuffer和StringBuilder"><br>从类图可以看出，两者多少继承了 <code>AbstractStringBuilder</code> ，所以两者大部分的操作都是通过调用 <code>AbstractStringBuilder</code> 的方法完成的。</p>
+<p>除了是否线程安全这点外，<code>StringBuffer</code> 还在 <code>toString()</code> 方法中引入了缓存的操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">StringBuffe.java</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * A cache of the last value returned by toString. Cleared</span></span><br><span class="line"><span class="comment">     * whenever the StringBuffer is modified.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">char</span>[] toStringCache;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (toStringCache == <span class="keyword">null</span>) &#123;</span><br><span class="line">            toStringCache = Arrays.copyOfRange(value, <span class="number">0</span>, count);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(toStringCache, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        toStringCache = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">super</span>.append(str);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，当多次调用 <code>toString()</code> 方法时，是返回同一个 Stirng 对象的，而当 char 数组发生改变时又会及时释放缓存，避免了缓存一致性问题。</p>
+<p>这和 <code>StringBuilder</code> 中的 <code>toString()</code> 方法不同</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder.java</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Create a copy, don't share the array</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(value, <span class="number">0</span>, count);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="初始容量"><a href="#初始容量" class="headerlink" title="初始容量"></a>初始容量</h1><p><code>StringBuilder</code> 和 <code>StringBuffer</code> 在拼接字符串过程中，如果容量不够了，会新建 char 数组，容量为<strong>旧容量*2+2</strong>，并复制旧数组的元素到新数组中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minimumCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">if</span> (minimumCapacity - value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            value = Arrays.copyOf(value,</span><br><span class="line">                    newCapacity(minimumCapacity));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">newCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = (value.length &lt;&lt; <span class="number">1</span>) + <span class="number">2</span>;<span class="comment">//新容量</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (newCapacity &lt;= <span class="number">0</span> || MAX_ARRAY_SIZE - newCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        ? hugeCapacity(minCapacity)</span><br><span class="line">        : newCapacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>每一次扩容显然是一次很大的性能开销，那如果在使用之前就指定好要使用的容量或大致的容量，那这无疑能大大减少性能开销。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">StringBuilder</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(capacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">AbstractStringBuilder(<span class="keyword">int</span> capacity) &#123;</span><br><span class="line">        value = <span class="keyword">new</span> <span class="keyword">char</span>[capacity];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghx8k6daeij30kv0lggqk.jpg" alt="Screen Shot 2020-08-19 at 10.58.01 PM"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghx8mcceq6j30l20o00w3.jpg" alt="Screen Shot 2020-08-19 at 11.00.04 PM"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghx8pc04jej30l50p2n4k.jpg" alt="Screen Shot 2020-08-19 at 11.02.57 PM"></p>
+<p>![Screen Shot 2020-08-19 at 10.58.26 PM](/Users/Angie/Library/Application Support/typora-user-images/Screen Shot 2020-08-19 at 11.01.22 PM.png)</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://segmentfault.com/a/1190000022038238" target="_blank" rel="noopener">https://segmentfault.com/a/1190000022038238</a></p>
+<p><a href="https://www.stormbuf.com/2019/09/17/string-stringbuilder-stringbuffer-difference.html" target="_blank" rel="noopener">https://www.stormbuf.com/2019/09/17/string-stringbuilder-stringbuffer-difference.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">String, StringBuffer, StringBuilder</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/18/2020-08-18-String,-StringBuffer,-StringBuilder-区别/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-17-Swapping-Primitives-and-Objects-in-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/17/2020-08-17-Swapping-Primitives-and-Objects-in-Java/">Swapping Primitives and Objects in Java</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/17/2020-08-17-Swapping-Primitives-and-Objects-in-Java/" class="archive-article-date">
+  	<time datetime="2020-08-17T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Reference:</p>
+<p><a href="https://www.techiedelight.com/swapping-primitives-objects-java/" target="_blank" rel="noopener">https://www.techiedelight.com/swapping-primitives-objects-java/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/17/2020-08-17-Swapping-Primitives-and-Objects-in-Java/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-16-Tarjan算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/16/2020-08-16-Tarjan算法/">Tarjan算法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/16/2020-08-16-Tarjan算法/" class="archive-article-date">
+  	<time datetime="2020-08-16T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>桥两边的点至少有一个割点，桥两边的点不一定都是割点。</p>
+<p>看成一个树</p>
+<p>​        A</p>
+<p>​        /\</p>
+<p>​    C – B</p>
+<pre><code>\</code></pre><p>​            D</p>
+<p>​            /\</p>
+<p>​        G    E</p>
+<p>​         \   /</p>
+<p>​            F</p>
+<p>环 访问回到自己才算触底</p>
+<h2 id="tarjan算法"><a href="#tarjan算法" class="headerlink" title="tarjan算法"></a>tarjan算法</h2><p>tarjan算法的基础就是深度优先搜索-DFS。tarjan算法需要两个数组进行辅佐，即low数组和dfn数组。dfn数组记录搜索到该点时的时间（可以理解为该点被搜索的序号），low数组是一个标记数组，表示该点或者以这个点为根的子树能够追溯到最早的栈中节点的次序。可以环连接到的节点。</p>
+<p><strong>求无向图的割点与割边</strong></p>
+<p>割点：在无向图中，如果将一个点以及所有连接该点的边都去掉，图就不再连通，那么这个点就叫做这个图的一个割点。<br>割边：在无向图中，如果将一条边去掉，图就不再连通则称这条边为图的一个割边。</p>
+<p>求割点：如果一个点（u）所连接的几个节点（v）的low值大或等于此节点（u）的dfn值时说明之后的节点（v）无法连接到比此点（u）更早的点上，则说明这个节点（u）是一个割点。<strong>PS：根节点需特判，当根节点在dfs树有两个或更多个子树时则说明根节点是割点</strong></p>
+<p>求割边：与割点类似，如果一个点（u）的dfn值小于（<strong>不能等于，否则不一定</strong>）和它连接的一个节点（v）的low值，则说明这条边（uv）为图的一个割边。说明之后的节点（v）无法连接到比此点（u）更早的点上，则说明这个边uv是割边。</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.cnblogs.com/tgycoder/p/5048898.html" target="_blank" rel="noopener">https://www.cnblogs.com/tgycoder/p/5048898.html</a></p>
+<p><a href="https://www.cnblogs.com/Menteur-Hxy/p/9248051.html" target="_blank" rel="noopener">https://www.cnblogs.com/Menteur-Hxy/p/9248051.html</a></p>
+<p><a href="http://blog.miskcoo.com/2016/07/tarjan-algorithm-strongly-connected-components" target="_blank" rel="noopener">http://blog.miskcoo.com/2016/07/tarjan-algorithm-strongly-connected-components</a></p>
+<p><a href="https://www.jianshu.com/p/346e01244080" target="_blank" rel="noopener">https://www.jianshu.com/p/346e01244080</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/16/2020-08-16-Tarjan算法/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-15-Server-Side-Architecture.-Front-End-Servers-And-Client-Side-Random-Load-Balancing" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/15/2020-08-15-Server-Side-Architecture.-Front-End-Servers-And-Client-Side-Random-Load-Balancing/">Server-Side Architecture. Front-End Servers And Client-Side Random Load Balancing</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/15/2020-08-15-Server-Side-Architecture.-Front-End-Servers-And-Client-Side-Random-Load-Balancing/" class="archive-article-date">
+  	<time datetime="2020-08-15T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Chapter by chapter <a href="https://www.linkedin.com/in/signatchenko" target="_blank" rel="noopener">Sergey Ignatchenko</a> is putting together a wonderful book on the <a href="http://ithare.com/contents-of-development-and-deployment-of-massively-multiplayer-games-from-social-games-to-mmofps-with-stock-exchanges-in-between/" target="_blank" rel="noopener">Development and Deployment of Massively Multiplayer Games</a>, though it has much broader applicability than games. Here’s a <a href="http://ithare.com/chapter-vib-server-side-architecture-front-end-servers-and-client-side-random-load-balancing/" target="_blank" rel="noopener">recent chapter</a> from his book.</p>
+<h3 id="Enter-Front-End-Servers"><a href="#Enter-Front-End-Servers" class="headerlink" title="Enter Front-End Servers"></a>Enter Front-End Servers</h3><p>[Enter Juliet]<br>Hamlet:<br>Thou art as sweet as the sum of the sum of Romeo and his horse and his black cat! Speak thy mind!<br>[Exit Juliet]</p>
+<p>— a sample program in <a href="https://en.wikipedia.org/wiki/Shakespeare_Programming_Language" target="_blank" rel="noopener">Shakespeare Programming Language</a> —</p>
+<p><a href="http://ithare.com/wp-content/uploads/BB_part071_BookChapter006b_v2.png" target="_blank" rel="noopener"><img src="http://ithare.com/wp-content/uploads/BB_part071_BookChapter006b_v2.png" alt="Front-End Servers as an Offensive Line"></a></p>
+<p>Our Classical Deployment Architecture (especially if you do use FSMs) is not bad, and it will work, but there is still quite a bit of room for improvement for most of the games out there. More specifically, we can add another row of servers in front of the Game Servers, as shown on Fig VI.8:</p>
+<p><a href="http://ithare.com/wp-content/uploads/Fig-VIv2-8.png" target="_blank" rel="noopener"><img src="http://ithare.com/wp-content/uploads/Fig-VIv2-8.png" alt="Fig. VI.8. Classical Deployment Architecture with Front-End Servers"></a></p>
+<p>As you see, compared to the Classical Deployment Architecture (see Fig VI.4 above) we’ve just added a row of Front-End Servers in front of our Game Servers. These additional Front-End Servers are intended to deal with all the communication stuff when it comes from the clients. All those pesky “whether the player is connected or not” questions (including keep-alive handing where applicable, see Chapter [[TODO]] for details on keep-alives), all that client-to-server encryption (if applicable), with all those keys etc., all those rather more-or-less strange reliable-UDP protocols (again, if applicable), and of course, routing messages between the clients and different Game Servers – all the communication with clients is handled here.</p>
+<p><img src="http://ithare.com/wp-content/uploads/BB_emotion_0008.png" alt="Hare pointing out:">“In addition, usually these Front-End servers store a copy of relevant Game Worlds when it is necessary, and are acting as “concentrators” for the game world updates</p>
+<p> In addition, usually these Front-End servers store a copy of relevant Game Worlds when it is necessary, and are acting as “concentrators” for the game world updates; i.e. even if a Game Server has 100’000 people watching some game (like final of some tournament or something), it will need to send updates only to a few Front-End servers, and Front-End servers will take care of data distribution to all the 100’000 people. This ability comes really handy when you have some kind of Big Final game, with thousands of people willing to watch it (and you don’t really need to make it a video broadcast, which is not-so-convenient for existing players and damn expensive, but you can do it right within your client). More on it below, and implementation of this “concentrator” paradigm is discussed in more detail in Chapter [[TODO]].</p>
+<p>We’ll discuss the implementation of our Front-End servers a bit later, but for now let’s note that most importantly,</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Architecture</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/15/2020-08-15-Server-Side-Architecture.-Front-End-Servers-And-Client-Side-Random-Load-Balancing/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-14-杨牧《有人问我公理和正义的问题》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/14/2020-08-14-杨牧《有人问我公理和正义的问题》/">杨牧 有人问我公理和正义的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/14/2020-08-14-杨牧《有人问我公理和正义的问题》/" class="archive-article-date">
+  	<time datetime="2020-08-14T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>《有人问我公理和正义的问题》</p>
+<p>选自《杨牧诗选：1956-2013》 台湾香港大陆著名</p>
+<p>杨牧：浪漫主义情怀，抒情，+ 玄妙的形而上的哲思，声音色彩意象象征。</p>
+<p>此诗对年轻人的形象概括</p>
+<p>1980s 台湾 亚洲四小龙</p>
+<p>监控门</p>
+<p>江南案</p>
+<p>林宅血案</p>
+<p>经济弊案，贪污案</p>
+<p>台大客座教授杨牧： 这个世界上还有公理正义么？  </p>
+<p>敏感 写诗 情感冲动</p>
+<p>政治高压, 杨牧：政治冲击</p>
+<p>USA 60s 美国”学运”中心：</p>
+<p>冷战始于1947年美国提出“<a href="https://zh.wikipedia.org/wiki/杜鲁门主义" target="_blank" rel="noopener">杜鲁门主义</a>”，结束于1991年<a href="https://zh.wikipedia.org/wiki/蘇聯解體" target="_blank" rel="noopener">苏联解体</a>。</p>
+<p><strong>六八运动</strong>，或称<strong>六八事件</strong>、<strong>六八革命</strong>，是指在<a href="https://zh.wikipedia.org/wiki/1960年代" target="_blank" rel="noopener">1960年代</a>中后期、1968年达到高峰的一场全世界由<a href="https://zh.wikipedia.org/wiki/左翼" target="_blank" rel="noopener">左翼</a><a href="https://zh.wikipedia.org/wiki/学生" target="_blank" rel="noopener">学生</a>和<a href="https://zh.wikipedia.org/wiki/非裔美國人民權運動" target="_blank" rel="noopener">民权运动</a>分子共同发起的<a href="https://zh.wikipedia.org/wiki/反戰" target="_blank" rel="noopener">反战</a>、<a href="https://zh.wikipedia.org/wiki/反資本主義" target="_blank" rel="noopener">反资本主义</a>、反<a href="https://zh.wikipedia.org/wiki/官僚" target="_blank" rel="noopener">官僚</a>精英的一系列抗议活动<a href="https://zh.wikipedia.org/wiki/六八运动#cite_note-1" target="_blank" rel="noopener">[1]</a>，其主要特征是民众对军事和官僚精英所实施的政治压迫的反抗。</p>
+<p>在<a href="https://zh.wikipedia.org/wiki/法國" target="_blank" rel="noopener">法国</a>、<a href="https://zh.wikipedia.org/wiki/西德" target="_blank" rel="noopener">西德</a>、<a href="https://zh.wikipedia.org/wiki/義大利" target="_blank" rel="noopener">意大利</a>等地皆出现学生示威的情况。由于当时正值<a href="https://zh.wikipedia.org/wiki/冷戰" target="_blank" rel="noopener">冷战</a>，不少左翼的示威者及反战人士皆有同情<a href="https://zh.wikipedia.org/wiki/共產主義" target="_blank" rel="noopener">共产主义</a>色彩，因此政府特别重视。</p>
+<p>在美国，这些抗议活动标志着<a href="https://zh.wikipedia.org/wiki/民權運動" target="_blank" rel="noopener">民权运动</a>的转折点，该运动引发了诸如<a href="https://zh.wikipedia.org/wiki/黑豹党" target="_blank" rel="noopener">黑豹党</a>等革命运动。为了响应春节攻势，抗议活动还引发了反对<a href="https://zh.wikipedia.org/wiki/越南战争" target="_blank" rel="noopener">越南战争</a>的广泛运动，遍及美国以及伦敦，巴黎，柏林和罗马。</p>
+<p>大规模的抗议活动也波及到欧洲。其中最庞大的是法国的<a href="https://zh.wikipedia.org/wiki/五月风暴" target="_blank" rel="noopener">五月风暴</a>，学生运动与多达1000万名工人的罢工相联合，几天后，这一运动到了几乎能够推翻政府的地步。</p>
+<p>在许多其他资本主义国家中，反对独裁统治，国家压迫和殖民化的斗争也带有1968年的抗议活动的特点，例如<a href="https://zh.wikipedia.org/w/index.php?title=北爱尔兰冲突&action=edit&redlink=1" target="_blank" rel="noopener">北爱尔兰冲突</a>、墨西哥城的<a href="https://zh.wikipedia.org/wiki/特拉特洛尔科大屠杀" target="_blank" rel="noopener">特拉特洛尔科大屠杀</a>以及<a href="https://zh.wikipedia.org/wiki/1964年巴西政變" target="_blank" rel="noopener">1964年巴西政变</a>。</p>
+<p>在社会主义国家中，也有人抗议共产党官僚和军事精英缺乏言论自由和侵犯其他公民权利。在中欧和东欧，如华沙，波兰和南斯拉夫等地，发生了广泛的抗议活动，其中代表是捷克斯洛伐克的<a href="https://zh.wikipedia.org/wiki/布拉格之春" target="_blank" rel="noopener">布拉格之春</a>。</p>
+<p>政治诗: 不忙于宣泄，写诗不能随意谈政治，容易成为口号诗，宣传口号索然无味。</p>
+<p>虚假的阳光: 迷茫虚幻的场景，蜘蛛结网–&gt;隐喻，</p>
+<p>+</p>
+<p>乌云：阴郁的气氛</p>
+<p>杨牧：几十年后，才在政治上用是诗讲，高度凝练艺术结晶，避免让诗沦为单纯的政治表态。所有的社会政治议题都能够把社会分裂，太刺激，情感的冲动，还让大家都觉得自己是属于正义的那一方。</p>
+<p>杨牧作为诗人，对于是非价值观的争论上，即使有立场，都应该对所有的立场保持稍微冷静的距离，在这个距离里面慢慢地去审视各种各样立场的存在，他们彼此之间的关系以及距离。</p>
+<p>杨牧在处理两个问题：</p>
+<ol>
+<li>具体</li>
+<li>任何时代任何社会总有年轻人这么问</li>
+</ol>
+<p>他处理的方式：</p>
+<p>为这个问题的背后虚构和想象一个具体的年轻人，复杂的身世背景，社会复杂的面貌。</p>
+<p>历史认知问题</p>
+<p>绝望，悲愤</p>
+<p>杨牧看似没有给出明确的答案，但是已经表达自己的态度，就是对于这样的年轻人，带着热血想让社会更好，但不得其法，不得其门而入，粉身碎骨，他为这样的年轻人悲哀，这样的牺牲是必然的，努力是徒劳的，他对一个这样一个社会愤慨、不满、哀叹。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/14/2020-08-14-杨牧《有人问我公理和正义的问题》/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-13-Lecture-Notes-Self-Balancing-Binary-Search-Tree" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/13/2020-08-13-Lecture-Notes-Self-Balancing-Binary-Search-Tree/">Self-Balancing Binary Search Tree</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/13/2020-08-13-Lecture-Notes-Self-Balancing-Binary-Search-Tree/" class="archive-article-date">
+  	<time datetime="2020-08-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://en.wikipedia.org/wiki/Self-balancing_binary_search_tree" target="_blank" rel="noopener">Self-balancing binary search tree</a>. Click <a href="http://people.ksp.sk/~kuko/bak/index.html" target="_blank" rel="noopener">here</a> to see the animation.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Introduction</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Definitions</strong>:A self-balancing binary search tree or height-balanced binary search tree is a binary search tree (BST) that attempts to keep its height, or the number of levels of nodes beneath the root, as small as possible at all times, automatically.<img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/balanced1.JPG" alt="img"></td>
+</tr>
+<tr>
+<td><strong>Overview</strong></td>
+</tr>
+<tr>
+<td><strong>Question</strong>: What is the major disadvantage of an ordinary BST?Most operations on a BST take time proportional to the height of the tree, so it is desirable to keep the height small.Self-balancing binary trees solve this problem by performing transformations on the tree at key times, in order to reduce the height. Although a certain overhead is involved, it is justified in the long run by ensuring fast execution of later operations.The height must always be at most the ceiling of <em>log<em>2</em>n</em>.Balanced BSTs are not always so precisely balanced, since it can be expensive to keep a tree at minimum height at all times; instead, most algorithms keep the height within a constant factor of this lower bound.OperationBig-O timeLookup<em>O</em>(log <em>n</em>)Insertion<em>O</em>(log <em>n</em>)Removal<em>O</em>(log <em>n</em>)In-order traversal<em>O</em>(<em>n</em>)<strong>Implementations</strong>:AA treeAVL treeRed-black treeScapegoat treeSplay treeTreap<strong>Self-Balancing BST Applications</strong>:They can be used to construct and maintain ordered lists, such as priority queues.They can also be used for associative arrays; key-value pairs are inserted with an ordering based on the key alone. In this capacity, self-balancing BSTs have a number of advantages and disadvantages over their main competitor, hash tables.They can be easily extended to record additional information or perform new operations. These extensions can be used, for example, to optimize database queries or other list-processing algorithms.</td>
+</tr>
+<tr>
+<td><strong><a href="http://en.wikipedia.org/wiki/AVL_tree" target="_blank" rel="noopener">AVL Trees</a></strong></td>
+</tr>
+<tr>
+<td><strong>Properties of an AVL tree</strong>:In an AVL tree, the heights of the two child subtrees of any node differ by at most one; therefore, it is also said to be height-balanced.Lookup, insertion, and deletion all take O(log <em>n</em>) time in both the average and worst cases, where <em>n</em> is the number of nodes in the tree.Insertions and deletions may require the tree to be <em>rebalanced</em> by one or more tree rotations.The <strong>balance factor</strong> of a node is <em>the height of its right subtree minus the height of its left subtree</em> and a node with a balance factor 1, 0, or -1 is considered balanced.<strong>Insertion</strong>:After inserting a node, it is necessary to check <em>each of the node’s ancestors</em> for consistency with the AVL rules.For each node checked, if the balance factor remains 1, 0, or -1 then no rotations are necessary. Otherwise, it’s unbalanced.After each insertion, at most two tree rotations are needed to restore the entire tree.There are four cases, choosing which one depends on different types of unbalanced relations. In the following cases, assume Root is the initial parent before a rotation and Pivot is the child to take the root’s place.<img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/left-left.bmp" alt="img"> <img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/right-right.bmp" alt="img"> <img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/left-right.bmp" alt="img"> <img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/right-left.bmp" alt="img"><strong>Deletion</strong>:If a node is a leaf, remove it.If the node is not a leaf, replace it with either the largest in its left subtree (rightmost) or the smallest in its right subtree (leftmost), and remove that node. The node that was found as replacement has at most one subtree.After deletion, retrace the path from parent of the replacement to the root, adjusting the balance factors as needed.More complicated rules for stopping. The retracing can stop if the balance factor becomes -1 or +1 indicating that the height of the subtree has remained unchanged. If the balance factor becomes 0 then the height of the subtree has decreased by one and the retracing needs to continue. This is in contrast to an insertion where a rotation resulting in a balance factor of 0 indicated that the subtree’s height has remained unchanged.<img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/avl.jpg" alt="img">Overall, the time required is <em>O</em>(log <em>n</em>) for lookup, plus a maximum of <em>O</em>(log <em>n</em>) rotations on the way back to the root, so the deletion can be completed in <em>O</em>(log <em>n</em>) time.<strong>Lookup (Search)</strong>:Lookup in an AVL tree is exactly the same as in an unbalanced BST. Because of the height-balancing of the tree, a lookup takes <em>O</em>(log <em>n</em>) time.Example. Insert 14, 17, 11, 7, 53, 4, 13, 12, 8 into an empty AVL tree and then remove 53, 11, 8 from the AVL tree. Please take a look at the following [slides](<a href="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/AVL" target="_blank" rel="noopener">https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/AVL</a> tree animation.ppt) for AVL tree insertion and deletion animation (use the slide show mode).Your exercise:Build an AVL tree with the following values: 15, 20, 24, 10, 13, 7, 30, 36, and 25.Remove 24 and 20 from the above tree.</td>
+</tr>
+<tr>
+<td><strong>Discussion</strong>:Compare binary search trees with hash tables. Find pros and cons of each data structure.Time complexity of operationsSpace complexity of data structureHandling varying input sizesTraversalOther supported operations?</td>
+</tr>
+<tr>
+<td><strong><a href="http://en.wikipedia.org/wiki/Red-black_tree" target="_blank" rel="noopener">Red-Black Trees</a></strong></td>
+</tr>
+<tr>
+<td>A red-black tree (RB-tree) is a type of self-balancing BST. It is complex, but has a good worst-case running time for its operations and is efficient in practice: it can search, insert, and delete in <em>O</em>(log <em>n</em>) time, where <em>n</em> is the total number of elements in the tree.In RB-trees, the leaf nodes are not relevant and do not contain data. A null child pointer can encode the fact that this child is a leaf.Like BSTs, RB-trees allow efficient in-order traversals of elements.The search time on a RB-tree results in <em>O</em>(log <em>n</em>) time.<strong>Properties</strong>:A RB-tree is a BST where each node has a color attribute, the value of which is either <em>red</em> or <em>black</em>. In addition to the ordinary requirements imposed on BSTs, the following additional requirements apply to RB-trees:A node is either red or black.The root is black.All leaves are black.Both children of every red node are black.Every simple path from a given node to any of its descendant leaves contains the same number of black nodes.<img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/rb-tree.bmp" alt="img">The above constraints enforce a critical property of RB-trees:The longest path from the root to any leaf is no more than twice as long as the shortest path from the root to any other leaf in that tree.The result is that the tree is roughly balanced.Insertion, deletion, and search require worst-case time proportional to the height of the tree, the theoretical upper bound on the height allows RB-trees to be efficient in the worst case.To see why these properties guarantee this, it suffices to note that no path can have two red nodes in a row, due to property 4. The shortest possible path has all black nodes, and the longest possible path alternates between red and black nodes. Since all maximal paths have the same number of black nodes, by property 5, this shows that no path is more than twice as long as any other path.Insertions and removals are quite complex in a RB-tree in order to keep the properties.<strong>Insertion</strong>:Insertion begins by adding the node as any BST insertion does and by coloring it red. It’s a red inner node with two black leaves.Property 3 (all leaves are black) always holds.Property 4 (both children of every red node are black) is threatened only by adding a red node, repainting a black node red, or a rotation.Property 5 (all paths have same number of black nodes) is threatened only by adding a black node, repainting a red node black (or vice versa), or a rotation.In the following description, we have labels N (current node), P (N’s parent), G (N’s grandparent), and U (N’s uncle).Case 1: N is root. It’s repainted black to satisfy property 2.Case 2: P is black. Property 4 (children of red are black) is not violated. Property 5 holds since N has two black leaf children, but N is red.Case 3: if both P and U are red, repaint them black and repaint G red. Recursively insert G.<img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/self%20b1.jpg" alt="img">Case 4: P is red, but U is black; N is the right child of P, and P is the left child of G. Perform left rotation on P. Then go to Case 5.<img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/self%20b2.jpg" alt="img"> Case 5: right rotation. Repaint G and P.<img src="https://www.cpp.edu/~ftang/courses/CS241/notes/images/trees/self%20b3.jpg" alt="img"> For deletion on a RB-Tree, please see the Wikipedia link for details.Let’s try it out with the following sequence of values: 14, 17, 11, 7, 53, 4, 13, 12, and 8.</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[<a href="https://www.cpp.edu/~ftang/courses/CS241/notes/self%20balance%20bst.htm]" target="_blank" rel="noopener">https://www.cpp.edu/~ftang/courses/CS241/notes/self%20balance%20bst.htm]</a>(<a href="https://www.cpp.edu/~ftang/courses/CS241/notes/self" target="_blank" rel="noopener">https://www.cpp.edu/~ftang/courses/CS241/notes/self</a> balance bst.htm)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/13/2020-08-13-Lecture-Notes-Self-Balancing-Binary-Search-Tree/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-08-12-HashMap及Map.Entry" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -411,744 +1092,6 @@
 
 
   
-    <article id="post-2020-08-09-AWS-Lambda-Questions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/09/2020-08-09-AWS-Lambda-Questions/">AWS Lambda Questions</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/09/2020-08-09-AWS-Lambda-Questions/" class="archive-article-date">
-  	<time datetime="2020-08-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="AWS-Lambda-Interview-Questions"><a href="#AWS-Lambda-Interview-Questions" class="headerlink" title="AWS Lambda Interview Questions"></a>AWS Lambda Interview Questions</h1><ul>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question1" target="_blank" rel="noopener"><strong>1)  What does AWS Lambda mean?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question2" target="_blank" rel="noopener"><strong>2) What restrictions apply to AWS Lambda function code?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question3" target="_blank" rel="noopener"><strong>3) How long can an AWS Lambda function execute?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question4" target="_blank" rel="noopener"><strong>4) How does AWS Lambda secure my code?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question5" target="_blank" rel="noopener"><strong>5) On AWS Lambda what all kinds of code can run?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question6" target="_blank" rel="noopener"><strong>6) What is the definition of Auto-Scaling?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question7" target="_blank" rel="noopener"><strong>7) Which all languages are supported by AWS Lambda?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question8" target="_blank" rel="noopener"><strong>8) Is the infrastructure accessible on which the AWS Lambda runs?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question9" target="_blank" rel="noopener"><strong>9) Can I use packages with AWS Lambda?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question10" target="_blank" rel="noopener"><strong>10)  Are AWS Lambda functions available and to what extent?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question11" target="_blank" rel="noopener"><strong>11)  On a functional level is there any default limit to be applied?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question12" target="_blank" rel="noopener"><strong>12)  How can a serverless application be automated?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question13" target="_blank" rel="noopener"><strong>13)  How to get started with a serverless application ?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question14" target="_blank" rel="noopener"><strong>14)  How do I troubleshoot a serverless application?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question15" target="_blank" rel="noopener"><strong>15)  Do the AWS Lambda-based functions stay available when code or its configuration is changed?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question16" target="_blank" rel="noopener"><strong>16)  Is there any limit to the quantity of AWS Lambda functions that can be executed at once?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question17" target="_blank" rel="noopener"><strong>17)  What happens when my account surpasses the default threshold limit on the executions?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question18" target="_blank" rel="noopener"><strong>18)  What is a server-less application?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question19" target="_blank" rel="noopener"><strong>19)   What advantages can we have by using Server-less approach?</strong></a></li>
-<li><a href="https://www.onlineinterviewquestions.com/aws-lambda-interview-questions/#question20" target="_blank" rel="noopener"><strong>20)  What is the Disadvantage of using this approach?</strong></a></li>
-</ul>
-<h6 id="Last-Updated-May-13-2020"><a href="#Last-Updated-May-13-2020" class="headerlink" title="Last Updated: May 13, 2020,"></a>Last Updated: May 13, 2020,</h6><h6 id="Posted-in-Interview-Questions"><a href="#Posted-in-Interview-Questions" class="headerlink" title="Posted in Interview Questions,"></a>Posted in <strong>Interview Questions,</strong></h6><h6 id="20-Questions"><a href="#20-Questions" class="headerlink" title="20 Questions"></a>20 Questions</h6><p><img src="https://www.onlineinterviewquestions.com/storage/categories/June2018/AWS-Lambda-Interview-Questions1.jpg" alt="AWS Lambda Interview Questions"></p>
-<p>There are many opportunities in the field of server-less computing, waiting for the correct candidate. With the market share of about 44%, AWS Lambda is one of the best servers-less computing platforms in the world. It has lots of benefits like for instance, no managing of servers, continuous scaling and sub-second metering. It has lots of opportunities to be discovered with significant returns.</p>
-<p>It is a big platform and with lots of job perspective also. With so many languages to be catered, it has jobs ranging from system engineer to IOT Architect and cloud support associate. Thus, every year some fresher and experience holders try to face the interview and landing job as a server-less computing expert. There are lots of opportunities up for grab in <strong>AWS Lambda</strong> Development.</p>
-<p>We help you with a set of questions that can come up in <strong>AWS Lambda interview 2019</strong>:</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AWS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/09/2020-08-09-AWS-Lambda-Questions/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-08-AWS-Lambda-服务简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/08/2020-08-08-AWS-Lambda-服务简介/">AWS Lambda 服务简介</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/08/2020-08-08-AWS-Lambda-服务简介/" class="archive-article-date">
-  	<time datetime="2020-08-08T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>AWS Lambda（下简称「Lambda」）是AWS在2014年推出的「无服务器」（Serverless）计算服务，用户无需管理服务器，可以更专注自己业务。由于上手简单，而且真正利用了云的优势，Lambda快速成为了一项明星服务。</p>
-<p>最近写了一个Demo用来处理简单的地理空间数据（基于OGC Simple Features标准，目前仅支持GeoJSON格式和几种地理处理方法）。 </p>
-<ul>
-<li>Demo地址： <a href="https://link.zhihu.com/?target=https%3A//serverless-gis.com/" target="_blank" rel="noopener">Serverless GIS</a></li>
-<li>测试数据下载：<a href="https://link.zhihu.com/?target=https%3A//github.com/crabcanon/serverless-gis" target="_blank" rel="noopener">crabcanon/serverless-gis</a></li>
-</ul>
-<p>这是对AWS无服务器构架的一个实践：</p>
-<ul>
-<li>数据库 - DynamoDB</li>
-<li>文件存储 - S3</li>
-<li>身份验证 - Cognito</li>
-<li>核心计算 - Lambda（包括数据库CRUD，文件池CRUD，GIS地理服务等）</li>
-<li>服务发布 - API Gateway</li>
-<li>域名管理 - Route 53</li>
-<li>网站托管 - 代码包储存在S3，用CloudFront加速和保护（CDN, HTTPS, HTTP/2等），SSL来自Certificate Manager。</li>
-</ul>
-<p>总结了一些使用感受如下：</p>
-<ul>
-<li>无服务器构架很适合某些用户界面驱动（UI-driven）或者事件驱动（Event-driven或Message-driven）的应用。至于哪些以及如何决策，我觉得专门写一篇文章讨论都没问题。不过如果你要开发类似应用，无服务器构架是一个选项。上面demo就是本身需求与构架特色非常契合的例子。</li>
-<li>在FaaS（Function as a Service）以前，无服务器构架已经存在很久了，那些第三方BaaS（Backend as a Service），比如Auth0、Firebase就是基于Serverless, 只是FaaS提供了一个方式让你可以更深入的操控后端代码。并且每个FaaS服务会被单独部署在一个无状态容器中（容器间没有关联，服务间没有依赖）被事件激活，一旦结束，当前实例就会关闭。<a href="https://link.zhihu.com/?target=https%3A//twitter.com/adrianco" target="_blank" rel="noopener">adrian cockcroft</a> 有一个很形象的描述：如果你的PaaS可以在20ms内激活一个实例，并且运行半秒后关闭，就可以称为serverless。这些特性能做什么就给你很大想象空间了。前面提到它很适合事件驱动的场景，原因就是事物的天然属性，事情不会旅行，只会发生，一件事又往往触发许多别的事，之后便产生了结果，结果一旦出现，事件就成历史，无需再监控和操作。由此可以看到用FaaS处理异步事件是非常恰当的（但注意，不是所有事件都适用，比如需要庞大计算资源和长时间等待的复杂任务就不合适。目前对云端空间大数据流的处理依旧建议采用传统方式，比如Apache Spark，Apache Kafka和诸如PostGIS的空间数据库结合的方案）。</li>
-<li>和传统的容器相比，无服务器FaaS最大特色是无需维护后端构架，并且自动缩放，按需分配。举个例子，传统容器就像能装10公斤米的袋子，假设现在有52公斤米要装，你得买6个袋子，虽然浪费了8公斤的空间，也可以接受。但无服务器构架可以形容为米粒级别的袋子，52公斤有多少颗米，就给你多少袋子，几乎不浪费一点资源。这对软件开发商很有吸引，不仅精确控制资源需求，而且一旦任务完成就关闭服务，不再产生多余花销。从某种程度看，是达成用户和开发商的双赢。对于容器，目前还没有这种级别的解决办法，当然如Kubernetes提出的<a href="https://link.zhihu.com/?target=https%3A//kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/" target="_blank" rel="noopener">Horizontal Pod Autoscaling</a>是发展趋势。关于其他优势，就不讨论了，可以去看看别人的讨论（<a href="https://link.zhihu.com/?target=https%3A//github.com/JustServerless/awesome-serverless" target="_blank" rel="noopener">JustServerless/awesome-serverless</a>，<a href="https://link.zhihu.com/?target=https%3A//github.com/anaibol/awesome-serverless" target="_blank" rel="noopener">anaibol/awesome-serverless</a>）。</li>
-<li>无服务器FaaS构架的缺点和它的优点一样突出，比如（1）第三方厂商的系统无法控制，对方收费策略变更，进行无法预测的构架升级之类也不无可能（真实案例，有个大公司A在没提前通报下游公司B的情况下，直接砍掉某个企业级产品，到全面停产的前一天才通知B，导致B权衡之下在公司内部停用所有A的企业级产品，转投另一家供应商C），而且由于供应商要考量所有用户的需求，就不可能给你最大的灵活度。（2）FaaS服务与供应商深度耦合。代码如果想迁移到不同的无服务器FaaS厂商，需要大量的改动重构。（3）安全性受到威胁而且很难优化服务器，不可能像私有云那样实施全面的安全策略和优化措施。（4）目前执行的函数数量受到限制（不超过1000个），每个函数的运行时间受到限制（不高于5分钟），函数的启动会延迟（比如遇到用JVM实现的实例）。（5）虽然写单元测试很简单因为本身就是函数接口，但基于第三方平台写集成测试很难，比如难道我所有集成测试都是基于第三方服务（如数据库）？这会导致如场景无法控制，费用增高，没法在本地离线测试系统等问题。（6）由于很难调用和集成其他私有资源或服务，包括前面提到的安全性和系统优化的灵活度，导致面向企业的产品很大程度不会选择这种构架。</li>
-</ul>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AWS, Serverless, AWS Lambda</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/08/2020-08-08-AWS-Lambda-服务简介/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-07-AWS-Lambda" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/07/2020-08-07-AWS-Lambda/">AWS Lambda</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/07/2020-08-07-AWS-Lambda/" class="archive-article-date">
-  	<time datetime="2020-08-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="AWS-Lambda"><a href="#AWS-Lambda" class="headerlink" title="AWS Lambda"></a>AWS Lambda</h1><h3 id="Run-code-without-thinking-about-servers-Pay-only-for-the-compute-time-you-consume"><a href="#Run-code-without-thinking-about-servers-Pay-only-for-the-compute-time-you-consume" class="headerlink" title="Run code without thinking about servers. Pay only for the compute time you consume."></a>Run code without thinking about servers. Pay only for the compute time you consume.</h3><p><a href="https://console.aws.amazon.com/lambda/home?region=us-east-1" target="_blank" rel="noopener">Get started with AWS Lambda</a></p>
-<p>AWS Lambda lets you run code without provisioning or managing servers. You pay only for the compute time you consume.</p>
-<p>With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app.</p>
-<iframe id="lb-video-0_Youtube_api" class="vjs-tech" sandbox="allow-scripts allow-same-origin allow-presentation allow-popups" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" frameborder="0" allowfullscreen="1" title="YouTube video player" width="640" height="360" src="https://www.youtube.com/embed/eOBq__h4OJ4?controls=0&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;loop=0&amp;fs=0&amp;hl=en&amp;enablejsapi=1&amp;origin=https%3A%2F%2Faws.amazon.com&amp;widgetid=1" style="box-sizing: inherit; width: 379.984px; height: 213.734px; position: absolute; top: 0px; left: 0px; opacity: 1; transition: all 0.2s ease-in-out 0s;"></iframe>
-
-
-
-<p>Getting started with AWS Lambda (3:00)</p>
-<h2 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits"></a>Benefits</h2><h3 id="No-servers-to-manage"><a href="#No-servers-to-manage" class="headerlink" title="No servers to manage"></a>No servers to manage</h3><p>AWS Lambda automatically runs your code without requiring you to provision or manage servers. Just write the code and upload it to Lambda.</p>
-<h3 id="Continuous-scaling"><a href="#Continuous-scaling" class="headerlink" title="Continuous scaling"></a>Continuous scaling</h3><p>AWS Lambda automatically scales your application by running code in response to each trigger. Your code runs in parallel and processes each trigger individually, scaling precisely with the size of the workload.</p>
-<h3 id="Subsecond-metering"><a href="#Subsecond-metering" class="headerlink" title="Subsecond metering"></a>Subsecond metering</h3><p>With AWS Lambda, you are charged for every 100ms your code executes and the number of times your code is triggered. You pay only for the compute time you consume. </p>
-<h3 id="Consistent-performance"><a href="#Consistent-performance" class="headerlink" title="Consistent performance"></a>Consistent performance</h3><p>With AWS Lambda, you can optimize your code execution time by choosing the right memory size for your function. You can also enable Provisioned Concurrency to keep your functions initialized and hyper-ready to respond within double digit milliseconds.</p>
-<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h2><p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-HowItWorks.68a0bcacfcf46fccf04b97f16b686ea44494303f.png" alt="How AWS Lambda Works"></p>
-<h2 id="Use-cases"><a href="#Use-cases" class="headerlink" title="Use cases"></a>Use cases</h2><p>What can you build with AWS Lambda? Learn more about the use cases below:</p>
-<h3 id="Data-processing"><a href="#Data-processing" class="headerlink" title="Data processing"></a>Data processing</h3><p>You can use AWS Lambda to execute code in response to triggers such as changes in data, shifts in system state, or actions by users. Lambda can be directly triggered by AWS services such as S3, DynamoDB, Kinesis, SNS, and CloudWatch, can connect to existing EFS file systems, or it can be orchestrated into workflows by <a href="https://aws.amazon.com/step-functions/" target="_blank" rel="noopener">AWS Step Functions</a>. This allows you to build a variety of real-time <a href="https://aws.amazon.com/serverless/" target="_blank" rel="noopener">serverless</a> data processing systems.</p>
-<h4 id="Real-time-file-processing"><a href="#Real-time-file-processing" class="headerlink" title="Real-time file processing"></a>Real-time file processing</h4><p>You can use Amazon S3 to trigger AWS Lambda to process data immediately after an upload. You can also connect to an existing Amazon EFS file system directly, which enables massively parallel shared access for large scale file processing. For example, you can use Lambda to thumbnail images, transcode videos, index files, process logs, validate content, and aggregate and filter data in real-time.</p>
-<p><strong>Reference Architecture: <a href="https://github.com/awslabs/lambda-refarch-fileprocessing" target="_blank" rel="noopener">Sample Code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-RealTimeFileProcessing.a59577de4b6471674a540b878b0b684e0249a18c.png" alt="AWS Lambda File Processing"></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/The_Seattle_Times_logo2.c63276a283e30ef713cb467d25b8584ae966cc6d.png" alt="The_Seattle_Times_logo2"></p>
-<p>The Seattle Times uses AWS Lambda to resize images for viewing on different devices such as desktop computers, tablets, and smartphones. <a href="https://aws.amazon.com/solutions/case-studies/the-seattle-times/?e=a" target="_blank" rel="noopener">Read the case study »</a></p>
-<h4 id="Real-time-stream-processing"><a href="#Real-time-stream-processing" class="headerlink" title="Real-time stream processing"></a>Real-time stream processing</h4><p>You can use AWS Lambda and Amazon Kinesis to process real-time streaming data for application activity tracking, transaction order processing, click stream analysis, data cleansing, metrics generation, log filtering, indexing, social media analysis, and IoT device data telemetry and metering.</p>
-<p><strong>Reference Architecture: <a href="https://github.com/awslabs/lambda-refarch-streamprocessing" target="_blank" rel="noopener">Sample code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-RealTimeStreamProcessing.d79d55b5f3a5d6b58142a6c0fc8a29eadc81c02b.png" alt="AWS Lambda Stream Processing"></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/localytics-logo2.697e59b1da265d9b36213f149173f6d94bee0308.png" alt="localytics-logo2"></p>
-<p>Localytics processes billions of data points in real-time, and uses Lambda to process historical and live data stored in S3 or streamed from Kinesis. <a href="https://aws.amazon.com/solutions/case-studies/localytics/?e=a" target="_blank" rel="noopener">Read the case study »</a></p>
-<h4 id="Machine-learning"><a href="#Machine-learning" class="headerlink" title="Machine learning"></a>Machine learning</h4><p>You can use AWS Lambda to preprocess data before feeding it to your machine learning model. With Lambda access to EFS, you can also serve your model for prediction at scale without having to provision or manage any infrastructure.</p>
-<p><img src="https://d1.awsstatic.com/logos/customers/aible-logo-S.720e1fda08194466e7a289f2a134d87b8d2df256.png" alt="Aible"></p>
-<blockquote>
-<p>“At Aible we focus on delivering the most powerful AI technologies at the lowest possible operating cost. As such, we use AWS Lambda and Serverless for machine learning training and predictions. With Serverless, we can run a wide variety of machine learning workloads more cost effectively while benefiting from burst compute resources needed for rapid iteration and scaling to create AI for optimal business impact.”</p>
-</blockquote>
-<p><strong>Rod Butters, CTO – Aible</strong></p>
-<hr>
-<h3 id="Backends"><a href="#Backends" class="headerlink" title="Backends"></a>Backends</h3><p>You can build <a href="https://aws.amazon.com/serverless/" target="_blank" rel="noopener">serverless</a> backends using AWS Lambda to handle web, mobile, Internet of Things (IoT), and 3rd party API requests. Take advantage of Lambda’s consistent performance controls, such as multiple memory configurations and Provisioned Concurrency, for building latency-sensitive applications at any scale.</p>
-<h4 id="Web-applications"><a href="#Web-applications" class="headerlink" title="Web applications"></a>Web applications</h4><p>By combining AWS Lambda with other AWS services, developers can build powerful web applications that automatically scale up and down and run in a highly available configuration across multiple data centers – with zero administrative effort required for scalability, back-ups or multi-data center redundancy.</p>
-<p><strong>Reference Architecture: <a href="https://github.com/awslabs/lambda-refarch-webapp/" target="_blank" rel="noopener">Sample code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-WebApplications%202.c7f8cf38e12cb1daae9965ca048e10d676094dc1.png" alt="AWS Lambda Web Backend"></p>
-<h4 id="IoT-backends"><a href="#IoT-backends" class="headerlink" title="IoT backends"></a>IoT backends</h4><p>You can build serverless backends using AWS Lambda to handle web, mobile, Internet of Things (IoT), and 3rd party API requests.</p>
-<p><strong>Reference Architecture:</strong> <strong><a href="https://github.com/awslabs/lambda-refarch-iotbackend" target="_blank" rel="noopener">Sample code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-IoTBackends.3440c7f50a9b73e6a084a242d44009dc0fbe5fab.png" alt="AWS Lambda IoT Backend"></p>
-<h4 id="Mobile-backends"><a href="#Mobile-backends" class="headerlink" title="Mobile backends"></a>Mobile backends</h4><p>AWS Lambda makes it easy to create rich, personalized app experiences. You can build backends using AWS Lambda and Amazon API Gateway to authenticate and process API requests. Use AWS Amplify to easily integrate your backend with your iOS, Android, Web, and React Native frontends.</p>
-<p><strong>Reference Architecture: <a href="https://github.com/awslabs/lambda-refarch-mobilebackend/" target="_blank" rel="noopener">Sample code</a></strong></p>
-<p><img src="https://d1.awsstatic.com/product-marketing/Lambda/Diagrams/product-page-diagram_Lambda-MobileBackends_option2.00f6421e67e8d6bdbc59f3a2db6fa7d7f8508073.png" alt="AWS Lambda Mobile Backend"></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/Bustle_logo2.a1e0abadd7f494743b4bd436961a1a73eeb2b36a.png" alt="Bustle_logo2"></p>
-<p>Bustle runs a serverless backend for its Bustle iOS app and websites using AWS Lambda and Amazon API Gateway. Serverless architectures allow Bustle to never have to deal with infrastructure management, so every engineer can focus on building out new features and innovating. <a href="https://aws.amazon.com/solutions/case-studies/bustle/?e=a" target="_blank" rel="noopener">Read the case study »</a></p>
-<h2 id="Case-studies"><a href="#Case-studies" class="headerlink" title="Case studies"></a>Case studies</h2><p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/Coca%20Cola.cb487713224b8643a56acbc1984c7ed236e05aee.png" alt="Coca Cola"></p>
-<p>The Coca-Cola Company, an American multinational beverage corporation, used AWS Lambda and AWS Step Functions to build a cost-effective serverless solution.</p>
-<p><a href="https://aws.amazon.com/blogs/aws/things-go-better-with-step-functions/?e=a" target="_blank" rel="noopener">Read the blog »</a></p>
-<p><img src="https://d1.awsstatic.com/serverless/Lambda%20Resources%20images/iRobot.b8d2faafc3b461d34876d01d0538f9ed9c470f35.png" alt="iRobot"></p>
-<p>iRobot, a leading global consumer robot company, is building the next generation of connected devices for the smart home using a serverless architecture.</p>
-<p><a href="https://aws.amazon.com/solutions/case-studies/irobot/?e=a" target="_blank" rel="noopener">Read more »</a></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/Benchling.8aa1b65535b507e9f8fb2e1c454e99440e18018b.png" alt="Benchling"></p>
-<p>Benchling, a life science software company, created a technique that researchers use to modify parts of a genome with extreme precision using serverless architecture.</p>
-<p><a href="https://aws.amazon.com/solutions/case-studies/benchling/?e=a" target="_blank" rel="noopener">Read more »</a></p>
-<p><img src="https://d1.awsstatic.com/serverless/Serverless%20Migration/Thomson%20Reuters-logo2.4c7fc66a866ec97f741eac7a5184964f72231640.png" alt="Thomson Reuters-logo2"></p>
-<p>Thomson Reuters uses AWS Lambda to process up to 4,000 events per second for its usage analytics service, and it took five months to deploy into production.</p>
-<p><a href="https://aws.amazon.com/solutions/case-studies/thomson-reuters/?e=a" target="_blank" rel="noopener">Read more »</a></p>
-<p><a href="https://aws.amazon.com/lambda/resources/?e=a#Customer_case_studies" target="_blank" rel="noopener">See more case studies »</a></p>
-<h2 id="Get-started-with-AWS-Lambda"><a href="#Get-started-with-AWS-Lambda" class="headerlink" title="Get started with AWS Lambda"></a>Get started with AWS Lambda</h2><p><img src="https://d1.awsstatic.com/webteam/product-pages/Next-Steps-Icon_Create-account.7db16d9004bbb22184c5b490bb7daa28f580e3bf.png" alt="Next-Steps-Icon_Create-account"></p>
-<p><strong>Sign up for an AWS account</strong></p>
-<p>Instantly get access to the <a href="https://aws.amazon.com/free/" target="_blank" rel="noopener">AWS Free Tier</a>.</p>
-<p><img src="https://d1.awsstatic.com/webteam/product-pages/Next-Steps-Icon_Tutorial.aa70b53bd4bd0f01a111e6217d619475d8149b74.png" alt="Next-Steps-Icon_Tutorial"></p>
-<p>*<em>Learn with step-by-step tutorials<br>*</em></p>
-<p>Explore and learn with <a href="https://aws.amazon.com/lambda/resources/#Workshops_.26_Tutorials" target="_blank" rel="noopener">simple tutorials</a>.</p>
-<p><img src="https://d1.awsstatic.com/webteam/product-pages/Next-Steps-Icon_Login.d0f14024c9cca3e808b28f13ad5de7fc3be0dfc1.png" alt="Next-Steps-Icon_Login"></p>
-<p><strong>Start building with AWS Lambda</strong></p>
-<p>Visit the <a href="https://console.aws.amazon.com/lambda/home?region=us-east-1" target="_blank" rel="noopener">AWS Management Console.</a></p>
-<p>AWS Lambda is a compute service that lets you run code without provisioning or managing servers. AWS Lambda executes your code only when needed and scales automatically, from a few requests per day to thousands per second. You pay only for the compute time you consume - there is no charge when your code is not running. With AWS Lambda, you can run code for virtually any type of application or backend service - all with zero administration. AWS Lambda runs your code on a high-availability compute infrastructure and performs all of the administration of the compute resources, including server and operating system maintenance, capacity provisioning and automatic scaling, code monitoring and logging. All you need to do is supply your code in one of the <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html" target="_blank" rel="noopener">languages that AWS Lambda supports</a>.</p>
-<p>You can use AWS Lambda to run your code in response to events, such as changes to data in an Amazon S3 bucket or an Amazon DynamoDB table; to run your code in response to HTTP requests using Amazon API Gateway; or invoke your code using API calls made using AWS SDKs. With these capabilities, you can use Lambda to easily build data processing triggers for AWS services like Amazon S3 and Amazon DynamoDB, process streaming data stored in Kinesis, or create your own back end that operates at AWS scale, performance, and security.</p>
-<p>You can also build serverless applications composed of functions that are triggered by events and automatically deploy them using CodePipeline and AWS CodeBuild. For more information, see <a href="https://docs.aws.amazon.com/lambda/latest/dg/deploying-lambda-apps.html" target="_blank" rel="noopener">AWS Lambda applications</a>.</p>
-<h2 id="When-should-I-use-AWS-Lambda"><a href="#When-should-I-use-AWS-Lambda" class="headerlink" title="When should I use AWS Lambda?"></a>When should I use AWS Lambda?</h2><p>AWS Lambda is an ideal compute platform for many application scenarios, provided that you can write your application code in languages supported by AWS Lambda, and run within the AWS Lambda standard runtime environment and resources provided by Lambda.</p>
-<p>When using AWS Lambda, you are responsible only for your code. AWS Lambda manages the compute fleet that offers a balance of memory, CPU, network, and other resources. This is in exchange for flexibility, which means you cannot log in to compute instances, or customize the operating system on provided runtimes. These constraints enable AWS Lambda to perform operational and administrative activities on your behalf, including provisioning capacity, monitoring fleet health, applying security patches, deploying your code, and monitoring and logging your Lambda functions.</p>
-<p>If you need to manage your own compute resources, Amazon Web Services also offers other compute services to meet your needs.</p>
-<ul>
-<li>Amazon Elastic Compute Cloud (Amazon EC2) service offers flexibility and a wide range of EC2 instance types to choose from. It gives you the option to customize operating systems, network and security settings, and the entire software stack, but you are responsible for provisioning capacity, monitoring fleet health and performance, and using Availability Zones for fault tolerance.</li>
-<li>Elastic Beanstalk offers an easy-to-use service for deploying and scaling applications onto Amazon EC2 in which you retain ownership and full control over the underlying EC2 instances.</li>
-</ul>
-<p>Lambda is a highly available service. For more information, see the <a href="https://aws.amazon.com/lambda/sla/" target="_blank" rel="noopener">AWS Lambda service level agreement</a>.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://aws.amazon.com/lambda/?nc1=h_ls" target="_blank" rel="noopener">https://aws.amazon.com/lambda/?nc1=h_ls</a></p>
-<p><a href="https://docs.aws.amazon.com/lambda/latest/dg/welcome.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/lambda/latest/dg/welcome.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">AWS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/07/2020-08-07-AWS-Lambda/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-06-Online-Algorithm-VS-Offline-Algorithm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/">Online Algorithm VS Offline Algorithm</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/" class="archive-article-date">
-  	<time datetime="2020-08-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>离线算法途中拿出来的结果就是最终结果的一部分，而在线算法可能到了最后一步才能得到需要的结果，而过程中产生中间结果都是为最后结果的输出而服务的。</p>
-<p>The Wikipedia page is quite clear:</p>
-<blockquote>
-<p>In computer science, an online algorithm is one that can process its input piece-by-piece in a serial fashion, i.e., in the order that the input is fed to the algorithm, without having the entire input available from the start. In contrast, an offline algorithm is given the whole problem data from the beginning and is required to output an answer which solves the problem at hand. (For example, selection sort requires that the entire list be given before it can sort it, while insertion sort doesn’t.)</p>
-</blockquote>
-<p>Let me expand on the above:</p>
-<p>An offline algorithm requires all information BEFORE the algorithm starts. In the Wikipedia example, <a href="http://en.wikipedia.org/wiki/Selection_sort" target="_blank" rel="noopener">selection sort</a> is <em>offline</em> because step 1 is <code>Find the minimum value in the list</code>. To do this, you need to have the entire list available - otherwise, <strong>how could you possibly know what the minimum value is?</strong> You cannot.</p>
-<p>Insertion sort, by contrast, is <em>online</em> because it does not need to know anything about what values it will sort and the information is requested WHILE the algorithm is running. Simply put, it can grab new values at every iteration.</p>
-<h2 id="Still-not-clear"><a href="#Still-not-clear" class="headerlink" title="Still not clear?"></a>Still not clear?</h2><p>Think of the following examples (for four year olds!). David is asking you to solve two problems.</p>
-<p>In the first problem, he says:</p>
-<blockquote>
-<p>“I’m, going to give you two balls of different masses and you need to drop them at the same time from a tower.. just to make sure Galileo was right. You can’t use a watch, we’ll just eyeball it.”</p>
-</blockquote>
-<p><img src="https://i.stack.imgur.com/U2ffu.jpg" alt="enter image description here"></p>
-<p>If I gave you only one ball, you’d probably look at me and wonder what you’re supposed to be doing. After all, the instructions were pretty clear. You need both balls at the beginning of the problem. This is an <strong>offline</strong> algorithm.</p>
-<p>For the second problem, David says</p>
-<blockquote>
-<p>“Okay, that went pretty well, but now I need you to go ahead and kick a couple of balls across a field.”</p>
-</blockquote>
-<p><img src="https://i.stack.imgur.com/FyC1X.jpg" alt="enter image description here"></p>
-<p>I go ahead and give you the first ball. You kick it. Then I give you the second ball and you kick that. I could also give you a third and fourth ball (without you even knowing that I was going to give them to you). This is an example of an <strong>online</strong> algorithm. As a matter of fact, you could be kicking balls all day.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[<a href="https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In%20computer%20science%2C%20an%20online,input%20available%20from%20the%20start.&amp;text=An%20offline%20algorithm%20requires%20all%20information%20BEFORE%20the%20algorithm%20starts.]" target="_blank" rel="noopener">https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In%20computer%20science%2C%20an%20online,input%20available%20from%20the%20start.&amp;text=An%20offline%20algorithm%20requires%20all%20information%20BEFORE%20the%20algorithm%20starts.]</a>(<a href="https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In" target="_blank" rel="noopener">https://stackoverflow.com/questions/11496013/what-is-the-difference-between-an-on-line-and-off-line-algorithm#:~:text=In</a> computer science%2C an online,input available from the start.&amp;text=An offline algorithm requires all information BEFORE the algorithm starts.)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/06/2020-08-06-Online-Algorithm-VS-Offline-Algorithm/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-05-Priority-QueueHeap-小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/">Priority Queue/Heap 小结</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/" class="archive-article-date">
-  	<time datetime="2020-08-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>PQ又叫”堆”(heap), 但是可能优先队列这个名字更容易记忆它的用途: pq是一种队列, 不过不是先进先出(FIFO), 而是每次出队的元素永远是优先级最高的.</p>
-<h1 id="logical-structure-of-PQ"><a href="#logical-structure-of-PQ" class="headerlink" title="logical structure of PQ"></a>logical structure of PQ</h1><p>个人感觉”堆”这个名字大概源于PQ的(逻辑上的)形状吧: PQ是一种树(tree), 准确的说, 是一种二叉树(binary tree), 说得再准确一点, 它是一种<strong>完全二叉树(complete binary tree)</strong>: 没错, PQ是一种满足某些条件的完全二叉树.</p>
-<p>所谓的”完全二叉树”, 要满足:</p>
-<blockquote>
-<ul>
-<li>除了最后一层, 所有层都排满(没有非空节点)</li>
-<li>最后一层的所有非空节点都排在左边</li>
-</ul>
-</blockquote>
-<p>一张图可以直观说明, 完全二叉树其实就是长得像这样:<br><img src="https://x-wei.github.io/images/heap-summary/pasted_image.png" alt="img"></p>
-<p>一个完全二叉树能被成为PQ的话, 要满足的条件就是:</p>
-<blockquote>
-<p>对于任何一个节点, 它的优先级都大于左右子节点的优先级.</p>
-</blockquote>
-<p>比如下图(圆圈里数字代表优先级):<br><img src="https://x-wei.github.io/images/heap-summary/pasted_image001.png" alt="img"></p>
-<p>这样看上去的话, 确实像是”一堆”东西的形状(码的还挺整齐的), 而且我们知道在这一堆节点里, 优先级最高的就是最顶上的那个节点了.</p>
-<p>我很喜欢这个比喻: 一个heap就像是一个<em>公司的hirachy结构:</em> 子节点就是下属, 父节点就是上司, 每一个上司的能力都比他的下属强(优先级比子节点搞). 能力最强(优先级最高)的人在最上面.</p>
-<h1 id="array-representation-of-PQ"><a href="#array-representation-of-PQ" class="headerlink" title="array representation of PQ"></a>array representation of PQ</h1><p>对于一个完全二叉树, 没有必要用常规的树结构(使用指针)来表示, 因为如果从上到下走过每层(每层内从左到右)给所有节点编号(根节点的编号为1)的话, 完全二叉树有以下性质:</p>
-<blockquote>
-<ul>
-<li><code>father(i) = i/2</code> 其中father(i)表示编号为i的节点的父节点的下标</li>
-<li><code>leftchild(i) = i*2, rightchild(i) = i*2+1</code></li>
-</ul>
-</blockquote>
-<p>既然用数组表示的时候, 任何节点的父亲节点和左右子节点都可以轻松得到, 就没有必要使用指针了. 所以只需要一个数组即可表示PQ ! 比如一个int的PQ在内部只要表示为: <code>int pq[]</code>.</p>
-<p>另外注意, 上面的公式成立的前提是数组下标从1开始, 实现的时候我们把数组的第0个元素空出来即可.</p>
-<p>不难看出一个PQ有以下性质:</p>
-<blockquote>
-<ul>
-<li>高度为lgN</li>
-<li>第k层有 2^k 个节点 (root是第0层)</li>
-<li>最后一层的节点对应的下标&gt;=N/2</li>
-</ul>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/05/2020-08-05-Priority-QueueHeap-小结/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-心灵，人性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/04/心灵，人性/">被淹没和被拯救的</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/04/心灵，人性/" class="archive-article-date">
-  	<time datetime="2020-08-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>被淹没和被拯救的</p>
-<p>I sommersi e i salvati</p>
-<p>意大利 普利莫.莱维 Primo Levi</p>
-<p>心灵，人性</p>
-<p>被解放的： 一脸茫然，爬</p>
-<p>解放的苏联士兵：茫然</p>
-<p>German philosophist: 阿多诺 “奥斯维辛之后，写诗是残忍的”</p>
-<p>– 犹太人毁灭价值观的残忍空白，</p>
-<p>意大利 普利莫.莱维 Primo Levi</p>
-<p>化学家 – 写作</p>
-<p>清洗拯救自己的罪恶感羞耻</p>
-<p>被害者: 耻辱感，不是人的阶段，本能，活下去的问题，而没有了伦理道德观念, 丧失，动物性，羞耻。并且，自私延伸到最亲近的人，自责。</p>
-<p>迟到的羞耻，平民的道德标准。</p>
-<p>更应该活下来的人。</p>
-<p>集中营的世界：灰色地带，好人显得不一定那么好的世界。</p>
-<p>最能把他们击倒的是，难友 内心荒凉，无形的集中营，认为同病相连的人出卖的人，首先折磨的人。</p>
-<p>集中营世界：工作使人自由</p>
-<p>认真做工作，不像人了，提醒是人的东西被剥夺，唯一能让自己觉得尊严体面人，干好工作，though没有报酬，痛苦，不能得回生命。</p>
-<p>卡波，政治犯等管理其他囚犯，犹太人，小秘，残暴。</p>
-<p>特遣队，毒气室按钮，也是犹太人，也得死。</p>
-<p>逃亡？反抗？自杀？无处可去。其他人，面对犹太人仇恨恐慌害怕。</p>
-<p>没有身体的力气、精神的意志、人的尊严，想着活好今天，一点点希望，求生本能。哪里有压迫哪里就有服从，哪里的压迫越强烈，服从就越厉害。</p>
-<p>人类历史上，造反革命，不是最受压迫所率领，手上镣铐比较轻的人，甘地，早期领导人，智力、意志、体力反抗，而不是奴隶。</p>
-<p>为什么不自杀？不是人了，只有人类会自杀，动物不会。</p>
-<p>努力打破自己沉重的枷锁，思索不现实的形象，奴隶的枷锁由其他人打破的。浮华辞藻的革命。</p>
-<p>罗马古道，Via Appia Antica, 奴隶，历史文明野蛮。</p>
-<p>文明的意义没有？文字，心灵，被剥夺，没感觉，熟悉又陌生的语言。</p>
-<p>文明却也有。记住那几行诗，是使人跟已被磨灭的过去重新联系的桥梁，黑暗世界仍看到微弱光线回影的可能。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/04/心灵，人性/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-03-What-The-Ban-Will-Mean-For-TikTok-In-The-US" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/03/2020-08-03-What-The-Ban-Will-Mean-For-TikTok-In-The-US/">What The Ban Will Mean For TikTok In The US</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/03/2020-08-03-What-The-Ban-Will-Mean-For-TikTok-In-The-US/" class="archive-article-date">
-  	<time datetime="2020-08-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="From-Trump-wanting-to-ban-it-and-Microsoft-looking-to-buy-here-is-a-summary"><a href="#From-Trump-wanting-to-ban-it-and-Microsoft-looking-to-buy-here-is-a-summary" class="headerlink" title="From Trump wanting to ban it and Microsoft looking to buy, here is a summary"></a>From Trump wanting to ban it and Microsoft looking to buy, here is a summary</h2><p><img src="https://miro.medium.com/max/6000/0*Oq-qklB4ra79l6_S" alt="Image for post"></p>
-<p>Photo by <a href="https://unsplash.com/@konkarampelas?utm_source=medium&utm_medium=referral" target="_blank" rel="noopener">Kon Karampelas</a> on <a href="https://unsplash.com/?utm_source=medium&utm_medium=referral" target="_blank" rel="noopener">Unsplash</a></p>
-<p>Tiktok has become an international success since its release in September 2016. Taking on social media giants like Facebook and Snapchat, it has not only been able to capture a younger audience but also billions of users across the world.</p>
-<p>Owned by the Chinese company, Bytedance, TikTok was originally going to be another app called Musical.ly before being rebranded.</p>
-<p>2020 was looking like a good year for TikTok with massive growth in numbers due to COVID-19.</p>
-<p>With the recent controversy and now Trump’s ruling to ban TikTok, let’s take a closer look at what’s happening from the start.</p>
-<h1 id="Why-The-Ban-In-The-First-Place"><a href="#Why-The-Ban-In-The-First-Place" class="headerlink" title="Why The Ban In The First Place?"></a>Why The Ban In The First Place?</h1><p>If you haven’t kept up to date with TikTok’s recent events on why Trump wants to ban it in the first place, it all started when someone reverse engineered the application.</p>
-<p>Reddit user ‘<a href="https://www.reddit.com/user/bangorlol/" target="_blank" rel="noopener"><strong>Bangorlol’</strong></a> reversed engineered the app and found that the platform was allegedly stealing users’ data.</p>
-<blockquote>
-<p>“If there is an API (Application Programming Interface) to get information on you, your contacts, or your device … well, they’re using it.” — Bangorlol</p>
-</blockquote>
-<p>Essentially the application was more of a data collection service disguised as a social media platform. This means they’re tracking all kinds of data from CPU type, memory usage, and even all the applications that users have downloaded.</p>
-<p>Bangorlol also stated that TikTok had placed measures to help prevent reverse engineering and debugging.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TikTok</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/03/2020-08-03-What-The-Ban-Will-Mean-For-TikTok-In-The-US/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1253,11 +1196,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1578,6 +1521,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">

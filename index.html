@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 143</a>
+<a>Total Number of Articles: 150</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,820 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-09-07-认证、授权和凭证" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/07/2020-09-07-认证、授权和凭证/">认证、授权和凭证</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/07/2020-09-07-认证、授权和凭证/" class="archive-article-date">
+  	<time datetime="2020-09-07T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在一些互联网公司的面试中，面试官往往会问这样一个问题：</p>
+<p>“如果禁用浏览器 cookie，如何实现用户追踪和认证？”</p>
+<p>遗憾的是依然有大量候选人答非所问，无法搞清楚 cookie 和 session 之间的区别。而在工作中也有让人惊讶的真实案例：把 user ID 存储到 local storage 中当做 token 使用，原因是他们声称弃用了 cookie 这种落后的东西；一个移动端项目，服务器给出的 API 中需要客户端模拟一个 cookie，从而像浏览器中 ajax 那样消费 API。</p>
+<p>互联网是基于 HTTP 协议构建的，而 HTTP 协议因为简单流行开来，但是 HTTP 协议是无状态（通信层面上虚电路比数据报昂贵太多）的，为此人们为了追踪用户想出了各种办法，包括 cookie/session 机制、token、flash 跨浏览器 cookie 甚至浏览器指纹等。</p>
+<p><img src="https://i.loli.net/2020/09/07/FvsZQ79BuTUPaOJ.png" alt="img"></p>
+<p>把用户身份藏在每一个地方（浏览器指纹技术甚至不需要存储介质）</p>
+<p>讲使用 spring security 等具体技术的资料已经很多了，这篇文章不打算写框架和代码的具体实现。我们会讨论认证和授权的区别，然后会介绍一些被业界广泛采用的技术，最后会聊聊怎么为 API 构建选择合适的认证方式。</p>
+<h3 id="认证、授权、凭证"><a href="#认证、授权、凭证" class="headerlink" title="认证、授权、凭证"></a><strong>认证、授权、凭证</strong></h3><p>首先，认证和授权是两个不同的概念，为了让我们的 API 更加安全和具有清晰的设计，理解认证和授权的不同就非常有必要了，它们在英文中也是不同的单词。</p>
+<p><img src="https://i.loli.net/2020/09/07/eM7RWaXoB9krVuz.png" alt="img"></p>
+<p>认证是 authentication，指的是当前用户的身份，当用户登陆过后系统便能追踪到他的身份做出符合相应业务逻辑的操作。即使用户没有登录，大多数系统也会追踪他的身份，只是当做来宾或者匿名用户来处理。认证技术解决的是 “我是谁？”的问题。</p>
+<p>授权则不同，授权是 authorization，指的是什么样的身份被允许访问某些资源，在获取到用户身份后继续检查用户的权限。单一的系统授权往往是伴随认证来完成的，但是在开放 API 的多系统结构下，授权可以由不同的系统来完成，例如 OAuth。授权技术是解决“我能做什么？”的问题。</p>
+<p>实现认证和授权的基础是需要一种媒介（credentials）来标记访问者的身份或权利，在现实生活中每个人都需要一张身份证才能访问自己的银行账户、结婚和办理养老保险等，这就是认证的凭证；在古代军事活动中，皇帝会给出战的将军颁发兵符，下级将领不关心持有兵符的人，只需要执行兵符对应的命令即可。在互联网世界中，服务器为每一个访问者颁发 session ID 存放到 cookie，这就是一种凭证技术。数字凭证还表现在方方面面，SSH 登录的密匙、JWT 令牌、一次性密码等。</p>
+<p>用户账户也不一定是存放在数据库中的一张表，在一些企业 IT 系统中，对账户管理和权限有了更多的要求。所以账户技术 （accounting）可以帮助我们使用不同的方式管理用户账户，同时具有不同系统之间共享账户的能力。例如微软的活动目录（AD），以及简单目录访问协议（LDAP），甚至区块链技术。</p>
+<p>还有一个重要的概念是访问控制策略（AC）。如果我们需要把资源的权限划分到一个很细的粒度，就不得不考虑用户以何种身份来访问受限的资源，选择基于访问控制列表（ACL）还是基于用户角色的访问控制（RBAC）或者其他访问控制策略。</p>
+<p>在流行的技术和框架中，这些概念都无法孤立的被实现，因此在现实中使用这些技术时，大家往往为一个 OAuth2 是认证还是授权这种概念争论不休。为了容易理解，我在文末附上了一份常见技术和概念的术语表。下面我会介绍在API开发中常常使用的几种认证和授权技术：HTTP Basic AUthentication、HAMC、OAuth2，以及凭证技术JWT token。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Authentication, Authorization, Credentials</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/07/2020-09-07-认证、授权和凭证/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-06-前后端常见的几种鉴权方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/">前后端常见的几种鉴权方式</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/" class="archive-article-date">
+  	<time datetime="2020-09-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、四种鉴权方式"><a href="#一、四种鉴权方式" class="headerlink" title="一、四种鉴权方式"></a>一、四种鉴权方式</h2><p>目前我们常用的鉴权有四种：</p>
+<ul>
+<li>HTTP Basic Authentication</li>
+<li>session-cookie</li>
+<li>Token 验证</li>
+<li>OAuth(开放授权)</li>
+</ul>
+<h2 id="二、HTTP-Basic-Authentication"><a href="#二、HTTP-Basic-Authentication" class="headerlink" title="二、HTTP Basic Authentication"></a>二、HTTP Basic Authentication</h2><p>这种授权方式是浏览器遵守http协议实现的基本授权方式，HTTP协议进行通信的过程中，HTTP协议定义了基本认证允许HTTP服务器对客户端进行用户身份证的方法。</p>
+<p>认证过程：</p>
+<p><a href="https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d66c3ac0?w=710&h=335&f=png&s=12074" target="_blank" rel="noopener"><img src="https://i.loli.net/2020/09/07/7rZEqyAkXWgVhY1.png" alt="img"></a></p>
+<p>1、 客户端向服务器请求数据，请求的内容可能是一个网页或者是一个ajax异步请求，此时，假设客户端尚未被验证，则客户端提供如下请求至服务器:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  Get /index.html HTTP/1.0 </span><br><span class="line">  Host:www.google.com</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>2、 服务器向客户端发送验证请求代码401,（WWW-Authenticate: Basic realm=”google.com”这句话是关键，如果没有客户端不会弹出用户名和密码输入界面）服务器返回的数据大抵如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  HTTP/1.0 401 Unauthorised </span><br><span class="line">  Server: SokEvo/1.0 </span><br><span class="line">  WWW-Authenticate: Basic realm=”google.com” </span><br><span class="line">  Content-Type: text/html </span><br><span class="line">  Content-Length: xxx</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>3、 当符合http1.0或1.1规范的客户端（如IE，FIREFOX）收到401返回值时，将自动弹出一个登录窗口，要求用户输入用户名和密码。</p>
+<p>4、 用户输入用户名和密码后，将用户名及密码以BASE64加密方式加密，并将密文放入前一条请求信息中，则客户端发送的第一条请求信息则变成如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  Get /index.html HTTP/1.0 </span><br><span class="line">  Host:www.google.com </span><br><span class="line">  Authorization: Basic d2FuZzp3YW5n</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>注：<code>d2FuZzp3YW5n</code>表示加密后的用户名及密码（用户名：密码 然后通过base64加密，加密过程是浏览器默认的行为，不需要我们人为加密，我们只需要输入用户名密码即可）</p>
+<p>5、 服务器收到上述请求信息后，将 <code>Authorization</code> 字段后的用户信息取出、解密，将解密后的用户名及密码与用户数据库进行比较验证，如用户名及密码正确，服务器则根据请求，将所请求资源发送给客户端</p>
+<p>效果： 客户端未未认证的时候，会弹出用户名密码输入框，这个时候请求时属于 <code>pending</code> 状态，当用户输入用户名密码的时候客户端会再次发送带 <code>Authentication</code> 头的请求。</p>
+<p><img src="https://i.loli.net/2020/09/07/5JH2wU9jfAgzWIp.png" alt="img">)<a href="https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d5b674da?w=2076&amp;h=888&amp;f=png&amp;s=97446" target="_blank" rel="noopener">https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d5b674da?w=2076&amp;h=888&amp;f=png&amp;s=97446</a>)</p>
+<p>认证成功：</p>
+<p><img src="https://i.loli.net/2020/09/07/6KR4aPFgenIt2y3.png" alt="img"></p>
+<p>server.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">let express = require(&quot;express&quot;);</span><br><span class="line">let app = express();</span><br><span class="line"> </span><br><span class="line">  app.use(express.static(__dirname+&apos;/public&apos;));</span><br><span class="line"> </span><br><span class="line">  app.get(&quot;/Authentication_base&quot;,function(req,res)&#123;</span><br><span class="line">    console.log(&apos;req.headers.authorization:&apos;,req.headers)</span><br><span class="line">    if(!req.headers.authorization)&#123;</span><br><span class="line">      res.set(&#123;</span><br><span class="line">        &apos;WWW-Authenticate&apos;:&apos;Basic realm=&quot;wang&quot;&apos;</span><br><span class="line">      &#125;);</span><br><span class="line">      res.status(401).end();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      let base64 = req.headers.authorization.split(&quot; &quot;)[1];</span><br><span class="line">      let userPass = new Buffer(base64, &apos;base64&apos;).toString().split(&quot;:&quot;);</span><br><span class="line">      let user = userPass[0];</span><br><span class="line">      let pass = userPass[1];</span><br><span class="line">      if(user==&quot;wang&quot;&amp;&amp;pass=&quot;wang&quot;)&#123;</span><br><span class="line">        res.end(&quot;OK&quot;);</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        res.status(401).end();</span><br><span class="line">      &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">  &#125;)</span><br><span class="line"> </span><br><span class="line">  app.listen(9090)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>index.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;HTTP Basic Authentication&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script src=&quot;js/jquery-3.2.1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      $(function()&#123;</span><br><span class="line">       send(&apos;./Authentication_base&apos;);</span><br><span class="line">      &#125;)</span><br><span class="line">      var send = function(url)&#123;</span><br><span class="line">            $.ajax(&#123; </span><br><span class="line">            url : url, </span><br><span class="line">            method : &apos;GET&apos;, </span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>优点：  基本认证的一个优点是基本上所有流行的网页浏览器都支持基本认证。基本认证很少在可公开访问的互联网网站上使用，有时候会在小的私有系统中使用（如路由器网页管理接口）。后来的机制HTTP摘要认证是为替代基本认证而开发的，允许密钥以相对安全的方式在不安全的通道上传输。  程序员和系统管理员有时会在可信网络环境中使用基本认证，使用Telnet或其他明文网络协议工具手动地测试Web服务器。这是一个麻烦的过程，但是网络上传输的内容是人可读的，以便进行诊断。</p>
+<p>缺点：  虽然基本认证非常容易实现，但该方案创建在以下的假设的基础上，即：客户端和服务器主机之间的连接是安全可信的。特别是，如果没有使用<code>SSL/TLS</code>这样的传输层安全的协议，那么以明文传输的密钥和口令很容易被拦截。该方案也同样没有对服务器返回的信息提供保护。  现存的浏览器保存认证信息直到标签页或浏览器被关闭，或者用户清除历史记录。HTTP没有为服务器提供一种方法指示客户端丢弃这些被缓存的密钥。这意味着服务器端在用户不关闭浏览器的情况下，并没有一种有效的方法来让用户注销。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Authentication, Session, Cokkie, Token, OAuth</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-05-图解SSH原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/05/2020-09-05-图解SSH原理/">图解SSH原理</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/05/2020-09-05-图解SSH原理/" class="archive-article-date">
+  	<time datetime="2020-09-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2020/09/07/qUpxjHENDu7Ms46.png" alt="img"></p>
+<h2 id="1-初见SSH"><a href="#1-初见SSH" class="headerlink" title="1. 初见SSH"></a>1. 初见SSH</h2><p><a href="http://www.ietf.org/rfc/rfc4251.txt" target="_blank" rel="noopener">SSH</a>是一种协议标准，其目的是实现<strong>安全远程登录</strong>以及其它<strong>安全网络服务</strong>。</p>
+<blockquote>
+<p>SSH仅仅是一<strong>协议标准</strong>，其具体的实现有很多，既有开源实现的OpenSSH，也有商业实现方案。使用范围最广泛的当然是开源实现OpenSSH。</p>
+</blockquote>
+<h2 id="2-SSH工作原理"><a href="#2-SSH工作原理" class="headerlink" title="2. SSH工作原理"></a>2. SSH工作原理</h2><p>在讨论SSH的原理和使用前，我们需要分析一个问题：<strong>为什么需要SSH？</strong></p>
+<p>从1.1节SSH的定义中可以看出，SSH和telnet、ftp等协议主要的区别在于<strong>安全性</strong>。这就引出下一个问题：<strong>如何实现数据的安全呢？</strong>首先想到的实现方案肯定是对数据进行<strong>加密</strong>。加密的方式主要有两种：</p>
+<ol>
+<li>对称加密（也称为秘钥加密）</li>
+<li>非对称加密（也称公钥加密）</li>
+</ol>
+<p>所谓对称加密，指加密解密使用同一套秘钥。如下图所示：</p>
+<p><img src="https://i.loli.net/2020/09/07/fVJHyK78IMmlX9N.png" alt="img"></p>
+<p>图1-1：对称加密-Client端</p>
+<p><img src="https://i.loli.net/2020/09/07/hpNWfLxMzOPSd2v.png" alt="img"></p>
+<p>图1-2：对称加密-Server端</p>
+<p>对称加密的加密强度高，很难破解。但是在实际应用过程中不得不面临一个棘手的问题：<strong>如何安全的保存密钥呢？</strong>尤其是考虑到数量庞大的Client端，很难保证密钥不被泄露。一旦一个Client端的密钥被窃据，那么整个系统的安全性也就不复存在。为了解决这个问题，<strong>非对称加密</strong>应运而生。非对称加密有两个密钥：<strong>“公钥”</strong>和<strong>“私钥”</strong>。</p>
+<blockquote>
+<p>两个密钥的特性：公钥加密后的密文，只能通过对应的私钥进行解密。而通过公钥推理出私钥的可能性微乎其微。</p>
+</blockquote>
+<p>下面看下使用非对称加密方案的登录流程：</p>
+<p><img src="https://i.loli.net/2020/09/07/X4bve18rnIf3U2z.png" alt="img"></p>
+<p>图1-3：非对称加密登录流程</p>
+<ol>
+<li>远程Server收到Client端用户TopGun的登录请求，Server把自己的公钥发给用户。</li>
+<li>Client使用这个公钥，将密码进行加密。</li>
+<li>Client将加密的密码发送给Server端。</li>
+<li>远程Server用自己的私钥，解密登录密码，然后验证其合法性。</li>
+<li>若验证结果，给Client相应的响应。</li>
+</ol>
+<blockquote>
+<p>私钥是Server端独有，这就保证了Client的登录信息即使在网络传输过程中被窃据，也没有私钥进行解密，保证了数据的安全性，这充分利用了非对称加密的特性。</p>
+</blockquote>
+<h6 id="这样就一定安全了吗？"><a href="#这样就一定安全了吗？" class="headerlink" title="这样就一定安全了吗？"></a>这样就一定安全了吗？</h6><p>上述流程会有一个问题：<strong>Client端如何保证接受到的公钥就是目标Server端的？</strong>，如果一个攻击者中途拦截Client的登录请求，向其发送自己的公钥，Client端用攻击者的公钥进行数据加密。攻击者接收到加密信息后再用自己的私钥进行解密，不就窃取了Client的登录信息了吗？这就是所谓的<a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank" rel="noopener">中间人攻击</a></p>
+<p><img src="https://i.loli.net/2020/09/07/vsKGPDIQYCugZ1i.png" alt="img"></p>
+<p>图1-4：中间人攻击</p>
+<h6 id="SSH中是如何解决这个问题的？"><a href="#SSH中是如何解决这个问题的？" class="headerlink" title="SSH中是如何解决这个问题的？"></a>SSH中是如何解决这个问题的？</h6><h5 id="1-基于口令的认证"><a href="#1-基于口令的认证" class="headerlink" title="1. 基于口令的认证"></a>1. 基于口令的认证</h5><p>从上面的描述可以看出，问题就在于<strong>如何对Server的公钥进行认证？</strong>在https中可以通过CA来进行公证，可是SSH的<strong>publish key</strong>和<strong>private key</strong>都是自己生成的，没法公证。只能通过Client端自己对公钥进行确认。通常在第一次登录的时候，系统会出现下面提示信息：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="symbol">'ssh</span>-server.example.com (<span class="number">12.18</span>.<span class="number">429.21</span>)' can<span class="symbol">'t</span> be established.</span><br><span class="line">RSA key fingerprint is <span class="number">98</span>:<span class="number">2</span>e:d7:e0:de:<span class="number">9</span>f:ac:<span class="number">67</span>:<span class="number">28</span>:c2:<span class="number">42</span>:<span class="number">2</span>d:<span class="number">37</span>:<span class="number">16</span>:<span class="number">58</span>:<span class="number">4</span>d.</span><br><span class="line">Are you sure you want to <span class="keyword">continue</span> connecting (yes/no)?</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSH</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/05/2020-09-05-图解SSH原理/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/">一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/" class="archive-article-date">
+  	<time datetime="2020-09-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 适合初学者入门 <a href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485622&idx=1&sn=e9750ed63c47457ba1896db8dfceac6a&chksm=cea2477df9d5ce6b7af20e582c6c60b7408a6459b05b849394c45f04664d1651510bdee029f7&token=1162033225&lang=zh_CN&scene=21#wechat_redirect" target="_blank" rel="noopener">Spring Security With JWT 的 Demo</a> 。Demo 地址：<a href="https://github.com/Snailclimb/spring-security-jwt-guide" target="_blank" rel="noopener">github.com/Snailclimb/…</a> 。很多人可能对权限认证领域一些常见的概念都不是特别了解，所以写了篇文章专门介绍一下这些概念。文中对于每一部分知识点可能有推荐的文章，阅读原文即可看到文章的链接。</p>
+<h2 id="1-认证-Authentication-和授权-Authorization-的区别是什么？"><a href="#1-认证-Authentication-和授权-Authorization-的区别是什么？" class="headerlink" title="1. 认证 (Authentication) 和授权 (Authorization)的区别是什么？"></a>1. 认证 (Authentication) 和授权 (Authorization)的区别是什么？</h2><p>这是一个绝大多数人都会混淆的问题。首先先从读音上来认识这两个名词，很多人都会把它俩的读音搞混，所以我建议你先先去查一查这两个单词到底该怎么读，他们的具体含义是什么。</p>
+<p>说简单点就是：</p>
+<ul>
+<li><strong>认证 (Authentication)：</strong> 你是谁。</li>
+<li><strong>授权 (Authorization)：</strong> 你有权限干什么。</li>
+</ul>
+<p>稍微正式点（啰嗦点）的说法就是：</p>
+<ul>
+<li><strong>Authentication（认证）</strong> 是验证您的身份的凭据（例如用户名/用户ID和密码），通过这个凭据，系统得以知道你就是你，也就是说系统存在你这个用户。所以，Authentication 被称为身份/用户验证。</li>
+<li><strong>Authorization（授权）</strong> 发生在 <strong>Authentication（认证）</strong>之后。授权嘛，光看意思大家应该就明白，它主要掌管我们访问系统的权限。比如有些特定资源只能具有特定权限的人才能访问比如admin，有些对系统资源操作比如删除、添加、更新只能特定人才具有。</li>
+</ul>
+<p>这两个一般在我们的系统中被结合在一起使用，目的就是为了保护我们系统的安全性。</p>
+<h2 id="2-什么是Cookie-Cookie的作用是什么-如何在服务端使用-Cookie"><a href="#2-什么是Cookie-Cookie的作用是什么-如何在服务端使用-Cookie" class="headerlink" title="2. 什么是Cookie ? Cookie的作用是什么?如何在服务端使用 Cookie ?"></a>2. 什么是Cookie ? Cookie的作用是什么?如何在服务端使用 Cookie ?</h2><h3 id="2-1-什么是Cookie-Cookie的作用是什么"><a href="#2-1-什么是Cookie-Cookie的作用是什么" class="headerlink" title="2.1 什么是Cookie ? Cookie的作用是什么?"></a>2.1 什么是Cookie ? Cookie的作用是什么?</h3><p>Cookie 和 Session都是用来跟踪浏览器用户身份的会话方式，但是两者的应用场景不太一样。</p>
+<p>维基百科是这样定义 Cookie 的：Cookies是某些网站为了辨别用户身份而储存在用户本地终端上的数据（通常经过加密）。简单来说： <strong>Cookie 存放在客户端，一般用来保存用户信息</strong>。</p>
+<p>下面是 Cookie 的一些应用案例：</p>
+<ol>
+<li>我们在 Cookie 中保存已经登录过得用户信息，下次访问网站的时候页面可以自动帮你登录的一些基本信息给填了。除此之外，Cookie 还能保存用户首选项，主题和其他设置信息。</li>
+<li>使用Cookie 保存 session 或者 token ，向后端发送请求的时候带上 Cookie，这样后端就能取到session或者token了。这样就能记录用户当前的状态了，因为 HTTP 协议是无状态的。</li>
+<li>Cookie 还可以用来记录和分析用户行为。举个简单的例子你在网上购物的时候，因为HTTP协议是没有状态的，如果服务器想要获取你在某个页面的停留状态或者看了哪些商品，一种常用的实现方式就是将这些信息存放在Cookie</li>
+</ol>
+<h3 id="2-2-如何能在-服务端使用-Cookie-呢？"><a href="#2-2-如何能在-服务端使用-Cookie-呢？" class="headerlink" title="2.2 如何能在 服务端使用 Cookie 呢？"></a>2.2 如何能在 服务端使用 Cookie 呢？</h3><p>这部分内容参考：<a href="https://attacomsian.com/blog/cookies-spring-boot，更多如何在Spring" target="_blank" rel="noopener">attacomsian.com/blog/cookie…</a> Boot中使用Cookie 的内容可以查看这篇文章。</p>
+<p><strong>1)设置cookie返回给客户端</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/change-username&quot;)</span><br><span class="line">public String setCookie(HttpServletResponse response) &#123;</span><br><span class="line">    // 创建一个 cookie</span><br><span class="line">    Cookie cookie = new Cookie(&quot;username&quot;, &quot;Jovan&quot;);</span><br><span class="line">    //设置 cookie过期时间</span><br><span class="line">    cookie.setMaxAge(7 * 24 * 60 * 60); // expires in 7 days</span><br><span class="line">    //添加到 response 中</span><br><span class="line">    response.addCookie(cookie);</span><br><span class="line"></span><br><span class="line">    return &quot;Username is changed!&quot;;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><strong>2) 使用Spring框架提供的<code>@CookieValue</code>注解获取特定的 cookie的值</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/&quot;)</span><br><span class="line">public String readCookie(@CookieValue(value = &quot;username&quot;, defaultValue = &quot;Atta&quot;) String username) &#123;</span><br><span class="line">    return &quot;Hey! My username is &quot; + username;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><strong>3) 读取所有的 Cookie 值</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/all-cookies&quot;)</span><br><span class="line">public String readAllCookies(HttpServletRequest request) &#123;</span><br><span class="line"></span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    if (cookies != null) &#123;</span><br><span class="line">        return Arrays.stream(cookies)</span><br><span class="line">                .map(c -&gt; c.getName() + &quot;=&quot; + c.getValue()).collect(Collectors.joining(&quot;, &quot;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &quot;No cookies&quot;;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Cookie-和-Session-有什么区别？如何使用Session进行身份验证？"><a href="#3-Cookie-和-Session-有什么区别？如何使用Session进行身份验证？" class="headerlink" title="3. Cookie 和 Session 有什么区别？如何使用Session进行身份验证？"></a>3. Cookie 和 Session 有什么区别？如何使用Session进行身份验证？</h2><p><strong>Session 的主要作用就是通过服务端记录用户的状态。</strong> 典型的场景是购物车，当你要添加商品到购物车的时候，系统不知道是哪个用户操作的，因为 HTTP 协议是无状态的。服务端给特定的用户创建特定的 Session 之后就可以标识这个用户并且跟踪这个用户了。</p>
+<p><strong>Cookie 数据保存在客户端(浏览器端)，Session 数据保存在服务器端。相对来说 Session 安全性更高。如果使用 Cookie 的一些敏感信息不要写入 Cookie 中，最好能将 Cookie 信息加密然后使用到的时候再去服务器端解密。</strong></p>
+<p><strong>那么，如何使用Session进行身份验证？</strong></p>
+<p>很多时候我们都是通过 SessionID 来实现特定的用户，SessionID 一般会选择存放在 Redis 中。举个例子：用户成功登陆系统，然后返回给客户端具有 SessionID 的 Cookie，当用户向后端发起请求的时候会把 SessionID 带上，这样后端就知道你的身份状态了。关于这种认证方式更详细的过程如下：</p>
+<p><img src="https://i.loli.net/2020/09/07/XvhF4wD7pUKo18f.png" alt="img"></p>
+<ol>
+<li>用户向服务器发送用户名和密码用于登陆系统。</li>
+<li>服务器验证通过后，服务器为用户创建一个 Session，并将 Session信息存储 起来。</li>
+<li>服务器向用户返回一个 SessionID，写入用户的 Cookie。</li>
+<li>当用户保持登录状态时，Cookie 将与每个后续请求一起被发送出去。</li>
+<li>服务器可以将存储在 Cookie 上的 Session ID 与存储在内存中或者数据库中的 Session 信息进行比较，以验证用户的身份，返回给用户客户端响应信息的时候会附带用户当前的状态。</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Authentication, Authorization, Cookie, Session, Token</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-04-图解SSH原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/04/2020-09-04-图解SSH原理/">图解SSH原理</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/04/2020-09-04-图解SSH原理/" class="archive-article-date">
+  	<time datetime="2020-09-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Secure Shell（安全外壳协议，简称<strong>SSH</strong>）是一种加密的网络传输协议，可在不安全的网络中为网络服务提供安全的传输环境。 <strong>SSH</strong>通过在网络中建立安全隧道来实现<strong>SSH</strong>客户端与服务器之间的连接。</p>
+<p><strong>SSH protocol（SSH协议）</strong></p>
+<p>  The SSH protocol (Secure Shell) is a method for secure <strong>remote login from one computer to another</strong>. It provides several alternative options for strong authentication, and it protects the communications security and integrity with strong encryption. It is a secure alternative to the non-protected login protocols (such as telnet, rlogin) and insecure file transfer methods (such as FTP).</p>
+<p>  务必阅读官方文档：<a href="https://www.ssh.com/ssh/protocol/" target="_blank" rel="noopener">https://www.ssh.com/ssh/protocol/</a></p>
+<p><strong>user authentication：用户授权</strong></p>
+<p><strong>host authentication：主机授权</strong></p>
+<p><strong>Host keys：</strong></p>
+<p>  A host key is a cryptographic key used for authenticating computers in the SSH protocol.</p>
+<p>  Host keys are key pairs, typically using the RSA, DSA, or ECDSA algorithms. Public host keys are stored on and/or distributed to SSH clients, and private keys are stored on SSH servers.</p>
+<ol>
+<li><p>Host Keys Should Be Unique</p>
+<p>Each host (i.e., computer) should have a unique host key.</p>
+</li>
+<li><p>Host keys are normally generated automatically when OpenSSH is first installed or when the computer is first booted.</p>
+</li>
+<li><p>In OpenSSH（Server端）, host keys are usually stored in the /etc/ssh directory.</p>
+</li>
+</ol>
+<p>客户端存放known_hosts文件：</p>
+<p>  SSH clients store host keys for hosts they have ever connected to. These stored host keys are called known host keys, and the collection is often called known hosts. In OpenSSH, the collection of known host keys is stored in /etc/ssh/known_hosts and in .ssh/known_hosts in each user’s home directory.</p>
+<p>阅读官方文档：<a href="https://www.ssh.com/ssh/host-key" target="_blank" rel="noopener">https://www.ssh.com/ssh/host-key</a></p>
+<p><strong>private key</strong>（在SSH里面又叫 <strong>identity key</strong>）</p>
+<p><strong>public key</strong>（在SSH里面又叫 <strong>authorized key</strong>）</p>
+<p><strong>User keys</strong>：identity key和authorized key的统称，用于用户授权。</p>
+<p>关于 public key和 private key 参见官方说明：</p>
+<p><a href="https://www.ssh.com/ssh/public-key-authentication" target="_blank" rel="noopener">https://www.ssh.com/ssh/public-key-authentication</a></p>
+<p>key生成工具说明参见：</p>
+<p><a href="https://www.ssh.com/ssh/keygen/" target="_blank" rel="noopener">https://www.ssh.com/ssh/keygen/</a></p>
+<p><strong>SSH key</strong>：SSH授权凭证（authentication credential）的统称。</p>
+<p><strong>Session key</strong>：</p>
+<p>  a session key is a cryptographic key that is used for encrypting the bulk of transmitted data and ensuring integrity of the data.</p>
+<ol>
+<li><p>Session key为对称加密算法（例如Diffie-Hellman）的key，每次建立的session的key都不一样；</p>
+</li>
+<li><p>为了防止中间人攻击，数据不但要加密，还得签名，签名和验签一般用private key和public key。</p>
+<p>参见：<a href="https://www.ssh.com/ssh/session-key" target="_blank" rel="noopener">https://www.ssh.com/ssh/session-key</a></p>
+</li>
+</ol>
+<p><strong>Passphrase：</strong></p>
+<p>  用来加密private key的密码。假设private key被盗，那么它可以被用来登录所有与之匹配的系统。</p>
+<p>  在生成 private key时，可以设置一个 passphrase（类似于密码）的字符串，然后 这个private key相当于被加密了，使用这个private key时就需要输入密码解密后才能正常使用。这样即使private key泄露，别人也无法解密真正的key。很多时候这个passphrase可以保存在本地（例如ssh agent中），这样就相当于记住了密码，在本地使用这个private key就不用再次输入密码了。（注意，如果忘了passphrase，则该private key就无法在其他电脑上使用了，而且无法找回）</p>
+<p>原文：</p>
+<p>  The purpose of the passphrase is usually to encrypt the private key. This makes the key file by itself useless to an attacker. It is not uncommon for files to leak from backups or decommissioned hardware, and hackers commonly exfiltrate files from compromised systems.</p>
+<p>  To use an encrypted key, the passphrase is also needed. In a way, they are two separate factors of authentication.</p>
+<p>  With SSH keys, if someone gains access to your computer, they also gain access to every system that uses that key. To add an extra layer of security, you can add a passphrase to your SSH key. You can use <code>ssh-agent</code> to securely save your passphrase so you don’t have to reenter it.</p>
+<p>  参考资料：</p>
+<p><a href="https://help.github.com/articles/working-with-ssh-key-passphrases/" target="_blank" rel="noopener">https://help.github.com/articles/working-with-ssh-key-passphrases/</a></p>
+<p><a href="https://www.ssh.com/ssh/passphrase" target="_blank" rel="noopener">https://www.ssh.com/ssh/passphrase</a></p>
+<p><strong>ssh-agent：</strong></p>
+<p>  The ssh-agent is a helper program that keeps track of user’s identity keys and their passphrases. The agent can then use the keys to log into other servers without having the user type in a password or passphrase again. This implements a form of single sign-on (SSO).</p>
+<p>  The SSH agent is used for SSH public key authentication. It uses SSH keys for authentication. Users can create SSH keys using the ssh-keygen command and install them on servers using the ssh-copy-id command.</p>
+<p>  On most Linux systems, ssh-agent is automatically configured and run at login.</p>
+<p>  By default, the agent uses SSH keys stored in the .ssh directory under the user’s home directory. The ssh-add command is used for adding identities to the agent. In the simplest form, just run if without argument to add the default files ~/.ssh/id_rsa, .ssh/id_dsa, and ~/.ssh/identity. Otherwise, give it the name of the private key file to add as an argument.</p>
+<p>  The following command will list private keys currently accessible to the agent:</p>
+<p>ssh-add -l</p>
+<p>参见更多：</p>
+<p><a href="https://www.ssh.com/ssh/agent" target="_blank" rel="noopener">https://www.ssh.com/ssh/agent</a></p>
+<p><a href="https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/" target="_blank" rel="noopener">https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/</a></p>
+<p><strong>SSH工作流程</strong></p>
+<p>Initializing a connection in SSH consists of:</p>
+<ul>
+<li>Negotiating the version of the protocol to use</li>
+<li>Negotiating cryptographic algorithms and other options to use</li>
+<li>Negotiating a one-time session key for encrypting the rest of the session</li>
+<li>Authenticating the server host using its host key</li>
+<li>Authenticating the user using a password, public key authentication, or other means.</li>
+</ul>
+<p>After this, data can be exchanged, including terminal data, graphics, and files.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://blog.zollty.com/b/archive/the-most-complete-explanation-of-ssh.html" target="_blank" rel="noopener">http://blog.zollty.com/b/archive/the-most-complete-explanation-of-ssh.html</a></p>
+<p><a href="https://www.jianshu.com/p/33461b619d53" target="_blank" rel="noopener">https://www.jianshu.com/p/33461b619d53</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSH</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/04/2020-09-04-图解SSH原理/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-03-Use-the-Microsoft-Graph-API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/03/2020-09-03-Use-the-Microsoft-Graph-API/">Use the Microsoft Graph API</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/03/2020-09-03-Use-the-Microsoft-Graph-API/" class="archive-article-date">
+  	<time datetime="2020-09-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Microsoft Graph is a RESTful web API that enables you to access Microsoft Cloud service resources. After you <a href="https://docs.microsoft.com/en-us/graph/auth-register-app-v2" target="_blank" rel="noopener">register your app</a> and <a href="https://docs.microsoft.com/en-us/graph/auth-v2-user" target="_blank" rel="noopener">get authentication tokens for a user</a> or <a href="https://docs.microsoft.com/en-us/graph/auth-v2-service" target="_blank" rel="noopener">service</a>, you can make requests to the Microsoft Graph API.</p>
+<blockquote>
+<p><strong>Important:</strong> How conditional access policies apply to Microsoft Graph is changing. Applications need to be updated to handle scenarios where conditional access policies are configured. For more information and guidance, see <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-conditional-access-developer" target="_blank" rel="noopener">Developer Guidance for Azure Active Directory Conditional Access</a>.</p>
+</blockquote>
+<h2 id="OData-namespace"><a href="#OData-namespace" class="headerlink" title="OData namespace"></a>OData namespace</h2><p>The Microsoft Graph API defines most of its resources, methods, and enumerations in the OData namespace, <code>microsoft.graph</code>, in the <a href="https://docs.microsoft.com/en-us/graph/traverse-the-graph#microsoft-graph-api-metadata" target="_blank" rel="noopener">Microsoft Graph metadata</a>. A small number of API sets are defined in their sub-namespaces, such as the <a href="https://docs.microsoft.com/en-us/graph/api/resources/callrecords-api-overview?view=graph-rest-beta" target="_blank" rel="noopener">call records API</a> which defines resources like <a href="https://docs.microsoft.com/en-us/graph/api/resources/callrecords-callrecord?view=graph-rest-beta" target="_blank" rel="noopener">callRecord</a> in <code>microsoft.graph.callRecords</code>.</p>
+<p>Unless explicitly specified in the corresponding topic, assume types, methods, and enumerations are part of the <code>microsoft.graph</code> namespace.</p>
+<h2 id="Call-a-REST-API-method"><a href="#Call-a-REST-API-method" class="headerlink" title="Call a REST API method"></a>Call a REST API method</h2><p>To read from or write to a resource such as a user or an email message, you construct a request that looks like the following:</p>
+<p>HTTPCopy</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;HTTP method&#125; https://graph.microsoft.com/&#123;version&#125;/&#123;resource&#125;?&#123;query-parameters&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The components of a request include:</p>
+<ul>
+<li><a href="https://docs.microsoft.com/en-us/graph/use-the-api#http-methods" target="_blank" rel="noopener">{HTTP method}</a> - The HTTP method used on the request to Microsoft Graph.</li>
+<li><a href="https://docs.microsoft.com/en-us/graph/use-the-api#version" target="_blank" rel="noopener">{version}</a> - The version of the Microsoft Graph API your application is using.</li>
+<li><a href="https://docs.microsoft.com/en-us/graph/use-the-api#resource" target="_blank" rel="noopener">{resource}</a> - The resource in Microsoft Graph that you’re referencing.</li>
+<li><a href="https://docs.microsoft.com/en-us/graph/use-the-api#query-parameters" target="_blank" rel="noopener">{query-parameters}</a> - Optional OData query options or REST method parameters that customize the response.</li>
+</ul>
+<p>After you make a request, a response is returned that includes:</p>
+<ul>
+<li>Status code - An HTTP status code that indicates success or failure. For details about HTTP error codes, see <a href="https://docs.microsoft.com/en-us/graph/errors" target="_blank" rel="noopener">Errors</a>.</li>
+<li>Response message - The data that you requested or the result of the operation. The response message can be empty for some operations.</li>
+<li><code>nextLink</code> - If your request returns a lot of data, you need to page through it by using the URL returned in <code>@odata.nextLink</code>. For details, see <a href="https://docs.microsoft.com/en-us/graph/paging" target="_blank" rel="noopener">Paging</a>.</li>
+</ul>
+<h2 id="HTTP-methods"><a href="#HTTP-methods" class="headerlink" title="HTTP methods"></a>HTTP methods</h2><p>Microsoft Graph uses the HTTP method on your request to determine what your request is doing. The API supports the following methods.</p>
+<table>
+<thead>
+<tr>
+<th align="left"><strong>Method</strong></th>
+<th align="left"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GET</td>
+<td align="left">Read data from a resource.</td>
+</tr>
+<tr>
+<td align="left">POST</td>
+<td align="left">Create a new resource, or perform an action.</td>
+</tr>
+<tr>
+<td align="left">PATCH</td>
+<td align="left">Update a resource with new values.</td>
+</tr>
+<tr>
+<td align="left">PUT</td>
+<td align="left">Replace a resource with a new one.</td>
+</tr>
+<tr>
+<td align="left">DELETE</td>
+<td align="left">Remove a resource.</td>
+</tr>
+</tbody></table>
+<ul>
+<li>For the CRUD methods <code>GET</code> and <code>DELETE</code>, no request body is required.</li>
+<li>The <code>POST</code>, <code>PATCH</code>, and <code>PUT</code> methods require a request body, usually specified in JSON format, that contains additional information, such as the values for properties of the resource.</li>
+</ul>
+<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h2><p>Microsoft Graph currently supports two versions: <code>v1.0</code> and <code>beta</code>.</p>
+<ul>
+<li><code>v1.0</code> includes generally available APIs. Use the v1.0 version for all production apps.</li>
+<li><code>beta</code> includes APIs that are currently in preview. Because we might introduce breaking changes to our beta APIs, we recommend that you use the beta version only to test apps that are in development; do not use beta APIs in your production apps.</li>
+</ul>
+<p>We are always looking for feedback on our beta APIs. To provide feedback or request features, see our <a href="https://officespdev.uservoice.com/" target="_blank" rel="noopener">UserVoice</a> page.</p>
+<p>For more information about API versions, see <a href="https://docs.microsoft.com/en-us/graph/versioning-and-support" target="_blank" rel="noopener">Versioning and support</a>.</p>
+<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p>A resource can be an entity or complex type, commonly defined with properties. Entities differ from complex types by always including an <strong>id</strong> property.</p>
+<p>Your URL will include the resource you are interacting with in the request, such as <code>me</code>, <strong>user</strong>, <strong>group</strong>, <strong>drive</strong>, and <strong>site</strong>. Often, top-level resources also include <em>relationships</em>, which you can use to access additional resources, like <code>me/messages</code> or <code>me/drive</code>. You can also interact with resources using <em>methods</em>; for example, to send an email, use <code>me/sendMail</code>. For more information, see <a href="https://docs.microsoft.com/en-us/graph/traverse-the-graph" target="_blank" rel="noopener">Access data and methods by navigating Microsoft Graph</a>.</p>
+<p>Each resource might require different permissions to access it. You will often need a higher level of permissions to create or update a resource than to read it. For details about required permissions, see the method reference topic.</p>
+<p>For details about permissions, see <a href="https://docs.microsoft.com/en-us/graph/permissions-reference" target="_blank" rel="noopener">Permissions reference</a>.</p>
+<h2 id="Query-parameters"><a href="#Query-parameters" class="headerlink" title="Query parameters"></a>Query parameters</h2><p>Query parameters can be OData system query options, or other strings that a method accepts to customize its response.</p>
+<p>You can use optional OData system query options to include more or fewer properties than the default response, filter the response for items that match a custom query, or provide additional parameters for a method.</p>
+<p>For example, adding the following <code>filter</code> parameter restricts the messages returned to only those with the <code>emailAddress</code> property of <code>jon@contoso.com</code>.</p>
+<p>HTTPCopy</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@contoso.com'</span><br></pre></td></tr></table></figure>
+
+<p>For more information about OData query options, see <a href="https://docs.microsoft.com/en-us/graph/query-parameters" target="_blank" rel="noopener">Use query parameters to customize responses</a>.</p>
+<p>Aside from OData query options, some methods require parameter values specified as part of the query URL. For example, you can get a collection of events that occurred during a time period in a user’s calendar, by querying the <strong>calendarView</strong> relationship of a <strong>user</strong>, and specifying the period <code>startDateTime</code> and <code>endDateTime</code> values as query parameters:</p>
+<p>HTTPCopy</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://graph.microsoft.com/me/calendarView?startDateTime=2019-09-01T09:00:00.0000000&amp;endDateTime=2019-09-01T17:00:00.0000000</span><br></pre></td></tr></table></figure>
+
+<h2 id="Tools-for-interacting-with-Microsoft-Graph"><a href="#Tools-for-interacting-with-Microsoft-Graph" class="headerlink" title="Tools for interacting with Microsoft Graph"></a>Tools for interacting with Microsoft Graph</h2><h3 id="Graph-Explorer"><a href="#Graph-Explorer" class="headerlink" title="Graph Explorer"></a>Graph Explorer</h3><p>Graph Explorer is a web-based tool that you can use to build and test requests using Microsoft Graph APIs. You can access Graph Explorer at: <code>https://developer.microsoft.com/graph/graph-explorer</code>.</p>
+<p>You can either access demo data without signing in, or you can sign in to a tenant of your own. Use the following steps to build the request:</p>
+<ol>
+<li>Select the HTTP method.</li>
+<li>Select the version of API that you want to use.</li>
+<li>Type the query in the request text box.</li>
+<li>Select <strong>Run Query</strong>.</li>
+</ol>
+<p>The following example shows a request that returns information about users in the demo tenant:</p>
+<p><img src="https://i.loli.net/2020/09/07/8o4Y9CDOFUJdi3E.png" alt="Screenshot of Graph Explorer with a GET user request highlighted"></p>
+<p>Sample queries are provided in Graph Explorer to enable you to more quickly run common requests. To see the samples that are available, select <strong>show more samples</strong>. Select <strong>On</strong> for the set of samples that you want to see, and then after closing the selection window, you should see a list of predefined requests.</p>
+<p>A status code and message are displayed after a request is sent and the response is shown in the <strong>Response Preview</strong> tab.</p>
+<h3 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h3><p>Postman is a tool that you can use to build and test requests using the Microsoft Graph APIs. You can download Postman at: <code>https://www.getpostman.com/</code>. To interact with Microsoft Graph in Postman, you use the Microsoft Graph collection.</p>
+<p>For more information, see <a href="https://docs.microsoft.com/en-us/graph/use-postman?context=graph/api/beta&view=graph-rest-beta" target="_blank" rel="noopener">Use Postman with the Microsoft Graph API</a>.</p>
+<h2 id="Next-steps"><a href="#Next-steps" class="headerlink" title="Next steps"></a>Next steps</h2><p>You’re ready to get up and running with Microsoft Graph. Try the <a href="https://developer.microsoft.com/graph/quick-start" target="_blank" rel="noopener">Quick Start</a>, or get started using one of our <a href="https://developer.microsoft.com/graph/code-samples-and-sdks" target="_blank" rel="noopener">SDKs and code samples</a>.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://docs.microsoft.com/en-us/graph/use-the-api" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/graph/use-the-api</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RESTful API</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/03/2020-09-03-Use-the-Microsoft-Graph-API/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-02-Sass-vs.-Less" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/02/2020-09-02-Sass-vs.-Less/">Sass vs. Less</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/02/2020-09-02-Sass-vs.-Less/" class="archive-article-date">
+  	<time datetime="2020-09-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CSS预处理器是一种语言，用来编写一些CSS的特性,而且无需考虑浏览器兼容性的问题。他们通过编译的代码编写成一般的CSS,不要在停留在石器时代了。CSS预处器有成千上万的特性,在本文中我们将一一介绍。让我们开始。</p>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a><strong>语法</strong></h1><p>在使用CSS预处器之前最重要的是对语法的理解，幸运的是，这三种CSS预处器的语法和CSS都差不多。</p>
+<h2 id="sass和less"><a href="#sass和less" class="headerlink" title="sass和less"></a><strong>sass和less</strong></h2><p>sass和less都使用的是标准的CSS语法。这使用CSS预处器非常容易的将预处器代码转换成CSS代码。默认sass使用<code>.scss</code>扩展名，而less使用<code>.less</code>扩展名。</p>
+<p><em>“Which CSS preprocessor language should I choose?”</em> is a hot topic lately. I’ve been asked in person several times and an online debate has been popping up every few days it seems. It’s nice that the conversation has largely turned from whether or not preprocessing is a good idea to which one language is best. Let’s do this thing.</p>
+<p>Really short answer: Sass</p>
+<p>Slightly longer answer: Sass is better on a whole bunch of different fronts, but if you are already happy in Less, that’s cool, at least you are doing yourself a favor by preprocessing.</p>
+<p>Much longer answer: Read on.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Frontend</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/02/2020-09-02-Sass-vs.-Less/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-09-01-Monotonic-Queue-and-Monotonic-Stack-Algorithms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -481,791 +1295,6 @@
 
 
   
-    <article id="post-2020-08-29-Communication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/29/2020-08-29-Communication/">Communication</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/29/2020-08-29-Communication/" class="archive-article-date">
-  	<time datetime="2020-08-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        Welcome to my blog, enter password to read this article.
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Life</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/29/2020-08-29-Communication/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-27-Dating-the-World" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/28/2020-08-27-Dating-the-World/">Dating the World</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/28/2020-08-27-Dating-the-World/" class="archive-article-date">
-  	<time datetime="2020-08-28T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>Anthony Bourdain: Parts Unkown</li>
-</ol>
-<p>Dating the world, dating life, dating the planet</p>
-<p>adventures, travel, new activities, sit down to have dinners with all sorts of people.</p>
-<ol start="2">
-<li>Give energy simply to give it. </li>
-</ol>
-<p>A beam of light.</p>
-<p>The energy we want to represent in the word.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Life</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/28/2020-08-27-Dating-the-World/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-18-王国维" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/27/2020-08-18-王国维/">王国维</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/27/2020-08-18-王国维/" class="archive-article-date">
-  	<time datetime="2020-08-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>清华国学四大家：</p>
-<p>梁启超，王国维，陈寅恪， 赵元任</p>
-<p>姓 名  字（晚辈）</p>
-<p>王国维，前清秀才，不新不古，19c末考完秀才学日文，东文学社，学康德哲学，叔本华哲学，西方理科的学问= &gt; 日本留学 剪辫 =&gt; 辛亥革命 回来 留辫子</p>
-<p>王国维自杀 1927 6 2 </p>
-<p>北伐革命军往北</p>
-<p>原因：从某种文化中长出来，对该文化有极深的感触，当看着这个文化消失败亡，极大的痛苦。精神上的解脱自由，若无法跟随新时代，则为文化而死。1927年逐渐消逝的中国文化。– 《人间词话》 解读中国文化的精髓。</p>
-<p>理想与写实的融合。</p>
-<p>“有造境，有写境，此理想与写实二派之所由分，然二者颇难分别，因大诗人所造之境必合乎自然，所写之境亦必邻于理想故也”</p>
-<p>王国维：不新不古，不中不西，中国第一个把现代西方的文学批评观念和哲学理念带进中国旧文学和古文学整理和研究。</p>
-<p>但是</p>
-<p>词话：古典，文学批评，点评，闲散，古风。所以不会是受西方影响的，非常系统逻辑连贯定义清晰地写作。</p>
-<p>第一句 整本书core “境界”</p>
-<p>可以却没有为境界下一个严谨的定义，</p>
-<p>境界– 同佛教从印度传入中国 - “六根”： 感知世界。人的六种感官能力，眼睛 耳朵 鼻子 舌头 身 意(mind) - “六视”： 眼视 … - 感受到的外面的东西 “六尘”：色(形象)，声, 香，味，触，法。</p>
-<p>六根碰到世界，世界之内叫境界，我的感官意识投射所达的世界范围。世界离不开我对世界的感知。</p>
-<p>境界– 中国文化美学的巧妙</p>
-<p>王国维20岁写了人间词话，之后不碰了，而做古史研究。</p>
-<p>中国第一本最早的词的合集：花间集，晚唐五代。</p>
-<p>诗有题目，词只有词牌，当时苏东坡、陆游自己都不看不上自己的词。</p>
-<p>王国维：词好在境界，好在真，有些话诗说不了，词说得了。 </p>
-<p>有我之境，以我观物，无我之境，以物观物，故不知何者为我，何者为物。</p>
-<p>王国维对词高的评价，把对西方哲学（西方美学：康德美学，叔本华美学）+印度佛学。</p>
-<p>文学：有境界： 真感情 真我投射到外在景物、想象世界、情感上的感触。</p>
-<p>无我：外在世界我也在里面，但是不是情感激动型地投入进去，而是我在里头但又可以抽身而出，既在其中又在其外，隔，静观万物皆自得。</p>
-<p>表面讲词，实际上是对中国文学、韵律文、诗文、中国美学整体的简洁，人生观。</p>
-<p>做人</p>
-<p>“<strong>古今之成大事业、大学问者，必经三种之境界：‘昨夜西风凋碧树，独上西楼，望尽天涯路’，此第一境也;‘衣带渐宽终不悔，为伊消得人憔悴’，此第二境也，‘众里寻他千百度，蓦然回首，那人却在灯火阑珊处’，此第三境也。</strong>“</p>
-<p>– 传统中国儒家人生观念：成己达人之道，君子成长：辽阔的视野，志向远大。刻苦磨练自己；本心早已在那里。</p>
-<p>词：从女子角度写的恋爱感觉，思念情郎的口吻，说出不一样的境界。</p>
-<p>南唐中主李璟，李后主李煜，对亡国的恨意，故国之思的忧愁，借着女子思念情郎的状态。</p>
-<p>比喻，比拟</p>
-<p>和屈原离骚相似，源头，屈原开始文学典型拿香草美人比喻君子、比喻男人、比喻当陈下的对国家、君王的态度和忠诚和挂念。</p>
-<p>给了文人们的表达方式。</p>
-<p>文学解释：</p>
-<p>词的美学属性，东方艺术，昆曲、京剧、越剧、日本歌舞伎 能剧，梅兰芳，坂东玉三郎，反串。</p>
-<p>女性的特质：要眇宜修，悠悠长长连绵不断，而非强烈的，此恨绵绵无绝期。这样的感情，有大境界，对家国的看法。</p>
-<p>男人通过词，曲折隐晦地借着女人的声音，说出来自己无法借着男人的口吻去说的, 对人生国家天下的看法。</p>
-<p>隔了一重，却又要表达真情实感。</p>
-<p>到了李后主之后，词才中国诗有了直抒胸臆言志。但词仍有区隔，要眇宜修，悠长曲折，真实直接且曲折。</p>
-<p>王国维指出：不要用太多代字，桃花-红雨，很隔 – 应该用最直接的语言写。</p>
-<p>周邦彦 桂华流瓦</p>
-<p>用典</p>
-<p>王国维 具有争议的评价：白描 VS 用典 隔，但其实王不是反对用代字、比喻象征隐喻借喻，而是用得不好，为了用而用。词本身已经曲折，隐喻典故，但不能为曲折而曲折，不能庸俗，用烂的字眼。僵尸、滥调修辞， “总有一种 ….” “一道美丽的风景线”</p>
-<p>有境界：</p>
-<ol>
-<li>品格、经历：对世界和所写之物有真情实感</li>
-<li>才华：能真切写出来让读者看到了你看到的世界，感觉到了你感觉到的世界</li>
-</ol>
-<p>把真感受用最简单的字表达出来。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/27/2020-08-18-王国维/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-26-微服务-Microservice" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/2020-08-26-微服务-Microservice/">微服务 Microservice</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/26/2020-08-26-微服务-Microservice/" class="archive-article-date">
-  	<time datetime="2020-08-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Microservices-in-Industry"><a href="#Microservices-in-Industry" class="headerlink" title="Microservices in Industry"></a>Microservices in Industry</h1><p>Netflix - Pioneer of the microservices movement</p>
-<p>(2009 - 2011: Monolithic - Microservices)</p>
-<p>Amazon - The world’s most prominent advocate of microservices, with AWS.</p>
-<p>Facebook Ebay, Uber, etc.</p>
-<h1 id="Monolithic-Application"><a href="#Monolithic-Application" class="headerlink" title="Monolithic Application"></a>Monolithic Application</h1><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi0bunmdycj30ta0f9442.jpg" alt="Screen Shot 2020-08-22 at 3.08.30 PM"></p>
-<h1 id="Microservice-Architecture"><a href="#Microservice-Architecture" class="headerlink" title="Microservice Architecture"></a>Microservice Architecture</h1><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi0bz49w1fj30to0cmtgw.jpg" alt="Screen Shot 2020-08-22 at 3.12.18 PM"></p>
-<p>Monolithic Application: 从本地的function call -&gt;Microservice Architecture: HTTP request and response: 跨互联网的请求 把不同模块相互连接。</p>
-<h1 id="Pros-and-Cons"><a href="#Pros-and-Cons" class="headerlink" title="Pros and Cons"></a>Pros and Cons</h1><h2 id="Monolithic-Application-Pros"><a href="#Monolithic-Application-Pros" class="headerlink" title="Monolithic Application Pros:"></a>Monolithic Application Pros:</h2><p>通信开销小 </p>
-<ol>
-<li>Development is simple and direct, with centralized management.</li>
-<li>All functions are local, and low overhead for distributed management.</li>
-</ol>
-<h2 id="Monolithic-Application-Cons"><a href="#Monolithic-Application-Cons" class="headerlink" title="Monolithic Application Cons:"></a>Monolithic Application Cons:</h2><ol>
-<li>The build time is long, and any small modification must rebuild the entire project. </li>
-<li>A trivial problem can make the entire application down.</li>
-<li>Cannot be deployed according to the needs of each business module, but as a whole. 部署到云端</li>
-</ol>
-<p>部署规模根据：用户日活量，qps (query per second), throughput (单位时间传进来的数据量) – 多少个服务器</p>
-<p>100 qps, conversion: 1 server how many queries per second =&gt; bottleneck, load test, to 衡量 server cpu 90%认为满负荷，memory, 网络带宽使用率 …</p>
-<p>功能硬件资源消耗不同，对于硬件要求调整硬件配置。</p>
-<p>Microservice: 有些模块吃内存 – deploy在内存比较好的机器上。</p>
-<h2 id="Microservice-Architecture-Pros"><a href="#Microservice-Architecture-Pros" class="headerlink" title="Microservice Architecture Pros"></a>Microservice Architecture Pros</h2><ol>
-<li>Services independently deployable and scalable.</li>
-<li>Service build time is shorter, which means faster development velocity.</li>
-<li>Size of codebase is reasonably understandable by a single developer.</li>
-<li>Decoupling, single-responsibility, better for Agile better scalability, good failure tolerance.</li>
-</ol>
-<h2 id="Microservice-Architecture-Cons"><a href="#Microservice-Architecture-Cons" class="headerlink" title="Microservice Architecture Cons"></a>Microservice Architecture Cons</h2><ol>
-<li>Inter-service communication cost is high.</li>
-<li>Increased difficulty in service integration test and maintenance: reliability engineer.</li>
-</ol>
-<h1 id="Microservices-Development"><a href="#Microservices-Development" class="headerlink" title="Microservices Development"></a>Microservices Development</h1><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi0cq5gdjaj30iy091tbd.jpg" alt="Screen Shot 2020-08-22 at 3.38.49 PM"></p>
-<p>gitaway api, ukita</p>
-<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h1><h2 id="规模语分布式-微服务架构："><a href="#规模语分布式-微服务架构：" class="headerlink" title="规模语分布式/微服务架构："></a>规模语分布式/微服务架构：</h2><p>一般service如果可以归并成3个模块以上，可以考虑microservice.</p>
-<h2 id="Microservice"><a href="#Microservice" class="headerlink" title="Microservice:"></a>Microservice:</h2><p>HTTP port run 多个Spring boot程序，或者container.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Microservice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/2020-08-26-微服务-Microservice/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-25-Hadoop中的数据压缩-Hadoop压缩和存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/25/2020-08-25-Hadoop中的数据压缩-Hadoop压缩和存储/">Hadoop中的数据压缩 Hadoop压缩和存储</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/25/2020-08-25-Hadoop中的数据压缩-Hadoop压缩和存储/" class="archive-article-date">
-  	<time datetime="2020-08-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在集群处理大数据时，压缩数据可以带来两方面的好处：<br>1，减少存储磁盘空间，降低单节点的磁盘IO。<br>2，由于压缩后的数据占用的带宽更少，因此可以加快数据在Hadoop集群流动的速度。例如在不同节点创建3个replica的阶段，或是shuffling阶段。</p>
-<p><strong>压缩的是什么</strong><br>1，压缩输入文件 – 在后面的“压缩和输入分片”一节中我们可以看出，将输入文件做<strong>合理压缩</strong>后，Hadoop会将压缩后的文件切分为数据分片，分配给多个Mapper执行。Mapper会对每个数据分片先解压缩，然后处理。<br>2，压缩输出文件 – 对输出文件做压缩一个目的是减少输出文件对HDFS的磁盘空间占用。如果输出文件需要被下游模块使用，也可以降低数据拷贝的网络传输成本。<br>3，压缩Mapper输出文件 – MapReduce过程中，Map阶段完成后需要将大量中间结果写入磁盘并在partition和shuffling过程中在集群中来回拷贝，以供Reduce阶段使用。因此对Mapper输出的中间结果压缩可以降低partition和shuffling的网络传输成本。</p>
-<p><strong>是否应该使用压缩</strong><br>使用压缩的好处上文已经说明，缺点则是需要花费额外的时间/CPU做压缩和解压缩计算。总的来说使用压缩可以提高效率，应尽可能的使用，尤其是以下场景：<br>1，数据更多的是被存储，而不是被处理。例如使用HDFS作为数据存储，且上层搭建了Hive数据仓库。<br>2，数据本身有不错的压缩率。</p>
-<p><strong>压缩和输入分片</strong><br>在考虑如何压缩数据是，理解这些压缩格式是否支持切分是非常重要的。以一个存储在HDFS且压缩前为1GB的文件为例，如果HDFS的块大小设置为64MB，那么该文件被存储在16个块中，在MapReduce处理开始时，每个数据块作为一个map任务的输入。<br>现在考虑一个压缩后为1GB的gzip文件。与以前一样，HDFS将这个文件保存为16个数据块。但是将每个数据块单独作为一个输入分片是无法正常工作的，因为单独的压缩分片无法正常解压，所以让map任务独立于其他任务进行数据读取是行不通的。<br>在这种情况下，MapReduce会采用正确的做法，它不会尝试切分gzip压缩文件，因为它知道输入时gzip压缩文件(通过文件扩展名判断)且gzip不支持切分。但这样就无法发挥Map的优势–并行处理数据块。<br>因此在制订压缩策略时的重点之一就是如何实现数据分片。</p>
-<p><strong>压缩算法</strong></p>
-<p>常见的压缩算法如下表所示。这里我们并不详细解释这些算法，但是需要注意bzip2和LZO支持分片，也就是说这两种算法天然就解决了上文中的数据分片问题。</p>
-<table>
-<thead>
-<tr>
-<th>Compression format</th>
-<th>Tool</th>
-<th>Algorithm</th>
-<th>File extension</th>
-<th>Splittable</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>gzip</td>
-<td><em>gzip</em></td>
-<td>DEFLATE</td>
-<td>.gz</td>
-<td>No</td>
-</tr>
-<tr>
-<td>bzip2</td>
-<td><em>bizp2</em></td>
-<td>bzip2</td>
-<td>.bz2</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>LZO</td>
-<td><em>lzop</em></td>
-<td>LZO</td>
-<td>.lzo</td>
-<td>Yes if indexed</td>
-</tr>
-<tr>
-<td>Snappy</td>
-<td>N/A</td>
-<td>Snappy</td>
-<td>.snappy</td>
-<td>No</td>
-</tr>
-</tbody></table>
-<p><strong>容器文件格式</strong><br>在Hadoop中，我们可以使用容器文件格式，例如 sequenceFile，RCFile或者Avro file。所有这些文件格式同时支持压缩和切分。因此使用这些文件也可以解决数据分片的问题。</p>
-<p><strong>压缩策略</strong><br>以下压缩策略的效率从高到低排列：<br>1，使用容器文件格式，如sequenceFile，RCFile或者Avro file。通常最好与一个快速压缩工具联合使用，如LZO，LZ4或者Snappy。例如在Hive使用internal table时可以定义使用RCFile作为文件存储，同时可指定要使用的压缩算法。<br>2，使用支持切分的压缩格式，例如bzip2(尽管bzip2非常慢)，或者使用通过索引实现切分的压缩格式，例如LZO。<br>3，在应用中将文件切分成块，并使用任意一种压缩格式为每个数据块建立压缩文件(不论是否支持切分)。这种情况需要合理选择数据的大小，以确保压缩后数据块的大小近似与HDFS块的大小。</p>
-<p>4，存储未经压缩的文件。</p>
-<p><strong>使用的API</strong></p>
-<p>Hadoop将上文常见的压缩算法包装在自己的API中,例如org.apache.hadoop.io.compress.GzipCodec。</p>
-<p>对输入数据和输出数据压缩时，可直接调用相应的Codec。在对Map输出的中间数据压缩时，一般采用配置属性的方法：</p>
-<p>mapred.compress.map.output – 是否对Map输出进行压缩</p>
-<p>mapred.map.output.compression.codec – map输出所用的codec</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/25/2020-08-25-Hadoop中的数据压缩-Hadoop压缩和存储/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-24-Run-Length-Encoding-游程编码-和-Huffman-encode-哈夫曼编码-RLE压缩算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/24/2020-08-24-Run-Length-Encoding-游程编码-和-Huffman-encode-哈夫曼编码-RLE压缩算法/">Run Length Encoding 游程编码 和 Huffman encode 哈夫曼编码 RLE压缩算法</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/24/2020-08-24-Run-Length-Encoding-游程编码-和-Huffman-encode-哈夫曼编码-RLE压缩算法/" class="archive-article-date">
-  	<time datetime="2020-08-24T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Huffman-encode-哈夫曼编码"><a href="#Huffman-encode-哈夫曼编码" class="headerlink" title="Huffman encode(哈夫曼编码)"></a>Huffman encode(哈夫曼编码)</h2><p>Huffman 编码的基本思想就是用短的编码表示出现频率高的字符，用长的编码来表示出现频率低的字符，这使得编码之后的字符串的平均长度、长度的期望值降低，从而实现压缩的目的。 因此 Huffman 编码被广泛地应用于无损压缩领域。</p>
-<p>Huffman 编码的过程包含两个主要部分：</p>
-<ul>
-<li>根据输入字符构建 Huffman 树</li>
-<li>遍历 Huffman 树，并将树的节点分配给字符</li>
-</ul>
-<p>上面提到了他的基本原理就是<code>用短的编码表示出现频率高的字符，用长的编码来表示出现频率低的字符</code>, 因此首先要做的就是统计字符的出现频率，然后根据统计的频率来构建 Huffman 树（又叫最优二叉树）。</p>
-<p><img src="https://lucifer.ren/leetcode/assets/thinkings/huffman-tree.webp" alt="Huffman-tree"></p>
-<p>Huffman 树就像是一个堆。真正执行编码的时候，类似字典树，节点不用来编码，节点的路径用来编码.</p>
-<blockquote>
-<p>节点的值只是用来构建 Huffman 树</p>
-</blockquote>
-<p>eg:</p>
-<p>我们统计的结果如下：</p>
-<table>
-<thead>
-<tr>
-<th align="center">character</th>
-<th align="center">frequency</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">a</td>
-<td align="center">5</td>
-</tr>
-<tr>
-<td align="center">b</td>
-<td align="center">9</td>
-</tr>
-<tr>
-<td align="center">c</td>
-<td align="center">12</td>
-</tr>
-<tr>
-<td align="center">d</td>
-<td align="center">13</td>
-</tr>
-<tr>
-<td align="center">e</td>
-<td align="center">16</td>
-</tr>
-<tr>
-<td align="center">f</td>
-<td align="center">45</td>
-</tr>
-</tbody></table>
-<ul>
-<li>将每个元素构造成一个节点，即只有一个元素的树。并构建一个最小堆，包含所有的节点，该算法用了最小堆来作为优先队列。</li>
-<li><code>选取两个权值最小的节点</code>，并添加一个权值为5+9=14的节点，作为他们的父节点。并<code>更新最小堆</code>，现在最小堆包含5个节点，其中4个树还是原来的节点，权值为5和9的节点合并为一个。</li>
-</ul>
-<p>结果是这样的：</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi069p7c5yj30re0hmq3y.jpg" alt="huffman-example"></p>
-<table>
-<thead>
-<tr>
-<th align="center">character</th>
-<th align="center">frequency</th>
-<th align="center">encoding</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">a</td>
-<td align="center">5</td>
-<td align="center">1100</td>
-</tr>
-<tr>
-<td align="center">b</td>
-<td align="center">9</td>
-<td align="center">1101</td>
-</tr>
-<tr>
-<td align="center">c</td>
-<td align="center">12</td>
-<td align="center">100</td>
-</tr>
-<tr>
-<td align="center">d</td>
-<td align="center">13</td>
-<td align="center">101</td>
-</tr>
-<tr>
-<td align="center">e</td>
-<td align="center">16</td>
-<td align="center">111</td>
-</tr>
-<tr>
-<td align="center">f</td>
-<td align="center">45</td>
-<td align="center">0</td>
-</tr>
-</tbody></table>
-<h2 id="run-length-encode-游程编码"><a href="#run-length-encode-游程编码" class="headerlink" title="run-length encode(游程编码)"></a>run-length encode(游程编码)</h2><p>游程编码是一种比较简单的压缩算法，其基本思想是将重复且连续出现多次的字符使用（连续出现次数，某个字符）来描述。</p>
-<p>比如一个字符串：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AAAAABBBBCCC</span><br></pre></td></tr></table></figure>
-
-<p>使用游程编码可以将其描述为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5A4B3C</span><br></pre></td></tr></table></figure>
-
-<p>5A表示这个地方有5个连续的A，同理4B表示有4个连续的B，3C表示有3个连续的C，其它情况以此类推。</p>
-<p>但是实际上情况可能会非常复杂， 如何提取子序列有时候没有看的那么简单，还是上面的例子，我们 有时候可以把<code>AAAAABBBBCCC</code>整体看成一个子序列， 更复杂的情况还有很多，这里不做扩展。</p>
-<p>对文件进行压缩比较适合的情况是文件内的二进制有大量的连续重复， 一个经典的例子就是具有大面积色块的BMP图像，BMP因为没有压缩， 所以看到的是什么样子存储的时候二进制就是什么样子</p>
-<blockquote>
-<p>这也是我们图片倾向于纯色的时候，压缩会有很好的效果</p>
-</blockquote>
-<blockquote>
-<p>思考一个问题， 如果我们在CDN上存储两个图片，这两个图片几乎完全一样，我们是否可以进行优化呢？ 这虽然是CDN厂商更应该关心的问题，但是这个问题对我们影响依然很大，值得思考</p>
-</blockquote>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>游程编码和Huffman都是无损压缩算法，即解压缩过程不会损失原数据任何内容。 实际情况，我们先用游程编码一遍，然后再用 Huffman 再次编码一次。几乎所有的无损压缩格式都用到了它们，比如PNG，GIF，PDF，ZIP等。</p>
-<p>对于有损压缩，通常是去除了人类无法识别的颜色，听力频率范围等。也就是说损失了原来的数据。 但由于人类无法识别这部分信息，因此很多情况下都是值得的。这种删除了人类无法感知内容的编码，我们称之为“感知编码”（也许是一个自创的新名词），比如JPEG，MP3等。关于有损压缩不是本文的讨论范围，感兴趣的可以搜素相关资料。</p>
-<p>实际上，视频压缩的原理也是类似，只不过视频压缩会用到一些额外的算法，比如“时间冗余”，即仅存储变化的部分，对于不变的部分，存储一次就够了。</p>
-<h2 id="相关题目"><a href="#相关题目" class="headerlink" title="相关题目"></a>相关题目</h2><p><a href="https://lucifer.ren/leetcode/problems/900.rle-iterator.html" target="_blank" rel="noopener">900.rle-iterator</a></p>
-<h1 id="RLE压缩算法详解"><a href="#RLE压缩算法详解" class="headerlink" title="RLE压缩算法详解"></a>RLE压缩算法详解</h1><p>RLE压缩算法（下简称RLE算法）的基本思路是把数据按照线性序列分成两种情况：一种是连续的重复数据块，另一种是连续的不重复数据块。</p>
-<p>RLE算法的原理就是用一个表示块数的属性加上一个数据块代表原来连续的若干块数据，从而达到节省存储空间的目的。一般RLE算法都选择数据块的长度为 1 字节，表示块数的诚性也用1字节表示，对于颜色数小于 256 色的</p>
-<p><a href="http://data.biancheng.net/view/200.html" target="_blank" rel="noopener">图</a></p>
-<p>像文件或文本文件，块长度选择 1 字节是比较合适的。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Algorithm, 压缩算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/24/2020-08-24-Run-Length-Encoding-游程编码-和-Huffman-encode-哈夫曼编码-RLE压缩算法/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-23-磁盘" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/23/2020-08-23-磁盘/">磁盘</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/23/2020-08-23-磁盘/" class="archive-article-date">
-  	<time datetime="2020-08-23T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们大家知道，计算机的五大基础部件是 <code>存储器</code>、<code>控制器</code>、<code>运算器</code>、<code>输入和输出设备</code>，其中从存储功能的角度来看，可以把存储器分为<code>内存</code>和 <code>磁盘</code>，内存我们上面的文章已经介绍过了，那么此篇文章我们来介绍一下磁盘以及内存和磁盘的关系。</p>
-<h2 id="认识磁盘"><a href="#认识磁盘" class="headerlink" title="认识磁盘"></a>认识磁盘</h2><p>首先，磁盘和内存都具有存储功能，它们都是存储设备。区别在于，内存是通过<code>电流</code> 来实现存储；磁盘则是通过<code>磁记录技术</code>来实现存储。内存是一种高速，造价昂贵的存储设备；而磁盘则是速度较慢、造价低廉的存储设备；电脑断电后，内存中的数据会丢失，而磁盘中的数据可以长久保留。内存是属于<code>内部存储设备</code>，硬盘是属于 <code>外部存储设备</code>。一般在我们的计算机中，磁盘和内存是相互配合共同作业的。</p>
-<p>一般内存指的就是主存（负责存储CPU中运行的程序和数据）；早起的磁盘指的是软磁盘（soft disk，简称软盘），就是下面这个</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/libYRuvULTdWj7iaCVyY3fGH4SnW8QLbQyEVCxA3Fmbcl5pibFROjlnQK4wEFGQMOxALaXbbuMOBTcaKbZkQstRXQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p>（2000年的时候我曾经我姑姑家最早的计算机中见到过这个，当时还不知道这是啥，现在知道了。）</p>
-<p>如今常用的磁盘是硬磁盘（hard disk，简称硬盘），就是下面这个</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/libYRuvULTdWj7iaCVyY3fGH4SnW8QLbQyOnNdicdBBS5CgIvxGOvaCa9pGh2Y6sf0nKAmFAPjMV9hrWxDasUS8xg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<h3 id="程序不读入内存就无法运行"><a href="#程序不读入内存就无法运行" class="headerlink" title="程序不读入内存就无法运行"></a>程序不读入内存就无法运行</h3><p>在了解磁盘前，还需要了解一下内存的运行机制是怎样的，我们的程序被保存在存储设备中，通过使用 CPU 读入来实现程序指令的执行。这种机制称为<code>存储程序方式</code>，现在看来这种方式是理所当然的，但在以前程序的运行都是通过改变计算机的布线来读写指令的。</p>
-<p>计算机最主要的存储部件是内存和磁盘。<strong>磁盘中存储的程序必须加载到内存中才能运行</strong>，在磁盘中保存的程序是无法直接运行的，这是因为负责解析和运行程序内容的 CPU 是需要通过程序计数器来指定内存地址从而读出程序指令的。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/libYRuvULTdWj7iaCVyY3fGH4SnW8QLbQyyvLQUjfMzbLYR2lCqgjb0NUzTWAqKyHfmTiaLx8aeD8MngRhnLQr1rA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/23/2020-08-23-磁盘/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1370,11 +1399,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1695,6 +1724,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">
