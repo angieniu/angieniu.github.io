@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 149</a>
+<a>Total Number of Articles: 152</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,323 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-31-Java-字符串知识点总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/31/2020-08-31-Java-字符串知识点总结/">Java 字符串知识点总结</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/31/2020-08-31-Java-字符串知识点总结/" class="archive-article-date">
+  	<time datetime="2020-08-31T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>字符串</strong></p>
+<p><strong>1.创建字符串</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//字符串的本质是一个字符串数组，一旦创建之后在不能被修改，如果修改实际上是指向了一个新对象，原有的字符还</span><br><span class="line">//存在于内存中</span><br><span class="line">String a = new String(&quot;abc&quot;);//不推荐</span><br><span class="line">String b = &quot;abc&quot;;</span><br><span class="line">String c = new String(byte[],String charsetName)</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.字符串常用API</strong></p>
+<p>方法名称</p>
+<ul>
+<li>equals(String string)判断两个字符串是否相等</li>
+<li>equalsIgnoreCase(String string)忽略大小写判断两个字符串是否相等</li>
+<li>length()获取字符串长度</li>
+<li>charAt(int index)获取某个索引处的字符</li>
+<li>indexOf(String string)获取字符串第一次出现的位置</li>
+<li>indexOf(String string,int startIndex)从startIndex处查找第一次出现的位置</li>
+<li>lastIndexOf(String string)字符串最后一次出现的位置</li>
+<li>startsWith(String string)判断是否以string开始</li>
+<li>endsWith(String string)判断是否以string结尾</li>
+<li>compareTo(String string)比较字符串大小</li>
+<li>toLowerCase()字符串转小写</li>
+<li>toUpperCase()字符串转大写</li>
+<li>subString(int index)从index位置处截取到字符串末尾</li>
+<li>subString(int startIndex,int endIndex)从startIndex位置开始，到endIndex结束。</li>
+<li>trim()去除字符串首尾空格</li>
+<li>split(String string)以string对字符串进行分割，此方法会省略末尾空字符</li>
+<li>split(String string,int limit)对字符串进行分割，此方法不会省略末尾空字符</li>
+<li>join(String s,String…str)以s为连接符，连接str内字符串</li>
+<li>concat(String str)连接字符串valueOf()基本类型转字符串</li>
+<li>contains(String str)判断是否包含</li>
+<li>strtoCharArray(String str)将字符串转换成字符数组</li>
+<li>intern()isEmpty()判断字符串是否为空</li>
+</ul>
+<p><strong>3.可变参数</strong></p>
+<ol>
+<li>本质是一个数组</li>
+<li>参数可以传0个，也可以传1个，也可以传多个</li>
+<li>使用可变参数前，要判断参数是否为null，以及长度是否大于0</li>
+</ol>
+<p><strong>4.字符串类型转换</strong></p>
+<ol>
+<li>基本类型转字符串：包装类.parseXXX()</li>
+<li>字符串转基本类型: String.valueOf()</li>
+</ol>
+<p><strong>5.==和equals的区别</strong></p>
+<ol>
+<li>==用于判断内存中值是否相等</li>
+<li>equals用于判断对象是否相等</li>
+</ol>
+<p><strong>6.String中的陷阱</strong></p>
+<ol>
+<li>String a=”abc”；String b=”abc”,a==b？和a.equals(b)</li>
+<li>String a = “abc”;String b = new String(“abc”);a==b?和a.equals(b)</li>
+<li>String类可以被继承吗？</li>
+</ol>
+<p><strong>7.StringBuffer和StringBuilder</strong></p>
+<p>方法描述</p>
+<ul>
+<li>append(String str)字符串末尾追加字符串</li>
+<li>delete(int start, int end)删除区间内字符</li>
+<li>deleteCharAt(int index)删除索引处字符</li>
+<li>replace(int start, int end, String str)替换区间内的字符</li>
+<li>substring(int start)从start处截取到末尾</li>
+<li>substring(int start, int end)从start处截取到</li>
+<li>endinsert(int offset, String str)索引处插入字符串</li>
+<li>indexOf(String str)第一次出现的位置</li>
+<li>reverse()字符序列反转</li>
+<li>toString()对象转成字符串</li>
+</ul>
+<p><strong>8.StringBuffer和StringBuilder和String的区别</strong></p>
+<p>相同点：</p>
+<ol>
+<li>底层都是用数组实现的</li>
+<li>都是CharSequence的子类</li>
+<li>都是用final修饰的，不能被继承</li>
+</ol>
+<p>不同点：</p>
+<ol>
+<li>String创建的对象是不可变的，改变String对象的值实际是指向新的对象</li>
+<li>StringBuffer和StringBuilder创建的对象是可变的。</li>
+<li>StringBuffer是线程安全的，StringBuilder是非线程安全的。</li>
+</ol>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://zhuanlan.zhihu.com/p/110652899" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/110652899</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">String</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/31/2020-08-31-Java-字符串知识点总结/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-30-《猫和老鼠》与二战-轴心国-同盟国" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/30/2020-08-30-《猫和老鼠》与二战-轴心国-同盟国/">《猫和老鼠》与二战 轴心国 同盟国</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/30/2020-08-30-《猫和老鼠》与二战-轴心国-同盟国/" class="archive-article-date">
+  	<time datetime="2020-08-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>《猫和老鼠》无疑是动画史上最经典，最成功的动画系列之一，汤姆和杰瑞也无疑是动画史上最深入人心的形象之一。自1941年以来，《汤姆和杰瑞》连续12年获得奥斯卡最佳动画短片奖提名，并7次获得此殊荣。米高梅公司把《汤姆和杰瑞》制作到了极致，夸张的动作，丰富的表情，天马行空的想象力，精致的绘画，都是那个时代的最高水准。最值得称道的是猫和老鼠的配乐，完美契合故事的发展和人物的心理。即使二位主角在片中几乎没有对白，也丝毫不影响动画的流畅。虽然每一部短片时间都很短，却能讲出一个不算简单的故事。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1omyn3j308w05kq30.jpg" alt="img"></p>
+<p>　　《扬基都德鼠》是第一部获得奥斯卡奖的《猫和老鼠》短片，从此之后《汤姆和杰瑞》系列红遍全球。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1c2xcwj30900dcmy2.jpg" alt="img"></p>
+<p>　　《扬基都德鼠》发行于1943年，全片不到8分钟，故事简单，情节紧凑，气氛幽默，讲述了汤姆和杰瑞在地下室的大战。杰瑞采用各种手段攻击汤姆，结局不言自明，自然是老鼠的胜利，这部短片从动画到配乐都颇有战争的感觉。其实《扬基都德鼠》除了让观众捧腹大笑以外，是一部非常“主旋律”爱国宣传片。由于《猫和老鼠》系列八九十年代才被引入中国，我们在哈哈一笑之后，很难去联想它特有的历史背景。</p>
+<p>　　从名字开始，扬基都德四个字听起来不知所云。有时候也被译为“北佬战争”和“疯狂的老鼠”，“北佬战争”这个名字很容易误导人，让人们把猫鼠之间的战争和美国南北战争联系起来。其实，这部短片反映的是第二次世界大战，尤其是太平洋战争。</p>
+<p>　　言归正传，“扬基都德”其实是一首歌曲。扬基杜德尔（扬基歌）是美国著名民谣，在英国殖民时期就已经流行起来，独立战争后更是广为流传，歌曲本来被英国士兵拿来嘲笑殖民地人民的粗鲁呆板，经改编后成为美国著名爱国歌曲之一，反映了美国人民朴素的自豪感。为了凸显爱国主题，动画并没有选取沉重的交响乐或钢琴曲，而将这首家喻户晓的民谣进行改编，变奏，作为主题音乐，带有强烈的民族色彩。</p>
+<p>　　所以，扬基都德鼠的真实意思应该是“爱国的老鼠”。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1mgmdkg30go0bd40t.gif" alt="img"></p>
+<p>　　动画一开始，汤姆追着杰瑞跑进地下室，我们可以看到旁边的指示牌“cat raid shelter”，这是活用了“air raid shelter”即防空洞，表示地下室是杰瑞阻挡猫的阵地和堡垒。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1bojw9g30go0bd76d.gif" alt="img"></p>
+<p>　　杰瑞将鸡蛋砸向了汤姆，鸡蛋盒上写的是HEN-GRENADES，即为鸡蛋-手榴弹。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1dtzg9g30go0bd76d.gif" alt="img"></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1fdb6ng30go0bdmz6.gif" alt="img"></p>
+<p>　　当杰瑞把汤姆从水中“击沉”后，战报上写着“sighted cat-sank same”，意思是“瞄准了猫，击沉了猫”。这句话来源于二战中美军飞行员唐纳德·弗朗西斯·梅森，二战初期，德国为了限制美国对英国的物资支援，发动了“狼群战术”，派遣大量U型潜艇在大西洋上袭击盟军的商船，德国潜艇在战争初期取得了辉煌的成果，盟军面对神出鬼没的如幽灵一般的德国潜艇一筹莫展。1942年1月28日，美军飞行员唐纳德·弗朗西斯·梅森在纽芬兰附近巡逻时看见并攻击了一艘U型潜艇，梅森看到U型潜艇下沉后，发出了简短的胜利号，“sighted sub, sank same”——瞄准潜艇，击沉潜艇，从此这句简短有力，朗朗上口的胜利口号广为流传，激励着盟军士兵。不过也有人质疑U型潜艇被击沉的真实性。《扬基都德鼠》显然是通过老鼠杰瑞向这句话致敬。战报落款LT.JERRY.MOUSE，LT是中尉的缩写，即杰瑞中尉。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1nderig30go0bdjtg.gif" alt="img"></p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/30/2020-08-30-《猫和老鼠》与二战-轴心国-同盟国/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-08-29-Communication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/29/2020-08-29-Communication/">Communication</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/29/2020-08-29-Communication/" class="archive-article-date">
+  	<time datetime="2020-08-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        Welcome to my blog, enter password to read this article.
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Life</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/29/2020-08-29-Communication/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-08-27-Dating-the-World" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -951,316 +1268,9 @@
 
 
   
-    <article id="post-2020-08-20-CPU" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/21/2020-08-20-CPU/">CPU</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/21/2020-08-20-CPU/" class="archive-article-date">
-  	<time datetime="2020-08-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大家都是程序员，大家都是和计算机打交道的程序员，大家都是和计算机中软件硬件打交道的程序员，大家都是和<code>CPU</code>打交道的程序员，所以，不管你是玩儿硬件的还是做软件的，你的世界都少不了计算机最核心的 - CPU</p>
-<h2 id="CPU是什么"><a href="#CPU是什么" class="headerlink" title="CPU是什么"></a>CPU是什么</h2><p>CPU 的全称是 <code>Central Processing Unit</code>，它是你的电脑中最<code>硬核</code>的组件，这种说法一点不为过。CPU 是能够让你的计算机叫<code>计算机</code>的核心组件，但是它却不能代表你的电脑，CPU 与计算机的关系就相当于大脑和人的关系。它是一种小型的计算机芯片，它嵌入在台式机、笔记本电脑或者平板电脑的主板上。通过在单个计算机芯片上放置数十亿个微型晶体管来构建 CPU。 这些晶体管使它能够执行运行存储在系统内存中的程序所需的计算，也就是说 CPU 决定了你电脑的计算能力。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi05luvyy7j30u00jrdi1.jpg" alt="img"></p>
-<h2 id="CPU-实际做什么"><a href="#CPU-实际做什么" class="headerlink" title="CPU 实际做什么"></a>CPU 实际做什么</h2><p>CPU 的核心是从程序或应用程序获取指令并执行计算。此过程可以分为三个关键阶段：<strong>提取，解码和执行</strong>。CPU从系统的 RAM 中提取指令，然后解码该指令的实际内容，然后再由 CPU 的相关部分执行该指令。</p>
-<blockquote>
-<p>RAM : 随机存取存储器（英语：Random Access Memory，缩写：<em>RAM</em>），也叫主存，是与 CPU 直接交换数据的内部存储器。它可以随时读写（刷新时除外），而且速度很快，通常作为操作系统或其他正在运行中的程序的<strong>临时数据存储介质</strong></p>
-</blockquote>
-<h2 id="CPU-的内部结构"><a href="#CPU-的内部结构" class="headerlink" title="CPU 的内部结构"></a>CPU 的内部结构</h2><p>说了这么多 CPU 的重要性，那么 CPU 的内部结构是什么呢？又是由什么组成的呢？下图展示了一般程序的运行流程（以 C 语言为例），可以说了解程序的运行流程是掌握程序运行机制的基础和前提。</p>
-<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
-<p>在这个流程中，CPU 负责的就是解释和运行最终转换成机器语言的内容。</p>
-<p>CPU 主要由两部分构成：<code>控制单元</code> 和 <code>算术逻辑单元（ALU）</code></p>
-<ul>
-<li>控制单元：从内存中提取指令并解码执行</li>
-<li>算数逻辑单元（ALU）：处理算数和逻辑运算</li>
-</ul>
-<p>CPU 是计算机的心脏和大脑，它和内存都是由许多晶体管组成的电子部件。它接收数据输入，执行指令并处理信息。它与输入/输出（I / O）设备进行通信，这些设备向 CPU 发送数据和从 CPU 接收数据。</p>
-<p>从功能来看，CPU 的内部由<strong>寄存器、控制器、运算器和时钟</strong>四部分组成，各部分之间通过电信号连通。</p>
-<p><img src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==" alt="img"></p>
-<ul>
-<li><code>寄存器</code>是中央处理器内的组成部分。它们可以用来暂存指令、数据和地址。可以将其看作是内存的一种。根据种类的不同，一个 CPU 内部会有 20 - 100个寄存器。</li>
-<li><code>控制器</code>负责把内存上的指令、数据读入寄存器，并根据指令的结果控制计算机</li>
-<li><code>运算器</code>负责运算从内存中读入寄存器的数据</li>
-<li><code>时钟</code> 负责发出 CPU 开始计时的时钟信号</li>
-</ul>
-<p>接下来简单解释一下内存，为什么说 CPU 需要讲一下内存呢，因为内存是与 CPU 进行沟通的桥梁。计算机所有程序的运行都是在内存中运行的，内存又被称为<code>主存</code>，其作用是存放 CPU 中的运算数据，以及与硬盘等外部存储设备交换的数据。只要计算机在运行中，CPU 就会把需要运算的数据调到主存中进行运算，当运算完成后CPU再将结果传送出来，主存的运行也决定了计算机的稳定运行。</p>
-<p>主存通过控制芯片与 CPU 进行相连，由可读写的元素构成，每个字节（1 byte = 8 bits）都带有一个地址编号，<strong>注意是一个字节，而不是一个位</strong>。CPU 通过地址从主存中读取数据和指令，也可以根据地址写入数据。注意一点：当计算机关机时，内存中的指令和数据也会被清除。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/21/2020-08-20-CPU/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-19-内存" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/20/2020-08-19-内存/">内存</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/20/2020-08-19-内存/" class="archive-article-date">
-  	<time datetime="2020-08-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>计算机是处理数据的设备，而数据的主要存储位置就是<code>磁盘</code>和<code>内存</code>，并且对于程序员来讲，CPU 和内存是我们必须了解的两个物理结构，它是你通向高阶程序员很重要的桥梁，那么本篇文章我们就来介绍一下基本的内存知识。</p>
-<h2 id="什么是内存"><a href="#什么是内存" class="headerlink" title="什么是内存"></a>什么是内存</h2><p>内存（Memory）是计算机中最重要的部件之一，它是程序与CPU进行沟通的桥梁。计算机中所有程序的运行都是在内存中进行的，因此内存对计算机的影响非常大，内存又被称为<code>主存</code>，其作用是存放 CPU 中的运算数据，以及与硬盘等外部存储设备交换的数据。只要计算机在运行中，CPU 就会把需要运算的数据调到主存中进行运算，当运算完成后CPU再将结果传送出来，主存的运行也决定了计算机的稳定运行。</p>
-<h2 id="内存的物理结构"><a href="#内存的物理结构" class="headerlink" title="内存的物理结构"></a>内存的物理结构</h2><p>在了解一个事物之前，你首先得先需要<code>见</code>过它，你才会有印象，才会有想要了解的兴趣，所以我们首先需要先看一下什么是内存以及它的物理结构是怎样的。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/libYRuvULTdXrayXFSqFfegVaQKPVJnS7hZ6bIqU61gzYEKBX2KQsGsFOJuc9VXzlWvftibcPIjJd0OSiaT3jeRVg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p>内存的内部是由各种IC电路组成的，它的种类很庞大，但是其主要分为三种存储器</p>
-<ul>
-<li>随机存储器（RAM）：内存中最重要的一种，表示既可以从中读取数据，也可以写入数据。当机器关闭时，内存中的信息会 <code>丢失</code>。</li>
-<li>只读存储器（ROM）：ROM 一般只能用于数据的读取，不能写入数据，但是当机器停电时，这些数据不会丢失。</li>
-<li>高速缓存（Cache）：Cache 也是我们经常见到的，它分为一级缓存（L1 Cache）、二级缓存（L2 Cache）、三级缓存（L3 Cache）这些数据，它位于内存和 CPU 之间，是一个读写速度比内存<code>更快</code>的存储器。当 CPU 向内存写入数据时，这些数据也会被写入高速缓存中。当 CPU 需要读取数据时，会直接从高速缓存中直接读取，当然，如需要的数据在Cache中没有，CPU会再去读取内存中的数据。</li>
-</ul>
-<p>内存 IC 是一个完整的结构，它内部也有电源、地址信号、数据信号、控制信号和用于寻址的 IC 引脚来进行数据的读写。下面是一个虚拟的 IC 引脚示意图</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/libYRuvULTdXrayXFSqFfegVaQKPVJnS74c1pD2ATwLgxgZqYp3QspfZicJBMasQRJfd3d8tOn6LqIefAnCFU1bQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p>图中 VCC 和 GND 表示电源，A0 - A9 是地址信号的引脚，D0 - D7 表示的是控制信号、RD 和 WR 都是好控制信号，我用不同的颜色进行了区分，将电源连接到 VCC 和 GND 后，就可以对其他引脚传递 0 和 1 的信号，大多数情况下，<strong>+5V 表示1，0V 表示 0</strong>。</p>
-<p>我们都知道内存是用来存储数据，那么这个内存 IC 中能存储多少数据呢？D0 - D7 表示的是数据信号，也就是说，一次可以输入输出 8 bit = 1 byte 的数据。A0 - A9 是地址信号共十个，表示可以指定 00000 00000 - 11111 11111 共 2 的 10次方 = <code>1024个地址</code>。每个地址都会存放 1 byte 的数据，因此我们可以得出内存 IC 的容量就是 1 KB。</p>
-<p>如果我们使用的是 512 MB 的内存，这就相当于是 512000（512 * 1000） 个内存 IC。当然，一台计算机不太可能有这么多个内存 IC ，然而，通常情况下，一个内存 IC 会有更多的引脚，也就能存储更多数据。</p>
-<h3 id="内存的读写过程"><a href="#内存的读写过程" class="headerlink" title="内存的读写过程"></a>内存的读写过程</h3><p>让我们把关注点放在内存 IC 对数据的读写过程上来吧！我们来看一个对内存IC 进行数据写入和读取的模型</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/libYRuvULTdXrayXFSqFfegVaQKPVJnS7pCd1Wn7c6bxXXFia5CwUo4VDUa8iavD8elPSu0M8rXP0Uu9qn4mx9ZkQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p>来详细描述一下这个过程，假设我们要向内存 IC 中写入 1byte 的数据的话，它的过程是这样的：</p>
-<ul>
-<li>首先给 VCC 接通 +5V 的电源，给 GND 接通 0V 的电源，使用 <code>A0 - A9</code> 来指定数据的存储场所，然后再把数据的值输入给 <code>D0 - D7</code> 的数据信号，并把 <code>WR（write）</code>的值置为 1，执行完这些操作后，即可以向内存 IC 写入数据</li>
-<li>读出数据时，只需要通过 A0 - A9 的地址信号指定数据的存储场所，然后再将 RD 的值置为 1 即可。</li>
-<li>图中的 RD 和 WR 又被称为控制信号。其中当WR 和 RD 都为 0 时，无法进行写入和读取操作。</li>
-</ul>
-<h3 id="内存的现实模型"><a href="#内存的现实模型" class="headerlink" title="内存的现实模型"></a>内存的现实模型</h3><p>为了便于记忆，我们把内存模型映射成为我们现实世界的模型，在现实世界中，内存的模型很像我们生活的楼房。在这个楼房中，1层可以存储一个字节的数据，楼层号就是<code>地址</code>，下面是内存和楼层整合的模型图</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi05gksmjhj30u00mzjsp.jpg" alt="img"></p>
-<p>我们知道，程序中的数据不仅只有数值，还有<code>数据类型</code>的概念，从内存上来看，就是占用内存大小（占用楼层数）的意思。即使物理上强制以 1 个字节为单位来逐一读写数据的内存，在程序中，通过指定其数据类型，也能实现以特定字节数为单位来进行读写。</p>
-<p>下面是一个以特定字节数为例来读写指令字节的程序的示例</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 定义变量</span><br><span class="line">char a;</span><br><span class="line">short b;</span><br><span class="line">long c;</span><br><span class="line"></span><br><span class="line">// 变量赋值</span><br><span class="line">a = 123;</span><br><span class="line">b = 123;</span><br><span class="line">c = 123;</span><br></pre></td></tr></table></figure>
-
-<p>我们分别声明了三个变量 a,b,c ，并给每个变量赋上了相同的 123，这三个变量表示内存的特定区域。通过变量，即使不指定物理地址，也可以直接完成读写操作，操作系统会自动为变量分配内存地址。</p>
-<p>这三个变量分别表示 1 个字节长度的 char，2 个字节长度的 short，表示4 个字节的 long。因此，虽然数据都表示的是 123，但是其存储时所占的内存大小是不一样的。如下所示</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/libYRuvULTdXrayXFSqFfegVaQKPVJnS7bCtLH0zMZaOEMPCicLLlTMQCibG2FIc7A4VzibUECuEI6ibHT5WcYpXuSg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="img"></p>
-<p>这里的 123 都没有超过每个类型的最大长度，所以 short 和 long 类型为所占用的其他内存空间分配的数值是0，这里我们采用的是<code>低字节序列</code>的方式存储</p>
-<blockquote>
-<p>低字节序列：将数据低位存储在内存低位地址。</p>
-<p>高字节序列：将数据的高位存储在内存地位的方式称为高字节序列。</p>
-</blockquote>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/20/2020-08-19-内存/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-19-压缩算法-String-Encoding" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/">压缩算法 String Encoding</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/" class="archive-article-date">
-  	<time datetime="2020-08-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="认识压缩算法"><a href="#认识压缩算法" class="headerlink" title="认识压缩算法"></a>认识压缩算法</h2><p>我们想必都有过<code>压缩</code>和 <code>解压缩</code>文件的经历，当文件太大时，我们会使用文件压缩来降低文件的占用空间。比如微信上传文件的限制是100 MB，我这里有个文件夹无法上传，但是我解压完成后的文件一定会小于 100 MB，那么我的文件就可以上传了。</p>
-<p>此外，我们把相机拍完的照片保存到计算机上的时候，也会使用压缩算法进行文件压缩，文件压缩的格式一般是<code>JPEG</code>。</p>
-<p>那么什么是压缩算法呢？压缩算法又是怎么定义的呢？在认识算法之前我们需要先了解一下文件是如何存储的</p>
-<h3 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h3><p>文件是将数据存储在磁盘等存储媒介的一种形式。程序文件中最基本的存储数据单位是<code>字节</code>。文件的大小不管是 xxxKB、xxxMB等来表示，就是因为文件是以字节 <code>B = Byte</code> 为单位来存储的。</p>
-<p>文件就是字节数据的集合。用 1 字节（8 位）表示的字节数据有 256 种，用二进制表示的话就是 0000 0000 - 1111 1111 。如果文件中存储的数据是文字，那么该文件就是文本文件。如果是图形，那么该文件就是图像文件。在任何情况下，文件中的字节数都是<code>连续存储</code>的。</p>
-<p><img src="https://raw.githubusercontent.com/Joincxuan/Joincxuan.github.io/master/image/howComputerWork06/01.png" alt="img"></p>
-<h3 id="压缩算法的定义"><a href="#压缩算法的定义" class="headerlink" title="压缩算法的定义"></a>压缩算法的定义</h3><p>上面介绍了文件的集合体其实就是一堆字节数据的集合，那么我们就可以来给压缩算法下一个定义。</p>
-<p><code>压缩算法（compaction algorithm）</code>指的就是数据压缩的算法，主要包括压缩和还原（解压缩）的两个步骤。</p>
-<p>其实就是在不改变原有文件属性的前提下，降低文件字节空间和占用空间的一种算法。</p>
-<p>根据压缩算法的定义，我们可将其分成不同的类型：</p>
-<p><strong>有损和无损</strong></p>
-<p>无损压缩：能够<code>无失真地</code>从压缩后的数据重构，准确地还原原始数据。可用于对数据的准确性要求严格的场合，如可执行文件和普通文件的压缩、磁盘的压缩，也可用于多媒体数据的压缩。该方法的压缩比较小。如差分编码、RLE、Huffman编码、LZW编码、算术编码。</p>
-<p>有损压缩：有失真，<code>不能完全准确地</code>恢复原始数据，重构的数据只是原始数据的一个近似。可用于对数据的准确性要求不高的场合，如多媒体数据的压缩。该方法的压缩比较大。例如预测编码、音感编码、分形压缩、小波压缩、JPEG/MPEG。</p>
-<p><strong>对称性</strong></p>
-<p>如果编解码算法的复杂性和所需时间差不多，则为对称的编码方法，多数压缩算法都是对称的。但也有不对称的，一般是编码难而解码容易，如 Huffman 编码和分形编码。但用于密码学的编码方法则相反，是编码容易，而解码则非常难。</p>
-<p><strong>帧间与帧内</strong></p>
-<p>在视频编码中会同时用到帧内与帧间的编码方法，帧内编码是指在一帧图像内独立完成的编码方法，同静态图像的编码，如 JPEG；而帧间编码则需要参照前后帧才能进行编解码，并在编码过程中考虑对帧之间的时间冗余的压缩，如 MPEG。</p>
-<p><strong>实时性</strong></p>
-<p>在有些多媒体的应用场合，需要实时处理或传输数据（如现场的数字录音和录影、播放MP3/RM/VCD/DVD、视频/音频点播、网络现场直播、可视电话、视频会议），编解码一般要求延时 ≤50 ms。这就需要简单/快速/高效的算法和高速/复杂的CPU/DSP芯片。</p>
-<p><strong>分级处理</strong></p>
-<p>有些压缩算法可以同时处理不同分辨率、不同传输速率、不同质量水平的多媒体数据，如JPEG2000、MPEG-2/4。</p>
-<p>这些概念有些抽象，主要是为了让大家了解一下压缩算法的分类，下面我们就对具体的几种常用的压缩算法来分析一下它的特点和优劣</p>
-<h2 id="几种常用压缩算法的理解"><a href="#几种常用压缩算法的理解" class="headerlink" title="几种常用压缩算法的理解"></a>几种常用压缩算法的理解</h2><h3 id="RLE-算法的机制"><a href="#RLE-算法的机制" class="headerlink" title="RLE 算法的机制"></a>RLE 算法的机制</h3><p>接下来就让我们正式看一下文件的压缩机制。首先让我们来尝试对 <code>AAAAAABBCDDEEEEEF</code> 这 17 个半角字符的文件（文本文件）进行压缩。虽然这些文字没有什么实际意义，但是很适合用来描述 <code>RLE</code> 的压缩机制。</p>
-<p>由于半角字符（其实就是英文字符）是作为 1 个字节保存在文件中的，所以上述的文件的大小就是 17 字节。如图</p>
-<p><img src="https://raw.githubusercontent.com/Joincxuan/Joincxuan.github.io/master/image/howComputerWork06/02.png" alt="img"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1362,10 +1372,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1374,7 +1380,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1386,6 +1392,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
@@ -1394,15 +1404,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1410,7 +1416,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,7 +1424,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1426,11 +1432,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1438,11 +1444,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1450,7 +1460,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1458,11 +1468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1470,23 +1480,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1498,11 +1500,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1510,15 +1516,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1526,15 +1532,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1546,11 +1556,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,19 +1568,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1578,11 +1580,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1590,7 +1596,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1599,10 +1613,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1634,11 +1644,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1658,11 +1668,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1678,11 +1688,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color5">Life</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Life</a>
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1694,19 +1704,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1714,15 +1716,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Java, collection, List, Set, Iterator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1734,11 +1752,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1746,11 +1764,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1758,19 +1776,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1786,11 +1804,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">

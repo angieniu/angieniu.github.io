@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 149</a>
+<a>Total Number of Articles: 152</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,305 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/">Event-based Communication between Microservices (integration events), Event Bus Implementation(s)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/" class="archive-article-date">
+  	<time datetime="2020-07-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Event-Bus-Implementation-s"><a href="#Event-Bus-Implementation-s" class="headerlink" title="Event Bus Implementation(s)"></a>Event Bus Implementation(s)</h1><p>Event-driven architecture pattern is a distributed asynchronous architecture pattern to create highly scalable reactive applications. The pattern suits for every level application stack from small to complex ones. The main idea is delivering and processing events asynchronously.</p>
+<p>There are a couple of ways to implement event-driven pattern to your stack. One of them is using “<strong>Broker Topology</strong>”. In broker topology, you send events to a central broker and all subscribers of these broker receive and process events asynchronously.</p>
+<p><img src="https://miro.medium.com/max/60/1*afKDwjre2y0Aqw-VBy--mA.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1234/1*afKDwjre2y0Aqw-VBy--mA.png" alt="img"></p>
+<p>Event Bus with multiple subscribers(green arrows) and notifiers(red arrows)</p>
+<p>In this story, I shared <em>four implementations</em> of event bus and with their <em>goods</em> and <em>drawbacks</em>. In all implementations, all event generators send events to the event bus. Event processors(subscribers) subscribe to the event bus. And subscribers can also create new events and pass it to the event bus.</p>
+<h1 id="i1-Notify-the-Event-to-All-Subscribers"><a href="#i1-Notify-the-Event-to-All-Subscribers" class="headerlink" title="i1) Notify the Event to All Subscribers"></a>i1) Notify the Event to All Subscribers</h1><p><img src="https://miro.medium.com/max/60/1*ICQkcUULUpt9EUYl_W9Omw.png?q=20" alt="img"></p>
+<p><img src="https://miro.medium.com/max/1426/1*ICQkcUULUpt9EUYl_W9Omw.png" alt="img"></p>
+<p>Event Bus sends all incoming events(red arrows) to all subscribers(blue boxes) without any touch</p>
+<h2 id="Actors"><a href="#Actors" class="headerlink" title="Actors"></a>Actors</h2><p>Event Bus, Subscribers (Event Processor), Event Creators</p>
+<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p>Whenever the event bus receives an event from event creators, it passes the event to all subscribers. Subscribers process the event data with their own logic. Subscribers can also create new events and pass it to the event bus too. Event bus does not care about if the receiver fails to receive the event message.</p>
+<h2 id="Functions-Needed"><a href="#Functions-Needed" class="headerlink" title="Functions Needed"></a>Functions Needed</h2><p><strong>Notify</strong>, <strong>subscribe</strong>, <strong>unsubscribe</strong>, <strong>subscribers</strong> are enough to implement such event bus.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Event-based Communication, Microservices, Event Bus</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/">Map libraries comparison Leaflet vs Mapbox GL vs OpenLayers – trends and statistics</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/" class="archive-article-date">
+  	<time datetime="2020-07-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/map-libraries.png" alt="map-libraries"></p>
+<p>When you need to add a map to your application, the first question that pop-ups in your head is “Which map library to use?”. If you start to google, you’ll find out soon that at the moment the Leaflet, Mapbox GL, OpenLayers are the most popular libraries for displaying interactive maps on a web page.</p>
+<p>In this article, we want to compare the libraries and check actual trends and statistics. So you can choose the most promising option for you.</p>
+<p>We used <a href="https://www.npmtrends.com/" target="_blank" rel="noopener">NPM Trends</a> and <a href="https://trends.google.com/" target="_blank" rel="noopener">Google Trends</a> to get the data and create beautiful visualizations.</p>
+<h2 id="Leaflet-vs-Mapbox-GL-vs-OpenLayers"><a href="#Leaflet-vs-Mapbox-GL-vs-OpenLayers" class="headerlink" title="Leaflet vs Mapbox GL vs OpenLayers"></a>Leaflet vs Mapbox GL vs OpenLayers</h2><table>
+<thead>
+<tr>
+<th align="left"><a href="https://leafletjs.com/" target="_blank" rel="noopener">LEAFLET</a></th>
+<th align="left"><a href="https://docs.mapbox.com/mapbox-gl-js/" target="_blank" rel="noopener">MAPBOX GL</a></th>
+<th align="left"><a href="https://openlayers.org/" target="_blank" rel="noopener">OPENLAYERS</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">The open-source JS library for interactive maps. A simple interface, great documentation, and a huge community allow you to get results and solve your tasks quickly. Unfortunately, not developed actively any longer.</td>
+<td align="left">Powerful and effective SDK for web maps developed by Mapbox. As Leaflet library creators developed Mapbox GL now, you can see some similarities between 2 libraries. However, Mapbox GL gives you more opportunities, data visualization options and opens the vector maps world for you.</td>
+<td align="left">Familiar with GIS technologies? Then OpenLayers can be the perfect option for you! The OpenLayers is not only about displaying maps, but also visualizing and analyzing geographical data. It could be a bit more complicated at the beginning but allows you to create more powerful solutions.</td>
+</tr>
+<tr>
+<td align="left"><strong>Vector maps support</strong> The core functionality of Leaflet doesn’t have vector tiles support. Nevertheless, you can visualize vector tiles by using external plugins. For example, <a href="https://www.npmjs.com/package/mapbox-gl-leaflet" target="_blank" rel="noopener">Mapbox GL Leaflet</a>.</td>
+<td align="left"><strong>Vector maps support</strong> Mapbox is a pioneer in vector maps technologies. The Mapbox Style Specification for vector maps, which is very popular now and used by Geoapify as well, is natively supported by Mapbox GL.</td>
+<td align="left"><strong>Vector maps support</strong> OpenLayers has native support for vector maps but the <a href="https://npmjs.com/package/ol-mapbox-style" target="_blank" rel="noopener">ol-mapbox-style</a> plugin is required to create a map with Mapbox Style Specification.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-mapbox/mapbox" target="_blank" rel="noopener">JSFiddle code sample</a></td>
+<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-leaflet/leaflet" target="_blank" rel="noopener">JSFiddle code sample</a></td>
+<td align="left"><a href="https://apidocs.geoapify.com/samples/maps/js-openlayers/openlayers" target="_blank" rel="noopener">JSFiddle code sample</a></td>
+</tr>
+</tbody></table>
+<h2 id="NPM-trends-for-the-map-libraries"><a href="#NPM-trends-for-the-map-libraries" class="headerlink" title="NPM trends for the map libraries"></a>NPM trends for the map libraries</h2><p>The number of downloads for npm packages gives a great indication of how popular each library is. Here is npm trends statistics for the last 12 month:</p>
+<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/npm-trends.png" alt="npm trends: Leaflet, Mapbox GL, Openlayers"></p>
+<p>And the charts look really interesting! After absolute leadership Leaflet losing to Mapbox GL in February 2020. In comparison with other map libraries, OpenLayers looks stable. And if we check the statistics for OpenLayers only, we can prove that:</p>
+<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/openlayers-npm-trends.png" alt="npm trends: OpenLayers"></p>
+<p>Statistics from GitHub show us how many times a library was “stared”:</p>
+<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/stats.png" alt="GitHub statistics: Leaflet, Mapbox GL, Openlayers"></p>
+<p>And here we see that Leaflet is 5 times more popular at the moment than Mapbox GL, and 4 times more popular than OpenLayers.</p>
+<h2 id="Google-Trends-for-the-map-libraries"><a href="#Google-Trends-for-the-map-libraries" class="headerlink" title="Google Trends for the map libraries"></a>Google Trends for the map libraries</h2><p>Google search keywords trends are another good measure of popularity. However, here we’ve faced with a problem. While “Leaflet” and “OpenLayers” are unique names, “Mapbox GL” is often googled as “Mapbox”. So we decided to add both “Mapbox GL” and “Mapbox” to give you an overview:</p>
+<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/google-trends.png" alt="img"></p>
+<p>The chart shows that interest in each library more or less stays on the same level. In other hands, [statistics by regions](<a href="https://trends.google.com/trends/explore?q=leaflet,mapbox,mapbox" target="_blank" rel="noopener">https://trends.google.com/trends/explore?q=leaflet,mapbox,mapbox</a> GL,openlayers) provide some interesting results as well:</p>
+<p><img src="https://www.geoapify.com/wp-content/uploads/2020/04/regions4.gif" alt="Map libraries comparison by region"></p>
+<p>Leaflet leads the keywords list in almost all countries. However, Mapbox/Mapbox GL is popular in China, the United States, Belorus, and Canada. And OpenLayers is in request in South Korea, Croatia, and Finland.</p>
+<h2 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h2><p>It’s always a matter of taste when you are trying to choose the best from the good ones. Nevertheless, we hope that the numbers and charts we gave you in this article will help you to make the right decision.</p>
+<h2 id="Leaflet-Mapbox-GL-and-OpenLayers-code-samples"><a href="#Leaflet-Mapbox-GL-and-OpenLayers-code-samples" class="headerlink" title="Leaflet, Mapbox GL, and OpenLayers code samples"></a>Leaflet, Mapbox GL, and OpenLayers code samples</h2><p>We’ve created <a href="https://apidocs.geoapify.com/samples/maps/js-mapbox/mapbox" target="_blank" rel="noopener">code samples</a> to help you develop a custom map for your website. Visit the <a href="https://apidocs.geoapify.com/" target="_blank" rel="noopener">Geoapify Documentation page</a> to learn how to add a map to your React-, Angular-, or Vue-webapp.</p>
+<p>Geoapify offers map tiles that can be used with all the libraries. We provide vector and raster maps of different styles and colors. Learn more about<a href="https://www.geoapify.com/api/map-tiles/" target="_blank" rel="noopener"> Geoapify Map Tiles</a>.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.geoapify.com/map-libraries-comparison-leaflet-vs-mapbox-gl-vs-openlayers-trends-and-statistics/" target="_blank" rel="noopener">https://www.geoapify.com/map-libraries-comparison-leaflet-vs-mapbox-gl-vs-openlayers-trends-and-statistics/</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/01/2020-07-01-Map-libraries-comparison-Leaflet-vs-Mapbox-GL-vs-OpenLayers-–-trends-and-statistics/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-06-30-Difference-between-Unit-Testing-and-Integration-Testing" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/30/2020-06-30-Difference-between-Unit-Testing-and-Integration-Testing/">Difference between Unit Testing and Integration Testing?</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/30/2020-06-30-Difference-between-Unit-Testing-and-Integration-Testing/" class="archive-article-date">
+  	<time datetime="2020-06-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Normally a software application is developed by a team of many people. So while developing an application is divided into different modules and modules are divided to different developers of team. When a single developer write some code, let’s say a common function, and test that function then this type of testing is called <strong>Unit Testing</strong>. When all the different modules are developed and integrated then testing is required to check if the complete application is working properly or not after integrating different modules, This type of testing is called <strong>Integration Testing</strong>.</p>
+<h2 id="Difference-between-Unit-Testing-and-Integration-Testing"><a href="#Difference-between-Unit-Testing-and-Integration-Testing" class="headerlink" title="Difference between Unit Testing and Integration Testing:"></a>Difference between Unit Testing and Integration Testing:</h2><h2 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing"></a>Unit Testing</h2><ul>
+<li>Unit testing is a type of testing to check if the small piece of code or a single function is doing as per the expectation.</li>
+<li>It checks a single component/function of the application.</li>
+<li>Its scope is very limited.</li>
+<li>It should have no dependencies on code outside its definition.</li>
+<li>This is the first type of testing is to be carried out in the Software testing life cycle and generally executed by the developer.</li>
+<li>The goal of Unit testing is to test each unit separately and ensure that each unit is working as expected.</li>
+<li>Unit testing comes under the White box testing type.</li>
+</ul>
+<h2 id="Integration-Testing"><a href="#Integration-Testing" class="headerlink" title="Integration Testing"></a>Integration Testing</h2><ul>
+<li>Integration testing is a type of testing to check if different modules are working as expected after integrating each other.</li>
+<li>It checks the overall flow of the application. after the integration of different modules.</li>
+<li>Its scope is very wide</li>
+<li>This type of testing can have each every element in the software application</li>
+<li>This is performed after unit testing. Generally, the script is preferred to test the integration testing</li>
+<li>Integration testing is further divided into different types as follows:<br>Top-down Integration, Bottom-Up Integration, etc</li>
+<li>Integration testing is coming under both Black box and White box type of testing.</li>
+</ul>
+<h1 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h1><p>Unit Testing and Integration Testing both are equally important for testing an application. And it’s very important to create an application bug-free and work as expected.</p>
+<p><a href="https://jsonworld.com/demo/testing-nodejs-api-with-mocha-and-chai" target="_blank" rel="noopener">Click here</a> to read complete article with sample application for Integration Testing of Nodejs API.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/@pankaj.itdeveloper/difference-between-unit-testing-and-integration-testing-ac22dc2396b3" target="_blank" rel="noopener">https://medium.com/@pankaj.itdeveloper/difference-between-unit-testing-and-integration-testing-ac22dc2396b3</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Unit Testing, Integration Testing, Testing</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/30/2020-06-30-Difference-between-Unit-Testing-and-Integration-Testing/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-06-29-App-Architecture,-RecyclerView" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -831,336 +1130,9 @@
 
 
   
-    <article id="post-2020-06-22-Notes-about-Techlead-Project-Management" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/22/2020-06-22-Notes-about-Techlead-Project-Management/">Notes about Techlead Project Management</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/22/2020-06-22-Notes-about-Techlead-Project-Management/" class="archive-article-date">
-  	<time datetime="2020-06-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="技术选型考量"><a href="#技术选型考量" class="headerlink" title="技术选型考量"></a>技术选型考量</h2><ol>
-<li>现有能力及有信心完成。</li>
-<li>Scalability, performance, security.</li>
-<li>项目阶段 P0, P1, P2 …. target</li>
-<li>Optimization gradually and start from working software.</li>
-</ol>
-<h2 id="Design-Doc-Tools"><a href="#Design-Doc-Tools" class="headerlink" title="Design Doc Tools"></a>Design Doc Tools</h2><p>user flow: user action, button, frontend, backend. </p>
-<p>Systematically see the system response and action;</p>
-<p>Draw a systematic one;</p>
-<p>Implement from p1, p1, p2 …;</p>
-<ol>
-<li>draw.io diagram.net</li>
-<li>lucidchart</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Leadership, PM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/22/2020-06-22-Notes-about-Techlead-Project-Management/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Plan of react project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/21/Plan of react project/">React Notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/21/Plan of react project/" class="archive-article-date">
-  	<time datetime="2020-06-21T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Plan-of-React-Project"><a href="#Plan-of-React-Project" class="headerlink" title="Plan of React Project"></a>Plan of React Project</h3><p>1) components</p>
-<p>2) data, data module</p>
-<p>3) redux</p>
-<h3 id="React框架"><a href="#React框架" class="headerlink" title="React框架"></a>React框架</h3><p>app.js function return;</p>
-<p>topnavbar class render() return</p>
-<h3 id="Component"><a href="#Component" class="headerlink" title="Component"></a>Component</h3><p><strong>React Components</strong>. <strong>Components</strong> are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and returns HTML via a render function. <strong>Components</strong> come in two types, Class <strong>components</strong> and Function <strong>components</strong></p>
-<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>生命周期针对每个组件而言，其变化由接收到的参数决定，相对独立。生命周期的变化由于数据变化导致，数据传递、通信，则生命周期更新。可能相互有桥梁连接，就是数据协调，数据导致本身生命周期变化，但不是生命周期变化影响另一个组件生命周期的变化。</p>
-<p>树状结构，rott node waits for all children nodes on the tree, 上树结束。父组件有create components的过程，则需要一定先执行完render再创建，完成上树，保证子组件和子组件的子组件上树成功。 子组件，对于子组件的this.props.update父组件就不会等了。更新父组件不用等子组件更新完。</p>
-<h3 id="index-js"><a href="#index-js" class="headerlink" title="index.js:"></a>index.js:</h3><p>入口</p>
-<h3 id="index-css"><a href="#index-css" class="headerlink" title="index.css:"></a>index.css:</h3><p>main, several css files linked to it, we use class name to refer to certain elements.</p>
-<p>js file and css file matching.</p>
-<h3 id="App-js"><a href="#App-js" class="headerlink" title="App.js"></a>App.js</h3><p>as the root component.</p>
-<h3 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h3><p>JSX stands for JavaScript XML.</p>
-<p>JSX allows us to write HTML in React.</p>
-<p>JSX makes it easier to write and add HTML in React.</p>
-<h3 id="yarn-lock-vs-package-lock-json"><a href="#yarn-lock-vs-package-lock-json" class="headerlink" title="yarn.lock vs package-lock.json"></a>yarn.lock vs package-lock.json</h3><p>既然叫“锁”，就不仅仅是记录依赖关系那么简单——它还记录了依赖的 <em>确切</em> 版本，而不是像 <code>package.json</code> 那样以语义化版本的格式来记录。</p>
-<p>为什么要记录依赖的确切版本？这是为了保证能得到相同依赖安装过程。npm 以前有个问题叫「版本漂移」，指的就是因为语义化版本导致不同的人或不同的计算机上安装的依赖的版本有差异，导致项目无法运行。（虽然版本漂移是个不好的事情，但我不反对没有锁，理由后面讲）</p>
-<p>lock文件</p>
-<blockquote>
-<p>锁文件是由包管理器自动生成的。它包含了重现全部的依赖源码树需要的所有信息、你的项目依赖中的所有信息，以及它们各自的版本。</p>
-</blockquote>
-<p>现在值得强调的是，<code>Yarn</code> 使用了锁文件，而<code>npm5</code>以前没有默认锁文件，<code>npm5</code>之后加入了默认锁文件功能。我们会谈到这种差别导致的一些后果。既然我已经向你介绍了包管理器这部分，现在我们来讨论依赖本身。</p>
-<p>目前常见的两种lock文件：</p>
-<ol>
-<li><code>packahe-lock.json</code> 是npm5之后默认生成的锁文件</li>
-<li><code>yarn.lock</code> 是yarn的锁文件</li>
-</ol>
-<h3 id="packahe-lock-json解析"><a href="#packahe-lock-json解析" class="headerlink" title="packahe-lock.json解析"></a>packahe-lock.json解析</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"name"</span>: <span class="string">"package-name"</span>,</span><br><span class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">  <span class="string">"lockfileVersion"</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">    <span class="string">"cacache"</span>: &#123;</span><br><span class="line">      <span class="string">"version"</span>: <span class="string">"9.2.6"</span>,</span><br><span class="line">      <span class="string">"resolved"</span>: <span class="string">"https://registry.npmjs.org/cacache/-/cacache-9.2.6.tgz"</span>,</span><br><span class="line">      <span class="string">"integrity"</span>: <span class="string">"sha512-YK0Z5Np5t755edPL6gfdCeGxtU0rcW/DBhYhYVDckT+7AFkCCtedf2zru5NRbBLFk6e7Agi/RaqTOAfiaipUfg=="</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="string">"duplexify"</span>: &#123;</span><br><span class="line">      <span class="string">"version"</span>: <span class="string">"3.5.0"</span>,</span><br><span class="line">      <span class="string">"resolved"</span>: <span class="string">"https://registry.npmjs.org/duplexify/-/duplexify-3.5.0.tgz"</span>,</span><br><span class="line">      <span class="string">"integrity"</span>: <span class="string">"sha1-GqdzAC4VeEV+nZ1KULDMquvL1gQ="</span>,</span><br><span class="line">      <span class="string">"dependencies"</span>: &#123;</span><br><span class="line">        <span class="string">"end-of-stream"</span>: &#123;</span><br><span class="line">          <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</span><br><span class="line">          <span class="string">"resolved"</span>: <span class="string">"https://registry.npmjs.org/end-of-stream/-/end-of-stream-1.0.0.tgz"</span>,</span><br><span class="line">          <span class="string">"integrity"</span>: <span class="string">"sha1-1FlucCc0qT5A6a+GQxnqvZn/Lw4="</span></span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看出来，package-lock.json把所有的包的依赖顺序列出来，第一次出现的包名会提升到顶层，后面重复出现的将会放入被依赖包的node_modules当中。引起不完全扁平化问题。</p>
-<h3 id="yarn-lock解析"><a href="#yarn-lock解析" class="headerlink" title="yarn.lock解析"></a>yarn.lock解析</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.</span><br><span class="line"># yarn lockfile v1</span><br><span class="line">package<span class="number">-1</span>@^<span class="number">1.0</span><span class="number">.0</span>:</span><br><span class="line">  version <span class="string">"1.0.3"</span></span><br><span class="line">  resolved <span class="string">"https://registry.npmjs.org/package-1/-/package-1-1.0.3.tgz#a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"</span></span><br><span class="line">package<span class="number">-2</span>@^<span class="number">2.0</span><span class="number">.0</span>:</span><br><span class="line">  version <span class="string">"2.0.1"</span></span><br><span class="line">  resolved <span class="string">"https://registry.npmjs.org/package-2/-/package-2-2.0.1.tgz#a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"</span></span><br><span class="line">  dependencies:</span><br><span class="line">    package<span class="number">-4</span> <span class="string">"^4.0.0"</span></span><br><span class="line">package<span class="number">-3</span>@^<span class="number">3.0</span><span class="number">.0</span>:</span><br><span class="line">  version <span class="string">"3.1.9"</span></span><br><span class="line">  resolved <span class="string">"https://registry.npmjs.org/package-3/-/package-3-3.1.9.tgz#a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"</span></span><br><span class="line">  dependencies:</span><br><span class="line">    package<span class="number">-4</span> <span class="string">"^4.5.0"</span></span><br><span class="line">package<span class="number">-4</span>@^<span class="number">4.0</span><span class="number">.0</span>, package<span class="number">-4</span>@^<span class="number">4.5</span><span class="number">.0</span>:</span><br><span class="line">  version <span class="string">"4.6.3"</span></span><br><span class="line">  resolved <span class="string">"https://registry.npmjs.org/package-4/-/package-4-2.6.3.tgz#a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0"</span></span><br></pre></td></tr></table></figure>
-
-<p>显然yarn.lock锁文件把所有的依赖包都扁平化的展示了出来，对于同名包但是semver不兼容的作为不同的字段放在了yarn.lock的同一级结构中。</p>
-<h3 id="Javascript-解构"><a href="#Javascript-解构" class="headerlink" title="Javascript 解构"></a>Javascript 解构</h3><p><strong>解构赋值</strong>语法是一种 Javascript 表达式。通过<strong>解构赋值,</strong> 可以将属性/值从对象/数组中取出,赋值给其他变量。</p>
-<h3 id="Development-Tool-Components"><a href="#Development-Tool-Components" class="headerlink" title="Development Tool: Components"></a>Development Tool: Components</h3><p>check data in each component</p>
-<h3 id="受控组件"><a href="#受控组件" class="headerlink" title="受控组件"></a>受控组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Switch &#125; <span class="keyword">from</span> <span class="string">'antd'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onChange</span>(<span class="params">checked</span>) </span>&#123;  <span class="built_in">console</span>.log(<span class="string">`switch to <span class="subst">$&#123;checked&#125;</span>`</span>); &#125; </span><br><span class="line"></span><br><span class="line">ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">Switch</span> <span class="attr">defaultChecked</span> <span class="attr">onChange</span>=<span class="string">&#123;onChange&#125;</span> /&gt;</span></span>, mountNode); <span class="comment">// defaultChecked is value, onChange is onChange function</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="项目构架"><a href="#项目构架" class="headerlink" title="项目构架"></a>项目构架</h3><ul>
-<li><p>Data communication</p>
-<p>父-&gt;子: main - profile, main - dataview, main - dataview - shotchart</p>
-<p>s - s:  shotchart - filter, profile-dv-searchbar</p>
-<p>子-&gt;父: searchbar - main, filter - dataview</p>
-</li>
-<li><p>antd: component</p>
-</li>
-<li><p>如何对component布局: react router。目前,从data communication考虑component布局。</p>
-</li>
-</ul>
-<h3 id="CROS"><a href="#CROS" class="headerlink" title="CROS"></a>CROS</h3><p>nba API cros跨域访问, 不允许直接从browser访问数据, node.js server。</p>
-<h3 id="Object-Element-Component"><a href="#Object-Element-Component" class="headerlink" title="Object, Element, Component"></a>Object, Element, Component</h3><p>对象就是一组“键值对”（key-value）的集合，是一种无序的复合数据集合。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">  p: <span class="string">'Hello World'</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，大括号就定义了一个对象，它被赋值给变量o。</p>
-<p>这个对象内部包含一个键值对（又称为“成员”），p是“键名”（成员的名称），字符串Hello World是“键值”（成员的值）。</p>
-<p>键名与键值之间用冒号分隔。如果对象内部包含多个键值对，每个键值对之间用逗号分隔。</p>
-<h3 id="HOF"><a href="#HOF" class="headerlink" title="HOF"></a>HOF</h3><p>特殊的函数，满足二者之一</p>
-<p>eg: map,  promise(function){return function}, setTimeout(function), setTimeinterval(function)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'haha'</span>)&#125;, <span class="number">1000</span>) <span class="comment">//命名</span></span><br><span class="line">或者 setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="string">'haha'</span>)&#125;, <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
-
-<p>Case 1. 调用回调函数的fn: parameter is a function</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">value, cb</span>)</span>&#123; <span class="comment">//cb:作为一个参数传递给其他的代码，其作用是在需要的时候方便调用这段（回调函数）代码</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(value);</span><br><span class="line"></span><br><span class="line">cb(value);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getValue</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">​	<span class="built_in">console</span>.log(val);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(<span class="string">'haha'</span>, getValue) <span class="comment">// getValue 这里不用parameters</span></span><br></pre></td></tr></table></figure>
-
-<p>Case 2: return a function</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">rule</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (rule === <span class="string">'+'</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123; <span class="comment">// function is also object.</span></span><br><span class="line">	<span class="built_in">console</span>.log(a + b);</span><br><span class="line">	&#125; </span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (rule === <span class="string">'-'</span>)&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(a-b);</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'a-&gt; '</span>, a, b);</span><br><span class="line">	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> add = fn1(<span class="string">'+'</span>); <span class="comment">// print add as a function</span></span><br><span class="line"><span class="keyword">var</span> res = add(<span class="number">1</span>, <span class="number">2</span>); </span><br><span class="line"></span><br><span class="line">fn1(<span class="string">'-'</span>)(<span class="number">5</span>, <span class="number">3</span>) <span class="comment">// ()()直接跟（）表示第一个()返回function，调用函数</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="HOC"><a href="#HOC" class="headerlink" title="HOC"></a>HOC</h3><p>Component (function or class (由函数的constructor和prototype组成的)方式创建)本质是function.</p>
-<p>本质是函数，特点是funciton 1）接收1个组件，2）返回1个新组件，3）且包装后的组件会向被包装的组件传入特定的对象。// props.form // Form.create负责包装</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Register = Form.create(&#123; <span class="attr">name</span>: <span class="string">'register'</span> &#125;)(RegistrationForm); <span class="comment">// Form.create返回的函数是高阶组件</span></span><br></pre></td></tr></table></figure>
-
-<p>好处：</p>
-<ol>
-<li>强扩展性，接收function比接收对象更具有扩展性，函数能做的事情比对象多。</li>
-<li>将重复的code减少</li>
-</ol>
-<h3 id="Function-VS-Component"><a href="#Function-VS-Component" class="headerlink" title="Function VS Component"></a>Function VS Component</h3><p>普通                          function (include hof) vs component (hoc):</p>
-<p>return element          not jsx                               jsx</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">React</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/21/Plan of react project/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-06-20-React-Handling-Events" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/20/2020-06-20-React-Handling-Events/">React Handling Events</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/20/2020-06-20-React-Handling-Events/" class="archive-article-date">
-  	<time datetime="2020-06-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Handling-Events"><a href="#Handling-Events" class="headerlink" title="Handling Events"></a>Handling Events</h1><p>Handling events with React elements is very similar to handling events on DOM elements. There are some syntax differences:</p>
-<ul>
-<li>React events are named using camelCase, rather than lowercase.</li>
-<li>With JSX you pass a function as the event handler, rather than a string.</li>
-</ul>
-<p>For example, the HTML:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onclick=<span class="string">"activateLasers()"</span>&gt;</span><br><span class="line">  Activate Lasers</span><br><span class="line">&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>is slightly different in React:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;button onClick=&#123;activateLasers&#125;&gt;  Activate Lasers</span><br><span class="line">&lt;<span class="regexp">/button&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>Another difference is that you cannot return <code>false</code> to prevent default behavior in React. You must call <code>preventDefault</code> explicitly. For example, with plain HTML, to prevent the default link behavior of opening a new page, you can write:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">"#"</span> onclick=<span class="string">"console.log('The link was clicked.'); return false"</span>&gt;</span><br><span class="line">  Click me</span><br><span class="line">&lt;<span class="regexp">/a&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>In React, this could instead be:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ActionLink</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleClick</span>(<span class="params">e</span>) </span>&#123;    e.preventDefault();    <span class="built_in">console</span>.log(<span class="string">'The link was clicked.'</span>);  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;a href=<span class="string">"#"</span> onClick=&#123;handleClick&#125;&gt;      Click me</span><br><span class="line">    &lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="e-合成事件-Synthetic-Event"><a href="#e-合成事件-Synthetic-Event" class="headerlink" title="e 合成事件 Synthetic Event"></a>e 合成事件 Synthetic Event</h3><p>Here, <code>e</code> is a synthetic event. React defines these synthetic events according to the <a href="https://www.w3.org/TR/DOM-Level-3-Events/" target="_blank" rel="noopener">W3C spec</a>, so you don’t need to worry about cross-browser compatibility. See the <a href="https://reactjs.org/docs/events.html" target="_blank" rel="noopener"><code>SyntheticEvent</code></a> reference guide to learn more.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Handling Events</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/20/2020-06-20-React-Handling-Events/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
@@ -1262,10 +1234,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1274,7 +1242,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,6 +1254,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
@@ -1294,15 +1266,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1310,7 +1278,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1318,7 +1286,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1326,11 +1294,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1338,11 +1306,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1350,7 +1322,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1358,11 +1330,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1370,23 +1342,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1398,11 +1362,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1410,15 +1378,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1426,15 +1394,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,11 +1418,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1458,19 +1430,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,11 +1442,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1490,7 +1458,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1499,10 +1475,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1534,11 +1506,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,11 +1530,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1578,11 +1550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color5">Life</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Life</a>
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1594,19 +1566,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1614,15 +1578,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Java, collection, List, Set, Iterator</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1634,11 +1614,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1646,11 +1626,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1658,19 +1638,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1686,11 +1666,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
