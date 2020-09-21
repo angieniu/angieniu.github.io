@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 154</a>
+<a>Total Number of Articles: 155</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,106 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/13/2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private/">GitHub How to make a fork of public repository private?</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/13/2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private/" class="archive-article-date">
+  	<time datetime="2020-09-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>How to sync code between the public repo and the fork:</p>
+<p>Here is the full workflow</p>
+<p>First, duplicate the repo as others said (details <a href="https://help.github.com/articles/duplicating-a-repository/" target="_blank" rel="noopener">here</a>):</p>
+<hr>
+<p>Create a new repo (let’s call it private-repo) via the <a href="https://github.com/new" target="_blank" rel="noopener">Github UI</a>. Then:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone --bare https://github.com/exampleuser/public-repo.git</span><br><span class="line">cd public-repo.git</span><br><span class="line">git push --mirror https://github.com/yourname/private-repo.git</span><br><span class="line">cd ..</span><br><span class="line">rm -rf public-repo.git</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>Clone the private repo so you can work on it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/yourname/private-repo.git</span><br><span class="line">cd private-repo</span><br><span class="line">make some changes</span><br><span class="line">git commit</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>To pull new hotness from the public repo:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd private-repo</span><br><span class="line">git remote add public https://github.com/exampleuser/public-repo.git</span><br><span class="line">git pull public master # Creates a merge commit</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>Awesome, your private repo now has the latest code from the public repo plus your changes.</p>
+<hr>
+<p>Finally, to create a pull request private repo -&gt; public repo:</p>
+<p>The only way to create a pull request is to have push access to the public repo. This is because you need to push to a branch there (<a href="http://stackoverflow.com/questions/14821583/pull-request-without-forking" target="_blank" rel="noopener">here’s why</a>).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/exampleuser/public-repo.git</span><br><span class="line">cd public-repo</span><br><span class="line">git remote add private_repo_yourname https://github.com/yourname/private-repo.git</span><br><span class="line">git checkout -b pull_request_yourname</span><br><span class="line">git pull private_repo_yourname master</span><br><span class="line">git push origin pull_request_yourname</span><br></pre></td></tr></table></figure>
+
+<p>Now simply create a pull request via the Github UI for public-repo, as described <a href="https://help.github.com/articles/creating-a-pull-request/" target="_blank" rel="noopener">here</a>.</p>
+<p>Once project owners review your pull request, they can merge it.</p>
+<p>Of course the whole process can be repeated (just leave out the steps where you add remotes).</p>
+<p>Taken from stackoverflow post by <a href="https://stackoverflow.com/users/90998/martin-konicek" target="_blank" rel="noopener">https://stackoverflow.com/users/90998/martin-konicek</a></p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/@bilalbayasut/github-how-to-make-a-fork-of-public-repository-private-6ee8cacaf9d3" target="_blank" rel="noopener">https://medium.com/@bilalbayasut/github-how-to-make-a-fork-of-public-repository-private-6ee8cacaf9d3</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Github</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/13/2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-09-11-13-Common-Technical-Interview-Questions-(With-Tips-and-Example-Answers)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1038,174 +1138,6 @@
 
 
   
-    <article id="post-2020-09-03-Use-the-Microsoft-Graph-API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/03/2020-09-03-Use-the-Microsoft-Graph-API/">Use the Microsoft Graph API</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/03/2020-09-03-Use-the-Microsoft-Graph-API/" class="archive-article-date">
-  	<time datetime="2020-09-03T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Microsoft Graph is a RESTful web API that enables you to access Microsoft Cloud service resources. After you <a href="https://docs.microsoft.com/en-us/graph/auth-register-app-v2" target="_blank" rel="noopener">register your app</a> and <a href="https://docs.microsoft.com/en-us/graph/auth-v2-user" target="_blank" rel="noopener">get authentication tokens for a user</a> or <a href="https://docs.microsoft.com/en-us/graph/auth-v2-service" target="_blank" rel="noopener">service</a>, you can make requests to the Microsoft Graph API.</p>
-<blockquote>
-<p><strong>Important:</strong> How conditional access policies apply to Microsoft Graph is changing. Applications need to be updated to handle scenarios where conditional access policies are configured. For more information and guidance, see <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-conditional-access-developer" target="_blank" rel="noopener">Developer Guidance for Azure Active Directory Conditional Access</a>.</p>
-</blockquote>
-<h2 id="OData-namespace"><a href="#OData-namespace" class="headerlink" title="OData namespace"></a>OData namespace</h2><p>The Microsoft Graph API defines most of its resources, methods, and enumerations in the OData namespace, <code>microsoft.graph</code>, in the <a href="https://docs.microsoft.com/en-us/graph/traverse-the-graph#microsoft-graph-api-metadata" target="_blank" rel="noopener">Microsoft Graph metadata</a>. A small number of API sets are defined in their sub-namespaces, such as the <a href="https://docs.microsoft.com/en-us/graph/api/resources/callrecords-api-overview?view=graph-rest-beta" target="_blank" rel="noopener">call records API</a> which defines resources like <a href="https://docs.microsoft.com/en-us/graph/api/resources/callrecords-callrecord?view=graph-rest-beta" target="_blank" rel="noopener">callRecord</a> in <code>microsoft.graph.callRecords</code>.</p>
-<p>Unless explicitly specified in the corresponding topic, assume types, methods, and enumerations are part of the <code>microsoft.graph</code> namespace.</p>
-<h2 id="Call-a-REST-API-method"><a href="#Call-a-REST-API-method" class="headerlink" title="Call a REST API method"></a>Call a REST API method</h2><p>To read from or write to a resource such as a user or an email message, you construct a request that looks like the following:</p>
-<p>HTTPCopy</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;HTTP method&#125; https://graph.microsoft.com/&#123;version&#125;/&#123;resource&#125;?&#123;query-parameters&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The components of a request include:</p>
-<ul>
-<li><a href="https://docs.microsoft.com/en-us/graph/use-the-api#http-methods" target="_blank" rel="noopener">{HTTP method}</a> - The HTTP method used on the request to Microsoft Graph.</li>
-<li><a href="https://docs.microsoft.com/en-us/graph/use-the-api#version" target="_blank" rel="noopener">{version}</a> - The version of the Microsoft Graph API your application is using.</li>
-<li><a href="https://docs.microsoft.com/en-us/graph/use-the-api#resource" target="_blank" rel="noopener">{resource}</a> - The resource in Microsoft Graph that you’re referencing.</li>
-<li><a href="https://docs.microsoft.com/en-us/graph/use-the-api#query-parameters" target="_blank" rel="noopener">{query-parameters}</a> - Optional OData query options or REST method parameters that customize the response.</li>
-</ul>
-<p>After you make a request, a response is returned that includes:</p>
-<ul>
-<li>Status code - An HTTP status code that indicates success or failure. For details about HTTP error codes, see <a href="https://docs.microsoft.com/en-us/graph/errors" target="_blank" rel="noopener">Errors</a>.</li>
-<li>Response message - The data that you requested or the result of the operation. The response message can be empty for some operations.</li>
-<li><code>nextLink</code> - If your request returns a lot of data, you need to page through it by using the URL returned in <code>@odata.nextLink</code>. For details, see <a href="https://docs.microsoft.com/en-us/graph/paging" target="_blank" rel="noopener">Paging</a>.</li>
-</ul>
-<h2 id="HTTP-methods"><a href="#HTTP-methods" class="headerlink" title="HTTP methods"></a>HTTP methods</h2><p>Microsoft Graph uses the HTTP method on your request to determine what your request is doing. The API supports the following methods.</p>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>Method</strong></th>
-<th align="left"><strong>Description</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">GET</td>
-<td align="left">Read data from a resource.</td>
-</tr>
-<tr>
-<td align="left">POST</td>
-<td align="left">Create a new resource, or perform an action.</td>
-</tr>
-<tr>
-<td align="left">PATCH</td>
-<td align="left">Update a resource with new values.</td>
-</tr>
-<tr>
-<td align="left">PUT</td>
-<td align="left">Replace a resource with a new one.</td>
-</tr>
-<tr>
-<td align="left">DELETE</td>
-<td align="left">Remove a resource.</td>
-</tr>
-</tbody></table>
-<ul>
-<li>For the CRUD methods <code>GET</code> and <code>DELETE</code>, no request body is required.</li>
-<li>The <code>POST</code>, <code>PATCH</code>, and <code>PUT</code> methods require a request body, usually specified in JSON format, that contains additional information, such as the values for properties of the resource.</li>
-</ul>
-<h2 id="Version"><a href="#Version" class="headerlink" title="Version"></a>Version</h2><p>Microsoft Graph currently supports two versions: <code>v1.0</code> and <code>beta</code>.</p>
-<ul>
-<li><code>v1.0</code> includes generally available APIs. Use the v1.0 version for all production apps.</li>
-<li><code>beta</code> includes APIs that are currently in preview. Because we might introduce breaking changes to our beta APIs, we recommend that you use the beta version only to test apps that are in development; do not use beta APIs in your production apps.</li>
-</ul>
-<p>We are always looking for feedback on our beta APIs. To provide feedback or request features, see our <a href="https://officespdev.uservoice.com/" target="_blank" rel="noopener">UserVoice</a> page.</p>
-<p>For more information about API versions, see <a href="https://docs.microsoft.com/en-us/graph/versioning-and-support" target="_blank" rel="noopener">Versioning and support</a>.</p>
-<h2 id="Resource"><a href="#Resource" class="headerlink" title="Resource"></a>Resource</h2><p>A resource can be an entity or complex type, commonly defined with properties. Entities differ from complex types by always including an <strong>id</strong> property.</p>
-<p>Your URL will include the resource you are interacting with in the request, such as <code>me</code>, <strong>user</strong>, <strong>group</strong>, <strong>drive</strong>, and <strong>site</strong>. Often, top-level resources also include <em>relationships</em>, which you can use to access additional resources, like <code>me/messages</code> or <code>me/drive</code>. You can also interact with resources using <em>methods</em>; for example, to send an email, use <code>me/sendMail</code>. For more information, see <a href="https://docs.microsoft.com/en-us/graph/traverse-the-graph" target="_blank" rel="noopener">Access data and methods by navigating Microsoft Graph</a>.</p>
-<p>Each resource might require different permissions to access it. You will often need a higher level of permissions to create or update a resource than to read it. For details about required permissions, see the method reference topic.</p>
-<p>For details about permissions, see <a href="https://docs.microsoft.com/en-us/graph/permissions-reference" target="_blank" rel="noopener">Permissions reference</a>.</p>
-<h2 id="Query-parameters"><a href="#Query-parameters" class="headerlink" title="Query parameters"></a>Query parameters</h2><p>Query parameters can be OData system query options, or other strings that a method accepts to customize its response.</p>
-<p>You can use optional OData system query options to include more or fewer properties than the default response, filter the response for items that match a custom query, or provide additional parameters for a method.</p>
-<p>For example, adding the following <code>filter</code> parameter restricts the messages returned to only those with the <code>emailAddress</code> property of <code>jon@contoso.com</code>.</p>
-<p>HTTPCopy</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@contoso.com'</span><br></pre></td></tr></table></figure>
-
-<p>For more information about OData query options, see <a href="https://docs.microsoft.com/en-us/graph/query-parameters" target="_blank" rel="noopener">Use query parameters to customize responses</a>.</p>
-<p>Aside from OData query options, some methods require parameter values specified as part of the query URL. For example, you can get a collection of events that occurred during a time period in a user’s calendar, by querying the <strong>calendarView</strong> relationship of a <strong>user</strong>, and specifying the period <code>startDateTime</code> and <code>endDateTime</code> values as query parameters:</p>
-<p>HTTPCopy</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET https://graph.microsoft.com/me/calendarView?startDateTime=2019-09-01T09:00:00.0000000&amp;endDateTime=2019-09-01T17:00:00.0000000</span><br></pre></td></tr></table></figure>
-
-<h2 id="Tools-for-interacting-with-Microsoft-Graph"><a href="#Tools-for-interacting-with-Microsoft-Graph" class="headerlink" title="Tools for interacting with Microsoft Graph"></a>Tools for interacting with Microsoft Graph</h2><h3 id="Graph-Explorer"><a href="#Graph-Explorer" class="headerlink" title="Graph Explorer"></a>Graph Explorer</h3><p>Graph Explorer is a web-based tool that you can use to build and test requests using Microsoft Graph APIs. You can access Graph Explorer at: <code>https://developer.microsoft.com/graph/graph-explorer</code>.</p>
-<p>You can either access demo data without signing in, or you can sign in to a tenant of your own. Use the following steps to build the request:</p>
-<ol>
-<li>Select the HTTP method.</li>
-<li>Select the version of API that you want to use.</li>
-<li>Type the query in the request text box.</li>
-<li>Select <strong>Run Query</strong>.</li>
-</ol>
-<p>The following example shows a request that returns information about users in the demo tenant:</p>
-<p><img src="https://i.loli.net/2020/09/07/8o4Y9CDOFUJdi3E.png" alt="Screenshot of Graph Explorer with a GET user request highlighted"></p>
-<p>Sample queries are provided in Graph Explorer to enable you to more quickly run common requests. To see the samples that are available, select <strong>show more samples</strong>. Select <strong>On</strong> for the set of samples that you want to see, and then after closing the selection window, you should see a list of predefined requests.</p>
-<p>A status code and message are displayed after a request is sent and the response is shown in the <strong>Response Preview</strong> tab.</p>
-<h3 id="Postman"><a href="#Postman" class="headerlink" title="Postman"></a>Postman</h3><p>Postman is a tool that you can use to build and test requests using the Microsoft Graph APIs. You can download Postman at: <code>https://www.getpostman.com/</code>. To interact with Microsoft Graph in Postman, you use the Microsoft Graph collection.</p>
-<p>For more information, see <a href="https://docs.microsoft.com/en-us/graph/use-postman?context=graph/api/beta&view=graph-rest-beta" target="_blank" rel="noopener">Use Postman with the Microsoft Graph API</a>.</p>
-<h2 id="Next-steps"><a href="#Next-steps" class="headerlink" title="Next steps"></a>Next steps</h2><p>You’re ready to get up and running with Microsoft Graph. Try the <a href="https://developer.microsoft.com/graph/quick-start" target="_blank" rel="noopener">Quick Start</a>, or get started using one of our <a href="https://developer.microsoft.com/graph/code-samples-and-sdks" target="_blank" rel="noopener">SDKs and code samples</a>.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://docs.microsoft.com/en-us/graph/use-the-api" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/graph/use-the-api</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">RESTful API</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/03/2020-09-03-Use-the-Microsoft-Graph-API/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1310,10 +1242,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1330,10 +1258,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
@@ -1342,11 +1266,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,6 +1283,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1374,19 +1306,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1394,15 +1314,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1410,7 +1326,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,7 +1354,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1430,15 +1366,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,11 +1374,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1458,7 +1386,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1466,11 +1394,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1486,23 +1418,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1510,7 +1430,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1518,7 +1450,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1526,23 +1458,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1550,7 +1470,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,19 +1490,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1582,11 +1510,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1598,15 +1530,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Reading</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1618,11 +1550,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
+                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
+                <a href="javascript:void(0)" class="js-tag color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1638,11 +1570,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1650,15 +1582,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSH</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1666,7 +1590,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1682,7 +1610,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1718,15 +1650,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1746,10 +1682,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
@@ -1759,6 +1691,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
