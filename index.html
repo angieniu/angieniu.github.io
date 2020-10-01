@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 155</a>
+<a>Total Number of Articles: 158</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,297 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-10-01-Database-Review" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/01/2020-10-01-Database-Review/">Database Review</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/01/2020-10-01-Database-Review/" class="archive-article-date">
+  	<time datetime="2020-10-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>SQLite vs MySQL</li>
+</ol>
+<h1 id="SQLite-vs-MySQL-–-What’s-the-Difference"><a href="#SQLite-vs-MySQL-–-What’s-the-Difference" class="headerlink" title="SQLite vs MySQL – What’s the Difference"></a>SQLite vs MySQL – What’s the Difference</h1><p>A core part of any website or development design is the database. There are several databases available on the market. SQLite, as well as <a href="https://www.hostinger.com/tutorials/what-is-mysql" target="_blank" rel="noopener">MySQL</a>, are equally popular open source databases. In this article, we’ll break down the essential differences between the two and help you understand the two – SQLite vs MySQL.</p>
+<p>The database management system also referred to as a DBMS is often called RDBMS. RDBMS stands for <a href="https://en.wikipedia.org/wiki/Relational_database_management_system" target="_blank" rel="noopener">Relational Database management system</a>. At the most rudimentary level, all databases are used to manage, maintain, and manipulate data.</p>
+<p>Data models can be one of two:</p>
+<ol>
+<li><strong>NoSQL</strong> – an unstructured and is still evolving model</li>
+<li><strong>Relational DBMS</strong> – a structured and more prominently used model</li>
+</ol>
+<h2 id="What-is-a-Database-Management-System"><a href="#What-is-a-Database-Management-System" class="headerlink" title="What is a Database Management System"></a>What is a Database Management System</h2><p>A DBMS is a software that interacts with a database. It facilitates several operations over the databases it manages. A few of these <a href="https://www.hostinger.com/tutorials/what-is-a-query" target="_blank" rel="noopener">operations</a> are:</p>
+<ul>
+<li>Managing the access of a database</li>
+<li>Running SQL queries</li>
+<li>Writing data into the database</li>
+<li>Updating database</li>
+<li>Deleting data from the database</li>
+</ul>
+<p>In most cases, database and DBMS are used interchangeably. However, a database is a collection of stored data while a DBMS is the software used to access the database.</p>
+<p>Every DBMS has an underlying model which decides the structure of the database and how the data can be retrieved. A relational DBMS uses the relational data model. Here data is organized in the form of tables. Each table has a set of attributes or columns, and each row also referred to as tuples have a relation. Owing to this, the structuring is referred to as RDBMS.</p>
+<p>To work on a RDBMS, you have to use SQL or Structured Query Language. Each RDBMS has a different dialect.</p>
+<h2 id="SQLite-vs-MySQL"><a href="#SQLite-vs-MySQL" class="headerlink" title="SQLite vs MySQL"></a>SQLite vs MySQL</h2><p>SQLite, as well as MySQL, are open source RDBMS. Let’s deep dive into their differences.</p>
+<h3 id="Architectural-Difference-–-SQLite-vs-MySQL"><a href="#Architectural-Difference-–-SQLite-vs-MySQL" class="headerlink" title="Architectural Difference – SQLite vs MySQL"></a>Architectural Difference – SQLite vs MySQL</h3><ul>
+<li>SQLite is an open source project available in the public domain</li>
+<li>MySQL is an open source project which is owned by Oracle</li>
+</ul>
+<p>SQLite is a server-less database and is self-contained. This is also referred to as an embedded database which means the DB engine runs as a part of the app.</p>
+<p>On the other hand, MySQL requires a server to run. MySQL will require a client and server architecture to interact over a network.</p>
+<h3 id="Data-Type-Support-–-SQLite-vs-MySQL"><a href="#Data-Type-Support-–-SQLite-vs-MySQL" class="headerlink" title="Data Type Support – SQLite vs MySQL"></a>Data Type Support – SQLite vs MySQL</h3><p>SQLite supports these datatypes: Blob, Integer, Null, Text, Real.</p>
+<p>MySQL supports the below-mentioned datatypes:</p>
+<p>Tinyint, Smallint, Mediumint, Int, Bigint, Double, Float, Real, Decimal, Double precision, Numeric, Timestamp, Date, Datetime, Char, Varchar, Year, Tinytext, Tinyblob, Blob, Text, MediumBlob, MediumText, Enum, Set, Longblob, Longtext.</p>
+<p>As you can tell, MySQL is a lot more flexible when it comes to data types.</p>
+<h3 id="Storage-and-Portability-–-SQLite-vs-MySQL"><a href="#Storage-and-Portability-–-SQLite-vs-MySQL" class="headerlink" title="Storage and Portability – SQLite vs MySQL"></a>Storage and Portability – SQLite vs MySQL</h3><p>The SQLite library is about 250 KB in size, while the MySQL server is about 600 MB. The SQLite directly stores info in a single file, making it easy to copy. No configurations are required, and the process ca be done using minimal support.</p>
+<p>Before copying or exporting MySQL you need to condense it into a single file. For larger databases, this will be a time-consuming activity.</p>
+<h3 id="Multiple-Access-and-Scalability-–-SQLite-vs-MySQL"><a href="#Multiple-Access-and-Scalability-–-SQLite-vs-MySQL" class="headerlink" title="Multiple Access and Scalability – SQLite vs MySQL"></a>Multiple Access and Scalability – SQLite vs MySQL</h3><p>SQLite does not have any specific user management functionality and hence is not suitable for multiple user access. MySQL has a well-constructed user management system which can handle multiple users and grant various levels of permission.</p>
+<p>SQLite is suitable for smaller databases. As the database grows the memory requirement also gets larger while using SQLite. Performance optimization is harder when using SQLite. This has a few write constraints.</p>
+<p>On the contrary, MySQL is easily scalable and can handle a bigger database with less effort.</p>
+<h3 id="Security-and-Ease-of-Setup-–-SQLite-vs-MySQL"><a href="#Security-and-Ease-of-Setup-–-SQLite-vs-MySQL" class="headerlink" title="Security and Ease of Setup – SQLite vs MySQL"></a>Security and Ease of Setup – SQLite vs MySQL</h3><p>SQLite does not have an inbuilt authentication mechanism. The database files can be accessed by anyone.  However, MySQL comes with a lot of inbuilt security features. This includes authentication with a username, password, and <a href="https://www.hostinger.com/tutorials/ssh-tutorial-how-does-ssh-work" target="_blank" rel="noopener">SSH</a>.</p>
+<p>SQLite does not require too many configurations and is easy to set up. MySQL requires more configurations as compared to SQLite. MySQL also has more setup guides available.</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/01/2020-10-01-Database-Review/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-30-Amazon-Day-1-Mentality" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/30/2020-09-30-Amazon-Day-1-Mentality/">Amazon Day 1 Mentality</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/30/2020-09-30-Amazon-Day-1-Mentality/" class="archive-article-date">
+  	<time datetime="2020-09-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Amazon-Explained-–-The-Day-1-Mentality"><a href="#Amazon-Explained-–-The-Day-1-Mentality" class="headerlink" title="Amazon Explained – The Day 1 Mentality"></a>Amazon Explained – The Day 1 Mentality</h1><p>Amazon CEO Jeff Bezos has always been a strong proponent of the “Day 1” business outlook. In fact, he’s preached the idea so often that it has become one of the company’s internal mantras. The Day 1 mentality means that even though Amazon is nearly 25 years old, the company treats every day like it’s the first day of their new startup.</p>
+<p>Day 1 is an incredible idea – it’s a way to stay relevant and on your toes. Every successful startup begins with a solution to some problem or need. A promising startup focuses on what the consumer needs, and how they want it, even if they don’t know it yet.</p>
+<p>“The outside world can push you into Day 2 if you won’t or can’t embrace powerful trends quickly. If you fight them, you’re probably fighting the future. Embrace them and you have a tailwind”—Jeff Bezos</p>
+<p>Bezos suggests that strong trends are not that hard spot in today’s world. Many big companies get caught up with what has worked for them in the past instead of embracing what the present and future call for. That’s what Day 1 is all about; attacking every day by searching for ways to become and stay relevant to your customers.</p>
+<p><strong>Does it work?</strong></p>
+<p>The concept of Bezos Day 1 mentality has received its fair share of backlash within the business community. The chief argument against the Day 1 ideology is that most companies and startups don’t know the first thing about anything when they first begin; so why stay in that awkward growing phase? The answer to that is simple: When you treat every day like it’s Day 1, you’re not simply sitting stagnant on the information you had at the start. You’re building on what you’ve learned, and you continue to evolve. Amazon certainly hasn’t been stuck in the past – quite the opposite. Amazon is now worth north of $1 trillion and doesn’t show any signs of slowing down.</p>
+<p>When you look at the incredible success of Amazon, it’s hard to ignore the idea of Day 1. If it works for Jeff Bezos and the second largest company in the world, there has to be something to it. Bezos holds that it isn’t enough to have Day 1 be in your mission statement – it has to be a constant reminder. That’s why the main office building that Bezos works out of is named Day 1.</p>
+<p><strong>Day 2</strong></p>
+<p>Bezos is dead-set on maintaining a business culture that will continue to innovate, create and look outwardly towards successful trends. Day 2 brings comfort and contentment with how things have been. That’s why Amazon maintains a “never Day 2” attitude.</p>
+<p><em>“Day 2 is stasis. Followed by irrelevance. Followed by excruciating, painful decline. Followed by death. And that is why it is always Day 1.”</em> -Jeff Bezos</p>
+<p>To hold to the Day 1 mentality, you cannot be afraid of change. You must recognize how you can create a better future for your company. The absolute best way to do this is to hire the right talent around you. It may cost more initially, and it might be hard to find the right people. But when you build a team of innovative professionals, the possibilities are endless.<br>Be sure to allow your team leaders and other specialists freedom to do their job creatively. The best change happens when you allow the best minds access to their potential.</p>
+<p><strong>Day 1 Keys</strong></p>
+<p>In a <a href="https://www.sec.gov/Archives/edgar/data/1018724/000119312517120198/d373368dex991.htm" target="_blank" rel="noopener">2016 letter to shareholders</a>, Bezos outlined the following four keys to maintaining the Day 1 mentality.</p>
+<p><strong>1. True Customer Obsession</strong></p>
+<p><em>“Even when they don’t yet know it, customers want something better, and your desire to delight customers will drive you to invent on their behalf.”</em></p>
+<p>Here we learn that it’s just not enough to supply a product that the customer needs. To be truly relevant to the consumer, you must provide an experience and a product before they even know they want it! You must research, observe and obsess over the clients.</p>
+<p><strong>2. Resist Proxies</strong></p>
+<p>“As companies get larger and more complex, there’s a tendency to manage to proxies. This comes in many shapes and sizes, and it’s dangerous, subtle, and very Day 2.”</p>
+<p>No amount of calculations can guarantee repeated results in business. If you focus on the process, you are likely to lose sight of the outcome.</p>
+<p><strong>3. Embrace External Trends</strong></p>
+<p>“Big trends are not that hard to spot (they get talked and written about a lot), but they can be strangely hard for large organizations to embrace.”</p>
+<p>This ties right into the idea of avoiding proxies or algorithms. Allow your management teams freedom to embrace trends – even further, require them to embrace trends!</p>
+<p><strong>4. High-Velocity Decision Making</strong></p>
+<p>“Day 2 companies make high-quality decisions, but they make high-quality decisions slowly. To keep the energy and dynamism of Day 1, you have to somehow make high-quality, high-velocity decisions.”</p>
+<p>Can you see the theme here? Don’t let your business get bogged down by procedures at the cost of missing opportunities.</p>
+<p>The Day 1 mentality has had a major impact on Amazon’s success and proves itself as an excellent business practice for all who can commit and stick to it.</p>
+<hr>
+<h1 id="Jeff-Bezos’-philosophy-for-Amazon-is-that-it’s-always-‘Day-1’-—-here’s-what-that-means-and-why-it-works"><a href="#Jeff-Bezos’-philosophy-for-Amazon-is-that-it’s-always-‘Day-1’-—-here’s-what-that-means-and-why-it-works" class="headerlink" title="Jeff Bezos’ philosophy for Amazon is that it’s always ‘Day 1’ — here’s what that means and why it works"></a>Jeff Bezos’ philosophy for Amazon is that it’s always ‘Day 1’ — here’s what that means and why it works</h1><p>Almost 80% of the Dow Jones 30 have disappeared over the last several decades. Others, like Sears, have either gone bankrupt or are in serious decline. Why? Because they failed to adapt to a shifting climate and instead stuck to outdated business models. From the very beginning, Jeff Bezos was determined not to repeat the mistakes of these companies, so he implemented a mindset that kept Amazon on a continuous cycle of experimentation, innovation, iteration, and even failure (remember the <a href="https://www.businessinsider.com/amazon-may-experiment-with-new-smartphone-after-fire-phone-disaster-2019-5" target="_blank" rel="noopener">Fire Phone</a> and <a href="https://www.businessinsider.com/amazon-products-services-failed-discontinued-2019-3" target="_blank" rel="noopener">Askville</a>?). Bezos calls this mindset “Day 1” and it has become the company’s mantra for longevity.</p>
+<p>“The Amazon Management System: The Ultimate Digital Business Engine That Creates Extraordinary Value for Both Customers and Shareholders.” Courtesy of Idea Press</p>
+<p>If you read through all the shareholder letters that Bezos meticulously wrote over the past 22 years (1997-2018), the phrase “Day 1” appeared an amazing 22 times, with striking consistency. For the past 10 years, every shareholder letter has ended with the same line:</p>
+<p>“As always, I attach a copy of our original 1997 letter. Our approach remains the same, and it’s still Day 1.” (2009-2015, with a one-word deviation in 2014)</p>
+<p>“As always, I attach a copy of our original 1997 letter. It remains Day 1.” (2016-2018)</p>
+<p>If you go to Amazon headquarters, you will find a building named “Day 1” where Bezos’s office is located. When he moved buildings, he took the name with him. The plate reads: “There’s so much stuff that has yet to be invented. There’s so much new that’s going to happen.” Why is Day 1 so important to Bezos? Why has he felt such a strong urge to constantly remind everyone that it’s still Day 1?</p>
+<h2 id="Why-Day-1"><a href="#Why-Day-1" class="headerlink" title="Why Day 1?"></a>Why Day 1?</h2><p>Normally, in the beginning, the organization will still function with speed, nimbleness, and a risk-acceptance mentality, but as the business grows bigger, complexity starts increasing, and layers begin creeping in, the once-nimble startups inevitably fall into the trap of so called “large organizations” characterized by slowness, rigidity, and risk aversion.</p>
+<p>Bezos graduated from Princeton University in 1986 with degrees in electrical engineering and computer science and initially intended to study physics. That’s why he borrowed the term “entropy,” an indicator of a system’s disorder. In thermodynamics, entropy is a measure of the unavailable energy in a closed thermodynamic system that is also usually considered to be a measure of the system’s disorder. The second law of thermodynamics states that for a thermodynamically defined process to actually occur, the sum of the entropies of the participating bodies must increase. In short, in the world of physics, the total entropy, or disorder, of the universe is continually increasing. In the world of business, the inevitable path of any organization, if left unattended, will lead to decrease in efficiency and vitality, and increase in complexity and rigidity. This is the law of “entropy increase.” In a way, it is a depressing law because it states that, no matter how great a company is now, without deliberate vigilance and institutional determination to fight entropy, it will fall into mediocrity. Bezos’s goal is to defy the law of entropy increase at Amazon: “We want to fight entropy. The bar has to continuously go up.”</p>
+<h2 id="Day-2-is-not-an-option"><a href="#Day-2-is-not-an-option" class="headerlink" title="Day 2 is not an option"></a>Day 2 is not an option</h2><p>Bezos’s evocative and sticky model of “Day 1 vs. Day 2” has proved to be an immediate and useful way. This simple phrase captured Bezos’s aspiration for Amazon to grow aggressively in scale and scope while preserving the entrepreneurial vitality of a startup and building on the numerous advantages of a large company at the same time.</p>
+<p>To defy the law of entropy increase is, by default, never easy. Bezos was fully aware of the challenge. As he noted, “There are some subtle traps that even high-performing large organizations can fall into as a matter of course, and we’ll have to learn as an institution how to guard against them.” Every day is a new day, every day the world changes, and we must look for the change, create the change, and adapt to change. It’s a lesson to every manager and leader. It’s the meaning behind Forever Day 1.</p>
+<p>So what does Day 2 look like in Bezos’s mind? “Day 2 is stasis. Followed by irrelevance. Followed by excruciating, painful decline. Followed by death. And that is why it is always Day 1.” To Bezos, someone who wanted to win so badly during childhood that he would cry publicly over the loss of a football game, Day 2 is never an option.</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://www.podean.com/amazon-explained-the-day-1-mentality/#:~:text=The%20Day%201%20mentality%20means,to%20some%20problem%20or%20need" target="_blank" rel="noopener">https://www.podean.com/amazon-explained-the-day-1-mentality/#:~:text=The%20Day%201%20mentality%20means,to%20some%20problem%20or%20need</a>.</p>
+<p><a href="https://www.businessinsider.com/jeff-bezos-says-always-day-1-amazon-philosophy-2019-12" target="_blank" rel="noopener">https://www.businessinsider.com/jeff-bezos-says-always-day-1-amazon-philosophy-2019-12</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Behavior Questions</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/30/2020-09-30-Amazon-Day-1-Mentality/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-29-Linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/29/2020-09-29-Linux/">Linux</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/29/2020-09-29-Linux/" class="archive-article-date">
+  	<time datetime="2020-09-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj8lmwn7uyj30pl0h5adi.jpg" alt="img"></p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://i.gzn.jp/img/2018/03/22/linux-kernel-map/00.png" target="_blank" rel="noopener">http://i.gzn.jp/img/2018/03/22/linux-kernel-map/00.png</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/29/2020-09-29-Linux/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -804,340 +1095,6 @@
 
 
   
-    <article id="post-2020-09-06-前后端常见的几种鉴权方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/">前后端常见的几种鉴权方式</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/" class="archive-article-date">
-  	<time datetime="2020-09-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、四种鉴权方式"><a href="#一、四种鉴权方式" class="headerlink" title="一、四种鉴权方式"></a>一、四种鉴权方式</h2><p>目前我们常用的鉴权有四种：</p>
-<ul>
-<li>HTTP Basic Authentication</li>
-<li>session-cookie</li>
-<li>Token 验证</li>
-<li>OAuth(开放授权)</li>
-</ul>
-<h2 id="二、HTTP-Basic-Authentication"><a href="#二、HTTP-Basic-Authentication" class="headerlink" title="二、HTTP Basic Authentication"></a>二、HTTP Basic Authentication</h2><p>这种授权方式是浏览器遵守http协议实现的基本授权方式，HTTP协议进行通信的过程中，HTTP协议定义了基本认证允许HTTP服务器对客户端进行用户身份证的方法。</p>
-<p>认证过程：</p>
-<p><a href="https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d66c3ac0?w=710&h=335&f=png&s=12074" target="_blank" rel="noopener"><img src="https://i.loli.net/2020/09/07/7rZEqyAkXWgVhY1.png" alt="img"></a></p>
-<p>1、 客户端向服务器请求数据，请求的内容可能是一个网页或者是一个ajax异步请求，此时，假设客户端尚未被验证，则客户端提供如下请求至服务器:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  Get /index.html HTTP/1.0 </span><br><span class="line">  Host:www.google.com</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>2、 服务器向客户端发送验证请求代码401,（WWW-Authenticate: Basic realm=”google.com”这句话是关键，如果没有客户端不会弹出用户名和密码输入界面）服务器返回的数据大抵如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  HTTP/1.0 401 Unauthorised </span><br><span class="line">  Server: SokEvo/1.0 </span><br><span class="line">  WWW-Authenticate: Basic realm=”google.com” </span><br><span class="line">  Content-Type: text/html </span><br><span class="line">  Content-Length: xxx</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>3、 当符合http1.0或1.1规范的客户端（如IE，FIREFOX）收到401返回值时，将自动弹出一个登录窗口，要求用户输入用户名和密码。</p>
-<p>4、 用户输入用户名和密码后，将用户名及密码以BASE64加密方式加密，并将密文放入前一条请求信息中，则客户端发送的第一条请求信息则变成如下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  Get /index.html HTTP/1.0 </span><br><span class="line">  Host:www.google.com </span><br><span class="line">  Authorization: Basic d2FuZzp3YW5n</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>注：<code>d2FuZzp3YW5n</code>表示加密后的用户名及密码（用户名：密码 然后通过base64加密，加密过程是浏览器默认的行为，不需要我们人为加密，我们只需要输入用户名密码即可）</p>
-<p>5、 服务器收到上述请求信息后，将 <code>Authorization</code> 字段后的用户信息取出、解密，将解密后的用户名及密码与用户数据库进行比较验证，如用户名及密码正确，服务器则根据请求，将所请求资源发送给客户端</p>
-<p>效果： 客户端未未认证的时候，会弹出用户名密码输入框，这个时候请求时属于 <code>pending</code> 状态，当用户输入用户名密码的时候客户端会再次发送带 <code>Authentication</code> 头的请求。</p>
-<p><img src="https://i.loli.net/2020/09/07/5JH2wU9jfAgzWIp.png" alt="img">)<a href="https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d5b674da?w=2076&amp;h=888&amp;f=png&amp;s=97446" target="_blank" rel="noopener">https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d5b674da?w=2076&amp;h=888&amp;f=png&amp;s=97446</a>)</p>
-<p>认证成功：</p>
-<p><img src="https://i.loli.net/2020/09/07/6KR4aPFgenIt2y3.png" alt="img"></p>
-<p>server.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">let express = require(&quot;express&quot;);</span><br><span class="line">let app = express();</span><br><span class="line"> </span><br><span class="line">  app.use(express.static(__dirname+&apos;/public&apos;));</span><br><span class="line"> </span><br><span class="line">  app.get(&quot;/Authentication_base&quot;,function(req,res)&#123;</span><br><span class="line">    console.log(&apos;req.headers.authorization:&apos;,req.headers)</span><br><span class="line">    if(!req.headers.authorization)&#123;</span><br><span class="line">      res.set(&#123;</span><br><span class="line">        &apos;WWW-Authenticate&apos;:&apos;Basic realm=&quot;wang&quot;&apos;</span><br><span class="line">      &#125;);</span><br><span class="line">      res.status(401).end();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      let base64 = req.headers.authorization.split(&quot; &quot;)[1];</span><br><span class="line">      let userPass = new Buffer(base64, &apos;base64&apos;).toString().split(&quot;:&quot;);</span><br><span class="line">      let user = userPass[0];</span><br><span class="line">      let pass = userPass[1];</span><br><span class="line">      if(user==&quot;wang&quot;&amp;&amp;pass=&quot;wang&quot;)&#123;</span><br><span class="line">        res.end(&quot;OK&quot;);</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        res.status(401).end();</span><br><span class="line">      &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">  &#125;)</span><br><span class="line"> </span><br><span class="line">  app.listen(9090)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>index.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;HTTP Basic Authentication&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script src=&quot;js/jquery-3.2.1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      $(function()&#123;</span><br><span class="line">       send(&apos;./Authentication_base&apos;);</span><br><span class="line">      &#125;)</span><br><span class="line">      var send = function(url)&#123;</span><br><span class="line">            $.ajax(&#123; </span><br><span class="line">            url : url, </span><br><span class="line">            method : &apos;GET&apos;, </span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p>优点：  基本认证的一个优点是基本上所有流行的网页浏览器都支持基本认证。基本认证很少在可公开访问的互联网网站上使用，有时候会在小的私有系统中使用（如路由器网页管理接口）。后来的机制HTTP摘要认证是为替代基本认证而开发的，允许密钥以相对安全的方式在不安全的通道上传输。  程序员和系统管理员有时会在可信网络环境中使用基本认证，使用Telnet或其他明文网络协议工具手动地测试Web服务器。这是一个麻烦的过程，但是网络上传输的内容是人可读的，以便进行诊断。</p>
-<p>缺点：  虽然基本认证非常容易实现，但该方案创建在以下的假设的基础上，即：客户端和服务器主机之间的连接是安全可信的。特别是，如果没有使用<code>SSL/TLS</code>这样的传输层安全的协议，那么以明文传输的密钥和口令很容易被拦截。该方案也同样没有对服务器返回的信息提供保护。  现存的浏览器保存认证信息直到标签页或浏览器被关闭，或者用户清除历史记录。HTTP没有为服务器提供一种方法指示客户端丢弃这些被缓存的密钥。这意味着服务器端在用户不关闭浏览器的情况下，并没有一种有效的方法来让用户注销。</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Authentication, Session, Cokkie, Token, OAuth</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-09-05-图解SSH原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/05/2020-09-05-图解SSH原理/">图解SSH原理</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/05/2020-09-05-图解SSH原理/" class="archive-article-date">
-  	<time datetime="2020-09-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://i.loli.net/2020/09/07/qUpxjHENDu7Ms46.png" alt="img"></p>
-<h2 id="1-初见SSH"><a href="#1-初见SSH" class="headerlink" title="1. 初见SSH"></a>1. 初见SSH</h2><p><a href="http://www.ietf.org/rfc/rfc4251.txt" target="_blank" rel="noopener">SSH</a>是一种协议标准，其目的是实现<strong>安全远程登录</strong>以及其它<strong>安全网络服务</strong>。</p>
-<blockquote>
-<p>SSH仅仅是一<strong>协议标准</strong>，其具体的实现有很多，既有开源实现的OpenSSH，也有商业实现方案。使用范围最广泛的当然是开源实现OpenSSH。</p>
-</blockquote>
-<h2 id="2-SSH工作原理"><a href="#2-SSH工作原理" class="headerlink" title="2. SSH工作原理"></a>2. SSH工作原理</h2><p>在讨论SSH的原理和使用前，我们需要分析一个问题：<strong>为什么需要SSH？</strong></p>
-<p>从1.1节SSH的定义中可以看出，SSH和telnet、ftp等协议主要的区别在于<strong>安全性</strong>。这就引出下一个问题：<strong>如何实现数据的安全呢？</strong>首先想到的实现方案肯定是对数据进行<strong>加密</strong>。加密的方式主要有两种：</p>
-<ol>
-<li>对称加密（也称为秘钥加密）</li>
-<li>非对称加密（也称公钥加密）</li>
-</ol>
-<p>所谓对称加密，指加密解密使用同一套秘钥。如下图所示：</p>
-<p><img src="https://i.loli.net/2020/09/07/fVJHyK78IMmlX9N.png" alt="img"></p>
-<p>图1-1：对称加密-Client端</p>
-<p><img src="https://i.loli.net/2020/09/07/hpNWfLxMzOPSd2v.png" alt="img"></p>
-<p>图1-2：对称加密-Server端</p>
-<p>对称加密的加密强度高，很难破解。但是在实际应用过程中不得不面临一个棘手的问题：<strong>如何安全的保存密钥呢？</strong>尤其是考虑到数量庞大的Client端，很难保证密钥不被泄露。一旦一个Client端的密钥被窃据，那么整个系统的安全性也就不复存在。为了解决这个问题，<strong>非对称加密</strong>应运而生。非对称加密有两个密钥：<strong>“公钥”</strong>和<strong>“私钥”</strong>。</p>
-<blockquote>
-<p>两个密钥的特性：公钥加密后的密文，只能通过对应的私钥进行解密。而通过公钥推理出私钥的可能性微乎其微。</p>
-</blockquote>
-<p>下面看下使用非对称加密方案的登录流程：</p>
-<p><img src="https://i.loli.net/2020/09/07/X4bve18rnIf3U2z.png" alt="img"></p>
-<p>图1-3：非对称加密登录流程</p>
-<ol>
-<li>远程Server收到Client端用户TopGun的登录请求，Server把自己的公钥发给用户。</li>
-<li>Client使用这个公钥，将密码进行加密。</li>
-<li>Client将加密的密码发送给Server端。</li>
-<li>远程Server用自己的私钥，解密登录密码，然后验证其合法性。</li>
-<li>若验证结果，给Client相应的响应。</li>
-</ol>
-<blockquote>
-<p>私钥是Server端独有，这就保证了Client的登录信息即使在网络传输过程中被窃据，也没有私钥进行解密，保证了数据的安全性，这充分利用了非对称加密的特性。</p>
-</blockquote>
-<h6 id="这样就一定安全了吗？"><a href="#这样就一定安全了吗？" class="headerlink" title="这样就一定安全了吗？"></a>这样就一定安全了吗？</h6><p>上述流程会有一个问题：<strong>Client端如何保证接受到的公钥就是目标Server端的？</strong>，如果一个攻击者中途拦截Client的登录请求，向其发送自己的公钥，Client端用攻击者的公钥进行数据加密。攻击者接收到加密信息后再用自己的私钥进行解密，不就窃取了Client的登录信息了吗？这就是所谓的<a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank" rel="noopener">中间人攻击</a></p>
-<p><img src="https://i.loli.net/2020/09/07/vsKGPDIQYCugZ1i.png" alt="img"></p>
-<p>图1-4：中间人攻击</p>
-<h6 id="SSH中是如何解决这个问题的？"><a href="#SSH中是如何解决这个问题的？" class="headerlink" title="SSH中是如何解决这个问题的？"></a>SSH中是如何解决这个问题的？</h6><h5 id="1-基于口令的认证"><a href="#1-基于口令的认证" class="headerlink" title="1. 基于口令的认证"></a>1. 基于口令的认证</h5><p>从上面的描述可以看出，问题就在于<strong>如何对Server的公钥进行认证？</strong>在https中可以通过CA来进行公证，可是SSH的<strong>publish key</strong>和<strong>private key</strong>都是自己生成的，没法公证。只能通过Client端自己对公钥进行确认。通常在第一次登录的时候，系统会出现下面提示信息：</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="symbol">'ssh</span>-server.example.com (<span class="number">12.18</span>.<span class="number">429.21</span>)' can<span class="symbol">'t</span> be established.</span><br><span class="line">RSA key fingerprint is <span class="number">98</span>:<span class="number">2</span>e:d7:e0:de:<span class="number">9</span>f:ac:<span class="number">67</span>:<span class="number">28</span>:c2:<span class="number">42</span>:<span class="number">2</span>d:<span class="number">37</span>:<span class="number">16</span>:<span class="number">58</span>:<span class="number">4</span>d.</span><br><span class="line">Are you sure you want to <span class="keyword">continue</span> connecting (yes/no)?</span><br></pre></td></tr></table></figure>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSH</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/05/2020-09-05-图解SSH原理/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/">一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/" class="archive-article-date">
-  	<time datetime="2020-09-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p> 适合初学者入门 <a href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485622&idx=1&sn=e9750ed63c47457ba1896db8dfceac6a&chksm=cea2477df9d5ce6b7af20e582c6c60b7408a6459b05b849394c45f04664d1651510bdee029f7&token=1162033225&lang=zh_CN&scene=21#wechat_redirect" target="_blank" rel="noopener">Spring Security With JWT 的 Demo</a> 。Demo 地址：<a href="https://github.com/Snailclimb/spring-security-jwt-guide" target="_blank" rel="noopener">github.com/Snailclimb/…</a> 。很多人可能对权限认证领域一些常见的概念都不是特别了解，所以写了篇文章专门介绍一下这些概念。文中对于每一部分知识点可能有推荐的文章，阅读原文即可看到文章的链接。</p>
-<h2 id="1-认证-Authentication-和授权-Authorization-的区别是什么？"><a href="#1-认证-Authentication-和授权-Authorization-的区别是什么？" class="headerlink" title="1. 认证 (Authentication) 和授权 (Authorization)的区别是什么？"></a>1. 认证 (Authentication) 和授权 (Authorization)的区别是什么？</h2><p>这是一个绝大多数人都会混淆的问题。首先先从读音上来认识这两个名词，很多人都会把它俩的读音搞混，所以我建议你先先去查一查这两个单词到底该怎么读，他们的具体含义是什么。</p>
-<p>说简单点就是：</p>
-<ul>
-<li><strong>认证 (Authentication)：</strong> 你是谁。</li>
-<li><strong>授权 (Authorization)：</strong> 你有权限干什么。</li>
-</ul>
-<p>稍微正式点（啰嗦点）的说法就是：</p>
-<ul>
-<li><strong>Authentication（认证）</strong> 是验证您的身份的凭据（例如用户名/用户ID和密码），通过这个凭据，系统得以知道你就是你，也就是说系统存在你这个用户。所以，Authentication 被称为身份/用户验证。</li>
-<li><strong>Authorization（授权）</strong> 发生在 <strong>Authentication（认证）</strong>之后。授权嘛，光看意思大家应该就明白，它主要掌管我们访问系统的权限。比如有些特定资源只能具有特定权限的人才能访问比如admin，有些对系统资源操作比如删除、添加、更新只能特定人才具有。</li>
-</ul>
-<p>这两个一般在我们的系统中被结合在一起使用，目的就是为了保护我们系统的安全性。</p>
-<h2 id="2-什么是Cookie-Cookie的作用是什么-如何在服务端使用-Cookie"><a href="#2-什么是Cookie-Cookie的作用是什么-如何在服务端使用-Cookie" class="headerlink" title="2. 什么是Cookie ? Cookie的作用是什么?如何在服务端使用 Cookie ?"></a>2. 什么是Cookie ? Cookie的作用是什么?如何在服务端使用 Cookie ?</h2><h3 id="2-1-什么是Cookie-Cookie的作用是什么"><a href="#2-1-什么是Cookie-Cookie的作用是什么" class="headerlink" title="2.1 什么是Cookie ? Cookie的作用是什么?"></a>2.1 什么是Cookie ? Cookie的作用是什么?</h3><p>Cookie 和 Session都是用来跟踪浏览器用户身份的会话方式，但是两者的应用场景不太一样。</p>
-<p>维基百科是这样定义 Cookie 的：Cookies是某些网站为了辨别用户身份而储存在用户本地终端上的数据（通常经过加密）。简单来说： <strong>Cookie 存放在客户端，一般用来保存用户信息</strong>。</p>
-<p>下面是 Cookie 的一些应用案例：</p>
-<ol>
-<li>我们在 Cookie 中保存已经登录过得用户信息，下次访问网站的时候页面可以自动帮你登录的一些基本信息给填了。除此之外，Cookie 还能保存用户首选项，主题和其他设置信息。</li>
-<li>使用Cookie 保存 session 或者 token ，向后端发送请求的时候带上 Cookie，这样后端就能取到session或者token了。这样就能记录用户当前的状态了，因为 HTTP 协议是无状态的。</li>
-<li>Cookie 还可以用来记录和分析用户行为。举个简单的例子你在网上购物的时候，因为HTTP协议是没有状态的，如果服务器想要获取你在某个页面的停留状态或者看了哪些商品，一种常用的实现方式就是将这些信息存放在Cookie</li>
-</ol>
-<h3 id="2-2-如何能在-服务端使用-Cookie-呢？"><a href="#2-2-如何能在-服务端使用-Cookie-呢？" class="headerlink" title="2.2 如何能在 服务端使用 Cookie 呢？"></a>2.2 如何能在 服务端使用 Cookie 呢？</h3><p>这部分内容参考：<a href="https://attacomsian.com/blog/cookies-spring-boot，更多如何在Spring" target="_blank" rel="noopener">attacomsian.com/blog/cookie…</a> Boot中使用Cookie 的内容可以查看这篇文章。</p>
-<p><strong>1)设置cookie返回给客户端</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/change-username&quot;)</span><br><span class="line">public String setCookie(HttpServletResponse response) &#123;</span><br><span class="line">    // 创建一个 cookie</span><br><span class="line">    Cookie cookie = new Cookie(&quot;username&quot;, &quot;Jovan&quot;);</span><br><span class="line">    //设置 cookie过期时间</span><br><span class="line">    cookie.setMaxAge(7 * 24 * 60 * 60); // expires in 7 days</span><br><span class="line">    //添加到 response 中</span><br><span class="line">    response.addCookie(cookie);</span><br><span class="line"></span><br><span class="line">    return &quot;Username is changed!&quot;;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p><strong>2) 使用Spring框架提供的<code>@CookieValue</code>注解获取特定的 cookie的值</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/&quot;)</span><br><span class="line">public String readCookie(@CookieValue(value = &quot;username&quot;, defaultValue = &quot;Atta&quot;) String username) &#123;</span><br><span class="line">    return &quot;Hey! My username is &quot; + username;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<p><strong>3) 读取所有的 Cookie 值</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/all-cookies&quot;)</span><br><span class="line">public String readAllCookies(HttpServletRequest request) &#123;</span><br><span class="line"></span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    if (cookies != null) &#123;</span><br><span class="line">        return Arrays.stream(cookies)</span><br><span class="line">                .map(c -&gt; c.getName() + &quot;=&quot; + c.getValue()).collect(Collectors.joining(&quot;, &quot;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &quot;No cookies&quot;;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-
-<h2 id="3-Cookie-和-Session-有什么区别？如何使用Session进行身份验证？"><a href="#3-Cookie-和-Session-有什么区别？如何使用Session进行身份验证？" class="headerlink" title="3. Cookie 和 Session 有什么区别？如何使用Session进行身份验证？"></a>3. Cookie 和 Session 有什么区别？如何使用Session进行身份验证？</h2><p><strong>Session 的主要作用就是通过服务端记录用户的状态。</strong> 典型的场景是购物车，当你要添加商品到购物车的时候，系统不知道是哪个用户操作的，因为 HTTP 协议是无状态的。服务端给特定的用户创建特定的 Session 之后就可以标识这个用户并且跟踪这个用户了。</p>
-<p><strong>Cookie 数据保存在客户端(浏览器端)，Session 数据保存在服务器端。相对来说 Session 安全性更高。如果使用 Cookie 的一些敏感信息不要写入 Cookie 中，最好能将 Cookie 信息加密然后使用到的时候再去服务器端解密。</strong></p>
-<p><strong>那么，如何使用Session进行身份验证？</strong></p>
-<p>很多时候我们都是通过 SessionID 来实现特定的用户，SessionID 一般会选择存放在 Redis 中。举个例子：用户成功登陆系统，然后返回给客户端具有 SessionID 的 Cookie，当用户向后端发起请求的时候会把 SessionID 带上，这样后端就知道你的身份状态了。关于这种认证方式更详细的过程如下：</p>
-<p><img src="https://i.loli.net/2020/09/07/XvhF4wD7pUKo18f.png" alt="img"></p>
-<ol>
-<li>用户向服务器发送用户名和密码用于登陆系统。</li>
-<li>服务器验证通过后，服务器为用户创建一个 Session，并将 Session信息存储 起来。</li>
-<li>服务器向用户返回一个 SessionID，写入用户的 Cookie。</li>
-<li>当用户保持登录状态时，Cookie 将与每个后续请求一起被发送出去。</li>
-<li>服务器可以将存储在 Cookie 上的 Session ID 与存储在内存中或者数据库中的 Session 信息进行比较，以验证用户的身份，返回给用户客户端响应信息的时候会附带用户当前的状态。</li>
-</ol>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Authentication, Authorization, Cookie, Session, Token</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1242,6 +1199,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1286,10 +1247,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
@@ -1306,14 +1263,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
@@ -1322,7 +1271,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1330,19 +1279,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1350,11 +1287,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1366,7 +1319,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1378,7 +1335,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1386,15 +1347,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1418,19 +1375,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1438,7 +1387,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,19 +1399,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1466,11 +1411,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,15 +1423,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Song</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1498,7 +1463,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1506,19 +1471,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,15 +1487,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1570,11 +1527,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1582,7 +1539,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1590,11 +1555,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1606,15 +1567,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1638,19 +1607,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1662,7 +1627,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1682,6 +1647,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
@@ -1691,10 +1660,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">

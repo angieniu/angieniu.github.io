@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 155</a>
+<a>Total Number of Articles: 158</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,340 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-09-06-前后端常见的几种鉴权方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/">前后端常见的几种鉴权方式</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/" class="archive-article-date">
+  	<time datetime="2020-09-06T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一、四种鉴权方式"><a href="#一、四种鉴权方式" class="headerlink" title="一、四种鉴权方式"></a>一、四种鉴权方式</h2><p>目前我们常用的鉴权有四种：</p>
+<ul>
+<li>HTTP Basic Authentication</li>
+<li>session-cookie</li>
+<li>Token 验证</li>
+<li>OAuth(开放授权)</li>
+</ul>
+<h2 id="二、HTTP-Basic-Authentication"><a href="#二、HTTP-Basic-Authentication" class="headerlink" title="二、HTTP Basic Authentication"></a>二、HTTP Basic Authentication</h2><p>这种授权方式是浏览器遵守http协议实现的基本授权方式，HTTP协议进行通信的过程中，HTTP协议定义了基本认证允许HTTP服务器对客户端进行用户身份证的方法。</p>
+<p>认证过程：</p>
+<p><a href="https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d66c3ac0?w=710&h=335&f=png&s=12074" target="_blank" rel="noopener"><img src="https://i.loli.net/2020/09/07/7rZEqyAkXWgVhY1.png" alt="img"></a></p>
+<p>1、 客户端向服务器请求数据，请求的内容可能是一个网页或者是一个ajax异步请求，此时，假设客户端尚未被验证，则客户端提供如下请求至服务器:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  Get /index.html HTTP/1.0 </span><br><span class="line">  Host:www.google.com</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>2、 服务器向客户端发送验证请求代码401,（WWW-Authenticate: Basic realm=”google.com”这句话是关键，如果没有客户端不会弹出用户名和密码输入界面）服务器返回的数据大抵如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  HTTP/1.0 401 Unauthorised </span><br><span class="line">  Server: SokEvo/1.0 </span><br><span class="line">  WWW-Authenticate: Basic realm=”google.com” </span><br><span class="line">  Content-Type: text/html </span><br><span class="line">  Content-Length: xxx</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>3、 当符合http1.0或1.1规范的客户端（如IE，FIREFOX）收到401返回值时，将自动弹出一个登录窗口，要求用户输入用户名和密码。</p>
+<p>4、 用户输入用户名和密码后，将用户名及密码以BASE64加密方式加密，并将密文放入前一条请求信息中，则客户端发送的第一条请求信息则变成如下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  Get /index.html HTTP/1.0 </span><br><span class="line">  Host:www.google.com </span><br><span class="line">  Authorization: Basic d2FuZzp3YW5n</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>注：<code>d2FuZzp3YW5n</code>表示加密后的用户名及密码（用户名：密码 然后通过base64加密，加密过程是浏览器默认的行为，不需要我们人为加密，我们只需要输入用户名密码即可）</p>
+<p>5、 服务器收到上述请求信息后，将 <code>Authorization</code> 字段后的用户信息取出、解密，将解密后的用户名及密码与用户数据库进行比较验证，如用户名及密码正确，服务器则根据请求，将所请求资源发送给客户端</p>
+<p>效果： 客户端未未认证的时候，会弹出用户名密码输入框，这个时候请求时属于 <code>pending</code> 状态，当用户输入用户名密码的时候客户端会再次发送带 <code>Authentication</code> 头的请求。</p>
+<p><img src="https://i.loli.net/2020/09/07/5JH2wU9jfAgzWIp.png" alt="img">)<a href="https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d5b674da?w=2076&amp;h=888&amp;f=png&amp;s=97446" target="_blank" rel="noopener">https://user-gold-cdn.xitu.io/2019/8/28/16cd59e9d5b674da?w=2076&amp;h=888&amp;f=png&amp;s=97446</a>)</p>
+<p>认证成功：</p>
+<p><img src="https://i.loli.net/2020/09/07/6KR4aPFgenIt2y3.png" alt="img"></p>
+<p>server.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">let express = require(&quot;express&quot;);</span><br><span class="line">let app = express();</span><br><span class="line"> </span><br><span class="line">  app.use(express.static(__dirname+&apos;/public&apos;));</span><br><span class="line"> </span><br><span class="line">  app.get(&quot;/Authentication_base&quot;,function(req,res)&#123;</span><br><span class="line">    console.log(&apos;req.headers.authorization:&apos;,req.headers)</span><br><span class="line">    if(!req.headers.authorization)&#123;</span><br><span class="line">      res.set(&#123;</span><br><span class="line">        &apos;WWW-Authenticate&apos;:&apos;Basic realm=&quot;wang&quot;&apos;</span><br><span class="line">      &#125;);</span><br><span class="line">      res.status(401).end();</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      let base64 = req.headers.authorization.split(&quot; &quot;)[1];</span><br><span class="line">      let userPass = new Buffer(base64, &apos;base64&apos;).toString().split(&quot;:&quot;);</span><br><span class="line">      let user = userPass[0];</span><br><span class="line">      let pass = userPass[1];</span><br><span class="line">      if(user==&quot;wang&quot;&amp;&amp;pass=&quot;wang&quot;)&#123;</span><br><span class="line">        res.end(&quot;OK&quot;);</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        res.status(401).end();</span><br><span class="line">      &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">  &#125;)</span><br><span class="line"> </span><br><span class="line">  app.listen(9090)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>index.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;HTTP Basic Authentication&lt;/title&gt;</span><br><span class="line">  &lt;/head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;div&gt;&lt;/div&gt;</span><br><span class="line">    &lt;script src=&quot;js/jquery-3.2.1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">      $(function()&#123;</span><br><span class="line">       send(&apos;./Authentication_base&apos;);</span><br><span class="line">      &#125;)</span><br><span class="line">      var send = function(url)&#123;</span><br><span class="line">            $.ajax(&#123; </span><br><span class="line">            url : url, </span><br><span class="line">            method : &apos;GET&apos;, </span><br><span class="line">          &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &lt;/script&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p>优点：  基本认证的一个优点是基本上所有流行的网页浏览器都支持基本认证。基本认证很少在可公开访问的互联网网站上使用，有时候会在小的私有系统中使用（如路由器网页管理接口）。后来的机制HTTP摘要认证是为替代基本认证而开发的，允许密钥以相对安全的方式在不安全的通道上传输。  程序员和系统管理员有时会在可信网络环境中使用基本认证，使用Telnet或其他明文网络协议工具手动地测试Web服务器。这是一个麻烦的过程，但是网络上传输的内容是人可读的，以便进行诊断。</p>
+<p>缺点：  虽然基本认证非常容易实现，但该方案创建在以下的假设的基础上，即：客户端和服务器主机之间的连接是安全可信的。特别是，如果没有使用<code>SSL/TLS</code>这样的传输层安全的协议，那么以明文传输的密钥和口令很容易被拦截。该方案也同样没有对服务器返回的信息提供保护。  现存的浏览器保存认证信息直到标签页或浏览器被关闭，或者用户清除历史记录。HTTP没有为服务器提供一种方法指示客户端丢弃这些被缓存的密钥。这意味着服务器端在用户不关闭浏览器的情况下，并没有一种有效的方法来让用户注销。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Authentication, Session, Cokkie, Token, OAuth</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/06/2020-09-06-前后端常见的几种鉴权方式/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-05-图解SSH原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/05/2020-09-05-图解SSH原理/">图解SSH原理</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/05/2020-09-05-图解SSH原理/" class="archive-article-date">
+  	<time datetime="2020-09-05T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://i.loli.net/2020/09/07/qUpxjHENDu7Ms46.png" alt="img"></p>
+<h2 id="1-初见SSH"><a href="#1-初见SSH" class="headerlink" title="1. 初见SSH"></a>1. 初见SSH</h2><p><a href="http://www.ietf.org/rfc/rfc4251.txt" target="_blank" rel="noopener">SSH</a>是一种协议标准，其目的是实现<strong>安全远程登录</strong>以及其它<strong>安全网络服务</strong>。</p>
+<blockquote>
+<p>SSH仅仅是一<strong>协议标准</strong>，其具体的实现有很多，既有开源实现的OpenSSH，也有商业实现方案。使用范围最广泛的当然是开源实现OpenSSH。</p>
+</blockquote>
+<h2 id="2-SSH工作原理"><a href="#2-SSH工作原理" class="headerlink" title="2. SSH工作原理"></a>2. SSH工作原理</h2><p>在讨论SSH的原理和使用前，我们需要分析一个问题：<strong>为什么需要SSH？</strong></p>
+<p>从1.1节SSH的定义中可以看出，SSH和telnet、ftp等协议主要的区别在于<strong>安全性</strong>。这就引出下一个问题：<strong>如何实现数据的安全呢？</strong>首先想到的实现方案肯定是对数据进行<strong>加密</strong>。加密的方式主要有两种：</p>
+<ol>
+<li>对称加密（也称为秘钥加密）</li>
+<li>非对称加密（也称公钥加密）</li>
+</ol>
+<p>所谓对称加密，指加密解密使用同一套秘钥。如下图所示：</p>
+<p><img src="https://i.loli.net/2020/09/07/fVJHyK78IMmlX9N.png" alt="img"></p>
+<p>图1-1：对称加密-Client端</p>
+<p><img src="https://i.loli.net/2020/09/07/hpNWfLxMzOPSd2v.png" alt="img"></p>
+<p>图1-2：对称加密-Server端</p>
+<p>对称加密的加密强度高，很难破解。但是在实际应用过程中不得不面临一个棘手的问题：<strong>如何安全的保存密钥呢？</strong>尤其是考虑到数量庞大的Client端，很难保证密钥不被泄露。一旦一个Client端的密钥被窃据，那么整个系统的安全性也就不复存在。为了解决这个问题，<strong>非对称加密</strong>应运而生。非对称加密有两个密钥：<strong>“公钥”</strong>和<strong>“私钥”</strong>。</p>
+<blockquote>
+<p>两个密钥的特性：公钥加密后的密文，只能通过对应的私钥进行解密。而通过公钥推理出私钥的可能性微乎其微。</p>
+</blockquote>
+<p>下面看下使用非对称加密方案的登录流程：</p>
+<p><img src="https://i.loli.net/2020/09/07/X4bve18rnIf3U2z.png" alt="img"></p>
+<p>图1-3：非对称加密登录流程</p>
+<ol>
+<li>远程Server收到Client端用户TopGun的登录请求，Server把自己的公钥发给用户。</li>
+<li>Client使用这个公钥，将密码进行加密。</li>
+<li>Client将加密的密码发送给Server端。</li>
+<li>远程Server用自己的私钥，解密登录密码，然后验证其合法性。</li>
+<li>若验证结果，给Client相应的响应。</li>
+</ol>
+<blockquote>
+<p>私钥是Server端独有，这就保证了Client的登录信息即使在网络传输过程中被窃据，也没有私钥进行解密，保证了数据的安全性，这充分利用了非对称加密的特性。</p>
+</blockquote>
+<h6 id="这样就一定安全了吗？"><a href="#这样就一定安全了吗？" class="headerlink" title="这样就一定安全了吗？"></a>这样就一定安全了吗？</h6><p>上述流程会有一个问题：<strong>Client端如何保证接受到的公钥就是目标Server端的？</strong>，如果一个攻击者中途拦截Client的登录请求，向其发送自己的公钥，Client端用攻击者的公钥进行数据加密。攻击者接收到加密信息后再用自己的私钥进行解密，不就窃取了Client的登录信息了吗？这就是所谓的<a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack" target="_blank" rel="noopener">中间人攻击</a></p>
+<p><img src="https://i.loli.net/2020/09/07/vsKGPDIQYCugZ1i.png" alt="img"></p>
+<p>图1-4：中间人攻击</p>
+<h6 id="SSH中是如何解决这个问题的？"><a href="#SSH中是如何解决这个问题的？" class="headerlink" title="SSH中是如何解决这个问题的？"></a>SSH中是如何解决这个问题的？</h6><h5 id="1-基于口令的认证"><a href="#1-基于口令的认证" class="headerlink" title="1. 基于口令的认证"></a>1. 基于口令的认证</h5><p>从上面的描述可以看出，问题就在于<strong>如何对Server的公钥进行认证？</strong>在https中可以通过CA来进行公证，可是SSH的<strong>publish key</strong>和<strong>private key</strong>都是自己生成的，没法公证。只能通过Client端自己对公钥进行确认。通常在第一次登录的时候，系统会出现下面提示信息：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="symbol">'ssh</span>-server.example.com (<span class="number">12.18</span>.<span class="number">429.21</span>)' can<span class="symbol">'t</span> be established.</span><br><span class="line">RSA key fingerprint is <span class="number">98</span>:<span class="number">2</span>e:d7:e0:de:<span class="number">9</span>f:ac:<span class="number">67</span>:<span class="number">28</span>:c2:<span class="number">42</span>:<span class="number">2</span>d:<span class="number">37</span>:<span class="number">16</span>:<span class="number">58</span>:<span class="number">4</span>d.</span><br><span class="line">Are you sure you want to <span class="keyword">continue</span> connecting (yes/no)?</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSH</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/05/2020-09-05-图解SSH原理/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/">一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/" class="archive-article-date">
+  	<time datetime="2020-09-04T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 适合初学者入门 <a href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&mid=2247485622&idx=1&sn=e9750ed63c47457ba1896db8dfceac6a&chksm=cea2477df9d5ce6b7af20e582c6c60b7408a6459b05b849394c45f04664d1651510bdee029f7&token=1162033225&lang=zh_CN&scene=21#wechat_redirect" target="_blank" rel="noopener">Spring Security With JWT 的 Demo</a> 。Demo 地址：<a href="https://github.com/Snailclimb/spring-security-jwt-guide" target="_blank" rel="noopener">github.com/Snailclimb/…</a> 。很多人可能对权限认证领域一些常见的概念都不是特别了解，所以写了篇文章专门介绍一下这些概念。文中对于每一部分知识点可能有推荐的文章，阅读原文即可看到文章的链接。</p>
+<h2 id="1-认证-Authentication-和授权-Authorization-的区别是什么？"><a href="#1-认证-Authentication-和授权-Authorization-的区别是什么？" class="headerlink" title="1. 认证 (Authentication) 和授权 (Authorization)的区别是什么？"></a>1. 认证 (Authentication) 和授权 (Authorization)的区别是什么？</h2><p>这是一个绝大多数人都会混淆的问题。首先先从读音上来认识这两个名词，很多人都会把它俩的读音搞混，所以我建议你先先去查一查这两个单词到底该怎么读，他们的具体含义是什么。</p>
+<p>说简单点就是：</p>
+<ul>
+<li><strong>认证 (Authentication)：</strong> 你是谁。</li>
+<li><strong>授权 (Authorization)：</strong> 你有权限干什么。</li>
+</ul>
+<p>稍微正式点（啰嗦点）的说法就是：</p>
+<ul>
+<li><strong>Authentication（认证）</strong> 是验证您的身份的凭据（例如用户名/用户ID和密码），通过这个凭据，系统得以知道你就是你，也就是说系统存在你这个用户。所以，Authentication 被称为身份/用户验证。</li>
+<li><strong>Authorization（授权）</strong> 发生在 <strong>Authentication（认证）</strong>之后。授权嘛，光看意思大家应该就明白，它主要掌管我们访问系统的权限。比如有些特定资源只能具有特定权限的人才能访问比如admin，有些对系统资源操作比如删除、添加、更新只能特定人才具有。</li>
+</ul>
+<p>这两个一般在我们的系统中被结合在一起使用，目的就是为了保护我们系统的安全性。</p>
+<h2 id="2-什么是Cookie-Cookie的作用是什么-如何在服务端使用-Cookie"><a href="#2-什么是Cookie-Cookie的作用是什么-如何在服务端使用-Cookie" class="headerlink" title="2. 什么是Cookie ? Cookie的作用是什么?如何在服务端使用 Cookie ?"></a>2. 什么是Cookie ? Cookie的作用是什么?如何在服务端使用 Cookie ?</h2><h3 id="2-1-什么是Cookie-Cookie的作用是什么"><a href="#2-1-什么是Cookie-Cookie的作用是什么" class="headerlink" title="2.1 什么是Cookie ? Cookie的作用是什么?"></a>2.1 什么是Cookie ? Cookie的作用是什么?</h3><p>Cookie 和 Session都是用来跟踪浏览器用户身份的会话方式，但是两者的应用场景不太一样。</p>
+<p>维基百科是这样定义 Cookie 的：Cookies是某些网站为了辨别用户身份而储存在用户本地终端上的数据（通常经过加密）。简单来说： <strong>Cookie 存放在客户端，一般用来保存用户信息</strong>。</p>
+<p>下面是 Cookie 的一些应用案例：</p>
+<ol>
+<li>我们在 Cookie 中保存已经登录过得用户信息，下次访问网站的时候页面可以自动帮你登录的一些基本信息给填了。除此之外，Cookie 还能保存用户首选项，主题和其他设置信息。</li>
+<li>使用Cookie 保存 session 或者 token ，向后端发送请求的时候带上 Cookie，这样后端就能取到session或者token了。这样就能记录用户当前的状态了，因为 HTTP 协议是无状态的。</li>
+<li>Cookie 还可以用来记录和分析用户行为。举个简单的例子你在网上购物的时候，因为HTTP协议是没有状态的，如果服务器想要获取你在某个页面的停留状态或者看了哪些商品，一种常用的实现方式就是将这些信息存放在Cookie</li>
+</ol>
+<h3 id="2-2-如何能在-服务端使用-Cookie-呢？"><a href="#2-2-如何能在-服务端使用-Cookie-呢？" class="headerlink" title="2.2 如何能在 服务端使用 Cookie 呢？"></a>2.2 如何能在 服务端使用 Cookie 呢？</h3><p>这部分内容参考：<a href="https://attacomsian.com/blog/cookies-spring-boot，更多如何在Spring" target="_blank" rel="noopener">attacomsian.com/blog/cookie…</a> Boot中使用Cookie 的内容可以查看这篇文章。</p>
+<p><strong>1)设置cookie返回给客户端</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/change-username&quot;)</span><br><span class="line">public String setCookie(HttpServletResponse response) &#123;</span><br><span class="line">    // 创建一个 cookie</span><br><span class="line">    Cookie cookie = new Cookie(&quot;username&quot;, &quot;Jovan&quot;);</span><br><span class="line">    //设置 cookie过期时间</span><br><span class="line">    cookie.setMaxAge(7 * 24 * 60 * 60); // expires in 7 days</span><br><span class="line">    //添加到 response 中</span><br><span class="line">    response.addCookie(cookie);</span><br><span class="line"></span><br><span class="line">    return &quot;Username is changed!&quot;;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><strong>2) 使用Spring框架提供的<code>@CookieValue</code>注解获取特定的 cookie的值</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/&quot;)</span><br><span class="line">public String readCookie(@CookieValue(value = &quot;username&quot;, defaultValue = &quot;Atta&quot;) String username) &#123;</span><br><span class="line">    return &quot;Hey! My username is &quot; + username;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<p><strong>3) 读取所有的 Cookie 值</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@GetMapping(&quot;/all-cookies&quot;)</span><br><span class="line">public String readAllCookies(HttpServletRequest request) &#123;</span><br><span class="line"></span><br><span class="line">    Cookie[] cookies = request.getCookies();</span><br><span class="line">    if (cookies != null) &#123;</span><br><span class="line">        return Arrays.stream(cookies)</span><br><span class="line">                .map(c -&gt; c.getName() + &quot;=&quot; + c.getValue()).collect(Collectors.joining(&quot;, &quot;));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return &quot;No cookies&quot;;</span><br><span class="line">&#125;</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-Cookie-和-Session-有什么区别？如何使用Session进行身份验证？"><a href="#3-Cookie-和-Session-有什么区别？如何使用Session进行身份验证？" class="headerlink" title="3. Cookie 和 Session 有什么区别？如何使用Session进行身份验证？"></a>3. Cookie 和 Session 有什么区别？如何使用Session进行身份验证？</h2><p><strong>Session 的主要作用就是通过服务端记录用户的状态。</strong> 典型的场景是购物车，当你要添加商品到购物车的时候，系统不知道是哪个用户操作的，因为 HTTP 协议是无状态的。服务端给特定的用户创建特定的 Session 之后就可以标识这个用户并且跟踪这个用户了。</p>
+<p><strong>Cookie 数据保存在客户端(浏览器端)，Session 数据保存在服务器端。相对来说 Session 安全性更高。如果使用 Cookie 的一些敏感信息不要写入 Cookie 中，最好能将 Cookie 信息加密然后使用到的时候再去服务器端解密。</strong></p>
+<p><strong>那么，如何使用Session进行身份验证？</strong></p>
+<p>很多时候我们都是通过 SessionID 来实现特定的用户，SessionID 一般会选择存放在 Redis 中。举个例子：用户成功登陆系统，然后返回给客户端具有 SessionID 的 Cookie，当用户向后端发起请求的时候会把 SessionID 带上，这样后端就知道你的身份状态了。关于这种认证方式更详细的过程如下：</p>
+<p><img src="https://i.loli.net/2020/09/07/XvhF4wD7pUKo18f.png" alt="img"></p>
+<ol>
+<li>用户向服务器发送用户名和密码用于登陆系统。</li>
+<li>服务器验证通过后，服务器为用户创建一个 Session，并将 Session信息存储 起来。</li>
+<li>服务器向用户返回一个 SessionID，写入用户的 Cookie。</li>
+<li>当用户保持登录状态时，Cookie 将与每个后续请求一起被发送出去。</li>
+<li>服务器可以将存储在 Cookie 上的 Session ID 与存储在内存中或者数据库中的 Session 信息进行比较，以验证用户的身份，返回给用户客户端响应信息的时候会附带用户当前的状态。</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Authentication, Authorization, Cookie, Session, Token</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/04/2020-09-04-一问带你区分清楚Authentication,Authorization以及Cookie、Session、Token/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-09-03-Use-the-Microsoft-Graph-API" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -886,363 +1220,6 @@
 
 
   
-    <article id="post-2020-08-18-王国维" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/27/2020-08-18-王国维/">王国维</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/27/2020-08-18-王国维/" class="archive-article-date">
-  	<time datetime="2020-08-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>清华国学四大家：</p>
-<p>梁启超，王国维，陈寅恪， 赵元任</p>
-<p>姓 名  字（晚辈）</p>
-<p>王国维，前清秀才，不新不古，19c末考完秀才学日文，东文学社，学康德哲学，叔本华哲学，西方理科的学问= &gt; 日本留学 剪辫 =&gt; 辛亥革命 回来 留辫子</p>
-<p>王国维自杀 1927 6 2 </p>
-<p>北伐革命军往北</p>
-<p>原因：从某种文化中长出来，对该文化有极深的感触，当看着这个文化消失败亡，极大的痛苦。精神上的解脱自由，若无法跟随新时代，则为文化而死。1927年逐渐消逝的中国文化。– 《人间词话》 解读中国文化的精髓。</p>
-<p>理想与写实的融合。</p>
-<p>“有造境，有写境，此理想与写实二派之所由分，然二者颇难分别，因大诗人所造之境必合乎自然，所写之境亦必邻于理想故也”</p>
-<p>王国维：不新不古，不中不西，中国第一个把现代西方的文学批评观念和哲学理念带进中国旧文学和古文学整理和研究。</p>
-<p>但是</p>
-<p>词话：古典，文学批评，点评，闲散，古风。所以不会是受西方影响的，非常系统逻辑连贯定义清晰地写作。</p>
-<p>第一句 整本书core “境界”</p>
-<p>可以却没有为境界下一个严谨的定义，</p>
-<p>境界– 同佛教从印度传入中国 - “六根”： 感知世界。人的六种感官能力，眼睛 耳朵 鼻子 舌头 身 意(mind) - “六视”： 眼视 … - 感受到的外面的东西 “六尘”：色(形象)，声, 香，味，触，法。</p>
-<p>六根碰到世界，世界之内叫境界，我的感官意识投射所达的世界范围。世界离不开我对世界的感知。</p>
-<p>境界– 中国文化美学的巧妙</p>
-<p>王国维20岁写了人间词话，之后不碰了，而做古史研究。</p>
-<p>中国第一本最早的词的合集：花间集，晚唐五代。</p>
-<p>诗有题目，词只有词牌，当时苏东坡、陆游自己都不看不上自己的词。</p>
-<p>王国维：词好在境界，好在真，有些话诗说不了，词说得了。 </p>
-<p>有我之境，以我观物，无我之境，以物观物，故不知何者为我，何者为物。</p>
-<p>王国维对词高的评价，把对西方哲学（西方美学：康德美学，叔本华美学）+印度佛学。</p>
-<p>文学：有境界： 真感情 真我投射到外在景物、想象世界、情感上的感触。</p>
-<p>无我：外在世界我也在里面，但是不是情感激动型地投入进去，而是我在里头但又可以抽身而出，既在其中又在其外，隔，静观万物皆自得。</p>
-<p>表面讲词，实际上是对中国文学、韵律文、诗文、中国美学整体的简洁，人生观。</p>
-<p>做人</p>
-<p>“<strong>古今之成大事业、大学问者，必经三种之境界：‘昨夜西风凋碧树，独上西楼，望尽天涯路’，此第一境也;‘衣带渐宽终不悔，为伊消得人憔悴’，此第二境也，‘众里寻他千百度，蓦然回首，那人却在灯火阑珊处’，此第三境也。</strong>“</p>
-<p>– 传统中国儒家人生观念：成己达人之道，君子成长：辽阔的视野，志向远大。刻苦磨练自己；本心早已在那里。</p>
-<p>词：从女子角度写的恋爱感觉，思念情郎的口吻，说出不一样的境界。</p>
-<p>南唐中主李璟，李后主李煜，对亡国的恨意，故国之思的忧愁，借着女子思念情郎的状态。</p>
-<p>比喻，比拟</p>
-<p>和屈原离骚相似，源头，屈原开始文学典型拿香草美人比喻君子、比喻男人、比喻当陈下的对国家、君王的态度和忠诚和挂念。</p>
-<p>给了文人们的表达方式。</p>
-<p>文学解释：</p>
-<p>词的美学属性，东方艺术，昆曲、京剧、越剧、日本歌舞伎 能剧，梅兰芳，坂东玉三郎，反串。</p>
-<p>女性的特质：要眇宜修，悠悠长长连绵不断，而非强烈的，此恨绵绵无绝期。这样的感情，有大境界，对家国的看法。</p>
-<p>男人通过词，曲折隐晦地借着女人的声音，说出来自己无法借着男人的口吻去说的, 对人生国家天下的看法。</p>
-<p>隔了一重，却又要表达真情实感。</p>
-<p>到了李后主之后，词才中国诗有了直抒胸臆言志。但词仍有区隔，要眇宜修，悠长曲折，真实直接且曲折。</p>
-<p>王国维指出：不要用太多代字，桃花-红雨，很隔 – 应该用最直接的语言写。</p>
-<p>周邦彦 桂华流瓦</p>
-<p>用典</p>
-<p>王国维 具有争议的评价：白描 VS 用典 隔，但其实王不是反对用代字、比喻象征隐喻借喻，而是用得不好，为了用而用。词本身已经曲折，隐喻典故，但不能为曲折而曲折，不能庸俗，用烂的字眼。僵尸、滥调修辞， “总有一种 ….” “一道美丽的风景线”</p>
-<p>有境界：</p>
-<ol>
-<li>品格、经历：对世界和所写之物有真情实感</li>
-<li>才华：能真切写出来让读者看到了你看到的世界，感觉到了你感觉到的世界</li>
-</ol>
-<p>把真感受用最简单的字表达出来。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/27/2020-08-18-王国维/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-26-微服务-Microservice" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/26/2020-08-26-微服务-Microservice/">微服务 Microservice</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/26/2020-08-26-微服务-Microservice/" class="archive-article-date">
-  	<time datetime="2020-08-26T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Microservices-in-Industry"><a href="#Microservices-in-Industry" class="headerlink" title="Microservices in Industry"></a>Microservices in Industry</h1><p>Netflix - Pioneer of the microservices movement</p>
-<p>(2009 - 2011: Monolithic - Microservices)</p>
-<p>Amazon - The world’s most prominent advocate of microservices, with AWS.</p>
-<p>Facebook Ebay, Uber, etc.</p>
-<h1 id="Monolithic-Application"><a href="#Monolithic-Application" class="headerlink" title="Monolithic Application"></a>Monolithic Application</h1><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi0bunmdycj30ta0f9442.jpg" alt="Screen Shot 2020-08-22 at 3.08.30 PM"></p>
-<h1 id="Microservice-Architecture"><a href="#Microservice-Architecture" class="headerlink" title="Microservice Architecture"></a>Microservice Architecture</h1><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi0bz49w1fj30to0cmtgw.jpg" alt="Screen Shot 2020-08-22 at 3.12.18 PM"></p>
-<p>Monolithic Application: 从本地的function call -&gt;Microservice Architecture: HTTP request and response: 跨互联网的请求 把不同模块相互连接。</p>
-<h1 id="Pros-and-Cons"><a href="#Pros-and-Cons" class="headerlink" title="Pros and Cons"></a>Pros and Cons</h1><h2 id="Monolithic-Application-Pros"><a href="#Monolithic-Application-Pros" class="headerlink" title="Monolithic Application Pros:"></a>Monolithic Application Pros:</h2><p>通信开销小 </p>
-<ol>
-<li>Development is simple and direct, with centralized management.</li>
-<li>All functions are local, and low overhead for distributed management.</li>
-</ol>
-<h2 id="Monolithic-Application-Cons"><a href="#Monolithic-Application-Cons" class="headerlink" title="Monolithic Application Cons:"></a>Monolithic Application Cons:</h2><ol>
-<li>The build time is long, and any small modification must rebuild the entire project. </li>
-<li>A trivial problem can make the entire application down.</li>
-<li>Cannot be deployed according to the needs of each business module, but as a whole. 部署到云端</li>
-</ol>
-<p>部署规模根据：用户日活量，qps (query per second), throughput (单位时间传进来的数据量) – 多少个服务器</p>
-<p>100 qps, conversion: 1 server how many queries per second =&gt; bottleneck, load test, to 衡量 server cpu 90%认为满负荷，memory, 网络带宽使用率 …</p>
-<p>功能硬件资源消耗不同，对于硬件要求调整硬件配置。</p>
-<p>Microservice: 有些模块吃内存 – deploy在内存比较好的机器上。</p>
-<h2 id="Microservice-Architecture-Pros"><a href="#Microservice-Architecture-Pros" class="headerlink" title="Microservice Architecture Pros"></a>Microservice Architecture Pros</h2><ol>
-<li>Services independently deployable and scalable.</li>
-<li>Service build time is shorter, which means faster development velocity.</li>
-<li>Size of codebase is reasonably understandable by a single developer.</li>
-<li>Decoupling, single-responsibility, better for Agile better scalability, good failure tolerance.</li>
-</ol>
-<h2 id="Microservice-Architecture-Cons"><a href="#Microservice-Architecture-Cons" class="headerlink" title="Microservice Architecture Cons"></a>Microservice Architecture Cons</h2><ol>
-<li>Inter-service communication cost is high.</li>
-<li>Increased difficulty in service integration test and maintenance: reliability engineer.</li>
-</ol>
-<h1 id="Microservices-Development"><a href="#Microservices-Development" class="headerlink" title="Microservices Development"></a>Microservices Development</h1><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi0cq5gdjaj30iy091tbd.jpg" alt="Screen Shot 2020-08-22 at 3.38.49 PM"></p>
-<p>gitaway api, ukita</p>
-<h1 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q &amp; A"></a>Q &amp; A</h1><h2 id="规模语分布式-微服务架构："><a href="#规模语分布式-微服务架构：" class="headerlink" title="规模语分布式/微服务架构："></a>规模语分布式/微服务架构：</h2><p>一般service如果可以归并成3个模块以上，可以考虑microservice.</p>
-<h2 id="Microservice"><a href="#Microservice" class="headerlink" title="Microservice:"></a>Microservice:</h2><p>HTTP port run 多个Spring boot程序，或者container.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Microservice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/26/2020-08-26-微服务-Microservice/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-08-25-Hadoop中的数据压缩-Hadoop压缩和存储" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/25/2020-08-25-Hadoop中的数据压缩-Hadoop压缩和存储/">Hadoop中的数据压缩 Hadoop压缩和存储</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/25/2020-08-25-Hadoop中的数据压缩-Hadoop压缩和存储/" class="archive-article-date">
-  	<time datetime="2020-08-25T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在集群处理大数据时，压缩数据可以带来两方面的好处：<br>1，减少存储磁盘空间，降低单节点的磁盘IO。<br>2，由于压缩后的数据占用的带宽更少，因此可以加快数据在Hadoop集群流动的速度。例如在不同节点创建3个replica的阶段，或是shuffling阶段。</p>
-<p><strong>压缩的是什么</strong><br>1，压缩输入文件 – 在后面的“压缩和输入分片”一节中我们可以看出，将输入文件做<strong>合理压缩</strong>后，Hadoop会将压缩后的文件切分为数据分片，分配给多个Mapper执行。Mapper会对每个数据分片先解压缩，然后处理。<br>2，压缩输出文件 – 对输出文件做压缩一个目的是减少输出文件对HDFS的磁盘空间占用。如果输出文件需要被下游模块使用，也可以降低数据拷贝的网络传输成本。<br>3，压缩Mapper输出文件 – MapReduce过程中，Map阶段完成后需要将大量中间结果写入磁盘并在partition和shuffling过程中在集群中来回拷贝，以供Reduce阶段使用。因此对Mapper输出的中间结果压缩可以降低partition和shuffling的网络传输成本。</p>
-<p><strong>是否应该使用压缩</strong><br>使用压缩的好处上文已经说明，缺点则是需要花费额外的时间/CPU做压缩和解压缩计算。总的来说使用压缩可以提高效率，应尽可能的使用，尤其是以下场景：<br>1，数据更多的是被存储，而不是被处理。例如使用HDFS作为数据存储，且上层搭建了Hive数据仓库。<br>2，数据本身有不错的压缩率。</p>
-<p><strong>压缩和输入分片</strong><br>在考虑如何压缩数据是，理解这些压缩格式是否支持切分是非常重要的。以一个存储在HDFS且压缩前为1GB的文件为例，如果HDFS的块大小设置为64MB，那么该文件被存储在16个块中，在MapReduce处理开始时，每个数据块作为一个map任务的输入。<br>现在考虑一个压缩后为1GB的gzip文件。与以前一样，HDFS将这个文件保存为16个数据块。但是将每个数据块单独作为一个输入分片是无法正常工作的，因为单独的压缩分片无法正常解压，所以让map任务独立于其他任务进行数据读取是行不通的。<br>在这种情况下，MapReduce会采用正确的做法，它不会尝试切分gzip压缩文件，因为它知道输入时gzip压缩文件(通过文件扩展名判断)且gzip不支持切分。但这样就无法发挥Map的优势–并行处理数据块。<br>因此在制订压缩策略时的重点之一就是如何实现数据分片。</p>
-<p><strong>压缩算法</strong></p>
-<p>常见的压缩算法如下表所示。这里我们并不详细解释这些算法，但是需要注意bzip2和LZO支持分片，也就是说这两种算法天然就解决了上文中的数据分片问题。</p>
-<table>
-<thead>
-<tr>
-<th>Compression format</th>
-<th>Tool</th>
-<th>Algorithm</th>
-<th>File extension</th>
-<th>Splittable</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>gzip</td>
-<td><em>gzip</em></td>
-<td>DEFLATE</td>
-<td>.gz</td>
-<td>No</td>
-</tr>
-<tr>
-<td>bzip2</td>
-<td><em>bizp2</em></td>
-<td>bzip2</td>
-<td>.bz2</td>
-<td>Yes</td>
-</tr>
-<tr>
-<td>LZO</td>
-<td><em>lzop</em></td>
-<td>LZO</td>
-<td>.lzo</td>
-<td>Yes if indexed</td>
-</tr>
-<tr>
-<td>Snappy</td>
-<td>N/A</td>
-<td>Snappy</td>
-<td>.snappy</td>
-<td>No</td>
-</tr>
-</tbody></table>
-<p><strong>容器文件格式</strong><br>在Hadoop中，我们可以使用容器文件格式，例如 sequenceFile，RCFile或者Avro file。所有这些文件格式同时支持压缩和切分。因此使用这些文件也可以解决数据分片的问题。</p>
-<p><strong>压缩策略</strong><br>以下压缩策略的效率从高到低排列：<br>1，使用容器文件格式，如sequenceFile，RCFile或者Avro file。通常最好与一个快速压缩工具联合使用，如LZO，LZ4或者Snappy。例如在Hive使用internal table时可以定义使用RCFile作为文件存储，同时可指定要使用的压缩算法。<br>2，使用支持切分的压缩格式，例如bzip2(尽管bzip2非常慢)，或者使用通过索引实现切分的压缩格式，例如LZO。<br>3，在应用中将文件切分成块，并使用任意一种压缩格式为每个数据块建立压缩文件(不论是否支持切分)。这种情况需要合理选择数据的大小，以确保压缩后数据块的大小近似与HDFS块的大小。</p>
-<p>4，存储未经压缩的文件。</p>
-<p><strong>使用的API</strong></p>
-<p>Hadoop将上文常见的压缩算法包装在自己的API中,例如org.apache.hadoop.io.compress.GzipCodec。</p>
-<p>对输入数据和输出数据压缩时，可直接调用相应的Codec。在对Map输出的中间数据压缩时，一般采用配置属性的方法：</p>
-<p>mapred.compress.map.output – 是否对Map输出进行压缩</p>
-<p>mapred.map.output.compression.codec – map输出所用的codec</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/25/2020-08-25-Hadoop中的数据压缩-Hadoop压缩和存储/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1347,6 +1324,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1391,10 +1372,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
@@ -1411,14 +1388,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
@@ -1427,7 +1396,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1435,19 +1404,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1455,11 +1412,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1471,7 +1444,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1483,7 +1460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1491,15 +1472,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1523,19 +1500,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1543,7 +1512,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1551,19 +1524,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1571,11 +1536,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1583,15 +1548,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Song</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1603,7 +1588,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1611,19 +1596,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1635,15 +1612,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1675,11 +1652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1687,7 +1664,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1695,11 +1680,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1711,15 +1692,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1743,19 +1732,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1767,7 +1752,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1787,6 +1772,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
@@ -1796,10 +1785,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
