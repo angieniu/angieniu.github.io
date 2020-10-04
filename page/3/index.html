@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 158</a>
+<a>Total Number of Articles: 159</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,89 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-27-Dating-the-World" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/28/2020-08-27-Dating-the-World/">Dating the World</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/28/2020-08-27-Dating-the-World/" class="archive-article-date">
+  	<time datetime="2020-08-28T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>Anthony Bourdain: Parts Unkown</li>
+</ol>
+<p>Dating the world, dating life, dating the planet</p>
+<p>adventures, travel, new activities, sit down to have dinners with all sorts of people.</p>
+<ol start="2">
+<li>Give energy simply to give it. </li>
+</ol>
+<p>A beam of light.</p>
+<p>The energy we want to represent in the word.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Life</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/28/2020-08-27-Dating-the-World/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-08-18-王国维" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1175,121 +1258,6 @@
 
 
   
-    <article id="post-2020-08-18-String,-StringBuffer,-StringBuilder-区别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/18/2020-08-18-String,-StringBuffer,-StringBuilder-区别/">String, StringBuffer, StringBuilder 区别</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/18/2020-08-18-String,-StringBuffer,-StringBuilder-区别/" class="archive-article-date">
-  	<time datetime="2020-08-18T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>String</strong> is used for normal string based requirement, and when a String can suffice it.</p>
-<p><strong>String Builder</strong> is used whenever you want to manipulate and play with the string.</p>
-<p><strong>Character Array</strong> is used when you want to <strong>easily</strong> iterate over each and every character</p>
-<p><strong>ArrayList</strong> is a collection. Use it for holding object of a particular type.</p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>String、StringBuilder、StringBuffer 本质都是利用 char 数组实现的。</p>
-<p>这三者的最大区别：</p>
-<ul>
-<li><code>String</code> 是<strong>字符串常量</strong></li>
-<li><code>StringBuilder</code> 是<strong>字符串变量(线程不安全)</strong></li>
-<li><code>StringBuffer</code> 是<strong>字符串变量(线程安全)</strong></li>
-</ul>
-<h1 id="性能差别"><a href="#性能差别" class="headerlink" title="性能差别"></a>性能差别</h1><p><code>String</code> 是不可变对象，在创建好 <code>String</code> 对象后，每次字符串内容的变化其实重新引用了另一个对象，在 jvm 中创建和销毁对象都是非常耗时的。</p>
-<p>所以，对于大量的字符串拼接，最好还是使用 <code>StringBuilder</code> 和 <code>StringBuffer</code>。</p>
-<p>当然字符串拼接也不是绝对的 <code>String</code> 就一定慢，<code>String</code> 的拼接是可能经过编译器优化的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String S1 = “This is only a” + “ simple” + “ test”;<span class="comment">//直接拼接现有字符串</span></span><br><span class="line">String S1 = “This is only a simple test”;<span class="comment">//编译器优化后</span></span><br><span class="line"><span class="comment">//这时确实比 StringBuffer 和 StringBuilder 快</span></span><br><span class="line">StringBuffer Sb = <span class="keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</span><br></pre></td></tr></table></figure>
-
-<p>但是对于不是字符串拼接的话，还是用 StringBuffer 和 StringBuilder 比较快。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 慢</span></span><br><span class="line">String S2 = “This is only a”;</span><br><span class="line">String S3 = “ simple”;</span><br><span class="line">String S4 = “ test”;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*这里其实 JVM 会规规矩矩的按照原来的方式去做：</span></span><br><span class="line"><span class="comment">*先创建一个 StringBuilder 对象，</span></span><br><span class="line"><span class="comment">*然后再进行调用它的 append 方法对 字符串进行拼接。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">String S1 = S2 + S3 + S4; </span><br><span class="line"></span><br><span class="line"><span class="comment">//快</span></span><br><span class="line">StringBuffer Sb = <span class="keyword">new</span> StringBuilder(“This is only a”).append(“ simple”).append(“ test”);</span><br></pre></td></tr></table></figure>
-
-<p><code>StringBuilder</code> 和 <code>StringBuffer</code> 的使用大同小异，性能上由于 <code>StringBuffer</code> 大量的方法通过使用 <code>syschronized</code> 来保证线程安全的缘故，多了加锁、解锁的开销。</p>
-<p>所以，如果是单线程操作，那还是使用 <code>StringBuilder</code> 来获得更好的性能。</p>
-<h1 id="StringBuilder-和-StringBuffer-区别"><a href="#StringBuilder-和-StringBuffer-区别" class="headerlink" title="StringBuilder 和 StringBuffer 区别"></a><code>StringBuilder</code> 和 <code>StringBuffer</code> 区别</h1><p><img src="https://note.youdao.com/yws/api/personal/file/33CE1526261046DCBABA34EFFC6B2B85?method=download&shareKey=65398bdd4025b385fa36ce3e2bb00d60" alt="StringBuffer和StringBuilder"><br>从类图可以看出，两者多少继承了 <code>AbstractStringBuilder</code> ，所以两者大部分的操作都是通过调用 <code>AbstractStringBuilder</code> 的方法完成的。</p>
-<p>除了是否线程安全这点外，<code>StringBuffer</code> 还在 <code>toString()</code> 方法中引入了缓存的操作</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">StringBuffe.java</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * A cache of the last value returned by toString. Cleared</span></span><br><span class="line"><span class="comment">     * whenever the StringBuffer is modified.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">char</span>[] toStringCache;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (toStringCache == <span class="keyword">null</span>) &#123;</span><br><span class="line">            toStringCache = Arrays.copyOfRange(value, <span class="number">0</span>, count);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(toStringCache, <span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> StringBuffer <span class="title">append</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">        toStringCache = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">super</span>.append(str);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，当多次调用 <code>toString()</code> 方法时，是返回同一个 Stirng 对象的，而当 char 数组发生改变时又会及时释放缓存，避免了缓存一致性问题。</p>
-<p>这和 <code>StringBuilder</code> 中的 <code>toString()</code> 方法不同</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder.java</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Create a copy, don't share the array</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> String(value, <span class="number">0</span>, count);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="初始容量"><a href="#初始容量" class="headerlink" title="初始容量"></a>初始容量</h1><p><code>StringBuilder</code> 和 <code>StringBuffer</code> 在拼接字符串过程中，如果容量不够了，会新建 char 数组，容量为<strong>旧容量*2+2</strong>，并复制旧数组的元素到新数组中。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minimumCapacity)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// overflow-conscious code</span></span><br><span class="line">        <span class="keyword">if</span> (minimumCapacity - value.length &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            value = Arrays.copyOf(value,</span><br><span class="line">                    newCapacity(minimumCapacity));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">newCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> newCapacity = (value.length &lt;&lt; <span class="number">1</span>) + <span class="number">2</span>;<span class="comment">//新容量</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (newCapacity &lt;= <span class="number">0</span> || MAX_ARRAY_SIZE - newCapacity &lt; <span class="number">0</span>)</span><br><span class="line">        ? hugeCapacity(minCapacity)</span><br><span class="line">        : newCapacity;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>每一次扩容显然是一次很大的性能开销，那如果在使用之前就指定好要使用的容量或大致的容量，那这无疑能大大减少性能开销。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">StringBuilder</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(capacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">AbstractStringBuilder(<span class="keyword">int</span> capacity) &#123;</span><br><span class="line">        value = <span class="keyword">new</span> <span class="keyword">char</span>[capacity];</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghx8k6daeij30kv0lggqk.jpg" alt="Screen Shot 2020-08-19 at 10.58.01 PM"></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghx8mcceq6j30l20o00w3.jpg" alt="Screen Shot 2020-08-19 at 11.00.04 PM"></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghx8pc04jej30l50p2n4k.jpg" alt="Screen Shot 2020-08-19 at 11.02.57 PM"></p>
-<p>![Screen Shot 2020-08-19 at 10.58.26 PM](/Users/Angie/Library/Application Support/typora-user-images/Screen Shot 2020-08-19 at 11.01.22 PM.png)</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://segmentfault.com/a/1190000022038238" target="_blank" rel="noopener">https://segmentfault.com/a/1190000022038238</a></p>
-<p><a href="https://www.stormbuf.com/2019/09/17/string-stringbuilder-stringbuffer-difference.html" target="_blank" rel="noopener">https://www.stormbuf.com/2019/09/17/string-stringbuilder-stringbuffer-difference.html</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">String, StringBuffer, StringBuilder</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/18/2020-08-18-String,-StringBuffer,-StringBuilder-区别/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1390,11 +1358,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1410,10 +1382,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
@@ -1422,19 +1390,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1450,15 +1418,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1466,7 +1434,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,19 +1446,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1502,15 +1466,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1518,11 +1474,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1530,7 +1494,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1542,11 +1506,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1554,7 +1518,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1586,11 +1554,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,15 +1570,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1619,10 +1591,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1658,19 +1626,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1734,11 +1702,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1766,19 +1734,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1786,7 +1746,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1802,15 +1774,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1818,11 +1786,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">

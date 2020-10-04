@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 158</a>
+<a>Total Number of Articles: 159</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,105 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-09-React-Based-Multi-Step-Forms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/">React-Based Multi-Step Forms</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/" class="archive-article-date">
+  	<time datetime="2020-07-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Rect-multistep"><a href="#Rect-multistep" class="headerlink" title="Rect-multistep"></a>Rect-multistep</h1><p><a href="https://github.com/srdjan/react-multistep" target="_blank" rel="noopener">https://github.com/srdjan/react-multistep</a></p>
+<h2 id="Responsive-React-multistep-form-component"><a href="#Responsive-React-multistep-form-component" class="headerlink" title="Responsive React multistep form component"></a>Responsive React multistep form component</h2><p><a href="https://raw.githubusercontent.com/srdjan/react-multistep/master/assets/react-multistep.png" target="_blank" rel="noopener"><img src="https://raw.githubusercontent.com/srdjan/react-multistep/master/assets/react-multistep.png" alt="img"></a></p>
+<h4 id="Try-it-here"><a href="#Try-it-here" class="headerlink" title="Try it here"></a>Try it <a href="http://srdjan.github.io/react-multistep/" target="_blank" rel="noopener">here</a></h4><h1 id><a href="#" class="headerlink" title></a></h1><p><a href="https://nodei.co/npm/react-multistep/" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/c7c0c36813351d63002b8cb1bb874a8ed6b54212/68747470733a2f2f6e6f6465692e636f2f6e706d2f72656163742d6d756c7469737465702e706e673f646f776e6c6f6164733d747275652673746172733d74727565" alt="NPM"></a></p>
+<h4 id="React-16-13-1"><a href="#React-16-13-1" class="headerlink" title="React 16.13.1"></a>React 16.13.1</h4><h4 id="List-of-forks"><a href="#List-of-forks" class="headerlink" title="List of forks"></a><a href="https://github.com/srdjan/react-multistep/network/members/" target="_blank" rel="noopener">List of forks</a></h4><h1 id="-1"><a href="#-1" class="headerlink" title></a></h1><h4 id="Instructions"><a href="#Instructions" class="headerlink" title="Instructions"></a>Instructions</h4><p>To use this module in your app run:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-multistep</span><br></pre></td></tr></table></figure>
+
+<p>next, import it inside of your app:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const MultiStep = import from <span class="string">'react-multistep'</span></span><br></pre></td></tr></table></figure>
+
+<p>Component has only one Prop, ‘showNavigation’, which controls if the navigation buttons should be visable:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prop=showNavigation </span><br><span class="line"><span class="built_in">type</span>: boolean (default = <span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
+
+<p>It takes an array of objects representing individual steps:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const steps = [</span><br><span class="line">              &#123;name: <span class="string">'StepOne'</span>, component: &lt;StepOne/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepTwo'</span>, component: &lt;StepTwo/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepThree'</span>, component: &lt;StepThree/&gt;&#125;,</span><br><span class="line">              &#123;name: <span class="string">'StepFour'</span>, component: &lt;StepFour/&gt;&#125;</span><br><span class="line">            ];</span><br><span class="line">&lt;Multistep showNavigation=&#123;<span class="literal">true</span>&#125; steps=&#123;steps&#125;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="If-you-want-to-explore-try-the-included-example…"><a href="#If-you-want-to-explore-try-the-included-example…" class="headerlink" title="If you want to explore try the included example…"></a>If you want to explore try the included example…</h4><p>1.Start by cloning the repo locally:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//--step 1</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/srdjan/react-multistep.git   //<span class="built_in">clone</span> the repo</span><br><span class="line"><span class="built_in">cd</span> react-multistep                                        //navigate to the project folder</span><br></pre></td></tr></table></figure>
+
+<p>2.Next, install dependencies and build the component:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br><span class="line">npm run build // (or, `npm run build:prod` <span class="keyword">for</span> optimized build)</span><br></pre></td></tr></table></figure>
+
+<p>3.On a succesful build, navigate to the example folder and try it:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ../example</span><br><span class="line">npm install</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<p>4.Now you can open the example in your favorite browser:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">open index.html</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">React, Multistep Form</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/09/2020-07-09-React-Based-Multi-Step-Forms/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-08-Hooks-API-Reference" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1048,99 +1147,6 @@
 
 
   
-    <article id="post-2020-06-29-App-Architecture,-RecyclerView" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/29/2020-06-29-App-Architecture,-RecyclerView/">App Architecture, RecyclerView</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/29/2020-06-29-App-Architecture,-RecyclerView/" class="archive-article-date">
-  	<time datetime="2020-06-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Visualize-News-App-Workflow"><a href="#Visualize-News-App-Workflow" class="headerlink" title="Visualize News App Workflow"></a>Visualize News App Workflow</h1><p>single activity app, multiple fragments, organized by navigation graph. architecture MVVP, data gained by retrofit  and retrofit encapsulted in repository, local databased room to save user favorite, search result using recyclerview. </p>
-<h1 id="Create-a-List-with-RecyclerView"><a href="#Create-a-List-with-RecyclerView" class="headerlink" title="Create a List with RecyclerView"></a>Create a List with RecyclerView</h1><p>If your app needs to display a scrolling list of elements based on large data sets (or data that frequently changes), you should use <code>RecyclerView</code> as described on this page.</p>
-<p><strong>Tip:</strong> Start with some template code in Android Studio by clicking <strong>File &gt; New &gt; Fragment &gt; Fragment (List)</strong>. Then simply <a href="https://developer.android.com/training/basics/fragments/creating#AddInLayout" target="_blank" rel="noopener">add the fragment to your activity layout</a>.</p>
-<p><img src="https://developer.android.com/design/material/images/list_mail.png" alt="img"></p>
-<p><strong>Figure 1.</strong> A list using <code>RecyclerView</code></p>
-<p><img src="https://developer.android.com/design/material/images/card_travel.png" alt="img"></p>
-<p><strong>Figure 2.</strong> A list also using <code>CardView</code></p>
-<p>If you’d like to create a list with cards, as shown in figure 2, also use the <code>CardView</code> widget as described in <a href="https://developer.android.com/guide/topics/ui/layout/cardview" target="_blank" rel="noopener">Create a Card-based Layout</a>.</p>
-<p>If you’d like to see some sample code for <code>RecyclerView</code>, check out the RecyclerView Sample App <a href="https://github.com/android/views-widgets-samples/tree/master/RecyclerView" target="_blank" rel="noopener">Java</a> | <a href="https://github.com/android/views-widgets-samples/tree/master/RecyclerViewKotlin" target="_blank" rel="noopener">Kotlin</a>.</p>
-<h2 id="RecyclerView-overview"><a href="#RecyclerView-overview" class="headerlink" title="RecyclerView overview"></a>RecyclerView overview</h2><p>The <code>RecyclerView</code> widget is a more advanced and flexible version of <code>ListView</code>.</p>
-<p>In the <code>RecyclerView</code> model, several different components work together to display your data. The overall container for your user interface is a <code>RecyclerView</code> object that you add to your layout. The <code>RecyclerView</code> fills itself with views provided by a <em>layout manager</em> that you provide. You can use one of our standard layout managers (such as <code>LinearLayoutManager</code> or <code>GridLayoutManager</code>), or implement your own.</p>
-<p>The views in the list are represented by <em>view holder</em> objects. These objects are instances of a class you define by extending <code>RecyclerView.ViewHolder</code>. Each view holder is in charge of displaying a single item with a view. For example, if your list shows music collection, each view holder might represent a single album. The <code>RecyclerView</code> creates only as many view holders as are needed to display the on-screen portion of the dynamic content, plus a few extra. As the user scrolls through the list, the <code>RecyclerView</code> takes the off-screen views and rebinds them to the data which is scrolling onto the screen.</p>
-<p>The view holder objects are managed by an <em>adapter</em>, which you create by extending <code>RecyclerView.Adapter</code>. The adapter creates view holders as needed. The adapter also binds the view holders to their data. It does this by assigning the view holder to a position, and calling the adapter’s <code>onBindViewHolder()</code> method. That method uses the view holder’s position to determine what the contents should be, based on its list position.</p>
-<p>This <code>RecyclerView</code> model does a lot of optimization work so you don’t have to:</p>
-<ul>
-<li><p>When the list is first populated, it creates and binds some view holders on either side of the list. For example, if the view is displaying list positions 0 through 9, the <code>RecyclerView</code> creates and binds those view holders, and might also create and bind the view holder for position 10. That way, if the user scrolls the list, the next element is ready to display.</p>
-</li>
-<li><p>As the user scrolls the list, the <code>RecyclerView</code> creates new view holders as necessary. It also saves the view holders which have scrolled off-screen, so they can be reused. If the user switches the direction they were scrolling, the view holders which were scrolled off the screen can be brought right back. On the other hand, if the user keeps scrolling in the same direction, the view holders which have been off-screen the longest can be re-bound to new data. The view holder does not need to be created or have its view inflated; instead, the app just updates the view’s contents to match the new item it was bound to.</p>
-</li>
-<li><p>When the displayed items change, you can notify the adapter by calling an appropriate <code>RecyclerView.Adapter.notify…()</code> method. The adapter’s built-in code then rebinds just the affected items.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Android, Architecture, RecyclerView</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/29/2020-06-29-App-Architecture,-RecyclerView/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
@@ -1241,11 +1247,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1261,10 +1271,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
@@ -1273,19 +1279,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1301,15 +1307,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1317,7 +1323,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1329,19 +1335,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1353,15 +1355,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1369,11 +1363,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1381,7 +1383,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1393,11 +1395,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1405,7 +1407,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1437,11 +1443,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1453,15 +1459,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1470,10 +1480,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1509,19 +1515,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1585,11 +1591,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
+                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SSH</a>
+                <a href="javascript:void(0)" class="js-tag color1">Authentication, Session, Cokkie, Token, OAuth</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1617,19 +1623,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1637,7 +1635,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1653,15 +1663,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1669,11 +1675,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ramdan</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
