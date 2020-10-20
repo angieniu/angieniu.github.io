@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 159</a>
+<a>Total Number of Articles: 160</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,80 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-29-Communication" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/29/2020-08-29-Communication/">Communication</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/29/2020-08-29-Communication/" class="archive-article-date">
+  	<time datetime="2020-08-29T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        Welcome to my blog, enter password to read this article.
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Life</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/29/2020-08-29-Communication/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-08-27-Dating-the-World" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1160,104 +1234,6 @@
 
 
   
-    <article id="post-2020-08-19-压缩算法-String-Encoding" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/">压缩算法 String Encoding</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/" class="archive-article-date">
-  	<time datetime="2020-08-19T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="认识压缩算法"><a href="#认识压缩算法" class="headerlink" title="认识压缩算法"></a>认识压缩算法</h2><p>我们想必都有过<code>压缩</code>和 <code>解压缩</code>文件的经历，当文件太大时，我们会使用文件压缩来降低文件的占用空间。比如微信上传文件的限制是100 MB，我这里有个文件夹无法上传，但是我解压完成后的文件一定会小于 100 MB，那么我的文件就可以上传了。</p>
-<p>此外，我们把相机拍完的照片保存到计算机上的时候，也会使用压缩算法进行文件压缩，文件压缩的格式一般是<code>JPEG</code>。</p>
-<p>那么什么是压缩算法呢？压缩算法又是怎么定义的呢？在认识算法之前我们需要先了解一下文件是如何存储的</p>
-<h3 id="文件存储"><a href="#文件存储" class="headerlink" title="文件存储"></a>文件存储</h3><p>文件是将数据存储在磁盘等存储媒介的一种形式。程序文件中最基本的存储数据单位是<code>字节</code>。文件的大小不管是 xxxKB、xxxMB等来表示，就是因为文件是以字节 <code>B = Byte</code> 为单位来存储的。</p>
-<p>文件就是字节数据的集合。用 1 字节（8 位）表示的字节数据有 256 种，用二进制表示的话就是 0000 0000 - 1111 1111 。如果文件中存储的数据是文字，那么该文件就是文本文件。如果是图形，那么该文件就是图像文件。在任何情况下，文件中的字节数都是<code>连续存储</code>的。</p>
-<p><img src="https://raw.githubusercontent.com/Joincxuan/Joincxuan.github.io/master/image/howComputerWork06/01.png" alt="img"></p>
-<h3 id="压缩算法的定义"><a href="#压缩算法的定义" class="headerlink" title="压缩算法的定义"></a>压缩算法的定义</h3><p>上面介绍了文件的集合体其实就是一堆字节数据的集合，那么我们就可以来给压缩算法下一个定义。</p>
-<p><code>压缩算法（compaction algorithm）</code>指的就是数据压缩的算法，主要包括压缩和还原（解压缩）的两个步骤。</p>
-<p>其实就是在不改变原有文件属性的前提下，降低文件字节空间和占用空间的一种算法。</p>
-<p>根据压缩算法的定义，我们可将其分成不同的类型：</p>
-<p><strong>有损和无损</strong></p>
-<p>无损压缩：能够<code>无失真地</code>从压缩后的数据重构，准确地还原原始数据。可用于对数据的准确性要求严格的场合，如可执行文件和普通文件的压缩、磁盘的压缩，也可用于多媒体数据的压缩。该方法的压缩比较小。如差分编码、RLE、Huffman编码、LZW编码、算术编码。</p>
-<p>有损压缩：有失真，<code>不能完全准确地</code>恢复原始数据，重构的数据只是原始数据的一个近似。可用于对数据的准确性要求不高的场合，如多媒体数据的压缩。该方法的压缩比较大。例如预测编码、音感编码、分形压缩、小波压缩、JPEG/MPEG。</p>
-<p><strong>对称性</strong></p>
-<p>如果编解码算法的复杂性和所需时间差不多，则为对称的编码方法，多数压缩算法都是对称的。但也有不对称的，一般是编码难而解码容易，如 Huffman 编码和分形编码。但用于密码学的编码方法则相反，是编码容易，而解码则非常难。</p>
-<p><strong>帧间与帧内</strong></p>
-<p>在视频编码中会同时用到帧内与帧间的编码方法，帧内编码是指在一帧图像内独立完成的编码方法，同静态图像的编码，如 JPEG；而帧间编码则需要参照前后帧才能进行编解码，并在编码过程中考虑对帧之间的时间冗余的压缩，如 MPEG。</p>
-<p><strong>实时性</strong></p>
-<p>在有些多媒体的应用场合，需要实时处理或传输数据（如现场的数字录音和录影、播放MP3/RM/VCD/DVD、视频/音频点播、网络现场直播、可视电话、视频会议），编解码一般要求延时 ≤50 ms。这就需要简单/快速/高效的算法和高速/复杂的CPU/DSP芯片。</p>
-<p><strong>分级处理</strong></p>
-<p>有些压缩算法可以同时处理不同分辨率、不同传输速率、不同质量水平的多媒体数据，如JPEG2000、MPEG-2/4。</p>
-<p>这些概念有些抽象，主要是为了让大家了解一下压缩算法的分类，下面我们就对具体的几种常用的压缩算法来分析一下它的特点和优劣</p>
-<h2 id="几种常用压缩算法的理解"><a href="#几种常用压缩算法的理解" class="headerlink" title="几种常用压缩算法的理解"></a>几种常用压缩算法的理解</h2><h3 id="RLE-算法的机制"><a href="#RLE-算法的机制" class="headerlink" title="RLE 算法的机制"></a>RLE 算法的机制</h3><p>接下来就让我们正式看一下文件的压缩机制。首先让我们来尝试对 <code>AAAAAABBCDDEEEEEF</code> 这 17 个半角字符的文件（文本文件）进行压缩。虽然这些文字没有什么实际意义，但是很适合用来描述 <code>RLE</code> 的压缩机制。</p>
-<p>由于半角字符（其实就是英文字符）是作为 1 个字节保存在文件中的，所以上述的文件的大小就是 17 字节。如图</p>
-<p><img src="https://raw.githubusercontent.com/Joincxuan/Joincxuan.github.io/master/image/howComputerWork06/02.png" alt="img"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/19/2020-08-19-压缩算法-String-Encoding/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1358,15 +1334,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1379,6 +1351,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1398,11 +1374,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1410,11 +1386,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+                <a href="javascript:void(0)" class="js-tag color2">GCS, GCE, GKE, System Design, Loadbalancing, CICD, K-D Search, Authentication, Video-Making</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1426,15 +1402,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Lifecycle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,10 +1422,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
@@ -1458,11 +1430,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1470,19 +1442,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1490,7 +1450,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1502,7 +1474,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1510,11 +1482,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1522,7 +1494,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1534,7 +1514,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1542,7 +1522,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1550,15 +1530,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">GET, POST</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1570,19 +1546,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1594,7 +1570,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1602,7 +1578,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1614,19 +1590,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1642,11 +1618,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
+                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
+                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1694,11 +1670,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1734,11 +1710,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1746,19 +1722,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+                <a href="javascript:void(0)" class="js-tag color3">BQ</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1782,11 +1758,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
