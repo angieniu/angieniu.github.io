@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 160</a>
+<a>Total Number of Articles: 161</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,118 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-09-09-TreeSet和TreeMap的一点总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/09/2020-09-09-TreeSet和TreeMap的一点总结/">TreeSet和TreeMap的一点总结</a>
+    </h1>
+  
+
+        
+        <a href="/2020/09/09/2020-09-09-TreeSet和TreeMap的一点总结/" class="archive-article-date">
+  	<time datetime="2020-09-09T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先简单介绍下TreeSet和TreeMap的两种排序：</p>
+<ul>
+<li>自然排序</li>
+<li>通过comparator排序</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">private static void compareWithCpmparator()&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        TreeSet&lt;String&gt; treeSet =new TreeSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; list =new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        list.add(&quot;a&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        list.add(&quot;d&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        list.add(&quot;b&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        treeSet.addAll(list);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; iterator =treeSet.iterator();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        while (iterator.hasNext())&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            System.out.println(iterator.next());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Comparator&lt;String&gt;  comparator1 = (Comparator&lt;String&gt;) treeSet.comparator();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        if (comparator1 == null)&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            System.out.println(&quot;comparator1是空&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;else &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            System.out.println(&quot;comparator1不是空&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        compareWithCpmparator();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行之后的结果如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">b</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">d</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">comparator1是空</span><br></pre></td></tr></table></figure>
+
+<p>这段代码里面获取的<code>comparator</code>是空的，Debug一遍，发现这个方法其实调用的是<code>NavigableMap</code>里面的<code>comparator</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public Comparator&lt;? super E&gt; comparator() &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    return m.comparator();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>查看官网上对其的介绍：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Comparator&lt;? super K&gt; comparator()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Returns the comparator used to order the keys in this map, or null if this map uses the natural ordering of its keys.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Returns:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">the comparator used to order the keys in this map, or null if this map uses the natural ordering of its keys</span><br></pre></td></tr></table></figure>
+
+<p>在调用这个方法的时候若是自然排序，那么会返回一个null。若是通过comparator进行排序的话当前集合采用的<code>comparator</code>。<br>查看官网对reeSet的无参构造器的解释：</p>
+<blockquote>
+<p>/**</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">* Constructs a new, empty tree set, sorted according to the</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* natural ordering of its elements.  All elements inserted into</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* the set must implement the &#123;@link Comparable&#125; interface.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* Furthermore, all such elements must be &lt;i&gt;mutually</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* comparable&lt;/i&gt;: &#123;@code e1.compareTo(e2)&#125; must not throw a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* &#123;@code ClassCastException&#125; for any elements &#123;@code e1&#125; and</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* &#123;@code e2&#125; in the set.  If the user attempts to add an element</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* to the set that violates this constraint (for example, the user</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* attempts to add a string element to a set whose elements are</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* integers), the &#123;@code add&#125; call will throw a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">* &#123;@code ClassCastException&#125;.</span><br></pre></td></tr></table></figure>
+
+<p>在使用TreeSet的时候，插入的元素需要实现Comparable这个接口，而刚刚的元素是String，查看String的代码发现:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public final class String implements java.io.Serializable, Comparable&lt;String&gt;, CharSequence &#123;</span><br></pre></td></tr></table></figure>
+
+<p>确实实现了，再测试一个没有实现的元素：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br></pre></td><td class="code"><pre><span class="line">public class PojoTest &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private int id;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private String name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public PojoTest() &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public int getId() &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return id;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void setId(int id) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        this.id = id;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        this.name = name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public PojoTest(int id, String name) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        this.id = id;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        this.name = name;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> private static void  com()&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        TreeSet&lt;PojoTest&gt; treeSet =new TreeSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        treeSet.add(new PojoTest(1,&quot;a&quot;));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        treeSet.add(new PojoTest(2,&quot;b&quot;));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        treeSet.add(new PojoTest(3,&quot;c&quot;));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Iterator&lt;PojoTest&gt; iterator =treeSet.iterator();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        while (iterator.hasNext())&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            System.out.println(iterator.next().getName());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.ClassCastException: SetAndMap.TreeSetAndTreeMap.PojoTest cannot be cast to java.lang.Comparable</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    at java.util.TreeMap.compare(TreeMap.java:1294)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    at java.util.TreeMap.put(TreeMap.java:538)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    at java.util.TreeSet.add(TreeSet.java:255)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    at SetAndMap.TreeSetAndTreeMap.TestTreeSet.com(TestTreeSet.java:77)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    at SetAndMap.TreeSetAndTreeMap.TestTreeSet.main(TestTreeSet.java:88)</span><br></pre></td></tr></table></figure>
+
+<p>很明显，所以放在TreeSet里面的元素要么是实现Comparable了的自然排序，要么是通过comparator来进行排序的。</p>
+<p><strong>最后附上一个标准的使用Comparator的方法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br></pre></td><td class="code"><pre><span class="line">private static void  construct()&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Comparator&lt;String&gt;  comparator =new Comparator&lt;String&gt;() &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            public int compare(String o1, String o2) &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                if(o1.toCharArray()[0] &gt;o2.toCharArray()[0])&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    return -1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125;else if(o1.toCharArray()[0] == o2.toCharArray()[0])&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    return 0;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                &#125;else&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">                    return 1;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        TreeSet&lt;String&gt; treeSet =new TreeSet&lt;&gt;(comparator);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        List&lt;String&gt; list =new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        list.add(&quot;a&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        list.add(&quot;d&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        list.add(&quot;b&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        treeSet.addAll(list);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; iterator =treeSet.iterator();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        while (iterator.hasNext())&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            System.out.println(iterator.next());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Comparator&lt;String&gt;  comparator1 = (Comparator&lt;String&gt;) treeSet.comparator();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        TreeSet&lt;String&gt; treeSet1 =new TreeSet&lt;&gt;(comparator1);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        treeSet1.add(&quot;c&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        treeSet1.add(&quot;g&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        treeSet1.add(&quot;a&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        Iterator&lt;String&gt; iterator1 =treeSet1.iterator();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        while (iterator1.hasNext())&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">            System.out.println(iterator1.next());</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自然排序："><a href="#自然排序：" class="headerlink" title="自然排序："></a>自然排序：</h2><p>是实现Comparable接口并且重写了compareTo方法的</p>
+<h2 id="另一个comparator"><a href="#另一个comparator" class="headerlink" title="另一个comparator"></a>另一个comparator</h2><p>则是通过comparator并且重写compare方法</p>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://segmentfault.com/a/1190000015017290" target="_blank" rel="noopener">https://segmentfault.com/a/1190000015017290</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">TreeSet, TreeMap</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/09/2020-09-09-TreeSet和TreeMap的一点总结/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-09-08-Java-collection集合类型总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1183,98 +1295,9 @@
 
 
   
-    <article id="post-2020-08-30-《猫和老鼠》与二战-轴心国-同盟国" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/30/2020-08-30-《猫和老鼠》与二战-轴心国-同盟国/">《猫和老鼠》与二战 轴心国 同盟国</a>
-    </h1>
-  
-
-        
-        <a href="/2020/08/30/2020-08-30-《猫和老鼠》与二战-轴心国-同盟国/" class="archive-article-date">
-  	<time datetime="2020-08-30T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>《猫和老鼠》无疑是动画史上最经典，最成功的动画系列之一，汤姆和杰瑞也无疑是动画史上最深入人心的形象之一。自1941年以来，《汤姆和杰瑞》连续12年获得奥斯卡最佳动画短片奖提名，并7次获得此殊荣。米高梅公司把《汤姆和杰瑞》制作到了极致，夸张的动作，丰富的表情，天马行空的想象力，精致的绘画，都是那个时代的最高水准。最值得称道的是猫和老鼠的配乐，完美契合故事的发展和人物的心理。即使二位主角在片中几乎没有对白，也丝毫不影响动画的流畅。虽然每一部短片时间都很短，却能讲出一个不算简单的故事。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1omyn3j308w05kq30.jpg" alt="img"></p>
-<p>　　《扬基都德鼠》是第一部获得奥斯卡奖的《猫和老鼠》短片，从此之后《汤姆和杰瑞》系列红遍全球。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1c2xcwj30900dcmy2.jpg" alt="img"></p>
-<p>　　《扬基都德鼠》发行于1943年，全片不到8分钟，故事简单，情节紧凑，气氛幽默，讲述了汤姆和杰瑞在地下室的大战。杰瑞采用各种手段攻击汤姆，结局不言自明，自然是老鼠的胜利，这部短片从动画到配乐都颇有战争的感觉。其实《扬基都德鼠》除了让观众捧腹大笑以外，是一部非常“主旋律”爱国宣传片。由于《猫和老鼠》系列八九十年代才被引入中国，我们在哈哈一笑之后，很难去联想它特有的历史背景。</p>
-<p>　　从名字开始，扬基都德四个字听起来不知所云。有时候也被译为“北佬战争”和“疯狂的老鼠”，“北佬战争”这个名字很容易误导人，让人们把猫鼠之间的战争和美国南北战争联系起来。其实，这部短片反映的是第二次世界大战，尤其是太平洋战争。</p>
-<p>　　言归正传，“扬基都德”其实是一首歌曲。扬基杜德尔（扬基歌）是美国著名民谣，在英国殖民时期就已经流行起来，独立战争后更是广为流传，歌曲本来被英国士兵拿来嘲笑殖民地人民的粗鲁呆板，经改编后成为美国著名爱国歌曲之一，反映了美国人民朴素的自豪感。为了凸显爱国主题，动画并没有选取沉重的交响乐或钢琴曲，而将这首家喻户晓的民谣进行改编，变奏，作为主题音乐，带有强烈的民族色彩。</p>
-<p>　　所以，扬基都德鼠的真实意思应该是“爱国的老鼠”。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1mgmdkg30go0bd40t.gif" alt="img"></p>
-<p>　　动画一开始，汤姆追着杰瑞跑进地下室，我们可以看到旁边的指示牌“cat raid shelter”，这是活用了“air raid shelter”即防空洞，表示地下室是杰瑞阻挡猫的阵地和堡垒。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1bojw9g30go0bd76d.gif" alt="img"></p>
-<p>　　杰瑞将鸡蛋砸向了汤姆，鸡蛋盒上写的是HEN-GRENADES，即为鸡蛋-手榴弹。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1dtzg9g30go0bd76d.gif" alt="img"></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1fdb6ng30go0bdmz6.gif" alt="img"></p>
-<p>　　当杰瑞把汤姆从水中“击沉”后，战报上写着“sighted cat-sank same”，意思是“瞄准了猫，击沉了猫”。这句话来源于二战中美军飞行员唐纳德·弗朗西斯·梅森，二战初期，德国为了限制美国对英国的物资支援，发动了“狼群战术”，派遣大量U型潜艇在大西洋上袭击盟军的商船，德国潜艇在战争初期取得了辉煌的成果，盟军面对神出鬼没的如幽灵一般的德国潜艇一筹莫展。1942年1月28日，美军飞行员唐纳德·弗朗西斯·梅森在纽芬兰附近巡逻时看见并攻击了一艘U型潜艇，梅森看到U型潜艇下沉后，发出了简短的胜利号，“sighted sub, sank same”——瞄准潜艇，击沉潜艇，从此这句简短有力，朗朗上口的胜利口号广为流传，激励着盟军士兵。不过也有人质疑U型潜艇被击沉的真实性。《扬基都德鼠》显然是通过老鼠杰瑞向这句话致敬。战报落款LT.JERRY.MOUSE，LT是中尉的缩写，即杰瑞中尉。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gi6h1nderig30go0bdjtg.gif" alt="img"></p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Reading</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/30/2020-08-30-《猫和老鼠》与二战-轴心国-同盟国/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1376,15 +1399,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1396,15 +1423,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Options, CORS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1428,11 +1451,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
+                <a href="javascript:void(0)" class="js-tag color1">visual studio, user experience</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1452,27 +1475,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1480,15 +1487,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1504,15 +1527,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Leadership, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1524,15 +1547,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1540,7 +1559,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1548,7 +1567,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1556,11 +1575,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1572,10 +1599,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
@@ -1584,7 +1607,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1592,7 +1615,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1600,11 +1623,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1616,11 +1639,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1636,7 +1655,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1648,11 +1667,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1660,7 +1675,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1672,11 +1691,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Reading</a>
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1684,11 +1707,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Encoding, Decoding, Algorithm, System Design, Big Data, Hadoop, MapReduce, Distributed Computer System, Natural Language Processing</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Algorithm, 压缩算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">Life</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1700,7 +1727,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Life</a>
+                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1712,19 +1739,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSH</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1736,7 +1751,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Interview</a>
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1744,11 +1763,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Interview</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1768,11 +1803,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1784,15 +1815,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1808,11 +1835,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">RESTful, session, cookies</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1828,19 +1855,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
