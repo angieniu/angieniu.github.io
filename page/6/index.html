@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 161</a>
+<a>Total Number of Articles: 162</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,177 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-30-React-Countdown-Clock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/01/2020-07-30-React-Countdown-Clock/">React Countdown Clock</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/01/2020-07-30-React-Countdown-Clock/" class="archive-article-date">
+  	<time datetime="2020-08-01T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="React-Countdown-Clock"><a href="#React-Countdown-Clock" class="headerlink" title="React Countdown Clock"></a>React Countdown Clock</h1><p>A HTML 5 canvas countdown clock as a React component.</p>
+<p><a href="https://camo.githubusercontent.com/bf209fec65fdf5428ca43d935e40dfd0b7bbf9c2/687474703a2f2f70756768707567682e6769746875622e696f2f72656163742d636f756e74646f776e2d636c6f636b2f616e696d617465642e676966" target="_blank" rel="noopener"><img src="https://camo.githubusercontent.com/bf209fec65fdf5428ca43d935e40dfd0b7bbf9c2/687474703a2f2f70756768707567682e6769746875622e696f2f72656163742d636f756e74646f776e2d636c6f636b2f616e696d617465642e676966" alt="Screenshot"></a></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><p><a href="http://pughpugh.github.io/react-countdown-clock" target="_blank" rel="noopener">pughpugh.github.io/react-countdown-clock</a></p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-countdown-clock</span><br></pre></td></tr></table></figure>
+
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;ReactCountdownClock seconds=&#123;60&#125;</span><br><span class="line">                     color=&quot;#000&quot;</span><br><span class="line">                     alpha=&#123;0.9&#125;</span><br><span class="line">                     size=&#123;300&#125;</span><br><span class="line">                     onComplete=&#123;myCallback&#125; /&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h2><table>
+<thead>
+<tr>
+<th>prop</th>
+<th>type</th>
+<th>default</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>seconds</td>
+<td>integer</td>
+<td>60</td>
+<td>Seconds to countdown</td>
+</tr>
+<tr>
+<td>color</td>
+<td>string</td>
+<td>#000</td>
+<td>Colour of counter</td>
+</tr>
+<tr>
+<td>alpha</td>
+<td>float</td>
+<td>1.0</td>
+<td>Alpha transparency of counter</td>
+</tr>
+<tr>
+<td>size</td>
+<td>integer</td>
+<td>300</td>
+<td>Width &amp; height of canvas element</td>
+</tr>
+<tr>
+<td>weight</td>
+<td>integer</td>
+<td></td>
+<td>Weight of circle, in pixels</td>
+</tr>
+<tr>
+<td>fontSize</td>
+<td>integer/string</td>
+<td>auto</td>
+<td>px size of font. <code>auto</code> for dynamic sizing.</td>
+</tr>
+<tr>
+<td>font</td>
+<td>string</td>
+<td>Arial</td>
+<td>Font of counter</td>
+</tr>
+<tr>
+<td>timeFormat</td>
+<td>string</td>
+<td>seconds</td>
+<td>Counter style; <code>seconds</code> or <code>hms</code></td>
+</tr>
+<tr>
+<td>showMilliseconds</td>
+<td>boolean</td>
+<td>true</td>
+<td>Show milliseconds for last 10 seconds</td>
+</tr>
+<tr>
+<td>onComplete</td>
+<td>func</td>
+<td></td>
+<td>Callback when time completes</td>
+</tr>
+<tr>
+<td>paused</td>
+<td>boolean</td>
+<td>false</td>
+<td>Pause countdown of the timer</td>
+</tr>
+<tr>
+<td>pausedText</td>
+<td>string</td>
+<td></td>
+<td>Text to display when paused, defaults to the current time</td>
+</tr>
+</tbody></table>
+<h2 id="Bugs-amp-Contributions"><a href="#Bugs-amp-Contributions" class="headerlink" title="Bugs &amp; Contributions"></a>Bugs &amp; Contributions</h2><p>Bugs, features and pull requests always welcome.</p>
+<p><a href="https://github.com/pughpugh/react-countdown-clock/issues" target="_blank" rel="noopener">github.com/pughpugh/react-countdown-clock/issues</a></p>
+<p>Also, it’s always just nice to hear how people are using it. Feel free to get in touch.</p>
+<ul>
+<li>Email: <a href="mailto:hugh@hcgallagher.co.uk" target="_blank" rel="noopener">hugh@hcgallagher.co.uk</a></li>
+<li>Web: <a href="http://www.hughgallagher.co.uk/" target="_blank" rel="noopener">www.hughgallagher.co.uk</a></li>
+</ul>
+<hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://github.com/pughpugh/react-countdown-clock" target="_blank" rel="noopener">react-countdown-clock</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">React, Clock</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/01/2020-07-30-React-Countdown-Clock/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-31-Web-Development-检查工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -972,92 +1143,6 @@
 
 
   
-    <article id="post-2020-07-22-More-efficient-SQL-with-query-planning-and-optimization" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/">More efficient SQL with query planning and optimization</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/" class="archive-article-date">
-  	<time datetime="2020-07-22T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Now that you’ve learned many ways of selecting data and are starting to do <code>SELECT</code>s across multiple tables, it’s a good time to talk about the efficiency of your SQL queries - how quickly do they execute, and could they execute faster?</p>
-<p>SQL is a declarative language - each query declares <em>what</em> we want the SQL engine to do, but it doesn’t say <em>how</em>.  As it turns out, the <em>how</em> – the “plan” – is what affects the efficiency of the queries, however, so it’s pretty important.</p>
-<h3 id="Why-do-SQL-queries-need-a-plan"><a href="#Why-do-SQL-queries-need-a-plan" class="headerlink" title="Why do SQL queries need a plan?"></a>Why do SQL queries need a plan?</h3><p>For example, let’s say we had this simple query:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM books WHERE author = &quot;J K Rowling&quot;;</span><br></pre></td></tr></table></figure>
-
-<p>For this query, these are 2 different ways that SQL could find the results:</p>
-<ul>
-<li><strong>Do a “full table scan”:</strong> look at every single row in the table, return the matching rows.</li>
-<li><strong>Create an “index”:</strong> Make a copy of the table sorted by author, then do a binary search to find the row where the author is “J K Rowling”, find the matching IDs, then do a binary search on the original table that returns the rows that match the ID.</li>
-</ul>
-<p>Which one is faster? It depends on the data, and on how often the query will be executed. If the table is only 10 rows long, then a full table scan only requires looking at 10 rows, and the first plan would work out well.</p>
-<p>If the table was 10 million rows long, then that full table scan would require looking at 10 million rows. It would be faster to do a binary search on a sorted table - we only need 23 lookups to find a value in 10 million rows. However, creating the sorted table would take a while (~230 million operations, depending on our engine). If we were executing that query many times (more than 23 times) or if we already had that table created, then that second plan would be better.</p>
-<p>How does a SQL engine decide which plan to pick? That’s an important step that we haven’t talked about yet, because we’ve been focused on the syntax of our queries, not their implementation. As you get into more advanced SQL usage on big databases, the planning step is increasingly important.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/22/2020-07-22-More-efficient-SQL-with-query-planning-and-optimization/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1162,6 +1247,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1170,15 +1259,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1202,11 +1287,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1226,10 +1311,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
@@ -1238,7 +1319,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1246,7 +1327,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1254,11 +1335,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1282,11 +1367,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1294,11 +1379,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1358,11 +1443,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1390,11 +1475,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1406,11 +1491,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1426,15 +1511,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1442,11 +1523,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">AWS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1462,11 +1547,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,11 +1563,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Life</a>
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color5">Life</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1494,11 +1579,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1518,6 +1603,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Interview</a>
               </li>
              
@@ -1526,11 +1615,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1542,15 +1631,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color3">Coding Style</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1570,15 +1659,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1594,11 +1683,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">

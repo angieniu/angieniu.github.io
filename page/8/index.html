@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 161</a>
+<a>Total Number of Articles: 162</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,135 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-07-12-AWS-Step-Functions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/12/2020-07-12-AWS-Step-Functions/">AWS Step Functions Build distributed applications using visual workflows</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/12/2020-07-12-AWS-Step-Functions/" class="archive-article-date">
+  	<time datetime="2020-07-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在做无人机项目的时候，如果考虑到place order之后，可能出现实际的order fulfillment的问题，也就是model 复杂状态的function。</p>
+<p>挑战：实际中调配机器，查看机器availability等等。</p>
+<p>解决方案：</p>
+<h1 id="AWS-Step-Function"><a href="#AWS-Step-Function" class="headerlink" title="AWS Step Function:"></a>AWS Step Function:</h1><p>AWS Step Functions lets you coordinate multiple AWS services into serverless workflows so you can build and update apps quickly. Using Step Functions, you can design and run workflows that stitch together services, such as AWS Lambda, AWS Fargate, and Amazon SageMaker, into feature-rich applications. Workflows are made up of a series of steps, with the output of one step acting as input into the next. Application development is simpler and more intuitive using Step Functions, because it translates your workflow into a state machine diagram that is easy to understand, easy to explain to others, and easy to change. Step Functions automatically triggers and tracks each step, and retries when there are errors, so your application executes in order and as expected. With Step Functions, you can craft long-running workflows such as machine learning model training, report generation, and IT automation. You can also build high volume, short duration workflows such as IoT data ingestion, and streaming data processing.</p>
+<p>Create a Workflow in 10 Minutes</p>
+<hr>
+<p>Want to learn how to create a serverless workflow with AWS Step Functions and AWS Lambda? <a href="https://aws.amazon.com/getting-started/tutorials/create-a-serverless-workflow-step-functions-lambda/?&trk=el_a131L000005uqknQAA&trkCampaign=pac_q2-04-2019_stepfunctions_tutorial_offering_link_1&sc_channel=el&sc_campaign=pac_q2-04-2019_stepfunctions_tutorial&sc_outcome=PaaS_Digital_Marketing&sc_geo=mult" target="_blank" rel="noopener">Learn more</a>. </p>
+<p><img src="https://d1.awsstatic.com/product-marketing/Step%20Functions/workflow.183110b44a1b1981ae30e563ab2733073a3139da.png" alt="Serverless workflow"></p>
+<hr>
+<p><strong><a href="https://aws.amazon.com/getting-started/tutorials/create-a-serverless-workflow-step-functions-lambda/?&trk=el_a131L000005unTnQAI&trkCampaign=pac_q2-04-2019_stepfunctions_tutorial_offering_link_2&sc_channel=el&sc_campaign=pac_q2-04-2019_stepfunctions_tutorial&sc_outcome=PaaS_Digital_Marketing&sc_geo=mult" target="_blank" rel="noopener">Get started»</a></strong></p>
+<h2 id="Benefits"><a href="#Benefits" class="headerlink" title="Benefits"></a>Benefits</h2><h3 id="Build-and-update-apps-quickly"><a href="#Build-and-update-apps-quickly" class="headerlink" title="Build and update apps quickly"></a>Build and update apps quickly</h3><p>AWS Step Functions lets you build visual workflows that enable fast translation of business requirements into technical requirements. You can build applications in a matter of minutes, and when needs change, you can swap or reorganize components without customizing any code.</p>
+<h3 id="Improve-resiliency"><a href="#Improve-resiliency" class="headerlink" title="Improve resiliency"></a>Improve resiliency</h3><p>AWS Step Functions manages state, checkpoints and restarts for you to make sure that your application executes in order and as expected. Built-in try/catch, retry and rollback capabilities deal with errors and exceptions automatically. </p>
+<h3 id="Write-less-code"><a href="#Write-less-code" class="headerlink" title="Write less code"></a>Write less code</h3><p>AWS Step Functions manages the logic of your application for you, and implements basic primitives such as branching, parallel execution, and timeouts. This removes extra code that may be repeated in your microservices and functions.</p>
+<p><a href="https://aws.amazon.com/blogs/compute/simplifying-application-orchestration-with-aws-step-functions-and-aws-sam/?sc_icampaign=step-functions-aws-sam&sc_ichannel=ha&sc_icontent=awssm-4927&sc_iplace=banner&trk=ha_awssm-4927" target="_blank" rel="noopener"><img src="https://d1.awsstatic.com/Digital%20Marketing/sitemerch/banners/Site-Merch-AWS-Step-Function-Lambda_MidPageBanner.7da7231e62b8fa541cf17998100aefe96de2c474.png" alt=" ">Application Orchestration Just Got EasierYou can now apply AWS SAM templates to AWS Step Functions workflows to simplify application orchestration.Read the blog </a></p>
+<h2 id="How-it-works"><a href="#How-it-works" class="headerlink" title="How it works"></a>How it works</h2><p><img src="https://d1.awsstatic.com/product-marketing/Step%20Functions/sfn_how-it-works.f795601e8338db32506b9abb01e71704f483fc81.png" alt="AWS Step Functions How it works"></p>
+<h2 id="Use-cases"><a href="#Use-cases" class="headerlink" title="Use cases"></a>Use cases</h2><h3 id="Data-processing"><a href="#Data-processing" class="headerlink" title="Data processing"></a>Data processing</h3><p>Step Functions can help ensure that long-running, multiple ETL jobs execute in order and complete successfully, instead of manually orchestrating those jobs or maintaining a separate application. You can also use Step Functions to standardize a machine learning training workflow to improve the accuracy of machine learning models.</p>
+<h3 id="Automate-tasks"><a href="#Automate-tasks" class="headerlink" title="Automate tasks"></a>Automate tasks</h3><p>Step Functions provides auditable automation of routine deployments, upgrades, installations, and migrations. You can use Step Functions to easily automate recurring tasks such as patch management, infrastructure selection, and data synchronization, and Step Functions will automatically scale, respond to timeouts, and retry failed tasks.</p>
+<h3 id="Modernize-a-monolith"><a href="#Modernize-a-monolith" class="headerlink" title="Modernize a monolith"></a>Modernize a monolith</h3><p>By using Step Functions to carve off a few tasks from the rest of your codebase, you can tackle the transformation of monolithic applications into microservices as a series of small steps. This allows you to untangle business-critical code safely and at your own pace, without disrupting operations and while you continue to deliver new features.</p>
+<h3 id="Application-orchestration"><a href="#Application-orchestration" class="headerlink" title="Application orchestration"></a>Application orchestration</h3><p>Use Step Functions to combine multiple AWS Lambda functions into responsive serverless applications and microservices, without having to write code for workflow logic, parallel processes, error handling, timeouts or retries. You can also orchestrate data and services that run on Amazon EC2 instances, containers, or on-premises servers.</p>
+<h4 id="See-more-use-cases-»"><a href="#See-more-use-cases-»" class="headerlink" title="See more use cases »"></a><a href="https://aws.amazon.com/step-functions/use-cases/" target="_blank" rel="noopener">See more use cases »</a></h4><hr>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://aws.amazon.com/step-functions/" target="_blank" rel="noopener">https://aws.amazon.com/step-functions/</a></p>
+<h1 id="State-Machine-Structure"><a href="#State-Machine-Structure" class="headerlink" title="State Machine Structure"></a>State Machine Structure</h1><p>State machines are defined using JSON text that represents a structure containing the following fields.</p>
+<ul>
+<li><p><strong><code>Comment</code> (Optional)</strong></p>
+<p>A human-readable description of the state machine.</p>
+</li>
+<li><p><strong><code>StartAt</code> (Required)</strong></p>
+<p>A string that must exactly match (is case sensitive) the name of one of the state objects.</p>
+</li>
+<li><p><strong><code>TimeoutSeconds</code> (Optional)</strong></p>
+<p>The maximum number of seconds an execution of the state machine can run. If it runs longer than the specified time, the execution fails with a <code>States.Timeout</code> <a href="https://docs.aws.amazon.com/step-functions/latest/dg/concepts-error-handling.html#error-handling-error-representation" target="_blank" rel="noopener">Error Name</a>.</p>
+</li>
+<li><p><strong><code>Version</code> (Optional)</strong></p>
+<p>The version of the Amazon States Language used in the state machine (default is “1.0”).</p>
+</li>
+<li><p><strong><code>States</code> (Required)</strong></p>
+<p>An object containing a comma-delimited set of states.</p>
+</li>
+</ul>
+<p>The <code>States</code> field contains <a href="https://docs.aws.amazon.com/step-functions/latest/dg/concepts-states.html" target="_blank" rel="noopener">States</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;State1&quot; : &#123;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    &quot;State2&quot; : &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>A state machine is defined by the states it contains and the relationships between them.</p>
+<p>The following is an example.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;Comment&quot;: &quot;A Hello World example of the Amazon States Language using a Pass state&quot;,</span><br><span class="line">  &quot;StartAt&quot;: &quot;HelloWorld&quot;,</span><br><span class="line">  &quot;States&quot;: &#123;</span><br><span class="line">    &quot;HelloWorld&quot;: &#123;</span><br><span class="line">      &quot;Type&quot;: &quot;Pass&quot;,</span><br><span class="line">      &quot;Result&quot;: &quot;Hello World!&quot;,</span><br><span class="line">      &quot;End&quot;: true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>When an execution of this state machine is launched, the system begins with the state referenced in the <code>StartAt</code> field (<code>&quot;HelloWorld&quot;</code>). If this state has an <code>&quot;End&quot;: true</code> field, the execution stops and returns a result. Otherwise, the system looks for a <code>&quot;Next&quot;:</code> field and continues with that state next. This process repeats until the system reaches a terminal state (a state with <code>&quot;Type&quot;: &quot;Succeed&quot;</code>, <code>&quot;Type&quot;: &quot;Fail&quot;</code>, or <code>&quot;End&quot;: true</code>), or a runtime error occurs.</p>
+<p>The following rules apply to states within a state machine:</p>
+<ul>
+<li>States can occur in any order within the enclosing block, but the order in which they’re listed doesn’t affect the order in which they’re run. The contents of the states determines this order.</li>
+<li>Within a state machine, there can be only one state that’s designated as the <code>start</code> state, designated by the value of the <code>StartAt</code> field in the top-level structure. This state is the one that is executed first when the execution starts.</li>
+<li>Any state for which the <code>End</code> field is <code>true</code> is considered an <code>end</code> (or <code>terminal</code>) state. Depending on your state machine logic—for example, if your state machine has multiple branches of execution—you might have more than one <code>end</code> state.</li>
+<li>If your state machine consists of only one state, it can be both the <code>start</code> state and the <code>end</code> state.</li>
+</ul>
+<hr>
+<h3 id="Reference-1"><a href="#Reference-1" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-state-machine-structure.html" target="_blank" rel="noopener">https://docs.aws.amazon.com/step-functions/latest/dg/amazon-states-language-state-machine-structure.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/12/2020-07-12-AWS-Step-Functions/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-11-GET-VS-POST" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1083,91 +1212,6 @@
 
 
   
-    <article id="post-2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/">Event-based Communication between Microservices (integration events), Event Bus Implementation(s)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/" class="archive-article-date">
-  	<time datetime="2020-07-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Event-Bus-Implementation-s"><a href="#Event-Bus-Implementation-s" class="headerlink" title="Event Bus Implementation(s)"></a>Event Bus Implementation(s)</h1><p>Event-driven architecture pattern is a distributed asynchronous architecture pattern to create highly scalable reactive applications. The pattern suits for every level application stack from small to complex ones. The main idea is delivering and processing events asynchronously.</p>
-<p>There are a couple of ways to implement event-driven pattern to your stack. One of them is using “<strong>Broker Topology</strong>”. In broker topology, you send events to a central broker and all subscribers of these broker receive and process events asynchronously.</p>
-<p><img src="https://miro.medium.com/max/60/1*afKDwjre2y0Aqw-VBy--mA.png?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/1234/1*afKDwjre2y0Aqw-VBy--mA.png" alt="img"></p>
-<p>Event Bus with multiple subscribers(green arrows) and notifiers(red arrows)</p>
-<p>In this story, I shared <em>four implementations</em> of event bus and with their <em>goods</em> and <em>drawbacks</em>. In all implementations, all event generators send events to the event bus. Event processors(subscribers) subscribe to the event bus. And subscribers can also create new events and pass it to the event bus.</p>
-<h1 id="i1-Notify-the-Event-to-All-Subscribers"><a href="#i1-Notify-the-Event-to-All-Subscribers" class="headerlink" title="i1) Notify the Event to All Subscribers"></a>i1) Notify the Event to All Subscribers</h1><p><img src="https://miro.medium.com/max/60/1*ICQkcUULUpt9EUYl_W9Omw.png?q=20" alt="img"></p>
-<p><img src="https://miro.medium.com/max/1426/1*ICQkcUULUpt9EUYl_W9Omw.png" alt="img"></p>
-<p>Event Bus sends all incoming events(red arrows) to all subscribers(blue boxes) without any touch</p>
-<h2 id="Actors"><a href="#Actors" class="headerlink" title="Actors"></a>Actors</h2><p>Event Bus, Subscribers (Event Processor), Event Creators</p>
-<h2 id="Implementation"><a href="#Implementation" class="headerlink" title="Implementation"></a>Implementation</h2><p>Whenever the event bus receives an event from event creators, it passes the event to all subscribers. Subscribers process the event data with their own logic. Subscribers can also create new events and pass it to the event bus too. Event bus does not care about if the receiver fails to receive the event message.</p>
-<h2 id="Functions-Needed"><a href="#Functions-Needed" class="headerlink" title="Functions Needed"></a>Functions Needed</h2><p><strong>Notify</strong>, <strong>subscribe</strong>, <strong>unsubscribe</strong>, <strong>subscribers</strong> are enough to implement such event bus.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Event-based Communication, Microservices, Event Bus</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/02/2020-07-02-Event-based-Communication-between-Microservices-(integration-events),-Event-Bus-Implementation(s)/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
@@ -1272,6 +1316,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1280,15 +1328,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1312,11 +1356,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1336,10 +1380,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
@@ -1348,7 +1388,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1356,7 +1396,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,11 +1404,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1392,11 +1436,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1404,11 +1448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1468,11 +1512,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1500,11 +1544,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1516,11 +1560,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1536,15 +1580,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1552,11 +1592,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">AWS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1572,11 +1616,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1588,11 +1632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Life</a>
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color5">Life</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1604,11 +1648,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1628,6 +1672,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Interview</a>
               </li>
              
@@ -1636,11 +1684,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1652,15 +1700,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color3">Coding Style</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1680,15 +1728,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1704,11 +1752,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 161</a>
+<a>Total Number of Articles: 162</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -144,6 +144,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2020-10-27-Google-Java-Style-Guide" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/27/2020-10-27-Google-Java-Style-Guide/">Google Java Style Guide</a>
+    </h1>
+  
+
+        
+        <a href="/2020/10/27/2020-10-27-Google-Java-Style-Guide/" class="archive-article-date">
+  	<time datetime="2020-10-27T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://google.github.io/styleguide/javaguide.html" target="_blank" rel="noopener">https://google.github.io/styleguide/javaguide.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Coding Style</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/27/2020-10-27-Google-Java-Style-Guide/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2020-10-26-SQL-Subqueries-Notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -165,27 +239,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>HW3</p>
-<ol>
-<li>Question 2: not in 因为all only!!!</li>
-</ol>
+<p>※ Question 2: not in 因为all only!!!</p>
 <p>SELECT DISTINCT F.origin_city AS city</p>
 <p>FROM FLIGHTS AS F</p>
 <p>WHERE F.actual_time &lt; 180 AND F.canceled = 0</p>
 <p>ORDER BY F.origin_city ASC; </p>
-<ol start="2">
-<li>1 group by</li>
-</ol>
-<ol start="3">
-<li>null先处理isnull(X,0)再做运算</li>
-</ol>
-<ol start="4">
-<li>count(*) based on outside query:</li>
-</ol>
+<p>※ 1 group by</p>
+<p>※ null先处理isnull(X,0)再做运算</p>
+<p>※ count(*) based on outside query:</p>
 <p>count(*) would be all count even though it’s group by.</p>
 <p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk3qxei5mpj30d60eg3z9.jpg" alt="Screen Shot 2020-10-26 at 10.43.31 AM"></p>
-<ol start="5">
-<li>EG:</li>
-</ol>
+<p>※ EG:</p>
 <p>SELECT DISTINCT F.dest_city AS city</p>
 <p>FROM FLIGHTS AS F</p>
 <p>WHERE F.dest_city NOT IN (SELECT DISTINCT F2.dest_city</p>
@@ -196,15 +260,11 @@
 <p>  WHERE F3.origin_city = ‘Seattle WA’ AND F3.dest_city != ‘Seattle WA’)</p>
 <p>ORDER BY city ASC;</p>
 <p>– NOT IN, outer: need distinct.</p>
-<ol start="6">
-<li>EG:</li>
-</ol>
+<p>※ EG:</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> F.dest_city <span class="keyword">AS</span> city</span><br><span class="line"><span class="keyword">FROM</span> FLIGHTS <span class="keyword">AS</span> F</span><br><span class="line"><span class="keyword">WHERE</span> F.dest_city <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> F2.dest_city</span><br><span class="line">  <span class="keyword">FROM</span> FLIGHTS <span class="keyword">AS</span> F1, Flights <span class="keyword">AS</span> F2</span><br><span class="line">  <span class="keyword">WHERE</span> F1.dest_city = F2.origin_city <span class="keyword">AND</span> F1.origin_city = <span class="string">'Seattle WA'</span>) <span class="keyword">AND</span></span><br><span class="line">  F.dest_city <span class="keyword">NOT</span> <span class="keyword">IN</span> (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> F3.dest_city</span><br><span class="line">  <span class="keyword">FROM</span> FLIGHTS <span class="keyword">AS</span> F3</span><br><span class="line">  <span class="keyword">WHERE</span> F3.origin_city = <span class="string">'Seattle WA'</span> <span class="keyword">AND</span> F3.dest_city != <span class="string">'Seattle WA'</span>)</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> city <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
 
 <p>First subquerry + second subquery, no runtime issue, coz first will rule out more querries. just switch the sequence to try.</p>
-<ol start="7">
-<li>Subquery distinct:</li>
-</ol>
+<p>※ Subquery distinct:</p>
 <p>Case 1: outside main query: distinct, when inside subqueries NOT IN distinct.</p>
 <p>Case 2: outside no need to distinct, as mainquery and subquery are connected through id.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span></span><br><span class="line">  FlightCarrier</span><br><span class="line">  <span class="keyword">AS</span></span><br><span class="line">  (<span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> F.carrier_id</span><br><span class="line">   <span class="keyword">FROM</span> FLIGHTS <span class="keyword">AS</span> F</span><br><span class="line">   <span class="keyword">WHERE</span> F.origin_city = <span class="string">'Seattle WA'</span></span><br><span class="line">   <span class="keyword">AND</span> F.dest_city = <span class="string">'San Francisco CA'</span></span><br><span class="line">  )</span><br><span class="line"><span class="keyword">SELECT</span> C.name <span class="keyword">AS</span> carrier</span><br><span class="line"><span class="keyword">FROM</span> CARRIERS <span class="keyword">AS</span> C, FlightCarrier <span class="keyword">AS</span> FCarrier</span><br><span class="line"><span class="keyword">WHERE</span> C.cid = FCarrier.carrier_id</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> C.name <span class="keyword">ASC</span>;</span><br></pre></td></tr></table></figure>
@@ -212,9 +272,7 @@
 <p>Case 3: group by in this case =&gt; distinct, main query no need distinct too. Due to MIN(P1.time), but it’s better to have Distinct in subquerry. group by ID is not necessary 1id/line.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">WITH</span></span><br><span class="line"> ShortestCompletion</span><br><span class="line"> <span class="keyword">AS</span></span><br><span class="line"> (</span><br><span class="line">  <span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> M1.id <span class="keyword">AS</span> <span class="keyword">id</span>, <span class="keyword">MIN</span>(P1.time) <span class="keyword">AS</span> <span class="built_in">time</span></span><br><span class="line">  <span class="keyword">FROM</span> Meet <span class="keyword">AS</span> M1, <span class="keyword">Event</span> <span class="keyword">AS</span> E1, <span class="keyword">Performance</span> <span class="keyword">AS</span> P1</span><br><span class="line">  <span class="keyword">WHERE</span> M1.id = E1.mid <span class="keyword">AND</span> P1.eid = E1.id <span class="keyword">AND</span> P1.won = <span class="number">1</span></span><br><span class="line">  <span class="keyword">GROUP</span> <span class="keyword">BY</span> M1.id</span><br><span class="line"> )</span><br><span class="line"><span class="keyword">SELECT</span> M.name, M.year, E.name, P.time</span><br><span class="line"><span class="keyword">FROM</span> Meet <span class="keyword">AS</span> M, <span class="keyword">Event</span> <span class="keyword">AS</span> E, <span class="keyword">Performance</span> <span class="keyword">AS</span> P, ShortestCompletion <span class="keyword">AS</span> SC</span><br><span class="line"><span class="keyword">WHERE</span> M.id = E.mid <span class="keyword">AND</span> P.eid = E.id <span class="keyword">AND</span> SC.id = M.id <span class="keyword">AND</span> P.time = SC.time;</span><br></pre></td></tr></table></figure>
 
-<ol start="8">
-<li>Subqueries in WHERE (NOT) IN: uncorrelated, no id = id.</li>
-</ol>
+<p>※ Subqueries in WHERE (NOT) IN: uncorrelated, no id = id.</p>
 
       
 
@@ -985,83 +1043,6 @@
 
 
   
-    <article id="post-2020-09-10-Quick-Select-Algorithm" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/10/2020-09-10-Quick-Select-Algorithm/">Quick Select Algorithm</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/10/2020-09-10-Quick-Select-Algorithm/" class="archive-article-date">
-  	<time datetime="2020-09-10T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Quick Select:</p>
-<p>Time: average: O(n): n + n/2 + n/4 + … + 1</p>
-<p>​            worst: O(n^2): n + (n - 1) + (n - 2) + ….</p>
-<p>Space: O(1)</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Algorithm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/10/2020-09-10-Quick-Select-Algorithm/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1166,6 +1147,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
@@ -1174,15 +1159,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, refresh page, Ajax, SetInterval</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1206,11 +1187,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1230,10 +1211,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
@@ -1242,7 +1219,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1250,7 +1227,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1258,11 +1235,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, MVVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1286,11 +1267,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1298,11 +1279,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
+                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Function Components, Class Component</a>
+                <a href="javascript:void(0)" class="js-tag color1">Nginx</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1362,11 +1343,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1394,11 +1375,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1410,11 +1391,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
+                <a href="javascript:void(0)" class="js-tag color5">Song</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Song</a>
+                <a href="javascript:void(0)" class="js-tag color2">Git, GitHub</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1430,15 +1411,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1446,11 +1423,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">AWS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AWS, Serverless, AWS Lambda</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1466,11 +1447,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1482,11 +1463,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Life</a>
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
+                <a href="javascript:void(0)" class="js-tag color5">Life</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1498,11 +1479,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
+                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1522,6 +1503,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Interview</a>
               </li>
              
@@ -1530,11 +1515,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TreeSet, TreeMap</a>
+                <a href="javascript:void(0)" class="js-tag color2">Github</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Github</a>
+                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1546,15 +1531,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
+                <a href="javascript:void(0)" class="js-tag color3">Coding Style</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GeoJson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1574,15 +1559,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1598,11 +1583,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color1">Problem-solving</a>
               </li>
              
               <li class="article-tag-list-item">
