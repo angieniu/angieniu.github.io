@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 162</a>
+<a>Total Number of Articles: 163</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,116 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/">Designing a URL Shortening service like TinyURL</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/" class="archive-article-date">
+  	<time datetime="2020-08-02T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Let’s design a URL shortening service like TinyURL. This service will provide short aliases redirecting to long URLs. </p>
+<p>Similar services: bit.ly, goo.gl, qlink.me, etc. </p>
+<p>Difficulty Level: Easy</p>
+<details open class="styles__PageTOCStyled-sc-1u9xzlw-0 fIhOon" style="box-sizing: border-box; display: block; background: rgb(245, 245, 245); border-radius: 4px; min-width: 280px;"><summary role="button" tabindex="0" class="styles__HeadingWrap-sc-1u9xzlw-1 bJONCf" style="box-sizing: border-box; display: block; cursor: pointer; outline-style: none; padding: 4px 4px 4px 16px; border: 1px solid rgb(229, 229, 229); border-top-left-radius: 4px; border-top-right-radius: 4px;"><div class="styles__HeadingWrapInner-sc-1u9xzlw-2 lazzRz" style="box-sizing: border-box; display: flex; -webkit-box-align: center; align-items: center;"><h6 class="MuiTypography-root jss189 jss242 jss180  MuiTypography-h6" style="box-sizing: border-box; color: inherit; font-family: &quot;Nunito Sans&quot;, Verdana, Helvetica, sans-serif; font-weight: 700; line-height: 1.5; margin: 0px; font-size: 1.6rem; letter-spacing: 0.5px;">We'll cover the following</h6><button class="MuiButtonBase-root MuiIconButton-root jss249 jss250 jss243 jss244 jss246" tabindex="0" type="button" style="box-sizing: border-box; color: rgba(0, 0, 0, 0.54); font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: 1.5rem; line-height: inherit; font-family: inherit; margin: 0px 0px 0px auto; overflow: visible; text-transform: none; appearance: none; cursor: pointer; border: 1px solid transparent; display: inline-flex; outline: 0px; padding: 9px; position: relative; align-items: center; user-select: none; border-radius: 2px; vertical-align: middle; justify-content: center; text-decoration: none; background-color: transparent; -webkit-tap-highlight-color: transparent; flex: 0 0 auto; text-align: center; transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;"><span class="MuiIconButton-label" style="box-sizing: border-box; width: 24px; display: flex; align-items: inherit; justify-content: inherit;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg></span><span class="MuiTouchRipple-root" style="box-sizing: border-box; top: 0px; left: 0px; right: 0px; bottom: 0px; z-index: 0; overflow: hidden; position: absolute; border-radius: inherit; pointer-events: none;"></span></button></div></summary><div class="MuiBox-root jss251" style="box-sizing: border-box; padding: 16px;"><div class="markdown-container-div Markdown__MarkdownContainerDiv-sc-1j2yuel-5 jeFsGl" height="auto" style="box-sizing: border-box; height: auto; width: 411.188px;"><div class="markdownViewer Markdown__Viewer-sc-1j2yuel-1 cEcngF" role="none" style="box-sizing: border-box; color: rgb(61, 61, 78); line-height: 1.7; outline: none; font-size: 18px; overflow-wrap: break-word; font-family: &quot;Nunito Sans&quot;;"><ul data-id="5bf0f1b7b439409ac11ec194510492d5" style="box-sizing: border-box; margin-bottom: 10px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px1-why-do-we-need-url-shorteningdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">1. Why do we need URL shortening?</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px2-requirements-and-goals-of-the-systemdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">2. Requirements and Goals of the System</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px3-capacity-estimation-and-constraintsdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">3. Capacity Estimation and Constraints</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px4-system-apisdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">4. System APIs</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px5-database-designdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">5. Database Design</a><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#database-schema" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">Database Schema:</a></li></ul></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px6-basic-system-design-and-algorithmdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">6. Basic System Design and Algorithm</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#a-encoding-actual-url" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">a. Encoding actual URL</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#b-generating-keys-offline" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">b. Generating keys offline</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px7-data-partitioning-and-replicationdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">7. Data Partitioning and Replication</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px8-cachediv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">8. Cache</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px9-load-balancer-lbdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">9. Load Balancer (LB)</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px10-purging-or-db-cleanupdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">10. Purging or DB cleanup</a></li></ul></li></ul></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><ul style="box-sizing: border-box; margin-bottom: 0px; margin-top: 0px; margin-left: -20px;"><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px11-telemetrydiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">11. Telemetry</a></li><li style="box-sizing: border-box; margin-bottom: 5px; list-style: none;"><a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px12-security-and-permissionsdiv" style="box-sizing: border-box; background-color: transparent; color: rgb(0, 0, 0); text-decoration: none; transition: color 0.2s ease 0s; display: flex;" target="_blank" rel="noopener">12. Security and Permissions</a></li></ul></li></ul></li></ul></div></div></div></details>
+
+<h3 id="1-Why-do-we-need-URL-shortening"><a href="#1-Why-do-we-need-URL-shortening" class="headerlink" title="1. Why do we need URL shortening?#"></a>1. Why do we need URL shortening?<a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px1-why-do-we-need-url-shorteningdiv" target="_blank" rel="noopener">#</a></h3><p>URL shortening is used to create shorter aliases for long URLs. We call these shortened aliases “short links.” Users are redirected to the original URL when they hit these short links. Short links save a lot of space when displayed, printed, messaged, or tweeted. Additionally, users are less likely to mistype shorter URLs.</p>
+<p>For example, if we shorten this page through TinyURL:</p>
+<blockquote>
+<p><a href="https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904/" target="_blank" rel="noopener">https://www.educative.io/collection/page/5668639101419520/5649050225344512/5668600916475904/</a></p>
+</blockquote>
+<p>We would get:</p>
+<blockquote>
+<p><a href="http://tinyurl.com/jlg8zpc" target="_blank" rel="noopener">http://tinyurl.com/jlg8zpc</a></p>
+</blockquote>
+<p>The shortened URL is nearly one-third the size of the actual URL.</p>
+<p>URL shortening is used for optimizing links across devices, tracking individual links to analyze audience and campaign performance, and hiding affiliated original URLs.</p>
+<p>If you haven’t used <a href="http://tinyurl.com/" target="_blank" rel="noopener">tinyurl.com</a> before, please try creating a new shortened URL and spend some time going through the various options their service offers. This will help you a lot in understanding this chapter.</p>
+<h3 id="2-Requirements-and-Goals-of-the-System"><a href="#2-Requirements-and-Goals-of-the-System" class="headerlink" title="2. Requirements and Goals of the System#"></a>2. Requirements and Goals of the System<a href="https://www.educative.io/courses/grokking-the-system-design-interview/m2ygV4E81AR#div-stylecolorblack-background-colore2f4c7-border-radius5px-padding5px2-requirements-and-goals-of-the-systemdiv" target="_blank" rel="noopener">#</a></h3><p>💡   <strong>You should always clarify requirements at the beginning of the interview. Be sure to ask questions to find the exact scope of the system that the interviewer has in mind.</strong></p>
+<p>Our URL shortening system should meet the following requirements:</p>
+<p><strong>Functional Requirements:</strong></p>
+<ol>
+<li>Given a URL, our service should generate a shorter and unique alias of it. This is called a short link. This link should be short enough to be easily copied and pasted into applications.</li>
+<li>When users access a short link, our service should redirect them to the original link.</li>
+<li>Users should optionally be able to pick a custom short link for their URL.</li>
+<li>Links will expire after a standard default timespan. Users should be able to specify the expiration time.</li>
+</ol>
+<p><strong>Non-Functional Requirements:</strong></p>
+<ol>
+<li>The system should be highly available. This is required because, if our service is down, all the URL redirections will start failing.</li>
+<li>URL redirection should happen in real-time with minimal latency.</li>
+<li>Shortened links should not be guessable (not predictable).</li>
+</ol>
+<p><strong>Extended Requirements:</strong></p>
+<ol>
+<li>Analytics; e.g., how many times a redirection happened?</li>
+<li>Our service should also be accessible through REST APIs by other services.</li>
+</ol>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">System Design, URL Shortening service</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/02/2020-08-02-Designing-a-URL-Shortening-service-like-TinyURL/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-07-30-React-Countdown-Clock" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1055,94 +1165,6 @@
 
 
   
-    <article id="post-2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/">Alphabet is partnering with FedEx and Walgreens to bring drone delivery to the US</a>
-    </h1>
-  
-
-        
-        <a href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/" class="archive-article-date">
-  	<time datetime="2020-07-23T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://cms.qz.com/wp-content/uploads/2019/09/Wing_9-19_Partner-Announcement_FedEx-hero-image-e1568910517306.png?w=410&h=230&strip=all&quality=75" alt="The Wing drone delivering a FedEx package."></p>
-<p>​                                        Wing’s drone in action.</p>
-<p>Google sister company Wing announced today that it would be partnering with FedEx and the drugstore chain Walgreens to bring autonomous drone deliveries to the US in October.</p>
-<p>The pilot program will be launched in Christiansburg, Virginia, one of the two areas in the state that Wing has been testing its drone technology for years. In April, Wing was certified by the US Federal Aviation Administration (FAA) to become what it says was <a href="https://qz.com/1602663/alphabets-wing-delivery-drones-get-faa-approval/" target="_blank" rel="noopener">the first company</a> in the country to be able to offer autonomous drone deliveries. Wing has completed over 80,000 test flights and thousands of deliveries at its facilities in Australia and the US.</p>
-<p>People expecting packages from FedEx will be able to choose to get their deliveries made via drone, assuming that they live in certain areas that Wing has designated it can safely deliver parcels in. Similarly, Walgreens customers will be able to order products, such as non-prescription medicine, and have them delivered by drone. Walgreens said in a release that 78% of the US population lives within 5 miles of one of its stores. Wing said that its drones can currently make a round-trip flight of about 6 miles (9.7 km), traveling about 60 miles per hour (97 km per hour), and can carry around 3 lbs (1.4 kg) of payload. The company also said that it would be offering deliveries from a local Virginia retailer, Sugar Magnolia. Wing won’t be charging for the delivery service itself during the trial.</p>
-<p><img src="https://cms.qz.com/wp-content/uploads/2019/09/Wing_9-19_Partner-Announcement_FedEx-co-branded-package-e1568910592814.png?w=450&h=333&crop=1&strip=all&quality=75" alt="img"></p>
-<p>WING</p>
-<p>The FedEx package holder, designed with Wing.</p>
-<p>Wing said on a call with journalists that it will soon be reaching out to members of the Christiansburg community to let them know if they will be able to accept deliveries. Wing’s drones don’t actually land on the ground when they make deliveries; instead, they hover about 23 ft (7 m) off the ground, lowering their packages down through a winch cable system. If anything happens to snag the cable as it’s delivering a package, the drone can sense the tension in the cord and release it, hopefully flying away without incident. It still requires what it calls safe delivery zones, like a backyard or a front pathway outside a house, to be able to make a delivery.</p>
-<p>Drone deliveries have long been a subject of research, conjuring up images of a customer sitting on their couch, tapping a few buttons, and having a new outfit or dinner delivered to their door in a matter of minutes. Wing, first as part of Google’s X “moonshot factory,” has been trying to turn this fantasy into a reality since 2012, and Amazon has been quite public with its desire to do similarly <a href="https://qz.com/561581/amazon-wants-to-use-its-new-drones-to-deliver-your-packages-as-long-as-you-have-a-big-lawn/" target="_blank" rel="noopener">since 2013</a>.</p>
-<p>But even with relaxed regulations <a href="https://qz.com/1274105/the-us-government-has-approved-the-first-statewide-tests-for-autonomous-drone-deliveries/" target="_blank" rel="noopener">under the Trump administration</a> spurring myriad autonomous drone test programs launched across the US, regular drone deliveries still remain a pipe dream. Wing’s new service, launching in a very small area that its team knows well, requires a large space of land to drop a package safely to customers. Unless you happen to have a yard, it doesn’t seem likely that current technology is going to be able to provide a solution to make what the industry calls “last-mile” deliveries to end consumers a reality.</p>
-<p>For some types of deliveries, however, autonomous drone deliveries could be life-changing. The work that <a href="https://qz.com/africa/1604374/ziplines-drone-delivery-launches-in-ghana-with-vaccines/" target="_blank" rel="noopener">Zipline is doing in Africa</a>, for example, sending critical medical supplies to remote clinics, has proved invaluable. Drones can reach places that most other methods of delivery can’t easily, and it’s easy to see why Google would choose a location near the difficult-to-cover Appalachian Mountains.</p>
-<p>But for now, while the company says it’s the largest pilot program launched under the new Trump administration regulations, Wing’s work remains a relatively small trial in a specific part of the country. If the test goes well, Wing said it would like to offer deliveries across the US in the future.</p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>[<a href="https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing%20said%20that%20its%20drones,(1.4%20kg)%20of%20payload.]" target="_blank" rel="noopener">https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing%20said%20that%20its%20drones,(1.4%20kg)%20of%20payload.]</a>(<a href="https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing" target="_blank" rel="noopener">https://qz.com/1712200/google-wing-launching-us-drone-deliveries-with-fedex-walgreens/#:~:text=Wing</a> said that its drones,(1.4 kg) of payload.)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Drone Delivery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/23/2020-07-23-Alphabet-is-partnering-with-FedEx-and-Walgreens-to-bring-drone-delivery-to-the-US/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
@@ -1247,14 +1269,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
@@ -1263,11 +1277,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Management, PM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL, NoSQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1279,11 +1297,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shallow Copy, Deep Copy, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1303,15 +1325,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">SQL, PowerBI, Data Visualization</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
+                <a href="javascript:void(0)" class="js-tag color4">SQL, Relational Database, Tableau</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1319,11 +1337,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
+                <a href="javascript:void(0)" class="js-tag color3">Frontend - Backend Communication</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1332,6 +1346,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Software Development, Cloud Engineering, Real-time Parking Availability</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,15 +1373,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Hooks</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Higher-Order Component, Higher-Order Function</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Node.js, Express FrameWork</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,7 +1389,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color1">React</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1387,7 +1405,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1395,11 +1413,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Android, Flickr API, Image Search</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Android, Thread, Room, Components, Navigation Graph, Experience, Resource</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1411,15 +1433,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Front End, JavaScript, Map, Leaflet, Mapbox, OpenLayer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1427,15 +1445,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
+                <a href="javascript:void(0)" class="js-tag color2">Event-based Communication, Microservices, Event Bus</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">React, Multistep Form</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">React, MVVM</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1451,15 +1469,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+                <a href="javascript:void(0)" class="js-tag color3">HashMap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1467,19 +1477,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Route Inspection Problem, Algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1487,7 +1493,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knapsack problem, algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Drone Delivery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1499,14 +1513,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
@@ -1515,15 +1521,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML tags</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Google Maps, Direction, Reactjs, JavaScript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1535,19 +1557,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Reading</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
+                <a href="javascript:void(0)" class="js-tag color1">hash table</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">String, StringBuffer, StringBuilder</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Architecture</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1563,10 +1585,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Life</a>
               </li>
              
@@ -1575,15 +1593,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Microservice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1595,11 +1617,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
+                <a href="javascript:void(0)" class="js-tag color3">Java, collection, List, Set, Iterator</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Java, collection, List, Set, Iterator</a>
+                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1619,11 +1641,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Behavior Questions</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Database</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java, Object-Oriented</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1647,15 +1673,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
+                <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1663,7 +1685,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+                <a href="javascript:void(0)" class="js-tag color2">GoLang</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1671,11 +1693,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Database, Javascript</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1683,7 +1709,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Principles</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1695,15 +1721,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Responsive Development</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
+                <a href="javascript:void(0)" class="js-tag color5">Real-time Streaming Data, Power BI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1715,11 +1737,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
+                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Park and Ride, Seattle</a>
+                <a href="javascript:void(0)" class="js-tag color2">System Design, URL Shortened Service, Like Functionality</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1728,6 +1750,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Cache, Cookie</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React, Router</a>
               </li>
              
               <li class="article-tag-list-item">
