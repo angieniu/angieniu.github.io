@@ -58,7 +58,7 @@
 			</ul>
 		</nav>
 <nav>
-<a>Total Number of Articles: 163</a>
+<a>Total Number of Articles: 165</a>
 </nav>
 		<nav class="header-smart-menu">
     		
@@ -143,6 +143,256 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-2020-12-26-ArrayList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/26/2020-12-26-ArrayList/">ArrayList</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/26/2020-12-26-ArrayList/" class="archive-article-date">
+  	<time datetime="2020-12-26T08:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ArrayList: a resizable array. </p>
+<ul>
+<li>maintain an array with potential unused cells. </li>
+<li>will expand the array if there is no unused cells available, by replacing the maintained array with a new larger array (1.5 times larger by default).</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> E[] array; <span class="comment">// the maintained array, the current maximum capacity is array.length;</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> size; <span class="comment">// the number of actually used cells in the maintained array</span></span><br><span class="line">	<span class="comment">// no direct access to these internal implementation details.</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get(int index): array[index]</span></span><br><span class="line"><span class="comment">// set(int index, E e): array[index] = e</span></span><br><span class="line"><span class="comment">// size(): size, when call add(), remove(), size is modified as well.</span></span><br><span class="line"><span class="comment">// .add()</span></span><br><span class="line"><span class="comment">// .remove</span></span><br><span class="line">List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(); <span class="comment">// &lt;&gt;</span></span><br><span class="line">list.add(<span class="number">1</span>); <span class="comment">// list.add(Integer.valueOf(1));</span></span><br><span class="line">list.size();</span><br><span class="line">list.add(<span class="number">0</span>, <span class="number">2</span>);</span><br><span class="line">list.get(<span class="number">1</span>);</span><br><span class="line">list.remove(<span class="number">1</span>);</span><br><span class="line">list.set(<span class="number">0</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">10</span>; i &lt;= <span class="number">20</span>; i++) &#123;</span><br><span class="line">  list.add(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  list.remove(list.size() - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm2bh5axjvj30hv0f8wgo.jpg" alt="Screen Shot 2020-12-26 at 8.48.04 PM"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm2c2o9nhjj30ep02caa4.jpg" alt="Screen Shot 2020-12-26 at 9.08.47 PM"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm2cmpwhpoj30io08fdgf.jpg" alt="Screen Shot 2020-12-26 at 9.28.02 PM"></p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm2cn021ixj30i8081aam.jpg" alt="Screen Shot 2020-12-26 at 9.28.13 PM"></p>
+<p>LinkedList: 1 by 1，并且中间空了以后需要挪动。</p>
+<p>ArrayList: 中间空了以后需要挪动</p>
+<h3 id="When-ArrayList-When-LinkedList"><a href="#When-ArrayList-When-LinkedList" class="headerlink" title="When ArrayList, When LinkedList?"></a>When ArrayList, When LinkedList?</h3><ol>
+<li>a lot of random access: ArrayList</li>
+<li>always add/remove at the end: ArrayList. (when time complexity is similar for using ArrayList and LinkedList, use ArrayList. ArrayList uses memory more efficiently. For each element, LinkedList needs to create different ListNode in memory, extra cost of storing the “next”, “prev” reference (overhead), and the allocation is not contiguous.)</li>
+<li>Stack and Vector class not recommended. Vector =&gt; use ArrayList. Stack =&gt; use Deque (LinkedList, ArrayDeque).</li>
+</ol>
+<h3 id="Logical-Operator-Short-Circuit"><a href="#Logical-Operator-Short-Circuit" class="headerlink" title="Logical Operator Short Circuit"></a>Logical Operator Short Circuit</h3><p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm2dll8lypj30ge078wf8.jpg" alt="Screen Shot 2020-12-26 at 10.01.32 PM"></p>
+<ul>
+<li><h3 id="Bitwise-AND-amp"><a href="#Bitwise-AND-amp" class="headerlink" title="Bitwise AND (&amp;)"></a>Bitwise <em>AND</em> (&amp;)</h3><p><strong>The AND operator compares each binary digit of two integers and gives back 1 if both are 1, otherwise it returns 0.</strong></p>
+<p>This is similar to the &amp;&amp; operator with <em>boolean</em> values. When the values of two <em>booleans</em> are <em>true</em> the result of a &amp;&amp; operation is <em>true.</em></p>
+<p>Let’s use the same example as above, except now using the &amp; operator instead of the | operator:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">givenTwoIntegers_whenAndOperator_thenNewDecimalNumber</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> value1 = <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">int</span> value2 = <span class="number">5</span>;</span><br><span class="line">    <span class="keyword">int</span> result = value1 &amp; value2;</span><br><span class="line">    assertEquals(<span class="number">4</span>, result);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Let’s also see the binary representation of this operation:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0110</span></span><br><span class="line"><span class="number">0101</span></span><br><span class="line">-----</span><br><span class="line"><span class="number">0100</span></span><br></pre></td></tr></table></figure>
+
+<p><em>0100</em> is <em>4</em> in decimal, therefore, the result is:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result : <span class="number">4</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>&amp;&amp;</strong> is <strong>logical AND</strong> operator comparing boolean values of operands only. </p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ArrayList</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/26/2020-12-26-ArrayList/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2020-12-25-Linked-List-and-Java-List" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Linked-List"><a href="#Linked-List" class="headerlink" title="Linked List"></a>Linked List</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">int</span> value;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> ListNode next;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// public ListNode prev;</span></span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ListNode</span> <span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>.value = value;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">this</span>.next = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ListNode head = <span class="keyword">new</span> ListNode(<span class="number">3</span>);</span><br><span class="line"></span><br><span class="line">head.next = <span class="keyword">new</span> ListNode(<span class="number">4</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Array-vs-Linked-List"><a href="#Array-vs-Linked-List" class="headerlink" title="Array vs. Linked List:"></a>Array vs. Linked List:</h3><ol>
+<li><p>Memory Layout</p>
+<p>Array: consecutive allocated memory space, no overhead;</p>
+<p>Linked List: non-consecutive, overhead of multiple objects with the “next” reference</p>
+</li>
+<li><p>(Random access time)</p>
+<p>Array: O(1)</p>
+<p>Linked List: O(n)</p>
+</li>
+<li><p>Search time non-sorted</p>
+<p>Array: O(n)</p>
+<p>Linked List: O(n)</p>
+</li>
+<li><p>Search time sorted</p>
+<p>Array: O(logn)</p>
+<p>Linked List: O(n)</p>
+</li>
+</ol>
+<h3 id="Linked-List-Operations"><a href="#Linked-List-Operations" class="headerlink" title="Linked List Operations:"></a>Linked List Operations:</h3><h4 id="length"><a href="#length" class="headerlink" title="length():"></a>length():</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">length</span> <span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> length = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">		length++;	</span><br><span class="line"></span><br><span class="line">		head = head.next; <span class="comment">//.next as index in array to move to different elements</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> length;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="get-index"><a href="#get-index" class="headerlink" title="get(index):"></a>get(index):</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">get</span><span class="params">(ListNode head, <span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (index &gt; <span class="number">0</span> &amp;&amp; head != <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">		head = head.next;</span><br><span class="line"></span><br><span class="line">		index--;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="appendHead"><a href="#appendHead" class="headerlink" title="appendHead()"></a>appendHead()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">appendHead</span><span class="params">(ListNode head, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	ListNode newHead = <span class="keyword">new</span> ListNode(value);</span><br><span class="line"></span><br><span class="line">	newHead.next = head;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> newHead;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="appendTail"><a href="#appendTail" class="headerlink" title="appendTail()"></a>appendTail()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">appendTail</span> <span class="params">(ListNode head, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. head == null</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ListNode (value);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. head != null, find the last node in the list.</span></span><br><span class="line"></span><br><span class="line">	ListNode prev = head;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (prev.next != <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">		prev = prev.next;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// exit the while loop when prev.next == null</span></span><br><span class="line"></span><br><span class="line">	prev.next = <span class="keyword">new</span> ListNode (value);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// usually need to consider head == null   head.next == null</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="remove"><a href="#remove" class="headerlink" title="remove()"></a>remove()</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ListNode <span class="title">remove</span><span class="params">(ListNode Head, <span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. head == null</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (head == <span class="keyword">null</span>) &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (head.value == value) &#123; <span class="comment">// 2. remove head</span></span><br><span class="line"></span><br><span class="line">		<span class="keyword">return</span> head.next;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3.</span></span><br><span class="line"></span><br><span class="line">	ListNode cur = head;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">while</span> (cur.next != <span class="keyword">null</span> &amp;&amp; cur.next.value != value) &#123;</span><br><span class="line"></span><br><span class="line">		cur = cur.next;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// out of the while loop, cur.next == null || cur.next.value == value</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (cur.next != <span class="keyword">null</span>)&#123;</span><br><span class="line"></span><br><span class="line">		cur.next = cur.next.next; <span class="comment">// remove done</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="LinkedList-In-Java"><a href="#LinkedList-In-Java" class="headerlink" title="LinkedList In Java"></a>LinkedList In Java</h3><p>backend by a doubly linked list, wrap the size, head and tail information.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">  E e;</span><br><span class="line">  <span class="keyword">private</span> ListNode&lt;E&gt; prev;</span><br><span class="line">  <span class="keyword">private</span> ListNode&lt;E&gt; next;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> ListNode&lt;E&gt; head;</span><br><span class="line">  <span class="keyword">private</span> ListNode&lt;E&gt; tail;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//traverse from the head/tail and find the node at index.</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// set(int index, E e)</span></span><br><span class="line">  <span class="comment">// add(int index, E e), add(E, e)</span></span><br><span class="line">  <span class="comment">// remove(int index) // at head: update the head to head.next; at tail: update the tail to tail.prev</span></span><br><span class="line">  <span class="comment">// size() - O(1) - eager computation.</span></span><br><span class="line">  <span class="comment">// isEmpty()</span></span><br><span class="line">  </span><br><span class="line">  List&lt;Integer&gt; list = <span class="keyword">new</span> LinkedList&lt;Integer&gt;();</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// Below: both work</span></span><br><span class="line">  <span class="comment">// 1. Preserve the general semantic of a List: can only use methods in a List interface 例如 list.poll(); // wrong; Not to make any assumptions on implementation; Make sure interchangeable in future. List as interface.</span></span><br><span class="line">  <span class="comment">//在方法参数中尽量用List，这样在以后调用该方法时，ArrayList 也可以调用，LinkedList也可以调用。假如之前你写的一个List变量是new ArrayList，后来你改成new LinkedList，不需要改被调用方法的参数类型</span></span><br><span class="line">  <span class="comment">// List as interface</span></span><br><span class="line">  List&lt;Student&gt; l = <span class="keyword">new</span> LinkedList&lt;&gt;(); </span><br><span class="line">  <span class="comment">// Good practice: Declare into a general type, initialize into a concrete type (Interfaces are also types.)</span></span><br><span class="line">  <span class="comment">// LinkedList, ArrayList as implementation class.</span></span><br><span class="line">  <span class="comment">// 2. Provide concrete implementation by using LinkedList: choose the best implementation for the current use case. LinkedList as class</span></span><br><span class="line">  LinkedList&lt;Student&gt; l = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// E Cannot be a primitive type: (int: Integer, char: Character, boolean: Boolean, wrapper class)</span></span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Lists can contain duplicate elements.</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="List-Interface-In-Java"><a href="#List-Interface-In-Java" class="headerlink" title="List Interface In Java"></a>List Interface In Java</h3><ul>
+<li>Interface extends interface</li>
+<li>Class extends class</li>
+<li>Class implements interface</li>
+</ul>
+<p>Semantics (interface or abstract class) vs. implementations (implementation class):</p>
+<p>Separate semantic and implementation: language specs define semantics 结果, language impelemntations (such as JVM) defines the actual behavior of a program 动作.</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm25j62xg3j30aw082wez.jpg" alt="Screen Shot 2020-12-26 at 5.22.22 PM"></p>
+<h4 id="Abstrct-Class-VS-Interfaces"><a href="#Abstrct-Class-VS-Interfaces" class="headerlink" title="Abstrct Class VS Interfaces"></a>Abstrct Class VS Interfaces</h4><p>An interface in the Java programming language is an abstract type that is used to specify a behavior that classes must implement. They are similar to protocols. Interfaces are declared using the interface keyword, and may only contain method signature and constant declarations. </p>
+<p>An <strong>abstract class</strong> is a <strong>class</strong> that is declared <strong>abstract</strong> —it may or may not include <strong>abstract</strong> methods. <strong>Abstract classes</strong> cannot be instantiated, but they can be subclassed. <em>Abstract class</em>: is a restricted class that cannot be used to create objects (to access it, it must be inherited from another class). An <strong>abstract class</strong> allows you to create functionality that subclasses can implement or override. An <strong>interface</strong> only allows you to define functionality, not implement it. And whereas a <strong>class</strong> can extend only one <strong>abstract class</strong>, it can take advantage of multiple <strong>interfaces</strong>.</p>
+<ul>
+<li>Both can have methods declared without implementation (abstract methods).</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interfact 猫 &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> 抓老鼠()</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 黑猫 <span class="keyword">implements</span> 猫 </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> 抓老鼠() &#123;</span><br><span class="line">			<span class="comment">//黑猫抓老鼠的姿势</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> 白猫 <span class="keyword">implements</span> 猫 </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> 抓老鼠() &#123;</span><br><span class="line">    	<span class="comment">//白猫抓老鼠的姿势</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>Abstract class/Interface: you cannot instantiate an object by abstract class or interface.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Dicitonary</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Dictionary myDict = <span class="keyword">new</span> Dictionary(); <span class="comment">// Wrong!</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">DictionaryImpl</span> <span class="keyword">implements</span> <span class="title">Dictionary</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Integer <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// interface =&gt; class =&gt; then, could new.</span></span><br><span class="line">DictionaryImpl myDict = <span class="keyword">new</span> DictionaryImpl(); <span class="comment">// Right!</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">search</span><span class="params">(Dictionary dict, <span class="keyword">int</span> target)</span> </span>&#123; <span class="comment">// interface as input parameter</span></span><br><span class="line">  <span class="keyword">return</span> dict.get(target); <span class="comment">// return based on interface</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">implements</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Syustem.out.println(<span class="string">"B"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+</li>
+</ul>
+<ul>
+<li><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm27nnn667j30i20bh0tv.jpg" alt="Screen Shot 2020-12-26 at 6.35.56 PM"></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gm27o2s5qyj30ir02tglm.jpg" alt="Screen Shot 2020-12-26 at 6.36.07 PM"></p>
+<p>Abstract Class VS Interface</p>
+<p>1) Abstract class can have final, non-final, static and non-static variables.</p>
+<p>​    Interface has only static and final variables.</p>
+<p>2) Abstract class can have static methods, main method, and constructor.</p>
+<p>​    Interface can’t have static methods, main method, or constructor.</p>
+<p>3) Abstrac class can have static methods, main method, and constructor.</p>
+<p>​    Interface can’t have static methods, main method, or constructor.</p>
+<p>4) Abstract class can have abstract and non-abstract class. </p>
+<p>​    Interface can have only abstract methods.</p>
+<p>5) Abstract class doesn’t support multiple inheritance.</p>
+<p>​    Interface supports multiple inheritance. </p>
+<p>6) The abstract keyword is used to declare abstract class.</p>
+<p>​    The interface keywork is used to declare interface.</p>
+<ul>
+<li><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Abstract class</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="comment">// Abstract method (does not have a body)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">animalSound</span><span class="params">()</span></span>;</span><br><span class="line">  <span class="comment">// Regular method</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="string">"Zzz"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Animal myObj = new Animal(); // will generate an error</span></span><br><span class="line"><span class="comment">// Subclass (inherit from Animal)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Pig</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">animalSound</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// The body of animalSound() is provided here</span></span><br><span class="line">    System.out.println(<span class="string">"The pig says: wee wee"</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Pig myPig = <span class="keyword">new</span> Pig(); <span class="comment">// Create a Pig object</span></span><br><span class="line">    myPig.animalSound();</span><br><span class="line">    myPig.sleep();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li>Use LinkedList/ArrayDeque (better)/ Array List to implement: stack(LIFO), queue (FIFO, Java Interface), deque (dequeue, enqueue, Java Interface).</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Linked List, List</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/25/2020-12-25-Linked-List-and-Java-List/">Show All >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-2020-12-22-What-are-the-SOLID-principles-in-Java" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -896,191 +1146,6 @@
 
 
   
-    <article id="post-2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/13/2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private/">GitHub How to make a fork of public repository private?</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/13/2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private/" class="archive-article-date">
-  	<time datetime="2020-09-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>How to sync code between the public repo and the fork:</p>
-<p>Here is the full workflow</p>
-<p>First, duplicate the repo as others said (details <a href="https://help.github.com/articles/duplicating-a-repository/" target="_blank" rel="noopener">here</a>):</p>
-<hr>
-<p>Create a new repo (let’s call it private-repo) via the <a href="https://github.com/new" target="_blank" rel="noopener">Github UI</a>. Then:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone --bare https://github.com/exampleuser/public-repo.git</span><br><span class="line">cd public-repo.git</span><br><span class="line">git push --mirror https://github.com/yourname/private-repo.git</span><br><span class="line">cd ..</span><br><span class="line">rm -rf public-repo.git</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>Clone the private repo so you can work on it:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/yourname/private-repo.git</span><br><span class="line">cd private-repo</span><br><span class="line">make some changes</span><br><span class="line">git commit</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-
-<hr>
-<p>To pull new hotness from the public repo:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd private-repo</span><br><span class="line">git remote add public https://github.com/exampleuser/public-repo.git</span><br><span class="line">git pull public master # Creates a merge commit</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
-
-<p>Awesome, your private repo now has the latest code from the public repo plus your changes.</p>
-<hr>
-<p>Finally, to create a pull request private repo -&gt; public repo:</p>
-<p>The only way to create a pull request is to have push access to the public repo. This is because you need to push to a branch there (<a href="http://stackoverflow.com/questions/14821583/pull-request-without-forking" target="_blank" rel="noopener">here’s why</a>).</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/exampleuser/public-repo.git</span><br><span class="line">cd public-repo</span><br><span class="line">git remote add private_repo_yourname https://github.com/yourname/private-repo.git</span><br><span class="line">git checkout -b pull_request_yourname</span><br><span class="line">git pull private_repo_yourname master</span><br><span class="line">git push origin pull_request_yourname</span><br></pre></td></tr></table></figure>
-
-<p>Now simply create a pull request via the Github UI for public-repo, as described <a href="https://help.github.com/articles/creating-a-pull-request/" target="_blank" rel="noopener">here</a>.</p>
-<p>Once project owners review your pull request, they can merge it.</p>
-<p>Of course the whole process can be repeated (just leave out the steps where you add remotes).</p>
-<p>Taken from stackoverflow post by <a href="https://stackoverflow.com/users/90998/martin-konicek" target="_blank" rel="noopener">https://stackoverflow.com/users/90998/martin-konicek</a></p>
-<hr>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://medium.com/@bilalbayasut/github-how-to-make-a-fork-of-public-repository-private-6ee8cacaf9d3" target="_blank" rel="noopener">https://medium.com/@bilalbayasut/github-how-to-make-a-fork-of-public-repository-private-6ee8cacaf9d3</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/13/2020-09-13-GitHub-How-to-make-a-fork-of-public-repository-private/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2020-09-11-13-Common-Technical-Interview-Questions-(With-Tips-and-Example-Answers)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/12/2020-09-11-13-Common-Technical-Interview-Questions-(With-Tips-and-Example-Answers)/">13 Common Technical Interview Questions (With Tips and Example Answers)</a>
-    </h1>
-  
-
-        
-        <a href="/2020/09/12/2020-09-11-13-Common-Technical-Interview-Questions-(With-Tips-and-Example-Answers)/" class="archive-article-date">
-  	<time datetime="2020-09-12T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>If you are considering a career in the tech industry, it is important to know that a technical interview is often very different from any other traditional job interview. Technical interviews typically include behavioral questions, situational questions and technical problem-solving questions. Whether you are just starting out in the technical field or are a seasoned professional, knowing the types of questions to expect during a technical interview can help you prepare your answers carefully to showcase your skills and experience.</p>
-<p>In this article, we discuss the most common interview questions asked during a technical interview with tips and example answers for technical questions.</p>
-<h2 id="What-is-a-technical-interview"><a href="#What-is-a-technical-interview" class="headerlink" title="What is a technical interview?"></a>What is a technical interview?</h2><p>A technical interview is a job interview for any position that relates to the tech industry, such as information technology. Technical interviews may take place over the phone, online and in-person, and may range in time from one hour to full-day interviews. Interview questions may consist of traditional interview questions, brainteasers, technical proficiency tests and problem-solving questions.</p>
-<p>During the technical interview, the interviewer will assess your technical knowledge, skills and abilities as they relate to the needs of the specific job you are applying to. In addition to assessing your technical knowledge and skills, the interviewer will also be looking for what your thought process is when solving problems and how you will fit into the company’s culture.</p>
-<h2 id="Common-technical-interview-questions"><a href="#Common-technical-interview-questions" class="headerlink" title="Common technical interview questions"></a>Common technical interview questions</h2><p>Questions asked during a technical interview can fall into several categories including:</p>
-<ul>
-<li>Behavioral interview questions</li>
-<li>Situational interview questions</li>
-<li>Questions about your education</li>
-<li>Questions about technical knowledge and experience</li>
-</ul>
-<p>Read on as we discuss why employers ask these types of questions and what they are looking for with sample answers to questions about technical knowledge and experience.</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Interview</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/12/2020-09-11-13-Common-Technical-Interview-Questions-(With-Tips-and-Example-Answers)/">Show All >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1189,11 +1254,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
+                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Mongo DB, Node.JS, Database</a>
+                <a href="javascript:void(0)" class="js-tag color1">IoT, Gateway, Sensor</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,10 +1270,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Information Architecture, Application Logic, Architecture, Clean Architecture</a>
               </li>
              
@@ -1217,11 +1278,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
+                <a href="javascript:void(0)" class="js-tag color5">Client, Server</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
+                <a href="javascript:void(0)" class="js-tag color2">SQL, Stored Procedure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1230,6 +1291,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CI/CD, Cloud Engineering, Software Testing, Development Tools, Containers</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">React.js</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1269,11 +1334,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
+                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
+                <a href="javascript:void(0)" class="js-tag color5">yarn, npm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1281,7 +1346,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Firebase, JavaScript</a>
+                <a href="javascript:void(0)" class="js-tag color3">Android, MVP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1305,11 +1370,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
+                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CSS, Flex</a>
+                <a href="javascript:void(0)" class="js-tag color3">React, Handling Events</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1325,11 +1390,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
+                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">React, Uncontrolled Components</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java11, Clean Software Architecture, Jigsaw</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,11 +1406,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
+                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Android, Architecture, RecyclerView</a>
+                <a href="javascript:void(0)" class="js-tag color3">Unit Testing, Integration Testing, Testing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1357,11 +1422,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
+                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">React Web, React Native</a>
+                <a href="javascript:void(0)" class="js-tag color4">Map, Hashmap,</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1381,19 +1446,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Order Fullfillment, AWS Step Functions, State Machine</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+                <a href="javascript:void(0)" class="js-tag color3">GraphQL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1401,7 +1458,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
+                <a href="javascript:void(0)" class="js-tag color4">OODesign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Sorting, Hash Table</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1413,11 +1474,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
+                <a href="javascript:void(0)" class="js-tag color5">Heroku, Devployment</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+                <a href="javascript:void(0)" class="js-tag color3">Google, Geocoding</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1429,7 +1490,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Indexing, SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Song</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1445,7 +1514,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">React, Clock</a>
+                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1453,19 +1522,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Delivery, AI</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">TikTok</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
+                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">AWS</a>
+                <a href="javascript:void(0)" class="js-tag color5">Algorithm</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1513,6 +1578,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Frontend</a>
               </li>
              
@@ -1521,15 +1590,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Authentication, Authorization, Cookie, Session, Token</a>
+                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSH</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Authentication, Authorization, Credentials</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1545,15 +1610,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Interview</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Heap</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Interview</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">BQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1565,7 +1634,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BQ</a>
+                <a href="javascript:void(0)" class="js-tag color2">Java, Object Oriented</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1573,7 +1642,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Java, Object Oriented</a>
+                <a href="javascript:void(0)" class="js-tag color3">Linked List, List</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ArrayList</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1581,19 +1654,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">BOM</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Google Map API</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Data Sampling, Randomization</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1609,15 +1682,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JavaScript, Fetch, API, Data</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Real-Time Data, IoT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Real-time Parking Availability, IoT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1649,11 +1722,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
+                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">System Design</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spring Boot</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1673,11 +1746,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortening service</a>
+                <a href="javascript:void(0)" class="js-tag color3">JavaScript, Web Development</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">JavaScript, Web Development</a>
+                <a href="javascript:void(0)" class="js-tag color3">System Design, URL Shortening service</a>
               </li>
              
               <li class="article-tag-list-item">
